@@ -6,7 +6,7 @@ on: # rebuild any PRs and main branch changes
       - master
 
 jobs:
-  lint:
+  cspell:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
