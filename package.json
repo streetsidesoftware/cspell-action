@@ -1,0 +1,26 @@
+{
+  "name": "cspell-action",
+  "version": "1.0.0",
+  "description": "GitHub Action: Check Spelling",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/streetsidesoftware/cspell-action.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Action",
+    "cspell",
+    "spelling",
+    "checker"
+  ],
+  "author": "Jason Dent <jason@streetsidesoftware.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/streetsidesoftware/cspell-action/issues"
+  },
+  "homepage": "https://github.com/streetsidesoftware/cspell-action#readme"
+}
