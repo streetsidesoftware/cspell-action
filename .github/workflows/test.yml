@@ -13,11 +13,6 @@ jobs:
     - run: |
         npm install
         npm test
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - run: npx cspell -v "src/**/*.ts"
   test: # run the action
     runs-on: ubuntu-latest
     steps:
