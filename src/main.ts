@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import {wait} from './wait'
 
-// Deliberate spellling errorgs
+// Deliberate spelling errors
 async function run(): Promise<void> {
   try {
     const ms: string = core.getInput('milliseconds')
