@@ -11,6 +11,7 @@ test('test runs', () => {
   }
   const result = cp.execSync(`node ${ip}`, options).toString();
   console.log(result);
-  expect(result).toEqual(expect.stringContaining('::debug::Waiting 500 milliseconds'));
+  expect(result).toEqual(expect.stringContaining('Waiting 500 milliseconds'));
   expect(result).toEqual(expect.stringContaining('::set-output name=time::'));
+  expect(result).toEqual(expect.stringContaining('Done.'));
 })
