@@ -5,6 +5,9 @@ inputs:
   milliseconds:
     description: 'Amount of time to wait.'
     default: '500'
+outputs:
+  time:
+    description: 'Finish time.'
 runs:
   using: 'node12'
   main: './action/main.js'
