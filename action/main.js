@@ -1,10 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require("@actions/core");
+const gitHub = require("@actions/github");
 const wait_1 = require("./wait");
 // Deliberate spelling errors
 async function run() {
     try {
+        core.info('cspell-action');
+        const context = gitHub.context;
+        core.info(`context: ${JSON.stringify(context, null, 2)}`);
         const ms = core.getInput('milliseconds');
         core.info(`Waiting ${ms} milliseconds ...`);
         core.debug(new Date().toTimeString());
