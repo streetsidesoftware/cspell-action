@@ -31,6 +31,7 @@
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
     "@types/jest": "^25.1.4",
+    "@types/minimatch": "^3.0.3",
     "@types/node": "^12.12.30",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
