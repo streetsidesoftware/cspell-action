@@ -7,5 +7,7 @@
     "rootDir": "./src",
     "strict": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
