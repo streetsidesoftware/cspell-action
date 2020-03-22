@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import * as gitHub from '@actions/github'
+import * as gitHubApi from '@actions/github'
 import {wait} from './wait'
 
 async function experiment() {
@@ -13,23 +13,31 @@ async function experiment() {
   core.setOutput('time', new Date().toTimeString())
 }
 
-type Context = typeof gitHub.context;
+type Context = typeof gitHubApi.context;
 
-function pullRequest(context: Context) {
+function pullRequest(context: Context, github: gitHubApi.GitHub) {
   core.info(`Pull Request: ${context.eventName}`)
+  if (github) {
+    core.info('github')
+  }
 }
 
-function push(context: Context) {
-  core.info(`Pull Request: ${context.eventName}`)
+async function push(context: Context, github: gitHubApi.GitHub) {
+  core.info(`Push: ${context.eventName}`)
+  context.sha
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  const result = await github.git.getCommit({ commit_sha: context.sha, ...context.repo })
+  core.info(`result: ${JSON.stringify(result, null, 2)}`);
 }
 
 async function action() {
-  const context = gitHub.context;
+  const context = gitHubApi.context;
+  const github = new gitHubApi.GitHub(core.getInput('repo-token', { required: true }))
   core.info(`context: ${JSON.stringify(context, null, 2)}`);
 
   switch(context.eventName) {
-    case 'push': return push(context);
-    case 'pull_request': return pullRequest(context)
+    case 'push': return push(context, github);
+    case 'pull_request': return pullRequest(context, github)
     default:
       core.info(`Unknown event: '${context.eventName}'`)
   }
