@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require("@actions/core");
-const gitHub = require("@actions/github");
+const gitHubApi = require("@actions/github");
 const wait_1 = require("./wait");
 async function experiment() {
     const ms = core.getInput('milliseconds');
@@ -11,18 +11,26 @@ async function experiment() {
     core.debug(new Date().toTimeString());
     core.setOutput('time', new Date().toTimeString());
 }
-function pullRequest(context) {
+function pullRequest(context, github) {
     core.info(`Pull Request: ${context.eventName}`);
+    if (github) {
+        core.info('github');
+    }
 }
-function push(context) {
-    core.info(`Pull Request: ${context.eventName}`);
+async function push(context, github) {
+    core.info(`Push: ${context.eventName}`);
+    context.sha;
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    const result = await github.git.getCommit({ commit_sha: context.sha, ...context.repo });
+    core.info(`result: ${JSON.stringify(result, null, 2)}`);
 }
 async function action() {
-    const context = gitHub.context;
+    const context = gitHubApi.context;
+    const github = new gitHubApi.GitHub(core.getInput('repo-token', { required: true }));
     core.info(`context: ${JSON.stringify(context, null, 2)}`);
     switch (context.eventName) {
-        case 'push': return push(context);
-        case 'pull_request': return pullRequest(context);
+        case 'push': return push(context, github);
+        case 'pull_request': return pullRequest(context, github);
         default:
             core.info(`Unknown event: '${context.eventName}'`);
     }
