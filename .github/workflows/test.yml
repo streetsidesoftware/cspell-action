@@ -17,4 +17,3 @@ jobs:
     - uses: ./
       with:
         milliseconds: 1001
-        githubToken: ${{ secrets.GITHUB_TOKEN }}

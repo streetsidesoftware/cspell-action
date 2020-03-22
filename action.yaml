@@ -4,7 +4,7 @@ author: 'Street Side Software <info@streetsidesoftware.nl>'
 inputs:
     githubToken:
         description: Github Token '${{ secrets.GITHUB_TOKEN }}'
-        required: true
+        required: false
     milliseconds:
         description: 'Amount of time to wait.'
         default: '500'
