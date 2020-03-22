@@ -2,9 +2,9 @@ name: 'cspell-action'
 description: 'Spell check changed files.'
 author: 'Street Side Software <info@streetsidesoftware.nl>'
 inputs:
-    githubToken:
-        description: Github Token
-        required: false
+    repo-token:
+        description: "Token for the repo. Can be passed in using {{ secrets.GITHUB_TOKEN }}"
+        required: true
     milliseconds:
         description: 'Amount of time to wait.'
         default: '500'
