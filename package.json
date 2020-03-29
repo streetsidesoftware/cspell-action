@@ -32,12 +32,12 @@
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^12.12.30",
-    "@typescript-eslint/eslint-plugin": "^2.23.0",
-    "@typescript-eslint/parser": "^2.23.0",
+    "@types/node": "^12.12.32",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
     "eslint": "^6.8.0",
-    "jest": "^25.1.0",
-    "jest-circus": "^25.1.0",
+    "jest": "^25.2.3",
+    "jest-circus": "^25.2.3",
     "rimraf": "^3.0.2",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3"
@@ -46,7 +46,7 @@
     "@actions/core": "^1.2.3",
     "@actions/github": "^2.1.1",
     "@octokit/graphql": "^4.3.1",
-    "@octokit/rest": "^17.1.1",
+    "@octokit/rest": "^17.1.4",
     "cspell": "^4.0.55"
   },
   "files": [
