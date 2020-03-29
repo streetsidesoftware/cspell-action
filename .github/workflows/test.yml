@@ -4,12 +4,12 @@ on: # rebuild any PRs and main branch changes
   push:
 
 jobs:
-  build: # make sure build/ci work properly
+  unit-test: # make sure unit-tests run
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - run: npm install
-    - run: npm test
+    - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} npm test
   test: # run the action
     runs-on: ubuntu-latest
     steps:
@@ -17,4 +17,4 @@ jobs:
     - uses: ./
       with:
         milliseconds: 1001
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
