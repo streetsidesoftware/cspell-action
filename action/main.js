@@ -26,7 +26,7 @@ async function push(context, github) {
 }
 async function action() {
     const context = gitHubApi.context;
-    const github = new gitHubApi.GitHub(core.getInput('repo-token', { required: true }));
+    const github = new gitHubApi.GitHub(core.getInput('github_token', { required: true }));
     core.info(`context: ${JSON.stringify(context, null, 2)}`);
     switch (context.eventName) {
         case 'push': return push(context, github);
