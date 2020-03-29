@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import * as gitHubApi from '@actions/github'
+import { GitHub } from '@actions/github'
 import {wait} from './wait'
 
 async function experiment() {
@@ -15,14 +16,14 @@ async function experiment() {
 
 type Context = typeof gitHubApi.context;
 
-function pullRequest(context: Context, github: gitHubApi.GitHub) {
+export function pullRequest(context: Context, github: GitHub) {
   core.info(`Pull Request: ${context.eventName}`)
   if (github) {
     core.info('github')
   }
 }
 
-async function push(context: Context, github: gitHubApi.GitHub) {
+export async function push(context: Context, github: GitHub) {
   core.info(`Push: ${context.eventName}`)
   context.sha
   // eslint-disable-next-line @typescript-eslint/camelcase
@@ -32,7 +33,7 @@ async function push(context: Context, github: gitHubApi.GitHub) {
 
 async function action() {
   const context = gitHubApi.context;
-  const github = new gitHubApi.GitHub(core.getInput('repo-token', { required: true }))
+  const github = new GitHub(core.getInput('github_token', { required: true }))
   core.info(`context: ${JSON.stringify(context, null, 2)}`);
 
   switch(context.eventName) {
@@ -46,8 +47,8 @@ async function action() {
 async function run(): Promise<void> {
   try {
     core.info('cspell-action')
-    action()
-    experiment()
+    await action()
+    await experiment()
     core.info('Done.')
   } catch (error) {
     core.setFailed(error.message)
