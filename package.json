@@ -4,7 +4,7 @@
   "description": "GitHub Action: Check Spelling",
   "main": "action/main.js",
   "scripts": {
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "build": "npm run installAction && npm run compile",
     "installAction": "rimraf action && ./installAction.js . package.json tsconfig.json package-lock.json",
     "compile": "tsc -p .",
