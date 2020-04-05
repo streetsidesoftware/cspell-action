@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require("@actions/core");
 const gitHubApi = require("@actions/github");
+const github_1 = require("@actions/github");
 const wait_1 = require("./wait");
 async function experiment() {
     const ms = core.getInput('milliseconds');
@@ -17,6 +18,7 @@ function pullRequest(context, github) {
         core.info('github');
     }
 }
+exports.pullRequest = pullRequest;
 async function push(context, github) {
     core.info(`Push: ${context.eventName}`);
     context.sha;
@@ -24,9 +26,10 @@ async function push(context, github) {
     const result = await github.git.getCommit({ commit_sha: context.sha, ...context.repo });
     core.info(`result: ${JSON.stringify(result, null, 2)}`);
 }
+exports.push = push;
 async function action() {
     const context = gitHubApi.context;
-    const github = new gitHubApi.GitHub(core.getInput('github_token', { required: true }));
+    const github = new github_1.GitHub(core.getInput('github_token', { required: true }));
     core.info(`context: ${JSON.stringify(context, null, 2)}`);
     switch (context.eventName) {
         case 'push': return push(context, github);
@@ -38,8 +41,8 @@ async function action() {
 async function run() {
     try {
         core.info('cspell-action');
-        action();
-        experiment();
+        await action();
+        await experiment();
         core.info('Done.');
     }
     catch (error) {
