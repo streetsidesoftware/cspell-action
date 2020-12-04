@@ -23,6 +23,7 @@ exports.push = exports.pullRequest = void 0;
 const core = __importStar(require("@actions/core"));
 const gitHubApi = __importStar(require("@actions/github"));
 const github_1 = require("@actions/github");
+const github_2 = require("./github");
 const wait_1 = require("./wait");
 async function experiment() {
     const ms = core.getInput('milliseconds');
@@ -32,10 +33,14 @@ async function experiment() {
     core.debug(new Date().toTimeString());
     core.setOutput('time', new Date().toTimeString());
 }
-function pullRequest(context, github) {
+async function pullRequest(context, github) {
+    var _a;
     core.info(`Pull Request: ${context.eventName}`);
     if (github) {
         core.info('github');
+        const pull_number = ((_a = context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number) || 0;
+        const files = await github_2.getPullRequestFiles(github, { ...context.repo, pull_number });
+        core.info(files.join('\n'));
     }
 }
 exports.pullRequest = pullRequest;

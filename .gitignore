@@ -25,9 +25,12 @@ coverage
 # Dependency directories
 /node_modules/
 
+/dist/
+
 # We want to keep everything in the action folder.
 !action
 !action/node_modules
+!action/node_modules/**/dist/**
 
 # Don't keep map or test files
 action/**/*.map
@@ -44,5 +47,3 @@ action/**/*.test.*
 
 # Optional REPL history
 .node_repl_history
-
-dist

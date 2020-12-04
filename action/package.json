@@ -47,7 +47,7 @@
     "@actions/github": "^4.0.0",
     "@octokit/graphql": "^4.5.8",
     "@octokit/rest": "^18.0.12",
-    "cspell": "^5.0.2"
+    "cspell": "^5.0.3"
   },
   "files": [
     "index.js",

@@ -1,6 +1,8 @@
 import * as core from '@actions/core';
 import * as gitHubApi from '@actions/github';
 import { getOctokit } from '@actions/github';
+import { getPullRequestFiles } from './github';
+import { Octokit } from '@octokit/rest';
 import { wait } from './wait';
 
 type GitHub = ReturnType<typeof getOctokit>;
@@ -18,10 +20,13 @@ async function experiment() {
 
 type Context = typeof gitHubApi.context;
 
-export function pullRequest(context: Context, github: GitHub) {
+export async function pullRequest(context: Context, github: GitHub) {
     core.info(`Pull Request: ${context.eventName}`);
     if (github) {
         core.info('github');
+        const pull_number = context.payload.pull_request?.number || 0;
+        const files = await getPullRequestFiles(github as Octokit, { ...context.repo, pull_number });
+        core.info(files.join('\n'));
     }
 }
 
