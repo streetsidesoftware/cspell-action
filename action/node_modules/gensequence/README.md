@@ -123,6 +123,7 @@ const setOf4LetterWords = new Set(genSequence(setOfWords).filter(a => a.length =
 ### Mappers
 - `.combine(fnCombiner, iterable)` -- is used to combine values from two different lists.
 - `.map(fn)` -- just like array.map, allows you to convert the values in a sequence.
+- `.pipe(...operatorFns)` -- pipe any amount of operators in sequence.
 - `.scan(fn, init?)` -- similar to reduce, but returns a sequence of all the results of fn.
 
 ### Reducers
@@ -137,6 +138,7 @@ const setOf4LetterWords = new Set(genSequence(setOfWords).filter(a => a.length =
 - `.min()` -- return the smallest value in the sequence.
 - `.min(fn)` -- return the smallest value of *fn(value)* in the sequence.
 - `.reduce(fn, init?)` -- just like array.reduce, reduces the sequence into a single result.
+- `.reduceAsync(fn, init?)` -- just like array.reduce, reduces promises into the sequence into a single result chaining the promises, fn/init can be async or not, it will work, the previousValue, and currentValue will never be a promise.
 - `.reduceToSequence(fn, init)` -- return a sequence of values that *fn* creates from looking at all the values and the initial sequence.
 
 ### Cast

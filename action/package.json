@@ -4,7 +4,7 @@
   "description": "GitHub Action: Check Spelling",
   "main": "action/main.js",
   "scripts": {
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "build": "npm run installAction && npm run compile",
     "installAction": "rimraf action && ./installAction.js . package.json tsconfig.json package-lock.json",
     "compile": "tsc -p .",
@@ -30,24 +30,24 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
-    "@types/jest": "^25.2.1",
+    "@types/jest": "^26.0.16",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^12.12.34",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
-    "eslint": "^6.8.0",
-    "jest": "^25.2.7",
-    "jest-circus": "^25.2.7",
+    "@types/node": "^14.14.10",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "eslint": "^7.14.0",
+    "jest": "^26.6.3",
+    "jest-circus": "^26.6.3",
     "rimraf": "^3.0.2",
-    "ts-jest": "^25.3.1",
-    "typescript": "^3.8.3"
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@actions/core": "^1.2.3",
-    "@actions/github": "^2.1.1",
-    "@octokit/graphql": "^4.3.1",
-    "@octokit/rest": "^17.1.4",
-    "cspell": "^4.0.55"
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@octokit/graphql": "^4.5.8",
+    "@octokit/rest": "^18.0.12",
+    "cspell": "^5.0.2"
   },
   "files": [
     "index.js",

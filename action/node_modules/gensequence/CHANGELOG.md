@@ -1,5 +1,14 @@
 # Release Notes
 
+## [3.1.0]
+* Initial support for `AsyncIterator`s
+  * Special thanks to [albertossilva (Alberto)](https://github.com/albertossilva)
+  * Only supports reduce at the moment.
+
+## [3.0.0]
+* Supports Node >= 10
+* Add the ability to pipe operators
+
 ## [2.2.0]
 * Move operator functions out of GenSequence
 * Update to TypeScript
@@ -42,3 +51,7 @@
 
 ## 0.1.0 - 0.2.4
 * These were the initial set of releases
+
+<!---
+cspell:ignore albertossilva
+-->
