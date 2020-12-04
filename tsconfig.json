@@ -3,11 +3,16 @@
     "target": "es2019",
     "module": "commonjs",
     "sourceMap": true,
+    "esModuleInterop": true,
     "outDir": "action",
     "rootDir": "./src",
     "strict": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

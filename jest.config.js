@@ -7,7 +7,6 @@ module.exports = {
   transform: {
     '^.+\\.ts$': 'ts-jest'
   },
-  browser: false,
   roots: ['./src', './action'],
   verbose: true
 }
