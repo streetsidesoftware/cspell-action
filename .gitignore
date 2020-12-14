@@ -32,9 +32,11 @@ coverage
 !action/node_modules
 !action/node_modules/**/dist/**
 
+
 # Don't keep map or test files
 action/**/*.map
 action/**/*.test.*
+action/**/*.d.ts
 
 # TypeScript cache
 *.tsbuildinfo

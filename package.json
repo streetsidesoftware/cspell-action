@@ -6,7 +6,8 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "npm run installAction && npm run compile",
-    "installAction": "rimraf action && ./installAction.js . package.json tsconfig.json package-lock.json",
+    "installAction": "npm run clean && ./installAction.js . package.json tsconfig.json package-lock.json",
+    "clean": "rimraf action",
     "compile": "tsc -p .",
     "watch": "npm run compile -- --watch",
     "eslint": "eslint 'src/**/*.ts'",
