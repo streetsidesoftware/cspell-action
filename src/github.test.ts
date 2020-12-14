@@ -8,7 +8,11 @@ describe('validate github', () => {
     jest.setTimeout(60000);
 
     test('getPullRequestFiles', async () => {
-        const octokit = new Octokit();
+        expect(process.env['GITHUB_TOKEN']).not.toBeUndefined();
+        const options = {
+            auth: process.env['GITHUB_TOKEN'],
+        };
+        const octokit = new Octokit(options);
         const pull_number = 715;
 
         const list = await getPullRequestFiles(octokit, { owner, repo, pull_number });

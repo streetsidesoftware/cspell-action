@@ -5,10 +5,6 @@ inputs:
     github_token:
         description: "Token for the repo. Can be passed in using {{ secrets.GITHUB_TOKEN }}"
         required: true
-    milliseconds:
-        description: 'Amount of time to wait.'
-        default: '500'
-        required: true
 outputs:
     time:
         description: 'Finish time.'

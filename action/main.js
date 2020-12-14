@@ -24,15 +24,6 @@ const core = __importStar(require("@actions/core"));
 const gitHubApi = __importStar(require("@actions/github"));
 const github_1 = require("@actions/github");
 const github_2 = require("./github");
-const wait_1 = require("./wait");
-async function experiment() {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
-    core.debug(new Date().toTimeString());
-    await wait_1.wait(parseInt(ms, 10));
-    core.debug(new Date().toTimeString());
-    core.setOutput('time', new Date().toTimeString());
-}
 async function pullRequest(context, github) {
     var _a;
     core.info(`Pull Request: ${context.eventName}`);
@@ -47,7 +38,6 @@ exports.pullRequest = pullRequest;
 async function push(context, github) {
     core.info(`Push: ${context.eventName}`);
     context.sha;
-    // eslint-disable-next-line @typescript-eslint/camelcase
     const result = await github.git.getCommit({ commit_sha: context.sha, ...context.repo });
     core.info(`result: ${JSON.stringify(result, null, 2)}`);
 }
@@ -69,7 +59,6 @@ async function run() {
     try {
         core.info('cspell-action');
         await action();
-        await experiment();
         core.info('Done.');
     }
     catch (error) {
