@@ -1,8 +1,11 @@
 import { Octokit } from '@octokit/rest';
 
-export interface PullRequestRef {
+export interface GitContext {
     owner: string;
     repo: string;
+}
+
+export interface PullRequestRef extends GitContext {
     pull_number: number;
 }
 
@@ -22,4 +25,19 @@ export async function getPullRequestFiles(git: Octokit, prRef: PullRequestRef): 
     }
 
     return [...prFiles];
+}
+
+
+export async function* fetchFilesForCommits(git: Octokit, context: GitContext, commitIds: string[]) {
+    const { owner, repo } = context;
+    for await (const ref of commitIds) {
+        const commit = await git.repos.getCommit({ owner, repo, ref });
+        const files = commit.data.files;
+        if (!files) continue;
+        for (const f of files) {
+            if (f.filename) {
+                yield f.filename;
+            }
+        }
+    }
 }
