@@ -32,6 +32,7 @@ coverage
 !action/node_modules
 !action/node_modules/**/dist/**
 
+action-source/node_modules
 
 # Don't keep map or test files
 action/**/*.map

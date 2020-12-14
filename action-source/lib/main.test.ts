@@ -6,7 +6,7 @@ import * as path from 'path';
 test('test runs', () => {
     expect(process.env['GITHUB_TOKEN']).not.toBeUndefined();
     process.env['INPUT_GITHUB_TOKEN'] = process.env['GITHUB_TOKEN'];
-    const ip = path.join(__dirname, '..', 'action', 'main.js');
+    const ip = path.join(__dirname, '..', '..', 'action', 'index.js');
     const options: cp.ExecSyncOptions = {
         env: process.env,
     };

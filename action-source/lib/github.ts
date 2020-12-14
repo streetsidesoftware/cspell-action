@@ -28,7 +28,7 @@ export async function getPullRequestFiles(git: Octokit, prRef: PullRequestRef): 
 }
 
 
-export async function* fetchFilesForCommits(git: Octokit, context: GitContext, commitIds: string[]) {
+export async function* fetchFilesForCommits(git: Octokit, context: GitContext, commitIds: string[]): AsyncIterableIterator<string> {
     const { owner, repo } = context;
     for await (const ref of commitIds) {
         const commit = await git.repos.getCommit({ owner, repo, ref });
