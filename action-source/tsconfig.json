@@ -4,13 +4,14 @@
     "module": "commonjs",
     "sourceMap": true,
     "esModuleInterop": true,
-    "outDir": "action",
-    "rootDir": "./src",
+    "outDir": "../action",
+    "rootDir": ".",
     "strict": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/**/*"
+    "main.ts",
+    "lib/**/*"
   ],
   "exclude": [
     "node_modules"
