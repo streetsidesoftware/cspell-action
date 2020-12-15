@@ -25,9 +25,18 @@ export async function push(context: Context, github: GitHub): Promise<void> {
     core.info(`result: ${JSON.stringify(result, null, 2)}`);
 }
 
+function getGithubToken(): string {
+    const t0 = core.getInput('github_token', { required: true });
+    if (t0[0] !== '$') {
+        return t0;
+    }
+    return process.env[t0.slice(1)] || 'undefined';
+}
+
 async function action() {
     const context = gitHubApi.context;
-    const github = getOctokit(core.getInput('github_token', { required: true }));
+
+    const github = getOctokit(getGithubToken());
     core.info(`context: ${JSON.stringify(context, null, 2)}`);
 
     switch (context.eventName) {
