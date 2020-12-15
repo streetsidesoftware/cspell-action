@@ -7,12 +7,13 @@
   "scripts": {
     "prepare": "npm run installSource && npm run build",
     "build": "npm run installAction && npm run buildSource",
-    "installAction": "node ./installAction.js . action-source/package.json action-source/tsconfig.json action-source/package-lock.json",
+    "installAction": "node ./installAction.js . action-source/package.json action-source/tsconfig.json",
     "installSource": "cd action-source && npm i",
     "buildSource": "cd action-source && npm run build",
     "clean": "rimraf action",
     "clean-build": "npm run clean && npm run build",
     "eslint": "eslint 'action-source/src/**/*.ts'",
+    "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
     "test": "jest"
   },
   "repository": {
@@ -36,6 +37,7 @@
     "@types/jest": "^26.0.19",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "env-cmd": "^10.1.0",
     "eslint": "^7.15.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
