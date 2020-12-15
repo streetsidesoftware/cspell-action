@@ -18,9 +18,9 @@ export interface LintOptions {
     root: string;
 }
 
-// function nullEmitter() {
-//     /* Do Nothings */
-// }
+function nullEmitter(_msg: string) {
+    /* Do Nothings */
+}
 
 /**
  *
@@ -37,16 +37,17 @@ export async function lint(files: string[], lintOptions: LintOptions, logger: Lo
     function info(message: string, msgType: MessageType) {
         switch (msgType) {
             case 'Debug':
-                logger.debug(message);
+                debug(message);
                 break;
             case 'Info':
             default:
-                logger.info(message);
+                debug(message);
                 break;
         }
     }
     function debug(message: string) {
-        logger.debug(message);
+        nullEmitter(message);
+        // logger.debug(message);
     }
     function progress(progress: ProgressItem | ProgressFileComplete) {
         if (!isProgressFileComplete(progress)) {

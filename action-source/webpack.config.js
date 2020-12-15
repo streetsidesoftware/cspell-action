@@ -24,6 +24,7 @@ module.exports = {
   },
   externals: {
     // cspell: 'commonjs2 cspell',
+    'cspell-lib': 'commonjs2 cspell-lib',
     '@actions/core': 'commonjs2 @actions/core',
     '@actions/github': 'commonjs2 @actions/github',
     '@cspell/cspell-bundled-dicts': 'commonjs2 @cspell/cspell-bundled-dicts',
