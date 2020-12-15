@@ -23,9 +23,10 @@ module.exports = {
     node: true,
   },
   externals: {
-    cspell: 'commonjs2 cspell',
+    // cspell: 'commonjs2 cspell',
     '@actions/core': 'commonjs2 @actions/core',
     '@actions/github': 'commonjs2 @actions/github',
+    '@cspell/cspell-bundled-dicts': 'commonjs2 @cspell/cspell-bundled-dicts',
   },
   output: {
     filename: 'main.js',

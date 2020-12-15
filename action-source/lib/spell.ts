@@ -1,5 +1,5 @@
 import * as cspellApp from 'cspell';
-import { Emitters, MessageType, Issue, RunResult } from 'cspell';
+import { Emitters, MessageType, Issue, RunResult, isProgressFileComplete, ProgressItem, ProgressFileComplete } from 'cspell';
 
 export interface LintResult {
     issues: Issue[];
@@ -18,9 +18,9 @@ export interface LintOptions {
     root: string;
 }
 
-function nullEmitter() {
-    /* Do Nothings */
-}
+// function nullEmitter() {
+//     /* Do Nothings */
+// }
 
 /**
  *
@@ -48,6 +48,20 @@ export async function lint(files: string[], lintOptions: LintOptions, logger: Lo
     function debug(message: string) {
         logger.debug(message);
     }
+    function progress(progress: ProgressItem | ProgressFileComplete) {
+        if (!isProgressFileComplete(progress)) {
+            return;
+        }
+
+        const {
+            fileNum,
+            fileCount,
+            filename,
+            elapsedTimeMs,
+        } = progress;
+        logger.info(`${fileNum}/${fileCount} ${filename} ${elapsedTimeMs?.toFixed(2)}`);
+    }
+
     function error(message: string, error: Error) {
         logger.error(`${message}
         name: ${error.name}
@@ -60,10 +74,10 @@ ${error.stack}
 
     const emitters: Emitters = {
         issue,
-        info: nullEmitter,
-        debug: nullEmitter,
+        info,
+        debug,
         error,
-        progress: nullEmitter,
+        progress,
     };
 
     const options: cspellApp.CSpellApplicationOptions = { ...lintOptions };

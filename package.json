@@ -14,7 +14,7 @@
     "clean-build": "npm run clean && npm run build",
     "eslint": "eslint 'action-source/src/**/*.ts'",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
-    "test": "jest"
+    "test": "cd action-source && npm t"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "keywords": [
     "GitHub",
+    "cspell",
     "Action",
     "cspell",
     "spelling",

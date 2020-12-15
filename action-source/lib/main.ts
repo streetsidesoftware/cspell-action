@@ -3,6 +3,7 @@ import * as gitHubApi from '@actions/github';
 import { getOctokit } from '@actions/github';
 import { getPullRequestFiles } from './github';
 import { Octokit } from '@octokit/rest';
+import { lint } from './spell';
 
 type GitHub = ReturnType<typeof getOctokit>;
 
@@ -14,6 +15,7 @@ export async function pullRequest(context: Context, github: GitHub): Promise<voi
         core.info('github');
         const pull_number = context.payload.pull_request?.number || 0;
         const files = await getPullRequestFiles(github as Octokit, { ...context.repo, pull_number });
+        lint(files, { root: process.cwd() }, core)
         core.info(files.join('\n'));
     }
 }
