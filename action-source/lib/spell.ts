@@ -19,14 +19,14 @@ export interface LintOptions {
 }
 
 function nullEmitter(_msg: string) {
-    /* Do Nothings */
+    /* Do Nthings */
 }
 
 /**
  *
- * @param files files or glob patterns to check
+ * @param files files or glob patterrns to check
  * @param root the root directory to scan
- * @param logger logger functions.
+ * @param logger loggger functions.
  */
 export async function lint(files: string[], lintOptions: LintOptions, logger: Logger): Promise<LintResult> {
     const issues: Issue[] = [];
