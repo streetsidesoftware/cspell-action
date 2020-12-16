@@ -12,7 +12,7 @@
     "buildSource": "cd action-source && npm run build",
     "clean": "rimraf action",
     "clean-build": "npm run clean && npm run build",
-    "eslint": "eslint 'action-source/src/**/*.ts'",
+    "eslint": "eslint 'action-source/**/*.ts'",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
     "test": "cd action-source && npm t"
   },
