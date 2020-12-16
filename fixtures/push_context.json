@@ -1,8 +1,8 @@
 {
     "payload": {
-        "after": "245401caa9cb567e577bd4af251789e7e87c726d",
+        "after": "a16b47a16f6c11b63cfdcf510c15ba26edd0f3d1",
         "base_ref": null,
-        "before": "5ad22abe5ca10ccfb13bec47ba9a6c7c05fcff1a",
+        "before": "305de2c9caa6e6484d581eef3eb54c4c0208d24d",
         "commits": [
             {
                 "author": {
@@ -16,14 +16,14 @@
                     "username": "Jason3S"
                 },
                 "distinct": true,
-                "id": "245401caa9cb567e577bd4af251789e7e87c726d",
-                "message": "Update test.yml",
-                "timestamp": "2020-03-01T17:31:51+01:00",
-                "tree_id": "528922684f122cd3249cd680ebfca2156f14d320",
-                "url": "https://github.com/streetsidesoftware/cspell-action/commit/245401caa9cb567e577bd4af251789e7e87c726d"
+                "id": "a16b47a16f6c11b63cfdcf510c15ba26edd0f3d1",
+                "message": "Update .editorconfig",
+                "timestamp": "2020-12-16T16:31:07+01:00",
+                "tree_id": "0a22bcecf2e3cc7c7c851ae5dcb20b1affc5846c",
+                "url": "https://github.com/streetsidesoftware/cspell-action/commit/a16b47a16f6c11b63cfdcf510c15ba26edd0f3d1"
             }
         ],
-        "compare": "https://github.com/streetsidesoftware/cspell-action/compare/5ad22abe5ca1...245401caa9cb",
+        "compare": "https://github.com/streetsidesoftware/cspell-action/compare/305de2c9caa6...a16b47a16f6c",
         "created": false,
         "deleted": false,
         "forced": false,
@@ -39,15 +39,15 @@
                 "username": "Jason3S"
             },
             "distinct": true,
-            "id": "245401caa9cb567e577bd4af251789e7e87c726d",
-            "message": "Update test.yml",
-            "timestamp": "2020-03-01T17:31:51+01:00",
-            "tree_id": "528922684f122cd3249cd680ebfca2156f14d320",
-            "url": "https://github.com/streetsidesoftware/cspell-action/commit/245401caa9cb567e577bd4af251789e7e87c726d"
+            "id": "a16b47a16f6c11b63cfdcf510c15ba26edd0f3d1",
+            "message": "Update .editorconfig",
+            "timestamp": "2020-12-16T16:31:07+01:00",
+            "tree_id": "0a22bcecf2e3cc7c7c851ae5dcb20b1affc5846c",
+            "url": "https://github.com/streetsidesoftware/cspell-action/commit/a16b47a16f6c11b63cfdcf510c15ba26edd0f3d1"
         },
         "organization": {
             "avatar_url": "https://avatars0.githubusercontent.com/u/50543896?v=4",
-            "description": null,
+            "description": "",
             "events_url": "https://api.github.com/orgs/streetsidesoftware/events",
             "hooks_url": "https://api.github.com/orgs/streetsidesoftware/hooks",
             "id": 50543896,
@@ -63,7 +63,7 @@
             "email": "Jason3S@users.noreply.github.com",
             "name": "Jason3S"
         },
-        "ref": "refs/heads/understand-github-context",
+        "ref": "refs/heads/fix-resolve-path",
         "repository": {
             "archive_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/{archive_format}{/ref}",
             "archived": false,
@@ -107,7 +107,7 @@
             "issues_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/issues{/number}",
             "keys_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/keys{/key_id}",
             "labels_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/labels{/name}",
-            "language": "JavaScript",
+            "language": "TypeScript",
             "languages_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/languages",
             "license": {
                 "key": "mit",
@@ -123,8 +123,8 @@
             "name": "cspell-action",
             "node_id": "MDEwOlJlcG9zaXRvcnkyNDM4MTg4MDI=",
             "notifications_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/notifications{?since,all,participating}",
-            "open_issues": 0,
-            "open_issues_count": 0,
+            "open_issues": 2,
+            "open_issues_count": 2,
             "organization": "streetsidesoftware",
             "owner": {
                 "avatar_url": "https://avatars0.githubusercontent.com/u/50543896?v=4",
@@ -150,12 +150,12 @@
             },
             "private": false,
             "pulls_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/pulls{/number}",
-            "pushed_at": 1583080317,
+            "pushed_at": 1608132675,
             "releases_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/releases{/id}",
-            "size": 2195,
+            "size": 4764,
             "ssh_url": "git@github.com:streetsidesoftware/cspell-action.git",
-            "stargazers": 1,
-            "stargazers_count": 1,
+            "stargazers": 3,
+            "stargazers_count": 3,
             "stargazers_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/stargazers",
             "statuses_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/{sha}",
             "subscribers_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/subscribers",
@@ -164,10 +164,10 @@
             "tags_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/tags",
             "teams_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/teams",
             "trees_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/git/trees{/sha}",
-            "updated_at": "2020-02-29T17:46:10Z",
+            "updated_at": "2020-12-16T14:46:51Z",
             "url": "https://github.com/streetsidesoftware/cspell-action",
-            "watchers": 1,
-            "watchers_count": 1
+            "watchers": 3,
+            "watchers_count": 3
         },
         "sender": {
             "avatar_url": "https://avatars1.githubusercontent.com/u/3740137?v=4",
@@ -191,9 +191,12 @@
         }
     },
     "eventName": "push",
-    "sha": "245401caa9cb567e577bd4af251789e7e87c726d",
-    "ref": "refs/heads/understand-github-context",
-    "workflow": "build-test",
+    "sha": "a16b47a16f6c11b63cfdcf510c15ba26edd0f3d1",
+    "ref": "refs/heads/fix-resolve-path",
+    "workflow": "test-action",
     "action": "self",
-    "actor": "Jason3S"
+    "actor": "Jason3S",
+    "job": "test-action",
+    "runNumber": 7,
+    "runId": 425984531
 }

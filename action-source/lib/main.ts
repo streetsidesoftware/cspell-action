@@ -2,10 +2,13 @@ import * as core from '@actions/core';
 import { issueCommand } from '@actions/core/lib/command';
 import * as gitHubApi from '@actions/github';
 import { getOctokit } from '@actions/github';
-import { getPullRequestFiles } from './github';
+import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { Octokit } from '@octokit/rest';
+import {  } from '@octokit/rest';
+import {  } from '@octokit/core';
 import { lint } from './spell';
 import * as path from 'path';
+import { GitHub } from '@actions/github/lib/utils';
 
 type GitHub = ReturnType<typeof getOctokit>;
 
@@ -13,19 +16,29 @@ type Context = typeof gitHubApi.context;
 
 export async function pullRequest(context: Context, github: GitHub): Promise<void> {
     core.info(`Pull Request: ${context.eventName}`);
-    if (github) {
-        core.info('github');
-        const pull_number = context.payload.pull_request?.number || 0;
-        const files = await getPullRequestFiles(github as Octokit, { ...context.repo, pull_number });
-        await checkSpelling(files);
-    }
+    core.info('github');
+    const pull_number = context.payload.pull_request?.number || 0;
+    const files = await getPullRequestFiles(github as Octokit, { ...context.repo, pull_number });
+    await checkSpelling(files);
+}
+
+interface Commit {
+    id: string;
+}
+
+interface PushPayload {
+    commits?: Commit[];
 }
 
 export async function push(context: Context, github: GitHub): Promise<void> {
     core.info(`Push: ${context.eventName}`);
-    context.sha;
-    const result = await github.git.getCommit({ commit_sha: context.sha, ...context.repo });
-    core.info(`result: ${JSON.stringify(result, null, 2)}`);
+
+    const push = context.payload as PushPayload;
+    const commits = push.commits?.map(c => c.id);
+    const files = commits && await fetchFilesForCommits(github as Octokit, context.repo, commits);
+    if (files) {
+        await checkSpelling(files);
+    }
 }
 
 async function checkSpelling(files: string[]) {

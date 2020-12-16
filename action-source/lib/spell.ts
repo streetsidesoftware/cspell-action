@@ -60,7 +60,7 @@ export async function lint(files: string[], lintOptions: LintOptions, logger: Lo
             filename,
             elapsedTimeMs,
         } = progress;
-        logger.info(`${fileNum}/${fileCount} ${filename} ${elapsedTimeMs?.toFixed(2)}`);
+        logger.info(`${fileNum}/${fileCount} ${filename} (${elapsedTimeMs?.toFixed(2)}ms)`);
     }
 
     function error(message: string, error: Error) {
