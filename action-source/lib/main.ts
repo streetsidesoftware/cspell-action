@@ -69,6 +69,7 @@ async function run(): Promise<void> {
         await action();
         core.info('Done.');
     } catch (error) {
+        console.log(error);
         core.setFailed(error.message);
     }
 }
