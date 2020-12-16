@@ -1,12 +1,13 @@
-name: "build-test"
+name: "test-action"
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
 
 jobs:
-  unit-test: # make sure unit-tests run
+  test-action: # run the action
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: npm install
-    - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} npm test
+    - uses: ./
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
