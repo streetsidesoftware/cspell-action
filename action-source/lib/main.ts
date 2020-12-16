@@ -1,8 +1,11 @@
 import * as core from '@actions/core';
+import { issueCommand } from '@actions/core/lib/command';
 import * as gitHubApi from '@actions/github';
 import { getOctokit } from '@actions/github';
 import { getPullRequestFiles } from './github';
 import { Octokit } from '@octokit/rest';
+import { lint } from './spell';
+import * as path from 'path';
 
 type GitHub = ReturnType<typeof getOctokit>;
 
@@ -14,7 +17,7 @@ export async function pullRequest(context: Context, github: GitHub): Promise<voi
         core.info('github');
         const pull_number = context.payload.pull_request?.number || 0;
         const files = await getPullRequestFiles(github as Octokit, { ...context.repo, pull_number });
-        core.info(files.join('\n'));
+        await checkSpelling(files);
     }
 }
 
@@ -23,6 +26,17 @@ export async function push(context: Context, github: GitHub): Promise<void> {
     context.sha;
     const result = await github.git.getCommit({ commit_sha: context.sha, ...context.repo });
     core.info(`result: ${JSON.stringify(result, null, 2)}`);
+}
+
+async function checkSpelling(files: string[]) {
+    const result = await lint(files, { root: process.cwd() }, core);
+    result.issues.forEach(item => {
+        issueCommand('warning', {
+            file: path.relative(process.cwd(), item.uri || ''),
+            line: item.row,
+            col: item.col
+          }, `Unknown word (${item.text})`)
+    })
 }
 
 function getGithubToken(): string {
@@ -55,6 +69,7 @@ async function run(): Promise<void> {
         await action();
         core.info('Done.');
     } catch (error) {
+        console.log(error);
         core.setFailed(error.message);
     }
 }

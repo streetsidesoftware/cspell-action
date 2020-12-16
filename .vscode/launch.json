@@ -8,7 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Jest Current File",
-            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "program": "${workspaceFolder}/action-source/node_modules/.bin/jest",
+            "cwd": "${workspaceFolder}/action-source",
             "args": ["--runInBand", "${file}"],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
@@ -17,14 +18,15 @@
                 "<node_internals>/**"
             ],
             "windows": {
-                "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+                "program": "${workspaceFolder}/action-source/node_modules/jest/bin/jest",
             }
         },
         {
             "type": "node",
             "request": "launch",
             "name": "Jest Test All",
-            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "program": "${workspaceFolder}/action-source/node_modules/.bin/jest",
+            "cwd": "${workspaceFolder}/action-source",
             "args": ["--runInBand"],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
@@ -33,7 +35,7 @@
                 "<node_internals>/**"
             ],
             "windows": {
-                "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+                "program": "${workspaceFolder}/action-source/node_modules/jest/bin/jest",
             }
         },
         {
@@ -44,7 +46,20 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/action/main.js",
-            "preLaunchTask": "tsc: build - tsconfig.json",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
+                "GITHUB_EVENT_PATH": "./fixtures/pull_request_payload.json",
+                "GITHUB_EVENT_NAME": "pull_request",
+                "GITHUB_SHA": "fac78ee45538f198c00ae651db5aedc7336f7ccc",
+                "GITHUB_REF": "refs/pull/3/merge",
+                "GITHUB_WORKFLOW": "build-test",
+                "GITHUB_ACTION": "self",
+                "GITHUB_ACTOR": "Jason3S",
+                "GITHUB_JOB": "test-action",
+                "GITHUB_RUN_NUMBER": "97",
+                "GITHUB_RUN_ID": "421485606"
+            },
             "outFiles": [
                 "${workspaceFolder}/action/**/*.js"
             ]

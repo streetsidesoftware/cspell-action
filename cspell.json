@@ -6,6 +6,12 @@
         "repos",
         "shrinkwrap"
     ],
+    "ignorePaths": [
+        "action/",
+        "node_modules/",
+        "fixtures/**/*.json",
+        "package-lock.json"
+    ],
     "enableFiletypes": [
         "shellscript"
     ]
