@@ -14,6 +14,7 @@
     "clean-build": "npm run clean && npm run build",
     "eslint": "eslint 'action-source/**/*.ts'",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
+    "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/main.js",
     "test": "cd action-source && npm t"
   },
   "repository": {

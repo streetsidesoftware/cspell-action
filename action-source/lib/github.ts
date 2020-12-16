@@ -1,3 +1,4 @@
+import { context } from '@actions/github/lib/utils';
 import { Octokit } from '@octokit/rest';
 
 export interface GitContext {
@@ -13,24 +14,24 @@ export async function getPullRequestFiles(git: Octokit, prRef: PullRequestRef): 
     const { owner, repo, pull_number } = prRef;
     const commits = await git.pulls.listCommits({ owner, repo, pull_number });
 
-    const prFiles: Set<string> = new Set();
-
-    for (const commitRef of commits.data) {
-        const ref = commitRef.sha;
-        if (!ref) continue;
-        const commit = await git.repos.getCommit({ owner, repo, ref });
-        const files = commit.data.files;
-        if (!files) continue;
-        files.forEach((f) => f.filename && prFiles.add(f.filename));
-    }
-
-    return [...prFiles];
+    return fetchFilesForCommits(git, prRef, commits.data.map(c => c.sha).filter(isString));
 }
 
+function isString(s: string | unknown): s is string {
+    return typeof s === 'string';
+}
 
-export async function* fetchFilesForCommits(git: Octokit, context: GitContext, commitIds: string[]): AsyncIterableIterator<string> {
+export async function fetchFilesForCommits(git: Octokit, context: GitContext, commitIds: string[]): Promise<string[]> {
+    const files: Set<string> = new Set();
+    for await (const file of fetchFilesForCommitsX(git, context, commitIds)) {
+        files.add(file);
+    }
+    return [...files];
+}
+
+async function* fetchFilesForCommitsX(git: Octokit, context: GitContext, commitIds: string[]): AsyncIterableIterator<string> {
     const { owner, repo } = context;
-    for await (const ref of commitIds) {
+    for (const ref of commitIds) {
         const commit = await git.repos.getCommit({ owner, repo, ref });
         const files = commit.data.files;
         if (!files) continue;

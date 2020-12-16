@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "webpack",
+    "build": "webpack -c webpack.prod.js",
     "compile": "tsc -p .",
     "smoke-test": "cd .. && env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
-    "watch": "webpack --watch",
+    "watch": "webpack -c webpack.dev.js --watch",
     "test": "jest"
   },
   "repository": {
@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
-    "@octokit/graphql": "^4.5.8",
     "@octokit/rest": "^18.0.12",
     "@types/jest": "^26.0.19",
     "@types/minimatch": "^3.0.3",
