@@ -13,6 +13,7 @@ module.exports = {
     sourceType: 'module',  // Allows for the use of imports
   },
   ignorePatterns: [
+    'action/',
     '**/*.d.ts',
     '**/node_modules/**'
   ],

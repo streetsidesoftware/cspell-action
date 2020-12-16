@@ -31,6 +31,7 @@ export async function push(context: Context, github: GitHub): Promise<void> {
 async function checkSpelling(files: string[]) {
     const result = await lint(files, { root: process.cwd() }, core);
     result.issues.forEach(item => {
+        // format: ::warning file={name},line={line},col={col}::{message}
         issueCommand('warning', {
             file: path.relative(process.cwd(), item.uri || ''),
             line: item.row,
