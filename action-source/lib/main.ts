@@ -65,7 +65,6 @@ async function action() {
     const context = gitHubApi.context;
 
     const github = getOctokit(getGithubToken());
-    core.info(`context: ${JSON.stringify(context, null, 2)}`);
 
     switch (context.eventName) {
         case 'push':

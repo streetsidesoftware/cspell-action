@@ -1,13 +1,10 @@
 name: 'cspell-action'
-description: 'Spell check changed files.'
+description: 'Spell Checker for Code'
 author: 'Street Side Software <info@streetsidesoftware.nl>'
 inputs:
     github_token:
         description: 'Token for the repo. Can be passed in using {{ secrets.GITHUB_TOKEN }}'
         required: true
-outputs:
-    time:
-        description: 'Finish time.'
 runs:
     using: 'node12'
     main: './action/main.js'
