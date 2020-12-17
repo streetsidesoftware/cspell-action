@@ -10,3 +10,5 @@ jobs:
     - uses: actions/checkout@v2
     - run: npm install
     - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} npm test
+    # Ensure the repository is clean after build & test
+    - run: git --no-pager diff --compact-summary --exit-code
