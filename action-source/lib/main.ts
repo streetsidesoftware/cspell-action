@@ -15,8 +15,7 @@ type GitHub = ReturnType<typeof getOctokit>;
 type Context = typeof gitHubApi.context;
 
 export async function pullRequest(context: Context, github: GitHub): Promise<void> {
-    core.info(`Pull Request: ${context.eventName}`);
-    core.info('github');
+    core.info('Check Pull Request Files:');
     const pull_number = context.payload.pull_request?.number || 0;
     const files = await getPullRequestFiles(github as Octokit, { ...context.repo, pull_number });
     await checkSpelling(files);
@@ -31,8 +30,7 @@ interface PushPayload {
 }
 
 export async function push(context: Context, github: GitHub): Promise<void> {
-    core.info(`Push: ${context.eventName}`);
-
+    core.info('Check Push Files:');
     const push = context.payload as PushPayload;
     const commits = push.commits?.map(c => c.id);
     const files = commits && await fetchFilesForCommits(github as Octokit, context.repo, commits);
