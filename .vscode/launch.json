@@ -8,8 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Jest Current File",
-            "program": "${workspaceFolder}/action-source/node_modules/.bin/jest",
-            "cwd": "${workspaceFolder}/action-source",
+            "program": "${workspaceFolder}/src/node_modules/.bin/jest",
+            "cwd": "${workspaceFolder}/src",
             "args": ["--runInBand", "${file}"],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
@@ -18,15 +18,15 @@
                 "<node_internals>/**"
             ],
             "windows": {
-                "program": "${workspaceFolder}/action-source/node_modules/jest/bin/jest",
+                "program": "${workspaceFolder}/src/node_modules/jest/bin/jest",
             }
         },
         {
             "type": "node",
             "request": "launch",
             "name": "Jest Test All",
-            "program": "${workspaceFolder}/action-source/node_modules/.bin/jest",
-            "cwd": "${workspaceFolder}/action-source",
+            "program": "${workspaceFolder}/src/node_modules/.bin/jest",
+            "cwd": "${workspaceFolder}/src",
             "args": ["--runInBand"],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
@@ -35,7 +35,7 @@
                 "<node_internals>/**"
             ],
             "windows": {
-                "program": "${workspaceFolder}/action-source/node_modules/jest/bin/jest",
+                "program": "${workspaceFolder}/src/node_modules/jest/bin/jest",
             }
         },
         {
