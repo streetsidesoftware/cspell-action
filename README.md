@@ -4,7 +4,7 @@ Uses [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/
 ## Installation
 
 ```yaml
-- uses: streetsidesoftware/cspell-action@v1
+- uses: streetsidesoftware/cspell-action@v0.1.1
     with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
