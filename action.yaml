@@ -1,13 +1,19 @@
-name: 'cspell-action'
-description: 'Spell Checker for Code'
-author: 'Street Side Software <info@streetsidesoftware.nl>'
+name: "cspell-action"
+description: "Spell Checker for Code"
+author: "Street Side Software <info@streetsidesoftware.nl>"
 inputs:
-    github_token:
-        description: 'Token for the repo. Can be passed in using {{ secrets.GITHUB_TOKEN }}'
-        required: true
+  github_token:
+    description: >
+      Personal access token (PAT) used to fetch the repository. The PAT is configured
+      with the local git config, which enables your scripts to run authenticated git
+      commands. The post-job step removes the PAT.
+      We recommend using a service account with the least permissions necessary.
+      Also when generating a new PAT, select the least scopes necessary.
+      [Learn more about creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
+    default: ${{ github.token }}
 runs:
-    using: 'node12'
-    main: './action/main.js'
+  using: "node12"
+  main: "./action/main.js"
 branding:
-    icon: 'code'
-    color: 'green'
+  icon: "code"
+  color: "green"
