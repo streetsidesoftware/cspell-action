@@ -12,25 +12,42 @@ describe('Validate Main', () => {
         expect(process.env['GITHUB_TOKEN']).not.toBeUndefined();
     });
 
-    test('pull request', () => {
+    test('event pull_request main.js', () => {
         const env = fetchGithubActionFixture('pull_request.json');
         const options: cp.ExecSyncOptions = {
             env,
             cwd: root,
         };
         const result = cp.execSync(`node ${mainFile}`, options).toString();
-        expect(result).toEqual(expect.stringContaining('Done.'));
+
+        expect(cleanResult(result)).toMatchSnapshot();
     });
 
+    test('event push main.js', () => {
+        const env = fetchGithubActionFixture('push.json');
+        const options: cp.ExecSyncOptions = {
+            env,
+            cwd: root,
+        };
+        const result = cp.execSync(`node ${mainFile}`, options).toString();
+        expect(cleanResult(result)).toMatchSnapshot();
+    });
 });
 
+function cleanResult(output: string): string {
+    // Remove time
+    return output.replace(/\(\d+\.\d\dms\)$/gm, '(???.??ms)');
+}
 
 function fetchGithubActionFixture(filename: string): Record<string, string> {
     const githubEnv = JSON.parse(fs.readFileSync(path.resolve(fixturesLocation, filename), 'utf-8'));
+    if (githubEnv['GITHUB_EVENT_PATH']) {
+        githubEnv['GITHUB_EVENT_PATH'] = path.resolve(root, githubEnv['GITHUB_EVENT_PATH']);
+    }
     const env = {
         ...process.env,
         ...githubEnv,
-    }
+    };
 
     return env;
 }
