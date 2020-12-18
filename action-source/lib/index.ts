@@ -1,1 +1,1 @@
-require('./main');
+export * from './main';

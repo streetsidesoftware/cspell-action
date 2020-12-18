@@ -1,1 +1,3 @@
-require('./lib');
+import { run } from './lib';
+
+run();

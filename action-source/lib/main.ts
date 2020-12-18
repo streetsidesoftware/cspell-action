@@ -4,21 +4,29 @@ import * as gitHubApi from '@actions/github';
 import { getOctokit } from '@actions/github';
 import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { Octokit } from '@octokit/rest';
-import {  } from '@octokit/rest';
-import {  } from '@octokit/core';
+import {} from '@octokit/rest';
+import {} from '@octokit/core';
 import { lint } from './spell';
 import * as path from 'path';
 import { GitHub } from '@actions/github/lib/utils';
+import { AppError } from './error';
 
 type GitHub = ReturnType<typeof getOctokit>;
 
-type Context = typeof gitHubApi.context;
+type GitHubContext = typeof gitHubApi.context;
+interface Context {
+    githubContext: GitHubContext;
+    github: GitHub;
+}
 
-export async function pullRequest(context: Context, github: GitHub): Promise<void> {
-    core.info('Check Pull Request Files:');
-    const pull_number = context.payload.pull_request?.number || 0;
-    const files = await getPullRequestFiles(github as Octokit, { ...context.repo, pull_number });
-    await checkSpelling(files);
+type EventNames = 'push' | 'pull_request';
+const supportedEvents = new Set<EventNames | string>(['push', 'pull_request']);
+
+async function gatherPullRequestFiles(context: Context): Promise<string[]> {
+    const { github, githubContext } = context;
+    const pull_number = githubContext.payload.pull_request?.number;
+    if (!pull_number) return [];
+    return getPullRequestFiles(github as Octokit, { ...githubContext.repo, pull_number });
 }
 
 interface Commit {
@@ -29,26 +37,31 @@ interface PushPayload {
     commits?: Commit[];
 }
 
-export async function push(context: Context, github: GitHub): Promise<void> {
-    core.info('Check Push Files:');
-    const push = context.payload as PushPayload;
-    const commits = push.commits?.map(c => c.id);
-    const files = commits && await fetchFilesForCommits(github as Octokit, context.repo, commits);
-    if (files) {
-        await checkSpelling(files);
-    }
+async function gatherPushFiles(context: Context): Promise<string[]> {
+    const { github, githubContext } = context;
+    const push = githubContext.payload as PushPayload;
+    const commits = push.commits?.map((c) => c.id);
+    const files = commits && (await fetchFilesForCommits(github as Octokit, githubContext.repo, commits));
+    return files || [];
 }
 
 async function checkSpelling(files: string[]) {
+    if (!files.length) {
+        return;
+    }
     const result = await lint(files, { root: process.cwd() }, core);
-    result.issues.forEach(item => {
+    result.issues.forEach((item) => {
         // format: ::warning file={name},line={line},col={col}::{message}
-        issueCommand('warning', {
-            file: path.relative(process.cwd(), item.uri || ''),
-            line: item.row,
-            col: item.col
-          }, `Unknown word (${item.text})`)
-    })
+        issueCommand(
+            'warning',
+            {
+                file: path.relative(process.cwd(), item.uri || ''),
+                line: item.row,
+                col: item.col,
+            },
+            `Unknown word (${item.text})`
+        );
+    });
 }
 
 function getGithubToken(): string {
@@ -59,30 +72,61 @@ function getGithubToken(): string {
     return process.env[t0.slice(1)] || 'undefined';
 }
 
-async function action() {
-    const context = gitHubApi.context;
-
-    const github = getOctokit(getGithubToken());
-
-    switch (context.eventName) {
+function friendlyEventName(eventName: EventNames | string): string {
+    switch (eventName) {
         case 'push':
-            return push(context, github);
+            return 'Push';
         case 'pull_request':
-            return pullRequest(context, github);
+            return 'Pull Request';
         default:
-            core.info(`Unknown event: '${context.eventName}'`);
+            return `Unknown event: '${eventName}'`;
     }
 }
 
-async function run(): Promise<void> {
+function isSupportedEvent(eventName: EventNames | string): eventName is EventNames {
+    return supportedEvents.has(eventName);
+}
+
+/**
+ * Gather the set of files to be spell checked.
+ * @param context Context
+ */
+async function gatherFiles(context: Context): Promise<string[]> {
+    const eventName = context.githubContext.eventName;
+
+    switch (eventName) {
+        case 'push':
+            return gatherPushFiles(context);
+        case 'pull_request':
+            return gatherPullRequestFiles(context);
+    }
+    return [];
+}
+
+async function action() {
+    const githubContext = gitHubApi.context;
+    const eventName = githubContext.eventName;
+    if (!isSupportedEvent(eventName)) {
+        const msg = `Unsupported event: '${eventName}'`;
+        throw new AppError(msg);
+    }
+    const context: Context = {
+        githubContext,
+        github: getOctokit(getGithubToken()),
+    };
+
+    core.info(friendlyEventName(eventName));
+    const files = await gatherFiles(context);
+    await checkSpelling(files);
+}
+
+export async function run(): Promise<void> {
     try {
         core.info('cspell-action');
         await action();
         core.info('Done.');
     } catch (error) {
-        console.log(error);
-        core.setFailed(error.message);
+        console.error(error);
+        core.setFailed(error instanceof AppError ? error.message : error);
     }
 }
-
-run();
