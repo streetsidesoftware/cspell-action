@@ -36,7 +36,16 @@ describe('Validate Main', () => {
 
 function cleanResult(output: string): string {
     // Remove time
-    return output.replace(/\(\d+\.\d\dms\)$/gm, '(???.??ms)');
+    output = output.replace(/\(\d+\.\d\dms\)$/gm, '(???.??ms)');
+
+    const rootRegExp = new RegExp(escapeRegEx(root), 'g');
+    output = output.replace(rootRegExp, '.');
+
+    return output;
+}
+
+function escapeRegEx(s: string) {
+    return s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
 function fetchGithubActionFixture(filename: string): Record<string, string> {

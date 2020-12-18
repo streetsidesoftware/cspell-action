@@ -3,15 +3,15 @@
 exports[`Validate Main event pull_request main.js 1`] = `
 "cspell-action
 Pull Request
-1/9 /Users/jason/projects/cspell-action/.github/workflows/test.yml (???.??ms)
-2/9 /Users/jason/projects/cspell-action/.eslintrc.js (???.??ms)
-3/9 /Users/jason/projects/cspell-action/package.json (???.??ms)
-4/9 /Users/jason/projects/cspell-action/.vscode/launch.json (???.??ms)
-5/9 /Users/jason/projects/cspell-action/fixtures/sampleCode/ts/sample.ts (???.??ms)
-6/9 /Users/jason/projects/cspell-action/action.yaml (???.??ms)
-7/9 /Users/jason/projects/cspell-action/README.md (???.??ms)
-8/9 /Users/jason/projects/cspell-action/cspell.json (???.??ms)
-9/9 /Users/jason/projects/cspell-action/.github/workflows/lint.yml (???.??ms)
+1/9 ./.github/workflows/test.yml (???.??ms)
+2/9 ./.eslintrc.js (???.??ms)
+3/9 ./package.json (???.??ms)
+4/9 ./.vscode/launch.json (???.??ms)
+5/9 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+6/9 ./action.yaml (???.??ms)
+7/9 ./README.md (???.??ms)
+8/9 ./cspell.json (???.??ms)
+9/9 ./.github/workflows/lint.yml (???.??ms)
 Done.
 "
 `;
@@ -19,7 +19,7 @@ Done.
 exports[`Validate Main event push main.js 1`] = `
 "cspell-action
 Push
-1/1 /Users/jason/projects/cspell-action/.editorconfig (???.??ms)
+1/1 ./.editorconfig (???.??ms)
 Done.
 "
 `;
