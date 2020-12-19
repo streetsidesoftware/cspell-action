@@ -16,6 +16,17 @@ Done.
 "
 `;
 
+exports[`Validate Main event pull_request_with_files main.js 1`] = `
+"cspell-action
+Pull Request
+1/4 ./.github/workflows/test.yml (???.??ms)
+2/4 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+3/4 ./action.yaml (???.??ms)
+4/4 ./.github/workflows/lint.yml (???.??ms)
+Done.
+"
+`;
+
 exports[`Validate Main event push main.js 1`] = `
 "cspell-action
 Push
