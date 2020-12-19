@@ -16,6 +16,6 @@ describe('validate github', () => {
         const pull_number = 715;
 
         const list = await getPullRequestFiles(octokit, { owner, repo, pull_number });
-        expect(list).toHaveLength(59);
+        expect(list.size).toBe(59);
     });
 });

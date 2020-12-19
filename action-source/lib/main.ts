@@ -10,6 +10,7 @@ import { lint } from './spell';
 import * as path from 'path';
 import { GitHub } from '@actions/github/lib/utils';
 import { AppError } from './error';
+import * as glob from 'cspell-glob';
 
 type GitHub = ReturnType<typeof getOctokit>;
 
@@ -17,15 +18,16 @@ type GitHubContext = typeof gitHubApi.context;
 interface Context {
     githubContext: GitHubContext;
     github: GitHub;
+    files: string;
 }
 
 type EventNames = 'push' | 'pull_request';
 const supportedEvents = new Set<EventNames | string>(['push', 'pull_request']);
 
-async function gatherPullRequestFiles(context: Context): Promise<string[]> {
+async function gatherPullRequestFiles(context: Context): Promise<Set<string>> {
     const { github, githubContext } = context;
     const pull_number = githubContext.payload.pull_request?.number;
-    if (!pull_number) return [];
+    if (!pull_number) return new Set();
     return getPullRequestFiles(github as Octokit, { ...githubContext.repo, pull_number });
 }
 
@@ -37,12 +39,12 @@ interface PushPayload {
     commits?: Commit[];
 }
 
-async function gatherPushFiles(context: Context): Promise<string[]> {
+async function gatherPushFiles(context: Context): Promise<Set<string>> {
     const { github, githubContext } = context;
     const push = githubContext.payload as PushPayload;
     const commits = push.commits?.map((c) => c.id);
     const files = commits && (await fetchFilesForCommits(github as Octokit, githubContext.repo, commits));
-    return files || [];
+    return files || new Set();
 }
 
 async function checkSpelling(files: string[]) {
@@ -91,7 +93,7 @@ function isSupportedEvent(eventName: EventNames | string): eventName is EventNam
  * Gather the set of files to be spell checked.
  * @param context Context
  */
-async function gatherFiles(context: Context): Promise<string[]> {
+async function gatherFiles(context: Context): Promise<Set<string>> {
     const eventName = context.githubContext.eventName;
 
     switch (eventName) {
@@ -100,7 +102,22 @@ async function gatherFiles(context: Context): Promise<string[]> {
         case 'pull_request':
             return gatherPullRequestFiles(context);
     }
-    return [];
+    return new Set();
+}
+
+function filterFiles(globPattern: string, files: Set<string>): Set<string> {
+    if (!globPattern) return files;
+
+    const matchingFiles = new Set<string>();
+
+    const g = new glob.GlobMatcher(globPattern);
+    for (const p of files) {
+        if (g.match(p)) {
+            matchingFiles.add(p);
+        }
+    }
+
+    return matchingFiles;
 }
 
 async function action() {
@@ -113,11 +130,13 @@ async function action() {
     const context: Context = {
         githubContext,
         github: getOctokit(getGithubToken()),
+        files: core.getInput('files'),
     };
 
     core.info(friendlyEventName(eventName));
-    const files = await gatherFiles(context);
-    await checkSpelling(files);
+    const eventFiles = await gatherFiles(context);
+    const files = filterFiles(context.files, eventFiles);
+    await checkSpelling([...files]);
 }
 
 export async function run(): Promise<void> {

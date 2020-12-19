@@ -11,6 +11,11 @@ inputs:
       Also when generating a new PAT, select the least scopes necessary.
       [Learn more about creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
     default: ${{ github.token }}
+  files:
+    description: >
+      Define glob patterns to filter the files to be checked. Use a new line between patterns to define multiple patterns.
+      The default is to check ALL files that were changed in in the pull_request or push.
+      Note: `ignorePaths` defined in cspell.json still apply.
 runs:
   using: "node12"
   main: "./action/main.js"
