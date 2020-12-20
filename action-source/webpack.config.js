@@ -24,7 +24,8 @@ module.exports = {
     node: true,
   },
   externals: [
-    /^@action/,
+    /^@actions\/core/,
+    /^@actions\/github/,
     /^@cspell\/cspell-bundled-dicts/,
   ],
   output: {
