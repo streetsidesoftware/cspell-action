@@ -9,8 +9,8 @@
     "ignorePaths": [
         "action/",
         "__snapshots__",
-        "node_modules/",
-        "fixtures/**/*.json",
+        "node_modules",
+        "fixtures/",
         "cspell.json",
         "package-lock.json"
     ],
