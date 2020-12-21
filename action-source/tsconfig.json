@@ -4,13 +4,12 @@
     "module": "commonjs",
     "sourceMap": true,
     "esModuleInterop": true,
-    "outDir": "../action",
-    "rootDir": ".",
+    "outDir": "./debug",
+    "rootDir": "lib",
     "strict": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "main.ts",
     "lib/**/*"
   ],
   "exclude": [

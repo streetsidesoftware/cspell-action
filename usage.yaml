@@ -14,3 +14,7 @@
     #   # Hidden directories need an explicit .* to be included
     #   .*/**/*.yml
     files: ""
+
+    # Path to the `cspell.json` config file.
+    # Default: .
+    config: ""

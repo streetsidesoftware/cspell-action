@@ -1,5 +1,13 @@
 import * as cspellApp from 'cspell';
-import { Emitters, MessageType, Issue, RunResult, isProgressFileComplete, ProgressItem, ProgressFileComplete } from 'cspell';
+import {
+    Emitters,
+    MessageType,
+    Issue,
+    RunResult,
+    isProgressFileComplete,
+    ProgressItem,
+    ProgressFileComplete,
+} from 'cspell';
 
 export interface LintResult {
     issues: Issue[];
@@ -16,6 +24,7 @@ export interface Logger {
 
 export interface LintOptions {
     root: string;
+    config?: string;
 }
 
 function nullEmitter(_msg: string) {
@@ -54,12 +63,7 @@ export async function lint(files: string[], lintOptions: LintOptions, logger: Lo
             return;
         }
 
-        const {
-            fileNum,
-            fileCount,
-            filename,
-            elapsedTimeMs,
-        } = progress;
+        const { fileNum, fileCount, filename, elapsedTimeMs } = progress;
         logger.info(`${fileNum}/${fileCount} ${filename} (${elapsedTimeMs?.toFixed(2)}ms)`);
     }
 

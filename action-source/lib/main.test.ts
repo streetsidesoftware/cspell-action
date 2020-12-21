@@ -1,11 +1,10 @@
 import * as process from 'process';
 import * as cp from 'child_process';
 import * as path from 'path';
-import * as fs from 'fs';
+import * as helper from './test/helper';
 
-const root = path.resolve(path.join(__dirname, '..', '..'));
-const fixturesLocation = path.join(root, 'fixtures');
-const mainFile = path.join(root, 'action', 'main.js');
+const root = helper.root;
+const mainFile = path.join(helper.debugDir, 'test_main.js');
 
 const timeout = 20000;
 
@@ -22,7 +21,8 @@ describe('Validate Main', () => {
     `(
         '$test',
         ({ file }) => {
-            const env = fetchGithubActionFixture(file);
+            const env = helper.fetchGithubActionFixture(file);
+            env.FIXTURE_FILE_NAME = file;
             const options: cp.ExecSyncOptions = {
                 env,
                 cwd: root,
@@ -47,17 +47,4 @@ function cleanResult(output: string): string {
 
 function escapeRegEx(s: string) {
     return s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
-}
-
-function fetchGithubActionFixture(filename: string): Record<string, string> {
-    const githubEnv = JSON.parse(fs.readFileSync(path.resolve(fixturesLocation, filename), 'utf-8'));
-    if (githubEnv['GITHUB_EVENT_PATH']) {
-        githubEnv['GITHUB_EVENT_PATH'] = path.resolve(root, githubEnv['GITHUB_EVENT_PATH']);
-    }
-    const env = {
-        ...process.env,
-        ...githubEnv,
-    };
-
-    return env;
 }

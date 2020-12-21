@@ -35,9 +35,11 @@ coverage
 action-source/node_modules
 
 # Don't keep map or test files
-action/**/*.map
-action/**/*.test.*
-action/**/*.d.ts
+/action/**/*.map
+/action/**/*.test.*
+/action/**/*.d.ts
+
+/action-source/debug
 
 # TypeScript cache
 *.tsbuildinfo
