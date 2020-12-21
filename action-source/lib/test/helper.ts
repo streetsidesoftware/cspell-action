@@ -40,6 +40,7 @@ function setupPolly(name: string, dir: string): Polly {
                 recordingsDir: dir,
             },
         },
+        recordIfMissing: false,
     });
     const { server } = polly;
     server.any().on('beforePersist', (_req, recording) => {
@@ -48,12 +49,17 @@ function setupPolly(name: string, dir: string): Polly {
     return polly;
 }
 
-export async function pollyRun(testFile: string, testName: string, fn: () => Promise<unknown>): Promise<void> {
+export async function pollyRun(
+    testFile: string,
+    testName: string,
+    fn: (poly: Polly) => Promise<unknown>
+): Promise<void> {
     const rel = path.relative(sourceDir, testFile);
     const dir = path.resolve(fixturesLocation, '__recordings__', rel);
     const poly = setupPolly(testName, dir);
     try {
-        await fn();
+        poly.replay();
+        await fn(poly);
     } finally {
         poly.stop();
     }
