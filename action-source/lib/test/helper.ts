@@ -41,6 +41,23 @@ function setupPolly(name: string, dir: string): Polly {
             },
         },
         recordIfMissing: false,
+        matchRequestsBy: {
+            method: true,
+            headers: false,
+            body: true,
+            order: false,
+
+            url: {
+                protocol: true,
+                username: true,
+                password: true,
+                hostname: true,
+                port: true,
+                pathname: true,
+                query: true,
+                hash: false,
+            },
+        },
     });
     const { server } = polly;
     server.any().on('beforePersist', (_req, recording) => {
