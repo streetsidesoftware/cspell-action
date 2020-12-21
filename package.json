@@ -7,7 +7,7 @@
   "scripts": {
     "prepare": "npm run installSource && npm run build",
     "build": "npm run installAction && npm run buildSource",
-    "installAction": "node ./installAction.js . action-source/package.json action-source/tsconfig.json",
+    "installAction": "node ./installAction.js ./action action-source/package.json",
     "installSource": "cd action-source && npm i",
     "buildSource": "cd action-source && npm run build",
     "clean": "rimraf action",

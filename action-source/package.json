@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "npm run compiles && npm run webpack",
+    "build": "npm run compile && npm run webpack",
     "webpack": "webpack -c webpack.prod.js",
     "compile": "tsc -p .",
     "smoke-test": "cd .. && env-cmd -f ./fixtures/pull_request.json node ./action-source/debug/test_main.js",
