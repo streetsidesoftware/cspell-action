@@ -1,0 +1,14 @@
+{
+    "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
+    "INPUT_INLINE": "debug",
+    "GITHUB_EVENT_PATH": "./fixtures/push_payload.json",
+    "GITHUB_EVENT_NAME": "push",
+    "GITHUB_SHA": "a16b47a16f6c11b63cfdcf510c15ba26edd0f3d1",
+    "GITHUB_REF": "refs/heads/fix-resolve-path",
+    "GITHUB_WORKFLOW": "test-action",
+    "GITHUB_ACTION": "self",
+    "GITHUB_ACTOR": "Jason3S",
+    "GITHUB_JOB": "test-action",
+    "GITHUB_RUN_NUMBER": "7",
+    "GITHUB_RUN_ID": "425984531"
+}

@@ -4,23 +4,23 @@
   "description": "GitHub Action: Check Spelling",
   "main": "action/main.js",
   "private": true,
+  "workspaces": [
+    "action-source"
+  ],
   "scripts": {
-    "prepare": "npm run installSource && npm run build",
-    "build": "npm run installAction && npm run buildSource",
-    "installAction": "node ./installAction.js . action-source/package.json action-source/tsconfig.json",
-    "installSource": "cd action-source && npm i",
-    "buildSource": "cd action-source && npm run build",
+    "build": "yarn installAction && yarn buildSource",
+    "buildSource": "yarn workspaces run build",
+    "clean-build": "yarn clean && yarn build",
     "clean": "rimraf action",
-    "clean-build": "npm run clean && npm run build",
     "eslint": "eslint 'action-source/**/*.ts'",
-    "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
+    "installAction": "node ./installAction.js ./action action-source/package.json",
+    "prettier": "prettier -w \"**/*.{md,yaml,yml,json,ts}\"",
+    "prepare": "yarn build",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/main.js",
-    "test": "cd action-source && npm t"
+    "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
+    "test": "yarn workspaces run test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/streetsidesoftware/cspell-action.git"
-  },
+  "repository": "git+https://github.com/streetsidesoftware/cspell-action.git",
   "keywords": [
     "GitHub",
     "cspell",
@@ -44,6 +44,7 @@
     "eslint": "^7.16.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"

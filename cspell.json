@@ -3,15 +3,49 @@
     "words": [
         "camelcase",
         "octokit",
+        "pollyjs",
         "repos",
-        "shrinkwrap"
+        "shrinkwrap",
+        "streetsidesoftware"
     ],
     "ignorePaths": [
-        "action/",
         "__snapshots__",
-        "node_modules/",
+        ".git/",
+        ".github/",
+        ".vscode/",
+        "action-source/debug/",
+        "action/",
+        "coverage",
+        "cspell.json",
+        "fixtures/__recordings__/",
         "fixtures/**/*.json",
-        "package-lock.json"
+        "fixtures/sampleCode/*errors/",
+        "node_modules",
+        "package-lock.json",
+        "yarn.lock"
+    ],
+    "patterns": [
+        {
+            "name": "Email",
+            "pattern": "/<?\\b[\\w.\\-+]{1,64}@\\w{1,63}(\\.\\w{1,63}){1,3}\\b>?/gi"
+        }
+    ],
+    "overrides": [
+        {
+            "filename": "*.har",
+            "languageId": "json",
+            "dictionaries": [
+                "http",
+                "node",
+                "typescript"
+            ],
+            "words": [
+                "etag",
+                "maxage",
+                "ratelimit",
+                "nosniff"
+            ]
+        }
     ],
     "enableFiletypes": [
         "shellscript"

@@ -14,3 +14,16 @@
     #   # Hidden directories need an explicit .* to be included
     #   .*/**/*.yml
     files: ""
+
+    # Path to the `cspell.json` config file.
+    # Default: ./cspell.json
+    config: ""
+
+    # The point in the directory tree to start spell checking.
+    # Default: .
+    root: "."
+
+    # Notification level to use with inline reporting of spelling errors.
+    # Allowed values are: warning, error, none
+    # Default: warning
+    inline: warning

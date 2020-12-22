@@ -17,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: streetsidesoftware/cspell-action@v0.2.4
+      - uses: streetsidesoftware/cspell-action@v0.2.5
 ```
 
 ## Usage
 
 ```yaml
-- uses: streetsidesoftware/cspell-action@v0.2.4
+- uses: streetsidesoftware/cspell-action@v0.2.5
   with:
     # Github token used to fetch the list of changed files in the commit.
     # Default: ${{ github.token }}
@@ -38,5 +38,15 @@ jobs:
     #   !dist/**/*.{ts,js}
     #   # Hidden directories need an explicit .* to be included
     #   .*/**/*.yml
+    # Default **/*
     files: ''
+
+    # The point in the directory tree to start spell checking.
+    # Default: .
+    root: '.'
+
+    # Notification level to use with inline reporting of spelling errors.
+    # Allowed values are: warning, error, none
+    # Default: warning
+    inline: warning
 ```

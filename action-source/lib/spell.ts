@@ -1,5 +1,13 @@
 import * as cspellApp from 'cspell';
-import { Emitters, MessageType, Issue, RunResult, isProgressFileComplete, ProgressItem, ProgressFileComplete } from 'cspell';
+import {
+    Emitters,
+    MessageType,
+    Issue,
+    RunResult,
+    isProgressFileComplete,
+    ProgressItem,
+    ProgressFileComplete,
+} from 'cspell';
 
 export interface LintResult {
     issues: Issue[];
@@ -16,6 +24,7 @@ export interface Logger {
 
 export interface LintOptions {
     root: string;
+    config?: string;
 }
 
 function nullEmitter(_msg: string) {
@@ -31,19 +40,15 @@ function nullEmitter(_msg: string) {
 export async function lint(files: string[], lintOptions: LintOptions, logger: Logger): Promise<LintResult> {
     const issues: Issue[] = [];
 
+    const issueCounts = new Map<string, number>();
+
     function issue(issue: Issue) {
+        const uri = issue.uri;
+        uri && issueCounts.set(uri, (issueCounts.get(uri) || 0) + 1);
         issues.push(issue);
     }
-    function info(message: string, msgType: MessageType) {
-        switch (msgType) {
-            case 'Debug':
-                debug(message);
-                break;
-            case 'Info':
-            default:
-                debug(message);
-                break;
-        }
+    function info(message: string, _msgType: MessageType) {
+        debug(message);
     }
     function debug(message: string) {
         nullEmitter(message);
@@ -54,13 +59,10 @@ export async function lint(files: string[], lintOptions: LintOptions, logger: Lo
             return;
         }
 
-        const {
-            fileNum,
-            fileCount,
-            filename,
-            elapsedTimeMs,
-        } = progress;
-        logger.info(`${fileNum}/${fileCount} ${filename} (${elapsedTimeMs?.toFixed(2)}ms)`);
+        const issueCount = issueCounts.get(progress.filename) || 0;
+        const { fileNum, fileCount, filename, elapsedTimeMs } = progress;
+        const issues = issueCount ? `issues: ${issueCount} ` : '';
+        logger.info(`${fileNum}/${fileCount} ${filename} ${issues}(${elapsedTimeMs?.toFixed(2)}ms)`);
     }
 
     function error(message: string, error: Error) {
