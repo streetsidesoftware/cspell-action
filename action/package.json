@@ -4,8 +4,8 @@
   "description": "Source code for GitHub Action: Check Spelling",
   "private": true,
   "scripts": {
-    "prepublishOnly": "npm run build",
-    "build": "npm run compile && npm run webpack",
+    "prepublishOnly": "yarn build",
+    "build": "yarn compile && yarn webpack",
     "webpack": "webpack -c webpack.prod.js",
     "compile": "tsc -p .",
     "smoke-test": "cd .. && env-cmd -f ./fixtures/pull_request.json node ./action-source/debug/test_main.js",

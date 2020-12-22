@@ -4,24 +4,23 @@
   "description": "GitHub Action: Check Spelling",
   "main": "action/main.js",
   "private": true,
+  "workspaces": [
+    "action-source"
+  ],
   "scripts": {
-    "build": "npm run installAction && npm run buildSource",
-    "buildSource": "cd action-source && npm run build",
-    "clean-build": "npm run clean && npm run build",
+    "build": "yarn installAction && yarn buildSource",
+    "buildSource": "yarn workspaces run build",
+    "clean-build": "yarn clean && yarn build",
     "clean": "rimraf action",
     "eslint": "eslint 'action-source/**/*.ts'",
     "installAction": "node ./installAction.js ./action action-source/package.json",
-    "installSource": "cd action-source && npm i",
     "prettier": "prettier -w \"**/*.{md,yaml,yml,json,ts}\"",
-    "prepare": "npm run installSource && npm run build",
+    "prepare": "yarn build",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/main.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
-    "test": "cd action-source && npm t"
+    "test": "yarn workspaces run test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/streetsidesoftware/cspell-action.git"
-  },
+  "repository": "git+https://github.com/streetsidesoftware/cspell-action.git",
   "keywords": [
     "GitHub",
     "cspell",
