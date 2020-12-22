@@ -3,14 +3,11 @@
 exports[`Validate Main event pull_request main.js 1`] = `
 "cspell-action
 Pull Request
-1/8 ./.github/workflows/test.yml (???.??ms)
-2/8 ./.eslintrc.js (???.??ms)
-3/8 ./package.json (???.??ms)
-4/8 ./.vscode/launch.json (???.??ms)
-5/8 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
-6/8 ./action.yaml (???.??ms)
-7/8 ./README.md (???.??ms)
-8/8 ./.github/workflows/lint.yml (???.??ms)
+1/5 ./.eslintrc.js (???.??ms)
+2/5 ./package.json (???.??ms)
+3/5 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+4/5 ./action.yaml (???.??ms)
+5/5 ./README.md (???.??ms)
 Done.
 "
 `;
@@ -18,10 +15,8 @@ Done.
 exports[`Validate Main event pull_request_with_files main.js 1`] = `
 "cspell-action
 Pull Request
-1/4 ./.github/workflows/test.yml (???.??ms)
-2/4 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
-3/4 ./action.yaml (???.??ms)
-4/4 ./.github/workflows/lint.yml (???.??ms)
+1/2 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+2/2 ./action.yaml (???.??ms)
 Done.
 "
 `;
