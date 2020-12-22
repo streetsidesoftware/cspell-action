@@ -3,17 +3,26 @@
     "words": [
         "camelcase",
         "octokit",
+        "pollyjs",
         "repos",
-        "shrinkwrap"
+        "shrinkwrap",
+        "streetsidesoftware"
     ],
     "ignorePaths": [
-        "action/",
         "__snapshots__",
-        "node_modules",
+        ".git/",
+        ".github/",
+        ".vscode/",
+        "action-source/debug/",
+        "action/",
+        "coverage",
+        "cspell.json",
+        "fixtures/__recordings__/",
         "fixtures/**/*.json",
         "fixtures/sampleCode/*errors/",
-        "cspell.json",
-        "package-lock.json"
+        "node_modules",
+        "package-lock.json",
+        "yarn.lock"
     ],
     "patterns": [
         {
