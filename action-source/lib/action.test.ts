@@ -93,7 +93,8 @@ function createContext(filename: string): Context {
     Object.assign(process.env, fetchGithubActionFixture(filename));
     setEnvIfNotExist('INPUT_ROOT', root);
     setEnvIfNotExist('INPUT_CONFIG', configFile);
-    process.env.INPUT_CONFIG = process.env.INPUT_CONFIG || configFile;
+    process.env.INPUT_CONFIG = path.resolve(root, process.env.INPUT_CONFIG || configFile);
+
     return new Context();
 }
 
