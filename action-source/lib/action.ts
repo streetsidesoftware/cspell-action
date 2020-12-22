@@ -20,6 +20,20 @@ interface Context {
 type EventNames = 'push' | 'pull_request';
 const supportedEvents = new Set<EventNames | string>(['push', 'pull_request']);
 
+/**
+ * [Workflow commands for GitHub Actions - GitHub Docs](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter)
+ */
+
+type InlineWorkflowCommand = 'error' | 'warning' | 'none';
+
+interface ActionParams {
+    github_token: string;
+    files: string;
+    config: string;
+    root: string;
+    inline: string;
+}
+
 async function gatherPullRequestFiles(context: Context): Promise<Set<string>> {
     const { github, githubContext } = context;
     const pull_number = githubContext.payload.pull_request?.number;
@@ -43,23 +57,31 @@ async function gatherPushFiles(context: Context): Promise<Set<string>> {
     return files || new Set();
 }
 
-async function checkSpelling(options: LintOptions, files: string[]): Promise<boolean> {
+async function checkSpelling(params: ActionParams, files: string[]): Promise<boolean> {
+    const options: LintOptions = {
+        root: params.root || process.cwd(),
+        config: params.config || undefined,
+    };
+
     if (!files.length) {
         return true;
     }
     const result = await lint(files, options, core);
-    result.issues.forEach((item) => {
-        // format: ::warning file={name},line={line},col={col}::{message}
-        issueCommand(
-            'warning',
-            {
-                file: path.relative(process.cwd(), item.uri || ''),
-                line: item.row,
-                col: item.col,
-            },
-            `Unknown word (${item.text})`
-        );
-    });
+    if (params.inline !== 'none') {
+        const command = params.inline;
+        result.issues.forEach((item) => {
+            // format: ::warning file={name},line={line},col={col}::{message}
+            issueCommand(
+                command,
+                {
+                    file: path.relative(process.cwd(), item.uri || ''),
+                    line: item.row,
+                    col: item.col,
+                },
+                `Unknown word (${item.text})`
+            );
+        });
+    }
     return !result.issues.length;
 }
 
@@ -109,21 +131,31 @@ function filterFiles(globPattern: string, files: Set<string>): Set<string> {
     return matchingFiles;
 }
 
-function validateRequest() {
-    const validations = [validateToken(), validateConfig(), validateRoot()];
-    const success = validations.reduce((a, b) => a && b, true);
+function getActionParams(): ActionParams {
+    return {
+        github_token: core.getInput('github_token', { required: true }),
+        files: core.getInput('files'),
+        config: core.getInput('config'),
+        root: core.getInput('root'),
+        inline: (core.getInput('inline') || 'warning').toLowerCase(),
+    };
+}
+
+function validateActionParams(params: ActionParams) {
+    const validations = [validateToken, validateConfig, validateRoot, validateInlineLevel];
+    const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
     if (!success) {
         throw new AppError('Bad Configuration.');
     }
 }
 
-function validateToken() {
-    const token = core.getInput('github_token', { required: true });
+function validateToken(params: ActionParams) {
+    const token = params.github_token;
     return !!token;
 }
 
-function validateConfig() {
-    const config = core.getInput('config');
+function validateConfig(params: ActionParams) {
+    const config = params.config;
     const success = !config || existsSync(config);
     if (!success) {
         core.error(`Configuration file "${config}" not found.`);
@@ -131,8 +163,8 @@ function validateConfig() {
     return success;
 }
 
-function validateRoot() {
-    const root = core.getInput('root');
+function validateRoot(params: ActionParams) {
+    const root = params.root;
     const success = !root || existsSync(root);
     if (!success) {
         core.error(`Root path does not exist: "${root}"`);
@@ -140,8 +172,28 @@ function validateRoot() {
     return success;
 }
 
+function validateInlineLevel(params: ActionParams) {
+    const inline = params.inline;
+    const success = isInlineWorkflowCommand(inline);
+    if (!success) {
+        core.error(`Invalid inline level (${inline}), must be one of (error, warning, none)`);
+    }
+    return success;
+}
+
+const inlineWorkflowCommandSet: Record<InlineWorkflowCommand | string, boolean | undefined> = {
+    error: true,
+    warning: true,
+    none: true,
+};
+
+function isInlineWorkflowCommand(cmd: InlineWorkflowCommand | string): cmd is InlineWorkflowCommand {
+    return !!inlineWorkflowCommandSet[cmd];
+}
+
 export async function action(githubContext: GitHubContext, octokit: Octokit): Promise<boolean> {
-    validateRequest();
+    const params = getActionParams();
+    validateActionParams(params);
     const eventName = githubContext.eventName;
     if (!isSupportedEvent(eventName)) {
         const msg = `Unsupported event: '${eventName}'`;
@@ -153,14 +205,9 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
         files: core.getInput('files'),
     };
 
-    const options: LintOptions = {
-        root: core.getInput('root') || process.cwd(),
-        config: core.getInput('config') || undefined,
-    };
-
     core.info(friendlyEventName(eventName));
     const eventFiles = await gatherFiles(context);
     const files = filterFiles(context.files, eventFiles);
-    const noIssues = await checkSpelling(options, [...files]);
+    const noIssues = await checkSpelling(params, [...files]);
     return noIssues;
 }

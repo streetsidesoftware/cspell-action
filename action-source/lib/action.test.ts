@@ -24,6 +24,7 @@ describe('Validate Action', () => {
         test                | file                                | expected
         ${'bad root'}       | ${'bad_params/bad_root.json'}       | ${new AppError('Bad Configuration.')}
         ${'missing config'} | ${'bad_params/missing_config.json'} | ${new AppError('Bad Configuration.')}
+        ${'bad inline'}     | ${'bad_params/bad_inline.json'}     | ${new AppError('Bad Configuration.')}
     `(
         '$test',
         async ({ file, expected }) => {
@@ -65,9 +66,11 @@ function cleanEnv() {
     delete process.env.GITHUB_RUN_NUMBER;
     delete process.env.GITHUB_SHA;
     delete process.env.GITHUB_WORKFLOW;
-    delete process.env.INPUT_CONFIG;
-    delete process.env.INPUT_GITHUB_TOKEN;
-    delete process.env.INPUT_ROOT;
+    for (const key of Object.keys(process.env)) {
+        if (key.startsWith('INPUT_')) {
+            delete process.env[key];
+        }
+    }
 }
 
 function fetchGithubActionFixture(filename: string): Record<string, string> {

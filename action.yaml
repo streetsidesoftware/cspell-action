@@ -22,11 +22,11 @@ inputs:
   root:
     description: >
       The point in the directory tree to start spell checking.
-#   inline:
-#     description: >
-#       Notification level to use with inline reporting of spelling errors.
-#       Allowed values are: warning, error, none
-#     default: warning
+  inline:
+    description: >
+      Notification level to use with inline reporting of spelling errors.
+      Allowed values are: warning, error, none
+    default: warning
 runs:
   using: "node12"
   main: "./action/main.js"
