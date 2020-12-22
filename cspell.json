@@ -10,7 +10,8 @@
         "action/",
         "__snapshots__",
         "node_modules",
-        "fixtures/",
+        "fixtures/**/*.json",
+        "fixtures/sampleCode/*errors/",
         "cspell.json",
         "package-lock.json"
     ],
