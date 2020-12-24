@@ -49,4 +49,9 @@ jobs:
     # Allowed values are: warning, error, none
     # Default: warning
     inline: warning
+
+    # Determines if the action should be failed if any spelling issues are found.
+    # Allowed values are: true, false
+    # Default: true
+    strict: true
 ```
