@@ -25,6 +25,7 @@ describe('Validate Action', () => {
         ${'bad root'}       | ${'bad_params/bad_root.json'}       | ${new AppError('Bad Configuration.')}
         ${'missing config'} | ${'bad_params/missing_config.json'} | ${new AppError('Bad Configuration.')}
         ${'bad inline'}     | ${'bad_params/bad_inline.json'}     | ${new AppError('Bad Configuration.')}
+        ${'bad strict'}     | ${'bad_params/bad_strict.json'}     | ${new AppError('Bad Configuration.')}
     `(
         '$test',
         async ({ file, expected }) => {

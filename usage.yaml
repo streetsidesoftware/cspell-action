@@ -1,4 +1,4 @@
-- uses: streetsidesoftware/cspell-action@v0.2.3
+- uses: streetsidesoftware/cspell-action@v1
   with:
     # Github token used to fetch the list of changed files in the commit.
     # Default: ${{ github.token }}
@@ -27,3 +27,8 @@
     # Allowed values are: warning, error, none
     # Default: warning
     inline: warning
+
+    # Determines if the action should be failed if any spelling issues are found.
+    # Allowed values are: true, false
+    # Default: true
+    strict: true

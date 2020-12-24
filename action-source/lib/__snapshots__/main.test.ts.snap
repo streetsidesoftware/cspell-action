@@ -11,6 +11,7 @@ Pull Request
 6/8 ./action.yaml (???.??ms)
 7/8 ./README.md (???.??ms)
 8/8 ./.github/workflows/lint.yml (???.??ms)
+Files checked: 8, Issues found: 0 in 0 files.
 Done.
 "
 `;
@@ -22,6 +23,7 @@ Pull Request
 2/4 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
 3/4 ./action.yaml (???.??ms)
 4/4 ./.github/workflows/lint.yml (???.??ms)
+Files checked: 4, Issues found: 0 in 0 files.
 Done.
 "
 `;
@@ -30,6 +32,7 @@ exports[`Validate Main event push main.js 1`] = `
 "cspell-action
 Push
 1/1 ./.editorconfig (???.??ms)
+Files checked: 1, Issues found: 0 in 0 files.
 Done.
 "
 `;

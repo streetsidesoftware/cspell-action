@@ -10,6 +10,7 @@ import * as path from 'path';
 import { AppError } from './error';
 import * as glob from 'cspell-glob';
 import { existsSync } from 'fs';
+import { RunResult } from 'cspell';
 
 interface Context {
     githubContext: GitHubContext;
@@ -26,12 +27,24 @@ const supportedEvents = new Set<EventNames | string>(['push', 'pull_request']);
 
 type InlineWorkflowCommand = 'error' | 'warning' | 'none';
 
+type TrueFalse = 'true' | 'false';
+
 interface ActionParams {
     github_token: string;
     files: string;
     config: string;
     root: string;
     inline: string;
+    strict: string;
+}
+
+interface ValidActionParams {
+    github_token: string;
+    files: string;
+    config: string;
+    root: string;
+    inline: InlineWorkflowCommand;
+    strict: TrueFalse;
 }
 
 async function gatherPullRequestFiles(context: Context): Promise<Set<string>> {
@@ -57,7 +70,7 @@ async function gatherPushFiles(context: Context): Promise<Set<string>> {
     return files || new Set();
 }
 
-async function checkSpelling(params: ActionParams, files: string[]): Promise<boolean> {
+async function checkSpelling(params: ValidActionParams, files: string[]): Promise<RunResult | true> {
     const options: LintOptions = {
         root: params.root || process.cwd(),
         config: params.config || undefined,
@@ -82,7 +95,7 @@ async function checkSpelling(params: ActionParams, files: string[]): Promise<boo
             );
         });
     }
-    return !result.issues.length;
+    return result.result;
 }
 
 function friendlyEventName(eventName: EventNames | string): string {
@@ -138,15 +151,32 @@ function getActionParams(): ActionParams {
         config: core.getInput('config'),
         root: core.getInput('root'),
         inline: (core.getInput('inline') || 'warning').toLowerCase(),
+        strict: tf(core.getInput('strict') || 'true'),
     };
 }
 
-function validateActionParams(params: ActionParams) {
-    const validations = [validateToken, validateConfig, validateRoot, validateInlineLevel];
+function tf(v: string | boolean | number): TrueFalse | string {
+    const mapValues: Record<string, TrueFalse> = {
+        true: 'true',
+        t: 'true',
+        false: 'false',
+        f: 'false',
+        '0': 'false',
+        '1': 'true',
+    };
+    v = typeof v === 'boolean' || typeof v === 'number' ? (v ? 'true' : 'false') : v;
+    v = v.toLowerCase();
+    v = mapValues[v] || v;
+    return v;
+}
+
+function validateActionParams(params: ActionParams | ValidActionParams): params is ValidActionParams {
+    const validations = [validateToken, validateConfig, validateRoot, validateInlineLevel, validateStrict];
     const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
     if (!success) {
         throw new AppError('Bad Configuration.');
     }
+    return true;
 }
 
 function validateToken(params: ActionParams) {
@@ -181,6 +211,15 @@ function validateInlineLevel(params: ActionParams) {
     return success;
 }
 
+function validateStrict(params: ActionParams) {
+    const isStrict = params.strict;
+    const success = isStrict === 'true' || isStrict === 'false';
+    if (!success) {
+        core.error('Invalid strict setting, must be of of (true, false)');
+    }
+    return success;
+}
+
 const inlineWorkflowCommandSet: Record<InlineWorkflowCommand | string, boolean | undefined> = {
     error: true,
     warning: true,
@@ -193,7 +232,9 @@ function isInlineWorkflowCommand(cmd: InlineWorkflowCommand | string): cmd is In
 
 export async function action(githubContext: GitHubContext, octokit: Octokit): Promise<boolean> {
     const params = getActionParams();
-    validateActionParams(params);
+    if (!validateActionParams(params)) {
+        return false;
+    }
     const eventName = githubContext.eventName;
     if (!isSupportedEvent(eventName)) {
         const msg = `Unsupported event: '${eventName}'`;
@@ -208,6 +249,23 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     core.info(friendlyEventName(eventName));
     const eventFiles = await gatherFiles(context);
     const files = filterFiles(context.files, eventFiles);
-    const noIssues = await checkSpelling(params, [...files]);
-    return noIssues;
+    const result = await checkSpelling(params, [...files]);
+    if (result === true) {
+        return true;
+    }
+
+    const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
+    core.info(message);
+
+    const fnS = (n: number) => (n === 1 ? '' : 's');
+
+    if (params.strict === 'true' && result.issues) {
+        const filesWithIssues = result.filesWithIssues.size;
+        const err = `${result.issues} spelling issue${fnS(result.issues)} found in ${filesWithIssues} of the ${
+            result.files
+        } file${fnS(result.files)} checked.`;
+        core.setFailed(err);
+    }
+
+    return !(result.issues + result.errors);
 }
