@@ -20,8 +20,6 @@ describe('Validate Action', () => {
         process.env.INPUT_GITHUB_TOKEN = process.env['GITHUB_TOKEN'];
     });
 
-    // delibrate spelling errror.
-
     test.each`
         test                | file                                | expected
         ${'bad root'}       | ${'bad_params/bad_root.json'}       | ${new AppError('Bad Configuration.')}
