@@ -27,6 +27,11 @@ inputs:
       Notification level to use with inline reporting of spelling errors.
       Allowed values are: warning, error, none
     default: warning
+  strict:
+    description: >
+      Determines if the action should be failed if any spelling issues are found.
+      Allowed values are: true, false
+    default: true
 runs:
   using: "node12"
   main: "./action/main.js"
