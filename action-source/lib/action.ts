@@ -257,10 +257,14 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
     core.info(message);
 
+    // Another spellling issue.
+
     if (params.strict === 'true' && result.issues) {
-        core.setFailed(
-            `Spelling issues found: ${result.issues} in ${result.filesWithIssues.size} / ${result.files} files.`
-        );
+        const filesWithIssues = result.filesWithIssues.size;
+        const err = `Spelling issues found: ${result.issues} in ${filesWithIssues} of the ${result.files} file${
+            result.files !== 1 ? 's' : ''
+        } checked.`;
+        core.setFailed(err);
     }
 
     return !(result.issues + result.errors);
