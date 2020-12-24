@@ -259,8 +259,6 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
 
     const fnS = (n: number) => (n === 1 ? '' : 's');
 
-    // Another spellling issue.
-
     if (params.strict === 'true' && result.issues) {
         const filesWithIssues = result.filesWithIssues.size;
         const err = `${result.issues} spelling issue${fnS(result.issues)} found in ${filesWithIssues} of the ${
