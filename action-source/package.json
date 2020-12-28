@@ -54,6 +54,6 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "@cspell/cspell-bundled-dicts": "^5.0.6"
+    "@cspell/cspell-bundled-dicts": "^5.1.0"
   }
 }
