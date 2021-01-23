@@ -17,7 +17,6 @@ jobs:
 
       - name: Setup Tokens
         uses: tibdex/github-app-token@v1 # cspell:ignore tibdex
-        if: env.git_status == 'dirty'
         id: generate-token
         with:
           app_id: ${{ secrets.AUTOMATION_APP_ID }}
