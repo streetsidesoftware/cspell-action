@@ -26,8 +26,6 @@
  * Released under the MIT License.
  */
 
-/*! For license information please see index.js.LICENSE.txt */
-
 /**
  * @preserve
  * JS Implementation of incremental MurmurHash3 (r150) (as of May 10, 2013)
