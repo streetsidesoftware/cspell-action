@@ -31,7 +31,7 @@ jobs:
           app_id: ${{ secrets.AUTOMATION_APP_ID }}
           private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
 
-      - name: push changes
+      - name: Commit
         if: env.git_status == 'dirty'
         run: |
           git config user.name github-actions
@@ -39,3 +39,10 @@ jobs:
           git add .
           git commit -m "auto build action"
           git push
+
+      - name: Push changes
+        if: env.git_status == 'dirty'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ steps.generate-token.outputs.token }}
+          branch: ${{ github.ref }}
