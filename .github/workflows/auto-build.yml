@@ -1,0 +1,31 @@
+name: Auto Build Action
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: github.repository_owner == 'streetsidesoftware'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install
+        run: |
+          yarn
+          yarn clean-build
+      - name: Has changes
+        run: |
+          git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
+          git --no-pager diff --compact-summary
+      - name: Echo git_status
+        run: echo ${{ env.git_status }}
+      - name: push changes
+        if: env.git_status == 'dirty'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "auto build action"
+          git push
