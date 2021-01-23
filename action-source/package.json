@@ -30,6 +30,8 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "@octokit/rest": "^18.0.12",
     "@pollyjs/adapter-node-http": "^5.1.0",
     "@pollyjs/core": "^5.1.0",
@@ -39,8 +41,9 @@
     "@types/pollyjs__adapter-node-http": "^2.0.1",
     "@types/pollyjs__core": "^4.3.1",
     "@types/pollyjs__persister-fs": "^2.0.1",
-    "cspell": "^5.1.0",
-    "cspell-glob": "^5.1.0",
+    "babel-loader": "^8.2.2",
+    "cspell": "^5.2.1",
+    "cspell-glob": "^5.2.0",
     "env-cmd": "^10.1.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
@@ -54,6 +57,6 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "@cspell/cspell-bundled-dicts": "^5.1.0"
+    "@cspell/cspell-bundled-dicts": "^5.2.0"
   }
 }

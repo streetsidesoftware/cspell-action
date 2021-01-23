@@ -10,6 +10,20 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        // Note: this was added because yaml library was failing during the build step
+        // see: https://github.com/eemeli/yaml/issues/208#issuecomment-720504241
+        test: /node_modules\/yaml\/browser\/dist\/.*/,
+        type: 'javascript/auto',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+            ],
+          },
+        },
+      }
     ],
   },
   resolve: {

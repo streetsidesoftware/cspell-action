@@ -14,15 +14,15 @@
         ".github/",
         ".vscode/",
         "action-source/debug/",
-        "action/",
+        "action/**",
         "coverage",
         "cspell.json",
         "fixtures/__recordings__/",
         "fixtures/**/*.json",
         "fixtures/sampleCode/*errors/",
         "node_modules",
-        "package-lock.json",
-        "yarn.lock"
+        "**/package-lock.json",
+        "**/yarn.lock"
     ],
     "patterns": [
         {
