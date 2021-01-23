@@ -1,8 +1,8 @@
-name: Auto Build Action
+name: Build Action
 
 on:
-  push:
-    - "!master"
+  # push:
+  #   - "!master"
   workflow_dispatch:
 
 jobs:
