@@ -25,6 +25,7 @@ jobs:
       - name: Update packages
         run: |
           yarn upgrade
+          yarn clean-build
       - name: Has changes
         run: |
           git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
