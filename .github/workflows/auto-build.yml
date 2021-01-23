@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Context
-        run: echo ${{ toJSON(github) }}
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
       - name: Checkout code
         uses: actions/checkout@v2
