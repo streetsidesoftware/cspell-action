@@ -13,6 +13,7 @@
         ".git/",
         ".github/",
         ".vscode/",
+        ".gitignore",
         "action-source/debug/",
         "action/**",
         "coverage",
