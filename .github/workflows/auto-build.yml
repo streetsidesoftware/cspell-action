@@ -2,6 +2,7 @@ name: Auto Build Action
 
 on:
   push:
+    - "!master"
   workflow_dispatch:
 
 jobs:
