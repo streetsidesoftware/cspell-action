@@ -21,8 +21,8 @@
         "fixtures/**/*.json",
         "fixtures/sampleCode/*errors/",
         "node_modules",
-        "package-lock.json",
-        "yarn.lock"
+        "**/package-lock.json",
+        "**/yarn.lock"
     ],
     "patterns": [
         {
