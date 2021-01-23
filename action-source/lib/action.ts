@@ -94,7 +94,7 @@ async function checkSpelling(params: ValidActionParams, files: string[]): Promis
                 `Unknown word (${item.text})`
             );
             console.warn(
-                `${path.relative(process.cwd(), item.uri || '')}: ${item.row}:${item.col} Unknown word (${item.text})`
+                `${path.relative(process.cwd(), item.uri || '')}:${item.row}:${item.col} Unknown word (${item.text})`
             );
         });
     }
