@@ -22,6 +22,15 @@ jobs:
           git --no-pager diff --compact-summary
       - name: Echo git_status
         run: echo ${{ env.git_status }}
+
+      - name: Setup Tokens
+        uses: tibdex/github-app-token@v1 # cspell:ignore tibdex
+        if: env.git_status == 'dirty'
+        id: generate-token
+        with:
+          app_id: ${{ secrets.AUTOMATION_APP_ID }}
+          private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
+
       - name: push changes
         if: env.git_status == 'dirty'
         run: |
