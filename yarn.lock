@@ -863,7 +863,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cspell/cspell-bundled-dicts@^5.1.0", "@cspell/cspell-bundled-dicts@^5.2.0":
+"@cspell/cspell-bundled-dicts@^5.2.0":
   version "5.2.0"
   resolved "https://registry.npmjs.org/@cspell/cspell-bundled-dicts/-/cspell-bundled-dicts-5.2.0.tgz#bd5e70342dfc1f48f6f0e3922bbe51ed38478f82"
   integrity sha512-MnZh/r1mgTegrVK+mD4/urM2XKeCsRbyKq1A+hd6POVBiyv2fybRd8I1SoNv9krdnRJgDAS4may7vG+BC9K3xQ==
@@ -2623,7 +2623,7 @@ crypto-random-string@^2.0.0:
   resolved "https://registry.npmjs.org/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
-cspell-glob@^5.1.0, cspell-glob@^5.2.0:
+cspell-glob@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-5.2.0.tgz#19bf774562254d5bccd5491d2a904357c6f4a683"
   integrity sha512-Zc80PsQ86Sfsl04+PjoImfrUnFcPJh78Beg/gFjeJ9+7oUk3oBlAcAczat0ZdfOAdQ3x/rWCH30SoefuaEfsiw==
@@ -2664,7 +2664,7 @@ cspell-trie-lib@^5.2.0:
     fs-extra "^9.1.0"
     gensequence "^3.1.1"
 
-cspell@^5.1.0:
+cspell@^5.2.1:
   version "5.2.1"
   resolved "https://registry.npmjs.org/cspell/-/cspell-5.2.1.tgz#81646bac13b39bfc8ea09e95a992547b3b26a980"
   integrity sha512-iPAfiSfc3ow5UtHmO/1MwH7/gM8h3DCbB0y5JUqZV+xYanQAiQaF5ratuxMTu9NyP0dIMz3+3Wl/W2s2Xtbpuw==
