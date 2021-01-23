@@ -40,6 +40,8 @@ function nullEmitter(_msg: string) {
 export async function lint(files: string[], lintOptions: LintOptions, logger: Logger): Promise<LintResult> {
     const issues: Issue[] = [];
 
+    console.log(files.join('\n'));
+
     const issueCounts = new Map<string, number>();
 
     function issue(issue: Issue) {
