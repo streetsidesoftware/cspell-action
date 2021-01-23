@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "prepublishOnly": "yarn build",
-    "build": "yarn compile && yarn webpack",
+    "build": "yarn compile && yarn webpack && yarn build-cleanup",
+    "build-cleanup": "removeNPMAbsolutePaths ../action",
     "webpack": "webpack -c webpack.prod.js",
     "compile": "tsc -p .",
     "smoke-test": "cd .. && env-cmd -f ./fixtures/pull_request.json node ./action-source/debug/test_main.js",
@@ -47,6 +48,7 @@
     "env-cmd": "^10.1.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
+    "removeNPMAbsolutePaths": "^2.0.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
