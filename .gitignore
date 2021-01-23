@@ -52,3 +52,6 @@ action-source/node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# No intelij files
+.idea
