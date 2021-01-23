@@ -10,12 +10,16 @@ jobs:
     if: github.repository_owner == 'streetsidesoftware'
     runs-on: ubuntu-latest
     steps:
+      - name: Echo Context
+        run: echo ${{ toJSON(github) }}
+
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install
         run: |
           yarn
           yarn clean-build
+
       - name: Has changes
         run: |
           git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
@@ -31,16 +35,13 @@ jobs:
           app_id: ${{ secrets.AUTOMATION_APP_ID }}
           private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
 
-      - name: Commit
+      - name: Update Branch Request
         if: env.git_status == 'dirty'
-        run: |
-          git add .
-          git commit -m "auto build action"
-          git push
-
-      - name: Push changes
-        if: env.git_status == 'dirty'
-        uses: ad-m/github-push-action@master
+        uses: peter-evans/create-pull-request@v3
         with:
-          github_token: ${{ steps.generate-token.outputs.token }}
+          commit-message: "Build Action"
           branch: ${{ github.ref }}
+          base: master
+          title: "ci: Build Action"
+          token: ${{ steps.generate-token.outputs.token }}
+          body: "Update Action Files"
