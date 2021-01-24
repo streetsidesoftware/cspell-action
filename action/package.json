@@ -31,6 +31,8 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@octokit/rest": "^18.0.12",
@@ -57,8 +59,6 @@
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0",
     "@cspell/cspell-bundled-dicts": "^5.2.0"
   }
 }
