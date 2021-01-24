@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
   entry: './lib/main_root.ts',
+  target: 'node',
   module: {
     rules: [
       {
@@ -38,8 +39,6 @@ module.exports = {
     node: true,
   },
   externals: [
-    /^@actions\/core/,
-    /^@actions\/github/,
     /^@cspell\/cspell-bundled-dicts/,
   ],
   output: {
