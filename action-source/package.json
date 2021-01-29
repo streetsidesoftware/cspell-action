@@ -56,6 +56,6 @@
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "@cspell/cspell-bundled-dicts": "^5.2.0"
+    "@cspell/cspell-bundled-dicts": "^5.2.4"
   }
 }

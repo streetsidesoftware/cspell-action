@@ -300,10 +300,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cspell/cspell-bundled-dicts@^5.2.0", "@cspell/cspell-bundled-dicts@^5.2.2":
-  version "5.2.2"
-  resolved "https://registry.npmjs.org/@cspell/cspell-bundled-dicts/-/cspell-bundled-dicts-5.2.2.tgz#1d0179bf1ef14e2dd9c2aacb78e9611dffaa65f0"
-  integrity sha512-EbdWSEgpcs3OFzb5nsiVXeribV6VyFtCvo5BSc2zlmAGwhBctUBS/owAVG5Yevh1EfjzSD83UJdHzRWMGqDWmw==
+"@cspell/cspell-bundled-dicts@^5.2.2", "@cspell/cspell-bundled-dicts@^5.2.4":
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/@cspell/cspell-bundled-dicts/-/cspell-bundled-dicts-5.2.4.tgz#dd0e161bb2203f19a2dd9358c3eb9daaffb7a336"
+  integrity sha512-IVoTVdFIWnWmJYBwjbsYtFyH6fD8bClDZrFpUa/a84vXVopcH1ZjpwotDsHO+P3O1GCFTacT1Z2Lyh56xowmxw==
   dependencies:
     "@cspell/dict-aws" "^1.0.13"
     "@cspell/dict-bash" "^1.0.11"
