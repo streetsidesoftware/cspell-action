@@ -16,6 +16,7 @@
     "installAction": "node ./installAction.js ./action action-source/package.json",
     "prettier": "prettier -w \"**/*.{md,yaml,yml,json,ts}\"",
     "prepare": "yarn build",
+    "release": "standard-version",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/main.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
     "test": "yarn workspaces run test"
@@ -46,6 +47,7 @@
     "jest-circus": "^26.6.3",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
+    "standard-version": "^9.1.1",
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
   },
