@@ -19,11 +19,12 @@ Done.
 exports[`Validate Main event pull_request_with_files main.js 1`] = `
 "cspell-action
 Pull Request
-1/4 ./.github/workflows/test.yml (???.??ms)
-2/4 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
-3/4 ./action.yaml (???.??ms)
-4/4 ./.github/workflows/lint.yml (???.??ms)
-Files checked: 4, Issues found: 0 in 0 files.
+1/5 ./.github/workflows/test.yml (???.??ms)
+2/5 ./.eslintrc.js (???.??ms)
+3/5 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+4/5 ./action.yaml (???.??ms)
+5/5 ./.github/workflows/lint.yml (???.??ms)
+Files checked: 5, Issues found: 0 in 0 files.
 Done.
 "
 `;
