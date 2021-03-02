@@ -2302,10 +2302,10 @@ crypto-random-string@^2.0.0:
   resolved "https://registry.npmjs.org/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
-cspell-glob@^5.3.1, cspell-glob@^5.3.3:
-  version "5.3.3"
-  resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-5.3.3.tgz#082352e4f448aca789024291ddfdb5e42985e057"
-  integrity sha512-IcC5oWfEaTYIfKeQusjr/hQoT35rMgEeFVihL5JY5ZM0YK25q59huIrrW188pWQExURCURFPGsewn+Y8vZfw2Q==
+cspell-glob@^5.3.3, cspell-glob@^5.3.4:
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-5.3.4.tgz#656188388467f8be7e115924e7b43ba85c234fa4"
+  integrity sha512-SrtfNUP7CqFstTzuRscGI5IFYu1j3ay5a9ioFTx2CoaFqp2BXqFpE8z9NE6Lao+7z7Fg4hiPgvsCd1gn3J/P8A==
   dependencies:
     micromatch "^4.0.2"
 
