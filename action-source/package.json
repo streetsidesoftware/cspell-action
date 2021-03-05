@@ -43,7 +43,7 @@
     "@types/pollyjs__core": "^4.3.1",
     "@types/pollyjs__persister-fs": "^2.0.1",
     "cspell": "^5.3.1",
-    "cspell-glob": "^5.3.1",
+    "cspell-glob": "^5.3.5",
     "env-cmd": "^10.1.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
