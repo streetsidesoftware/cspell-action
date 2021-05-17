@@ -1,3 +1,37 @@
+# We want to keep everything in the action folder.
+!action
+
+# Don't keep map or test files
+/action/**/*.map
+/action/**/*.test.*
+/action/**/*.d.ts
+
+
+!node_modules
+!node_modules/
+node_modules/*
+
+!node_modules/@cspell
+
+# Dictionaries cannot be WebPacked
+node_modules/@cspell/*
+!node_modules/@cspell/cspell-bundled-dicts
+!node_modules/@cspell/dict*
+
+# Regexp worker must NOT be WebPacked
+!node_modules/regexp-worker/**/{LICENSE,package.json,README.md}
+!node_modules/regexp-worker/**/*.js
+
+# Do not WebPack import-fresh and dependencies
+# This is needed to support cosmiconfig
+!node_modules/import-fresh
+!node_modules/resolve-from
+!node_modules/parent-module
+!node_modules/callsites
+
+
+/debug
+
 # Logs
 logs
 *.log
@@ -21,25 +55,6 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 *.lcov
-
-# Dependency directories
-/node_modules/
-
-/dist/
-
-# We want to keep everything in the action folder.
-!action
-!action/node_modules
-!action/node_modules/**/dist/**
-
-action-source/node_modules
-
-# Don't keep map or test files
-/action/**/*.map
-/action/**/*.test.*
-/action/**/*.d.ts
-
-/action-source/debug
 
 # TypeScript cache
 *.tsbuildinfo
