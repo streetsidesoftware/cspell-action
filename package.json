@@ -4,22 +4,22 @@
   "description": "GitHub Action: Check Spelling",
   "main": "action/main.js",
   "private": true,
-  "workspaces": [
-    "action-source"
-  ],
   "scripts": {
-    "build": "yarn installAction && yarn buildSource",
-    "buildSource": "yarn workspaces run build",
+    "build": "yarn compile && yarn webpack && yarn build-cleanup",
+    "build-cleanup": "removeNPMAbsolutePaths ./action",
+    "compile": "tsc -p .",
     "clean-build": "yarn clean && yarn build",
     "clean": "rimraf action",
     "eslint": "eslint 'action-source/**/*.ts'",
-    "installAction": "node ./installAction.js ./action action-source/package.json",
     "prettier": "prettier -w \"**/*.{md,yaml,yml,json,ts}\"",
     "prepare": "yarn build",
+    "prepublishOnly": "yarn build",
     "release": "standard-version",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/main.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/main.js",
-    "test": "yarn workspaces run test"
+    "webpack": "webpack -c webpack.prod.js",
+    "watch": "webpack -c webpack.dev.js --watch",
+    "test": "jest"
   },
   "repository": "git+https://github.com/streetsidesoftware/cspell-action.git",
   "keywords": [
@@ -38,18 +38,37 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@octokit/rest": "^18.0.12",
+    "@pollyjs/adapter-node-http": "^5.1.0",
+    "@pollyjs/core": "^5.1.0",
+    "@pollyjs/persister-fs": "^5.0.0",
     "@types/jest": "^26.0.19",
+    "@types/minimatch": "^3.0.3",
+    "@types/pollyjs__adapter-node-http": "^2.0.1",
+    "@types/pollyjs__core": "^4.3.1",
+    "@types/pollyjs__persister-fs": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
+    "cspell": "^5.3.1",
+    "cspell-glob": "^5.3.1",
     "env-cmd": "^10.1.0",
     "eslint": "^7.16.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
     "prettier": "^2.2.1",
+    "removeNPMAbsolutePaths": "^2.0.0",
     "rimraf": "^3.0.2",
     "standard-version": "^9.1.1",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.1.3"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.2.2",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@cspell/cspell-bundled-dicts": "^5.3.0",
+    "cosmiconfig": "^7.0.0"
+  }
 }

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Validate Main event pull_request main.js 1`] = `
+"cspell-action
+Pull Request
+1/8 ./.github/workflows/test.yml (???.??ms)
+2/8 ./.eslintrc.js (???.??ms)
+3/8 ./package.json (???.??ms)
+4/8 ./.vscode/launch.json (???.??ms)
+5/8 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+6/8 ./action.yaml (???.??ms)
+7/8 ./README.md (???.??ms)
+8/8 ./.github/workflows/lint.yml (???.??ms)
+Files checked: 8, Issues found: 0 in 0 files.
+Done.
+"
+`;
+
+exports[`Validate Main event pull_request_with_files main.js 1`] = `
+"cspell-action
+Pull Request
+1/5 ./.github/workflows/test.yml (???.??ms)
+2/5 ./.eslintrc.js (???.??ms)
+3/5 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+4/5 ./action.yaml (???.??ms)
+5/5 ./.github/workflows/lint.yml (???.??ms)
+Files checked: 5, Issues found: 0 in 0 files.
+Done.
+"
+`;
+
+exports[`Validate Main event push main.js 1`] = `
+"cspell-action
+Push
+1/1 ./.editorconfig (???.??ms)
+Files checked: 1, Issues found: 0 in 0 files.
+Done.
+"
+`;
