@@ -3,6 +3,7 @@
     "version": "0.2",
     "words": [
         "camelcase",
+        "cosmiconfig",
         "octokit",
         "pollyjs",
         "repos",
