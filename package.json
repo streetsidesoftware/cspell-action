@@ -39,7 +39,7 @@
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0",
+    "@actions/github": "^5.0.0",
     "@octokit/rest": "^18.0.12",
     "@pollyjs/adapter-node-http": "^5.1.0",
     "@pollyjs/core": "^5.1.0",
