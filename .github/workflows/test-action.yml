@@ -2,6 +2,8 @@ name: "test-action"
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
+    branches:
+      - master
 
 jobs:
   test-action: # run the action

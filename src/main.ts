@@ -1,7 +1,5 @@
 import * as core from '@actions/core';
-import * as gitHubApi from '@actions/github';
-import { getOctokit } from '@actions/github';
-import { Octokit } from '@octokit/rest';
+import { getOctokit, context as githubContext } from '@actions/github';
 import { AppError } from './error';
 import { action } from './action';
 
@@ -16,9 +14,8 @@ function getGithubToken(): string {
 export async function run(): Promise<void> {
     try {
         core.info('cspell-action');
-        const githubContext = gitHubApi.context;
         const githubToken = getGithubToken();
-        await action(githubContext, getOctokit(githubToken) as Octokit);
+        await action(githubContext, getOctokit(githubToken));
         core.info('Done.');
     } catch (error) {
         console.error(error);

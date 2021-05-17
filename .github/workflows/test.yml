@@ -2,6 +2,8 @@ name: "build-test"
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
+    branches:
+      - master
 
 jobs:
   unit-test: # make sure unit-tests run

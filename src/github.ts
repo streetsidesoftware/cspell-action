@@ -1,4 +1,5 @@
-import { Octokit } from '@octokit/rest';
+import { Octokit } from '@octokit/core';
+import { restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods';
 
 export interface GitContext {
     owner: string;
@@ -11,7 +12,8 @@ export interface PullRequestRef extends GitContext {
 
 export async function getPullRequestFiles(git: Octokit, prRef: PullRequestRef): Promise<Set<string>> {
     const { owner, repo, pull_number } = prRef;
-    const commits = await git.pulls.listCommits({ owner, repo, pull_number });
+    const { rest } = restEndpointMethods(git);
+    const commits = await rest.pulls.listCommits({ owner, repo, pull_number });
 
     return fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
 }
@@ -38,8 +40,9 @@ async function* fetchFilesForCommitsX(
     commitIds: string[]
 ): AsyncIterableIterator<string> {
     const { owner, repo } = context;
+    const { rest } = restEndpointMethods(git);
     for (const ref of commitIds) {
-        const commit = await git.repos.getCommit({ owner, repo, ref });
+        const commit = await rest.repos.getCommit({ owner, repo, ref });
         const files = commit.data.files;
         if (!files) continue;
         for (const f of files) {
