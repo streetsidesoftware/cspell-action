@@ -15,7 +15,7 @@ describe('Validate Spell Checking', () => {
             info: jest.fn(f),
             warning: jest.fn(f),
         };
-        const r = await spell.lint(['action-source/lib/spell.ts', 'fixtures/sampleCode/ts/**/*.ts'], options, emitters);
+        const r = await spell.lint(['src/spell.ts', 'fixtures/sampleCode/ts/**/*.ts'], options, emitters);
         expect(r.result.files).toBe(2);
         expect(r.result.issues).toBe(0);
         expect(r.result.filesWithIssues.size).toBe(0);
