@@ -1,7 +1,7 @@
 import * as spell from './spell';
 import * as path from 'path';
 
-const root = path.join(__dirname, '..', '..');
+const root = path.join(__dirname, '..');
 
 describe('Validate Spell Checking', () => {
     test('Linting some files', async () => {
