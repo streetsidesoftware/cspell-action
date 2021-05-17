@@ -9,10 +9,10 @@
             "request": "launch",
             "name": "Jest Current File",
             "program": "${workspaceFolder}/node_modules/.bin/jest",
-            "cwd": "${workspaceFolder}/action-source",
+            "cwd": "${workspaceFolder}",
             "args": [
                 "--runInBand",
-                "${file}"
+                "${fileBasename}"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
@@ -29,7 +29,7 @@
             "request": "launch",
             "name": "Jest Test All",
             "program": "${workspaceFolder}/node_modules/.bin/jest",
-            "cwd": "${workspaceFolder}/action-source",
+            "cwd": "${workspaceFolder}",
             "args": [
                 "--runInBand"
             ],
