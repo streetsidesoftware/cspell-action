@@ -51,7 +51,7 @@
     "@types/pollyjs__adapter-node-http": "^2.0.1",
     "@types/pollyjs__core": "^4.3.1",
     "@types/pollyjs__persister-fs": "^2.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.20.0",
     "cspell": "^5.3.1",
     "cspell-glob": "^5.3.1",
