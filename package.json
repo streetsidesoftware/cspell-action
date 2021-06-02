@@ -58,7 +58,7 @@
     "env-cmd": "^10.1.0",
     "eslint": "^7.16.0",
     "jest": "^26.6.3",
-    "jest-circus": "^26.6.3",
+    "jest-circus": "^27.0.3",
     "prettier": "^2.2.1",
     "removeNPMAbsolutePaths": "^2.0.0",
     "rimraf": "^3.0.2",
