@@ -380,9 +380,9 @@
   integrity sha512-K21CfB4ZpKYwwDQiPfic2zJA/uxkbsd4IQGejEvDAhE3z8wBs6g6BwwqdVO767M9NgZqc021yAVpr79N5pWe3w==
 
 "@cspell/dict-bash@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.npmjs.org/@cspell/dict-bash/-/dict-bash-1.0.12.tgz#fdf828c520dfd274f1cee6a4a90a0f6d86a703ac"
-  integrity sha512-BOMHVW/m281mqUSJkZ3oiJiUUItLd7QdzpMjm428V9yBYFwIdbds1CeatS7C6kgpI2eBE4RXmy1Hjk/lR63Jew==
+  version "1.0.13"
+  resolved "https://registry.npmjs.org/@cspell/dict-bash/-/dict-bash-1.0.13.tgz#8f3c66330aa9de4900ba321b76c2783cc129fc81"
+  integrity sha512-y+M7eUnDAMwL9buAdTeR8iDsRVJ1TulVaEOpBk7h7q/YiytuqK3WSh3TKQTEQYH6l29tJI4eD6CSzVZzBiUeXQ==
 
 "@cspell/dict-companies@^1.0.38":
   version "1.0.38"
@@ -425,14 +425,14 @@
   integrity sha512-pEX6GYlEx4Teusw/m+XmqoXzcHOqpcn1ZX4H33ONqR81XdPwbaKorBr1IG23Ic76IhwrFlOqs48tcnxrHYpFnA==
 
 "@cspell/dict-en-gb@^1.1.29":
-  version "1.1.29"
-  resolved "https://registry.npmjs.org/@cspell/dict-en-gb/-/dict-en-gb-1.1.29.tgz#12f0225f79598f7a1cdd08e2a2e2656189fc0747"
-  integrity sha512-rAgrN77RsKnmfkl0GyrEr5swFnqHpfPPPLscEgO+ShEL1Z9fyrcoPNW7X7EmsrITYmVy1iiemDAP2OGKvyj4Hw==
+  version "1.1.30"
+  resolved "https://registry.npmjs.org/@cspell/dict-en-gb/-/dict-en-gb-1.1.30.tgz#eee3d16b0176f5a44667f966f83097c3d6a7d654"
+  integrity sha512-xQUXZZ0ODBY9saso9e0BozS5FsX2o2+0fmbrekyITTTOCt/RN7bqByC7Hfj7HziQ3LxuC06EsS8ao8CKk9JTmQ==
 
 "@cspell/dict-en_us@^1.2.42":
-  version "1.2.42"
-  resolved "https://registry.npmjs.org/@cspell/dict-en_us/-/dict-en_us-1.2.42.tgz#ed9e28a2d4734d87681aa4421f33b23a2327bbb1"
-  integrity sha512-5iegemAMT+5WQzPViy67EBH1z3sR53ZXCVQ1RmZJ++ZHkQ0BZ78EgZdrHFBW7tm3D43yf3V8vYSeTse5f1YPCw==
+  version "1.2.43"
+  resolved "https://registry.npmjs.org/@cspell/dict-en_us/-/dict-en_us-1.2.43.tgz#dae5a5cd1a47408a5d3a13c2f215793ecde5f400"
+  integrity sha512-WAOtAZr3rNH4zpUXSeuxEo/C65o4Xp4sVdZ9cIqI+FPU7Vrgz0wuQZIL5TwbkuGUdtQtpRfgs2kTPXzns0fjGw==
 
 "@cspell/dict-filetypes@^1.1.5":
   version "1.1.5"
@@ -495,9 +495,9 @@
   integrity sha512-RPNn/7CSkflAWk0sbSoOkg0ORrgBARUjOW3QjB11KwV1gSu8f5W/ij/S50uIXtlrfoBLqd4OyE04jyON+g/Xfg==
 
 "@cspell/dict-npm@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.npmjs.org/@cspell/dict-npm/-/dict-npm-1.0.12.tgz#2d30e4580855f67e407d096ba73656e3e05b5617"
-  integrity sha512-UaC3SzuAHtpKl/iwhQse52Mji/2/Zn8XpOwLpYcLElURa325/1oyhO8bsgX/SWXmo7RJ1xOYv0BQkQpvMx9TOg==
+  version "1.0.13"
+  resolved "https://registry.npmjs.org/@cspell/dict-npm/-/dict-npm-1.0.13.tgz#f289aab8c56472f95ab8dc538399ca312eb60808"
+  integrity sha512-XYQFcBHO4n0x7vFk7xhhcZdGNkvLa/AnnVXZeEgHpm56pzyoaB/mfpsIb0RSFjgk5D9587yTg1/uIi4/RwzLTA==
 
 "@cspell/dict-php@^1.0.24":
   version "1.0.24"
@@ -505,9 +505,9 @@
   integrity sha512-vHCqETX1idT9tN1plkxUFnXMIHjbbrNOINZh1PYSvVlBrOdahSaL/g6dOJZC5QTaaidoU4WXUlgnNb/7JN4Plg==
 
 "@cspell/dict-powershell@^1.0.15":
-  version "1.0.15"
-  resolved "https://registry.npmjs.org/@cspell/dict-powershell/-/dict-powershell-1.0.15.tgz#340b5a2a316cdadf670fe4d0fb1df01f3266cf1e"
-  integrity sha512-7s1s+iMnf1Sm6+LICfeFMJ79k2Ygy6dG5pRefa2iq7DxOnf4n2ZlXFBDDxKH9NcUFD2uRLqQzN48lon4roCYfw==
+  version "1.0.16"
+  resolved "https://registry.npmjs.org/@cspell/dict-powershell/-/dict-powershell-1.0.16.tgz#06a2966b2dca7a0d97938ff90fcfc74354cfb7ba"
+  integrity sha512-cbauyYR6H53gfd/J9B3wgly9kg1joLSVxxqbry+y0BqF7FBtkctnXev2WHRbX68o6X9iQPhUz6+3zGKwFW5Stg==
 
 "@cspell/dict-python@^1.0.35":
   version "1.0.35"
@@ -530,9 +530,9 @@
   integrity sha512-5V/R7PRbbminTpPS3ywgdAalI9BHzcEjEj9ug4kWYvBIGwSnS7T6QCFCiu+e9LvEGUqQC+NHgLY4zs1NaBj2vA==
 
 "@cspell/dict-software-terms@^1.0.32":
-  version "1.0.32"
-  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-1.0.32.tgz#21d5bdb6c21fcef423cc226857ca9dab176954da"
-  integrity sha512-RA2rRiw0cODQOfUJZ2817n9iu+CThpo09D5Li3+632TCDA4IjkfNYGpTegE5N3eQCPFzLJN7Oghdc7YGNut+Qg==
+  version "1.0.33"
+  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-1.0.33.tgz#13d827235d457fc35808db41cccc5c7473b6b0f1"
+  integrity sha512-5uemEhMp32DWt49wneitc4erErJO5e/2o//Bhx/MQwDlZQ3Sc94YuDp9zLIE6WTM0AQoymqG/MHqyaqVsxf4XA==
 
 "@cspell/dict-typescript@^1.0.19":
   version "1.0.19"
@@ -852,9 +852,9 @@
     universal-user-agent "^6.0.0"
 
 "@octokit/rest@^18.5.3":
-  version "18.5.5"
-  resolved "https://registry.npmjs.org/@octokit/rest/-/rest-18.5.5.tgz#5a930736767ce4ac960b8b964c453432adf3d0a8"
-  integrity sha512-Py9sWvxBGeAwNY8UnhxP6jnq7aflvQ0uQ6gmZObyJLR9hmd5NEz9piu/A77cxV6+0l9UNACJVXX6FOnl5LIcPw==
+  version "18.5.6"
+  resolved "https://registry.npmjs.org/@octokit/rest/-/rest-18.5.6.tgz#8c9a7c9329c7bbf478af20df78ddeab0d21f6d89"
+  integrity sha512-8HdG6ZjQdZytU6tCt8BQ2XLC7EJ5m4RrbyU/EARSkAM1/HP3ceOzMG/9atEfe17EDMer3IVdHWLedz2wDi73YQ==
   dependencies:
     "@octokit/core" "^3.2.3"
     "@octokit/plugin-paginate-rest" "^2.6.2"
