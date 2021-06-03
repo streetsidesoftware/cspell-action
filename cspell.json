@@ -16,7 +16,7 @@
         ".git/",
         ".yarn/",
         "/.github/**",
-        "**/.php.js",
+        ".pnp.js",
         ".vscode",
         ".gitignore",
         "action-source/debug/",
