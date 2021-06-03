@@ -12,23 +12,22 @@
         "streetsidesoftware"
     ],
     "ignorePaths": [
-        "__snapshots__",
-        ".git/",
-        ".yarn/",
+        ".git",
+        ".yarn",
         "/.github/**",
         ".pnp.js",
         ".vscode",
         ".gitignore",
-        "action-source/debug/",
-        "action/**",
+        "action/lib/**",
         "coverage",
         "cspell.json",
-        "**/fixtures/__recordings__/",
+        "__snapshots__",
+        "__recordings__",
         "**/fixtures/**/*.json",
         "**/fixtures/sampleCode/*errors/",
         "node_modules",
-        "**/package-lock.json",
-        "**/yarn.lock"
+        "package-lock.json",
+        "yarn.lock"
     ],
     "patterns": [
         {

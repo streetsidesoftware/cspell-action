@@ -9,3 +9,5 @@ WebPack breaking `cosmicofig`.
 
 But, Yarn 2 does not seem to have a "production" cache mode. This resulted in an action that
 was more then 50 MB. Much too big, since the Webpack version was around 2 MB.
+
+missstake 2
