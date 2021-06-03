@@ -1,3 +1,6 @@
+// Must include .pnp before anything else
+require('../.pnp.js').setup();
+
 import * as core from '@actions/core';
 import { getOctokit, context as githubContext } from '@actions/github';
 import { AppError } from './error';
