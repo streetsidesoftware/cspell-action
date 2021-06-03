@@ -678,6 +678,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cspell-action-code@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "cspell-action-code@workspace:."
+  dependencies:
+    "@actions/core": ^1.2.6
+    "@actions/github": ^5.0.0
+    "@octokit/core": ^3.4.0
+    "@octokit/plugin-rest-endpoint-methods": ^5.1.1
+    "@octokit/rest": ^18.5.3
+    cspell: ^5.5.2
+    cspell-glob: ^5.5.2
+    import-fresh: ^3.3.0
+  languageName: unknown
+  linkType: soft
+
 "cspell-glob@npm:^5.5.2":
   version: 5.5.2
   resolution: "cspell-glob@npm:5.5.2"
@@ -891,7 +906,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-fresh@npm:^3.2.1":
+"import-fresh@npm:^3.2.1, import-fresh@npm:^3.3.0":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
   dependencies:
@@ -1123,20 +1138,6 @@ __metadata:
   checksum: 337635c53b22fcaf1fa2a49ef3da34167893582ab3200bc28f7f013cb0a617db03c7f21ab7b124a6a85e8725cade7f3fb0f4618e54fed2e507078ce8a4c5c58b
   languageName: node
   linkType: hard
-
-"root-workspace-0b6124@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root-workspace-0b6124@workspace:."
-  dependencies:
-    "@actions/core": ^1.2.6
-    "@actions/github": ^5.0.0
-    "@octokit/core": ^3.4.0
-    "@octokit/plugin-rest-endpoint-methods": ^5.1.1
-    "@octokit/rest": ^18.5.3
-    cspell: ^5.5.2
-    cspell-glob: ^5.5.2
-  languageName: unknown
-  linkType: soft
 
 "safer-buffer@npm:>= 2.1.2 < 3.0.0":
   version: 2.1.2

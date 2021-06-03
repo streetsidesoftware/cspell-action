@@ -1,5 +1,6 @@
 {
-  "main": "./lib/main.js",
+  "name": "cspell-action-code",
+  "main": "./lib/main_root.js",
   "private": true,
   "dependencies": {
     "@actions/core": "^1.2.6",
@@ -8,6 +9,7 @@
     "@octokit/plugin-rest-endpoint-methods": "^5.1.1",
     "@octokit/rest": "^18.5.3",
     "cspell": "^5.5.2",
-    "cspell-glob": "^5.5.2"
+    "cspell-glob": "^5.5.2",
+    "import-fresh": "^3.3.0"
   }
 }

@@ -24,6 +24,7 @@ exports.run = void 0;
 require('../.pnp.js').setup();
 const core = __importStar(require("@actions/core"));
 const github_1 = require("@actions/github");
+const context_1 = require("@actions/github/lib/context");
 const error_1 = require("./error");
 const action_1 = require("./action");
 function getGithubToken() {
@@ -36,8 +37,9 @@ function getGithubToken() {
 async function run() {
     try {
         core.info('cspell-action');
+        const githubContext = new context_1.Context();
         const githubToken = getGithubToken();
-        await action_1.action(github_1.context, github_1.getOctokit(githubToken));
+        await action_1.action(githubContext, github_1.getOctokit(githubToken));
         core.info('Done.');
     }
     catch (error) {

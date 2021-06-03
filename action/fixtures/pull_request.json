@@ -1,0 +1,14 @@
+{
+    "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
+    "INPUT_CONFIG": "./fixtures/cspell.json",
+    "GITHUB_EVENT_PATH": "./fixtures/pull_request_payload.json",
+    "GITHUB_EVENT_NAME": "pull_request",
+    "GITHUB_SHA": "fac78ee45538f198c00ae651db5aedc7336f7ccc",
+    "GITHUB_REF": "refs/pull/3/merge",
+    "GITHUB_WORKFLOW": "build-test",
+    "GITHUB_ACTION": "self",
+    "GITHUB_ACTOR": "Jason3S",
+    "GITHUB_JOB": "test-action",
+    "GITHUB_RUN_NUMBER": "97",
+    "GITHUB_RUN_ID": "421485606"
+}

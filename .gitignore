@@ -11,7 +11,8 @@
 
 # install-state seems to always be changing
 install-state.gz
-/.yarn/cache
+action-src/.yarn/cache
+action-src/.yarn/install-state.gz
 
 # Logs
 logs

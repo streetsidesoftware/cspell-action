@@ -33,8 +33,8 @@ core_1.Polly.register(persister_fs_1.default);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const tsconfig = require('../../tsconfig.json');
 exports.sourceDir = path.resolve(path.join(__dirname, '..', '..'));
-exports.root = path.resolve(exports.sourceDir);
-exports.fixturesLocation = path.join(exports.root, 'fixtures');
+exports.root = path.resolve(path.join(exports.sourceDir, '..'));
+exports.fixturesLocation = path.join(exports.sourceDir, 'fixtures');
 const outputDir = path.resolve(exports.sourceDir, tsconfig.compilerOptions.outDir);
 exports.debugDir = outputDir;
 function fetchGithubActionFixture(filename) {
@@ -87,6 +87,7 @@ async function pollyRun(testFile, testName, fn) {
     const dir = path.resolve(exports.fixturesLocation, '__recordings__', rel);
     const poly = setupPolly(testName, dir);
     try {
+        console.warn('Poly Context: %o', { testFile, testName, dir });
         poly.replay();
         await fn(poly);
     }
