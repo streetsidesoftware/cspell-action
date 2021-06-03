@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn install --immutable --immutable-cache --check-cache
+      # Build should not be necessary to run tests
       - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} yarn test
       # Ensure the repository is clean after build & test
+      - run: yarn build
       - run: git --no-pager diff --compact-summary --exit-code
