@@ -2,6 +2,8 @@
 
 Uses [cspell](https://github.com/streetsidesoftware/cspell/tree/main/packages/cspell) to check code.
 
+missstake
+
 ## Installation
 
 Example `spellcheck.yaml`
