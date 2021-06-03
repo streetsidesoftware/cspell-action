@@ -1,9 +1,9 @@
-name: Update Dependencies Master
+name: Update Dependencies Main
 
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
   schedule:
     - cron: "0 12 * * *"
@@ -13,8 +13,8 @@ jobs:
     if: github.repository_owner == 'streetsidesoftware'
     runs-on: ubuntu-latest
     env:
-      NEW_BRANCH: "update-dependencies-master"
-      REF_BRANCH: master
+      NEW_BRANCH: "update-dependencies-main"
+      REF_BRANCH: main
     steps:
       - name: Checkout code
         uses: actions/checkout@v2

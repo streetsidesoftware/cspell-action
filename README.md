@@ -1,6 +1,6 @@
 # cspell-action
 
-Uses [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) to check code.
+Uses [cspell](https://github.com/streetsidesoftware/cspell/tree/main/packages/cspell) to check code.
 
 ## Installation
 

@@ -2,7 +2,7 @@ name: Build Action
 
 on:
   # push:
-  #   - "!master"
+  #   - "!main"
   workflow_dispatch:
 
 jobs:
