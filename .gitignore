@@ -1,33 +1,10 @@
-# We want to keep everything in the action folder.
+# We want to keep the action folder.
 !action
 
 # Don't keep map or test files
 /action/**/*.map
 /action/**/*.test.*
 /action/**/*.d.ts
-
-
-!node_modules
-!node_modules/
-node_modules/*
-
-!node_modules/@cspell
-
-# Dictionaries cannot be WebPacked
-node_modules/@cspell/*
-!node_modules/@cspell/cspell-bundled-dicts
-!node_modules/@cspell/dict*
-
-# Regexp worker must NOT be WebPacked
-!node_modules/regexp-worker/**/{LICENSE,package.json,README.md}
-!node_modules/regexp-worker/**/*.js
-
-# Do not WebPack import-fresh and dependencies
-# This is needed to support cosmiconfig
-!node_modules/import-fresh
-!node_modules/resolve-from
-!node_modules/parent-module
-!node_modules/callsites
 
 
 /debug

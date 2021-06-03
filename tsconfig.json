@@ -4,7 +4,7 @@
         "module": "commonjs",
         "sourceMap": true,
         "esModuleInterop": true,
-        "outDir": "./debug",
+        "outDir": "./action",
         "rootDir": "src",
         "strict": true,
         "forceConsistentCasingInFileNames": true
