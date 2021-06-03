@@ -869,28 +869,28 @@
     "@octokit/openapi-types" "^7.2.3"
 
 "@pollyjs/adapter-node-http@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-5.1.0.tgz#5bad8e21aeae7fc630bc2aa92be1385e4a77b456"
-  integrity sha512-3G2oYzSrHOGkHhDST/s3zj0luR6nQUfuLkZekYpNBNTIDZIreaOlNiwG7DAqB1YboGxFeQWKTMoqYu33cK2qYA==
+  version "5.1.1"
+  resolved "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-5.1.1.tgz#b717f28eda10e76e80c821f33d71b1cf064f41d0"
+  integrity sha512-hN4pemkI4Wb+jAloezZrKDCqQUAlIXcgRXtrG6CZseE14QVQ8zl2I1RakUnEHBgeRWtvl5ve6uJrFNGdE8mrLA==
   dependencies:
-    "@pollyjs/adapter" "^5.0.0"
-    "@pollyjs/utils" "^5.0.0"
+    "@pollyjs/adapter" "^5.1.1"
+    "@pollyjs/utils" "^5.1.1"
     lodash-es "^4.17.11"
     nock "^12.0.3"
 
-"@pollyjs/adapter@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter/-/adapter-5.0.0.tgz#faba5a7e68db38f56b4bf04271d8f5a10d5ca8c2"
-  integrity sha512-GaJUp9hKKKbRbh1FDbjVfxNGIYs8/1QQI5SR+zjz+OjpjV2btRPFCq1cqO4ORrHA2pTIC8IvEL3lgPSG4v/cPg==
+"@pollyjs/adapter@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.npmjs.org/@pollyjs/adapter/-/adapter-5.1.1.tgz#ef55788dd59ba77589b884856406323fff700606"
+  integrity sha512-4Ju6batDrkqyhYFhmKhjDTIbkfj0p0kZslCQ/saA1JMWIqlFnrXMiJVCSVlwNEsej3Zt/n9JfU5mEzbXxi+3vg==
   dependencies:
-    "@pollyjs/utils" "^5.0.0"
+    "@pollyjs/utils" "^5.1.1"
 
 "@pollyjs/core@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.npmjs.org/@pollyjs/core/-/core-5.1.0.tgz#6a4233ffe27dcd789bd6f31265451b35c24e090f"
-  integrity sha512-t29uNtc8Jq9MX3md+QgsfDtmsad9zLfKWiH33JdJjSilETWGPoq90xuMmWSXoXQCfIEVhIQ9rPEIvcmFpyqGCg==
+  version "5.1.1"
+  resolved "https://registry.npmjs.org/@pollyjs/core/-/core-5.1.1.tgz#f9595083a95f22e37f610bfacaa38299bffae6f3"
+  integrity sha512-MggjU1GT0SP8bPRoqvL2QZ0GhJABwGb1E21+Duv08v8HqGtesN0XEZBZxVsXhspqwAKI6oOrB7767a2TOptT1g==
   dependencies:
-    "@pollyjs/utils" "^5.0.0"
+    "@pollyjs/utils" "^5.1.1"
     "@sindresorhus/fnv1a" "^1.2.0"
     blueimp-md5 "^2.10.0"
     fast-json-stable-stringify "^2.0.0"
@@ -899,12 +899,12 @@
     route-recognizer "^0.3.4"
     slugify "^1.3.4"
 
-"@pollyjs/node-server@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@pollyjs/node-server/-/node-server-5.0.0.tgz#b4b8cb12cd2777b4ad4406ab6dcc7c1d539f7db7"
-  integrity sha512-DK1hqsZnIU7TXECNPI6E+ojaSpv62lt3+8eGn3qFbsa61ToTFQLFEMNfcTWA6ZXArrpdzYAdKVTt8BsdEujHkg==
+"@pollyjs/node-server@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.npmjs.org/@pollyjs/node-server/-/node-server-5.1.1.tgz#f5bb873b49ce88822371a7ab7426d9e1892bfdb2"
+  integrity sha512-4QatoXWk2fuDTfxXcdIpswkL0/1J9r6WWQ0R0xfVg/N+VM5gBHIuUNMMDX0j7SbzUiQyZNTXgSAR1FKMO+MDWA==
   dependencies:
-    "@pollyjs/utils" "^5.0.0"
+    "@pollyjs/utils" "^5.1.1"
     body-parser "^1.19.0"
     cors "^2.8.5"
     express "^4.17.1"
@@ -914,29 +914,29 @@
     nocache "^2.1.0"
 
 "@pollyjs/persister-fs@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@pollyjs/persister-fs/-/persister-fs-5.0.0.tgz#eaa1d4a672a9920b93c9238870aa899149f748d0"
-  integrity sha512-ju75JJ6sSJ/q68rB74wxIlvXCq/riuCqW3pS/Ucd4SFfks/HxXxM3yGTHn0Qq5SrmY9cYbQFfpOz0WCNDIqr+A==
+  version "5.1.1"
+  resolved "https://registry.npmjs.org/@pollyjs/persister-fs/-/persister-fs-5.1.1.tgz#c90713c637c6644aa765dc8db9387a88dfd6b7a6"
+  integrity sha512-VxAsBC4fAqfQlyTf2Qb8baquUEm/9KGvCEMG1IgGhkF9xeVOEk8WZHAdmX+ejz0gocVB+1uqsA6MZQACWNxYAA==
   dependencies:
-    "@pollyjs/node-server" "^5.0.0"
-    "@pollyjs/persister" "^5.0.0"
+    "@pollyjs/node-server" "^5.1.1"
+    "@pollyjs/persister" "^5.1.1"
 
-"@pollyjs/persister@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@pollyjs/persister/-/persister-5.0.0.tgz#36b85aba8d9a252e3125b257d7c1ec33d015d8fd"
-  integrity sha512-bTJes0c2/y4xrXi1vPypJhup/N/VPC1jY7maOuSv4pOFo6VAvoVJGT2sgMMnPU7qHSRn9Y6v+S7QqGtLOZCyAA==
+"@pollyjs/persister@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.npmjs.org/@pollyjs/persister/-/persister-5.1.1.tgz#6a880a8f0da7ef0695ce16670db17c04b9eeba15"
+  integrity sha512-AfRxvGQaEIiXxl2LjS81LJSx2x756gp4bqjEAggHsFXpYwAK+SNqSOxD/pknNV+SuxRGjNIB+GCVlh7L5Mikow==
   dependencies:
-    "@pollyjs/utils" "^5.0.0"
+    "@pollyjs/utils" "^5.1.1"
     bowser "^2.4.0"
     fast-json-stable-stringify "^2.0.0"
     lodash-es "^4.17.11"
     set-cookie-parser "^2.3.5"
     utf8-byte-length "^1.0.4"
 
-"@pollyjs/utils@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@pollyjs/utils/-/utils-5.0.0.tgz#c001f93865db82780dd17642c54e3919260c0034"
-  integrity sha512-zXoR13NGR1fVoUAcKR9/8AYCXZsMkG5EdvTZbR1nk5hCYJN1AR73HAKXMPsk/2vkLnBr6LWoAr3f9LjwqJOehQ==
+"@pollyjs/utils@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.npmjs.org/@pollyjs/utils/-/utils-5.1.1.tgz#3dd3c7df82ef5df3fdb6db7be14f097c44b2001c"
+  integrity sha512-Kzx4NkFJI2p2N82mCtpGZk82ArDCJUnRHPZ1mTEIkRSOwtz30N729+dbI39aS6H5oGcD8x/KAx3ZTAj3EQLxaQ==
   dependencies:
     qs "^6.7.0"
     url-parse "^1.4.7"
@@ -1074,9 +1074,9 @@
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
 "@types/node@*":
-  version "15.6.2"
-  resolved "https://registry.npmjs.org/@types/node/-/node-15.6.2.tgz#c61d49f38af70da32424b5322eee21f97e627175"
-  integrity sha512-dxcOx8801kMo3KlU+C+/ctWrzREAH7YvoF3aoVpRdqgs+Kf7flp+PJDN/EX5bME3suDUZHsxes9hpvBmzYlWbA==
+  version "15.9.0"
+  resolved "https://registry.npmjs.org/@types/node/-/node-15.9.0.tgz#0b7f6c33ca5618fe329a9d832b478b4964d325a8"
+  integrity sha512-AR1Vq1Ei1GaA5FjKL5PBqblTZsL5M+monvGSZwe6sSIdGiuu7Xr/pNwWJY+0ZQuN8AapD/XMB5IzBAyYRFbocA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -2541,9 +2541,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.723:
-  version "1.3.743"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.743.tgz#fcec24d6d647cb84fd796b42caa1b4039a180894"
-  integrity sha512-K2wXfo9iZQzNJNx67+Pld0DRF+9bYinj62gXCdgPhcu1vidwVuLPHQPPFnCdO55njWigXXpfBiT90jGUPbw8Zg==
+  version "1.3.745"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.745.tgz#b54c2baa0e01658288d6835d9f19727fd480de63"
+  integrity sha512-ZZCx4CS3kYT3BREYiIXocDqlNPT56KfdTS1Ogo4yvxRriBqiEXCDTLIQZT/zNVtby91xTWMMxW2NBiXh8bpLHw==
 
 emittery@^0.7.1:
   version "0.7.2"
@@ -2808,9 +2808,9 @@ execa@^4.0.0:
     strip-final-newline "^2.0.0"
 
 execa@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/execa/-/execa-5.0.1.tgz#aee63b871c9b2cb56bc9addcd3c70a785c6bf0d1"
-  integrity sha512-4hFTjFbFzQa3aCLobpbPJR/U+VoL1wdV5ozOWjeet0AWDeYr9UFGM1eUFWHX+VtOWFq4p0xXUXfW1YxUaP4fpw==
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/execa/-/execa-5.1.0.tgz#3ea50ee863d226bfa323528cce1684e7481dfe46"
+  integrity sha512-CkdUB7s2y6S+d4y+OM/+ZtQcJCiKUCth4cNImGMqrt2zEVtW2rfHGspQBE1GDo6LjeNIQmTPKXqTCKjqFKyu3A==
   dependencies:
     cross-spawn "^7.0.3"
     get-stream "^6.0.0"
