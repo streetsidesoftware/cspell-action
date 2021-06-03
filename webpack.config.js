@@ -26,6 +26,7 @@ module.exports = {
   },
   externals: [
     /^@cspell\/cspell-bundled-dicts/,
+    /^import-fresh/, // Do not bundle `import-fresh` which is used by `cosmiconfig` to load cspell.config.js files.
   ],
   output: {
     filename: 'main.js',
