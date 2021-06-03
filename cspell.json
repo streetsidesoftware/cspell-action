@@ -1,6 +1,6 @@
 {
     "version": "0.2",
-    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
     "words": [
         "camelcase",
         "cosmiconfig",
