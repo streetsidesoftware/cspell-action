@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-alpha.1](https://github.com/streetsidesoftware/cspell-action/compare/v1.2.0-alpha.0...v1.2.0-alpha.1) (2021-06-03)
+
+
+### Bug Fixes
+
+* Nest action and Yarn zero install to reduce size ([#203](https://github.com/streetsidesoftware/cspell-action/issues/203)) ([4f905c5](https://github.com/streetsidesoftware/cspell-action/commit/4f905c51f2d7d243b151df314bf8bbd84d35b4bc))
+
 ## [1.2.0-alpha.0](https://github.com/streetsidesoftware/cspell-action/compare/v1.1.2...v1.2.0-alpha.0) (2021-06-03)
 
 
