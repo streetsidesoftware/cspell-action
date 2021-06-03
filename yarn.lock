@@ -1358,7 +1358,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14":
+"@types/node@npm:^14":
   version: 14.17.2
   resolution: "@types/node@npm:14.17.2"
   checksum: 7a2e90989ce2948d3cdfc1d15fb5f0439ea53971d81a466ad049922bb23ef38252f6639271ae5899670ab93d48ed62542ad687767e45ffa6fe902ce59f518e5b
@@ -2842,7 +2842,7 @@ __metadata:
     "@pollyjs/persister-fs": ^5.0.0
     "@types/jest": ^26.0.19
     "@types/minimatch": ^3.0.3
-    "@types/node": 14
+    "@types/node": ^14
     "@types/pollyjs__adapter-node-http": ^2.0.1
     "@types/pollyjs__core": ^4.3.1
     "@types/pollyjs__persister-fs": ^2.0.1

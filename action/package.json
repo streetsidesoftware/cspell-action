@@ -1,16 +1,13 @@
 {
-  "main": "action/lib/main.js",
+  "main": "./lib/main.js",
   "private": true,
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^5.0.0",
-    "@cspell/cspell-bundled-dicts": "^5.3.0",
     "@octokit/core": "^3.4.0",
     "@octokit/plugin-rest-endpoint-methods": "^5.1.1",
     "@octokit/rest": "^18.5.3",
-    "@types/node": "14",
-    "cosmiconfig": "^7.0.0",
-    "cspell": "^5.3.1",
-    "cspell-glob": "^5.3.1"
+    "cspell": "^5.5.2",
+    "cspell-glob": "^5.5.2"
   }
 }

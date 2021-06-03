@@ -39,12 +39,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@actions/core", "npm:1.3.0"],
             ["@actions/github", "npm:5.0.0"],
-            ["@cspell/cspell-bundled-dicts", "npm:5.5.2"],
             ["@octokit/core", "npm:3.4.0"],
             ["@octokit/plugin-rest-endpoint-methods", "virtual:903c87c756ff376993db7d0e5ac595612aee1f0826ca5f6d69a72b53e5fb45e6f84b226ae6952ecc8230bec80c0bcf90f41589a458e0189d0a6908414588bea6#npm:5.3.1"],
             ["@octokit/rest", "npm:18.5.6"],
-            ["@types/node", "npm:14.17.2"],
-            ["cosmiconfig", "npm:7.0.0"],
             ["cspell", "npm:5.5.2"],
             ["cspell-glob", "npm:5.5.2"]
           ],
@@ -646,15 +643,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@octokit/types", "npm:6.16.2"],
             ["@octokit/openapi-types", "npm:7.2.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/node", [
-        ["npm:14.17.2", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-14.17.2-7f40e5ab20-7a2e90989c.zip/node_modules/@types/node/",
-          "packageDependencies": [
-            ["@types/node", "npm:14.17.2"]
           ],
           "linkType": "HARD",
         }]
@@ -1407,12 +1395,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["root-workspace-0b6124", "workspace:."],
             ["@actions/core", "npm:1.3.0"],
             ["@actions/github", "npm:5.0.0"],
-            ["@cspell/cspell-bundled-dicts", "npm:5.5.2"],
             ["@octokit/core", "npm:3.4.0"],
             ["@octokit/plugin-rest-endpoint-methods", "virtual:903c87c756ff376993db7d0e5ac595612aee1f0826ca5f6d69a72b53e5fb45e6f84b226ae6952ecc8230bec80c0bcf90f41589a458e0189d0a6908414588bea6#npm:5.3.1"],
             ["@octokit/rest", "npm:18.5.6"],
-            ["@types/node", "npm:14.17.2"],
-            ["cosmiconfig", "npm:7.0.0"],
             ["cspell", "npm:5.5.2"],
             ["cspell-glob", "npm:5.5.2"]
           ],

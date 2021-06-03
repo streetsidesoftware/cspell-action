@@ -60,7 +60,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cspell/cspell-bundled-dicts@npm:^5.3.0, @cspell/cspell-bundled-dicts@npm:^5.5.2":
+"@cspell/cspell-bundled-dicts@npm:^5.5.2":
   version: 5.5.2
   resolution: "@cspell/cspell-bundled-dicts@npm:5.5.2"
   dependencies:
@@ -478,13 +478,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14":
-  version: 14.17.2
-  resolution: "@types/node@npm:14.17.2"
-  checksum: 7a2e90989ce2948d3cdfc1d15fb5f0439ea53971d81a466ad049922bb23ef38252f6639271ae5899670ab93d48ed62542ad687767e45ffa6fe902ce59f518e5b
-  languageName: node
-  linkType: hard
-
 "@types/parse-json@npm:^4.0.0":
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
@@ -685,7 +678,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cspell-glob@npm:^5.3.1, cspell-glob@npm:^5.5.2":
+"cspell-glob@npm:^5.5.2":
   version: 5.5.2
   resolution: "cspell-glob@npm:5.5.2"
   dependencies:
@@ -735,7 +728,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cspell@npm:^5.3.1":
+"cspell@npm:^5.5.2":
   version: 5.5.2
   resolution: "cspell@npm:5.5.2"
   dependencies:
@@ -1137,14 +1130,11 @@ __metadata:
   dependencies:
     "@actions/core": ^1.2.6
     "@actions/github": ^5.0.0
-    "@cspell/cspell-bundled-dicts": ^5.3.0
     "@octokit/core": ^3.4.0
     "@octokit/plugin-rest-endpoint-methods": ^5.1.1
     "@octokit/rest": ^18.5.3
-    "@types/node": 14
-    cosmiconfig: ^7.0.0
-    cspell: ^5.3.1
-    cspell-glob: ^5.3.1
+    cspell: ^5.5.2
+    cspell-glob: ^5.5.2
   languageName: unknown
   linkType: soft
 

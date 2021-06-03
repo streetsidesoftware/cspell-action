@@ -10,7 +10,8 @@
 /debug
 
 # install-state seems to always be changing
-.yarn/install-state.gz
+install-state.gz
+/.yarn/cache
 
 # Logs
 logs

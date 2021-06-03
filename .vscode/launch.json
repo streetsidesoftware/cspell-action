@@ -50,7 +50,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/action/main.js",
+            "program": "${workspaceFolder}/action/lib/main.js",
             "cwd": "${workspaceFolder}",
             "env": {
                 "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
