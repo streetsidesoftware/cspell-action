@@ -9,6 +9,9 @@
 /node_modules
 /debug
 
+# install-state seems to always be changing
+.yarn/install-state.gz
+
 # Logs
 logs
 *.log
