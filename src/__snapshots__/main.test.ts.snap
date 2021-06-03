@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Validate Main event pull_request main.js 1`] = `
+"cspell-action
+Pull Request
+1/14 ./src/main.ts (???.??ms)
+2/14 ./.github/workflows/test.yml (???.??ms)
+3/14 ./.eslintrc.js (???.??ms)
+4/14 ./package.json (???.??ms)
+5/14 ./.vscode/launch.json (???.??ms)
+6/14 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+7/14 ./src/spell.test.ts (???.??ms)
+8/14 ./src/spell.ts (???.??ms)
+9/14 ./tsconfig.json (???.??ms)
+10/14 ./action.yaml (???.??ms)
+11/14 ./README.md (???.??ms)
+12/14 ./.vscode/settings.json (???.??ms)
+13/14 ./.github/workflows/lint.yml (???.??ms)
+14/14 ./src/main.test.ts (???.??ms)
+Files checked: 14, Issues found: 0 in 0 files.
+Done.
+"
+`;
+
+exports[`Validate Main event pull_request_with_files main.js 1`] = `
+"cspell-action
+Pull Request
+1/9 ./src/main.ts (???.??ms)
+2/9 ./.github/workflows/test.yml (???.??ms)
+3/9 ./.eslintrc.js (???.??ms)
+4/9 ./fixtures/sampleCode/ts/sample.ts (???.??ms)
+5/9 ./src/spell.test.ts (???.??ms)
+6/9 ./src/spell.ts (???.??ms)
+7/9 ./action.yaml (???.??ms)
+8/9 ./.github/workflows/lint.yml (???.??ms)
+9/9 ./src/main.test.ts (???.??ms)
+Files checked: 9, Issues found: 0 in 0 files.
+Done.
+"
+`;
+
+exports[`Validate Main event push main.js 1`] = `
+"cspell-action
+Push
+1/1 ./.editorconfig (???.??ms)
+Files checked: 1, Issues found: 0 in 0 files.
+Done.
+"
+`;
