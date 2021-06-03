@@ -20,11 +20,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
+// Must include .pnp before anything else
+require('../.pnp.js').setup();
 const core = __importStar(require("@actions/core"));
 const github_1 = require("@actions/github");
 const error_1 = require("./error");
 const action_1 = require("./action");
-require('../.pnp.js').setup();
 function getGithubToken() {
     const t0 = core.getInput('github_token', { required: true });
     if (t0[0] !== '$') {

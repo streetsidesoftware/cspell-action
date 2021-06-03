@@ -1,9 +1,10 @@
+// Must include .pnp before anything else
+require('../.pnp.js').setup();
+
 import * as core from '@actions/core';
 import { getOctokit, context as githubContext } from '@actions/github';
 import { AppError } from './error';
 import { action } from './action';
-
-require('../.pnp.js').setup();
 
 function getGithubToken(): string {
     const t0 = core.getInput('github_token', { required: true });
