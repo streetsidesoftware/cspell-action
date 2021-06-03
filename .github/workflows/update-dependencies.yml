@@ -23,9 +23,18 @@ jobs:
       - name: Install
         run: yarn
       - name: Update packages
+        run: yarn upgrade
+      - name: Update packages Src
         run: |
+          cd action-src
           yarn up
           yarn clean-build
+          cd ..
+      - name: Update packages Action
+        run: |
+          cd action
+          yarn up
+          cd ..
       - name: Has changes
         run: |
           git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV

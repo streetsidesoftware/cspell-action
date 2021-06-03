@@ -1,0 +1,36 @@
+{
+    "version": "0.1",
+    "words": [
+        "camelcase",
+        "octokit",
+        "pollyjs",
+        "repos",
+        "shrinkwrap",
+        "streetsidesoftware"
+    ],
+    "ignorePaths": [
+        "action/",
+        "cspell.json",
+        "fixtures/**/*.json"
+    ],
+    "overrides": [
+        {
+            "filename": "*.har",
+            "languageId": "json",
+            "dictionaries": [
+                "http",
+                "node",
+                "typescript"
+            ],
+            "words": [
+                "etag",
+                "maxage",
+                "ratelimit",
+                "nosniff"
+            ]
+        }
+    ],
+    "enableFiletypes": [
+        "shellscript"
+    ]
+}

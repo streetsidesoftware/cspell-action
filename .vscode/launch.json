@@ -6,10 +6,42 @@
     "configurations": [
         {
             "type": "node",
+            "name": "vscode-jest-tests",
             "request": "launch",
+            "runtimeArgs": [
+                "jest"
+            ],
+            "cwd": "${workspaceFolder}/action-src",
+            "args": [
+                "--runInBand"
+            ],
+            "runtimeExecutable": "yarn",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+        },
+        {
+            "type": "node",
             "name": "Jest Current File",
-            "program": "${workspaceFolder}/node_modules/.bin/jest",
-            "cwd": "${workspaceFolder}",
+            "request": "launch",
+            "runtimeArgs": [
+                "jest"
+            ],
+            "cwd": "${workspaceFolder}/action-src",
+            "args": [
+                "${fileBasename}",
+                "--runInBand"
+            ],
+            "runtimeExecutable": "yarn",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "XX Jest Current File",
+            "cwd": "${workspaceFolder}/action-src",
             "args": [
                 "--runInBand",
                 "${fileBasename}"
@@ -21,16 +53,17 @@
                 "<node_internals>/**"
             ],
             "windows": {
-                "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+                "program": "${workspaceFolder}/action-src/yarn",
             }
         },
         {
             "type": "node",
             "request": "launch",
             "name": "Jest Test All",
-            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "program": "${workspaceFolder}/action-src/yarn",
             "cwd": "${workspaceFolder}",
             "args": [
+                "jest",
                 "--runInBand"
             ],
             "console": "integratedTerminal",
@@ -40,7 +73,7 @@
                 "<node_internals>/**"
             ],
             "windows": {
-                "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+                "program": "${workspaceFolder}/action-src/yarn",
             }
         },
         {
@@ -50,7 +83,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/action/main.js",
+            "program": "${workspaceFolder}/action/lib/main_root.js",
             "cwd": "${workspaceFolder}",
             "env": {
                 "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",

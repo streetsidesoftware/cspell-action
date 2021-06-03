@@ -34,7 +34,7 @@ inputs:
     default: true
 runs:
   using: "node12"
-  main: "./action/main.js"
+  main: "./action/lib/main_root.js"
 branding:
   icon: "code"
   color: "green"
