@@ -24,7 +24,7 @@ jobs:
         run: yarn
       - name: Update packages
         run: |
-          yarn upgrade
+          yarn up
           yarn clean-build
       - name: Has changes
         run: |
