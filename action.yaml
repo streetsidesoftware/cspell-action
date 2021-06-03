@@ -33,7 +33,7 @@ inputs:
       Allowed values are: true, false
     default: true
 runs:
-  using: "node12"
+  using: "node14"
   main: "./action/lib/main.js"
 branding:
   icon: "code"
