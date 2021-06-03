@@ -24,6 +24,7 @@ const core = __importStar(require("@actions/core"));
 const github_1 = require("@actions/github");
 const error_1 = require("./error");
 const action_1 = require("./action");
+require('../.pnp.js').setup();
 function getGithubToken() {
     const t0 = core.getInput('github_token', { required: true });
     if (t0[0] !== '$') {
