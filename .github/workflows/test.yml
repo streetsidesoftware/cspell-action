@@ -28,6 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-        cd action
-        yarn install --immutable --immutable-cache --check-cache
+          cd action
+          yarn install --immutable --immutable-cache --check-cache
       - run: git --no-pager diff --compact-summary --exit-code
