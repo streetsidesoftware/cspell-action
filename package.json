@@ -5,13 +5,13 @@
   "main": "action/lib/main.js",
   "private": true,
   "scripts": {
-    "prepare": "cd action-src && yarn build",
-    "clean-build": "cd action-src && yarn clean-build",
+    "prepare": "cd action-src && yarn && yarn build",
+    "clean-build": "cd action-src && yarn && yarn clean-build",
     "release": "standard-version",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
     "watch": "tsc -p . --watch",
-    "test": "cd action-src && yarn test"
+    "test": "cd action-src && yarn && yarn test"
   },
   "installConfig": {
     "hoistingLimits": "workspace"
