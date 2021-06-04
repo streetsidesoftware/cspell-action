@@ -1,0 +1,62 @@
+{
+  "name": "gensequence",
+  "version": "3.1.1",
+  "description": "Small library to simplify working with Generators and Iterators in Javascript / Typescript",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/node": "^10.17.18",
+    "coveralls": "^3.0.11",
+    "jest": "^25.1.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "prepublish": "npm run clean-build",
+    "prepublishOnly": "npm test",
+    "clean-build": "npm run clean && npm run build",
+    "clean": "rimraf dist",
+    "test": "jest --testMatch '**/*.test.ts'",
+    "perf": "jest --testMatch '**/*.perf.ts'",
+    "test-all": "jest",
+    "build": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "coverage": "npm test -- --coverage",
+    "coverage-coveralls": "cat coverage/lcov.info | coveralls",
+    "travis-coverage": "npm run coverage &&  npm run coverage-coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jason3S/GenSequence.git"
+  },
+  "keywords": [
+    "generators",
+    "generator",
+    "iterator",
+    "iterators",
+    "iterable",
+    "functional",
+    "map",
+    "reduce"
+  ],
+  "files": [
+    "dist/",
+    "operators.js",
+    "!**/samples",
+    "!**/*.map",
+    "!**/*.test.*",
+    "!**/*.perf.*"
+  ],
+  "author": "Jason Dent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jason3S/GenSequence/issues"
+  },
+  "homepage": "https://github.com/Jason3S/GenSequence#readme"
+}

@@ -1,7 +1,13 @@
 {
-  "name": "cspell-action-code",
-  "main": "./lib/main_root.js",
+  "name": "action",
+  "version": "0.0.0",
   "private": true,
+  "main": "./lib/main_root.js",
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ]
+  },
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^5.0.0",

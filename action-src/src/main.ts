@@ -1,5 +1,5 @@
 // Must include .pnp before anything else
-require('../.pnp.js').setup();
+// require('../.pnp.js').setup();
 
 import * as core from '@actions/core';
 import { getOctokit } from '@actions/github';

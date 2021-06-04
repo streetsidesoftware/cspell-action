@@ -5,14 +5,24 @@
   "main": "action/lib/main.js",
   "private": true,
   "scripts": {
-    "prepare": "cd action-src && yarn && yarn build",
-    "clean-build": "cd action-src && yarn && yarn clean-build",
+    "build": "yarn workspace action-src build",
+    "clean-build": "yarn workspace action-src clean-build",
     "release": "standard-version",
     "release-alpha": "yarn release -p alpha",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
     "watch": "tsc -p . --watch",
-    "test": "cd action-src && yarn && yarn test"
+    "test": "yarn workspace action-src test"
+  },
+  "workspaces": {
+    "packages": [
+      "action",
+      "action-src"
+    ],
+    "nohoist": [
+      "action",
+      "action-src"
+    ]
   },
   "installConfig": {
     "hoistingLimits": "workspace"
