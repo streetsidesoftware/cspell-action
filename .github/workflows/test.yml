@@ -6,11 +6,18 @@ on: # rebuild any PRs and main branch changes
       - main
 
 jobs:
+  action-is-pristine: # make sure nothing changes in the action.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn install --frozen-lockfile
+      - run: git --no-pager diff --compact-summary --exit-code
+
   unit-test: # make sure unit-tests run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       # Build should not be necessary to run tests
       - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} yarn test
 
@@ -18,16 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       # Ensure the repository is clean after build
       - run: yarn clean-build
-      - run: git --no-pager diff --compact-summary --exit-code
-
-  action-is-pristine: # make sure nothing changes in the action.
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: |
-          cd action
-          yarn install --immutable --immutable-cache --check-cache
       - run: git --no-pager diff --compact-summary --exit-code

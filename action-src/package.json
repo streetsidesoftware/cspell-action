@@ -1,5 +1,6 @@
 {
   "name": "action-src",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "yarn compile",
@@ -15,6 +16,11 @@
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
     "watch": "tsc -p . --watch",
     "test": "jest"
+  },
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ]
   },
   "devDependencies": {
     "@pollyjs/adapter-node-http": "^5.1.0",

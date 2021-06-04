@@ -1,4 +1,6 @@
 "use strict";
+// Must include .pnp before anything else
+// require('../.pnp.js').setup();
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -20,8 +22,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
-// Must include .pnp before anything else
-require('../.pnp.js').setup();
 const core = __importStar(require("@actions/core"));
 const github_1 = require("@actions/github");
 const context_1 = require("@actions/github/lib/context");
