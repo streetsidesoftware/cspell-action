@@ -380,9 +380,9 @@
   integrity sha512-K21CfB4ZpKYwwDQiPfic2zJA/uxkbsd4IQGejEvDAhE3z8wBs6g6BwwqdVO767M9NgZqc021yAVpr79N5pWe3w==
 
 "@cspell/dict-bash@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.npmjs.org/@cspell/dict-bash/-/dict-bash-1.0.13.tgz#8f3c66330aa9de4900ba321b76c2783cc129fc81"
-  integrity sha512-y+M7eUnDAMwL9buAdTeR8iDsRVJ1TulVaEOpBk7h7q/YiytuqK3WSh3TKQTEQYH6l29tJI4eD6CSzVZzBiUeXQ==
+  version "1.0.14"
+  resolved "https://registry.npmjs.org/@cspell/dict-bash/-/dict-bash-1.0.14.tgz#b519aca2843ea206b034381aabcf37b18b4930b2"
+  integrity sha512-Q5RKcyJfPzLraFGliKaRVMBFACCtcQZ4wPLRkLLFHKEUN6/hKqKB0owrVq225AByv3aY2CMEPIaPEU7F0QDlTA==
 
 "@cspell/dict-companies@^1.0.38":
   version "1.0.38"
@@ -415,9 +415,9 @@
   integrity sha512-mn9bd7Et1L2zuibc08GVHTiD2Go3/hdjyX5KLukXDklBkq06r+tb0OtKtf1zKodtFDTIaYekGADhNhA6AnKLkg==
 
 "@cspell/dict-dotnet@^1.0.25":
-  version "1.0.25"
-  resolved "https://registry.npmjs.org/@cspell/dict-dotnet/-/dict-dotnet-1.0.25.tgz#7e7ad82b730d4fa10af5d2383c452d69d23e2aaa"
-  integrity sha512-3BFhdquYqqjeI8Jm1dYepZKGEg+fKFhw7UfPkVdx13C4ETo5VlsS4FAblC0pCY21pDU3QgRZOGL1Bj+KWCGp/w==
+  version "1.0.26"
+  resolved "https://registry.npmjs.org/@cspell/dict-dotnet/-/dict-dotnet-1.0.26.tgz#73d53f58685c2ebf750992081fc462002416103e"
+  integrity sha512-XqjcF+26S5GRvUiD03YWSvDSablzSmX2VtCPayQEKy32gsYHExvElgMMzeNvY/VU9A7Jbs+xna/pJ4sMBBFuvQ==
 
 "@cspell/dict-elixir@^1.0.24":
   version "1.0.24"
@@ -435,9 +435,9 @@
   integrity sha512-WAOtAZr3rNH4zpUXSeuxEo/C65o4Xp4sVdZ9cIqI+FPU7Vrgz0wuQZIL5TwbkuGUdtQtpRfgs2kTPXzns0fjGw==
 
 "@cspell/dict-filetypes@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.npmjs.org/@cspell/dict-filetypes/-/dict-filetypes-1.1.5.tgz#d1024eb0ae3b316e3e9411e2f36e624844345563"
-  integrity sha512-yfkB37J+hL6W8qa4AknFp7u6CGECrw2ql2/y0lUKruLQYid0ApK+bH+ll+Sqgl2YS5QAOhclskc72aQHAcRJIQ==
+  version "1.1.6"
+  resolved "https://registry.npmjs.org/@cspell/dict-filetypes/-/dict-filetypes-1.1.6.tgz#184e911a32a3518759f4152c67e9faaa0a0376c0"
+  integrity sha512-Nd6dnVCyj6eBsVp/pm1LJo0AHkMUw+/cuWV30a1gms5/njtKOgnYW5SOAK/WNThqGh8SAS8WOjQGvFv/DQOFAA==
 
 "@cspell/dict-fonts@^1.0.14":
   version "1.0.14"
@@ -530,9 +530,9 @@
   integrity sha512-5V/R7PRbbminTpPS3ywgdAalI9BHzcEjEj9ug4kWYvBIGwSnS7T6QCFCiu+e9LvEGUqQC+NHgLY4zs1NaBj2vA==
 
 "@cspell/dict-software-terms@^1.0.33":
-  version "1.0.34"
-  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-1.0.34.tgz#34fbc3daa0ee1dbb5bcff0d81c8760b165ee9184"
-  integrity sha512-tx49M9AdLEaLiB3DcA6dHWmcA4zDrBgmOdzmx/Kms/qtOPKYZdMHHXNcBwqxrW0aNXXpgAVN+fRNLxRYfmqpYw==
+  version "1.0.35"
+  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-1.0.35.tgz#f3d75af834f4e051e41b85fcfc4fd092d993aef1"
+  integrity sha512-b2q1Ja12WivVYDMkXpix+CY+PTDOHJriEZJpDWt7AG+DhwjqjASufjfBIV7U0t0e/eV7PLzbYCj0oj9lTT5eow==
 
 "@cspell/dict-typescript@^1.0.19":
   version "1.0.19"
@@ -1260,9 +1260,9 @@ ajv@^6.10.0, ajv@^6.12.4:
     uri-js "^4.2.2"
 
 ajv@^8.0.1:
-  version "8.5.0"
-  resolved "https://registry.npmjs.org/ajv/-/ajv-8.5.0.tgz#695528274bcb5afc865446aa275484049a18ae4b"
-  integrity sha512-Y2l399Tt1AguU3BPRP9Fn4eN+Or+StUGWCUpbnFyXSo8NZ9S4uj+AG2pjs5apK+ZMOwYOz1+a+VKvKH7CudXgQ==
+  version "8.6.0"
+  resolved "https://registry.npmjs.org/ajv/-/ajv-8.6.0.tgz#60cc45d9c46a477d80d92c48076d972c342e5720"
+  integrity sha512-cnUG4NSBiM4YFBxgZIj/In3/6KX+rQ2l2YPRVcvAMQGWEPKuXoPIhxzwqh31jA3IPbI4qEOp/5ILI4ynioXsGQ==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -4530,9 +4530,9 @@ node-notifier@^8.0.0:
     which "^2.0.2"
 
 node-releases@^1.1.71:
-  version "1.1.72"
-  resolved "https://registry.npmjs.org/node-releases/-/node-releases-1.1.72.tgz#14802ab6b1039a79a0c7d662b610a5bbd76eacbe"
-  integrity sha512-LLUo+PpH3dU6XizX3iVoubUNheF/owjXCZZ5yACDxNnPtgFuludV1ZL3ayK1kVep42Rmm0+R9/Y60NQbZ2bifw==
+  version "1.1.73"
+  resolved "https://registry.npmjs.org/node-releases/-/node-releases-1.1.73.tgz#dd4e81ddd5277ff846b80b52bb40c49edf7a7b20"
+  integrity sha512-uW7fodD6pyW2FZNZnp/Z3hvWKeEW1Y8R1+1CnErE8cXFXzl5blBOoVB41CvMer6P6Q0S5FXDwcHgFd1Wj0U9zg==
 
 normalize-package-data@^2.3.0, normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.5.0:
   version "2.5.0"
