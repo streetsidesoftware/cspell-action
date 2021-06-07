@@ -52,8 +52,9 @@ async function lint(files, lintOptions, logger) {
         }
         const issueCount = issueCounts.get(progress.filename) || 0;
         const { fileNum, fileCount, filename, elapsedTimeMs } = progress;
-        const issues = issueCount ? `issues: ${issueCount} ` : '';
-        logger.info(`${fileNum}/${fileCount} ${filename} ${issues}(${elapsedTimeMs === null || elapsedTimeMs === void 0 ? void 0 : elapsedTimeMs.toFixed(2)}ms)`);
+        const issues = issueCount ? ` issues: ${issueCount}` : '';
+        const timeMsg = elapsedTimeMs ? `(${elapsedTimeMs.toFixed(2)}ms)` : '-';
+        logger.info(`${fileNum}/${fileCount} ${filename}${issues} ${timeMsg}`);
     }
     function error(message, error) {
         logger.error(`${message}

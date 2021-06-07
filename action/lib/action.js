@@ -75,11 +75,22 @@ function friendlyEventName(eventName) {
         case 'pull_request':
             return 'Pull Request';
         default:
-            return `Unknown event: '${eventName}'`;
+            return `'${eventName}'`;
     }
 }
 function isSupportedEvent(eventName) {
     return supportedEvents.has(eventName);
+}
+async function gatherFilesFromContext(context) {
+    if (context.useEventFiles) {
+        const eventFiles = await gatherFiles(context);
+        return filterFiles(context.files, eventFiles);
+    }
+    const files = new Set();
+    if (context.files) {
+        files.add(context.files);
+    }
+    return files;
 }
 /**
  * Gather the set of files to be spell checked.
@@ -99,7 +110,7 @@ function filterFiles(globPattern, files) {
     if (!globPattern)
         return files;
     const matchingFiles = new Set();
-    const g = new glob.GlobMatcher(globPattern);
+    const g = new glob.GlobMatcher(globPattern, { mode: 'include' });
     for (const p of files) {
         if (g.match(p)) {
             matchingFiles.add(p);
@@ -111,6 +122,7 @@ function getActionParams() {
     return {
         github_token: core.getInput('github_token', { required: true }),
         files: core.getInput('files'),
+        incrementalOnly: core.getInput('incremental_files_only') || 'true',
         config: core.getInput('config'),
         root: core.getInput('root'),
         inline: (core.getInput('inline') || 'warning').toLowerCase(),
@@ -132,7 +144,14 @@ function tf(v) {
     return v;
 }
 function validateActionParams(params) {
-    const validations = [validateToken, validateConfig, validateRoot, validateInlineLevel, validateStrict];
+    const validations = [
+        validateToken,
+        validateConfig,
+        validateRoot,
+        validateInlineLevel,
+        validateStrict,
+        validateOnlyChanged,
+    ];
     const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
     if (!success) {
         throw new error_1.AppError('Bad Configuration.');
@@ -142,6 +161,14 @@ function validateActionParams(params) {
 function validateToken(params) {
     const token = params.github_token;
     return !!token;
+}
+function validateOnlyChanged(params) {
+    const isStrict = params.incrementalOnly;
+    const success = isStrict === 'true' || isStrict === 'false';
+    if (!success) {
+        core.error('Invalid onlyChanged setting, must be one of (true, false)');
+    }
+    return success;
 }
 function validateConfig(params) {
     const config = params.config;
@@ -171,7 +198,7 @@ function validateStrict(params) {
     const isStrict = params.strict;
     const success = isStrict === 'true' || isStrict === 'false';
     if (!success) {
-        core.error('Invalid strict setting, must be of of (true, false)');
+        core.error('Invalid strict setting, must be one of (true, false)');
     }
     return success;
 }
@@ -189,18 +216,18 @@ async function action(githubContext, octokit) {
         return false;
     }
     const eventName = githubContext.eventName;
-    if (!isSupportedEvent(eventName)) {
+    if (params.incrementalOnly === 'true' && !isSupportedEvent(eventName)) {
         const msg = `Unsupported event: '${eventName}'`;
         throw new error_1.AppError(msg);
     }
     const context = {
         githubContext,
         github: octokit,
-        files: core.getInput('files'),
+        files: params.files,
+        useEventFiles: params.incrementalOnly === 'true',
     };
     core.info(friendlyEventName(eventName));
-    const eventFiles = await gatherFiles(context);
-    const files = filterFiles(context.files, eventFiles);
+    const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {
         return true;
