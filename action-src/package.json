@@ -36,7 +36,7 @@
     "env-cmd": "^10.1.0",
     "eslint": "^7.16.0",
     "import-fresh": "^3.3.0",
-    "jest": "^26.6.3",
+    "jest": "^27.0.4",
     "jest-circus": "^26.6.3",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
