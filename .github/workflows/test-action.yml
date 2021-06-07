@@ -19,7 +19,8 @@ jobs:
       - uses: ./
         with:
           files: |
-            **
+            **/*.ts
+            **/*.md
 
   test-action-no-increment: # run the action
     runs-on: ubuntu-latest
