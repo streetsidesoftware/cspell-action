@@ -285,7 +285,7 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     };
 
     core.info(friendlyEventName(eventName));
-    core.info(format('Options: %o', params));
+    core.debug(format('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {

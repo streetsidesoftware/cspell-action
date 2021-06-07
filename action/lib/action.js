@@ -228,7 +228,7 @@ async function action(githubContext, octokit) {
         useEventFiles: params.incremental_files_only === 'true',
     };
     core.info(friendlyEventName(eventName));
-    core.info(util_1.format('Options: %o', params));
+    core.debug(util_1.format('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {
