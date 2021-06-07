@@ -75,7 +75,7 @@ export async function pollyRun(
     const dir = path.resolve(fixturesLocation, '__recordings__', rel);
     const poly = setupPolly(testName, dir);
     try {
-        console.warn('Poly Context: %o', { testFile, testName, dir });
+        // console.warn('Poly Context: %o', { testFile, testName, dir });
         poly.replay();
         await fn(poly);
     } finally {

@@ -25,6 +25,7 @@ const command_1 = require("@actions/core/lib/command");
 const github_1 = require("./github");
 const spell_1 = require("./spell");
 const path = __importStar(require("path"));
+const util_1 = require("util");
 const error_1 = require("./error");
 const glob = __importStar(require("cspell-glob"));
 const fs_1 = require("fs");
@@ -75,11 +76,22 @@ function friendlyEventName(eventName) {
         case 'pull_request':
             return 'Pull Request';
         default:
-            return `Unknown event: '${eventName}'`;
+            return `'${eventName}'`;
     }
 }
 function isSupportedEvent(eventName) {
     return supportedEvents.has(eventName);
+}
+async function gatherFilesFromContext(context) {
+    if (context.useEventFiles) {
+        const eventFiles = await gatherFiles(context);
+        return filterFiles(context.files, eventFiles);
+    }
+    const files = new Set(context.files
+        .split('\n')
+        .map((a) => a.trim())
+        .filter((a) => !!a));
+    return files;
 }
 /**
  * Gather the set of files to be spell checked.
@@ -99,7 +111,7 @@ function filterFiles(globPattern, files) {
     if (!globPattern)
         return files;
     const matchingFiles = new Set();
-    const g = new glob.GlobMatcher(globPattern);
+    const g = new glob.GlobMatcher(globPattern, { mode: 'include' });
     for (const p of files) {
         if (g.match(p)) {
             matchingFiles.add(p);
@@ -111,6 +123,7 @@ function getActionParams() {
     return {
         github_token: core.getInput('github_token', { required: true }),
         files: core.getInput('files'),
+        incremental_files_only: tf(core.getInput('incremental_files_only')) || 'true',
         config: core.getInput('config'),
         root: core.getInput('root'),
         inline: (core.getInput('inline') || 'warning').toLowerCase(),
@@ -132,7 +145,14 @@ function tf(v) {
     return v;
 }
 function validateActionParams(params) {
-    const validations = [validateToken, validateConfig, validateRoot, validateInlineLevel, validateStrict];
+    const validations = [
+        validateToken,
+        validateConfig,
+        validateRoot,
+        validateInlineLevel,
+        validateStrict,
+        validateIncrementalFilesOnly,
+    ];
     const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
     if (!success) {
         throw new error_1.AppError('Bad Configuration.');
@@ -142,6 +162,14 @@ function validateActionParams(params) {
 function validateToken(params) {
     const token = params.github_token;
     return !!token;
+}
+function validateIncrementalFilesOnly(params) {
+    const isIncrementalOnly = params.incremental_files_only;
+    const success = isIncrementalOnly === 'true' || isIncrementalOnly === 'false';
+    if (!success) {
+        core.error('Invalid incremental_files_only setting, must be one of (true, false)');
+    }
+    return success;
 }
 function validateConfig(params) {
     const config = params.config;
@@ -171,7 +199,7 @@ function validateStrict(params) {
     const isStrict = params.strict;
     const success = isStrict === 'true' || isStrict === 'false';
     if (!success) {
-        core.error('Invalid strict setting, must be of of (true, false)');
+        core.error('Invalid strict setting, must be one of (true, false)');
     }
     return success;
 }
@@ -189,18 +217,19 @@ async function action(githubContext, octokit) {
         return false;
     }
     const eventName = githubContext.eventName;
-    if (!isSupportedEvent(eventName)) {
+    if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
         const msg = `Unsupported event: '${eventName}'`;
         throw new error_1.AppError(msg);
     }
     const context = {
         githubContext,
         github: octokit,
-        files: core.getInput('files'),
+        files: params.files,
+        useEventFiles: params.incremental_files_only === 'true',
     };
     core.info(friendlyEventName(eventName));
-    const eventFiles = await gatherFiles(context);
-    const files = filterFiles(context.files, eventFiles);
+    core.debug(util_1.format('Options: %o', params));
+    const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {
         return true;

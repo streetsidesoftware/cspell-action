@@ -9,9 +9,11 @@
         "streetsidesoftware"
     ],
     "ignorePaths": [
+        "node_modules",
         "action/",
         "cspell.json",
-        "fixtures/**/*.json"
+        "__recordings__",
+        "**/*.json"
     ],
     "overrides": [
         {
@@ -32,5 +34,8 @@
     ],
     "enableFiletypes": [
         "shellscript"
+    ],
+    "import": [
+        "../cspell.json"
     ]
 }

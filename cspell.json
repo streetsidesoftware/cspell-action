@@ -14,7 +14,6 @@
     "ignorePaths": [
         ".git",
         ".yarn",
-        "/.github/**",
         ".pnp.js",
         ".vscode",
         ".gitignore",

@@ -11,3 +11,24 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+
+  test-action-with-file: # run the action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          files: |
+            **/*.ts
+            **/*.md
+
+  test-action-no-increment: # run the action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          incremental_files_only: false
+          files: |
+            **
+            .*/**

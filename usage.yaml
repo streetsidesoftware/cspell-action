@@ -15,6 +15,9 @@
     #   .*/**/*.yml
     files: ""
 
+    # Limit the files checked to the ones in the pull request or push.
+    incremental_files_only: "true"
+
     # Path to the `cspell.json` config file.
     # Default: ./cspell.json
     config: ""

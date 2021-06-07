@@ -1,5 +1,5 @@
 {
-    "version": "0.1",
+    "version": "0.2",
     "words": [
         "camelcase",
         "octokit",
@@ -8,9 +8,12 @@
         "shrinkwrap",
         "streetsidesoftware"
     ],
+    "globRoot": "./..",
     "ignorePaths": [
+        "node_modules",
         "action/",
         "cspell.json",
+        "fixtures/__recordings__/**",
         "fixtures/**/*.json"
     ],
     "overrides": [

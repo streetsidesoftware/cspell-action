@@ -5,6 +5,7 @@ import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { Octokit } from '@octokit/core';
 import { lint, LintOptions } from './spell';
 import * as path from 'path';
+import { format } from 'util';
 import { AppError } from './error';
 import * as glob from 'cspell-glob';
 import { existsSync } from 'fs';
@@ -14,6 +15,7 @@ interface Context {
     githubContext: GitHubContext;
     github: Octokit;
     files: string;
+    useEventFiles: boolean;
 }
 
 type EventNames = 'push' | 'pull_request';
@@ -30,6 +32,7 @@ type TrueFalse = 'true' | 'false';
 interface ActionParams {
     github_token: string;
     files: string;
+    incremental_files_only: string;
     config: string;
     root: string;
     inline: string;
@@ -39,6 +42,7 @@ interface ActionParams {
 interface ValidActionParams {
     github_token: string;
     files: string;
+    incremental_files_only: TrueFalse;
     config: string;
     root: string;
     inline: InlineWorkflowCommand;
@@ -106,12 +110,27 @@ function friendlyEventName(eventName: EventNames | string): string {
         case 'pull_request':
             return 'Pull Request';
         default:
-            return `Unknown event: '${eventName}'`;
+            return `'${eventName}'`;
     }
 }
 
 function isSupportedEvent(eventName: EventNames | string): eventName is EventNames {
     return supportedEvents.has(eventName);
+}
+
+async function gatherFilesFromContext(context: Context): Promise<Set<string>> {
+    if (context.useEventFiles) {
+        const eventFiles = await gatherFiles(context);
+        return filterFiles(context.files, eventFiles);
+    }
+
+    const files = new Set<string>(
+        context.files
+            .split('\n')
+            .map((a) => a.trim())
+            .filter((a) => !!a)
+    );
+    return files;
 }
 
 /**
@@ -135,7 +154,7 @@ function filterFiles(globPattern: string, files: Set<string>): Set<string> {
 
     const matchingFiles = new Set<string>();
 
-    const g = new glob.GlobMatcher(globPattern);
+    const g = new glob.GlobMatcher(globPattern, { mode: 'include' });
     for (const p of files) {
         if (g.match(p)) {
             matchingFiles.add(p);
@@ -149,6 +168,7 @@ function getActionParams(): ActionParams {
     return {
         github_token: core.getInput('github_token', { required: true }),
         files: core.getInput('files'),
+        incremental_files_only: tf(core.getInput('incremental_files_only')) || 'true',
         config: core.getInput('config'),
         root: core.getInput('root'),
         inline: (core.getInput('inline') || 'warning').toLowerCase(),
@@ -172,7 +192,14 @@ function tf(v: string | boolean | number): TrueFalse | string {
 }
 
 function validateActionParams(params: ActionParams | ValidActionParams): params is ValidActionParams {
-    const validations = [validateToken, validateConfig, validateRoot, validateInlineLevel, validateStrict];
+    const validations = [
+        validateToken,
+        validateConfig,
+        validateRoot,
+        validateInlineLevel,
+        validateStrict,
+        validateIncrementalFilesOnly,
+    ];
     const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
     if (!success) {
         throw new AppError('Bad Configuration.');
@@ -183,6 +210,15 @@ function validateActionParams(params: ActionParams | ValidActionParams): params 
 function validateToken(params: ActionParams) {
     const token = params.github_token;
     return !!token;
+}
+
+function validateIncrementalFilesOnly(params: ActionParams) {
+    const isIncrementalOnly = params.incremental_files_only;
+    const success = isIncrementalOnly === 'true' || isIncrementalOnly === 'false';
+    if (!success) {
+        core.error('Invalid incremental_files_only setting, must be one of (true, false)');
+    }
+    return success;
 }
 
 function validateConfig(params: ActionParams) {
@@ -216,7 +252,7 @@ function validateStrict(params: ActionParams) {
     const isStrict = params.strict;
     const success = isStrict === 'true' || isStrict === 'false';
     if (!success) {
-        core.error('Invalid strict setting, must be of of (true, false)');
+        core.error('Invalid strict setting, must be one of (true, false)');
     }
     return success;
 }
@@ -237,19 +273,20 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
         return false;
     }
     const eventName = githubContext.eventName;
-    if (!isSupportedEvent(eventName)) {
+    if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
         const msg = `Unsupported event: '${eventName}'`;
         throw new AppError(msg);
     }
     const context: Context = {
         githubContext,
         github: octokit,
-        files: core.getInput('files'),
+        files: params.files,
+        useEventFiles: params.incremental_files_only === 'true',
     };
 
     core.info(friendlyEventName(eventName));
-    const eventFiles = await gatherFiles(context);
-    const files = filterFiles(context.files, eventFiles);
+    core.debug(format('Options: %o', params));
+    const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {
         return true;
