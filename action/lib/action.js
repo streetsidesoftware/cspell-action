@@ -87,10 +87,10 @@ async function gatherFilesFromContext(context) {
         const eventFiles = await gatherFiles(context);
         return filterFiles(context.files, eventFiles);
     }
-    const files = new Set();
-    if (context.files) {
-        files.add(context.files);
-    }
+    const files = new Set(context.files
+        .split('\n')
+        .map((a) => a.trim())
+        .filter((a) => !!a));
     return files;
 }
 /**

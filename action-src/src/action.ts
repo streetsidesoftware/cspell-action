@@ -124,11 +124,12 @@ async function gatherFilesFromContext(context: Context): Promise<Set<string>> {
         return filterFiles(context.files, eventFiles);
     }
 
-    const files = new Set<string>();
-    if (context.files) {
-        files.add(context.files);
-    }
-
+    const files = new Set<string>(
+        context.files
+            .split('\n')
+            .map((a) => a.trim())
+            .filter((a) => !!a)
+    );
     return files;
 }
 
