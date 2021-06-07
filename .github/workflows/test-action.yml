@@ -11,3 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+
+  test-action: # run the action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+        - files: |
+          **
+          .*/**
