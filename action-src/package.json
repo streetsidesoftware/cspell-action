@@ -51,7 +51,7 @@
     "@octokit/core": "^3.4.0",
     "@octokit/plugin-rest-endpoint-methods": "^5.1.1",
     "@octokit/rest": "^18.5.3",
-    "@types/node": "^14",
+    "@types/node": "^15",
     "cosmiconfig": "^7.0.0",
     "cspell": "^5.3.1",
     "cspell-glob": "^5.3.1"
