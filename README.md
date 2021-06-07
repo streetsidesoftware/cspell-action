@@ -38,7 +38,11 @@ jobs:
     #   !dist/**/*.{ts,js}
     #   # Hidden directories need an explicit .* to be included
     #   .*/**/*.yml
-    # Default **/*
+    #
+    # To not check hidden files, use:
+    # files: "**"
+    #
+    # Default: ALL files
     files: ''
 
     # The point in the directory tree to start spell checking.
@@ -55,3 +59,38 @@ jobs:
     # Default: true
     strict: true
 ```
+
+
+## Yarn 2 - PlugNPlay
+
+To use dictionaries stored within a Yarn 2 workspace, there are two choices:
+
+1. Add `"usePnP": true` to the workspace `cspell.json` file. This tells `cspell` to search for the
+  nearest `.pnp.js` or `.pnp.cjs` file and load it.
+
+  Example for medical terms:
+  ```js
+  {
+    "usePnP": true,
+    "import": ["@cspell/dict-medicalterms/cspell-ext.json"]
+  }
+  ```
+
+2. Require the `.pnp.js` or `.pnp.cjs` in a `cspell.config.js` file.
+   This must be done before importing any packages.
+
+  ```js
+  'use strict';
+  require('./.pnp.js').setup(); // or './.pnp.cjs'
+
+  /** @type { import("@cspell/cspell-types").CSpellUserSettings } */
+  const cspell = {
+    description: 'Yarn 2 Aware cspell config',
+    import: ["@cspell/dict-medicalterms/cspell-ext.json"]
+  };
+  module.exports = cspell;
+  ```
+
+<!---
+cspell:ignore medicalterms
+--->
