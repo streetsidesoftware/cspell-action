@@ -167,7 +167,7 @@ function getActionParams(): ActionParams {
     return {
         github_token: core.getInput('github_token', { required: true }),
         files: core.getInput('files'),
-        incremental_files_only: core.getInput('incremental_files_only') ?? 'true',
+        incremental_files_only: tf(core.getInput('incremental_files_only')) || 'true',
         config: core.getInput('config'),
         root: core.getInput('root'),
         inline: (core.getInput('inline') || 'warning').toLowerCase(),
@@ -197,7 +197,7 @@ function validateActionParams(params: ActionParams | ValidActionParams): params 
         validateRoot,
         validateInlineLevel,
         validateStrict,
-        validateOnlyChanged,
+        validateIncrementalFilesOnly,
     ];
     const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
     if (!success) {
@@ -211,11 +211,11 @@ function validateToken(params: ActionParams) {
     return !!token;
 }
 
-function validateOnlyChanged(params: ActionParams) {
+function validateIncrementalFilesOnly(params: ActionParams) {
     const isIncrementalOnly = params.incremental_files_only;
     const success = isIncrementalOnly === 'true' || isIncrementalOnly === 'false';
     if (!success) {
-        core.error('Invalid onlyChanged setting, must be one of (true, false)');
+        core.error('Invalid incremental_files_only setting, must be one of (true, false)');
     }
     return success;
 }
