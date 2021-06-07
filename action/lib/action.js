@@ -165,8 +165,8 @@ function validateToken(params) {
     return !!token;
 }
 function validateOnlyChanged(params) {
-    const isStrict = params.incremental_files_only;
-    const success = isStrict === 'true' || isStrict === 'false';
+    const isIncrementalOnly = params.incremental_files_only;
+    const success = isIncrementalOnly === 'true' || isIncrementalOnly === 'false';
     if (!success) {
         core.error('Invalid onlyChanged setting, must be one of (true, false)');
     }
@@ -218,7 +218,7 @@ async function action(githubContext, octokit) {
         return false;
     }
     const eventName = githubContext.eventName;
-    if (params.incrementalOnly === 'true' && !isSupportedEvent(eventName)) {
+    if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
         const msg = `Unsupported event: '${eventName}'`;
         throw new error_1.AppError(msg);
     }
@@ -226,7 +226,7 @@ async function action(githubContext, octokit) {
         githubContext,
         github: octokit,
         files: params.files,
-        useEventFiles: params.incrementalOnly === 'true',
+        useEventFiles: params.incremental_files_only === 'true',
     };
     core.info(friendlyEventName(eventName));
     core.info(util_1.format('Options: %o', params));

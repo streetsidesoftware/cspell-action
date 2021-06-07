@@ -42,7 +42,7 @@ interface ActionParams {
 interface ValidActionParams {
     github_token: string;
     files: string;
-    incrementalOnly: TrueFalse;
+    incremental_files_only: TrueFalse;
     config: string;
     root: string;
     inline: InlineWorkflowCommand;
@@ -212,8 +212,8 @@ function validateToken(params: ActionParams) {
 }
 
 function validateOnlyChanged(params: ActionParams) {
-    const isStrict = params.incremental_files_only;
-    const success = isStrict === 'true' || isStrict === 'false';
+    const isIncrementalOnly = params.incremental_files_only;
+    const success = isIncrementalOnly === 'true' || isIncrementalOnly === 'false';
     if (!success) {
         core.error('Invalid onlyChanged setting, must be one of (true, false)');
     }
@@ -272,7 +272,7 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
         return false;
     }
     const eventName = githubContext.eventName;
-    if (params.incrementalOnly === 'true' && !isSupportedEvent(eventName)) {
+    if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
         const msg = `Unsupported event: '${eventName}'`;
         throw new AppError(msg);
     }
@@ -280,7 +280,7 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
         githubContext,
         github: octokit,
         files: params.files,
-        useEventFiles: params.incrementalOnly === 'true',
+        useEventFiles: params.incremental_files_only === 'true',
     };
 
     core.info(friendlyEventName(eventName));
