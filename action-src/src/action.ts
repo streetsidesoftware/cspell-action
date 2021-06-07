@@ -5,6 +5,7 @@ import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { Octokit } from '@octokit/core';
 import { lint, LintOptions } from './spell';
 import * as path from 'path';
+import { format } from 'util';
 import { AppError } from './error';
 import * as glob from 'cspell-glob';
 import { existsSync } from 'fs';
@@ -31,7 +32,7 @@ type TrueFalse = 'true' | 'false';
 interface ActionParams {
     github_token: string;
     files: string;
-    incrementalOnly: string;
+    incremental_files_only: string;
     config: string;
     root: string;
     inline: string;
@@ -166,7 +167,7 @@ function getActionParams(): ActionParams {
     return {
         github_token: core.getInput('github_token', { required: true }),
         files: core.getInput('files'),
-        incrementalOnly: core.getInput('incremental_files_only') || 'true',
+        incremental_files_only: core.getInput('incremental_files_only') ?? 'true',
         config: core.getInput('config'),
         root: core.getInput('root'),
         inline: (core.getInput('inline') || 'warning').toLowerCase(),
@@ -211,7 +212,7 @@ function validateToken(params: ActionParams) {
 }
 
 function validateOnlyChanged(params: ActionParams) {
-    const isStrict = params.incrementalOnly;
+    const isStrict = params.incremental_files_only;
     const success = isStrict === 'true' || isStrict === 'false';
     if (!success) {
         core.error('Invalid onlyChanged setting, must be one of (true, false)');
@@ -283,6 +284,7 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     };
 
     core.info(friendlyEventName(eventName));
+    core.info(format('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {

@@ -25,6 +25,7 @@ const command_1 = require("@actions/core/lib/command");
 const github_1 = require("./github");
 const spell_1 = require("./spell");
 const path = __importStar(require("path"));
+const util_1 = require("util");
 const error_1 = require("./error");
 const glob = __importStar(require("cspell-glob"));
 const fs_1 = require("fs");
@@ -119,10 +120,11 @@ function filterFiles(globPattern, files) {
     return matchingFiles;
 }
 function getActionParams() {
+    var _a;
     return {
         github_token: core.getInput('github_token', { required: true }),
         files: core.getInput('files'),
-        incrementalOnly: core.getInput('incremental_files_only') || 'true',
+        incremental_files_only: (_a = core.getInput('incremental_files_only')) !== null && _a !== void 0 ? _a : 'true',
         config: core.getInput('config'),
         root: core.getInput('root'),
         inline: (core.getInput('inline') || 'warning').toLowerCase(),
@@ -163,7 +165,7 @@ function validateToken(params) {
     return !!token;
 }
 function validateOnlyChanged(params) {
-    const isStrict = params.incrementalOnly;
+    const isStrict = params.incremental_files_only;
     const success = isStrict === 'true' || isStrict === 'false';
     if (!success) {
         core.error('Invalid onlyChanged setting, must be one of (true, false)');
@@ -227,6 +229,7 @@ async function action(githubContext, octokit) {
         useEventFiles: params.incrementalOnly === 'true',
     };
     core.info(friendlyEventName(eventName));
+    core.info(util_1.format('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {
