@@ -28,7 +28,7 @@ describe('Validate Action', () => {
     `(
         '$test',
         async ({ file, expected }) => {
-            const context = createContext(file);
+            const context = createContextFromFile(file);
             const octokit = createOctokit();
             expect.assertions(1);
             await expect(action(context, octokit)).rejects.toEqual(expected);
@@ -45,11 +45,28 @@ describe('Validate Action', () => {
         '$testName',
         async ({ testName, file, expected }) => {
             return helper.pollyRun(__filename, testName, async () => {
-                const context = createContext(file);
+                const context = createContextFromFile(file);
                 const octokit = createOctokit();
                 expect.assertions(1);
                 await expect(action(context, octokit)).resolves.toBe(expected);
             });
+        },
+        timeout
+    );
+    test.each`
+        files        | expected
+        ${'**'}      | ${false}
+        ${'**/*.md'} | ${true}
+    `(
+        'check all $files',
+        async ({ files, expected }) => {
+            const context = createContextFromFile('pull_request.json', {
+                INPUT_FILES: files,
+                INPUT_INCREMENTAL_FILES_ONLY: 'false',
+            });
+            const octokit = createOctokit();
+            expect.assertions(1);
+            await expect(action(context, octokit)).resolves.toBe(expected);
         },
         timeout
     );
@@ -89,8 +106,12 @@ function getGithubToken(): string {
     return process.env[t0.slice(1)] || 'undefined';
 }
 
-function createContext(filename: string): Context {
-    Object.assign(process.env, fetchGithubActionFixture(filename));
+function createContextFromFile(filename: string, ...params: Record<string, string>[]): Context {
+    return createContext(fetchGithubActionFixture(filename), ...params);
+}
+
+function createContext(...params: Record<string, string>[]): Context {
+    Object.assign(process.env, ...params);
     setEnvIfNotExist('INPUT_ROOT', root);
     setEnvIfNotExist('INPUT_CONFIG', configFile);
     process.env.INPUT_CONFIG = path.resolve(root, process.env.INPUT_CONFIG || configFile);

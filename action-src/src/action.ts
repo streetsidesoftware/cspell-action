@@ -14,6 +14,7 @@ interface Context {
     githubContext: GitHubContext;
     github: Octokit;
     files: string;
+    useEventFiles: boolean;
 }
 
 type EventNames = 'push' | 'pull_request';
@@ -30,6 +31,7 @@ type TrueFalse = 'true' | 'false';
 interface ActionParams {
     github_token: string;
     files: string;
+    incrementalOnly: string;
     config: string;
     root: string;
     inline: string;
@@ -39,6 +41,7 @@ interface ActionParams {
 interface ValidActionParams {
     github_token: string;
     files: string;
+    incrementalOnly: TrueFalse;
     config: string;
     root: string;
     inline: InlineWorkflowCommand;
@@ -106,12 +109,26 @@ function friendlyEventName(eventName: EventNames | string): string {
         case 'pull_request':
             return 'Pull Request';
         default:
-            return `Unknown event: '${eventName}'`;
+            return `'${eventName}'`;
     }
 }
 
 function isSupportedEvent(eventName: EventNames | string): eventName is EventNames {
     return supportedEvents.has(eventName);
+}
+
+async function gatherFilesFromContext(context: Context): Promise<Set<string>> {
+    if (context.useEventFiles) {
+        const eventFiles = await gatherFiles(context);
+        return filterFiles(context.files, eventFiles);
+    }
+
+    const files = new Set<string>();
+    if (context.files) {
+        files.add(context.files);
+    }
+
+    return files;
 }
 
 /**
@@ -149,6 +166,7 @@ function getActionParams(): ActionParams {
     return {
         github_token: core.getInput('github_token', { required: true }),
         files: core.getInput('files'),
+        incrementalOnly: core.getInput('incremental_files_only') || 'true',
         config: core.getInput('config'),
         root: core.getInput('root'),
         inline: (core.getInput('inline') || 'warning').toLowerCase(),
@@ -172,7 +190,14 @@ function tf(v: string | boolean | number): TrueFalse | string {
 }
 
 function validateActionParams(params: ActionParams | ValidActionParams): params is ValidActionParams {
-    const validations = [validateToken, validateConfig, validateRoot, validateInlineLevel, validateStrict];
+    const validations = [
+        validateToken,
+        validateConfig,
+        validateRoot,
+        validateInlineLevel,
+        validateStrict,
+        validateOnlyChanged,
+    ];
     const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
     if (!success) {
         throw new AppError('Bad Configuration.');
@@ -183,6 +208,15 @@ function validateActionParams(params: ActionParams | ValidActionParams): params 
 function validateToken(params: ActionParams) {
     const token = params.github_token;
     return !!token;
+}
+
+function validateOnlyChanged(params: ActionParams) {
+    const isStrict = params.incrementalOnly;
+    const success = isStrict === 'true' || isStrict === 'false';
+    if (!success) {
+        core.error('Invalid onlyChanged setting, must be one of (true, false)');
+    }
+    return success;
 }
 
 function validateConfig(params: ActionParams) {
@@ -216,7 +250,7 @@ function validateStrict(params: ActionParams) {
     const isStrict = params.strict;
     const success = isStrict === 'true' || isStrict === 'false';
     if (!success) {
-        core.error('Invalid strict setting, must be of of (true, false)');
+        core.error('Invalid strict setting, must be one of (true, false)');
     }
     return success;
 }
@@ -237,19 +271,19 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
         return false;
     }
     const eventName = githubContext.eventName;
-    if (!isSupportedEvent(eventName)) {
+    if (params.incrementalOnly === 'true' && !isSupportedEvent(eventName)) {
         const msg = `Unsupported event: '${eventName}'`;
         throw new AppError(msg);
     }
     const context: Context = {
         githubContext,
         github: octokit,
-        files: core.getInput('files'),
+        files: params.files,
+        useEventFiles: params.incrementalOnly === 'true',
     };
 
     core.info(friendlyEventName(eventName));
-    const eventFiles = await gatherFiles(context);
-    const files = filterFiles(context.files, eventFiles);
+    const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {
         return true;

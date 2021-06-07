@@ -16,6 +16,10 @@ inputs:
       Define glob patterns to filter the files to be checked. Use a new line between patterns to define multiple patterns.
       The default is to check ALL files that were changed in in the pull_request or push.
       Note: `ignorePaths` defined in cspell.json still apply.
+  incremental_files_only:
+    description: >
+      Limit the files checked to the ones in the pull request or push.
+    default: true
   config:
     description: >
       Path to `cspell.json`

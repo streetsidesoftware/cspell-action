@@ -1,0 +1,7 @@
+{
+    "ignorePaths": [
+        "node_modules",
+        "__recordings__",
+        "__snapshots__"
+    ]
+}

@@ -2,8 +2,6 @@ import * as process from 'process';
 import * as helper from './test/helper';
 import { run } from './main';
 
-const root = helper.root;
-
 const timeout = 20000;
 
 describe('Validate Main', () => {

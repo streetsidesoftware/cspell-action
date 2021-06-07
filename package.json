@@ -5,7 +5,8 @@
   "main": "action/lib/main.js",
   "private": true,
   "scripts": {
-    "prepare": "yarn build",
+    "prepare": "yarn sync && yarn build",
+    "sync": "node sync_package.mjs",
     "build": "yarn workspace action-src build",
     "clean-build": "yarn workspace action-src clean-build",
     "release": "standard-version",
@@ -45,7 +46,11 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
     "env-cmd": "^10.1.0",
+    "eslint": "^7.28.0",
+    "prettier": "^2.3.1",
     "standard-version": "^9.3.0"
   }
 }

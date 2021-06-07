@@ -3,9 +3,6 @@
         "**/.yarn": true,
         "**/.pnp.*": true
     },
-    "eslint.nodePath": "action-src/.yarn/sdks",
-    "prettier.prettierPath": "action-src/.yarn/sdks/prettier/index.js",
-    "typescript.tsdk": "action-src/.yarn/sdks/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "git.ignoreLimitWarning": true
 }
