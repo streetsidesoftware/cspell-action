@@ -152,7 +152,7 @@ function filterFiles(globPattern: string, files: Set<string>): Set<string> {
 
     const matchingFiles = new Set<string>();
 
-    const g = new glob.GlobMatcher(globPattern);
+    const g = new glob.GlobMatcher(globPattern, { mode: 'include' });
     for (const p of files) {
         if (g.match(p)) {
             matchingFiles.add(p);
