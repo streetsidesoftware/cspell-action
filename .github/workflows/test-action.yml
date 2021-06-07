@@ -18,8 +18,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          - files: |
-              **
+          files: |
+            **
 
   test-action-no-increment: # run the action
     runs-on: ubuntu-latest
@@ -27,6 +27,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          - incremental_files_only: false
-          - files: |
-              **
+          incremental_files_only: false
+          files: |
+            **
+            .*/**
