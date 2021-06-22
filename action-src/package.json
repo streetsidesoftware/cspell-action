@@ -32,7 +32,7 @@
     "@types/pollyjs__core": "^4.3.1",
     "@types/pollyjs__persister-fs": "^2.0.1",
     "env-cmd": "^10.1.0",
-    "jest": "^27.0.4",
+    "jest": "^27.0.5",
     "rimraf": "^3.0.2",
     "standard-version": "^9.1.1",
     "ts-jest": "^27.0.3",
