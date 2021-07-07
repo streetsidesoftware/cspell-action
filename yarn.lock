@@ -1106,10 +1106,10 @@
   dependencies:
     "@types/pollyjs__core" "*"
 
-"@types/pollyjs__core@*", "@types/pollyjs__core@^4.3.1":
-  version "4.3.2"
-  resolved "https://registry.npmjs.org/@types/pollyjs__core/-/pollyjs__core-4.3.2.tgz#b312d3c7b659d570aad2ef9a2aea43b9acdc4946"
-  integrity sha512-z9okr2lIBGLoBlbjsp0l0nTKGkIBhCOk5TTdyMSph5yDi+bQziNPpTEyp8+r7DfMlVe0G/GiqvSPsU9Fpz1FMw==
+"@types/pollyjs__core@*", "@types/pollyjs__core@^4.3.3":
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/@types/pollyjs__core/-/pollyjs__core-4.3.3.tgz#a666d71ac9e977c91380db33c6621270b8b444a5"
+  integrity sha512-qPLLq+be0L45z/EawTWXdsQZINCHgRxqQJUDQsvLTDGvnnV6y5rjK3c8mYtCxkVFmKxNIBsicI1+ldHPgPBAjA==
   dependencies:
     "@types/pollyjs__adapter" "*"
     "@types/pollyjs__persister" "*"
