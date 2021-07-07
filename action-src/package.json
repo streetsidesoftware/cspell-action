@@ -27,7 +27,7 @@
     "@pollyjs/core": "^5.1.0",
     "@pollyjs/persister-fs": "^5.0.0",
     "@types/jest": "^26.0.19",
-    "@types/minimatch": "^3.0.3",
+    "@types/minimatch": "^3.0.5",
     "@types/pollyjs__adapter-node-http": "^2.0.1",
     "@types/pollyjs__core": "^4.3.1",
     "@types/pollyjs__persister-fs": "^2.0.1",
