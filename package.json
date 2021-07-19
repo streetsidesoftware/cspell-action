@@ -49,7 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
     "env-cmd": "^10.1.0",
-    "eslint": "^7.29.0",
+    "eslint": "^7.31.0",
     "prettier": "^2.3.1",
     "standard-version": "^9.3.0"
   }
