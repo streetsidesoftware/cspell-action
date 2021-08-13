@@ -1978,10 +1978,10 @@ crypto-random-string@^2.0.0:
   resolved "https://registry.npmjs.org/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
-cspell-glob@^5.6.0, cspell-glob@^5.6.5:
-  version "5.6.5"
-  resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-5.6.5.tgz#125818f94903fb070b9bb0f9fdf2488d2a279db7"
-  integrity sha512-bobER7IoYBJZCXxkiAc5FT1Tb55TFLf1vZSw0ORCFYMeMHlvYktwDx0Wo6/Nkz39MtMQ9nvLrepCMEEZNpKhVw==
+cspell-glob@^5.6.5, cspell-glob@^5.6.7:
+  version "5.6.7"
+  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-5.6.7.tgz#d06aa06d3667b766b2ce464301c113bbb2300093"
+  integrity sha512-iU7UiXPxcFpuViBh/gLZ9WEGOouWxe/IHv6prfNYHznLHbILS6PpQIMgN6/UzTLA1aRpGGeEzF2strelwmP+Ww==
   dependencies:
     micromatch "^4.0.4"
 
