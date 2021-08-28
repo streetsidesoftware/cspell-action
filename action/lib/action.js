@@ -36,14 +36,14 @@ async function gatherPullRequestFiles(context) {
     const pull_number = (_a = githubContext.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number;
     if (!pull_number)
         return new Set();
-    return github_1.getPullRequestFiles(github, { ...githubContext.repo, pull_number });
+    return (0, github_1.getPullRequestFiles)(github, { ...githubContext.repo, pull_number });
 }
 async function gatherPushFiles(context) {
     var _a;
     const { github, githubContext } = context;
     const push = githubContext.payload;
     const commits = (_a = push.commits) === null || _a === void 0 ? void 0 : _a.map((c) => c.id);
-    const files = commits && (await github_1.fetchFilesForCommits(github, githubContext.repo, commits));
+    const files = commits && (await (0, github_1.fetchFilesForCommits)(github, githubContext.repo, commits));
     return files || new Set();
 }
 async function checkSpelling(params, files) {
@@ -54,12 +54,12 @@ async function checkSpelling(params, files) {
     if (!files.length) {
         return true;
     }
-    const result = await spell_1.lint(files, options, core);
+    const result = await (0, spell_1.lint)(files, options, core);
     if (params.inline !== 'none') {
         const command = params.inline;
         result.issues.forEach((item) => {
             // format: ::warning file={name},line={line},col={col}::{message}
-            command_1.issueCommand(command, {
+            (0, command_1.issueCommand)(command, {
                 file: path.relative(process.cwd(), item.uri || ''),
                 line: item.row,
                 col: item.col,
@@ -173,7 +173,7 @@ function validateIncrementalFilesOnly(params) {
 }
 function validateConfig(params) {
     const config = params.config;
-    const success = !config || fs_1.existsSync(config);
+    const success = !config || (0, fs_1.existsSync)(config);
     if (!success) {
         core.error(`Configuration file "${config}" not found.`);
     }
@@ -181,7 +181,7 @@ function validateConfig(params) {
 }
 function validateRoot(params) {
     const root = params.root;
-    const success = !root || fs_1.existsSync(root);
+    const success = !root || (0, fs_1.existsSync)(root);
     if (!success) {
         core.error(`Root path does not exist: "${root}"`);
     }
@@ -228,7 +228,7 @@ async function action(githubContext, octokit) {
         useEventFiles: params.incremental_files_only === 'true',
     };
     core.info(friendlyEventName(eventName));
-    core.debug(util_1.format('Options: %o', params));
+    core.debug((0, util_1.format)('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {

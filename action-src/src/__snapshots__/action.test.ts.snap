@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Validate Action check all ** 1`] = `
+Array [
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
+  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+]
+`;
+
+exports[`Validate Action check all **/*.md 1`] = `Array []`;
