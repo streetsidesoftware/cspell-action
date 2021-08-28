@@ -4,7 +4,15 @@ import { run } from './main';
 
 const timeout = 20000;
 
+const spyStdout = jest.spyOn(process.stdout, 'write').mockImplementation(function () {
+    return true;
+});
+
 describe('Validate Main', () => {
+    beforeEach(() => {
+        spyStdout.mockClear();
+    });
+
     test('GITHUB_TOKEN', () => {
         expect(process.env['GITHUB_TOKEN']).not.toBeUndefined();
     });

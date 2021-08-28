@@ -4,8 +4,9 @@
 import * as core from '@actions/core';
 import { getOctokit } from '@actions/github';
 import { Context } from '@actions/github/lib/context';
-import { AppError } from './error';
+import { AppError, isAppError, isError } from './error';
 import { action } from './action';
+import { format } from 'util';
 
 function getGithubToken(): string {
     const t0 = core.getInput('github_token', { required: true });
@@ -24,6 +25,6 @@ export async function run(): Promise<void> {
         core.info('Done.');
     } catch (error) {
         console.error(error);
-        core.setFailed(error instanceof AppError ? error.message : error);
+        core.setFailed(isAppError(error) ? error.message : isError(error) ? error : format(error));
     }
 }

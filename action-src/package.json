@@ -23,28 +23,28 @@
     ]
   },
   "devDependencies": {
-    "@pollyjs/adapter-node-http": "^5.1.0",
-    "@pollyjs/core": "^5.1.0",
-    "@pollyjs/persister-fs": "^5.0.0",
+    "@pollyjs/adapter-node-http": "^5.1.1",
+    "@pollyjs/core": "^5.1.1",
+    "@pollyjs/persister-fs": "^5.1.1",
     "@types/jest": "^27.0.1",
-    "@types/minimatch": "^3.0.3",
+    "@types/minimatch": "^3.0.5",
     "@types/pollyjs__adapter-node-http": "^2.0.1",
-    "@types/pollyjs__core": "^4.3.1",
+    "@types/pollyjs__core": "^4.3.3",
     "@types/pollyjs__persister-fs": "^2.0.1",
     "env-cmd": "^10.1.0",
-    "jest": "^27.0.4",
+    "jest": "^27.1.0",
     "rimraf": "^3.0.2",
-    "standard-version": "^9.1.1",
-    "ts-jest": "^27.0.3",
-    "typescript": "^4.2.2"
+    "standard-version": "^9.3.1",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.2"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.5.0",
     "@actions/github": "^5.0.0",
-    "@octokit/core": "^3.4.0",
-    "@octokit/plugin-rest-endpoint-methods": "^5.1.1",
-    "@octokit/rest": "^18.5.3",
-    "cspell": "^5.6.0",
-    "cspell-glob": "^5.6.0"
+    "@octokit/core": "^3.5.1",
+    "@octokit/plugin-rest-endpoint-methods": "^5.8.0",
+    "@octokit/rest": "^18.9.1",
+    "cspell": "^5.8.2",
+    "cspell-glob": "^5.8.2"
   }
 }

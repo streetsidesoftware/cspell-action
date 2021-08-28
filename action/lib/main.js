@@ -27,6 +27,7 @@ const github_1 = require("@actions/github");
 const context_1 = require("@actions/github/lib/context");
 const error_1 = require("./error");
 const action_1 = require("./action");
+const util_1 = require("util");
 function getGithubToken() {
     const t0 = core.getInput('github_token', { required: true });
     if (t0[0] !== '$') {
@@ -39,12 +40,12 @@ async function run() {
         core.info('cspell-action');
         const githubContext = new context_1.Context();
         const githubToken = getGithubToken();
-        await action_1.action(githubContext, github_1.getOctokit(githubToken));
+        await (0, action_1.action)(githubContext, (0, github_1.getOctokit)(githubToken));
         core.info('Done.');
     }
     catch (error) {
         console.error(error);
-        core.setFailed(error instanceof error_1.AppError ? error.message : error);
+        core.setFailed((0, error_1.isAppError)(error) ? error.message : (0, error_1.isError)(error) ? error : (0, util_1.format)(error));
     }
 }
 exports.run = run;

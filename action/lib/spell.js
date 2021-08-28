@@ -47,7 +47,7 @@ async function lint(files, lintOptions, logger) {
         // logger.debug(message);
     }
     function progress(progress) {
-        if (!cspell_1.isProgressFileComplete(progress)) {
+        if (!(0, cspell_1.isProgressFileComplete)(progress)) {
             return;
         }
         const issueCount = issueCounts.get(progress.filename) || 0;

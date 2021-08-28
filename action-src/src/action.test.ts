@@ -13,9 +13,21 @@ const configFile = path.resolve(root, 'cspell.json');
 
 const timeout = 20000;
 
+const spyLog = jest.spyOn(console, 'log').mockImplementation(() => {});
+const spyWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+const spyError = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+const spyStdout = jest.spyOn(process.stdout, 'write').mockImplementation(function () {
+    return true;
+});
+
 describe('Validate Action', () => {
     beforeEach(() => {
         cleanEnv();
+        spyWarn.mockClear();
+        spyError.mockClear();
+        spyLog.mockClear();
+        spyStdout.mockClear();
         process.env.INPUT_GITHUB_TOKEN = process.env['GITHUB_TOKEN'];
     });
 
@@ -54,19 +66,23 @@ describe('Validate Action', () => {
         timeout
     );
     test.each`
-        files        | expected
-        ${'**'}      | ${false}
-        ${'**/*.md'} | ${true}
+        files        | warningsExpected | expected
+        ${'**'}      | ${[]}            | ${false}
+        ${'**/*.md'} | ${[]}            | ${true}
     `(
         'check all $files',
-        async ({ files, expected }) => {
+        async ({ files, warningsExpected, expected }) => {
+            const warnings: string[] = [];
+            spyWarn.mockImplementation((msg: string) => warnings.push(msg));
             const context = createContextFromFile('pull_request.json', {
                 INPUT_FILES: files,
                 INPUT_INCREMENTAL_FILES_ONLY: 'false',
             });
             const octokit = createOctokit();
-            expect.assertions(1);
+            expect.assertions(3);
             await expect(action(context, octokit)).resolves.toBe(expected);
+            expect(warnings).toMatchSnapshot();
+            expect(spyStdout).toHaveBeenCalled();
         },
         timeout
     );
