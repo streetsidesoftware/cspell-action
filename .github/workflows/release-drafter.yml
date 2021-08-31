@@ -25,6 +25,9 @@ jobs:
         # with:
         #   config-name: my-config.yml
         #   disable-autolabeler: true
+        with:
+          # See [Release Drafter is *sometimes* including unmerged PRs · Issue #917 · release-drafter/release-drafter](https://github.com/release-drafter/release-drafter/issues/917)
+          disable-releaser: github.ref != 'refs/heads/main'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # cspell:ignore auto* *labeler
