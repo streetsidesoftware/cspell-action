@@ -99,5 +99,4 @@ module.exports = cspell;
 
 <!---
 cspell:ignore medicalterms
-Ignore Me: Something to cause things to change.
 --->
