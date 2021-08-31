@@ -3,5 +3,8 @@
         "node_modules",
         "__recordings__",
         "__snapshots__"
+    ],
+    "ignoreWords": [
+        "pollyjs"
     ]
 }
