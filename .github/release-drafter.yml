@@ -6,6 +6,9 @@ categories:
       - "feat"
       - "feature"
       - "enhancement"
+  - title: "**BREAKING**"
+    labels:
+      - "breaking"
   - title: "Fixes"
     labels:
       - "fix"
@@ -31,7 +34,7 @@ autolabeler:
   - label: "chore"
     title:
       - "/chore/i"
-      - "/ci:/i"
+      - "/ci[:]/i"
       - "/docs?/i"
   - label: "fix"
     title:
@@ -43,10 +46,8 @@ autolabeler:
       - "/feat/i"
   - label: "breaking"
     title:
-      - "/fix!/i"
-      - "/feat!/i"
-    body:
-      - "/breaking/i"
+      - "/fix[!]/i"
+      - "/feat[!]/i"
 
 template: |
   ## Changes
