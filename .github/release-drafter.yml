@@ -47,7 +47,6 @@ autolabeler:
       - "/feat!/i"
     body:
       - "/breaking/i"
-
 template: |
   ## Changes
 
