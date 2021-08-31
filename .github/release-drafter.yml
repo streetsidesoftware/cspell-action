@@ -14,6 +14,9 @@ categories:
       - "fix"
       - "bugfix"
       - "bug"
+  - title: "Documentation"
+    labels:
+      - "documentation"
   - title: "Maintenance"
     labels:
       - "chore"
@@ -45,6 +48,8 @@ autolabeler:
     title:
       - "/chore/i"
       - "/ci[:]/i"
+  - label: "documentation"
+    title:
       - "/docs?/i"
   - label: "fix"
     title:
