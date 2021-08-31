@@ -35,7 +35,12 @@ version-resolver:
     labels:
       - "patch"
   default: patch
+exclude-labels:
+  - "dependencies"
 autolabeler:
+  - label: "dependencies"
+    title:
+      - "/Workflow Bot/i"
   - label: "chore"
     title:
       - "/chore/i"
@@ -52,7 +57,7 @@ autolabeler:
   - label: "breaking"
     title:
       - "/fix[!]/i"
-      - "/feat[!]/i"
+      - "/feat[!]/i"  
 
 template: |
   ## Changes
