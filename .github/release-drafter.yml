@@ -1,0 +1,56 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+categories:
+  - title: "Features"
+    labels:
+      - "feat"
+      - "feature"
+      - "enhancement"
+  - title: "Fixes"
+    labels:
+      - "fix"
+      - "bugfix"
+      - "bug"
+  - title: "Maintenance"
+    labels:
+      - "chore"
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+version-resolver:
+  major:
+    labels:
+      - "major"
+  minor:
+    labels:
+      - "minor"
+  patch:
+    labels:
+      - "patch"
+  default: patch
+autolabeler:
+  - label: "chore"
+    title:
+      - "/chore/i"
+      - "/ci:/i"
+      - "/docs?/i"
+  - label: "fix"
+    title:
+      - "/fix/i"
+      - "/dev:/i"
+      - "/refactor/i"
+  - label: "feature"
+    title:
+      - "/feat/i"
+  - label: "breaking"
+    title:
+      - "/fix!/i"
+      - "/feat!/i"
+    body:
+      - "/breaking/i"
+
+template: |
+  ## Changes
+
+  $CHANGES
+
+# cspell:ignore autolabeler
