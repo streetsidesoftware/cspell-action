@@ -423,9 +423,9 @@
   integrity sha512-mn9bd7Et1L2zuibc08GVHTiD2Go3/hdjyX5KLukXDklBkq06r+tb0OtKtf1zKodtFDTIaYekGADhNhA6AnKLkg==
 
 "@cspell/dict-dotnet@^1.0.30":
-  version "1.0.30"
-  resolved "https://registry.npmjs.org/@cspell/dict-dotnet/-/dict-dotnet-1.0.30.tgz#0e80294fe2894b65d059130115a54c33adcb76f8"
-  integrity sha512-86kC5191GACB95IGtLnmYHZjuNl/Ee7lvZRcwEyvktoYiRAryd1YKSX+c/qU1OEx7Y52FTaEl07tf9uYS1wKNQ==
+  version "1.0.31"
+  resolved "https://registry.npmjs.org/@cspell/dict-dotnet/-/dict-dotnet-1.0.31.tgz#31d2f2602ddd6be038e00148860162d2b44d56e0"
+  integrity sha512-65yZTMcEdYkNx9sNs18OxcE0zfbZ5VsAZ0KgDvl/1YCkTomxr9vmtnrzFz4+vxfjV4eSuaL1SPRMZODaM7SSTg==
 
 "@cspell/dict-elixir@^1.0.25":
   version "1.0.25"
@@ -543,9 +543,9 @@
   integrity sha512-5V/R7PRbbminTpPS3ywgdAalI9BHzcEjEj9ug4kWYvBIGwSnS7T6QCFCiu+e9LvEGUqQC+NHgLY4zs1NaBj2vA==
 
 "@cspell/dict-software-terms@^1.0.41":
-  version "1.0.41"
-  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-1.0.41.tgz#c8b9ca8e8891e09c2e55afd889bde38f6d7b109a"
-  integrity sha512-/RWiv99XoDUYh3eCo5PyF2nwDh0U8kuKmSW+UXpzbT4sj7oBl/la19h6Ahgq0Qmr0JGjTF/RxbQkz85Hcp1t5w==
+  version "1.0.42"
+  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-1.0.42.tgz#748b7d4b33182b2fbf51924f3242e3b9c03affb4"
+  integrity sha512-VRIq7b6NnWVHeO0pzpHT10btQNYcRCyiSZc162xGlyO8+IMXq9Noemyqv+POS9oRknhtlF0rL1Hrg4ypHP3B+w==
 
 "@cspell/dict-typescript@^1.0.19":
   version "1.0.19"
@@ -1571,9 +1571,9 @@ camelcase@^6.2.0:
   integrity sha512-c7wVvbw3f37nuobQNtgsgG9POC9qMbNuMQmTCqZv23b6MIz0fcYpBiOlv9gEN/hdLdnZTDQhg6e9Dq5M1vKvfg==
 
 caniuse-lite@^1.0.30001254:
-  version "1.0.30001255"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001255.tgz#f3b09b59ab52e39e751a569523618f47c4298ca0"
-  integrity sha512-F+A3N9jTZL882f/fg/WWVnKSu6IOo3ueLz4zwaOPbPYHNmM/ZaDUyzyJwS1mZhX7Ex5jqTyW599Gdelh5PDYLQ==
+  version "1.0.30001256"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001256.tgz#182410b5f024e0ab99c72ec648f234a9986bd548"
+  integrity sha512-QirrvMLmB4txNnxiaG/xbm6FSzv9LqOZ3Jp9VtCYb3oPIfCHpr/oGn38pFq0udwlkctvXQgPthaXqJ76DaYGnA==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -2191,9 +2191,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.830:
-  version "1.3.835"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.835.tgz#98fa4402ab7bc6afbe4953a8ca9b63cb3a6bf08b"
-  integrity sha512-rHQszGg2KLMqOWPNTpwCnlp7Kb85haJa8j089DJCreZueykoSN/in+EMlay3SSDMNKR4VGPvfskxofHV18xVJg==
+  version "1.3.836"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.836.tgz#823cb9c98f28c64c673920f1c90ea3826596eaf9"
+  integrity sha512-Ney3pHOJBWkG/AqYjrW0hr2AUCsao+2uvq9HUlRP8OlpSdk/zOHOUJP7eu0icDvePC9DlgffuelP4TnOJmMRUg==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -2490,9 +2490,9 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
 fastq@^1.6.0:
-  version "1.12.0"
-  resolved "https://registry.npmjs.org/fastq/-/fastq-1.12.0.tgz#ed7b6ab5d62393fb2cc591c853652a5c318bf794"
-  integrity sha512-VNX0QkHK3RsXVKr9KrlUv/FoTa0NdbYoHHl7uXHv2rzyHSlxjdNAKug2twd9luJxpcyNeAgf5iPPMutJO67Dfg==
+  version "1.13.0"
+  resolved "https://registry.npmjs.org/fastq/-/fastq-1.13.0.tgz#616760f88a7526bdfc596b7cab8c18938c36b98c"
+  integrity sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==
   dependencies:
     reusify "^1.0.4"
 
@@ -5044,9 +5044,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 typescript@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.4.2.tgz#6d618640d430e3569a1dfb44f7d7e600ced3ee86"
-  integrity sha512-gzP+t5W4hdy4c+68bfcv0t400HVJMMd2+H9B7gae1nQlBzCqvrXX+6GL/b3GAgyTH966pzrZ70/fRjwAtZksSQ==
+  version "4.4.3"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
+  integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
 
 uglify-js@^3.1.4:
   version "3.14.2"
