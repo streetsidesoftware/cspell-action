@@ -44,7 +44,7 @@
     "@octokit/core": "^3.5.1",
     "@octokit/plugin-rest-endpoint-methods": "^5.8.0",
     "@octokit/rest": "^18.9.1",
-    "cspell": "^5.9.0",
+    "cspell": "^5.10.1",
     "cspell-glob": "^5.9.0"
   }
 }
