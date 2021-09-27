@@ -35,4 +35,3 @@ async function* fetchFilesForCommitsX(git, context, commitIds) {
         }
     }
 }
-//# sourceMappingURL=github.js.map

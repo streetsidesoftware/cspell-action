@@ -1,15 +1,14 @@
 import * as core from '@actions/core';
-import { issueCommand } from '@actions/core/lib/command';
 import { Context as GitHubContext } from '@actions/github/lib/context';
-import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { Octokit } from '@octokit/core';
-import { lint, LintOptions } from './spell';
-import * as path from 'path';
-import { format } from 'util';
-import { AppError } from './error';
+import { RunResult } from 'cspell';
 import * as glob from 'cspell-glob';
 import { existsSync } from 'fs';
-import { RunResult } from 'cspell';
+import { format } from 'util';
+import { AppError } from './error';
+import { fetchFilesForCommits, getPullRequestFiles } from './github';
+import { CSpellReporterForGithubAction } from './reporter';
+import { lint, LintOptions } from './spell';
 
 interface Context {
     githubContext: GitHubContext;
@@ -81,26 +80,11 @@ async function checkSpelling(params: ValidActionParams, files: string[]): Promis
     if (!files.length) {
         return true;
     }
-    const result = await lint(files, options, core);
-    if (params.inline !== 'none') {
-        const command = params.inline;
-        result.issues.forEach((item) => {
-            // format: ::warning file={name},line={line},col={col}::{message}
-            issueCommand(
-                command,
-                {
-                    file: path.relative(process.cwd(), item.uri || ''),
-                    line: item.row,
-                    col: item.col,
-                },
-                `Unknown word (${item.text})`
-            );
-            console.warn(
-                `${path.relative(process.cwd(), item.uri || '')}:${item.row}:${item.col} Unknown word (${item.text})`
-            );
-        });
-    }
-    return result.result;
+
+    const collector = new CSpellReporterForGithubAction(params.inline, core);
+    await lint(files, options, collector.reporter);
+
+    return collector.result;
 }
 
 function friendlyEventName(eventName: EventNames | string): string {
