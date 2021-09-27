@@ -49,4 +49,3 @@ async function run() {
     }
 }
 exports.run = run;
-//# sourceMappingURL=main.js.map

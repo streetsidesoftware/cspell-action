@@ -66,12 +66,12 @@ describe('Validate Action', () => {
         timeout
     );
     test.each`
-        files        | warningsExpected | expected
-        ${'**'}      | ${[]}            | ${false}
-        ${'**/*.md'} | ${[]}            | ${true}
+        files        | expected
+        ${'**'}      | ${false}
+        ${'**/*.md'} | ${true}
     `(
         'check all $files',
-        async ({ files, warningsExpected, expected }) => {
+        async ({ files, expected }) => {
             const warnings: string[] = [];
             spyWarn.mockImplementation((msg: string) => warnings.push(msg));
             const context = createContextFromFile('pull_request.json', {

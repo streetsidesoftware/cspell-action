@@ -4,7 +4,7 @@
 import * as core from '@actions/core';
 import { getOctokit } from '@actions/github';
 import { Context } from '@actions/github/lib/context';
-import { AppError, isAppError, isError } from './error';
+import { isAppError, isError } from './error';
 import { action } from './action';
 import { format } from 'util';
 

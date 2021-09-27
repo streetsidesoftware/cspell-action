@@ -21,14 +21,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 const core = __importStar(require("@actions/core"));
-const command_1 = require("@actions/core/lib/command");
-const github_1 = require("./github");
-const spell_1 = require("./spell");
-const path = __importStar(require("path"));
-const util_1 = require("util");
-const error_1 = require("./error");
 const glob = __importStar(require("cspell-glob"));
 const fs_1 = require("fs");
+const util_1 = require("util");
+const error_1 = require("./error");
+const github_1 = require("./github");
+const reporter_1 = require("./reporter");
+const spell_1 = require("./spell");
 const supportedEvents = new Set(['push', 'pull_request']);
 async function gatherPullRequestFiles(context) {
     var _a;
@@ -54,20 +53,9 @@ async function checkSpelling(params, files) {
     if (!files.length) {
         return true;
     }
-    const result = await (0, spell_1.lint)(files, options, core);
-    if (params.inline !== 'none') {
-        const command = params.inline;
-        result.issues.forEach((item) => {
-            // format: ::warning file={name},line={line},col={col}::{message}
-            (0, command_1.issueCommand)(command, {
-                file: path.relative(process.cwd(), item.uri || ''),
-                line: item.row,
-                col: item.col,
-            }, `Unknown word (${item.text})`);
-            console.warn(`${path.relative(process.cwd(), item.uri || '')}:${item.row}:${item.col} Unknown word (${item.text})`);
-        });
-    }
-    return result.result;
+    const collector = new reporter_1.CSpellReporterForGithubAction(params.inline, core);
+    await (0, spell_1.lint)(files, options, collector.reporter);
+    return collector.result;
 }
 function friendlyEventName(eventName) {
     switch (eventName) {
@@ -245,4 +233,3 @@ async function action(githubContext, octokit) {
     return !(result.issues + result.errors);
 }
 exports.action = action;
-//# sourceMappingURL=action.js.map

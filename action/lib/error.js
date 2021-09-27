@@ -22,4 +22,3 @@ function isAppError(e) {
     return e instanceof AppError;
 }
 exports.isAppError = isAppError;
-//# sourceMappingURL=error.js.map
