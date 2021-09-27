@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/streetsidesoftware/cspell-action/compare/v1.3.1...v1.3.2) (2021-09-27)
+
+
+### Bug Fixes
+
+* Update `cspell` and use the new CSpellReporter ([#380](https://github.com/streetsidesoftware/cspell-action/issues/380)) ([8a67338](https://github.com/streetsidesoftware/cspell-action/commit/8a673383c8bcd7fd4edc79dd38bce70f7adce572))
+
 ### [1.3.1](https://github.com/streetsidesoftware/cspell-action/compare/v1.3.0...v1.3.1) (2021-08-31)
 
 ## [1.3.0](https://github.com/streetsidesoftware/cspell-action/compare/v1.2.5...v1.3.0) (2021-08-31)
