@@ -832,10 +832,10 @@
     "@octokit/types" "^6.0.3"
     universal-user-agent "^6.0.0"
 
-"@octokit/openapi-types@^11.0.0":
-  version "11.0.0"
-  resolved "https://registry.npmjs.org/@octokit/openapi-types/-/openapi-types-11.0.0.tgz#e9e9e39681c0565d9e79d689b045b74a893e620b"
-  integrity sha512-QeMW4h18cEm53ojYufACSRgq3rrQg4BibVcsHytXmbJ+otmXSelr1BCBCEi8q7nqGkYJyGQX30DoULENIgJ8BA==
+"@octokit/openapi-types@^11.1.0":
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-11.1.0.tgz#3c0d2d844b876314ad49d7f3d03eed4953038272"
+  integrity sha512-dWZfYvCCdjZzDYA3lIAMF72Q0jld8xidqCq5Ryw09eBJXZdcM6he0vWBTvw/b5UnGYqexxOyHWgfrsTlUJL3Gw==
 
 "@octokit/plugin-paginate-rest@^2.13.3", "@octokit/plugin-paginate-rest@^2.16.8":
   version "2.16.8"
@@ -849,12 +849,12 @@
   resolved "https://registry.npmjs.org/@octokit/plugin-request-log/-/plugin-request-log-1.0.4.tgz#5e50ed7083a613816b1e4a28aeec5fb7f1462e85"
   integrity sha512-mLUsMkgP7K/cnFEw07kWqXGF5LKrOkD+lhCrKvPHXWDywAwuDUeDwWBpc69XK3pNX0uKiVt8g5z96PJ6z9xCFA==
 
-"@octokit/plugin-rest-endpoint-methods@^5.1.1", "@octokit/plugin-rest-endpoint-methods@^5.11.2", "@octokit/plugin-rest-endpoint-methods@^5.12.0":
-  version "5.12.0"
-  resolved "https://registry.npmjs.org/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-5.12.0.tgz#95bb16bf4057efa195564336e737ca969fc0cefe"
-  integrity sha512-OD3Rv660YzXSmhTr8g8kpLvLq3Z5ADvLxtb9a8+1I4S2EqV6YQTHeJwVC5I6vwvV5tMmnj3oeRn7OWc0eODwQw==
+"@octokit/plugin-rest-endpoint-methods@^5.1.1", "@octokit/plugin-rest-endpoint-methods@^5.12.0", "@octokit/plugin-rest-endpoint-methods@^5.12.1":
+  version "5.12.1"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-5.12.1.tgz#89747e3e39cbf411881de85dfdec18dfbc2e9b90"
+  integrity sha512-0nY3htfl6x9UkPcqv8pm9vOC/bTA7f4IMDWln13neHRdNWQvOQgZ9fRxK7BAc74rye4yVINEFi9Yb9rnGUvosA==
   dependencies:
-    "@octokit/types" "^6.32.0"
+    "@octokit/types" "^6.33.0"
     deprecation "^2.3.1"
 
 "@octokit/request-error@^2.0.5", "@octokit/request-error@^2.1.0":
@@ -888,12 +888,12 @@
     "@octokit/plugin-request-log" "^1.0.4"
     "@octokit/plugin-rest-endpoint-methods" "^5.12.0"
 
-"@octokit/types@^6.0.3", "@octokit/types@^6.16.1", "@octokit/types@^6.32.0":
-  version "6.32.0"
-  resolved "https://registry.npmjs.org/@octokit/types/-/types-6.32.0.tgz#2333567560dd9b338c45de424c8d37ef0250db5c"
-  integrity sha512-7CFlMfpX78PbvGnQZfQ3pD246RGTLITDnLCyYgTOtwNPIdTKMGs/8dJiZA3Fh5vXuZYqu/YHH32GboK7xnZ0ag==
+"@octokit/types@^6.0.3", "@octokit/types@^6.16.1", "@octokit/types@^6.32.0", "@octokit/types@^6.33.0":
+  version "6.33.0"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.33.0.tgz#7e5e664d65e88b74b6de76f328b80a344bef3f86"
+  integrity sha512-0zffZ048M0UhthyPXQHLz4038Ak46nMWZXkzlXvXB/M/L1jYPBceq4iZj4qjKVrvveaJrrgKdJ9+3yUuITfcCw==
   dependencies:
-    "@octokit/openapi-types" "^11.0.0"
+    "@octokit/openapi-types" "^11.1.0"
 
 "@pollyjs/adapter-node-http@^5.1.1":
   version "5.1.1"
