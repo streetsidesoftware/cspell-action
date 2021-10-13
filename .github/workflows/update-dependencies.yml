@@ -23,7 +23,10 @@ jobs:
       - name: Install
         run: yarn --frozen-lockfile
       - name: Update packages
-        run: yarn upgrade
+        run: |
+          yarn upgrade
+          npx package-json-dependency-updater -u
+          yarn
       - name: Update packages Src
         run: yarn clean-build
       - name: Has changes

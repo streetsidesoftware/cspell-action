@@ -14,7 +14,8 @@
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
     "watch": "tsc -p . --watch",
-    "test": "yarn workspace action-src test"
+    "test": "yarn workspace action-src test",
+    "update-packages": "yarn upgrade && npx package-json-dependency-updater -u && yarn"
   },
   "workspaces": {
     "packages": [
