@@ -26,7 +26,7 @@
     "@pollyjs/adapter-node-http": "^5.1.1",
     "@pollyjs/core": "^5.1.1",
     "@pollyjs/persister-fs": "^5.1.1",
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.0.3",
     "@types/minimatch": "^3.0.5",
     "@types/pollyjs__adapter-node-http": "^2.0.1",
     "@types/pollyjs__core": "^4.3.3",
@@ -36,7 +36,7 @@
     "rimraf": "^3.0.2",
     "standard-version": "^9.3.2",
     "ts-jest": "^27.0.7",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.2"
   },
   "dependencies": {
     "@actions/core": "^1.6.0",
