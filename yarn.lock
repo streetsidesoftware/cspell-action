@@ -900,22 +900,22 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@pollyjs/adapter-node-http@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-5.1.1.tgz#b717f28eda10e76e80c821f33d71b1cf064f41d0"
-  integrity sha512-hN4pemkI4Wb+jAloezZrKDCqQUAlIXcgRXtrG6CZseE14QVQ8zl2I1RakUnEHBgeRWtvl5ve6uJrFNGdE8mrLA==
+"@pollyjs/adapter-node-http@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.1.tgz#008bdfa3e2f245d088e68b79e3473bb50c0e7162"
+  integrity sha512-S9rHuJjeKPrgYlQ8FBr844wcwvE9dkg+kW1VQ063LmM9ReEbnmUe/riwAamuSbDwJGe10M1n1nUByitEHBZoXg==
   dependencies:
-    "@pollyjs/adapter" "^5.1.1"
-    "@pollyjs/utils" "^5.1.1"
-    lodash-es "^4.17.11"
-    nock "^12.0.3"
+    "@pollyjs/adapter" "^6.0.1"
+    "@pollyjs/utils" "^6.0.1"
+    lodash-es "^4.17.21"
+    nock "^13.2.1"
 
-"@pollyjs/adapter@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter/-/adapter-5.1.1.tgz#ef55788dd59ba77589b884856406323fff700606"
-  integrity sha512-4Ju6batDrkqyhYFhmKhjDTIbkfj0p0kZslCQ/saA1JMWIqlFnrXMiJVCSVlwNEsej3Zt/n9JfU5mEzbXxi+3vg==
+"@pollyjs/adapter@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@pollyjs/adapter/-/adapter-6.0.1.tgz#fbab46eba196dc2c7bcd4616a6d3f8a3fb51491f"
+  integrity sha512-lV79sqQlNy2KBrBzPYiQ1Ki+yubcwgBtq8p6eiKhQBMgROTUU5dZ3pWNrD+6zEXERfWHBTTxim2MPskJb1s16A==
   dependencies:
-    "@pollyjs/utils" "^5.1.1"
+    "@pollyjs/utils" "^6.0.1"
 
 "@pollyjs/core@^5.1.1":
   version "5.1.1"
@@ -972,6 +972,14 @@
   dependencies:
     qs "^6.7.0"
     url-parse "^1.4.7"
+
+"@pollyjs/utils@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@pollyjs/utils/-/utils-6.0.1.tgz#215f53d6af71c44911c9e760c0669922bbcf04a6"
+  integrity sha512-vTdtYhZs/HcBQM3Po85BDmuOpjMwvuQPkSdd9Cd4lUSc8HEO4d52dljtmwlwW83zVuQvlEu5xFIZJUYhX8HxLA==
+  dependencies:
+    qs "^6.10.1"
+    url-parse "^1.5.3"
 
 "@sindresorhus/fnv1a@^1.2.0":
   version "1.2.0"
@@ -3825,7 +3833,7 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash-es@^4.17.11:
+lodash-es@^4.17.11, lodash-es@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
@@ -3845,7 +3853,12 @@ lodash.merge@^4.6.2:
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-lodash@^4.17.13, lodash@^4.17.15, lodash@^4.7.0:
+lodash.set@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
+  integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
+
+lodash@^4.17.15, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -4035,14 +4048,14 @@ nocache@^2.1.0:
   resolved "https://registry.npmjs.org/nocache/-/nocache-2.1.0.tgz#120c9ffec43b5729b1d5de88cd71aa75a0ba491f"
   integrity sha512-0L9FvHG3nfnnmaEQPjT9xhfN4ISk0A8/2j4M37Np4mcDesJjHgEUfgPhdCyZuFI954tjokaIj/A3NdpFNdEh4Q==
 
-nock@^12.0.3:
-  version "12.0.3"
-  resolved "https://registry.npmjs.org/nock/-/nock-12.0.3.tgz#83f25076dbc4c9aa82b5cdf54c9604c7a778d1c9"
-  integrity sha512-QNb/j8kbFnKCiyqi9C5DD0jH/FubFGj5rt9NQFONXwQm3IPB0CULECg/eS3AU1KgZb/6SwUa4/DTRKhVxkGABw==
+nock@^13.2.1:
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/nock/-/nock-13.2.1.tgz#fcf5bdb9bb9f0554a84c25d3333166c0ffd80858"
+  integrity sha512-CoHAabbqq/xZEknubuyQMjq6Lfi5b7RtK6SoNK6m40lebGp3yiMagWtIoYaw2s9sISD7wPuCfwFpivVHX/35RA==
   dependencies:
     debug "^4.1.0"
     json-stringify-safe "^5.0.1"
-    lodash "^4.17.13"
+    lodash.set "^4.3.2"
     propagate "^2.0.0"
 
 node-fetch@^2.6.1:
@@ -4422,7 +4435,7 @@ qs@6.7.0:
   resolved "https://registry.npmjs.org/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-qs@^6.7.0:
+qs@^6.10.1, qs@^6.7.0:
   version "6.10.2"
   resolved "https://registry.npmjs.org/qs/-/qs-6.10.2.tgz#c1431bea37fc5b24c5bdbafa20f16bdf2a4b9ffe"
   integrity sha512-mSIdjzqznWgfd4pMii7sHtaYF8rx8861hBO80SraY5GT0XQibWZWJSid0avzHGkDIZLImux2S5mXO0Hfct2QCw==
@@ -5175,7 +5188,7 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-url-parse@^1.4.7:
+url-parse@^1.4.7, url-parse@^1.5.3:
   version "1.5.3"
   resolved "https://registry.npmjs.org/url-parse/-/url-parse-1.5.3.tgz#71c1303d38fb6639ade183c2992c8cc0686df862"
   integrity sha512-IIORyIQD9rvj0A4CLWsHkBBJuNqWpFQe224b6j9t/ABmquIS0qDU2pY6kl6AuOrL5OkCXHMCFNe1jBcuAggjvQ==
