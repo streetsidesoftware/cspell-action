@@ -23,14 +23,11 @@
     ]
   },
   "devDependencies": {
-    "@pollyjs/adapter-node-http": "^5.1.1",
-    "@pollyjs/core": "^5.1.1",
-    "@pollyjs/persister-fs": "^5.1.1",
+    "@pollyjs/adapter-node-http": "^6",
+    "@pollyjs/core": "^6",
+    "@pollyjs/persister-fs": "^6",
     "@types/jest": "^27.0.3",
     "@types/minimatch": "^3.0.5",
-    "@types/pollyjs__adapter-node-http": "^2.0.1",
-    "@types/pollyjs__core": "^4.3.3",
-    "@types/pollyjs__persister-fs": "^2.0.1",
     "env-cmd": "^10.1.0",
     "jest": "^27.4.3",
     "rimraf": "^3.0.2",

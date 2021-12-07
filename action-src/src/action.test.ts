@@ -56,12 +56,17 @@ describe('Validate Action', () => {
     `(
         '$testName',
         async ({ testName, file, expected }) => {
-            return helper.pollyRun(__filename, testName, async () => {
-                const context = createContextFromFile(file);
-                const octokit = createOctokit();
-                expect.assertions(1);
-                await expect(action(context, octokit)).resolves.toBe(expected);
-            });
+            return helper.pollyRun(
+                __filename,
+                testName,
+                async () => {
+                    const context = createContextFromFile(file);
+                    const octokit = createOctokit();
+                    expect.assertions(1);
+                    await expect(action(context, octokit)).resolves.toBe(expected);
+                },
+                { recordIfMissing: true }
+            );
         },
         timeout
     );

@@ -49,7 +49,8 @@ function fetchGithubActionFixture(filename) {
     return env;
 }
 exports.fetchGithubActionFixture = fetchGithubActionFixture;
-function setupPolly(name, dir) {
+function setupPolly(name, dir, options) {
+    var _a;
     const polly = new core_1.Polly(name, {
         adapters: ['node-http'],
         persister: 'fs',
@@ -58,7 +59,7 @@ function setupPolly(name, dir) {
                 recordingsDir: dir,
             },
         },
-        recordIfMissing: false,
+        recordIfMissing: (_a = options === null || options === void 0 ? void 0 : options.recordIfMissing) !== null && _a !== void 0 ? _a : false,
         matchRequestsBy: {
             method: true,
             headers: false,
@@ -82,10 +83,10 @@ function setupPolly(name, dir) {
     });
     return polly;
 }
-async function pollyRun(testFile, testName, fn) {
+async function pollyRun(testFile, testName, fn, options) {
     const rel = path.relative(exports.sourceDir, testFile);
     const dir = path.resolve(exports.fixturesLocation, '__recordings__', rel);
-    const poly = setupPolly(testName, dir);
+    const poly = setupPolly(testName, dir, options);
     try {
         // console.warn('Poly Context: %o', { testFile, testName, dir });
         poly.replay();
