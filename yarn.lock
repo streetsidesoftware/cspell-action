@@ -901,25 +901,25 @@
     "@octokit/openapi-types" "^11.2.0"
 
 "@pollyjs/adapter-node-http@^6":
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.1.tgz#008bdfa3e2f245d088e68b79e3473bb50c0e7162"
-  integrity sha512-S9rHuJjeKPrgYlQ8FBr844wcwvE9dkg+kW1VQ063LmM9ReEbnmUe/riwAamuSbDwJGe10M1n1nUByitEHBZoXg==
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.2.tgz#b2b394a278beae9841b284d5ba033e1d2892f67f"
+  integrity sha512-a+RPubWxyUy8j6NT8hJiwuUWR3t4U+a6a7Wx5K1YEF9/4uHd7n6BanW8D7KaGhWVSaTEkXDdMKRPGcWi23vIKA==
   dependencies:
-    "@pollyjs/adapter" "^6.0.1"
+    "@pollyjs/adapter" "^6.0.2"
     "@pollyjs/utils" "^6.0.1"
     lodash-es "^4.17.21"
     nock "^13.2.1"
 
-"@pollyjs/adapter@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter/-/adapter-6.0.1.tgz#fbab46eba196dc2c7bcd4616a6d3f8a3fb51491f"
-  integrity sha512-lV79sqQlNy2KBrBzPYiQ1Ki+yubcwgBtq8p6eiKhQBMgROTUU5dZ3pWNrD+6zEXERfWHBTTxim2MPskJb1s16A==
+"@pollyjs/adapter@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/@pollyjs/adapter/-/adapter-6.0.2.tgz#15ca6c7f53913e243edb55b8b8f4c2be2c3248f0"
+  integrity sha512-Jeco5t40j54n728MyO8zu2gJvHAa798fmX9Ee8d2QxBJLiRztFzJncdRwEHLfW+qkqKiyOZpRvs4mwaJCKy1GA==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
 
 "@pollyjs/core@^6":
   version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@pollyjs/core/-/core-6.0.2.tgz#63b12b53fcf0857eb92cc091fa76277df801e3ed"
+  resolved "https://registry.npmjs.org/@pollyjs/core/-/core-6.0.2.tgz#63b12b53fcf0857eb92cc091fa76277df801e3ed"
   integrity sha512-NcAmS8H8G9imnNMIPeSTzfpmwyd6zjmgmAzr0MxU+OsBgG8QRxfDmGbnt+Jdi0s2I8q/crk4vZWkvm729/xbBA==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
@@ -947,17 +947,17 @@
     nocache "^3.0.1"
 
 "@pollyjs/persister-fs@^6":
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/@pollyjs/persister-fs/-/persister-fs-6.0.1.tgz#8241b3b8725fa69b16a6324970e64a28e1f5460a"
-  integrity sha512-fx6Lzze3V/PMLP1CZ2RmRBpzm8SXZr6wWPwtjI2AnYB1OV6R6W1YW5bEfNiH8LQ+y9TOy/VgiVjLVQQi+IDEJA==
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/@pollyjs/persister-fs/-/persister-fs-6.0.2.tgz#56e9f89b8c91f8303d10a42c72b99c301cae2f97"
+  integrity sha512-O+z/HljM7gFKioaOcox05RFobfy6y25E0te2y98aGSVOCaWvqj9g9V7Y+VIGC0miwh0/Hi5Wl4Yk7h9Gg6c9Hw==
   dependencies:
     "@pollyjs/node-server" "^6.0.1"
-    "@pollyjs/persister" "^6.0.1"
+    "@pollyjs/persister" "^6.0.2"
 
-"@pollyjs/persister@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/@pollyjs/persister/-/persister-6.0.1.tgz#bccc27f48706e186636637e0142decf9da52e3a8"
-  integrity sha512-CUWWq4IALw8N4FVKq/xKthnKEjEBBxiTXNEdFBN11MxjUio6oVlyZRZAB3LNjOUVIdIDaR0JarVniydx+qSIHQ==
+"@pollyjs/persister@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/@pollyjs/persister/-/persister-6.0.2.tgz#876370310a268798067fa9e02d90f119408c159e"
+  integrity sha512-naWp4hXC74VA9KSDCn/jIdqFyMpOV/RQbHqo9wsxqUKEh7LOk1lBGrPy+qHygpDBxDudjzNSO4oJoHjlLrMKrA==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
     bowser "^2.4.0"
