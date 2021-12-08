@@ -947,19 +947,20 @@
     nocache "^3.0.1"
 
 "@pollyjs/persister-fs@^6":
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/@pollyjs/persister-fs/-/persister-fs-6.0.2.tgz#56e9f89b8c91f8303d10a42c72b99c301cae2f97"
-  integrity sha512-O+z/HljM7gFKioaOcox05RFobfy6y25E0te2y98aGSVOCaWvqj9g9V7Y+VIGC0miwh0/Hi5Wl4Yk7h9Gg6c9Hw==
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@pollyjs/persister-fs/-/persister-fs-6.0.3.tgz#d7ce614e2e092094b5674bd1b35a750d9bb62460"
+  integrity sha512-+Q1byvViqPrxXUy9Kz5MbWvkG8T3h4n1FPxzoKtwX4W2urxs8Dp1CP3ILIA6XMhid2f4TD57XUx9wJYDHcu6ww==
   dependencies:
     "@pollyjs/node-server" "^6.0.1"
-    "@pollyjs/persister" "^6.0.2"
+    "@pollyjs/persister" "^6.0.3"
 
-"@pollyjs/persister@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/@pollyjs/persister/-/persister-6.0.2.tgz#876370310a268798067fa9e02d90f119408c159e"
-  integrity sha512-naWp4hXC74VA9KSDCn/jIdqFyMpOV/RQbHqo9wsxqUKEh7LOk1lBGrPy+qHygpDBxDudjzNSO4oJoHjlLrMKrA==
+"@pollyjs/persister@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@pollyjs/persister/-/persister-6.0.3.tgz#16c74f9052802c9d41747b18b57c6d19a400bd2e"
+  integrity sha512-NiVmDAZFURXQs4YVRZMyUyNrNX9uDETUzYmpRNDkV0oKJPbpVATD6QGiKeOn2s2GS1RrLmLQdqP8WhZfEezhUg==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
+    "@types/set-cookie-parser" "^2.4.1"
     bowser "^2.4.0"
     fast-json-stable-stringify "^2.1.0"
     lodash-es "^4.17.21"
@@ -1104,6 +1105,13 @@
   version "2.4.2"
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.4.2.tgz#4c62fae93eb479660c3bd93f9d24d561597a8281"
   integrity sha512-ekoj4qOQYp7CvjX8ZDBgN86w3MqQhLE1hczEJbEIjgFEumDy+na/4AJAbLXfgEWFNB2pKadM5rPFtuSGMWK7xA==
+
+"@types/set-cookie-parser@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@types/set-cookie-parser/-/set-cookie-parser-2.4.1.tgz#49403d3150f6f296da8e51b3e9e7e562eaf105b4"
+  integrity sha512-N0IWe4vT1w5IOYdN9c9PNpQniHS+qe25W4tj4vfhJDJ9OkvA/YA55YUhaC+HNmMMeLlOSnBW9UMno0qlt5xu3Q==
+  dependencies:
+    "@types/node" "*"
 
 "@types/stack-utils@^2.0.0":
   version "2.0.1"
