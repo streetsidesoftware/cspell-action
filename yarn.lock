@@ -918,9 +918,9 @@
     "@pollyjs/utils" "^6.0.1"
 
 "@pollyjs/core@^6":
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/@pollyjs/core/-/core-6.0.2.tgz#63b12b53fcf0857eb92cc091fa76277df801e3ed"
-  integrity sha512-NcAmS8H8G9imnNMIPeSTzfpmwyd6zjmgmAzr0MxU+OsBgG8QRxfDmGbnt+Jdi0s2I8q/crk4vZWkvm729/xbBA==
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@pollyjs/core/-/core-6.0.3.tgz#350daca3c6be34494aac583c90a60aba245b4ccb"
+  integrity sha512-BjOAu7uRdCOcuknKRTRWaIhPmUQq3YfXh0ZqnxTpwK9pxpZ29QW4nwSjF1R73SE8aJjLKgK6ssthUtMl3CIkWA==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
     "@sindresorhus/fnv1a" "^2.0.1"
