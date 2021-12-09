@@ -1,13 +1,11 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { Polly, PollyConfig } from '@pollyjs/core';
-import Adapter from '@pollyjs/adapter';
-import Persister from '@pollyjs/persister';
 import NodeHttpAdapter from '@pollyjs/adapter-node-http';
 import FSPersister from '@pollyjs/persister-fs';
 
-Polly.register(NodeHttpAdapter as typeof Adapter);
-Polly.register(FSPersister as typeof Persister);
+Polly.register(NodeHttpAdapter);
+Polly.register(FSPersister);
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const tsconfig = require('../../tsconfig.json');
