@@ -900,7 +900,7 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@pollyjs/adapter-node-http@^6":
+"@pollyjs/adapter-node-http@^6.0.3":
   version "6.0.3"
   resolved "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.3.tgz#8b5722c4d94c6e9980ee33172b6a7c6c04754731"
   integrity sha512-gwWDzOP2HKOC8Nkk19replIH8AahWs7BbgGZqNRr8hUf6wBGsJDVG3ZSOeaK2GsG2Su4aD5hUA5U6kxjjEZ1YA==
@@ -917,7 +917,7 @@
   dependencies:
     "@pollyjs/utils" "^6.0.1"
 
-"@pollyjs/core@^6":
+"@pollyjs/core@^6.0.3":
   version "6.0.3"
   resolved "https://registry.npmjs.org/@pollyjs/core/-/core-6.0.3.tgz#350daca3c6be34494aac583c90a60aba245b4ccb"
   integrity sha512-BjOAu7uRdCOcuknKRTRWaIhPmUQq3YfXh0ZqnxTpwK9pxpZ29QW4nwSjF1R73SE8aJjLKgK6ssthUtMl3CIkWA==
@@ -946,7 +946,7 @@
     morgan "^1.10.0"
     nocache "^3.0.1"
 
-"@pollyjs/persister-fs@^6":
+"@pollyjs/persister-fs@^6.0.3":
   version "6.0.3"
   resolved "https://registry.npmjs.org/@pollyjs/persister-fs/-/persister-fs-6.0.3.tgz#d7ce614e2e092094b5674bd1b35a750d9bb62460"
   integrity sha512-+Q1byvViqPrxXUy9Kz5MbWvkG8T3h4n1FPxzoKtwX4W2urxs8Dp1CP3ILIA6XMhid2f4TD57XUx9wJYDHcu6ww==
