@@ -900,20 +900,20 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@pollyjs/adapter-node-http@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.3.tgz#8b5722c4d94c6e9980ee33172b6a7c6c04754731"
-  integrity sha512-gwWDzOP2HKOC8Nkk19replIH8AahWs7BbgGZqNRr8hUf6wBGsJDVG3ZSOeaK2GsG2Su4aD5hUA5U6kxjjEZ1YA==
+"@pollyjs/adapter-node-http@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.4.tgz#5a92ab5adbab7c2c94a5ffca7c5eec4afd01467a"
+  integrity sha512-Rc0I0+LSVQI2rQsERIA7adoxDgXk5I7AqnJ9t9rD33UbXrje9kPwk7SBwBtpXgqMN8/qsVGmenD/XIVmhi3fxQ==
   dependencies:
-    "@pollyjs/adapter" "^6.0.2"
+    "@pollyjs/adapter" "^6.0.4"
     "@pollyjs/utils" "^6.0.1"
     lodash-es "^4.17.21"
     nock "^13.2.1"
 
-"@pollyjs/adapter@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter/-/adapter-6.0.2.tgz#15ca6c7f53913e243edb55b8b8f4c2be2c3248f0"
-  integrity sha512-Jeco5t40j54n728MyO8zu2gJvHAa798fmX9Ee8d2QxBJLiRztFzJncdRwEHLfW+qkqKiyOZpRvs4mwaJCKy1GA==
+"@pollyjs/adapter@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@pollyjs/adapter/-/adapter-6.0.4.tgz#4c45403a215026770a6f0fd7adb6db62d4b49154"
+  integrity sha512-xiAdK+ZBABWpXvUVdcgvZpGI0drix8uy6KFWZr3pVvzKWfr6VyKObd6J6alxA8LG/kQ3BL350fIDia8UIcvwrw==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
 
