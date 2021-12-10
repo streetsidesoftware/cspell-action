@@ -25,7 +25,7 @@
   "devDependencies": {
     "@pollyjs/adapter-node-http": "^6.0.3",
     "@pollyjs/core": "^6.0.3",
-    "@pollyjs/persister-fs": "^6.0.3",
+    "@pollyjs/persister-fs": "^6.0.4",
     "@types/jest": "^27.0.3",
     "@types/minimatch": "^3.0.5",
     "env-cmd": "^10.1.0",
