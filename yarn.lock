@@ -917,10 +917,10 @@
   dependencies:
     "@pollyjs/utils" "^6.0.1"
 
-"@pollyjs/core@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.npmjs.org/@pollyjs/core/-/core-6.0.3.tgz#350daca3c6be34494aac583c90a60aba245b4ccb"
-  integrity sha512-BjOAu7uRdCOcuknKRTRWaIhPmUQq3YfXh0ZqnxTpwK9pxpZ29QW4nwSjF1R73SE8aJjLKgK6ssthUtMl3CIkWA==
+"@pollyjs/core@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@pollyjs/core/-/core-6.0.4.tgz#088113e6c57be16f7a388dc75675c18b77cea339"
+  integrity sha512-kqp4yHtaketVLX1KoK4dog4XC3DXPhy/gLcKtJZA+pLob1U9FtdZzF8ZdI7JfKd0mSfKZbFzZaTbdUOoaXFD7w==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
     "@sindresorhus/fnv1a" "^2.0.1"
