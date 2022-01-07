@@ -43,6 +43,7 @@ export class CSpellReporterForGithubAction {
         filesWithIssues: new Set(),
         issues: -1,
         errors: -1,
+        cachedFiles: 0,
     };
     finished: boolean = false;
 
