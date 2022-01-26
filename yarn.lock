@@ -1935,10 +1935,10 @@ cspell-gitignore@^5.16.0:
     cspell-glob "^5.16.0"
     find-up "^5.0.0"
 
-cspell-glob@^5.16.0:
-  version "5.16.0"
-  resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-5.16.0.tgz#ea210b2a5ab7a871d2982f3806f46ecdea71c87d"
-  integrity sha512-u1cNhmNi5VC6QZ6W+FQEAFIowLdU+/fuh6811Hb//MfTNpe2HDbVrjredQrtaETpyImjy4VG/aA7iSWGGuUAcw==
+cspell-glob@^5.16.0, cspell-glob@^5.17.0:
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-5.17.0.tgz#2a655828a5c705232388499a4b2dfb5f838527b5"
+  integrity sha512-ajzwLk+oMIjzZtYQSELl6AAY5E6wh/7jyQIlU087wUOL7ObtPSPu33S4ILC1TWa87as9hA6232rU8LPQvpZqIQ==
   dependencies:
     micromatch "^4.0.4"
 
