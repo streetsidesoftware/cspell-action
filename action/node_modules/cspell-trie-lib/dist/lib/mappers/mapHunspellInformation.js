@@ -1,0 +1,210 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.__testing__ = exports.joinLetters = exports.hunspellInformationToSuggestionCostDef = void 0;
+const cspell_pipe_1 = require("@cspell/cspell-pipe");
+const text_1 = require("../utils/text");
+const util_1 = require("../utils/util");
+const mapCosts_1 = require("./mapCosts");
+const mapToSuggestionCostDef_1 = require("./mapToSuggestionCostDef");
+function hunspellInformationToSuggestionCostDef(hunInfo, locales) {
+    const costs = calcCosts(hunInfo.costs, locales);
+    const operations = [
+        affKey,
+        affKeyCaps,
+        affMap,
+        affMapAccents,
+        affMapCaps,
+        affNoTry,
+        affRepConv,
+        affTry,
+        affTryAccents,
+        affTryFirstCharacterReplace,
+    ];
+    function parseAff(aff, costs) {
+        // cspell:ignore OCONV
+        const regSupportedAff = /^(?:MAP|KEY|TRY|NO-TRY|ICONV|OCONV|REP)\s/;
+        const rejectAff = /^(?:MAP|KEY|TRY|ICONV|OCONV|REP)\s+\d+$/;
+        const lines = aff
+            .split('\n')
+            .map((a) => a.replace(/#.*/, ''))
+            .map((a) => a.trim())
+            .filter((a) => regSupportedAff.test(a))
+            .filter((a) => !rejectAff.test(a));
+        const defs = (0, cspell_pipe_1.pipeSync)(lines, (0, cspell_pipe_1.opMap)((line) => (0, cspell_pipe_1.pipeSync)(operations, (0, cspell_pipe_1.opMap)((fn) => fn(line, costs)), (0, cspell_pipe_1.opMap)(asArrayOf), (0, cspell_pipe_1.opFlatten)())), (0, cspell_pipe_1.opFlatten)(), (0, cspell_pipe_1.opFilter)(util_1.isDefined));
+        return [...defs];
+    }
+    return parseAff(hunInfo.aff, costs);
+}
+exports.hunspellInformationToSuggestionCostDef = hunspellInformationToSuggestionCostDef;
+function calcCosts(costs = {}, locale) {
+    const useLocale = (locale === null || locale === void 0 ? void 0 : locale.length) ? locale.map((loc) => loc.locale) : undefined;
+    const hunCosts = (0, mapCosts_1.mapHunspellCosts)(costs);
+    const c = {
+        ...hunCosts,
+        locale: useLocale,
+    };
+    return c;
+}
+const regExpMap = /^(?:MAP)\s+(\S+)$/;
+function affMap(line, costs) {
+    const m = line.match(regExpMap);
+    if (!m)
+        return undefined;
+    const map = m[1];
+    const cost = costs.mapCost;
+    return {
+        map,
+        replace: cost,
+        swap: cost,
+    };
+}
+const regExpTry = /^(?:TRY)\s+(\S+)$/;
+function affTry(line, costs) {
+    const m = line.match(regExpTry);
+    if (!m)
+        return undefined;
+    const cost = costs.tryCharCost;
+    const tryChars = m[1];
+    const characters = tryChars;
+    return (0, mapToSuggestionCostDef_1.parseAlphabet)({
+        characters,
+        cost,
+    }, costs.locale, costs);
+}
+function affTryFirstCharacterReplace(line, costs) {
+    const m = line.match(regExpTry);
+    if (!m)
+        return undefined;
+    const characters = m[1];
+    // Make it a bit cheaper so it will match
+    const cost = costs.tryCharCost;
+    return (0, mapToSuggestionCostDef_1.calcFirstCharacterReplace)({
+        characters,
+        cost,
+    }, costs);
+}
+const regExpNoTry = /^NO-TRY\s+(\S+)$/;
+function affNoTry(line, costs) {
+    const m = line.match(regExpNoTry);
+    if (!m)
+        return undefined;
+    const map = m[1];
+    return {
+        map,
+        insDel: Math.max(costs.nonAlphabetCosts - costs.tryCharCost, 0),
+        penalty: costs.nonAlphabetCosts + costs.tryCharCost,
+    };
+}
+// cspell:ignore conv
+const regExpRepConv = /^(?:REP|(?:I|O)CONV)\s+(\S+)\s+(\S+)$/;
+function affRepConv(line, costs) {
+    const m = line.match(regExpRepConv);
+    if (!m)
+        return undefined;
+    const cost = line.startsWith('REP') ? costs.replaceCosts : costs.ioConvertCost;
+    const from = m[1];
+    let into = m[2];
+    into = into.replace(/^0$/, '');
+    if (from.startsWith('^') && !into.startsWith('^')) {
+        into = '^' + into;
+    }
+    if (from.endsWith('$') && !into.endsWith('$')) {
+        into = into + '$';
+    }
+    return {
+        map: joinLetters([from, into]),
+        replace: cost,
+    };
+}
+const regExpKey = /^(?:KEY)\s+(\S+)$/;
+function affKey(line, costs) {
+    const m = line.match(regExpKey);
+    if (!m)
+        return undefined;
+    const kbd = m[1];
+    const pairs = [...(0, mapToSuggestionCostDef_1.splitMap)(kbd)]
+        .map(reducer((p, v) => ({ a: p.b, b: v }), { a: '|', b: '|' }))
+        .filter((ab) => ab.a !== '|' && ab.b !== '|')
+        .map(({ a, b }) => joinLetters([a, b]));
+    const pairsUpper = pairs.map((p) => p.toLocaleUpperCase(costs.locale));
+    const map = (0, util_1.unique)(pairs.concat(pairsUpper)).join('|');
+    const cost = costs.keyboardCost;
+    return {
+        map,
+        replace: cost,
+        swap: cost,
+    };
+}
+function affKeyCaps(line, costs) {
+    const m = line.match(regExpKey);
+    if (!m)
+        return undefined;
+    return parseCaps(m[1], costs);
+}
+function affMapCaps(line, costs) {
+    const m = line.match(regExpMap);
+    if (!m)
+        return undefined;
+    return parseCaps(m[1], costs);
+}
+function affTryAccents(line, costs) {
+    const m = line.match(regExpTry);
+    if (!m)
+        return undefined;
+    return (0, mapToSuggestionCostDef_1.calcCostsForAccentedLetters)(m[1], costs.locale, costs);
+}
+function affMapAccents(line, costs) {
+    const m = line.match(regExpMap);
+    if (!m)
+        return undefined;
+    return (0, mapToSuggestionCostDef_1.calcCostsForAccentedLetters)(m[1], costs.locale, costs);
+}
+function parseCaps(value, costs) {
+    const locale = costs.locale;
+    const letters = [...(0, mapToSuggestionCostDef_1.splitMap)(value)].filter((a) => a !== '|');
+    const withCases = letters
+        .map((s) => (0, text_1.caseForms)(s, locale))
+        .filter((forms) => forms.length > 1)
+        .map(joinLetters);
+    const map = (0, util_1.unique)(withCases).join('|');
+    const cost = costs.capsCosts;
+    if (!map)
+        return undefined;
+    return {
+        map,
+        replace: cost,
+    };
+}
+/**
+ * Bring letters / strings together.
+ * - `['a', 'b'] => 'ab'`
+ * - `['a', 'bc'] => 'a(bc)'`
+ * @param letters - letters to join
+ */
+function joinLetters(letters) {
+    const v = [...letters];
+    return v.map((a) => (a.length > 1 || !a.length ? `(${a})` : a)).join('');
+}
+exports.joinLetters = joinLetters;
+function reducer(fn, initialVal) {
+    let acc = initialVal;
+    return (val, i) => (acc = fn(acc, val, i));
+}
+function asArrayOf(v) {
+    return Array.isArray(v) ? v : [v];
+}
+exports.__testing__ = {
+    affKey,
+    affKeyCaps,
+    affMap,
+    affMapAccents,
+    affMapCaps,
+    affNoTry,
+    affRepConv,
+    affTry,
+    affTryAccents,
+    affTryFirstCharacterReplace,
+    calcCosts,
+    split: mapToSuggestionCostDef_1.splitMap,
+};
+//# sourceMappingURL=mapHunspellInformation.js.map
