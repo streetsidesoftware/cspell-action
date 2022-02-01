@@ -1,0 +1,20 @@
+name: "Create Release Version Tag"
+on:
+  workflow_dispatch:
+
+jobs:
+  make-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn install --frozen-lockfile
+
+      # Make sure the repo is clean
+      - name: is-pristine
+        run: git --no-pager diff --compact-summary --exit-code
+
+      # Tag the release
+      - run: yarn run release
+
+      # Push the tag
+      - run: git push --follow-tags origin main
