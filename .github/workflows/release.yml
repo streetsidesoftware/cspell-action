@@ -13,6 +13,11 @@ jobs:
       - name: is-pristine
         run: git --no-pager diff --compact-summary --exit-code
 
+      # Setup Git
+      - run: |
+          git config --global user.email "jason+cspell-action@streetsidesoftware.nl"
+          git config --global user.name "Workflow - CSpell-Action"
+
       # Tag the release
       - run: yarn run release
 
