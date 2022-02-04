@@ -1961,10 +1961,10 @@ cspell-gitignore@^5.18.2:
     cspell-glob "^5.18.2"
     find-up "^5.0.0"
 
-cspell-glob@^5.18.2:
-  version "5.18.2"
-  resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-5.18.2.tgz#da72c0348f450821df0c170d5e952944a3d840ae"
-  integrity sha512-++wNyzTs9xrv/EXtwxB7IAueTxwaHeRDlsNwX2euJMihsEA2ja6+1P9hbkRn/F+DZb+z4sBVJ1YGqWcBDCG/mA==
+cspell-glob@^5.18.2, cspell-glob@^5.18.3:
+  version "5.18.3"
+  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-5.18.3.tgz#b439ea361c3289bb352291238d1cef8659005181"
+  integrity sha512-wiEmatsXbfc0IVQiL1lOW/UZubPy8iUcGw3akDydX0m0dMstqgqDDx1Dqs4zj0YUz5YhYSMHYwTV3rgrudrHhw==
   dependencies:
     micromatch "^4.0.4"
 
