@@ -1971,10 +1971,10 @@ cspell-gitignore@^5.18.3:
     cspell-glob "^5.18.3"
     find-up "^5.0.0"
 
-cspell-glob@^5.18.3:
-  version "5.18.3"
-  resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-5.18.3.tgz#b439ea361c3289bb352291238d1cef8659005181"
-  integrity sha512-wiEmatsXbfc0IVQiL1lOW/UZubPy8iUcGw3akDydX0m0dMstqgqDDx1Dqs4zj0YUz5YhYSMHYwTV3rgrudrHhw==
+cspell-glob@^5.18.3, cspell-glob@^5.18.4:
+  version "5.18.4"
+  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-5.18.4.tgz#6ff781bf61a4c868205c751c429c85985198e345"
+  integrity sha512-TmP1bSMNS0TpqHgrE4vp4NhDM+MSL75JaqWWfGiCBlutOTYjn3D1+btDQFfDAph/C1PCdc8YFrqqv+72MjoONQ==
   dependencies:
     micromatch "^4.0.4"
 
