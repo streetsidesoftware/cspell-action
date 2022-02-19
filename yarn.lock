@@ -548,9 +548,9 @@
   integrity sha512-MUwA2YKpqaQOSR4V1/CVGRNk8Ii5kf6I8Ch+4/BhRZRQXuwWbi21rDRYWPqdQWps7VNzAbbMA+PQDWsD5YY38g==
 
 "@cspell/dict-software-terms@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-2.1.0.tgz#de835c9b9312de404bddfb21504ba5fa7938c2f9"
-  integrity sha512-R9vfnNqp+cUqILsK3wofGvMrerr6biq+pIY1ayobLf4vUU8Wo4lK+DwRBUd7mHOu1GjXGM/scU54BP19BcYoTw==
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-2.1.1.tgz#1f59b63de03b0b288156112fb40bc1e8401ad294"
+  integrity sha512-PmmqysKSvNwksjEfXrzD1wEVvctR6qppxDhwNc4IQQjwpjmtN8e+8HiXxIbCsBcll1rO0vOmnhpXUdl+d9apXQ==
 
 "@cspell/dict-swift@^1.0.2":
   version "1.0.2"
