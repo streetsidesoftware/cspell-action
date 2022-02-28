@@ -2086,7 +2086,7 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
+debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.3:
   version "4.3.3"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
@@ -2869,11 +2869,11 @@ http-errors@1.8.1:
     toidentifier "1.0.1"
 
 http-graceful-shutdown@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.npmjs.org/http-graceful-shutdown/-/http-graceful-shutdown-3.1.5.tgz#1b28de72ba697c1cd8ccd20067ff11279baa0ab8"
-  integrity sha512-DTydrvfHuqSw6cPFgYJEcex5BUsKxvXsbgkuCwlijaHebYcC6iEcPFgkJwucqhyu5pARGDoIPYE1yG06sUotfQ==
+  version "3.1.6"
+  resolved "https://registry.npmjs.org/http-graceful-shutdown/-/http-graceful-shutdown-3.1.6.tgz#a5f4178ffc4c52b09ba4ef3a4f4a8ec108b287da"
+  integrity sha512-/o01CTMhxHi1xXsFmjSDwi6yu2dam4BnfF9m/RN/WBvFxj2huZKK9IObSj+MmRF3aYtD4OzkeP9b3nscdC4D2g==
   dependencies:
-    debug "^4.3.1"
+    debug "^4.3.3"
 
 http-proxy-agent@^4.0.1:
   version "4.0.1"
