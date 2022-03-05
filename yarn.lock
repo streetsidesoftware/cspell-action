@@ -428,9 +428,9 @@
   integrity sha512-WOHfjwMuLbo76khDsDa1lJvP/dXcwXVwonWwfUFRt82BL/GtyMalh1HEtCWwKDuK/9f8PCEt/EZMkHT3D5ZV3w==
 
 "@cspell/dict-elixir@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-elixir/-/dict-elixir-2.0.0.tgz#2633a290d2eab068ce6035d76529b24abd295b3b"
-  integrity sha512-NeDObcqiYuqWRrzMAQLZDSrZlChTEZwTA2zHdI2nPtpeDl4FQcTz2BHP8zVt6Lj6G2QHJmNGmQtSmDguX86NYA==
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@cspell/dict-elixir/-/dict-elixir-2.0.1.tgz#1a9b422215b5edabb84568cfa5c0c70bc164a2ce"
+  integrity sha512-eTTTxZt1FqGkM780yFDxsGHvTbWqvlK8YISSccK8FyrB6ULW+uflQlNS5AnWg3uWKC48b7pQott+odYCsPJ+Ow==
 
 "@cspell/dict-en-gb@^1.1.33":
   version "1.1.33"
@@ -533,9 +533,9 @@
   integrity sha512-Rp3d4sgD6izW9TW5yVI3D//3HTl9oOGBuzTvXRdoHksVPRvzIu2liVhj8MnQ3XIRe5Kc6IhLBAm6izuV2BpGwQ==
 
 "@cspell/dict-ruby@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-ruby/-/dict-ruby-2.0.0.tgz#3f2c78ceb38bec272adc7187fda72bb47799cf4e"
-  integrity sha512-ux73GEIZrApxIG/BDnpdxWE7r9TY3n+3HFAEp+LDJjSjpwpn2VXopd7GsjwsvmlAv5F3Jch8tzgzujFZkvqdoA==
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@cspell/dict-ruby/-/dict-ruby-2.0.1.tgz#1cbd4d8803428bd421a5562b2d2bb4b3bae80bce"
+  integrity sha512-qGqhYfFeoBOashv/l0Kj5o4ilyvfq0s+t+r32juPOkOnbHz+hzxnJo2tMMg/L/UdjVV7Y8ovg4LDBC/seVrMYQ==
 
 "@cspell/dict-rust@^2.0.0":
   version "2.0.0"
@@ -548,9 +548,9 @@
   integrity sha512-MUwA2YKpqaQOSR4V1/CVGRNk8Ii5kf6I8Ch+4/BhRZRQXuwWbi21rDRYWPqdQWps7VNzAbbMA+PQDWsD5YY38g==
 
 "@cspell/dict-software-terms@^2.1.0":
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-2.1.1.tgz#1f59b63de03b0b288156112fb40bc1e8401ad294"
-  integrity sha512-PmmqysKSvNwksjEfXrzD1wEVvctR6qppxDhwNc4IQQjwpjmtN8e+8HiXxIbCsBcll1rO0vOmnhpXUdl+d9apXQ==
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-2.1.2.tgz#16a18f275e81426b0fbbb5342fd37701038b01c8"
+  integrity sha512-iTkkduYX4+NVHt1CKbDGDQJsSTqMCafGZKhtasPQTUN6UxIaDFM9Hxl1wAoECDaRRDgkaGP0v1C7F8jY7nFyKQ==
 
 "@cspell/dict-swift@^1.0.2":
   version "1.0.2"
@@ -1145,9 +1145,9 @@
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
 "@types/yargs-parser@*":
-  version "20.2.1"
-  resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-20.2.1.tgz#3b9ce2489919d9e4fea439b76916abc34b2df129"
-  integrity sha512-7tFImggNeNBVMsn0vLrpn1H1uPrUBdnARPTpZoitY37ZrdJREzf7I16tMrlK3hen349gr1NYh8CmZQa7CTG6Aw==
+  version "21.0.0"
+  resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-21.0.0.tgz#0c60e537fa790f5f9472ed2776c2b71ec117351b"
+  integrity sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==
 
 "@types/yargs@^16.0.0":
   version "16.0.4"
@@ -1580,9 +1580,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001312:
-  version "1.0.30001312"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001312.tgz#e11eba4b87e24d22697dae05455d5aea28550d5f"
-  integrity sha512-Wiz1Psk2MEK0pX3rUzWaunLTZzqS2JYZFzNKqAiJGiuxIjRPLgV6+VDPOg6lQOUxmDwhTlh198JsTTi8Hzw6aQ==
+  version "1.0.30001313"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001313.tgz#a380b079db91621e1b7120895874e2fd62ed2e2f"
+  integrity sha512-rI1UN0koZUiKINjysQDuRi2VeSCce3bYJNmDcj3PIKREiAmjakugBul1QSkg/fPrlULYl6oWfGg3PbgOSY9X4Q==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -2208,9 +2208,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.4.71:
-  version "1.4.75"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.75.tgz#d1ad9bb46f2f1bf432118c2be21d27ffeae82fdd"
-  integrity sha512-LxgUNeu3BVU7sXaKjUDD9xivocQLxFtq6wgERrutdY/yIOps3ODOZExK1jg8DTEg4U8TUCb5MLGeWFOYuxjF3Q==
+  version "1.4.76"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.76.tgz#a0494baedaf51094b1c172999919becd9975a934"
+  integrity sha512-3Vftv7cenJtQb+k00McEBZ2vVmZ/x+HEF7pcZONZIkOsESqAqVuACmBxMv0JhzX7u0YltU0vSqRqgBSTAhFUjA==
 
 emittery@^0.8.1:
   version "0.8.1"
