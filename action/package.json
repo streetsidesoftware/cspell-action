@@ -11,11 +11,11 @@
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0",
-    "@octokit/core": "^3.5.1",
+    "@octokit/core": "^3.6.0",
     "@octokit/plugin-rest-endpoint-methods": "^5.13.0",
     "@octokit/rest": "^18.12.0",
-    "cspell": "^5.19.1",
-    "cspell-glob": "^5.19.1",
+    "cspell": "^5.19.2",
+    "cspell-glob": "^5.19.2",
     "vscode-uri": "^3.0.3"
   }
 }
