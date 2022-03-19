@@ -33,6 +33,7 @@ class Option {
     this.parseArg = undefined;
     this.hidden = false;
     this.argChoices = undefined;
+    this.conflictsWith = [];
   }
 
   /**
@@ -63,6 +64,23 @@ class Option {
 
   preset(arg) {
     this.presetArg = arg;
+    return this;
+  }
+
+  /**
+   * Add option name(s) that conflict with this option.
+   * An error will be displayed if conflicting options are found during parsing.
+   *
+   * @example
+   * new Option('--rgb').conflicts('cmyk');
+   * new Option('--js').conflicts(['ts', 'jsx']);
+   *
+   * @param {string | string[]} names
+   * @return {Option}
+   */
+
+  conflicts(names) {
+    this.conflictsWith = this.conflictsWith.concat(names);
     return this;
   }
 
