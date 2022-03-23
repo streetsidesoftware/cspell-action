@@ -3892,9 +3892,9 @@ neo-async@^2.6.0:
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
 nocache@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/nocache/-/nocache-3.0.1.tgz#54d8b53a7e0a0aa1a288cfceab8a3cefbcde67d4"
-  integrity sha512-Gh39xwJwBKy0OvFmWfBs/vDO4Nl7JhnJtkqNP76OUinQz7BiMoszHYrIDHHAaqVl/QKVxCEy4ZxC/XZninu7nQ==
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/nocache/-/nocache-3.0.2.tgz#c8816a2d3bcb0ea9bc44771381252a0eecc506c5"
+  integrity sha512-UNYvj/0lg61F949fi6MijZfPEaw3wchjSZmc9etmMEzsFuaJiG/JBVd8NtbH93OTUT9TCZz2bAK3lvf6vvhvkg==
 
 nock@^13.2.1:
   version "13.2.4"
