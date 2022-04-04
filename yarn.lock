@@ -972,18 +972,18 @@
     morgan "^1.10.0"
     nocache "^3.0.1"
 
-"@pollyjs/persister-fs@^6.0.4":
-  version "6.0.4"
-  resolved "https://registry.npmjs.org/@pollyjs/persister-fs/-/persister-fs-6.0.4.tgz#03ab98a2c9b6160266df73a60a01707295644d49"
-  integrity sha512-WK5r77nZQJpKMalTIGjP4qWlkXSV2j36cMZKzn8/RGrLw+ML9w+hDAyYjHC+8lH+Wy5mU5S2ateM5hlB9p0Ssg==
+"@pollyjs/persister-fs@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@pollyjs/persister-fs/-/persister-fs-6.0.5.tgz#7def71d69a96eac7b665dc2db5c6e9999e01da48"
+  integrity sha512-+zEuPNDoVwA89X/LnmW6l/4LkJXHnZrk/Wyj3ShXLb6sS05LXEThgpriJWLIHh68hPZnqlB4lXsYGjczORiJHw==
   dependencies:
     "@pollyjs/node-server" "^6.0.1"
-    "@pollyjs/persister" "^6.0.4"
+    "@pollyjs/persister" "^6.0.5"
 
-"@pollyjs/persister@^6.0.4":
-  version "6.0.4"
-  resolved "https://registry.npmjs.org/@pollyjs/persister/-/persister-6.0.4.tgz#c1524664c8d67d84c04d25c1c306206c7a8d23b9"
-  integrity sha512-Ytfqa19CERBPj7BtTYTn+eawdI8LSueiVIx/gWnT/mxaAMzkutb+WxcLq485JnzXExDb9RwSFZTOXlKhrxU2Ww==
+"@pollyjs/persister@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@pollyjs/persister/-/persister-6.0.5.tgz#572b2575af4226a54cb88b1bbe942b38a232ca7f"
+  integrity sha512-J2zvzJb3XPDran9HzWh/Ng6GRrIPRt3DnqRygbfqP9do6B2unqGlIxqMdqXzuqylJ49k2soEC+haWpdW2cQ9mg==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
     "@types/set-cookie-parser" "^2.4.1"
