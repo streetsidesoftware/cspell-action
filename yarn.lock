@@ -943,10 +943,10 @@
   dependencies:
     "@pollyjs/utils" "^6.0.1"
 
-"@pollyjs/core@^6.0.4":
-  version "6.0.4"
-  resolved "https://registry.npmjs.org/@pollyjs/core/-/core-6.0.4.tgz#088113e6c57be16f7a388dc75675c18b77cea339"
-  integrity sha512-kqp4yHtaketVLX1KoK4dog4XC3DXPhy/gLcKtJZA+pLob1U9FtdZzF8ZdI7JfKd0mSfKZbFzZaTbdUOoaXFD7w==
+"@pollyjs/core@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@pollyjs/core/-/core-6.0.5.tgz#e4e3eaf3e0c6a289ec7f558cb2d03a44317989c1"
+  integrity sha512-LwKj20QT+VtDTv3HslK1KseTnNP04J8giz71W8RmwjYDSC5PRQvqcY3t86xd9xgVgbfN29in9ZYjAotqsmbyOw==
   dependencies:
     "@pollyjs/utils" "^6.0.1"
     "@sindresorhus/fnv1a" "^2.0.1"
