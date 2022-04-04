@@ -926,10 +926,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@pollyjs/adapter-node-http@^6.0.4":
-  version "6.0.4"
-  resolved "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.4.tgz#5a92ab5adbab7c2c94a5ffca7c5eec4afd01467a"
-  integrity sha512-Rc0I0+LSVQI2rQsERIA7adoxDgXk5I7AqnJ9t9rD33UbXrje9kPwk7SBwBtpXgqMN8/qsVGmenD/XIVmhi3fxQ==
+"@pollyjs/adapter-node-http@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.5.tgz#f92616cefdad9ae144fe07f6b88798a20bf1c8fd"
+  integrity sha512-/8xa5OHwumQ06P1PzMcePYxalxyRR4jA3ZdsXpLSSVn8xaC0S95X7WGtFk/1F/HhHWq/3tZaOQo2rFLtprGiwg==
   dependencies:
     "@pollyjs/adapter" "^6.0.4"
     "@pollyjs/utils" "^6.0.1"
