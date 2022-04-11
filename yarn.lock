@@ -386,9 +386,9 @@
   integrity sha512-O622rMAaHm85AmqNyMki5je8HB/1XlTKbGOXh2UUhooI5qdgdfrjTQ6VBuHwHrfEfuODBHYTNYXVB2m23XqHCg==
 
 "@cspell/dict-cpp@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/@cspell/dict-cpp/-/dict-cpp-2.0.2.tgz#201b247f4a238e891b69ff32e737332570cccfa7"
-  integrity sha512-2Z2mOFQ4pSBoQeUaa/Cn0KBwkcRDdWSdBMj8bjGlhl9hXI342drAJMXg8tWsQa4l6J0GJUdmxz6RHmYRSzZJoQ==
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/@cspell/dict-cpp/-/dict-cpp-2.0.3.tgz#551bec166c4520f7ba36f8d263fb885d19f98db0"
+  integrity sha512-aWRvI3CQW2M3XeJpDVffItw/9n4hxsN5EPwyBa6Po6EnCxZZZLOqpieZk4JNz4pH0/xbnOX+sMMuSeKWr71r/w==
 
 "@cspell/dict-cryptocurrencies@^2.0.0":
   version "2.0.0"
@@ -1126,9 +1126,9 @@
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
 "@types/prettier@^2.1.5":
-  version "2.4.4"
-  resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.4.4.tgz#5d9b63132df54d8909fce1c3f8ca260fdd693e17"
-  integrity sha512-ReVR2rLTV1kvtlWFyuot+d1pkpG2Fw/XKE3PDAdj57rbM97ttSp9JZ2UsP+2EHTylra9cUf6JA7tGwW1INzUrA==
+  version "2.6.0"
+  resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.6.0.tgz#efcbd41937f9ae7434c714ab698604822d890759"
+  integrity sha512-G/AdOadiZhnJp0jXCaBQU449W2h716OW/EoXeYkCytxKL06X1WCXB4DZpp8TpZ8eyIJVS1cw4lrlkkSYU21cDw==
 
 "@types/set-cookie-parser@^2.4.1":
   version "2.4.2"
@@ -3750,9 +3750,9 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 lru-cache@^7.4.0:
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-7.8.0.tgz#649aaeb294a56297b5cbc5d70f198dcc5ebe5747"
-  integrity sha512-AmXqneQZL3KZMIgBpaPTeI6pfwh+xQ2vutMsyqOu1TBdEXFZgpG/80wuJ531w2ZN7TI0/oc8CPxzh/DKQudZqg==
+  version "7.8.1"
+  resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-7.8.1.tgz#68ee3f4807a57d2ba185b7fd90827d5c21ce82bb"
+  integrity sha512-E1v547OCgJvbvevfjgK9sNKIVXO96NnsTsFPBlg4ZxjhsJSODoH9lk8Bm0OxvHNm6Vm5Yqkl/1fErDxhYL8Skg==
 
 make-dir@^3.0.0:
   version "3.1.0"
@@ -5048,9 +5048,9 @@ typescript@^4.6.3:
   integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
 
 uglify-js@^3.1.4:
-  version "3.15.3"
-  resolved "https://registry.npmjs.org/uglify-js/-/uglify-js-3.15.3.tgz#9aa82ca22419ba4c0137642ba0df800cb06e0471"
-  integrity sha512-6iCVm2omGJbsu3JWac+p6kUiOpg3wFO2f8lIXjfEb8RrmLjzog1wTPMmwKB7swfzzqxj9YM+sGUM++u1qN4qJg==
+  version "3.15.4"
+  resolved "https://registry.npmjs.org/uglify-js/-/uglify-js-3.15.4.tgz#fa95c257e88f85614915b906204b9623d4fa340d"
+  integrity sha512-vMOPGDuvXecPs34V74qDKk4iJ/SN4vL3Ow/23ixafENYvtrNvtbcgUeugTcUGRGsOF/5fU8/NYSL5Hyb3l1OJA==
 
 unique-string@^2.0.0:
   version "2.0.0"
