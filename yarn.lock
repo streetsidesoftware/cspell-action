@@ -382,9 +382,9 @@
   integrity sha512-ASIgI/LmV2TYrD4mtk+gm4XmUSTRomOyRt7NDWyBpEww/AeawC2O2NH6FosyUT6dUU3GaXt2wgJRN7R78n1SGg==
 
 "@cspell/dict-companies@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/@cspell/dict-companies/-/dict-companies-2.0.3.tgz#9e0f93a2cc884ff0b98d019123d1dbfb853da872"
-  integrity sha512-O622rMAaHm85AmqNyMki5je8HB/1XlTKbGOXh2UUhooI5qdgdfrjTQ6VBuHwHrfEfuODBHYTNYXVB2m23XqHCg==
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/@cspell/dict-companies/-/dict-companies-2.0.4.tgz#2ba11418478d99d67a96004ea782a47a42c501a3"
+  integrity sha512-nLNVddo+iu4q/Mu03nkVTMnSPxBkoLyZ0MgpHJZWCqxVATbBkzoZNNNjsTkJhvkbrUIWydf8YW4U4wYY+kyh7Q==
 
 "@cspell/dict-cpp@^2.0.2":
   version "2.0.3"
@@ -432,9 +432,9 @@
   integrity sha512-tKSSUf9BJEV+GJQAYGw5e+ouhEe2ZXE620S7BLKe3ZmpnjlNG9JqlnaBhkIMxKnNFkLY2BP/EARzw31AZnOv4g==
 
 "@cspell/dict-en_us@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-en_us/-/dict-en_us-2.2.0.tgz#33ee50fac4c42036ce98b9c9925cc86b16b0f2c3"
-  integrity sha512-IJWu8MI2NdLyPzekrMi9K+v71b0qjDE+z/BccoMA/APnphqgSNM8BDUAzhio6mPKi1AvPRCNUjk79oiUfp+1Gw==
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/@cspell/dict-en_us/-/dict-en_us-2.2.1.tgz#f06453ee65bb315d90fbcec4f947ac62493233f6"
+  integrity sha512-tx6sJOCgfLRTiXxF5Jeheo0wnhc+nedmEx9IKnWMJFzOZ1J9gXmdjDBlZE/zG8g7tsH415yqqPBh6k5J9bupiA==
 
 "@cspell/dict-filetypes@^2.0.1":
   version "2.0.1"
@@ -497,9 +497,9 @@
   integrity sha512-7WUEBEspSKtsq104WdIys1+DLqAxpJPzw74Py1TuE3fI5GvlzeSZkRFP2ya54GB2lCO4C3mq4M8EnitpibVDfw==
 
 "@cspell/dict-node@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-node/-/dict-node-2.0.0.tgz#f89ca72deac5bfc7ccd46b6b8880fad52ab44843"
-  integrity sha512-tPPl3liJORa/l6AoYqh/7rjoM7bdtaIXnIN6ox7CE0flZcBS5rWOB6mzEY3rpu/XJX0pjbBiIoqrolDkVl1RTQ==
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@cspell/dict-node/-/dict-node-2.0.1.tgz#eda891ebdbce83f20829cb6c85cd209da8cf5cdd"
+  integrity sha512-ztBWzhvI+YaMehICSJ65cohhjQqoztxf9vrS3YckOiVGBFvUMaFVNdX9klQkvrLcS/O4+2PzoGeIEkmf99amLA==
 
 "@cspell/dict-npm@^2.0.2":
   version "2.0.2"
@@ -2218,9 +2218,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.4.118:
-  version "1.4.123"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.123.tgz#de88ea7fd29d7c868e63c88f129e91494bcf3266"
-  integrity sha512-0pHGE53WkYoFbsgwYcVKEpWa6jbzlvkohIEA2CUoZ9b5KC+w/zlMiQHvW/4IBcOh7YoEFqRNavgTk02TBoUTUw==
+  version "1.4.124"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.124.tgz#e9015e234d8632920dcdf5480351da9e845ed220"
+  integrity sha512-VhaE9VUYU6d2eIb+4xf83CATD+T+3bTzvxvlADkQE+c2hisiw3sZmvEDtsW704+Zky9WZGhBuQXijDVqSriQLA==
 
 emittery@^0.8.1:
   version "0.8.1"
