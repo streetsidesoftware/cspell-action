@@ -1125,9 +1125,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "17.0.29"
-  resolved "https://registry.npmjs.org/@types/node/-/node-17.0.29.tgz#7f2e1159231d4a077bb660edab0fde373e375a3d"
-  integrity sha512-tx5jMmMFwx7wBwq/V7OohKDVb/JwJU5qCVkeLMh1//xycAJ/ESuw9aJ9SEtlCZDYi2pBfe4JkisSoAtbOsBNAA==
+  version "17.0.30"
+  resolved "https://registry.npmjs.org/@types/node/-/node-17.0.30.tgz#2c6e8512acac70815e8176aa30c38025067880ef"
+  integrity sha512-oNBIZjIqyHYP8VCNAV9uEytXVeXG2oR0w9lgAXro20eugRQfY002qr3CUl6BAe+Yf/z3CRjPdz27Pu6WWtuSRw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -2218,9 +2218,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.4.118:
-  version "1.4.124"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.124.tgz#e9015e234d8632920dcdf5480351da9e845ed220"
-  integrity sha512-VhaE9VUYU6d2eIb+4xf83CATD+T+3bTzvxvlADkQE+c2hisiw3sZmvEDtsW704+Zky9WZGhBuQXijDVqSriQLA==
+  version "1.4.126"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.126.tgz#56e9d3cbb658c58b45d05ecfedbcb3b09ab1a2d8"
+  integrity sha512-g/e18Yv0fBdN2c2Z8hWV9jOXxOxOByyG8uGufrJWUym+LHMYa5K2oR9C+D8Bvh0slUTarBwBBZFi41ImQjEZIA==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -4997,7 +4997,7 @@ typedarray@^0.0.6:
 
 typescript@^4.6.4:
   version "4.6.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
   integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
 
 uglify-js@^3.1.4:
