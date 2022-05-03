@@ -26,7 +26,7 @@
     "@pollyjs/adapter-node-http": "^6.0.5",
     "@pollyjs/core": "^6.0.5",
     "@pollyjs/persister-fs": "^6.0.5",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^27.5.0",
     "@types/minimatch": "^3.0.5",
     "env-cmd": "^10.1.0",
     "jest": "^27.5.1",
@@ -41,8 +41,8 @@
     "@octokit/core": "^3.6.0",
     "@octokit/plugin-rest-endpoint-methods": "^5.13.0",
     "@octokit/rest": "^18.12.0",
-    "cspell": "^5.19.7",
-    "cspell-glob": "^5.19.7",
+    "cspell": "^5.20.0",
+    "cspell-glob": "^5.20.0",
     "vscode-uri": "^3.0.3"
   }
 }
