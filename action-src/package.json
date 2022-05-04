@@ -29,7 +29,7 @@
     "@types/jest": "^27.5.0",
     "@types/minimatch": "^3.0.5",
     "env-cmd": "^10.1.0",
-    "jest": "^27.5.1",
+    "jest": "^28.0.3",
     "rimraf": "^3.0.2",
     "standard-version": "^9.3.2",
     "ts-jest": "^28.0.1",
