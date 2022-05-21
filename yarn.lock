@@ -1980,6 +1980,13 @@ cspell-glob@^5.21.2:
   dependencies:
     micromatch "^4.0.5"
 
+cspell-glob@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-6.0.0.tgz#ccbfcb7f888683afd6453146f42bb848799bf818"
+  integrity sha512-H0FiYJm5Zv+HzJseRdNwHQMeJBNC8JqAzBw+5dS78RHzDyU8P3XeFEhUEy2baS2od2zxIRPLvL0/8fBXEzxPhQ==
+  dependencies:
+    micromatch "^4.0.5"
+
 cspell-io@^5.21.2:
   version "5.21.2"
   resolved "https://registry.npmjs.org/cspell-io/-/cspell-io-5.21.2.tgz#d9087163b1c8ad11c6f94cb7dddf8c57eb97fabe"
