@@ -21,16 +21,14 @@ categories:
     labels:
       - "chore"
       - "dependencies"
-    change-template: |
-      - $TITLE (#$NUMBER)
 
 change-template: |
   <details>
   <summary>$TITLE (#$NUMBER)</summary>
-  
+
   ### $TITLE (#$NUMBER)
   $BODY
-  
+
   ---
 
   </details>
@@ -39,14 +37,17 @@ change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add
 version-resolver:
   major:
     labels:
-      - "major"
+      - major
+      - breaking
   minor:
     labels:
-      - "minor"
+      - minor
       - feature
   patch:
     labels:
-      - "patch"
+      - patch
+      - chore
+      - fix
   default: patch
 exclude-labels:
   - "exclude"
@@ -72,7 +73,7 @@ autolabeler:
   - label: "breaking"
     title:
       - "/fix[!]/i"
-      - "/feat[!]/i"  
+      - "/feat[!]/i"
 
 template: |
   ## Changes
