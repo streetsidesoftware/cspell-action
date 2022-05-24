@@ -11,33 +11,40 @@ inputs:
       Also when generating a new PAT, select the least scopes necessary.
       [Learn more about creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
     default: ${{ github.token }}
+    required: false
   files:
     description: >
       Define glob patterns to filter the files to be checked. Use a new line between patterns to define multiple patterns.
       The default is to check ALL files that were changed in in the pull_request or push.
       Note: `ignorePaths` defined in cspell.json still apply.
+    required: false
   incremental_files_only:
     description: >
       Limit the files checked to the ones in the pull request or push.
-    default: true
+    default: "true"
+    required: false
   config:
     description: >
       Path to `cspell.json`
+    required: false
   root:
     description: >
       The point in the directory tree to start spell checking.
+    required: false
   inline:
     description: >
       Notification level to use with inline reporting of spelling errors.
       Allowed values are: warning, error, none
     default: warning
+    required: false
   strict:
     description: >
       Determines if the action should be failed if any spelling issues are found.
       Allowed values are: true, false
-    default: true
+    default: "true"
+    required: false
 runs:
-  using: "node12"
+  using: "node16"
   main: "./action/lib/main_root.js"
 branding:
   icon: "code"
