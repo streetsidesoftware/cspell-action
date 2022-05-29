@@ -7,7 +7,7 @@ const process = require('process');
 const { Argument, humanReadableArgName } = require('./argument.js');
 const { CommanderError } = require('./error.js');
 const { Help } = require('./help.js');
-const { Option, splitOptionFlags } = require('./option.js');
+const { Option, splitOptionFlags, DualOptions } = require('./option.js');
 const { suggestSimilar } = require('./suggestSimilar');
 
 // @ts-check
@@ -48,6 +48,7 @@ class Command extends EventEmitter {
     this._aliases = [];
     this._combineFlagAndOptionalValue = true;
     this._description = '';
+    this._summary = '';
     this._argsDescription = undefined; // legacy
     this._enablePositionalOptions = false;
     this._passThroughOptions = false;
@@ -1194,6 +1195,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
   _parseCommand(operands, unknown) {
     const parsed = this.parseOptions(unknown);
     this._parseOptionsEnv(); // after cli, so parseArg not called on both cli and env
+    this._parseOptionsImplied();
     operands = operands.concat(parsed.operands);
     unknown = parsed.unknown;
     this.args = operands.concat(unknown);
@@ -1570,6 +1572,29 @@ Expecting one of '${allowedValues.join("', '")}'`);
   }
 
   /**
+   * Apply any implied option values, if option is undefined or default value.
+   *
+   * @api private
+   */
+  _parseOptionsImplied() {
+    const dualHelper = new DualOptions(this.options);
+    const hasCustomOptionValue = (optionKey) => {
+      return this.getOptionValue(optionKey) !== undefined && !['default', 'implied'].includes(this.getOptionValueSource(optionKey));
+    };
+    this.options
+      .filter(option => (option.implied !== undefined) &&
+        hasCustomOptionValue(option.attributeName()) &&
+        dualHelper.valueFromOption(this.getOptionValue(option.attributeName()), option))
+      .forEach((option) => {
+        Object.keys(option.implied)
+          .filter(impliedKey => !hasCustomOptionValue(impliedKey))
+          .forEach(impliedKey => {
+            this.setOptionValueWithSource(impliedKey, option.implied[impliedKey], 'implied');
+          });
+      });
+  }
+
+  /**
    * Argument `name` is missing.
    *
    * @param {string} name
@@ -1743,7 +1768,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
   }
 
   /**
-   * Set the description to `str`.
+   * Set the description.
    *
    * @param {string} [str]
    * @param {Object} [argsDescription]
@@ -1755,6 +1780,18 @@ Expecting one of '${allowedValues.join("', '")}'`);
     if (argsDescription) {
       this._argsDescription = argsDescription;
     }
+    return this;
+  }
+
+  /**
+   * Set the summary. Used when listed as subcommand of parent.
+   *
+   * @param {string} [str]
+   * @return {string|Command}
+   */
+  summary(str) {
+    if (str === undefined) return this._summary;
+    this._summary = str;
     return this;
   }
 
