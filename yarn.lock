@@ -1997,10 +1997,10 @@ cspell-gitignore@^6.2.2:
     cspell-glob "^6.2.2"
     find-up "^5.0.0"
 
-cspell-glob@^6.2.2:
-  version "6.2.2"
-  resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-6.2.2.tgz#e3b6359af87c17e5b6f1dc1da766ad3c9aa2583f"
-  integrity sha512-v37OZskdjjRBjX1KA657Y+RegTZg1nHVqN5NkZNlbnqRERkZ0avhxjgaWA9WAcEDQOV02lmXIrLsq/JCps660A==
+cspell-glob@^6.2.2, cspell-glob@^6.2.3:
+  version "6.2.3"
+  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-6.2.3.tgz#b98bea3d15d5a0c929a7659dd320d878b149a9cd"
+  integrity sha512-syeig1xAvReU8Qn78NuUaUhbUfop4oSAt+0l+zCQk0wsXA9vGhIzH5rctwOzBfDQhA7RFC62c+OUCEtVZ4QY4g==
   dependencies:
     micromatch "^4.0.5"
 
