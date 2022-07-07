@@ -31,7 +31,8 @@ jobs:
           cd action-src
           yarn add cspell@latest cspell-glob@latest
           yarn
-          echo "CSPELL_VERSION=$(yarn cspell -V)" >> $GITHUB_ENV
+          yarn exec -s cspell -- -V
+          echo "CSPELL_VERSION=$(yarn exec -s cspell -- -V)" >> $GITHUB_ENV
       - name: Install Updates
         run: yarn
       - name: Update packages Src
