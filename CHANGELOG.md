@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.1](https://github.com/streetsidesoftware/cspell-action/compare/v2.1.0...v2.1.1) (2022-07-08)
+
+
+### Continuous Integration
+
+* Cleanup name of CSpell Update PR ([#818](https://github.com/streetsidesoftware/cspell-action/issues/818)) ([a8aab2f](https://github.com/streetsidesoftware/cspell-action/commit/a8aab2fec2b219d5add5627525325b2d55d847c8))
+* remove unnecessary prepare ([b8805b3](https://github.com/streetsidesoftware/cspell-action/commit/b8805b37c8b71303fcfbf04dfc4da09c3d89a043))
+* Update release-please.yml ([289e9b2](https://github.com/streetsidesoftware/cspell-action/commit/289e9b207188d10a492d785a00411ca27544cde7))
+* Workflow Bot -- Update ALL Dependencies ([3bdcce3](https://github.com/streetsidesoftware/cspell-action/commit/3bdcce3aa185e7bcf680b347ad059a90086eabeb))
+* Workflow Bot -- Update ALL Dependencies (main) ([#819](https://github.com/streetsidesoftware/cspell-action/issues/819)) ([3bdcce3](https://github.com/streetsidesoftware/cspell-action/commit/3bdcce3aa185e7bcf680b347ad059a90086eabeb))
+
+
+### Updates and Bug Fixes
+
+* Update CSpell to (6.2.3) ([da5b666](https://github.com/streetsidesoftware/cspell-action/commit/da5b6666dc78f08dbcf7c97ba0ac9540437d5290))
+* Update CSpell to (6.2.3) (main) ([#821](https://github.com/streetsidesoftware/cspell-action/issues/821)) ([da5b666](https://github.com/streetsidesoftware/cspell-action/commit/da5b6666dc78f08dbcf7c97ba0ac9540437d5290))
+* Workflow Bot -- Update ALL Dependencies ([086366b](https://github.com/streetsidesoftware/cspell-action/commit/086366b5a977d49042cdbda90df11c7bac65e995))
+* Workflow Bot -- Update ALL Dependencies (main) ([#812](https://github.com/streetsidesoftware/cspell-action/issues/812)) ([086366b](https://github.com/streetsidesoftware/cspell-action/commit/086366b5a977d49042cdbda90df11c7bac65e995))
+* Workflow Bot -- Update CSpell (6.2.3) ([3f9f1e6](https://github.com/streetsidesoftware/cspell-action/commit/3f9f1e6e8d04caf4cf31fd26847c3be73724c0d5))
+* Workflow Bot -- Update CSpell (6.2.3) (main) ([#813](https://github.com/streetsidesoftware/cspell-action/issues/813)) ([3f9f1e6](https://github.com/streetsidesoftware/cspell-action/commit/3f9f1e6e8d04caf4cf31fd26847c3be73724c0d5))
+
 ## [2.1.0](https://github.com/streetsidesoftware/cspell-action/compare/v2.0.1...v2.1.0) (2022-07-08)
 
 
