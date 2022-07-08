@@ -9,7 +9,6 @@
     "clean": "rimraf ../action/lib",
     "eslint": "eslint 'action-source/**/*.ts'",
     "prettier": "prettier -w \"**/*.{md,yaml,yml,json,ts}\"",
-    "prepare": "yarn build",
     "prepublishOnly": "yarn build",
     "release": "standard-version",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
