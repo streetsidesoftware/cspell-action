@@ -35,6 +35,7 @@ jobs:
         run: yarn clean-build
       - name: Has changes
         run: |
+          git --no-pager diff --compact-summary  --exit-code action && echo "PR_TYPE=ci" >> $GITHUB_ENV || echo "PR_TYPE=fix" >> $GITHUB_ENV
           git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
           git --no-pager diff --compact-summary
       - name: Gen Body
@@ -54,10 +55,10 @@ jobs:
         if: env.git_status == 'dirty'
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: "ci: Workflow Bot -- Update ALL Dependencies"
+          commit-message: "${{ env.PR_TYPE }}: Workflow Bot -- Update ALL Dependencies"
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
-          title: "ci: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})"
+          title: "${{ env.PR_TYPE }}: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})"
           token: ${{ steps.generate-token.outputs.token }}
           body: ${{ env.git_body }}
           delete-branch: true
