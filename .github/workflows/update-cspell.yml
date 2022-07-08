@@ -35,6 +35,7 @@ jobs:
           echo "CSPELL_VERSION=$(yarn exec -s cspell -- -V)" >> $GITHUB_ENV
       - name: Install Updates
         run: |
+          yarn install
           npx package-json-dependency-updater -u
           yarn
       - name: Update packages Src
@@ -43,15 +44,15 @@ jobs:
         run: |
           git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
           git --no-pager diff --compact-summary
+      - name: Echo git_status
+        run: |
+          echo Status: ${{ env.git_status }}
+          echo CSpell Version: ${{ env.CSPELL_VERSION }}
       - name: Gen Body
         run: |
           echo 'git_body<<DIFF' >> $GITHUB_ENV
           git --no-pager diff --compact-summary >> $GITHUB_ENV
           echo 'DIFF' >> $GITHUB_ENV
-      - name: Echo git_status
-        run: |
-          echo Status: ${{ env.git_status }}
-          echo CSpell Version: ${{ env.CSPELL_VERSION }}
       - uses: tibdex/github-app-token@v1 # cspell:ignore tibdex
         if: env.git_status == 'dirty'
         id: generate-token
