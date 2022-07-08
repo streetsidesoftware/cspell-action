@@ -63,10 +63,10 @@ jobs:
         if: env.git_status == 'dirty'
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: "fix: Workflow Bot -- Update CSpell (${{ env.CSPELL_VERSION }})"
+          commit-message: "fix: Update CSpell to (${{ env.CSPELL_VERSION }})"
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
-          title: "fix: Workflow Bot -- Update CSpell (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
+          title: "fix: Update CSpell to (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
           token: ${{ steps.generate-token.outputs.token }}
           body: ${{ env.git_body }}
           delete-branch: true
