@@ -34,7 +34,9 @@ jobs:
           yarn exec -s cspell -- -V
           echo "CSPELL_VERSION=$(yarn exec -s cspell -- -V)" >> $GITHUB_ENV
       - name: Install Updates
-        run: yarn
+        run: |
+          npx package-json-dependency-updater -u
+          yarn
       - name: Update packages Src
         run: yarn clean-build
       - name: Has changes
