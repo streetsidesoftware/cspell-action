@@ -40,8 +40,8 @@
     "@octokit/core": "^3.6.0",
     "@octokit/plugin-rest-endpoint-methods": "^5.16.2",
     "@octokit/rest": "^18.12.0",
-    "cspell": "^6.4.0",
-    "cspell-glob": "^6.4.0",
+    "cspell": "^6.4.1",
+    "cspell-glob": "^6.4.1",
     "vscode-uri": "^3.0.3"
   }
 }
