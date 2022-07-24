@@ -386,9 +386,9 @@
   integrity sha512-Nb1Tc/HKotxagJ9w1U4tLAM9bH83QXQojoW7cl135yRVmjfeVG0qufKXjq6wq84KdAtnhmzSyzvVJa/ciD1t9g==
 
 "@cspell/dict-cpp@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-cpp/-/dict-cpp-3.2.0.tgz#31dc134f2adabad9373cce3f9393edaf70588796"
-  integrity sha512-xMHC00Ozq2zKKqgDMCe+E+z5oExlT7GP9PFM4XzUDwG7fmkU3WQnDtBGP2Zn6ed7mhz5DEmvT+SKrmCh6mh3Yg==
+  version "3.2.1"
+  resolved "https://registry.npmjs.org/@cspell/dict-cpp/-/dict-cpp-3.2.1.tgz#2c8c232c53c22c69b73802a26480203e1d9b6fbf"
+  integrity sha512-XcmzrKIghqFfrYLLaHtWKOp9rupiuGdc5ODONk+emsq0W5CIc3Abn27IQHwUzxzF+Cm5IfKAIJ5Kpe6hkzm0HQ==
 
 "@cspell/dict-cryptocurrencies@^2.0.0":
   version "2.0.0"
