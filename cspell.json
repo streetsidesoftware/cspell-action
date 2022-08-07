@@ -13,6 +13,7 @@
     ],
     "ignorePaths": [
         ".git",
+        "!.git/COMMIT_EDITMSG",
         ".yarn",
         ".pnp.js",
         ".vscode",
