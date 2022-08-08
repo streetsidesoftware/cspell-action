@@ -12,4 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: node -v
-      - run: npx cspell@latest "**/*" ".*/**/*" "*"
+      - run: npx cspell@latest "**" --dot
