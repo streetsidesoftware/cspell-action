@@ -11,9 +11,10 @@
         "shrinkwrap",
         "streetsidesoftware"
     ],
+    "useGitignore": true,
     "ignorePaths": [
-        ".git",
-        "!.git/COMMIT_EDITMSG",
+        ".git/!{COMMIT_EDITMSG,EDITMSG}",
+        ".git/*/**",
         ".yarn",
         ".pnp.js",
         ".vscode",
