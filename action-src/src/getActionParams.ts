@@ -10,6 +10,7 @@ export function getActionParams(): ActionParamsInput {
         root: core.getInput('root'),
         inline: core.getInput('inline').toLowerCase(),
         strict: tf(core.getInput('strict')),
+        verbose: tf(core.getInput('verbose')),
     });
 }
 
@@ -23,6 +24,7 @@ function tf(v: string | boolean | number): TrueFalse | string {
         '1': 'true',
     };
     v = typeof v === 'boolean' || typeof v === 'number' ? (v ? 'true' : 'false') : v;
+    v = v.toString();
     v = v.toLowerCase();
     v = mapValues[v] || v;
     return v;

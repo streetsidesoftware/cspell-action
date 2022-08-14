@@ -8,15 +8,7 @@ type InlineWorkflowCommand = 'error' | 'warning' | 'none';
 
 export type TrueFalse = 'true' | 'false';
 
-export interface ActionParamsInput {
-    github_token: string;
-    files: string;
-    incremental_files_only: string;
-    config: string;
-    root: string;
-    inline: string;
-    strict: string;
-}
+export interface ActionParamsInput extends Record<keyof ActionParams, string> {}
 
 export interface ActionParams {
     github_token: string;
@@ -25,7 +17,18 @@ export interface ActionParams {
     config: string;
     root: string;
     inline: InlineWorkflowCommand;
+    /**
+     * Determines if the action should be failed if any spelling issues are found.
+     *
+     * Allowed values are: true, false
+     */
     strict: TrueFalse;
+    /**
+     * Increases the amount of information logged during the action.
+     * true - show progress
+     * false - less information
+     */
+    verbose: TrueFalse;
 }
 
 const defaultActionParams: ActionParams = {
@@ -36,28 +39,10 @@ const defaultActionParams: ActionParams = {
     root: '',
     inline: 'warning',
     strict: 'true',
+    verbose: 'false',
 };
 
-export function validateActionParams(
-    params: ActionParamsInput | ActionParams,
-    logError: (msg: string) => void
-): asserts params is ActionParams {
-    const validations: ((params: ActionParamsInput) => string | undefined)[] = [
-        validateToken,
-        validateConfig,
-        validateRoot,
-        validateInlineLevel,
-        validateStrict,
-        validateIncrementalFilesOnly,
-    ];
-    const success = validations
-        .map((fn) => fn(params))
-        .map((msg) => !msg || (logError(msg), false))
-        .reduce((a, b) => a && b, true);
-    if (!success) {
-        throw new AppError('Bad Configuration.');
-    }
-}
+type ValidationFunction = (params: ActionParamsInput) => string | undefined;
 
 export function applyDefaults(params: ActionParamsInput): ActionParamsInput {
     const results = { ...params };
@@ -71,12 +56,6 @@ export function applyDefaults(params: ActionParamsInput): ActionParamsInput {
 function validateToken(params: ActionParamsInput) {
     const token = params.github_token;
     return !token ? 'Missing GITHUB Token' : undefined;
-}
-
-function validateIncrementalFilesOnly(params: ActionParamsInput) {
-    const isIncrementalOnly = params.incremental_files_only;
-    const success = isIncrementalOnly === 'true' || isIncrementalOnly === 'false';
-    return !success ? 'Invalid incremental_files_only setting, must be one of (true, false)' : undefined;
 }
 
 function validateConfig(params: ActionParamsInput) {
@@ -97,10 +76,19 @@ function validateInlineLevel(params: ActionParamsInput) {
     return !success ? `Invalid inline level (${inline}), must be one of (error, warning, none)` : undefined;
 }
 
-function validateStrict(params: ActionParamsInput) {
-    const isStrict = params.strict;
-    const success = isStrict === 'true' || isStrict === 'false';
-    return !success ? 'Invalid strict setting, must be one of (true, false)' : undefined;
+const validateStrict = validateTrueFalse('strict', 'Invalid strict setting, must be one of (true, false)');
+const validateIncrementalFilesOnly = validateTrueFalse(
+    'incremental_files_only',
+    'Invalid incremental_files_only setting, must be one of (true, false)'
+);
+const validateVerbose = validateTrueFalse('verbose', 'Invalid verbose setting, must be one of (true, false)');
+
+function validateTrueFalse(key: keyof ActionParamsInput, msg: string): ValidationFunction {
+    return (params: ActionParamsInput) => {
+        const value = params[key];
+        const success = value === 'true' || value === 'false';
+        return !success ? msg : undefined;
+    };
 }
 
 const inlineWorkflowCommandSet: Record<InlineWorkflowCommand | string, boolean | undefined> = {
@@ -111,6 +99,28 @@ const inlineWorkflowCommandSet: Record<InlineWorkflowCommand | string, boolean |
 
 function isInlineWorkflowCommand(cmd: InlineWorkflowCommand | string): cmd is InlineWorkflowCommand {
     return !!inlineWorkflowCommandSet[cmd];
+}
+
+export function validateActionParams(
+    params: ActionParamsInput | ActionParams,
+    logError: (msg: string) => void
+): asserts params is ActionParams {
+    const validations: ValidationFunction[] = [
+        validateToken,
+        validateConfig,
+        validateRoot,
+        validateInlineLevel,
+        validateStrict,
+        validateIncrementalFilesOnly,
+        validateVerbose,
+    ];
+    const success = validations
+        .map((fn) => fn(params))
+        .map((msg) => !msg || (logError(msg), false))
+        .reduce((a, b) => a && b, true);
+    if (!success) {
+        throw new AppError('Bad Configuration.');
+    }
 }
 
 export const __testing__ = {

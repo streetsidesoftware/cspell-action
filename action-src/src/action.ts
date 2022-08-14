@@ -54,7 +54,11 @@ async function checkSpelling(params: ActionParams, files: string[]): Promise<Run
         return true;
     }
 
-    const collector = new CSpellReporterForGithubAction(params.inline, core);
+    const reporterOptions = {
+        verbose: params.verbose === 'true',
+    };
+
+    const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core);
     await lint(files, options, collector.reporter);
 
     return collector.result;
