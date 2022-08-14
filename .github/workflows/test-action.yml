@@ -72,3 +72,12 @@ jobs:
           outputs: ${{ toJSON(steps.cspell-action.outputs) }}
         run: |
           echo "$outputs"
+
+  show_status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GH Status
+        run: |
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            /repos/$GITHUB_REPOSITORY_OWNER/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses
