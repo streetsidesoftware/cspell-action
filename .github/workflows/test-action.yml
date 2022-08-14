@@ -5,8 +5,8 @@ on: # rebuild any PRs and main branch changes
     branches:
       - main
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
 jobs:
   test-action: # run the action
@@ -96,3 +96,15 @@ jobs:
           gh api \
             -H "Accept: application/vnd.github+json" \
             /repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses
+      - name: Write Status
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            /repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses/$GITHUB_SHA \
+            -f state='success'
+            -f target_url='https://example.com/build/status'
+            -f description='The test succeeded!'
+            -f context='continuous-integration/testing for fun'
