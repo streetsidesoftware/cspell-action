@@ -5,6 +5,9 @@ on: # rebuild any PRs and main branch changes
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   test-action: # run the action
     runs-on: ubuntu-latest
@@ -77,6 +80,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Env
+        env:
+          ENV: ${{ toJSON(env) }}
+        run: |
+          echo "$ENV"
       - name: GH Status
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
