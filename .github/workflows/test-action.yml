@@ -79,7 +79,7 @@ jobs:
   show_status:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      # - uses: actions/checkout@v3
       - name: Env
         env:
           ENV: ${{ toJSON(env) }}
@@ -103,8 +103,8 @@ jobs:
           gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
-            /repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses/$GITHUB_SHA \
-            -f state='success'
-            -f target_url='https://example.com/build/status'
-            -f description='The test succeeded!'
+            /repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA \
+            -f state='success' \
+            -f target_url='https://example.com/build/status' \
+            -f description='The test succeeded!' \
             -f context='continuous-integration/testing for fun'
