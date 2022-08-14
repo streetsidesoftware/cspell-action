@@ -85,6 +85,7 @@ jobs:
           ENV: ${{ toJSON(env) }}
         run: |
           echo "$ENV"
+          env
       - name: GH Status
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
