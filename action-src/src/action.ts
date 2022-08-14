@@ -10,6 +10,7 @@ import { ActionParams, validateActionParams } from './ActionParams';
 import { getActionParams } from './getActionParams';
 import { CSpellReporterForGithubAction } from './reporter';
 import { lint, LintOptions } from './spell';
+import * as path from 'path';
 
 interface Context {
     githubContext: GitHubContext;
@@ -154,7 +155,7 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     core.setOutput('files_checked', result.files);
     core.setOutput('number_of_issues', result.issues);
     core.setOutput('number_of_files_with_issues', result.filesWithIssues.size);
-    core.setOutput('files_with_issues', [...result.filesWithIssues].slice(0, 1000));
+    core.setOutput('files_with_issues', normalizeFiles(result.filesWithIssues).slice(0, 1000));
 
     const fnS = (n: number) => (n === 1 ? '' : 's');
 
@@ -167,4 +168,9 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     }
 
     return !(result.issues + result.errors);
+}
+
+function normalizeFiles(files: Iterable<string>): string[] {
+    const cwd = process.cwd();
+    return [...files].map((file) => path.relative(cwd, file));
 }

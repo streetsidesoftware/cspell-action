@@ -33,6 +33,7 @@ const ActionParams_1 = require("./ActionParams");
 const getActionParams_1 = require("./getActionParams");
 const reporter_1 = require("./reporter");
 const spell_1 = require("./spell");
+const path = __importStar(require("path"));
 const supportedEvents = new Set(['push', 'pull_request']);
 async function gatherPullRequestFiles(context) {
     var _a;
@@ -141,7 +142,7 @@ async function action(githubContext, octokit) {
     core.setOutput('files_checked', result.files);
     core.setOutput('number_of_issues', result.issues);
     core.setOutput('number_of_files_with_issues', result.filesWithIssues.size);
-    core.setOutput('files_with_issues', [...result.filesWithIssues].slice(0, 1000));
+    core.setOutput('files_with_issues', normalizeFiles(result.filesWithIssues).slice(0, 1000));
     const fnS = (n) => (n === 1 ? '' : 's');
     if (params.strict === 'true' && result.issues) {
         const filesWithIssues = result.filesWithIssues.size;
@@ -151,3 +152,7 @@ async function action(githubContext, octokit) {
     return !(result.issues + result.errors);
 }
 exports.action = action;
+function normalizeFiles(files) {
+    const cwd = process.cwd();
+    return [...files].map((file) => path.relative(cwd, file));
+}
