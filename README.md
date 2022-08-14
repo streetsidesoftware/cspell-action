@@ -101,6 +101,31 @@ const cspell = {
 module.exports = cspell;
 ```
 
+## Outputs
+
+```yaml
+outputs:
+  success:
+    description: |
+      "true" if no spelling issues were found, otherwise "false".
+  number_of_files_checked:
+    description: |
+      The actual number of files that were checked.
+  number_of_issues:
+    description: |
+      The number of issues found.
+  number_of_files_with_issues:
+    description: |
+      The number of files that had issues.
+  files_with_issues:
+    description: |
+      List of files with issues. Use `fromJSON()` to decode.
+      The files are relative to the repository root.
+  results:
+    description: |
+      The JSON encoded results.
+```
+
 <!---
 cspell:ignore medicalterms
 
