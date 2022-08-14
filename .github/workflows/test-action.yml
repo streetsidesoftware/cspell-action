@@ -85,6 +85,9 @@ jobs:
           ENV: ${{ toJSON(env) }}
         run: |
           echo "$ENV"
+          echo GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER
+          echo GITHUB_REPOSITORY=$GITHUB_REPOSITORY
+          echo GITHUB_REF=$GITHUB_REF
           env
       - name: GH Status
         env:
@@ -92,4 +95,4 @@ jobs:
         run: |
           gh api \
             -H "Accept: application/vnd.github+json" \
-            /repos/${{ env.GITHUB_REPOSITORY_OWNER }}/${{ env.GITHUB_REPOSITORY }}/commits/${{ env.GITHUB_REF}}/statuses
+            /repos/$GITHUB_REPOSITORY_OWNER/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses
