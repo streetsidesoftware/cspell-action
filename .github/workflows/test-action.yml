@@ -53,3 +53,22 @@ jobs:
             **
             .*/**
           verbose: true
+
+  test-action-files-with-issues: # run the action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        id: cspell-action
+        with:
+          incremental_files_only: false
+          files: |
+            fixtures/**
+          config: ./fixtures/cspell.json
+          strict: false
+          inline: none
+      - name: Show Results
+        env:
+          outputs: ${{ toJSON(steps.cspell-action.outputs) }}
+        run: |
+          echo "$outputs"
