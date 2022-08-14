@@ -11,12 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+        id: cspell-action
 
   test-action-with-file: # run the action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+        id: cspell-action
         with:
           files: |
             **/*.ts
@@ -27,17 +29,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+        id: cspell-action
         with:
           incremental_files_only: false
           files: |
             **
             .*/**
+      - name: Show Results
+        env:
+          outputs: ${{ toJSON(steps.cspell-action.outputs) }}
+        run: |
+          echo "$outputs"
 
   test-action-no-increment-verbose: # run the action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+        id: cspell-action
         with:
           incremental_files_only: false
           files: |
