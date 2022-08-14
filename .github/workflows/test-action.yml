@@ -79,15 +79,12 @@ jobs:
   show_status:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v3
       - name: Env
-        env:
-          ENV: ${{ toJSON(env) }}
         run: |
-          echo "$ENV"
           echo GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER
           echo GITHUB_REPOSITORY=$GITHUB_REPOSITORY
           echo GITHUB_REF=$GITHUB_REF
+          echo SHA=${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
           env
       - name: GH Status
         env:
