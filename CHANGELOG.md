@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/streetsidesoftware/cspell-action/compare/v2.5.0...v2.6.0) (2022-08-14)
+
+
+### Features
+
+* Add Verbose option to reduce noise in output. ([#883](https://github.com/streetsidesoftware/cspell-action/issues/883)) ([6abfb1f](https://github.com/streetsidesoftware/cspell-action/commit/6abfb1f0d70431319bbbd16952a82abe0fde37bc))
+
+
+### Miscellaneous
+
+* fix spelling complaint ([0ae1614](https://github.com/streetsidesoftware/cspell-action/commit/0ae1614a57ac2f69f186e5664326166860fee6e9))
+
+
+### Continuous Integration
+
+* Workflow Bot -- Update ALL Dependencies ([db114d2](https://github.com/streetsidesoftware/cspell-action/commit/db114d22d4714fc8f6a4d8e9b95679f24b94ac00))
+* Workflow Bot -- Update ALL Dependencies (main) ([#884](https://github.com/streetsidesoftware/cspell-action/issues/884)) ([db114d2](https://github.com/streetsidesoftware/cspell-action/commit/db114d22d4714fc8f6a4d8e9b95679f24b94ac00))
+
 ## [2.5.0](https://github.com/streetsidesoftware/cspell-action/compare/v2.4.0...v2.5.0) (2022-08-13)
 
 
