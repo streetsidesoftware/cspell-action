@@ -32,11 +32,13 @@ describe('Validate Action', () => {
     });
 
     test.each`
-        test                | file                                | expected
-        ${'bad root'}       | ${'bad_params/bad_root.json'}       | ${new AppError('Bad Configuration.')}
-        ${'missing config'} | ${'bad_params/missing_config.json'} | ${new AppError('Bad Configuration.')}
-        ${'bad inline'}     | ${'bad_params/bad_inline.json'}     | ${new AppError('Bad Configuration.')}
-        ${'bad strict'}     | ${'bad_params/bad_strict.json'}     | ${new AppError('Bad Configuration.')}
+        test                            | file                                            | expected
+        ${'bad root'}                   | ${'bad_params/bad_root.json'}                   | ${new AppError('Bad Configuration.')}
+        ${'missing config'}             | ${'bad_params/missing_config.json'}             | ${new AppError('Bad Configuration.')}
+        ${'bad inline'}                 | ${'bad_params/bad_inline.json'}                 | ${new AppError('Bad Configuration.')}
+        ${'bad_incremental_files_only'} | ${'bad_params/bad_incremental_files_only.json'} | ${new AppError('Bad Configuration.')}
+        ${'bad_unsupported_event'}      | ${'bad_params/bad_unsupported_event.json'}      | ${new AppError("Unsupported event: 'fork'")}
+        ${'bad strict'}                 | ${'bad_params/bad_strict.json'}                 | ${new AppError('Bad Configuration.')}
     `(
         '$test',
         async ({ file, expected }) => {

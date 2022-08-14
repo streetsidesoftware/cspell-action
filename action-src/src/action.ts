@@ -3,10 +3,11 @@ import { Context as GitHubContext } from '@actions/github/lib/context';
 import { Octokit } from '@octokit/core';
 import { RunResult } from 'cspell';
 import * as glob from 'cspell-glob';
-import { existsSync } from 'fs';
 import { format } from 'util';
 import { AppError } from './error';
 import { fetchFilesForCommits, getPullRequestFiles } from './github';
+import { ActionParams, validateActionParams } from './ActionParams';
+import { getActionParams } from './getActionParams';
 import { CSpellReporterForGithubAction } from './reporter';
 import { lint, LintOptions } from './spell';
 
@@ -19,34 +20,6 @@ interface Context {
 
 type EventNames = 'push' | 'pull_request';
 const supportedEvents = new Set<EventNames | string>(['push', 'pull_request']);
-
-/**
- * [Workflow commands for GitHub Actions - GitHub Docs](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter)
- */
-
-type InlineWorkflowCommand = 'error' | 'warning' | 'none';
-
-type TrueFalse = 'true' | 'false';
-
-interface ActionParams {
-    github_token: string;
-    files: string;
-    incremental_files_only: string;
-    config: string;
-    root: string;
-    inline: string;
-    strict: string;
-}
-
-interface ValidActionParams {
-    github_token: string;
-    files: string;
-    incremental_files_only: TrueFalse;
-    config: string;
-    root: string;
-    inline: InlineWorkflowCommand;
-    strict: TrueFalse;
-}
 
 async function gatherPullRequestFiles(context: Context): Promise<Set<string>> {
     const { github, githubContext } = context;
@@ -71,7 +44,7 @@ async function gatherPushFiles(context: Context): Promise<Set<string>> {
     return files || new Set();
 }
 
-async function checkSpelling(params: ValidActionParams, files: string[]): Promise<RunResult | true> {
+async function checkSpelling(params: ActionParams, files: string[]): Promise<RunResult | true> {
     const options: LintOptions = {
         root: params.root || process.cwd(),
         config: params.config || undefined,
@@ -81,7 +54,11 @@ async function checkSpelling(params: ValidActionParams, files: string[]): Promis
         return true;
     }
 
-    const collector = new CSpellReporterForGithubAction(params.inline, core);
+    const reporterOptions = {
+        verbose: params.verbose === 'true',
+    };
+
+    const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core);
     await lint(files, options, collector.reporter);
 
     return collector.result;
@@ -148,118 +125,12 @@ function filterFiles(globPattern: string, files: Set<string>): Set<string> {
     return matchingFiles;
 }
 
-function getActionParams(): ActionParams {
-    return {
-        github_token: core.getInput('github_token', { required: true }),
-        files: core.getInput('files'),
-        incremental_files_only: tf(core.getInput('incremental_files_only')) || 'true',
-        config: core.getInput('config'),
-        root: core.getInput('root'),
-        inline: (core.getInput('inline') || 'warning').toLowerCase(),
-        strict: tf(core.getInput('strict') || 'true'),
-    };
-}
-
-function tf(v: string | boolean | number): TrueFalse | string {
-    const mapValues: Record<string, TrueFalse> = {
-        true: 'true',
-        t: 'true',
-        false: 'false',
-        f: 'false',
-        '0': 'false',
-        '1': 'true',
-    };
-    v = typeof v === 'boolean' || typeof v === 'number' ? (v ? 'true' : 'false') : v;
-    v = v.toLowerCase();
-    v = mapValues[v] || v;
-    return v;
-}
-
-function validateActionParams(params: ActionParams | ValidActionParams): params is ValidActionParams {
-    const validations = [
-        validateToken,
-        validateConfig,
-        validateRoot,
-        validateInlineLevel,
-        validateStrict,
-        validateIncrementalFilesOnly,
-    ];
-    const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
-    if (!success) {
-        throw new AppError('Bad Configuration.');
-    }
-    return true;
-}
-
-function validateToken(params: ActionParams) {
-    const token = params.github_token;
-    return !!token;
-}
-
-function validateIncrementalFilesOnly(params: ActionParams) {
-    const isIncrementalOnly = params.incremental_files_only;
-    const success = isIncrementalOnly === 'true' || isIncrementalOnly === 'false';
-    if (!success) {
-        core.error('Invalid incremental_files_only setting, must be one of (true, false)');
-    }
-    return success;
-}
-
-function validateConfig(params: ActionParams) {
-    const config = params.config;
-    const success = !config || existsSync(config);
-    if (!success) {
-        core.error(`Configuration file "${config}" not found.`);
-    }
-    return success;
-}
-
-function validateRoot(params: ActionParams) {
-    const root = params.root;
-    const success = !root || existsSync(root);
-    if (!success) {
-        core.error(`Root path does not exist: "${root}"`);
-    }
-    return success;
-}
-
-function validateInlineLevel(params: ActionParams) {
-    const inline = params.inline;
-    const success = isInlineWorkflowCommand(inline);
-    if (!success) {
-        core.error(`Invalid inline level (${inline}), must be one of (error, warning, none)`);
-    }
-    return success;
-}
-
-function validateStrict(params: ActionParams) {
-    const isStrict = params.strict;
-    const success = isStrict === 'true' || isStrict === 'false';
-    if (!success) {
-        core.error('Invalid strict setting, must be one of (true, false)');
-    }
-    return success;
-}
-
-const inlineWorkflowCommandSet: Record<InlineWorkflowCommand | string, boolean | undefined> = {
-    error: true,
-    warning: true,
-    none: true,
-};
-
-function isInlineWorkflowCommand(cmd: InlineWorkflowCommand | string): cmd is InlineWorkflowCommand {
-    return !!inlineWorkflowCommandSet[cmd];
-}
-
 export async function action(githubContext: GitHubContext, octokit: Octokit): Promise<boolean> {
     const params = getActionParams();
-    if (!validateActionParams(params)) {
-        return false;
-    }
+    validateActionParams(params, core.error);
     const eventName = githubContext.eventName;
     if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
-        const msg = `Unsupported event: '${eventName}'`;
-        throw new AppError(msg);
+        throw new AppError(`Unsupported event: '${eventName}'`);
     }
     const context: Context = {
         githubContext,

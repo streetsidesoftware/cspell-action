@@ -25,6 +25,7 @@
         "cspell.json",
         "__snapshots__",
         "__recordings__",
+        "**/coverage/**",
         "**/fixtures/**/*.json",
         "**/fixtures/sampleCode/*errors/",
         "node_modules",

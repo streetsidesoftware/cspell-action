@@ -32,8 +32,9 @@ function nullEmitter(_msg) {
     /* Do Nothings */
 }
 class CSpellReporterForGithubAction {
-    constructor(reportIssueCommand, logger = core) {
+    constructor(reportIssueCommand, options, logger = core) {
         this.reportIssueCommand = reportIssueCommand;
+        this.options = options;
         this.logger = logger;
         this.issues = [];
         this.issueCounts = new Map();
@@ -53,6 +54,7 @@ class CSpellReporterForGithubAction {
             progress: (...args) => this._progress(...args),
             result: (...args) => this._result(...args),
         };
+        this.verbose = options.verbose;
     }
     _issue(issue) {
         const { issues, issueCounts } = this;
@@ -68,7 +70,7 @@ class CSpellReporterForGithubAction {
         // logger.debug(message);
     }
     _progress(progress) {
-        if (!isProgressFileComplete(progress)) {
+        if (!this.verbose || !isProgressFileComplete(progress)) {
             return;
         }
         const { issueCounts, logger } = this;

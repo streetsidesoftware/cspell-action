@@ -26,10 +26,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 const core = __importStar(require("@actions/core"));
 const glob = __importStar(require("cspell-glob"));
-const fs_1 = require("fs");
 const util_1 = require("util");
 const error_1 = require("./error");
 const github_1 = require("./github");
+const ActionParams_1 = require("./ActionParams");
+const getActionParams_1 = require("./getActionParams");
 const reporter_1 = require("./reporter");
 const spell_1 = require("./spell");
 const supportedEvents = new Set(['push', 'pull_request']);
@@ -57,7 +58,10 @@ async function checkSpelling(params, files) {
     if (!files.length) {
         return true;
     }
-    const collector = new reporter_1.CSpellReporterForGithubAction(params.inline, core);
+    const reporterOptions = {
+        verbose: params.verbose === 'true',
+    };
+    const collector = new reporter_1.CSpellReporterForGithubAction(params.inline, reporterOptions, core);
     await (0, spell_1.lint)(files, options, collector.reporter);
     return collector.result;
 }
@@ -111,107 +115,12 @@ function filterFiles(globPattern, files) {
     }
     return matchingFiles;
 }
-function getActionParams() {
-    return {
-        github_token: core.getInput('github_token', { required: true }),
-        files: core.getInput('files'),
-        incremental_files_only: tf(core.getInput('incremental_files_only')) || 'true',
-        config: core.getInput('config'),
-        root: core.getInput('root'),
-        inline: (core.getInput('inline') || 'warning').toLowerCase(),
-        strict: tf(core.getInput('strict') || 'true'),
-    };
-}
-function tf(v) {
-    const mapValues = {
-        true: 'true',
-        t: 'true',
-        false: 'false',
-        f: 'false',
-        '0': 'false',
-        '1': 'true',
-    };
-    v = typeof v === 'boolean' || typeof v === 'number' ? (v ? 'true' : 'false') : v;
-    v = v.toLowerCase();
-    v = mapValues[v] || v;
-    return v;
-}
-function validateActionParams(params) {
-    const validations = [
-        validateToken,
-        validateConfig,
-        validateRoot,
-        validateInlineLevel,
-        validateStrict,
-        validateIncrementalFilesOnly,
-    ];
-    const success = validations.map((fn) => fn(params)).reduce((a, b) => a && b, true);
-    if (!success) {
-        throw new error_1.AppError('Bad Configuration.');
-    }
-    return true;
-}
-function validateToken(params) {
-    const token = params.github_token;
-    return !!token;
-}
-function validateIncrementalFilesOnly(params) {
-    const isIncrementalOnly = params.incremental_files_only;
-    const success = isIncrementalOnly === 'true' || isIncrementalOnly === 'false';
-    if (!success) {
-        core.error('Invalid incremental_files_only setting, must be one of (true, false)');
-    }
-    return success;
-}
-function validateConfig(params) {
-    const config = params.config;
-    const success = !config || (0, fs_1.existsSync)(config);
-    if (!success) {
-        core.error(`Configuration file "${config}" not found.`);
-    }
-    return success;
-}
-function validateRoot(params) {
-    const root = params.root;
-    const success = !root || (0, fs_1.existsSync)(root);
-    if (!success) {
-        core.error(`Root path does not exist: "${root}"`);
-    }
-    return success;
-}
-function validateInlineLevel(params) {
-    const inline = params.inline;
-    const success = isInlineWorkflowCommand(inline);
-    if (!success) {
-        core.error(`Invalid inline level (${inline}), must be one of (error, warning, none)`);
-    }
-    return success;
-}
-function validateStrict(params) {
-    const isStrict = params.strict;
-    const success = isStrict === 'true' || isStrict === 'false';
-    if (!success) {
-        core.error('Invalid strict setting, must be one of (true, false)');
-    }
-    return success;
-}
-const inlineWorkflowCommandSet = {
-    error: true,
-    warning: true,
-    none: true,
-};
-function isInlineWorkflowCommand(cmd) {
-    return !!inlineWorkflowCommandSet[cmd];
-}
 async function action(githubContext, octokit) {
-    const params = getActionParams();
-    if (!validateActionParams(params)) {
-        return false;
-    }
+    const params = (0, getActionParams_1.getActionParams)();
+    (0, ActionParams_1.validateActionParams)(params, core.error);
     const eventName = githubContext.eventName;
     if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
-        const msg = `Unsupported event: '${eventName}'`;
-        throw new error_1.AppError(msg);
+        throw new error_1.AppError(`Unsupported event: '${eventName}'`);
     }
     const context = {
         githubContext,

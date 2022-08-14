@@ -35,6 +35,10 @@ function nullEmitter(_msg: string) {
 
 export type ReportIssueCommand = 'error' | 'warning' | 'none';
 
+export interface ReporterOptions {
+    verbose: boolean;
+}
+
 export class CSpellReporterForGithubAction {
     readonly issues: Issue[] = [];
     readonly issueCounts = new Map<string, number>();
@@ -46,8 +50,15 @@ export class CSpellReporterForGithubAction {
         cachedFiles: 0,
     };
     finished: boolean = false;
+    verbose: boolean;
 
-    constructor(readonly reportIssueCommand: ReportIssueCommand, readonly logger: Logger = core) {}
+    constructor(
+        readonly reportIssueCommand: ReportIssueCommand,
+        readonly options: ReporterOptions,
+        readonly logger: Logger = core
+    ) {
+        this.verbose = options.verbose;
+    }
 
     _issue(issue: Issue) {
         const { issues, issueCounts } = this;
@@ -66,7 +77,7 @@ export class CSpellReporterForGithubAction {
     }
 
     _progress(progress: ProgressItem | ProgressFileComplete) {
-        if (!isProgressFileComplete(progress)) {
+        if (!this.verbose || !isProgressFileComplete(progress)) {
             return;
         }
         const { issueCounts, logger } = this;
