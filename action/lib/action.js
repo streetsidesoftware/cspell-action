@@ -138,11 +138,7 @@ async function action(githubContext, octokit) {
     }
     const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
     core.info(message);
-    core.setOutput('success', !result.issues);
-    core.setOutput('files_checked', result.files);
-    core.setOutput('number_of_issues', result.issues);
-    core.setOutput('number_of_files_with_issues', result.filesWithIssues.size);
-    core.setOutput('files_with_issues', normalizeFiles(result.filesWithIssues).slice(0, 1000));
+    outputResult(result);
     const fnS = (n) => (n === 1 ? '' : 's');
     if (params.strict === 'true' && result.issues) {
         const filesWithIssues = result.filesWithIssues.size;
@@ -152,6 +148,24 @@ async function action(githubContext, octokit) {
     return !(result.issues + result.errors);
 }
 exports.action = action;
+function outputResult(runResult) {
+    const result = normalizeResult(runResult);
+    core.setOutput('success', result.success);
+    core.setOutput('number_of_files_checked', result.number_of_files_checked);
+    core.setOutput('number_of_issues', result.number_of_issues);
+    core.setOutput('number_of_files_with_issues', result.files_with_issues.length);
+    core.setOutput('files_with_issues', normalizeFiles(result.files_with_issues));
+    core.setOutput('result', result);
+}
+function normalizeResult(result) {
+    const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
+    return {
+        success: !number_of_issues,
+        number_of_issues,
+        number_of_files_checked,
+        files_with_issues: normalizeFiles(filesWithIssues).slice(0, 1000),
+    };
+}
 function normalizeFiles(files) {
     const cwd = process.cwd();
     return [...files].map((file) => path.relative(cwd, file));

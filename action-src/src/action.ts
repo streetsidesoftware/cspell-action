@@ -151,11 +151,7 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
     core.info(message);
 
-    core.setOutput('success', !result.issues);
-    core.setOutput('files_checked', result.files);
-    core.setOutput('number_of_issues', result.issues);
-    core.setOutput('number_of_files_with_issues', result.filesWithIssues.size);
-    core.setOutput('files_with_issues', normalizeFiles(result.filesWithIssues).slice(0, 1000));
+    outputResult(result);
 
     const fnS = (n: number) => (n === 1 ? '' : 's');
 
@@ -168,6 +164,27 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     }
 
     return !(result.issues + result.errors);
+}
+
+function outputResult(runResult: RunResult) {
+    const result = normalizeResult(runResult);
+
+    core.setOutput('success', result.success);
+    core.setOutput('number_of_files_checked', result.number_of_files_checked);
+    core.setOutput('number_of_issues', result.number_of_issues);
+    core.setOutput('number_of_files_with_issues', result.files_with_issues.length);
+    core.setOutput('files_with_issues', normalizeFiles(result.files_with_issues));
+    core.setOutput('result', result);
+}
+
+function normalizeResult(result: RunResult) {
+    const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
+    return {
+        success: !number_of_issues,
+        number_of_issues,
+        number_of_files_checked,
+        files_with_issues: normalizeFiles(filesWithIssues).slice(0, 1000),
+    };
 }
 
 function normalizeFiles(files: Iterable<string>): string[] {
