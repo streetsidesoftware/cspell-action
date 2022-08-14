@@ -32,3 +32,15 @@ jobs:
           files: |
             **
             .*/**
+
+  test-action-no-increment-verbose: # run the action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          incremental_files_only: false
+          files: |
+            **
+            .*/**
+          verbose: true

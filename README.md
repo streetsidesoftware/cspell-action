@@ -66,6 +66,7 @@ jobs:
     config: '.'
 
     # Log progress and other information during the action execution.
+    # Default: false
     verbose: false
 ```
 
