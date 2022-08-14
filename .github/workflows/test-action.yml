@@ -76,6 +76,7 @@ jobs:
   show_status:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: GH Status
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
