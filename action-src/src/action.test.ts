@@ -86,10 +86,31 @@ describe('Validate Action', () => {
                 INPUT_INCREMENTAL_FILES_ONLY: 'false',
             });
             const octokit = createOctokit();
-            expect.assertions(3);
             await expect(action(context, octokit)).resolves.toBe(expected);
             expect(warnings).toMatchSnapshot();
             expect(spyStdout).toHaveBeenCalled();
+        },
+        timeout
+    );
+
+    test.each`
+        files                       | expected
+        ${'fixtures/sampleCode/**'} | ${false}
+    `(
+        'check files with issues $files',
+        async ({ files, expected }) => {
+            const warnings: string[] = [];
+            spyWarn.mockImplementation((msg: string) => warnings.push(msg));
+            const context = createContextFromFile('pull_request_with_files.json', {
+                INPUT_FILES: files,
+                INPUT_INCREMENTAL_FILES_ONLY: 'false',
+            });
+            const octokit = createOctokit();
+            await expect(action(context, octokit)).resolves.toBe(expected);
+            expect(warnings).toMatchSnapshot();
+            expect(spyLog.mock.calls).toMatchSnapshot();
+            expect(spyStdout.mock.calls).toMatchSnapshot();
+            expect(spyStdout.mock.calls.map((call) => call.join('').trim()).filter((a) => !!a)).toMatchSnapshot();
         },
         timeout
     );

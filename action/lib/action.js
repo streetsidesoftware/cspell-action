@@ -26,14 +26,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 const core = __importStar(require("@actions/core"));
 const glob = __importStar(require("cspell-glob"));
-const util_1 = require("util");
-const error_1 = require("./error");
-const github_1 = require("./github");
+const path = __importStar(require("path"));
 const ActionParams_1 = require("./ActionParams");
+const error_1 = require("./error");
 const getActionParams_1 = require("./getActionParams");
+const github_1 = require("./github");
 const reporter_1 = require("./reporter");
 const spell_1 = require("./spell");
-const path = __importStar(require("path"));
 const supportedEvents = new Set(['push', 'pull_request']);
 async function gatherPullRequestFiles(context) {
     var _a;
@@ -130,7 +129,6 @@ async function action(githubContext, octokit) {
         useEventFiles: params.incremental_files_only === 'true',
     };
     core.info(friendlyEventName(eventName));
-    core.debug((0, util_1.format)('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {

@@ -3,14 +3,13 @@ import { Context as GitHubContext } from '@actions/github/lib/context';
 import { Octokit } from '@octokit/core';
 import { RunResult } from 'cspell';
 import * as glob from 'cspell-glob';
-import { format } from 'util';
-import { AppError } from './error';
-import { fetchFilesForCommits, getPullRequestFiles } from './github';
+import * as path from 'path';
 import { ActionParams, validateActionParams } from './ActionParams';
+import { AppError } from './error';
 import { getActionParams } from './getActionParams';
+import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { CSpellReporterForGithubAction } from './reporter';
 import { lint, LintOptions } from './spell';
-import * as path from 'path';
 
 interface Context {
     githubContext: GitHubContext;
@@ -141,7 +140,6 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     };
 
     core.info(friendlyEventName(eventName));
-    core.debug(format('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {

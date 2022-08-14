@@ -10,3 +10,96 @@ Array [
 `;
 
 exports[`Validate Action check all **/*.md 1`] = `Array []`;
+
+exports[`Validate Action check files with issues fixtures/sampleCode/** 1`] = `
+Array [
+  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
+  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+]
+`;
+
+exports[`Validate Action check files with issues fixtures/sampleCode/** 2`] = `Array []`;
+
+exports[`Validate Action check files with issues fixtures/sampleCode/** 3`] = `
+Array [
+  Array [
+    "Pull Request
+",
+  ],
+  Array [
+    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
+",
+  ],
+  Array [
+    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
+",
+  ],
+  Array [
+    "Files checked: 2, Issues found: 2 in 1 files.
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=success::false
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=number_of_files_checked::2
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=number_of_issues::2
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=number_of_files_with_issues::1
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":2,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
+",
+  ],
+]
+`;
+
+exports[`Validate Action check files with issues fixtures/sampleCode/** 4`] = `
+Array [
+  "Pull Request",
+  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
+  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
+  "Files checked: 2, Issues found: 2 in 1 files.",
+  "::set-output name=success::false",
+  "::set-output name=number_of_files_checked::2",
+  "::set-output name=number_of_issues::2",
+  "::set-output name=number_of_files_with_issues::1",
+  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
+  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":2,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
+]
+`;
