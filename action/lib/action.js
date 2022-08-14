@@ -137,6 +137,11 @@ async function action(githubContext, octokit) {
     }
     const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
     core.info(message);
+    core.setOutput('success', !result.issues);
+    core.setOutput('files_checked', result.files);
+    core.setOutput('number_of_issues', result.issues);
+    core.setOutput('number_of_files_with_issues', result.filesWithIssues.size);
+    core.setOutput('files_with_issues', [...result.filesWithIssues].slice(0, 1000));
     const fnS = (n) => (n === 1 ? '' : 's');
     if (params.strict === 'true' && result.issues) {
         const filesWithIssues = result.filesWithIssues.size;
