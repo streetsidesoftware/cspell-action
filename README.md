@@ -126,6 +126,19 @@ outputs:
       The JSON encoded results.
 ```
 
+Example Output:
+
+```json
+{
+  "success": "false",
+  "number_of_files_checked": "3",
+  "number_of_issues": "2",
+  "number_of_files_with_issues": "1",
+  "files_with_issues": "[\"src/withErrors.ts\"]",
+  "result": "{\"success\":false,\"number_of_issues\":2,\"number_of_files_checked\":3,\"files_with_issues\":[\"src/withErrors.ts\"]}"
+}
+```
+
 <!---
 cspell:ignore medicalterms
 
