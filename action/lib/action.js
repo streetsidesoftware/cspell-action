@@ -26,11 +26,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.action = void 0;
 const core = __importStar(require("@actions/core"));
 const glob = __importStar(require("cspell-glob"));
-const util_1 = require("util");
-const error_1 = require("./error");
-const github_1 = require("./github");
+const path = __importStar(require("path"));
 const ActionParams_1 = require("./ActionParams");
+const error_1 = require("./error");
 const getActionParams_1 = require("./getActionParams");
+const github_1 = require("./github");
 const reporter_1 = require("./reporter");
 const spell_1 = require("./spell");
 const supportedEvents = new Set(['push', 'pull_request']);
@@ -129,7 +129,6 @@ async function action(githubContext, octokit) {
         useEventFiles: params.incremental_files_only === 'true',
     };
     core.info(friendlyEventName(eventName));
-    core.debug((0, util_1.format)('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {
@@ -137,6 +136,7 @@ async function action(githubContext, octokit) {
     }
     const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
     core.info(message);
+    outputResult(result);
     const fnS = (n) => (n === 1 ? '' : 's');
     if (params.strict === 'true' && result.issues) {
         const filesWithIssues = result.filesWithIssues.size;
@@ -146,3 +146,25 @@ async function action(githubContext, octokit) {
     return !(result.issues + result.errors);
 }
 exports.action = action;
+function outputResult(runResult) {
+    const result = normalizeResult(runResult);
+    core.setOutput('success', result.success);
+    core.setOutput('number_of_files_checked', result.number_of_files_checked);
+    core.setOutput('number_of_issues', result.number_of_issues);
+    core.setOutput('number_of_files_with_issues', result.files_with_issues.length);
+    core.setOutput('files_with_issues', normalizeFiles(result.files_with_issues));
+    core.setOutput('result', result);
+}
+function normalizeResult(result) {
+    const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
+    return {
+        success: !number_of_issues,
+        number_of_issues,
+        number_of_files_checked,
+        files_with_issues: normalizeFiles(filesWithIssues).slice(0, 1000),
+    };
+}
+function normalizeFiles(files) {
+    const cwd = process.cwd();
+    return [...files].map((file) => path.relative(cwd, file));
+}

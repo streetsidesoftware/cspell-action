@@ -3,11 +3,11 @@ import { Context as GitHubContext } from '@actions/github/lib/context';
 import { Octokit } from '@octokit/core';
 import { RunResult } from 'cspell';
 import * as glob from 'cspell-glob';
-import { format } from 'util';
-import { AppError } from './error';
-import { fetchFilesForCommits, getPullRequestFiles } from './github';
+import * as path from 'path';
 import { ActionParams, validateActionParams } from './ActionParams';
+import { AppError } from './error';
 import { getActionParams } from './getActionParams';
+import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { CSpellReporterForGithubAction } from './reporter';
 import { lint, LintOptions } from './spell';
 
@@ -140,7 +140,6 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     };
 
     core.info(friendlyEventName(eventName));
-    core.debug(format('Options: %o', params));
     const files = await gatherFilesFromContext(context);
     const result = await checkSpelling(params, [...files]);
     if (result === true) {
@@ -149,6 +148,8 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
 
     const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
     core.info(message);
+
+    outputResult(result);
 
     const fnS = (n: number) => (n === 1 ? '' : 's');
 
@@ -161,4 +162,30 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     }
 
     return !(result.issues + result.errors);
+}
+
+function outputResult(runResult: RunResult) {
+    const result = normalizeResult(runResult);
+
+    core.setOutput('success', result.success);
+    core.setOutput('number_of_files_checked', result.number_of_files_checked);
+    core.setOutput('number_of_issues', result.number_of_issues);
+    core.setOutput('number_of_files_with_issues', result.files_with_issues.length);
+    core.setOutput('files_with_issues', normalizeFiles(result.files_with_issues));
+    core.setOutput('result', result);
+}
+
+function normalizeResult(result: RunResult) {
+    const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
+    return {
+        success: !number_of_issues,
+        number_of_issues,
+        number_of_files_checked,
+        files_with_issues: normalizeFiles(filesWithIssues).slice(0, 1000),
+    };
+}
+
+function normalizeFiles(files: Iterable<string>): string[] {
+    const cwd = process.cwd();
+    return [...files].map((file) => path.relative(cwd, file));
 }
