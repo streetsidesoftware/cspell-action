@@ -25,7 +25,7 @@ describe('Validate Main', () => {
     `(
         '$test',
         async ({ test: testName, file }) => {
-            return helper.pollyRun(__filename, testName, async () => {
+            await helper.pollyRun(__filename, testName, async () => {
                 const env = helper.fetchGithubActionFixture(file);
                 env.FIXTURE_FILE_NAME = file;
                 Object.assign(process.env, env);
