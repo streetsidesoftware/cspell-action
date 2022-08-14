@@ -99,11 +99,12 @@ jobs:
       - name: Write Status
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
         run: |
           gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
-            /repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA \
+            /repos/$GITHUB_REPOSITORY/statuses/$SHA \
             -f state='success' \
             -f target_url='https://example.com/build/status' \
             -f description='The test succeeded!' \
