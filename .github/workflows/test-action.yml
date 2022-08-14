@@ -95,4 +95,4 @@ jobs:
         run: |
           gh api \
             -H "Accept: application/vnd.github+json" \
-            /repos/$GITHUB_REPOSITORY_OWNER/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses
+            /repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses
