@@ -50,10 +50,16 @@ async function gatherPushFiles(context) {
     const files = commits && (await (0, github_1.fetchFilesForCommits)(github, githubContext.repo, commits));
     return files || new Set();
 }
+const checkDotMap = {
+    true: true,
+    false: false,
+    explicit: undefined,
+};
 async function checkSpelling(params, files) {
     const options = {
         root: params.root || process.cwd(),
         config: params.config || undefined,
+        checkDotFiles: checkDotMap[params.check_dot_files],
     };
     if (!files.length) {
         return true;

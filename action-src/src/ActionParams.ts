@@ -21,14 +21,24 @@ export interface ActionParams {
      * Determines if the action should be failed if any spelling issues are found.
      *
      * Allowed values are: true, false
+     * @default 'warning'
      */
     strict: TrueFalse;
     /**
      * Increases the amount of information logged during the action.
      * true - show progress
      * false - less information
+     * @default 'false'
      */
     verbose: TrueFalse;
+    /**
+     * Check files and directories starting with `.`.
+     * 'true' - glob searches will match against `.dot` files.
+     * 'false' - `.dot` files will NOT be checked.
+     * 'explicit' - glob patterns can match explicit `.dot` patterns.
+     * @default 'explicit'
+     */
+    check_dot_files: TrueFalse | 'explicit';
 }
 
 const defaultActionParams: ActionParams = {
@@ -40,6 +50,7 @@ const defaultActionParams: ActionParams = {
     inline: 'warning',
     strict: 'true',
     verbose: 'false',
+    check_dot_files: 'explicit',
 };
 
 type ValidationFunction = (params: ActionParamsInput) => string | undefined;

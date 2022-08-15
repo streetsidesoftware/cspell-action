@@ -49,6 +49,15 @@ inputs:
       Allowed values are: true, false
     default: "false"
     required: false
+  check_dot_files:
+    description: |
+      Check files and directories starting with `.`.
+      - "true" - glob searches will match against `.dot` files.
+      - "false" - `.dot` files will NOT be checked.
+      - "explicit" - glob patterns can match explicit `.dot` patterns.
+    default: "explicit"
+    required: false
+
 outputs:
   success:
     description: |

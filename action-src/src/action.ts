@@ -44,10 +44,17 @@ async function gatherPushFiles(context: Context): Promise<Set<string>> {
     return files || new Set();
 }
 
+const checkDotMap = {
+    true: true,
+    false: false,
+    explicit: undefined,
+} as const;
+
 async function checkSpelling(params: ActionParams, files: string[]): Promise<RunResult | true> {
     const options: LintOptions = {
         root: params.root || process.cwd(),
         config: params.config || undefined,
+        checkDotFiles: checkDotMap[params.check_dot_files],
     };
 
     if (!files.length) {

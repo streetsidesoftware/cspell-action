@@ -11,6 +11,7 @@ export function getActionParams(): ActionParamsInput {
         inline: core.getInput('inline').toLowerCase(),
         strict: tf(core.getInput('strict')),
         verbose: tf(core.getInput('verbose')),
+        check_dot_files: tf(core.getInput('check_dot_files')),
     });
 }
 
