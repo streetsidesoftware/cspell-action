@@ -5,6 +5,9 @@ on: # rebuild any PRs and main branch changes
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   action-is-pristine: # make sure nothing changes in the action.
     runs-on: ubuntu-latest
