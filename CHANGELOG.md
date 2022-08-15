@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/streetsidesoftware/cspell-action/compare/v2.6.0...v2.7.0) (2022-08-15)
+
+
+### Features
+
+* add option `checkDotFiles` ([#891](https://github.com/streetsidesoftware/cspell-action/issues/891)) ([ab07238](https://github.com/streetsidesoftware/cspell-action/commit/ab07238f105667feff2dd01db8a909259d0e3859))
+* output spell checking result ([#888](https://github.com/streetsidesoftware/cspell-action/issues/888)) ([ff09c66](https://github.com/streetsidesoftware/cspell-action/commit/ff09c6671365ce335dfa91edd23e5adc0f73ee70))
+
+
+### Tests
+
+* add extra test for verbose ([#886](https://github.com/streetsidesoftware/cspell-action/issues/886)) ([1634d01](https://github.com/streetsidesoftware/cspell-action/commit/1634d01dd40b31645a06479d6e50a5d67e33ed2b))
+
+
+### Miscellaneous
+
+* add CODE_OF_CONDUCT.md ([8978f2f](https://github.com/streetsidesoftware/cspell-action/commit/8978f2f0546f23ebaf04e51348019e0e9a737dfe))
+
+
+### Continuous Integration
+
+* Update Workflow Permissions ([#889](https://github.com/streetsidesoftware/cspell-action/issues/889)) ([8cf78ba](https://github.com/streetsidesoftware/cspell-action/commit/8cf78bad9a1469af00940498c7e19e5c6a7ee98b))
+* Workflow Bot -- Update ALL Dependencies ([8d99eb2](https://github.com/streetsidesoftware/cspell-action/commit/8d99eb279975011a12d724e5b1526847a7dde6e1))
+* Workflow Bot -- Update ALL Dependencies (main) ([#890](https://github.com/streetsidesoftware/cspell-action/issues/890)) ([8d99eb2](https://github.com/streetsidesoftware/cspell-action/commit/8d99eb279975011a12d724e5b1526847a7dde6e1))
+
 ## [2.6.0](https://github.com/streetsidesoftware/cspell-action/compare/v2.5.0...v2.6.0) (2022-08-14)
 
 
