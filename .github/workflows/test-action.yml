@@ -77,36 +77,36 @@ jobs:
           echo "$outputs"
 
   # Experiment with writing the status to a PR.
-  show_status:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Env
-        env:
-          github: ${{ toJSON(github) }}
-        run: |
-          echo GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER
-          echo GITHUB_REPOSITORY=$GITHUB_REPOSITORY
-          echo GITHUB_REF=$GITHUB_REF
-          echo SHA=${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
-          echo github="$github"
-          env
-      - name: GH Status
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            /repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses
-      - name: Write Status
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SHA: ${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
-        run: |
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            /repos/$GITHUB_REPOSITORY/statuses/$SHA \
-            -f state='success' \
-            -f target_url='https://example.com/build/status' \
-            -f description='The test succeeded!' \
-            -f context='continuous-integration/testing for fun'
+  # show_status:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Env
+  #       env:
+  #         github: ${{ toJSON(github) }}
+  #       run: |
+  #         echo GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER
+  #         echo GITHUB_REPOSITORY=$GITHUB_REPOSITORY
+  #         echo GITHUB_REF=$GITHUB_REF
+  #         echo SHA=${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
+  #         echo github="$github"
+  #         env
+  #     - name: GH Status
+  #       env:
+  #         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       run: |
+  #         gh api \
+  #           -H "Accept: application/vnd.github+json" \
+  #           /repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses
+  #     - name: Write Status
+  #       env:
+  #         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         SHA: ${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
+  #       run: |
+  #         gh api \
+  #           --method POST \
+  #           -H "Accept: application/vnd.github+json" \
+  #           /repos/$GITHUB_REPOSITORY/statuses/$SHA \
+  #           -f state='success' \
+  #           -f target_url='https://example.com/build/status' \
+  #           -f description='The test succeeded!' \
+  #           -f context='continuous-integration/testing for fun'
