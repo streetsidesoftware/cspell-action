@@ -32,8 +32,15 @@ const cspellApp = __importStar(require("cspell"));
  * @param reporter - reporter to use.
  */
 async function lint(files, lintOptions, reporter) {
-    const { root, config } = lintOptions;
+    const { root, config, checkDotFiles } = lintOptions;
     const options = { root, config };
+    if (checkDotFiles) {
+        options.dot = true;
+    }
+    else if (checkDotFiles === false) {
+        options.dot = false;
+        options.exclude = ['.*'];
+    }
     await cspellApp.lint(files, options, reporter);
 }
 exports.lint = lint;

@@ -12,6 +12,7 @@ const defaultActionParams = {
     inline: 'warning',
     strict: 'true',
     verbose: 'false',
+    check_dot_files: 'explicit',
 };
 function applyDefaults(params) {
     const results = { ...params };

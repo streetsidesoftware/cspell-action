@@ -45,6 +45,12 @@ jobs:
     # Default: ALL files
     files: ''
 
+    # Check files and directories starting with `.`.
+    # - "true" - glob searches will match against `.dot` files.
+    # - "false" - `.dot` files will NOT be checked.
+    # - "explicit" - glob patterns can match explicit `.dot` patterns.
+    check_dot_files: explicit
+
     # The point in the directory tree to start spell checking.
     # Default: .
     root: '.'

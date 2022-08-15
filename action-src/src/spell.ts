@@ -4,6 +4,13 @@ import { CSpellReporter } from 'cspell';
 export interface LintOptions {
     root: string;
     config?: string;
+    /**
+     * Check files and directories starting with `.`.
+     * - `true` - glob searches will match against `.dot` files.
+     * - `false` - `.dot` files will NOT be checked.
+     * - `undefined` - glob patterns can match explicit `.dot` patterns.
+     */
+    checkDotFiles: boolean | undefined;
 }
 
 /**
@@ -13,7 +20,13 @@ export interface LintOptions {
  * @param reporter - reporter to use.
  */
 export async function lint(files: string[], lintOptions: LintOptions, reporter: CSpellReporter): Promise<void> {
-    const { root, config } = lintOptions;
+    const { root, config, checkDotFiles } = lintOptions;
     const options: cspellApp.CSpellApplicationOptions = { root, config };
+    if (checkDotFiles) {
+        options.dot = true;
+    } else if (checkDotFiles === false) {
+        options.dot = false;
+        options.exclude = ['.*'];
+    }
     await cspellApp.lint(files, options, reporter);
 }
