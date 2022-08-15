@@ -76,15 +76,19 @@ jobs:
         run: |
           echo "$outputs"
 
+  # Experiment with writing the status to a PR.
   show_status:
     runs-on: ubuntu-latest
     steps:
       - name: Env
+        env:
+          github: ${{ toJSON(github) }}
         run: |
           echo GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER
           echo GITHUB_REPOSITORY=$GITHUB_REPOSITORY
           echo GITHUB_REF=$GITHUB_REF
           echo SHA=${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
+          echo github="$github"
           env
       - name: GH Status
         env:
