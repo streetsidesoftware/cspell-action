@@ -973,10 +973,10 @@
   resolved "https://registry.npmjs.org/@octokit/openapi-types/-/openapi-types-12.11.0.tgz#da5638d64f2b919bca89ce6602d059f1b52d3ef0"
   integrity sha512-VsXyi8peyRq9PqIz/tpqiL2w3w80OgVMwBHltTml3LmVvXiphgeqmY9mvBw9Wu7e0QWk/fqD37ux8yP5uVekyQ==
 
-"@octokit/openapi-types@^13.0.0":
-  version "13.0.1"
-  resolved "https://registry.npmjs.org/@octokit/openapi-types/-/openapi-types-13.0.1.tgz#f655810f0dc0547b771526fea171acffbc7bd4a8"
-  integrity sha512-40U39YoFBhJhmkAg6gbJnh9U8aueJwCuiTW0mXY2pNl9/+E7dUxXiMPOrIUGT12XqLinroaXYA3FUiw3BMeNfg==
+"@octokit/openapi-types@^13.1.0":
+  version "13.1.0"
+  resolved "https://registry.npmjs.org/@octokit/openapi-types/-/openapi-types-13.1.0.tgz#30459b45e6dd388d48d72de166f2f08ee8ece5b6"
+  integrity sha512-Z7vzLqfTkoVQyoy/2iQla1N2I4Vav2wi4JbZK8QxIYAfBimhuflosFxmsqw5LTH7DkdNW46ZYpAcqJf0XaS8SQ==
 
 "@octokit/plugin-paginate-rest@^2.17.0":
   version "2.21.3"
@@ -1073,11 +1073,11 @@
     "@octokit/openapi-types" "^12.11.0"
 
 "@octokit/types@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.npmjs.org/@octokit/types/-/types-7.0.0.tgz#3ecee92edff53a93ecd75d6b9d6620574d2048ca"
-  integrity sha512-8uSDc66p6+wADn6lh6lA7I3ZTIapn7F/dfpsiDztVjEr6kkyKR3qPqa4lgEX92O/8iJoDeGcscKRXGAjCSR/zg==
+  version "7.1.0"
+  resolved "https://registry.npmjs.org/@octokit/types/-/types-7.1.0.tgz#98e345dbc6eba326dad5cfa4074171d89abb9d84"
+  integrity sha512-+ClA0jRc9zGFj5mfQeQNfgTlelzhpAexbAueQG1t2Xn8yhgnsjkF8bgLcUUpwrpqkv296uXyiGwkqXRSU7KYzQ==
   dependencies:
-    "@octokit/openapi-types" "^13.0.0"
+    "@octokit/openapi-types" "^13.1.0"
 
 "@pollyjs/adapter-node-http@^6.0.5":
   version "6.0.5"
@@ -1269,9 +1269,9 @@
     form-data "^3.0.0"
 
 "@types/node@*":
-  version "18.7.5"
-  resolved "https://registry.npmjs.org/@types/node/-/node-18.7.5.tgz#f1c1d4b7d8231c0278962347163656f9c36f3e83"
-  integrity sha512-NcKK6Ts+9LqdHJaW6HQmgr7dT/i3GOHG+pt6BiWv++5SnjtRd4NXeiuN2kA153SjhXPR/AhHIPHPbrsbpUVOww==
+  version "18.7.6"
+  resolved "https://registry.npmjs.org/@types/node/-/node-18.7.6.tgz#31743bc5772b6ac223845e18c3fc26f042713c83"
+  integrity sha512-EdxgKRXgYsNITy5mjjXjVE/CS8YENSdhiagGrLqjG0pvA2owgJ6i4l7wy/PFZGC0B1/H20lWKN7ONVDNYDZm7A==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
