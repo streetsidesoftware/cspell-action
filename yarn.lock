@@ -449,9 +449,9 @@
   integrity sha512-tKSSUf9BJEV+GJQAYGw5e+ouhEe2ZXE620S7BLKe3ZmpnjlNG9JqlnaBhkIMxKnNFkLY2BP/EARzw31AZnOv4g==
 
 "@cspell/dict-en_us@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.npmjs.org/@cspell/dict-en_us/-/dict-en_us-2.3.1.tgz#66138d22bae54ed1d861c4c58fdd46e0d25640cd"
-  integrity sha512-mpjMY9Fo+cvt+BeL8bsoy8xpKhnILT0j6ith9OlYALELx8uPFyzSgFhkPBGam6jE8luG1XFsIsc0APQ7yzwhKw==
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/@cspell/dict-en_us/-/dict-en_us-2.3.2.tgz#18d2b7d83028b42feea97f8826431fafc1a0d2da"
+  integrity sha512-/jkx3Lwig34nDP8zMEP8IF7Nkni4ac63FlAeK/B4yvriaz7Pqe5XbwU20otlB+y+T0nf5GxvWacIEyTFnV9BKg==
 
 "@cspell/dict-filetypes@^2.1.1":
   version "2.1.1"
@@ -489,9 +489,9 @@
   integrity sha512-04K7cPTcbYXmHICfiob4gZA1yaj4hpfM+Nl5WIJ1EAZsSGHdqmGEF28GuCjyQ8ZeKiJAsPt/vXuLBbjxkHqZyQ==
 
 "@cspell/dict-html@^3.0.4":
-  version "3.0.4"
-  resolved "https://registry.npmjs.org/@cspell/dict-html/-/dict-html-3.0.4.tgz#fbeec0485fc0a7f4c01fa7d29dd7eeb9c28e54f8"
-  integrity sha512-DV1lAATRel7vuJZYpnR92pIr9ZeSE+uuQDnkuzJaCP9os+Y6zkkUfvNLbNsqe7wD5IzkSA2CtxOR44MMf2YfvQ==
+  version "3.0.5"
+  resolved "https://registry.npmjs.org/@cspell/dict-html/-/dict-html-3.0.5.tgz#b7ec878d1ae249a56366666452d5db6199623f89"
+  integrity sha512-Gay6gEKQydJHAoXfEz0sBLoS1x0lgnybJ5X8kO6k149x4I4fOX3IK3TEOox6gFWHI2hD7bY7VkhYLuD8p+HbRw==
 
 "@cspell/dict-java@^3.0.7":
   version "3.0.7"
