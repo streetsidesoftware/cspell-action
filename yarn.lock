@@ -414,9 +414,9 @@
   integrity sha512-xkfQu03F388w4sdVQSSjrVMkxAxpTYB2yW7nw0XYtTjl3L/jBgvTr/j1BTjdFbQhdNf10Lg0Ak1kXOjmHodVqA==
 
 "@cspell/dict-css@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-css/-/dict-css-2.0.0.tgz#91dca013f16b51144eaea160e144b830f2dad027"
-  integrity sha512-MrFyswFHnPh4H0u6IlV4eHy+ZCUrrHzeL161LyTOqCvaKpbZavMgNYXzZqTF9xafO0iLgwKrl+Gkclu1KVBg0Q==
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@cspell/dict-css/-/dict-css-2.0.1.tgz#a2d2c753752d4ae22e80e9a278c58260e75b97a8"
+  integrity sha512-8YjD29A8IquPdAsDNF/7KIG1FUYEs1mpKYcBrGPv/CKVlyiQskAxdFZvhWlKzsjDsWxis9+2Q5vR0VGLtgkPzQ==
 
 "@cspell/dict-dart@^1.1.1":
   version "1.1.1"
@@ -459,9 +459,9 @@
   integrity sha512-Oo0/mUbFHzsaATqRLdkV1RMoYns3aGzeKFIpVJg415GYtJ8EABXtEArYTXeMwlboyGTPvEk+PR2hBSTSfQTqmg==
 
 "@cspell/dict-fonts@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/@cspell/dict-fonts/-/dict-fonts-2.0.1.tgz#16a99591fef8ba616d09db8973494e9d9ecdd3c9"
-  integrity sha512-UX9evXp7IPZ55G1NxVLADoRgGa+6MPSFx4zWveT6vHIVI9k50yZZY2QkIgQIOEPgk8RNrNe1Tf6HLfndgFL2kQ==
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/@cspell/dict-fonts/-/dict-fonts-2.1.0.tgz#89b32b41bc66a38b6fbf9c970540e2f7ebd6e8b1"
+  integrity sha512-hk7xsbfWEUhc136Xj7I2TD7ouKAfWwzCVAQaHBxcVXAsVxu7bDOGj4FvE2jBzlkSUY8A9Ww8qS0GOFvowJshVg==
 
 "@cspell/dict-fullstack@^2.0.6":
   version "2.0.6"
@@ -489,9 +489,9 @@
   integrity sha512-04K7cPTcbYXmHICfiob4gZA1yaj4hpfM+Nl5WIJ1EAZsSGHdqmGEF28GuCjyQ8ZeKiJAsPt/vXuLBbjxkHqZyQ==
 
 "@cspell/dict-html@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.npmjs.org/@cspell/dict-html/-/dict-html-3.0.5.tgz#b7ec878d1ae249a56366666452d5db6199623f89"
-  integrity sha512-Gay6gEKQydJHAoXfEz0sBLoS1x0lgnybJ5X8kO6k149x4I4fOX3IK3TEOox6gFWHI2hD7bY7VkhYLuD8p+HbRw==
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/@cspell/dict-html/-/dict-html-3.1.0.tgz#d35f072a3a462f59fb1db0ef653b9bd5ac5baf0a"
+  integrity sha512-HD33wqDxaBBDuBRMlXT1sS8v1Oqw3ZjJocEK8a/JQ8s75sSq4zl6iZIcbkzTHFeDfKPmObCES4z5GbgHKNaQtw==
 
 "@cspell/dict-java@^3.0.7":
   version "3.0.7"
@@ -564,9 +564,9 @@
   integrity sha512-MUwA2YKpqaQOSR4V1/CVGRNk8Ii5kf6I8Ch+4/BhRZRQXuwWbi21rDRYWPqdQWps7VNzAbbMA+PQDWsD5YY38g==
 
 "@cspell/dict-software-terms@^2.2.2":
-  version "2.2.2"
-  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-2.2.2.tgz#805d47adac7d0dc917392db837cd5de8b1135c35"
-  integrity sha512-s6l3lzKhxXWfu8QsSt1qoUK2l6iGbFKJd0T8XRYfsKnX6fVCUmHNueGWQ6TFCRXDRvHiwGB+UpPicyHPtSJJ5A==
+  version "2.2.3"
+  resolved "https://registry.npmjs.org/@cspell/dict-software-terms/-/dict-software-terms-2.2.3.tgz#b40dc861fefff05da40c417b092a6e7e1afb3530"
+  integrity sha512-hpiYrjnGcrSw2q/CiT2bzsB5/OVaK/aOgQvvI6MVnvOk3XzfpAeOr24frrnXTURbuD8pktiRPvAmrTlHrAGCXQ==
 
 "@cspell/dict-sql@^1.0.4":
   version "1.0.4"
@@ -1269,9 +1269,9 @@
     form-data "^3.0.0"
 
 "@types/node@*":
-  version "18.7.8"
-  resolved "https://registry.npmjs.org/@types/node/-/node-18.7.8.tgz#6bbf2be6fbf9c187a5040d4277d24a06a18957a1"
-  integrity sha512-/YP55EMK2341JkODUb8DM9O0x1SIz2aBvyF33Uf1c76St3VpsMXEIW0nxuKkq/5cxnbz0RD9cfwNZHEAZQD3ag==
+  version "18.7.9"
+  resolved "https://registry.npmjs.org/@types/node/-/node-18.7.9.tgz#180bfc495c91dc62573967edf047e15dbdce1491"
+  integrity sha512-0N5Y1XAdcl865nDdjbO0m3T6FdmQ4ijE89/urOHLREyTXbpMWbSafx9y7XIsgWGtwUP2iYTinLyyW3FatAxBLQ==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1671,9 +1671,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001370:
-  version "1.0.30001380"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001380.tgz#6f2427ad8ebee1b400a38ca3560515756ba352bb"
-  integrity sha512-OO+pPubxx16lkI7TVrbFpde8XHz66SMwstl1YWpg6uMGw56XnhYVwtPIjvX4kYpzwMwQKr4DDce394E03dQPGg==
+  version "1.0.30001381"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001381.tgz#e62955310e6e69cdf4b40bc5bc0895aa24bc4b8b"
+  integrity sha512-fEnkDOKpvp6qc+olg7+NzE1SqyfiyKf4uci7fAU38M3zxs0YOyKOxW/nMZ2l9sJbt7KZHcDIxUnbI0Iime7V4w==
 
 chalk@^2.0.0:
   version "2.4.2"
