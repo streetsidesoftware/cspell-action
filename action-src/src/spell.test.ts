@@ -57,10 +57,10 @@ describe('Validate Spell Checking', () => {
         ${'fixtures/sampleDotFiles/**'}       | ${false}      | ${[sc('ts/sample.ts')]}
         ${'fixtures/sampleDotFiles/**/.*.ts'} | ${undefined}  | ${[sc('.dot_sample.ts')]}
         ${'fixtures/sampleDotFiles/**/.*.ts'} | ${true}       | ${[sc('.dot_sample.ts')]}
-        ${'fixtures/sampleDotFiles/**/.*.ts'} | ${false}      | ${[]}
+        ${'fixtures/sampleDotFiles/**/.*.ts'} | ${false}      | ${[sc('.dot_sample.ts')]}
         ${'fixtures/sampleDotFiles/**/.*/**'} | ${undefined}  | ${[sc('.dot_dir/sample_nested.ts')]}
         ${'fixtures/sampleDotFiles/**/.*/**'} | ${true}       | ${[sc('.dot_dir/sample_nested.ts')]}
-        ${'fixtures/sampleDotFiles/**/.*/**'} | ${false}      | ${[]}
+        ${'fixtures/sampleDotFiles/**/.*/**'} | ${false}      | ${[sc('.dot_dir/sample_nested.ts')]}
     `('Linting checkDotFiles $glob $checkDotFiles', async ({ glob, checkDotFiles, expected }) => {
         const options = {
             root,
