@@ -414,9 +414,9 @@
   integrity sha512-xkfQu03F388w4sdVQSSjrVMkxAxpTYB2yW7nw0XYtTjl3L/jBgvTr/j1BTjdFbQhdNf10Lg0Ak1kXOjmHodVqA==
 
 "@cspell/dict-css@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/@cspell/dict-css/-/dict-css-2.0.1.tgz#a2d2c753752d4ae22e80e9a278c58260e75b97a8"
-  integrity sha512-8YjD29A8IquPdAsDNF/7KIG1FUYEs1mpKYcBrGPv/CKVlyiQskAxdFZvhWlKzsjDsWxis9+2Q5vR0VGLtgkPzQ==
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/@cspell/dict-css/-/dict-css-2.1.0.tgz#799708a8e59cb58077b21b1f37aacdc75c240efb"
+  integrity sha512-glASAELcGhh4Ru0rTQ4G9mTQxSyPwsZOON/5BYflB6Kks8YC8nUvKrtMCoo5W7CPKPfSEa8zUNctFQ1+IUYDHA==
 
 "@cspell/dict-dart@^1.1.1":
   version "1.1.1"
@@ -489,9 +489,9 @@
   integrity sha512-04K7cPTcbYXmHICfiob4gZA1yaj4hpfM+Nl5WIJ1EAZsSGHdqmGEF28GuCjyQ8ZeKiJAsPt/vXuLBbjxkHqZyQ==
 
 "@cspell/dict-html@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-html/-/dict-html-3.1.0.tgz#d35f072a3a462f59fb1db0ef653b9bd5ac5baf0a"
-  integrity sha512-HD33wqDxaBBDuBRMlXT1sS8v1Oqw3ZjJocEK8a/JQ8s75sSq4zl6iZIcbkzTHFeDfKPmObCES4z5GbgHKNaQtw==
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@cspell/dict-html/-/dict-html-3.2.0.tgz#47ae3bc3d1778e73c7bc970ed6aee9546b7b532e"
+  integrity sha512-EWUwM71ftwWfIrBKms+rvUdZFjrdcYvEb8+c/k/BtoynV/93Ka9KQ4Xjo5GwzVGnsMetPlS0ua/zmZmXgHl+LQ==
 
 "@cspell/dict-java@^3.0.7":
   version "3.0.7"
@@ -1658,9 +1658,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001370:
-  version "1.0.30001383"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001383.tgz#aecf317ccd940690725ae3ae4f28293c5fb8050e"
-  integrity sha512-swMpEoTp5vDoGBZsYZX7L7nXHe6dsHxi9o6/LKf/f0LukVtnrxly5GVb/fWdCDTqi/yw6Km6tiJ0pmBacm0gbg==
+  version "1.0.30001384"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001384.tgz#029527c2d781a3cfef13fa63b3a78a6088e35973"
+  integrity sha512-BBWt57kqWbc0GYZXb47wTXpmAgqr5LSibPzNjk/AWMdmJMQhLqOl3c/Kd4OAU/tu4NLfYkMx8Tlq3RVBkOBolQ==
 
 chalk@^2.0.0:
   version "2.4.2"
