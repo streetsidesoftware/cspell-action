@@ -28,7 +28,6 @@ const core = __importStar(require("@actions/core"));
 const glob = __importStar(require("cspell-glob"));
 const path = __importStar(require("path"));
 const ActionParams_1 = require("./ActionParams");
-const error_1 = require("./error");
 const getActionParams_1 = require("./getActionParams");
 const github_1 = require("./github");
 const reporter_1 = require("./reporter");
@@ -126,7 +125,9 @@ async function action(githubContext, octokit) {
     (0, ActionParams_1.validateActionParams)(params, core.error);
     const eventName = githubContext.eventName;
     if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
-        throw new error_1.AppError(`Unsupported event: '${eventName}'`);
+        params.files = params.files || '**';
+        core.warning('Unable to determine which files have changed, checking files: ' + params.files);
+        params.incremental_files_only = 'false';
     }
     const context = {
         githubContext,

@@ -37,7 +37,6 @@ describe('Validate Action', () => {
         ${'missing config'}             | ${'bad_params/missing_config.json'}             | ${new AppError('Bad Configuration.')}
         ${'bad inline'}                 | ${'bad_params/bad_inline.json'}                 | ${new AppError('Bad Configuration.')}
         ${'bad_incremental_files_only'} | ${'bad_params/bad_incremental_files_only.json'} | ${new AppError('Bad Configuration.')}
-        ${'bad_unsupported_event'}      | ${'bad_params/bad_unsupported_event.json'}      | ${new AppError("Unsupported event: 'fork'")}
         ${'bad strict'}                 | ${'bad_params/bad_strict.json'}                 | ${new AppError('Bad Configuration.')}
     `(
         '$test',
@@ -94,16 +93,17 @@ describe('Validate Action', () => {
     );
 
     test.each`
-        files                       | expected
-        ${'fixtures/sampleCode/**'} | ${false}
+        files                       | incremental | contextFile                                | expected
+        ${'fixtures/sampleCode/**'} | ${false}    | ${'pull_request_with_files.json'}          | ${false}
+        ${'fixtures/sampleCode/**'} | ${true}     | ${'bad_params/bad_unsupported_event.json'} | ${true}
     `(
         'check files with issues $files',
-        async ({ files, expected }) => {
+        async ({ files, incremental, contextFile, expected }) => {
             const warnings: string[] = [];
             spyWarn.mockImplementation((msg: string) => warnings.push(msg));
-            const context = createContextFromFile('pull_request_with_files.json', {
+            const context = createContextFromFile(contextFile, {
                 INPUT_FILES: files,
-                INPUT_INCREMENTAL_FILES_ONLY: 'false',
+                INPUT_INCREMENTAL_FILES_ONLY: incremental ? 'true' : 'false',
             });
             const octokit = createOctokit();
             await expect(action(context, octokit)).resolves.toBe(expected);
