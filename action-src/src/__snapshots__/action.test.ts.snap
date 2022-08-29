@@ -103,3 +103,86 @@ Array [
   "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":2,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
 ]
 `;
+
+exports[`Validate Action check files with issues fixtures/sampleCode/** 5`] = `Array []`;
+
+exports[`Validate Action check files with issues fixtures/sampleCode/** 6`] = `Array []`;
+
+exports[`Validate Action check files with issues fixtures/sampleCode/** 7`] = `
+Array [
+  Array [
+    "::warning::Unable to determine which files have changed, checking files: fixtures/sampleCode/**
+",
+  ],
+  Array [
+    "'fork'
+",
+  ],
+  Array [
+    "Files checked: 1, Issues found: 0 in 0 files.
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=success::true
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=number_of_files_checked::1
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=number_of_issues::0
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=number_of_files_with_issues::0
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=files_with_issues::[]
+",
+  ],
+  Array [
+    "
+",
+  ],
+  Array [
+    "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":1,\\"files_with_issues\\":[]}
+",
+  ],
+]
+`;
+
+exports[`Validate Action check files with issues fixtures/sampleCode/** 8`] = `
+Array [
+  "::warning::Unable to determine which files have changed, checking files: fixtures/sampleCode/**",
+  "'fork'",
+  "Files checked: 1, Issues found: 0 in 0 files.",
+  "::set-output name=success::true",
+  "::set-output name=number_of_files_checked::1",
+  "::set-output name=number_of_issues::0",
+  "::set-output name=number_of_files_with_issues::0",
+  "::set-output name=files_with_issues::[]",
+  "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":1,\\"files_with_issues\\":[]}",
+]
+`;

@@ -5,7 +5,6 @@ import { RunResult } from 'cspell';
 import * as glob from 'cspell-glob';
 import * as path from 'path';
 import { ActionParams, validateActionParams } from './ActionParams';
-import { AppError } from './error';
 import { getActionParams } from './getActionParams';
 import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { CSpellReporterForGithubAction } from './reporter';
@@ -19,7 +18,7 @@ interface Context {
 }
 
 type EventNames = 'push' | 'pull_request';
-const supportedEvents = new Set<EventNames | string>(['push', 'pull_request']);
+const supportedIncrementalEvents = new Set<EventNames | string>(['push', 'pull_request']);
 
 async function gatherPullRequestFiles(context: Context): Promise<Set<string>> {
     const { github, githubContext } = context;
@@ -83,7 +82,7 @@ function friendlyEventName(eventName: EventNames | string): string {
 }
 
 function isSupportedEvent(eventName: EventNames | string): eventName is EventNames {
-    return supportedEvents.has(eventName);
+    return supportedIncrementalEvents.has(eventName);
 }
 
 async function gatherFilesFromContext(context: Context): Promise<Set<string>> {
@@ -132,12 +131,20 @@ function filterFiles(globPattern: string, files: Set<string>): Set<string> {
     return matchingFiles;
 }
 
+/**
+ * Run the action based upon the githubContext.
+ * @param githubContext
+ * @param octokit
+ * @returns a promise that resolves to `true` if no issues were found.
+ */
 export async function action(githubContext: GitHubContext, octokit: Octokit): Promise<boolean> {
     const params = getActionParams();
     validateActionParams(params, core.error);
     const eventName = githubContext.eventName;
     if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
-        throw new AppError(`Unsupported event: '${eventName}'`);
+        params.files = params.files || '**';
+        core.warning('Unable to determine which files have changed, checking files: ' + params.files);
+        params.incremental_files_only = 'false';
     }
     const context: Context = {
         githubContext,
