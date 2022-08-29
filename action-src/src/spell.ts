@@ -26,7 +26,6 @@ export async function lint(files: string[], lintOptions: LintOptions, reporter: 
         options.dot = true;
     } else if (checkDotFiles === false) {
         options.dot = false;
-        options.exclude = ['.*'];
     }
     await cspellApp.lint(files, options, reporter);
 }
