@@ -86,7 +86,7 @@ function isSupportedEvent(eventName) {
 async function gatherFilesFromContext(context) {
     if (context.useEventFiles) {
         const eventFiles = await gatherFiles(context);
-        return filterFiles(context.files, eventFiles);
+        return filterFiles(context.files, eventFiles, context.dot);
     }
     const files = new Set(context.files
         .split('\n')
@@ -108,11 +108,11 @@ async function gatherFiles(context) {
     }
     return new Set();
 }
-function filterFiles(globPattern, files) {
+function filterFiles(globPattern, files, dot) {
     if (!globPattern)
         return files;
     const matchingFiles = new Set();
-    const g = new glob.GlobMatcher(globPattern, { mode: 'include' });
+    const g = new glob.GlobMatcher(globPattern, { mode: 'include', dot });
     for (const p of files) {
         if (g.match(p)) {
             matchingFiles.add(p);
@@ -135,11 +135,14 @@ async function action(githubContext, octokit) {
         core.warning('Unable to determine which files have changed, checking files: ' + params.files);
         params.incremental_files_only = 'false';
     }
+    params.files = params.files || (params.incremental_files_only !== 'true' ? '**' : '');
+    const dot = !!checkDotMap[params.check_dot_files];
     const context = {
         githubContext,
         github: octokit,
         files: params.files,
         useEventFiles: params.incremental_files_only === 'true',
+        dot,
     };
     core.info(friendlyEventName(eventName));
     const files = await gatherFilesFromContext(context);

@@ -10,6 +10,9 @@
     ],
     "globRoot": "./..",
     "ignorePaths": [
+        ".git/*",
+        ".git/!{COMMIT_EDITMSG,EDITMSG}",
+        ".git/*/**",
         "node_modules",
         "action/",
         "cspell.json",

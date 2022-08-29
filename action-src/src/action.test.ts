@@ -11,7 +11,7 @@ import * as helper from './test/helper';
 
 const configFile = path.resolve(root, 'cspell.json');
 
-const timeout = 20000;
+const timeout = 30000;
 
 const spyLog = jest.spyOn(console, 'log').mockImplementation(() => {});
 const spyWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
@@ -93,18 +93,27 @@ describe('Validate Action', () => {
     );
 
     test.each`
-        files                       | incremental | contextFile                                | expected
-        ${'fixtures/sampleCode/**'} | ${false}    | ${'pull_request_with_files.json'}          | ${false}
-        ${'fixtures/sampleCode/**'} | ${true}     | ${'bad_params/bad_unsupported_event.json'} | ${true}
+        files                       | incremental | dot           | contextFile                                | expected
+        ${'fixtures/sampleCode/**'} | ${false}    | ${'explicit'} | ${'pull_request_with_files.json'}          | ${true}
+        ${'fixtures/sampleCode/**'} | ${true}     | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${true}
+        ${''}                       | ${true}     | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${false}
+        ${'**'}                     | ${true}     | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${false}
+        ${''}                       | ${false}    | ${'explicit'} | ${'pull_request_with_files.json'}          | ${false}
+        ${''}                       | ${false}    | ${''}         | ${'pull_request_with_files.json'}          | ${false}
+        ${''}                       | ${false}    | ${'true'}     | ${'pull_request_with_files.json'}          | ${false}
     `(
-        'check files with issues $files',
-        async ({ files, incremental, contextFile, expected }) => {
+        'check files "$files" incremental: $incremental $contextFile, dot: "$dot"',
+        async ({ files, incremental, contextFile, dot, expected }) => {
             const warnings: string[] = [];
             spyWarn.mockImplementation((msg: string) => warnings.push(msg));
-            const context = createContextFromFile(contextFile, {
+            const params = {
                 INPUT_FILES: files,
                 INPUT_INCREMENTAL_FILES_ONLY: incremental ? 'true' : 'false',
-            });
+                INPUT_CHECK_DOT_FILES: dot,
+                INPUT_ROOT: path.resolve(root, 'fixtures'),
+                INPUT_CONFIG: path.resolve(root, 'fixtures/cspell.json'),
+            };
+            const context = createContextFromFile(contextFile, params);
             const octokit = createOctokit();
             await expect(action(context, octokit)).resolves.toBe(expected);
             expect(warnings).toMatchSnapshot();
