@@ -32,7 +32,7 @@ const getActionParams_1 = require("./getActionParams");
 const github_1 = require("./github");
 const reporter_1 = require("./reporter");
 const spell_1 = require("./spell");
-const supportedEvents = new Set(['push', 'pull_request']);
+const supportedIncrementalEvents = new Set(['push', 'pull_request']);
 async function gatherPullRequestFiles(context) {
     var _a;
     const { github, githubContext } = context;
@@ -81,7 +81,7 @@ function friendlyEventName(eventName) {
     }
 }
 function isSupportedEvent(eventName) {
-    return supportedEvents.has(eventName);
+    return supportedIncrementalEvents.has(eventName);
 }
 async function gatherFilesFromContext(context) {
     if (context.useEventFiles) {
@@ -120,6 +120,12 @@ function filterFiles(globPattern, files) {
     }
     return matchingFiles;
 }
+/**
+ * Run the action based upon the githubContext.
+ * @param githubContext
+ * @param octokit
+ * @returns a promise that resolves to `true` if no issues were found.
+ */
 async function action(githubContext, octokit) {
     const params = (0, getActionParams_1.getActionParams)();
     (0, ActionParams_1.validateActionParams)(params, core.error);
