@@ -46,7 +46,7 @@
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
     "@tsconfig/node12": "^1.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.1",
     "env-cmd": "^10.1.0",
     "eslint": "^8.23.0",
