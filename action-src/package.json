@@ -35,7 +35,7 @@
     "@actions/core": "^1.9.1",
     "@actions/github": "^5.0.3",
     "@octokit/core": "^4.0.5",
-    "@octokit/plugin-rest-endpoint-methods": "^6.3.1",
+    "@octokit/plugin-rest-endpoint-methods": "^6.4.1",
     "@octokit/rest": "^19.0.4",
     "cspell": "^6.8.1",
     "cspell-glob": "^6.8.1",
