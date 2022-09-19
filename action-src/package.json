@@ -39,6 +39,6 @@
     "@octokit/rest": "^19.0.4",
     "cspell": "^6.10.0",
     "cspell-glob": "^6.10.0",
-    "vscode-uri": "^3.0.4"
+    "vscode-uri": "^3.0.6"
   }
 }
