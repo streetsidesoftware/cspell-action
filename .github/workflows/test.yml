@@ -30,7 +30,7 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
       # Build should not be necessary to run tests
-      - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} yarn test
+      - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} GITHUB_OUTPUT="" yarn test
 
   clean-build: # make sure nothing changes with a clean build
     runs-on: ubuntu-latest
