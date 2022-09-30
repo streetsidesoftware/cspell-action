@@ -330,7 +330,7 @@ For information about possible ambiguous cases, see [options taking varying argu
 
 ### Required option
 
-You may specify a required (mandatory) option using `.requiredOption`. The option must have a value after parsing, usually specified on the command line, or perhaps from a default value (say from environment). The method is otherwise the same as `.option` in format, taking flags and description, and optional default value or custom processing.
+You may specify a required (mandatory) option using `.requiredOption()`. The option must have a value after parsing, usually specified on the command line, or perhaps from a default value (say from environment). The method is otherwise the same as `.option()` in format, taking flags and description, and optional default value or custom processing.
 
 Example file: [options-required.js](./examples/options-required.js)
 
@@ -441,6 +441,8 @@ $ extra --disable-server --port 8000
 error: option '--disable-server' cannot be used with option '-p, --port <number>'
 ```
 
+Specify a required (mandatory) option using the `Option` method `.makeOptionMandatory()`. This matches the `Command` method [.requiredOption()](#required-option).
+
 ### Custom option processing
 
 You may specify a function to do custom processing of option-arguments. The callback function receives two parameters,
@@ -540,6 +542,8 @@ program
 Configuration options can be passed with the call to `.command()` and `.addCommand()`. Specifying `hidden: true` will
 remove the command from the generated help output. Specifying `isDefault: true` will run the subcommand if no other
 subcommand is specified ([example](./examples/defaultCommand.js)).
+
+For safety, `.addCommand()` does not automatically copy the inherited settings from the parent command. There is a helper routine `.copyInheritedSettings()` for copying the settings when they are wanted.
 
 ### Command-arguments
 
