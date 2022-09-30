@@ -37,7 +37,7 @@ class Command extends EventEmitter {
     this._scriptPath = null;
     this._name = name || '';
     this._optionValues = {};
-    this._optionValueSources = {}; // default < config < env < cli
+    this._optionValueSources = {}; // default, env, cli etc
     this._storeOptionsAsProperties = false;
     this._actionHandler = null;
     this._executableHandler = false;
@@ -780,32 +780,31 @@ Expecting one of '${allowedValues.join("', '")}'`);
    */
 
   setOptionValue(key, value) {
+    return this.setOptionValueWithSource(key, value, undefined);
+  }
+
+  /**
+    * Store option value and where the value came from.
+    *
+    * @param {string} key
+    * @param {Object} value
+    * @param {string} source - expected values are default/config/env/cli/implied
+    * @return {Command} `this` command for chaining
+    */
+
+  setOptionValueWithSource(key, value, source) {
     if (this._storeOptionsAsProperties) {
       this[key] = value;
     } else {
       this._optionValues[key] = value;
     }
-    return this;
-  }
-
-  /**
-   * Store option value and where the value came from.
-    *
-    * @param {string} key
-    * @param {Object} value
-    * @param {string} source - expected values are default/config/env/cli
-    * @return {Command} `this` command for chaining
-    */
-
-  setOptionValueWithSource(key, value, source) {
-    this.setOptionValue(key, value);
     this._optionValueSources[key] = source;
     return this;
   }
 
   /**
     * Get source of option value.
-    * Expected values are default | config | env | cli
+    * Expected values are default | config | env | cli | implied
     *
     * @param {string} key
     * @return {string}
