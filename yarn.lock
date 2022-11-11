@@ -1886,10 +1886,17 @@ cspell-gitignore@6.14.1:
     cspell-glob "6.14.1"
     find-up "^5.0.0"
 
-cspell-glob@6.14.1, cspell-glob@^6.14.1:
+cspell-glob@6.14.1:
   version "6.14.1"
   resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-6.14.1.tgz#8070e2938fca9a1eef56532d4616ff9df3950805"
   integrity sha512-qbAWpDShIata7Lac+YHAoSDQVBUv0BiPAseKWDpR/Fpm39oIO/VgBYufWRXNbYmKTVIivOh2ujKunq+eeSFEoA==
+  dependencies:
+    micromatch "^4.0.5"
+
+cspell-glob@^6.14.2:
+  version "6.14.2"
+  resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-6.14.2.tgz#49f3c8dcd9a19a018bc9fe458749b4f945aca33c"
+  integrity sha512-a9o3lBccEcH2676RGge2YqEORovm+II++D53P6hOW/23ltDe1J509MSY6CJdYdPk/VssOExas6akJ6FbKSCBgw==
   dependencies:
     micromatch "^4.0.5"
 
