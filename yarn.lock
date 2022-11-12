@@ -396,9 +396,9 @@
   integrity sha512-O1W6nd5y3Z00AMXQMzfiYrIJ1sTd9fB1oLr+xf/UD7b3xeHeMeYE2OtcWbt9uyeHim4tk+vkSTcmYEBKJgS5bQ==
 
 "@cspell/dict-bash@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/@cspell/dict-bash/-/dict-bash-4.0.0.tgz#b27cc1c068587dcb5a0fa6ea024f0192f4369681"
-  integrity sha512-3jEHQ7s34AakowZwIV+HczpFK/HY5Ja4PGI1kZaELWnDSpHGongz7WB8cfApd4b1CLptS1L7AZrDC63awG73ow==
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/@cspell/dict-bash/-/dict-bash-4.1.0.tgz#b795fcd7cdbf5009cf28f01a76b9958d6c7f44ed"
+  integrity sha512-8pFL03ZKejynfbsa2UZ3iZ7BrT1TAGTD8ZlK822ioAb7aoDvQhYao2Bjz5cXU0uk7CyrlgsSnYX94sLfqDfTxQ==
 
 "@cspell/dict-companies@^3.0.3":
   version "3.0.3"
@@ -456,9 +456,9 @@
   integrity sha512-tKSSUf9BJEV+GJQAYGw5e+ouhEe2ZXE620S7BLKe3ZmpnjlNG9JqlnaBhkIMxKnNFkLY2BP/EARzw31AZnOv4g==
 
 "@cspell/dict-en_us@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/@cspell/dict-en_us/-/dict-en_us-4.0.1.tgz#c8c2884c7b4808431a8913066be7e34d11c688e2"
-  integrity sha512-CD7I9Yr1ffNSkE3qX5vEP6N3btf1S8GDKRAChMbmqcDwvljwpdaFrNJB1CvAjNPDcDrLrJlrRqiqr0MvI6YilA==
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/@cspell/dict-en_us/-/dict-en_us-4.1.0.tgz#34823c87a6a9b21fc7aa198c060a82de804201a3"
+  integrity sha512-EnfxP/5U3kDhmTWcHV7Xs2Fxa9KAE5fbHm+4u8LGBOUZvSkZC5+ayjQ50CfEyTGuaI/946ITQYPRNxUZ7oqOiQ==
 
 "@cspell/dict-filetypes@^3.0.0":
   version "3.0.0"
