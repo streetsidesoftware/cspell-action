@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.14.0](https://github.com/streetsidesoftware/cspell-action/compare/v2.13.0...v2.14.0) (2022-12-05)
+
+
+### Features
+
+* Update CSpell to (6.16.0) ([d42459c](https://github.com/streetsidesoftware/cspell-action/commit/d42459c2795b12258056604fdd9b22fd35106813))
+* Update CSpell to (6.16.0) (main) ([#1084](https://github.com/streetsidesoftware/cspell-action/issues/1084)) ([d42459c](https://github.com/streetsidesoftware/cspell-action/commit/d42459c2795b12258056604fdd9b22fd35106813))
+
+
+### Updates and Bug Fixes
+
+* Update CSpell to (6.15.1) ([171e191](https://github.com/streetsidesoftware/cspell-action/commit/171e191d27fdbbba88818ddad4859b77ae45113a))
+* Update CSpell to (6.15.1) (main) ([#1080](https://github.com/streetsidesoftware/cspell-action/issues/1080)) ([171e191](https://github.com/streetsidesoftware/cspell-action/commit/171e191d27fdbbba88818ddad4859b77ae45113a))
+* Workflow Bot -- Update ALL Dependencies ([bf85ea2](https://github.com/streetsidesoftware/cspell-action/commit/bf85ea2fa3b6c8c14cf9f97dddc0e1f663133b68))
+* Workflow Bot -- Update ALL Dependencies (main) ([#1077](https://github.com/streetsidesoftware/cspell-action/issues/1077)) ([bf85ea2](https://github.com/streetsidesoftware/cspell-action/commit/bf85ea2fa3b6c8c14cf9f97dddc0e1f663133b68))
+
+
+### Continuous Integration
+
+* Workflow Bot -- Update ALL Dependencies ([10cbcef](https://github.com/streetsidesoftware/cspell-action/commit/10cbcefe7e0591916efb4f224f01c69a63ea165f))
+* Workflow Bot -- Update ALL Dependencies (main) ([#1085](https://github.com/streetsidesoftware/cspell-action/issues/1085)) ([10cbcef](https://github.com/streetsidesoftware/cspell-action/commit/10cbcefe7e0591916efb4f224f01c69a63ea165f))
+
 ## [2.13.0](https://github.com/streetsidesoftware/cspell-action/compare/v2.12.1...v2.13.0) (2022-11-28)
 
 
