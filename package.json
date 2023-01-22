@@ -50,6 +50,7 @@
     "@typescript-eslint/parser": "^5.48.2",
     "env-cmd": "^10.1.0",
     "eslint": "^8.32.0",
-    "prettier": "^2.8.3"
+    "prettier": "^2.8.3",
+    "shx": "^0.3.4"
   }
 }
