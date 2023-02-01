@@ -15,7 +15,7 @@
     "@octokit/plugin-rest-endpoint-methods": "^7.0.1",
     "@octokit/rest": "^19.0.7",
     "cspell": "^6.19.2",
-    "cspell-glob": "^6.19.2",
+    "cspell-glob": "^6.20.0",
     "vscode-uri": "^3.0.7"
   }
 }
