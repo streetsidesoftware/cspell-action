@@ -54,7 +54,6 @@ function fetchGithubActionFixture(filename) {
 }
 exports.fetchGithubActionFixture = fetchGithubActionFixture;
 function setupPolly(name, dir, options) {
-    var _a;
     const polly = new core_1.Polly(name, {
         adapters: ['node-http'],
         persister: 'fs',
@@ -63,7 +62,7 @@ function setupPolly(name, dir, options) {
                 recordingsDir: dir,
             },
         },
-        recordIfMissing: (_a = options === null || options === void 0 ? void 0 : options.recordIfMissing) !== null && _a !== void 0 ? _a : false,
+        recordIfMissing: options?.recordIfMissing ?? false,
         matchRequestsBy: {
             method: true,
             headers: false,

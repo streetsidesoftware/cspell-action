@@ -1,5 +1,5 @@
 import * as cspellApp from 'cspell';
-import { CSpellReporter } from 'cspell';
+import type { CSpellReporter } from 'cspell';
 
 export interface LintOptions {
     root: string;

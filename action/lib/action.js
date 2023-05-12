@@ -34,18 +34,16 @@ const reporter_1 = require("./reporter");
 const spell_1 = require("./spell");
 const supportedIncrementalEvents = new Set(['push', 'pull_request']);
 async function gatherPullRequestFiles(context) {
-    var _a;
     const { github, githubContext } = context;
-    const pull_number = (_a = githubContext.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number;
+    const pull_number = githubContext.payload.pull_request?.number;
     if (!pull_number)
         return new Set();
     return (0, github_1.getPullRequestFiles)(github, { ...githubContext.repo, pull_number });
 }
 async function gatherPushFiles(context) {
-    var _a;
     const { github, githubContext } = context;
     const push = githubContext.payload;
-    const commits = (_a = push.commits) === null || _a === void 0 ? void 0 : _a.map((c) => c.id);
+    const commits = push.commits?.map((c) => c.id);
     const files = commits && (await (0, github_1.fetchFilesForCommits)(github, githubContext.repo, commits));
     return files || new Set();
 }
