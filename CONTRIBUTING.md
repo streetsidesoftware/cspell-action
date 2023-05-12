@@ -22,3 +22,9 @@ root
 
 **action** is the compiled code used to run the action. The entire folder is in the source tree.
 **action-src** is the source code for the action.
+
+## Testing
+
+```sh
+GITHUB_TOKEN=<pat_token> yarn test
+```
