@@ -730,6 +730,8 @@ The supported events are:
 | `preAction`, `postAction` |  before/after action handler for this command and its nested subcommands |   `(thisCommand, actionCommand)` |
 | `preSubcommand` | before parsing direct subcommand  | `(thisCommand, subcommand)` |
 
+For an overview of the life cycle events see [parsing life cycle and hooks](./docs/parsing-and-hooks.md).
+
 ## Automated help
 
 The help information is auto-generated based on the information commander already knows about your program. The default
@@ -760,6 +762,8 @@ shell --help
 shell help spawn
 shell spawn --help
 ```
+
+Long descriptions are wrapped to fit the available width. (However, a  description that includes a line-break followed by whitespace is assumed to be pre-formatted and not wrapped.)
 
 ### Custom help
 
@@ -919,7 +923,7 @@ The data properties are:
 - `sortOptions`: sort the options alphabetically
 - `showGlobalOptions`: show a section with the global options from the parent command(s)
 
-There are methods getting the visible lists of arguments, options, and subcommands. There are methods for formatting the items in the lists, with each item having a _term_ and _description_. Take a look at `.formatHelp()` to see how they are used.
+You can override any method on the [Help](./lib/help.js) class. There are methods getting the visible lists of arguments, options, and subcommands. There are methods for formatting the items in the lists, with each item having a _term_ and _description_. Take a look at `.formatHelp()` to see how they are used.
 
 Example file: [configure-help.js](./examples/configure-help.js)
 
@@ -1114,6 +1118,7 @@ There is more information available about:
 
 - [deprecated](./docs/deprecated.md) features still supported for backwards compatibility
 - [options taking varying arguments](./docs/options-taking-varying-arguments.md)
+- [parsing life cycle and hooks](./docs/parsing-and-hooks.md)
 
 ## Support
 
