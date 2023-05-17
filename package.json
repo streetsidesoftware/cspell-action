@@ -8,6 +8,7 @@
     "prepare": "yarn sync && yarn build",
     "sync": "node sync_package.mjs",
     "build": "yarn workspace action-src build",
+    "clean": "yarn workspace action-src clean",
     "clean-build": "yarn workspace action-src clean-build",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
