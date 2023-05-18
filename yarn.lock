@@ -1063,10 +1063,10 @@
     "@octokit/types" "^6.39.0"
     deprecation "^2.3.1"
 
-"@octokit/plugin-rest-endpoint-methods@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.npmjs.org/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-7.1.0.tgz#7f3f4fac10bf72f8c5cd0c343252cd5f73dbf2d8"
-  integrity sha512-SWwz/hc47GaKJR6BlJI4WIVRodbAFRvrR0QRPSoPMs7krb7anYPML3psg+ThEz/kcwOdSNh/oA8qThi/Wvs4Fw==
+"@octokit/plugin-rest-endpoint-methods@^7.1.0", "@octokit/plugin-rest-endpoint-methods@^7.1.1":
+  version "7.1.1"
+  resolved "https://registry.npmjs.org/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-7.1.1.tgz#cda83fa04a30291dfdf65c69bfb060aa7a1bf8d5"
+  integrity sha512-1XYEQZOGrD4FDa2bxuPfAVmzbKbUDs+P1dqn2TyufIW3EIZFI53n+YFr0XV+EBNATRWUL2rWuZJRKBZiU6guGA==
   dependencies:
     "@octokit/types" "^9.2.2"
     deprecation "^2.3.1"
