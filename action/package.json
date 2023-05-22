@@ -13,7 +13,7 @@
     "@actions/github": "^5.1.1",
     "@octokit/core": "^4.2.1",
     "@octokit/plugin-rest-endpoint-methods": "^7.1.2",
-    "@octokit/rest": "^19.0.9",
+    "@octokit/rest": "^19.0.11",
     "cspell": "^6.31.1",
     "cspell-glob": "^6.31.1",
     "vscode-uri": "^3.0.7"
