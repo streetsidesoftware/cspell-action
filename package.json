@@ -51,7 +51,7 @@
     "@pollyjs/persister-fs": "^6.0.5",
     "@tsconfig/node12": "^1.0.11",
     "@types/jest": "^29.5.2",
-    "@typescript-eslint/eslint-plugin": "^5.59.9",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.9",
     "env-cmd": "^10.1.0",
     "eslint": "^8.42.0",
