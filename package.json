@@ -1,6 +1,6 @@
 {
   "name": "cspell-action",
-  "version": "2.26.2",
+  "version": "2.26.3",
   "description": "GitHub Action: Check Spelling",
   "main": "action/lib/main.js",
   "private": true,
