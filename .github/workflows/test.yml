@@ -44,3 +44,26 @@ jobs:
       # Ensure the repository is clean after build
       - run: yarn clean-build
       - run: git --no-pager diff --compact-summary --exit-code
+
+  coverage: # run coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} GITHUB_OUTPUT="" yarn coverage
+
+      - name: Upload coverage Coveralls
+        uses: coverallsapp/github-action@95b1a2355bd0e526ad2fd62da9fd386ad4c98474 # 2.2.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./action-src/coverage/lcov.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3
+        with:
+          directory: "./action-src"
+          files: ./coverage/lcov.info
