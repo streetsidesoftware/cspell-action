@@ -54,7 +54,7 @@ jobs:
         with:
           cache: yarn
       - run: yarn install --frozen-lockfile
-      - run: yarn coverage
+      - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} GITHUB_OUTPUT="" yarn coverage
 
       - name: Upload coverage Coveralls
         uses: coverallsapp/github-action@95b1a2355bd0e526ad2fd62da9fd386ad4c98474 # 2.2.1
