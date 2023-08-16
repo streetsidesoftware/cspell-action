@@ -25,7 +25,7 @@ function isString(s: string | unknown): s is string {
 export async function fetchFilesForCommits(
     git: Octokit,
     context: GitContext,
-    commitIds: string[]
+    commitIds: string[],
 ): Promise<Set<string>> {
     const files: Set<string> = new Set();
     for await (const file of fetchFilesForCommitsX(git, context, commitIds)) {
@@ -37,7 +37,7 @@ export async function fetchFilesForCommits(
 async function* fetchFilesForCommitsX(
     git: Octokit,
     context: GitContext,
-    commitIds: string[]
+    commitIds: string[],
 ): AsyncIterableIterator<string> {
     const { owner, repo } = context;
     const { rest } = restEndpointMethods(git);

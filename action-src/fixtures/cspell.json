@@ -1,41 +1,15 @@
 {
     "version": "0.1",
-    "words": [
-        "camelcase",
-        "octokit",
-        "pollyjs",
-        "repos",
-        "shrinkwrap",
-        "streetsidesoftware"
-    ],
-    "ignorePaths": [
-        "node_modules",
-        "action/",
-        "cspell.json",
-        "__recordings__",
-        "**/*.json"
-    ],
+    "words": ["camelcase", "octokit", "pollyjs", "repos", "shrinkwrap", "streetsidesoftware"],
+    "ignorePaths": ["node_modules", "action/", "cspell.json", "__recordings__", "**/*.json"],
     "overrides": [
         {
             "filename": "*.har",
             "languageId": "json",
-            "dictionaries": [
-                "http",
-                "node",
-                "typescript"
-            ],
-            "words": [
-                "etag",
-                "maxage",
-                "ratelimit",
-                "nosniff"
-            ]
+            "dictionaries": ["http", "node", "typescript"],
+            "words": ["etag", "maxage", "ratelimit", "nosniff"]
         }
     ],
-    "enableFiletypes": [
-        "shellscript"
-    ],
-    "import": [
-        "../cspell.json"
-    ]
+    "enableFiletypes": ["shellscript"],
+    "import": ["../cspell.json"]
 }

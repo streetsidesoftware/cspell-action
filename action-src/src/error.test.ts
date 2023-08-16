@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import { AppError, isError } from './error';
 
 describe('error', () => {

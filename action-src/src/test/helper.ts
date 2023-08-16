@@ -72,7 +72,7 @@ export async function pollyRun(
     testFile: string,
     testName: string,
     fn: (poly: Polly) => Promise<unknown>,
-    options?: SetupPolyOptions
+    options?: SetupPolyOptions,
 ): Promise<void> {
     const rel = path.relative(sourceDir, testFile);
     const dir = path.resolve(fixturesLocation, '__recordings__', rel);

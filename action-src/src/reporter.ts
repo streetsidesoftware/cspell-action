@@ -55,7 +55,7 @@ export class CSpellReporterForGithubAction {
     constructor(
         readonly reportIssueCommand: ReportIssueCommand,
         readonly options: ReporterOptions,
-        readonly logger: Logger = core
+        readonly logger: Logger = core,
     ) {
         this.verbose = options.verbose;
     }
@@ -120,7 +120,7 @@ ${error.stack}
                     line: item.row,
                     col: item.col,
                 },
-                `Unknown word (${item.text})`
+                `Unknown word (${item.text})`,
             );
             console.warn(`${relative(cwd, item.uri || '')}:${item.row}:${item.col} Unknown word (${item.text})`);
         });

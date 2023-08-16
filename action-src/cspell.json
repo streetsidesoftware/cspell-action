@@ -8,11 +8,6 @@
         "__snapshots__"
     ],
     "useGitignore": true,
-    "ignoreWords": [
-        "EDITMSG",
-        "pollyjs"
-    ],
-    "words": [
-        "outfile"
-    ]
+    "ignoreWords": ["EDITMSG", "pollyjs"],
+    "words": ["lcov", "outfile"]
 }
