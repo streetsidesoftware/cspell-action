@@ -5,8 +5,7 @@
   "main": "action/lib/main.js",
   "private": true,
   "scripts": {
-    "prepare": "yarn sync && yarn build",
-    "sync": "node sync_package.mjs",
+    "prepare": "yarn build",
     "build": "yarn workspace action-src build",
     "clean": "yarn workspace action-src clean",
     "clean-build": "yarn workspace action-src clean-build",

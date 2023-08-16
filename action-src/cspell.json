@@ -11,5 +11,8 @@
     "ignoreWords": [
         "EDITMSG",
         "pollyjs"
+    ],
+    "words": [
+        "outfile"
     ]
 }

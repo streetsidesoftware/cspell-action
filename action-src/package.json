@@ -3,17 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "yarn compile",
-    "compile": "tsc -p .",
+    "build": "node ./build.mjs",
     "clean-build": "yarn clean && yarn build",
-    "clean": "shx rm -rf ../action/lib",
+    "clean": "shx rm -rf ../action/lib dist",
     "eslint": "eslint 'action-source/**/*.ts'",
     "prettier": "prettier -w \"**/*.{md,yaml,yml,json,ts}\"",
     "prepublishOnly": "yarn build",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
-    "watch": "tsc -p . --watch",
     "test": "jest"
+  },
+  "bin": {
+    "build": "./build.mjs"
   },
   "workspaces": {
     "nohoist": [
@@ -28,6 +29,7 @@
     "@octokit/rest": "^19.0.13",
     "cspell": "^6.31.3",
     "cspell-glob": "^6.31.3",
+    "esbuild": "^0.19.2",
     "vscode-uri": "^3.0.7"
   }
 }
