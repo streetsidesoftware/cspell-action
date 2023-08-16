@@ -6,7 +6,7 @@
         "noUnusedParameters": true,
         "noUnusedLocals": true,
         "moduleResolution": "node",
-        "outDir": "../action/lib",
+        "outDir": "dist",
         "rootDir": "./src"
     },
     "include": ["src/**/*"],
