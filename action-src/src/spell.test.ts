@@ -1,6 +1,7 @@
 import * as spell from './spell';
 import { root } from './test/helper';
 import { CSpellReporterForGithubAction, Logger } from './reporter';
+import { describe, expect, test, vi } from 'vitest';
 
 const sc = expect.stringContaining;
 
@@ -12,10 +13,10 @@ describe('Validate Spell Checking', () => {
         };
         const f = () => {};
         const logger: Logger = {
-            error: jest.fn(f),
-            debug: jest.fn(f),
-            info: jest.fn(f),
-            warning: jest.fn(f),
+            error: vi.fn(f),
+            debug: vi.fn(f),
+            info: vi.fn(f),
+            warning: vi.fn(f),
         };
         const reporter = new CSpellReporterForGithubAction('none', { verbose: false }, logger);
         await spell.lint(['action-src/src/spell.ts', 'fixtures/sampleCode/ts/**/*.ts'], options, reporter.reporter);
@@ -35,10 +36,10 @@ describe('Validate Spell Checking', () => {
         };
         const f = () => {};
         const logger: Logger = {
-            error: jest.fn(f),
-            debug: jest.fn(f),
-            info: jest.fn(f),
-            warning: jest.fn(f),
+            error: vi.fn(f),
+            debug: vi.fn(f),
+            info: vi.fn(f),
+            warning: vi.fn(f),
         };
         const reporter = new CSpellReporterForGithubAction('none', { verbose: true }, logger);
         await spell.lint(['action-src/src/spell.ts', 'fixtures/sampleCode/ts/**/*.ts'], options, reporter.reporter);
@@ -69,10 +70,10 @@ describe('Validate Spell Checking', () => {
         const info: string[] = [];
         const f = () => {};
         const logger: Logger = {
-            error: jest.fn(f),
-            debug: jest.fn(f),
-            info: jest.fn((msg) => info.push(msg)),
-            warning: jest.fn(f),
+            error: vi.fn(f),
+            debug: vi.fn(f),
+            info: vi.fn((msg) => info.push(msg)),
+            warning: vi.fn(f),
         };
         const reporter = new CSpellReporterForGithubAction('none', { verbose: true }, logger);
         await spell.lint([glob], options, reporter.reporter);

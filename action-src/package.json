@@ -11,7 +11,7 @@
     "prepublishOnly": "yarn build",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
-    "test": "jest"
+    "test": "vitest run"
   },
   "bin": {
     "build": "./build.mjs"

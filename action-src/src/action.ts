@@ -96,7 +96,7 @@ async function gatherFilesFromContext(context: Context): Promise<Set<string>> {
         context.files
             .split('\n')
             .map((a) => a.trim())
-            .filter((a) => !!a)
+            .filter((a) => !!a),
     );
     return files;
 }

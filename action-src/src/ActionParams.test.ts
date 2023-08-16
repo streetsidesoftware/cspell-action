@@ -1,4 +1,5 @@
-import { ActionParamsInput, applyDefaults, validateActionParams, __testing__ } from './ActionParams';
+import { describe, expect, test, vi } from 'vitest';
+import { ActionParamsInput, __testing__, applyDefaults, validateActionParams } from './ActionParams';
 
 describe('ActionParams', () => {
     test.each`
@@ -18,7 +19,7 @@ describe('ActionParams', () => {
         ${{ inline: 'swizzle' }}              | ${'Invalid inline level (swizzle), must be one of (error, warning, none)'}
         ${{ strict: 'sure' }}                 | ${'Invalid strict setting, must be one of (true, false)'}
     `('validateActionParams Errors $params', ({ params, expected }) => {
-        const logger = jest.fn();
+        const logger = vi.fn();
         expect(() => validateActionParams(ap(params), logger)).toThrow();
         expect(logger).toHaveBeenCalledWith(expected);
     });
@@ -27,7 +28,7 @@ describe('ActionParams', () => {
         params
         ${{ github_token: 'token' }}
     `('validateActionParams $params', ({ params }) => {
-        const logger = jest.fn();
+        const logger = vi.fn();
         expect(() => validateActionParams(ap(params), logger)).not.toThrow();
         expect(logger).not.toHaveBeenCalled();
     });

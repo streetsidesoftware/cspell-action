@@ -90,7 +90,7 @@ function validateInlineLevel(params: ActionParamsInput) {
 const validateStrict = validateTrueFalse('strict', 'Invalid strict setting, must be one of (true, false)');
 const validateIncrementalFilesOnly = validateTrueFalse(
     'incremental_files_only',
-    'Invalid incremental_files_only setting, must be one of (true, false)'
+    'Invalid incremental_files_only setting, must be one of (true, false)',
 );
 const validateVerbose = validateTrueFalse('verbose', 'Invalid verbose setting, must be one of (true, false)');
 
@@ -114,7 +114,7 @@ function isInlineWorkflowCommand(cmd: InlineWorkflowCommand | string): cmd is In
 
 export function validateActionParams(
     params: ActionParamsInput | ActionParams,
-    logError: (msg: string) => void
+    logError: (msg: string) => void,
 ): asserts params is ActionParams {
     const validations: ValidationFunction[] = [
         validateToken,

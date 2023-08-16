@@ -1,10 +1,11 @@
 import * as process from 'process';
 import * as helper from './test/helper';
 import { run } from './main';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const timeout = 20000;
 
-const spyStdout = jest.spyOn(process.stdout, 'write').mockImplementation(function () {
+const spyStdout = vi.spyOn(process.stdout, 'write').mockImplementation(function () {
     return true;
 });
 
@@ -33,7 +34,7 @@ describe('Validate Main', () => {
                 await expect(run()).resolves.toBeUndefined();
             });
         },
-        timeout
+        timeout,
     );
 });
 

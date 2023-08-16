@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Validate Action check all ** 1`] = `
+exports[`Validate Action > check all '**' 1`] = `
 [
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
@@ -9,18 +9,18 @@ exports[`Validate Action check all ** 1`] = `
 ]
 `;
 
-exports[`Validate Action check all **/*.md 1`] = `[]`;
+exports[`Validate Action > check all '**/*.md' 1`] = `[]`;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "" 1`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "''" 1`] = `
 [
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "" 2`] = `[]`;
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "''" 2`] = `[]`;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "" 3`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "''" 3`] = `
 [
   [
     "Pull Request
@@ -75,7 +75,7 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
 ",
   ],
   [
@@ -83,13 +83,13 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
 ",
   ],
 ]
 `;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "" 4`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "''" 4`] = `
 [
   "Pull Request",
   "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
@@ -99,21 +99,21 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
+  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
 ]
 `;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "explicit" 1`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 1`] = `
 [
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "explicit" 2`] = `[]`;
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 2`] = `[]`;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "explicit" 3`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 3`] = `
 [
   [
     "Pull Request
@@ -168,7 +168,7 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
 ",
   ],
   [
@@ -176,13 +176,13 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
 ",
   ],
 ]
 `;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "explicit" 4`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 4`] = `
 [
   "Pull Request",
   "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
@@ -192,21 +192,21 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
+  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
 ]
 `;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "true" 1`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'true'" 1`] = `
 [
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "true" 2`] = `[]`;
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'true'" 2`] = `[]`;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "true" 3`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'true'" 3`] = `
 [
   [
     "Pull Request
@@ -261,7 +261,7 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
 ",
   ],
   [
@@ -269,13 +269,13 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":6,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":6,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
 ",
   ],
 ]
 `;
 
-exports[`Validate Action check files "" incremental: false pull_request_with_files.json, dot: "true" 4`] = `
+exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'true'" 4`] = `
 [
   "Pull Request",
   "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
@@ -285,21 +285,21 @@ exports[`Validate Action check files "" incremental: false pull_request_with_fil
   "::set-output name=number_of_files_checked::6",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":6,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
+  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":6,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
 ]
 `;
 
-exports[`Validate Action check files "" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 1`] = `
+exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 1`] = `
 [
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
-exports[`Validate Action check files "" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 2`] = `[]`;
+exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 2`] = `[]`;
 
-exports[`Validate Action check files "" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 3`] = `
+exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 3`] = `
 [
   [
     "::warning::Unable to determine which files have changed, checking files: **
@@ -358,7 +358,7 @@ exports[`Validate Action check files "" incremental: true bad_params/bad_unsuppo
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
 ",
   ],
   [
@@ -366,7 +366,7 @@ exports[`Validate Action check files "" incremental: true bad_params/bad_unsuppo
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
 ",
   ],
   [
@@ -376,7 +376,7 @@ exports[`Validate Action check files "" incremental: true bad_params/bad_unsuppo
 ]
 `;
 
-exports[`Validate Action check files "" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 4`] = `
+exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 4`] = `
 [
   "::warning::Unable to determine which files have changed, checking files: **",
   "'fork'",
@@ -387,22 +387,22 @@ exports[`Validate Action check files "" incremental: true bad_params/bad_unsuppo
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
+  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
   "::error::2 spelling issues found in 1 of the 4 files checked.",
 ]
 `;
 
-exports[`Validate Action check files "**" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 1`] = `
+exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 1`] = `
 [
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
   "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
-exports[`Validate Action check files "**" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 2`] = `[]`;
+exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 2`] = `[]`;
 
-exports[`Validate Action check files "**" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 3`] = `
+exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 3`] = `
 [
   [
     "::warning::Unable to determine which files have changed, checking files: **
@@ -461,7 +461,7 @@ exports[`Validate Action check files "**" incremental: true bad_params/bad_unsup
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
 ",
   ],
   [
@@ -469,7 +469,7 @@ exports[`Validate Action check files "**" incremental: true bad_params/bad_unsup
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
 ",
   ],
   [
@@ -479,7 +479,7 @@ exports[`Validate Action check files "**" incremental: true bad_params/bad_unsup
 ]
 `;
 
-exports[`Validate Action check files "**" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 4`] = `
+exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 4`] = `
 [
   "::warning::Unable to determine which files have changed, checking files: **",
   "'fork'",
@@ -490,17 +490,17 @@ exports[`Validate Action check files "**" incremental: true bad_params/bad_unsup
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
+  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
   "::error::2 spelling issues found in 1 of the 4 files checked.",
 ]
 `;
 
-exports[`Validate Action check files "fixtures/sampleCode/**" incremental: false pull_request_with_files.json, dot: "explicit" 1`] = `[]`;
+exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 1`] = `[]`;
 
-exports[`Validate Action check files "fixtures/sampleCode/**" incremental: false pull_request_with_files.json, dot: "explicit" 2`] = `[]`;
+exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 2`] = `[]`;
 
-exports[`Validate Action check files "fixtures/sampleCode/**" incremental: false pull_request_with_files.json, dot: "explicit" 3`] = `
+exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 3`] = `
 [
   [
     "Pull Request
@@ -555,13 +555,13 @@ exports[`Validate Action check files "fixtures/sampleCode/**" incremental: false
 ",
   ],
   [
-    "::set-output name=result::{"success":true,"number_of_issues":0,"number_of_files_checked":0,"files_with_issues":[]}
+    "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":0,\\"files_with_issues\\":[]}
 ",
   ],
 ]
 `;
 
-exports[`Validate Action check files "fixtures/sampleCode/**" incremental: false pull_request_with_files.json, dot: "explicit" 4`] = `
+exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 4`] = `
 [
   "Pull Request",
   "Files checked: 0, Issues found: 0 in 0 files.",
@@ -570,15 +570,15 @@ exports[`Validate Action check files "fixtures/sampleCode/**" incremental: false
   "::set-output name=number_of_issues::0",
   "::set-output name=number_of_files_with_issues::0",
   "::set-output name=files_with_issues::[]",
-  "::set-output name=result::{"success":true,"number_of_issues":0,"number_of_files_checked":0,"files_with_issues":[]}",
+  "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":0,\\"files_with_issues\\":[]}",
 ]
 `;
 
-exports[`Validate Action check files "fixtures/sampleCode/**" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 1`] = `[]`;
+exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 1`] = `[]`;
 
-exports[`Validate Action check files "fixtures/sampleCode/**" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 2`] = `[]`;
+exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 2`] = `[]`;
 
-exports[`Validate Action check files "fixtures/sampleCode/**" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 3`] = `
+exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 3`] = `
 [
   [
     "::warning::Unable to determine which files have changed, checking files: fixtures/sampleCode/**
@@ -637,13 +637,13 @@ exports[`Validate Action check files "fixtures/sampleCode/**" incremental: true 
 ",
   ],
   [
-    "::set-output name=result::{"success":true,"number_of_issues":0,"number_of_files_checked":0,"files_with_issues":[]}
+    "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":0,\\"files_with_issues\\":[]}
 ",
   ],
 ]
 `;
 
-exports[`Validate Action check files "fixtures/sampleCode/**" incremental: true bad_params/bad_unsupported_event.json, dot: "explicit" 4`] = `
+exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 4`] = `
 [
   "::warning::Unable to determine which files have changed, checking files: fixtures/sampleCode/**",
   "'fork'",
@@ -653,6 +653,6 @@ exports[`Validate Action check files "fixtures/sampleCode/**" incremental: true 
   "::set-output name=number_of_issues::0",
   "::set-output name=number_of_files_with_issues::0",
   "::set-output name=files_with_issues::[]",
-  "::set-output name=result::{"success":true,"number_of_issues":0,"number_of_files_checked":0,"files_with_issues":[]}",
+  "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":0,\\"files_with_issues\\":[]}",
 ]
 `;

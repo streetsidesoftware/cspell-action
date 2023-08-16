@@ -8,16 +8,17 @@ import { action } from './action';
 import { AppError } from './error';
 import { fixturesLocation, root } from './test/helper';
 import * as helper from './test/helper';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const configFile = path.resolve(root, 'cspell.json');
 
 const timeout = 30000;
 
-const spyLog = jest.spyOn(console, 'log').mockImplementation(() => {});
-const spyWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
-const spyError = jest.spyOn(console, 'error').mockImplementation(() => {});
+const spyLog = vi.spyOn(console, 'log').mockImplementation(() => {});
+const spyWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+const spyError = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-const spyStdout = jest.spyOn(process.stdout, 'write').mockImplementation(function () {
+const spyStdout = vi.spyOn(process.stdout, 'write').mockImplementation(function () {
     return true;
 });
 
@@ -46,7 +47,7 @@ describe('Validate Action', () => {
             expect.assertions(1);
             await expect(action(context, octokit)).rejects.toEqual(expected);
         },
-        timeout
+        timeout,
     );
 
     test.each`
@@ -66,10 +67,10 @@ describe('Validate Action', () => {
                     expect.assertions(1);
                     await expect(action(context, octokit)).resolves.toBe(expected);
                 },
-                { recordIfMissing: true }
+                { recordIfMissing: true },
             );
         },
-        timeout
+        timeout,
     );
     test.each`
         files        | expected
@@ -89,7 +90,7 @@ describe('Validate Action', () => {
             expect(warnings).toMatchSnapshot();
             expect(spyStdout).toHaveBeenCalled();
         },
-        timeout
+        timeout,
     );
 
     test.each`
@@ -121,7 +122,7 @@ describe('Validate Action', () => {
             expect(spyStdout.mock.calls).toMatchSnapshot();
             expect(spyStdout.mock.calls.map((call) => call.join('').trim()).filter((a) => !!a)).toMatchSnapshot();
         },
-        timeout
+        timeout,
     );
 });
 
