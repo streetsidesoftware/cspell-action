@@ -11,6 +11,7 @@ Polly.register(FSPersister);
 const tsconfig = require('../../tsconfig.json');
 
 export const sourceDir = path.resolve(path.join(__dirname, '..', '..'));
+/** Repo Root */
 export const root = path.resolve(path.join(sourceDir, '..'));
 export const fixturesLocation = path.join(sourceDir, 'fixtures');
 

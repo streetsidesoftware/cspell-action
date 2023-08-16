@@ -53,7 +53,7 @@ describe('Validate Spell Checking', () => {
 
     test.each`
         glob                                  | checkDotFiles | expected
-        ${'fixtures/sampleDotFiles/**'}       | ${undefined}  | ${[sc('ts/sample.ts')]}
+        ${'fixtures/sampleDotFiles/**'}       | ${undefined}  | ${[sc('.dot_dir/sample_nested.ts'), sc('.dot_sample.ts'), sc('ts/sample.ts')]}
         ${'fixtures/sampleDotFiles/**'}       | ${true}       | ${[sc('.dot_dir/sample_nested.ts'), sc('.dot_sample.ts'), sc('ts/sample.ts')]}
         ${'fixtures/sampleDotFiles/**'}       | ${false}      | ${[sc('ts/sample.ts')]}
         ${'fixtures/sampleDotFiles/**/.*.ts'} | ${undefined}  | ${[sc('.dot_sample.ts')]}
