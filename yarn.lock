@@ -1296,10 +1296,10 @@
     "@typescript-eslint/types" "5.62.0"
     eslint-visitor-keys "^3.3.0"
 
-"@vitest/coverage-istanbul@^0.34.1":
-  version "0.34.1"
-  resolved "https://registry.npmjs.org/@vitest/coverage-istanbul/-/coverage-istanbul-0.34.1.tgz#a3cf36630c95b090457138b0706133b69ab59189"
-  integrity sha512-5GprlyY2t1g6+RrssWcN/w5RnZV3qIOM0eoaSDJw3jXbHpBpMvAfTg791zXo7PIqNYs5ORUqBWXIIU0gyAfZxA==
+"@vitest/coverage-istanbul@^0.34.2":
+  version "0.34.2"
+  resolved "https://registry.npmjs.org/@vitest/coverage-istanbul/-/coverage-istanbul-0.34.2.tgz#8a882583a916b3b7db599d34f8e6f2fe123ab3ed"
+  integrity sha512-rf6nY80ieYDGBg+50Sm1XTeYkrAF2sJu3pqL4IddBakxddTNUjEWY90Bv3LvspII6Bd/fiVcestozShQ/NVDtQ==
   dependencies:
     istanbul-lib-coverage "^3.2.0"
     istanbul-lib-instrument "^6.0.0"
