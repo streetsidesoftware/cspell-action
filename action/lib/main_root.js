@@ -5573,9 +5573,6 @@ var require_lib3 = __commonJS({
       if (typeof agent === "function") {
         agent = agent(parsedURL);
       }
-      if (!headers.has("Connection") && !agent) {
-        headers.set("Connection", "close");
-      }
       return Object.assign({}, parsedURL, {
         method: request.method,
         headers: exportNodeCompatibleHeaders(headers),

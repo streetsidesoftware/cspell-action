@@ -51,12 +51,12 @@
     "@tsconfig/node16": "^16.1.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
-    "@vitest/coverage-istanbul": "^0.34.1",
+    "@vitest/coverage-istanbul": "^0.34.2",
     "env-cmd": "^10.1.0",
     "eslint": "^8.47.0",
     "prettier": "^3.0.2",
     "shx": "^0.3.4",
     "typescript": "^5.1.6",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.2"
   }
 }
