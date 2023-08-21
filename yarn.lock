@@ -219,7 +219,7 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
-"@cspell/cspell-bundled-dicts@7.0.1":
+"@cspell/cspell-bundled-dicts@7.0.1", "@cspell/cspell-bundled-dicts@^7.0.1":
   version "7.0.1"
   resolved "https://registry.npmjs.org/@cspell/cspell-bundled-dicts/-/cspell-bundled-dicts-7.0.1.tgz#b1800db15adb1d9deceb6780ae88c2be104e318c"
   integrity sha512-Rm3AAOhZBPWy3L9lYRPQ41HAPP/jKBzTAkDVCsmT3SDbF1R1e7uqzQ86KhLWgcRfqGIh1uLcLjcUOAAh6jLu6Q==
@@ -261,59 +261,6 @@
     "@cspell/dict-powershell" "^5.0.2"
     "@cspell/dict-public-licenses" "^2.0.3"
     "@cspell/dict-python" "^4.1.6"
-    "@cspell/dict-r" "^2.0.1"
-    "@cspell/dict-ruby" "^5.0.0"
-    "@cspell/dict-rust" "^4.0.1"
-    "@cspell/dict-scala" "^5.0.0"
-    "@cspell/dict-software-terms" "^3.2.1"
-    "@cspell/dict-sql" "^2.1.1"
-    "@cspell/dict-svelte" "^1.0.2"
-    "@cspell/dict-swift" "^2.0.1"
-    "@cspell/dict-typescript" "^3.1.1"
-    "@cspell/dict-vue" "^3.0.0"
-
-"@cspell/cspell-bundled-dicts@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.npmjs.org/@cspell/cspell-bundled-dicts/-/cspell-bundled-dicts-7.0.0.tgz#aea8a596a40748ed3e59ba4edd4fe73c0618d4f7"
-  integrity sha512-qfBAS4W35+loOfbprBDS8nN0Eitl9wmuPE8GQLbwYj9Qj+COlLg57KECeXF8cgGnHkahrIkc3t6V6eFF8nhXQw==
-  dependencies:
-    "@cspell/dict-ada" "^4.0.2"
-    "@cspell/dict-aws" "^4.0.0"
-    "@cspell/dict-bash" "^4.1.1"
-    "@cspell/dict-companies" "^3.0.19"
-    "@cspell/dict-cpp" "^5.0.4"
-    "@cspell/dict-cryptocurrencies" "^3.0.1"
-    "@cspell/dict-csharp" "^4.0.2"
-    "@cspell/dict-css" "^4.0.6"
-    "@cspell/dict-dart" "^2.0.3"
-    "@cspell/dict-django" "^4.1.0"
-    "@cspell/dict-docker" "^1.1.7"
-    "@cspell/dict-dotnet" "^5.0.0"
-    "@cspell/dict-elixir" "^4.0.3"
-    "@cspell/dict-en-common-misspellings" "^1.0.2"
-    "@cspell/dict-en-gb" "1.1.33"
-    "@cspell/dict-en_us" "^4.3.6"
-    "@cspell/dict-filetypes" "^3.0.1"
-    "@cspell/dict-fonts" "^4.0.0"
-    "@cspell/dict-fsharp" "^1.0.0"
-    "@cspell/dict-fullstack" "^3.1.5"
-    "@cspell/dict-gaming-terms" "^1.0.4"
-    "@cspell/dict-git" "^2.0.0"
-    "@cspell/dict-golang" "^6.0.2"
-    "@cspell/dict-haskell" "^4.0.1"
-    "@cspell/dict-html" "^4.0.3"
-    "@cspell/dict-html-symbol-entities" "^4.0.0"
-    "@cspell/dict-java" "^5.0.5"
-    "@cspell/dict-k8s" "^1.0.1"
-    "@cspell/dict-latex" "^4.0.0"
-    "@cspell/dict-lorem-ipsum" "^4.0.0"
-    "@cspell/dict-lua" "^4.0.1"
-    "@cspell/dict-node" "^4.0.2"
-    "@cspell/dict-npm" "^5.0.8"
-    "@cspell/dict-php" "^4.0.1"
-    "@cspell/dict-powershell" "^5.0.2"
-    "@cspell/dict-public-licenses" "^2.0.3"
-    "@cspell/dict-python" "^4.1.5"
     "@cspell/dict-r" "^2.0.1"
     "@cspell/dict-ruby" "^5.0.0"
     "@cspell/dict-rust" "^4.0.1"
@@ -368,11 +315,6 @@
   version "4.1.1"
   resolved "https://registry.npmjs.org/@cspell/dict-bash/-/dict-bash-4.1.1.tgz#fe28016096f44d4a09fe4c5bcaf6fa40f33d98c6"
   integrity sha512-8czAa/Mh96wu2xr0RXQEGMTBUGkTvYn/Pb0o+gqOO1YW+poXGQc3gx0YPqILDryP/KCERrNvkWUJz3iGbvwC2A==
-
-"@cspell/dict-companies@^3.0.19":
-  version "3.0.19"
-  resolved "https://registry.npmjs.org/@cspell/dict-companies/-/dict-companies-3.0.19.tgz#ac7ecaf7fe6568a93ca983a4f72bb64328864b2e"
-  integrity sha512-hO7rS4DhFA333qyvf89wIVoclCtXe/2sftY6aS0oMIH1bMZLjLx2B2sQJj6dCiu6gG/By1S9YZ0fXabiPk2Tkg==
 
 "@cspell/dict-companies@^3.0.20":
   version "3.0.20"
@@ -529,11 +471,6 @@
   resolved "https://registry.npmjs.org/@cspell/dict-npm/-/dict-npm-5.0.8.tgz#51b2e6dd54f915a2e8725ff7fd75769cb645ff6e"
   integrity sha512-KuqH8tEsFD6DPKqKwIfWr9E+admE3yghaC0AKXG8jPaf77N0lkctKaS3dm0oxWUXkYKA/eXj6LCtz3VcTyxFPg==
 
-"@cspell/dict-php@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/@cspell/dict-php/-/dict-php-4.0.1.tgz#f3c5cd241f43a32b09355370fc6ce7bd50e6402c"
-  integrity sha512-XaQ/JkSyq2c07MfRG54DjLi2CV+HHwS99DDCAao9Fq2JfkWroTQsUeek7wYZXJATrJVOULoV3HKih12x905AtQ==
-
 "@cspell/dict-php@^4.0.2":
   version "4.0.2"
   resolved "https://registry.npmjs.org/@cspell/dict-php/-/dict-php-4.0.2.tgz#780ada304f0e92b9a78571c0e32f7513d604675c"
@@ -548,13 +485,6 @@
   version "2.0.3"
   resolved "https://registry.npmjs.org/@cspell/dict-public-licenses/-/dict-public-licenses-2.0.3.tgz#fa03649a5d6b8284e0c1da17eb449707df1a2a1c"
   integrity sha512-JSLEdpEYufQ1H+93UHi+axlqQm1fhgK6kpdLHp6uPHu//CsvETcqNVawjB+qOdI/g38JTMw5fBqSd0aGNxa6Dw==
-
-"@cspell/dict-python@^4.1.5":
-  version "4.1.5"
-  resolved "https://registry.npmjs.org/@cspell/dict-python/-/dict-python-4.1.5.tgz#0c5eab3f12a166c9339dec508d8b07b4dddab1d4"
-  integrity sha512-wWUWyHdyJtx5iG6Fz9rBQ17BtdpEsB17vmutao+gixQD28Jzb6XoLgDQ6606M0RnFjBSFhs5iT4CJBzlD2Kq6g==
-  dependencies:
-    "@cspell/dict-data-science" "^1.0.0"
 
 "@cspell/dict-python@^4.1.6":
   version "4.1.6"
