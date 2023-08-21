@@ -27144,6 +27144,297 @@ var require_dist = __commonJS({
   }
 });
 
+// node_modules/ini/ini.js
+var require_ini = __commonJS({
+  "node_modules/ini/ini.js"(exports, module2) {
+    var { hasOwnProperty: hasOwnProperty2 } = Object.prototype;
+    var eol = typeof process !== "undefined" && process.platform === "win32" ? "\r\n" : "\n";
+    var encode = (obj, opt) => {
+      const children = [];
+      let out = "";
+      if (typeof opt === "string") {
+        opt = {
+          section: opt,
+          whitespace: false
+        };
+      } else {
+        opt = opt || /* @__PURE__ */ Object.create(null);
+        opt.whitespace = opt.whitespace === true;
+      }
+      const separator = opt.whitespace ? " = " : "=";
+      for (const k of Object.keys(obj)) {
+        const val = obj[k];
+        if (val && Array.isArray(val)) {
+          for (const item of val)
+            out += safe(k + "[]") + separator + safe(item) + "\n";
+        } else if (val && typeof val === "object")
+          children.push(k);
+        else
+          out += safe(k) + separator + safe(val) + eol;
+      }
+      if (opt.section && out.length)
+        out = "[" + safe(opt.section) + "]" + eol + out;
+      for (const k of children) {
+        const nk = dotSplit(k).join("\\.");
+        const section = (opt.section ? opt.section + "." : "") + nk;
+        const { whitespace } = opt;
+        const child = encode(obj[k], {
+          section,
+          whitespace
+        });
+        if (out.length && child.length)
+          out += eol;
+        out += child;
+      }
+      return out;
+    };
+    var dotSplit = (str) => str.replace(/\1/g, "LITERAL\\1LITERAL").replace(/\\\./g, "").split(/\./).map((part) => part.replace(/\1/g, "\\.").replace(/\2LITERAL\\1LITERAL\2/g, ""));
+    var decode2 = (str) => {
+      const out = /* @__PURE__ */ Object.create(null);
+      let p = out;
+      let section = null;
+      const re = /^\[([^\]]*)\]$|^([^=]+)(=(.*))?$/i;
+      const lines = str.split(/[\r\n]+/g);
+      for (const line of lines) {
+        if (!line || line.match(/^\s*[;#]/))
+          continue;
+        const match2 = line.match(re);
+        if (!match2)
+          continue;
+        if (match2[1] !== void 0) {
+          section = unsafe(match2[1]);
+          if (section === "__proto__") {
+            p = /* @__PURE__ */ Object.create(null);
+            continue;
+          }
+          p = out[section] = out[section] || /* @__PURE__ */ Object.create(null);
+          continue;
+        }
+        const keyRaw = unsafe(match2[2]);
+        const isArray2 = keyRaw.length > 2 && keyRaw.slice(-2) === "[]";
+        const key = isArray2 ? keyRaw.slice(0, -2) : keyRaw;
+        if (key === "__proto__")
+          continue;
+        const valueRaw = match2[3] ? unsafe(match2[4]) : true;
+        const value = valueRaw === "true" || valueRaw === "false" || valueRaw === "null" ? JSON.parse(valueRaw) : valueRaw;
+        if (isArray2) {
+          if (!hasOwnProperty2.call(p, key))
+            p[key] = [];
+          else if (!Array.isArray(p[key]))
+            p[key] = [p[key]];
+        }
+        if (Array.isArray(p[key]))
+          p[key].push(value);
+        else
+          p[key] = value;
+      }
+      const remove = [];
+      for (const k of Object.keys(out)) {
+        if (!hasOwnProperty2.call(out, k) || typeof out[k] !== "object" || Array.isArray(out[k]))
+          continue;
+        const parts = dotSplit(k);
+        let p2 = out;
+        const l = parts.pop();
+        const nl = l.replace(/\\\./g, ".");
+        for (const part of parts) {
+          if (part === "__proto__")
+            continue;
+          if (!hasOwnProperty2.call(p2, part) || typeof p2[part] !== "object")
+            p2[part] = /* @__PURE__ */ Object.create(null);
+          p2 = p2[part];
+        }
+        if (p2 === out && nl === l)
+          continue;
+        p2[nl] = out[k];
+        remove.push(k);
+      }
+      for (const del of remove)
+        delete out[del];
+      return out;
+    };
+    var isQuoted = (val) => val.charAt(0) === '"' && val.slice(-1) === '"' || val.charAt(0) === "'" && val.slice(-1) === "'";
+    var safe = (val) => typeof val !== "string" || val.match(/[=\r\n]/) || val.match(/^\[/) || val.length > 1 && isQuoted(val) || val !== val.trim() ? JSON.stringify(val) : val.replace(/;/g, "\\;").replace(/#/g, "\\#");
+    var unsafe = (val, doUnesc) => {
+      val = (val || "").trim();
+      if (isQuoted(val)) {
+        if (val.charAt(0) === "'")
+          val = val.substr(1, val.length - 2);
+        try {
+          val = JSON.parse(val);
+        } catch (_) {
+        }
+      } else {
+        let esc = false;
+        let unesc = "";
+        for (let i = 0, l = val.length; i < l; i++) {
+          const c = val.charAt(i);
+          if (esc) {
+            if ("\\;#".indexOf(c) !== -1)
+              unesc += c;
+            else
+              unesc += "\\" + c;
+            esc = false;
+          } else if (";#".indexOf(c) !== -1)
+            break;
+          else if (c === "\\")
+            esc = true;
+          else
+            unesc += c;
+        }
+        if (esc)
+          unesc += "\\";
+        return unesc.trim();
+      }
+      return val;
+    };
+    module2.exports = {
+      parse: decode2,
+      decode: decode2,
+      stringify: encode,
+      encode,
+      safe,
+      unsafe
+    };
+  }
+});
+
+// node_modules/global-dirs/index.js
+var require_global_dirs = __commonJS({
+  "node_modules/global-dirs/index.js"(exports) {
+    "use strict";
+    var path26 = require("path");
+    var os5 = require("os");
+    var fs9 = require("fs");
+    var ini = require_ini();
+    var isWindows2 = process.platform === "win32";
+    var readRc = (filePath) => {
+      try {
+        return ini.parse(fs9.readFileSync(filePath, "utf8")).prefix;
+      } catch {
+      }
+    };
+    var getEnvNpmPrefix = () => {
+      return Object.keys(process.env).reduce((prefix, name) => {
+        return /^npm_config_prefix$/i.test(name) ? process.env[name] : prefix;
+      }, void 0);
+    };
+    var getGlobalNpmrc = () => {
+      if (isWindows2 && process.env.APPDATA) {
+        return path26.join(process.env.APPDATA, "/npm/etc/npmrc");
+      }
+      if (process.execPath.includes("/Cellar/node")) {
+        const homebrewPrefix = process.execPath.slice(0, process.execPath.indexOf("/Cellar/node"));
+        return path26.join(homebrewPrefix, "/lib/node_modules/npm/npmrc");
+      }
+      if (process.execPath.endsWith("/bin/node")) {
+        const installDir = path26.dirname(path26.dirname(process.execPath));
+        return path26.join(installDir, "/etc/npmrc");
+      }
+    };
+    var getDefaultNpmPrefix = () => {
+      if (isWindows2) {
+        const { APPDATA } = process.env;
+        return APPDATA ? path26.join(APPDATA, "npm") : path26.dirname(process.execPath);
+      }
+      return path26.dirname(path26.dirname(process.execPath));
+    };
+    var getNpmPrefix = () => {
+      const envPrefix = getEnvNpmPrefix();
+      if (envPrefix) {
+        return envPrefix;
+      }
+      const homePrefix = readRc(path26.join(os5.homedir(), ".npmrc"));
+      if (homePrefix) {
+        return homePrefix;
+      }
+      if (process.env.PREFIX) {
+        return process.env.PREFIX;
+      }
+      const globalPrefix = readRc(getGlobalNpmrc());
+      if (globalPrefix) {
+        return globalPrefix;
+      }
+      return getDefaultNpmPrefix();
+    };
+    var npmPrefix = path26.resolve(getNpmPrefix());
+    var getYarnWindowsDirectory = () => {
+      if (isWindows2 && process.env.LOCALAPPDATA) {
+        const dir = path26.join(process.env.LOCALAPPDATA, "Yarn");
+        if (fs9.existsSync(dir)) {
+          return dir;
+        }
+      }
+      return false;
+    };
+    var getYarnPrefix = () => {
+      if (process.env.PREFIX) {
+        return process.env.PREFIX;
+      }
+      const windowsPrefix = getYarnWindowsDirectory();
+      if (windowsPrefix) {
+        return windowsPrefix;
+      }
+      const configPrefix = path26.join(os5.homedir(), ".config/yarn");
+      if (fs9.existsSync(configPrefix)) {
+        return configPrefix;
+      }
+      const homePrefix = path26.join(os5.homedir(), ".yarn-config");
+      if (fs9.existsSync(homePrefix)) {
+        return homePrefix;
+      }
+      return npmPrefix;
+    };
+    exports.npm = {};
+    exports.npm.prefix = npmPrefix;
+    exports.npm.packages = path26.join(npmPrefix, isWindows2 ? "node_modules" : "lib/node_modules");
+    exports.npm.binaries = isWindows2 ? npmPrefix : path26.join(npmPrefix, "bin");
+    var yarnPrefix = path26.resolve(getYarnPrefix());
+    exports.yarn = {};
+    exports.yarn.prefix = yarnPrefix;
+    exports.yarn.packages = path26.join(yarnPrefix, getYarnWindowsDirectory() ? "Data/global/node_modules" : "global/node_modules");
+    exports.yarn.binaries = path26.join(exports.yarn.packages, ".bin");
+  }
+});
+
+// node_modules/@cspell/cspell-resolver/dist/requireResolve.js
+var require_requireResolve = __commonJS({
+  "node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.requireResolve = exports.resolveGlobal = void 0;
+    var global_dirs_1 = require_global_dirs();
+    function resolveGlobal2(modulesName) {
+      const paths = [global_dirs_1.npm.packages, global_dirs_1.yarn.packages];
+      return requireResolve(modulesName, paths);
+    }
+    exports.resolveGlobal = resolveGlobal2;
+    function requireResolve(filename, paths) {
+      try {
+        return require.resolve(filename, paths ? { paths } : void 0);
+      } catch (e) {
+        return void 0;
+      }
+    }
+    exports.requireResolve = requireResolve;
+  }
+});
+
+// node_modules/@cspell/cspell-resolver/dist/index.js
+var require_dist2 = __commonJS({
+  "node_modules/@cspell/cspell-resolver/dist/index.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.resolveGlobal = exports.requireResolve = void 0;
+    var requireResolve_js_1 = require_requireResolve();
+    Object.defineProperty(exports, "requireResolve", { enumerable: true, get: function() {
+      return requireResolve_js_1.requireResolve;
+    } });
+    Object.defineProperty(exports, "resolveGlobal", { enumerable: true, get: function() {
+      return requireResolve_js_1.resolveGlobal;
+    } });
+  }
+});
+
 // node_modules/resolve-from/index.js
 var require_resolve_from2 = __commonJS({
   "node_modules/resolve-from/index.js"(exports, module2) {
@@ -27186,268 +27477,6 @@ var require_resolve_from2 = __commonJS({
     };
     module2.exports = (fromDirectory, moduleId) => resolveFrom2(fromDirectory, moduleId);
     module2.exports.silent = (fromDirectory, moduleId) => resolveFrom2(fromDirectory, moduleId, true);
-  }
-});
-
-// node_modules/ini/ini.js
-var require_ini = __commonJS({
-  "node_modules/ini/ini.js"(exports) {
-    exports.parse = exports.decode = decode2;
-    exports.stringify = exports.encode = encode;
-    exports.safe = safe;
-    exports.unsafe = unsafe;
-    var eol = typeof process !== "undefined" && process.platform === "win32" ? "\r\n" : "\n";
-    function encode(obj, opt) {
-      var children = [];
-      var out = "";
-      if (typeof opt === "string") {
-        opt = {
-          section: opt,
-          whitespace: false
-        };
-      } else {
-        opt = opt || {};
-        opt.whitespace = opt.whitespace === true;
-      }
-      var separator = opt.whitespace ? " = " : "=";
-      Object.keys(obj).forEach(function(k, _, __) {
-        var val = obj[k];
-        if (val && Array.isArray(val)) {
-          val.forEach(function(item) {
-            out += safe(k + "[]") + separator + safe(item) + "\n";
-          });
-        } else if (val && typeof val === "object")
-          children.push(k);
-        else
-          out += safe(k) + separator + safe(val) + eol;
-      });
-      if (opt.section && out.length)
-        out = "[" + safe(opt.section) + "]" + eol + out;
-      children.forEach(function(k, _, __) {
-        var nk = dotSplit(k).join("\\.");
-        var section = (opt.section ? opt.section + "." : "") + nk;
-        var child = encode(obj[k], {
-          section,
-          whitespace: opt.whitespace
-        });
-        if (out.length && child.length)
-          out += eol;
-        out += child;
-      });
-      return out;
-    }
-    function dotSplit(str) {
-      return str.replace(/\1/g, "LITERAL\\1LITERAL").replace(/\\\./g, "").split(/\./).map(function(part) {
-        return part.replace(/\1/g, "\\.").replace(/\2LITERAL\\1LITERAL\2/g, "");
-      });
-    }
-    function decode2(str) {
-      var out = {};
-      var p = out;
-      var section = null;
-      var re = /^\[([^\]]*)\]$|^([^=]+)(=(.*))?$/i;
-      var lines = str.split(/[\r\n]+/g);
-      lines.forEach(function(line, _, __) {
-        if (!line || line.match(/^\s*[;#]/))
-          return;
-        var match2 = line.match(re);
-        if (!match2)
-          return;
-        if (match2[1] !== void 0) {
-          section = unsafe(match2[1]);
-          if (section === "__proto__") {
-            p = {};
-            return;
-          }
-          p = out[section] = out[section] || {};
-          return;
-        }
-        var key = unsafe(match2[2]);
-        if (key === "__proto__")
-          return;
-        var value = match2[3] ? unsafe(match2[4]) : true;
-        switch (value) {
-          case "true":
-          case "false":
-          case "null":
-            value = JSON.parse(value);
-        }
-        if (key.length > 2 && key.slice(-2) === "[]") {
-          key = key.substring(0, key.length - 2);
-          if (key === "__proto__")
-            return;
-          if (!p[key])
-            p[key] = [];
-          else if (!Array.isArray(p[key]))
-            p[key] = [p[key]];
-        }
-        if (Array.isArray(p[key]))
-          p[key].push(value);
-        else
-          p[key] = value;
-      });
-      Object.keys(out).filter(function(k, _, __) {
-        if (!out[k] || typeof out[k] !== "object" || Array.isArray(out[k]))
-          return false;
-        var parts = dotSplit(k);
-        var p2 = out;
-        var l = parts.pop();
-        var nl = l.replace(/\\\./g, ".");
-        parts.forEach(function(part, _2, __2) {
-          if (part === "__proto__")
-            return;
-          if (!p2[part] || typeof p2[part] !== "object")
-            p2[part] = {};
-          p2 = p2[part];
-        });
-        if (p2 === out && nl === l)
-          return false;
-        p2[nl] = out[k];
-        return true;
-      }).forEach(function(del, _, __) {
-        delete out[del];
-      });
-      return out;
-    }
-    function isQuoted(val) {
-      return val.charAt(0) === '"' && val.slice(-1) === '"' || val.charAt(0) === "'" && val.slice(-1) === "'";
-    }
-    function safe(val) {
-      return typeof val !== "string" || val.match(/[=\r\n]/) || val.match(/^\[/) || val.length > 1 && isQuoted(val) || val !== val.trim() ? JSON.stringify(val) : val.replace(/;/g, "\\;").replace(/#/g, "\\#");
-    }
-    function unsafe(val, doUnesc) {
-      val = (val || "").trim();
-      if (isQuoted(val)) {
-        if (val.charAt(0) === "'")
-          val = val.substr(1, val.length - 2);
-        try {
-          val = JSON.parse(val);
-        } catch (_) {
-        }
-      } else {
-        var esc = false;
-        var unesc = "";
-        for (var i = 0, l = val.length; i < l; i++) {
-          var c = val.charAt(i);
-          if (esc) {
-            if ("\\;#".indexOf(c) !== -1)
-              unesc += c;
-            else
-              unesc += "\\" + c;
-            esc = false;
-          } else if (";#".indexOf(c) !== -1)
-            break;
-          else if (c === "\\")
-            esc = true;
-          else
-            unesc += c;
-        }
-        if (esc)
-          unesc += "\\";
-        return unesc.trim();
-      }
-      return val;
-    }
-  }
-});
-
-// node_modules/global-dirs/index.js
-var require_global_dirs = __commonJS({
-  "node_modules/global-dirs/index.js"(exports) {
-    "use strict";
-    var path26 = require("path");
-    var os5 = require("os");
-    var fs9 = require("fs");
-    var ini = require_ini();
-    var readRc = (fp) => {
-      try {
-        return ini.parse(fs9.readFileSync(fp, "utf8")).prefix;
-      } catch (err) {
-      }
-    };
-    var defaultNpmPrefix = (() => {
-      if (process.env.PREFIX) {
-        return process.env.PREFIX;
-      }
-      if (process.platform === "win32") {
-        return path26.dirname(process.execPath);
-      }
-      return path26.dirname(path26.dirname(process.execPath));
-    })();
-    var getNpmPrefix = () => {
-      if (process.env.PREFIX) {
-        return process.env.PREFIX;
-      }
-      const homePrefix = readRc(path26.join(os5.homedir(), ".npmrc"));
-      if (homePrefix) {
-        return homePrefix;
-      }
-      const globalConfigPrefix = readRc(path26.resolve(defaultNpmPrefix, "etc", "npmrc"));
-      if (globalConfigPrefix) {
-        return globalConfigPrefix;
-      }
-      if (process.platform === "win32" && process.env.APPDATA) {
-        const prefix = path26.join(process.env.APPDATA, "npm");
-        if (fs9.existsSync(prefix)) {
-          return prefix;
-        }
-      }
-      return defaultNpmPrefix;
-    };
-    var npmPrefix = path26.resolve(getNpmPrefix());
-    var getYarnPrefix = () => {
-      if (process.env.PREFIX) {
-        return process.env.PREFIX;
-      }
-      if (process.platform === "win32" && process.env.LOCALAPPDATA) {
-        const prefix = path26.join(process.env.LOCALAPPDATA, "Yarn");
-        if (fs9.existsSync(prefix)) {
-          return prefix;
-        }
-      }
-      const configPrefix = path26.join(os5.homedir(), ".config/yarn");
-      if (fs9.existsSync(configPrefix)) {
-        return configPrefix;
-      }
-      const homePrefix = path26.join(os5.homedir(), ".yarn-config");
-      if (fs9.existsSync(homePrefix)) {
-        return homePrefix;
-      }
-      return npmPrefix;
-    };
-    exports.npm = {};
-    exports.npm.prefix = npmPrefix;
-    exports.npm.packages = path26.join(npmPrefix, process.platform === "win32" ? "node_modules" : "lib/node_modules");
-    exports.npm.binaries = process.platform === "win32" ? npmPrefix : path26.join(npmPrefix, "bin");
-    var yarnPrefix = path26.resolve(getYarnPrefix());
-    exports.yarn = {};
-    exports.yarn.prefix = yarnPrefix;
-    exports.yarn.packages = path26.join(yarnPrefix, process.platform === "win32" ? "config/global/node_modules" : "global/node_modules");
-    exports.yarn.binaries = path26.join(exports.yarn.packages, ".bin");
-  }
-});
-
-// node_modules/resolve-global/index.js
-var require_resolve_global = __commonJS({
-  "node_modules/resolve-global/index.js"(exports, module2) {
-    "use strict";
-    var path26 = require("path");
-    var globalDirs = require_global_dirs();
-    var resolveGlobal2 = (moduleId) => {
-      try {
-        return require.resolve(path26.join(globalDirs.yarn.packages, moduleId));
-      } catch (_) {
-        return require.resolve(path26.join(globalDirs.npm.packages, moduleId));
-      }
-    };
-    module2.exports = resolveGlobal2;
-    module2.exports.silent = (moduleId) => {
-      try {
-        return resolveGlobal2(moduleId);
-      } catch (_) {
-        return void 0;
-      }
-    };
   }
 });
 
@@ -29916,7 +29945,7 @@ var require_package = __commonJS({
   "node_modules/cspell/package.json"(exports, module2) {
     module2.exports = {
       name: "cspell",
-      version: "7.0.0",
+      version: "7.0.1",
       description: "A Spelling Checker for Code!",
       funding: "https://github.com/streetsidesoftware/cspell?sponsor=1",
       bin: {
@@ -29967,9 +29996,7 @@ var require_package = __commonJS({
         "build:readme:help:lint": "./bin.mjs lint --help > static/help-lint.txt",
         "build:readme:help:trace": "./bin.mjs trace --help > static/help-trace.txt",
         "clean-build": "pnpm run clean && pnpm run build",
-        coverage: "pnpm coverage:vitest && pnpm coverage:fix",
-        "coverage:vitest": "vitest run --coverage",
-        "coverage:fix": 'nyc report --temp-dir "$(pwd)/coverage" --reporter lcov --report-dir "$(pwd)/coverage" --cwd ../..',
+        coverage: "vitest run --coverage",
         "test:watch": "vitest",
         test: "vitest run",
         watch: "tsc -b . -w",
@@ -30000,17 +30027,17 @@ var require_package = __commonJS({
       },
       homepage: "https://streetsidesoftware.github.io/cspell/",
       dependencies: {
-        "@cspell/cspell-json-reporter": "7.0.0",
-        "@cspell/cspell-pipe": "7.0.0",
-        "@cspell/cspell-types": "7.0.0",
-        "@cspell/dynamic-import": "7.0.0",
+        "@cspell/cspell-json-reporter": "7.0.1",
+        "@cspell/cspell-pipe": "7.0.1",
+        "@cspell/cspell-types": "7.0.1",
+        "@cspell/dynamic-import": "7.0.1",
         chalk: "^5.3.0",
         "chalk-template": "^1.1.0",
-        commander: "^10.0.1",
-        "cspell-gitignore": "7.0.0",
-        "cspell-glob": "7.0.0",
-        "cspell-io": "7.0.0",
-        "cspell-lib": "7.0.0",
+        commander: "^11.0.0",
+        "cspell-gitignore": "7.0.1",
+        "cspell-glob": "7.0.1",
+        "cspell-io": "7.0.1",
+        "cspell-lib": "7.0.1",
         "fast-glob": "^3.3.1",
         "fast-json-stable-stringify": "^2.1.0",
         "file-entry-cache": "^6.0.1",
@@ -30030,7 +30057,7 @@ var require_package = __commonJS({
         micromatch: "^4.0.5",
         minimatch: "^9.0.3"
       },
-      gitHead: "52960d5ed75655978f9b633f44fd106937a63cd7"
+      gitHead: "124eea257b724b8354d3bc38f48fe9529cf6f7be"
     };
   }
 });
@@ -30041,8 +30068,7 @@ var require_pkgInfo = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.npmPackage = exports.pkgDir = void 0;
-    var path_1 = require("path");
-    exports.pkgDir = (0, path_1.join)(__dirname, "../..");
+    exports.pkgDir = __dirname;
     exports.npmPackage = require_package();
   }
 });
@@ -39299,11 +39325,11 @@ function setLogger(logger) {
 }
 
 // node_modules/cspell-lib/dist/esm/util/resolveFile.mjs
+var import_cspell_resolver = __toESM(require_dist2(), 1);
 var fs2 = __toESM(require("fs"), 1);
 var os = __toESM(require("os"), 1);
 var path2 = __toESM(require("path"), 1);
 var import_resolve_from = __toESM(require_resolve_from2(), 1);
-var import_resolve_global = __toESM(require_resolve_global(), 1);
 var testNodeModules = /^node_modules\//;
 function resolveFile(filename, relativeTo) {
   filename = filename.replace(/^~/, os.homedir());
@@ -39364,7 +39390,7 @@ function tryNodeResolve(filename, relativeTo) {
   }
 }
 function tryResolveGlobal(filename) {
-  const r = import_resolve_global.default.silent(filename);
+  const r = (0, import_cspell_resolver.resolveGlobal)(filename);
   return { filename: r || filename, relativeTo: void 0, found: !!r };
 }
 function tryResolveExists(filename) {
@@ -46161,10 +46187,16 @@ var searchPlaces = Object.freeze([
   ".vscode/cSpell.json",
   ".vscode/.cspell.json",
   // Standard Locations
+  ".cspell.config.json",
+  ".cspell.config.jsonc",
+  ".cspell.config.yaml",
+  ".cspell.config.yml",
   "cspell.config.json",
   "cspell.config.jsonc",
   "cspell.config.yaml",
   "cspell.config.yml",
+  ".cspell.yaml",
+  ".cspell.yml",
   "cspell.yaml",
   "cspell.yml",
   // Dynamic config is looked for last
