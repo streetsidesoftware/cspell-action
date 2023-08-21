@@ -13,8 +13,7 @@
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
     "test": "yarn workspace action-src test",
     "coverage": "yarn workspace action-src coverage",
-    "update-packages": "yarn update:action && yarn update:root",
-    "update:action": "yarn workspace action update-packages",
+    "update-packages": "yarn update:root",
     "update:root": "yarn upgrade && npx package-json-dependency-updater -u && yarn"
   },
   "workspaces": {

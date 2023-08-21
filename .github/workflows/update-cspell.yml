@@ -46,6 +46,12 @@ jobs:
           type: ${{ (env.CSPELL_MINOR_OLD == env.CSPELL_MINOR_NEW && 'fix') || 'feat' }}
         run: |
           echo PR_TYPE=$type >> $GITHUB_ENV
+
+      - name: Update Dictionaries
+        run: |
+          cd action
+          yarn add @cspell/cspell-bundled-dicts@latest
+
       - name: Install Updates
         run: |
           yarn install

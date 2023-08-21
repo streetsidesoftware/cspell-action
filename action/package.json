@@ -8,9 +8,6 @@
       "**"
     ]
   },
-  "scripts": {
-    "update-packages": "yarn upgrade && npx package-json-dependency-updater -u && yarn"
-  },
   "dependencies": {
     "@cspell/cspell-bundled-dicts": "^7.0.0"
   }
