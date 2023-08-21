@@ -346,7 +346,7 @@
   resolved "https://registry.npmjs.org/@cspell/dict-dart/-/dict-dart-2.0.3.tgz#75e7ffe47d5889c2c831af35acdd92ebdbd4cf12"
   integrity sha512-cLkwo1KT5CJY5N5RJVHks2genFkNCl/WLfj+0fFjqNR+tk3tBI1LY7ldr9piCtSFSm4x9pO1x6IV3kRUY1lLiw==
 
-"@cspell/dict-data-science@^1.0.0":
+"@cspell/dict-data-science@^1.0.11":
   version "1.0.11"
   resolved "https://registry.npmjs.org/@cspell/dict-data-science/-/dict-data-science-1.0.11.tgz#4eabba75c21d27253c1114b4fbbade0ead739ffc"
   integrity sha512-TaHAZRVe0Zlcc3C23StZqqbzC0NrodRwoSAc8dis+5qLeLLnOCtagYQeROQvDlcDg3X/VVEO9Whh4W/z4PAmYQ==
@@ -487,11 +487,11 @@
   integrity sha512-JSLEdpEYufQ1H+93UHi+axlqQm1fhgK6kpdLHp6uPHu//CsvETcqNVawjB+qOdI/g38JTMw5fBqSd0aGNxa6Dw==
 
 "@cspell/dict-python@^4.1.6":
-  version "4.1.6"
-  resolved "https://registry.npmjs.org/@cspell/dict-python/-/dict-python-4.1.6.tgz#06082d76ad5822107eaf7d5d3f6152e9d4a59071"
-  integrity sha512-QcAWSiWMlscFNYyLoag/hUS1oE4FcRIXuM3rXc0JzAhTvsLvl4D8862eyBCm6pQJAkx1HamFg/ftOkTAXlyaZA==
+  version "4.1.7"
+  resolved "https://registry.npmjs.org/@cspell/dict-python/-/dict-python-4.1.7.tgz#ace4834d6df3365f50ba15b199c4858438615143"
+  integrity sha512-8GkO7/w1QEpu4Y1GTHGYHrwfc/ZdiBRw7D/BGYCIiOoQPLi0YxMke7wzRC3j246yrzLt28ntDBjr4fB3+uFZtQ==
   dependencies:
-    "@cspell/dict-data-science" "^1.0.0"
+    "@cspell/dict-data-science" "^1.0.11"
 
 "@cspell/dict-r@^2.0.1":
   version "2.0.1"
