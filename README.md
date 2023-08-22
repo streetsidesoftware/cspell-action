@@ -17,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: streetsidesoftware/cspell-action@v2
+      - uses: streetsidesoftware/cspell-action@v3
 ```
 
 ## Usage
 
 ```yaml
-- uses: streetsidesoftware/cspell-action@v2
+- uses: streetsidesoftware/cspell-action@v3
   with:
     # Github token used to fetch the list of changed files in the commit.
     # Default: ${{ github.token }}
