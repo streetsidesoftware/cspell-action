@@ -12,7 +12,7 @@ jobs:
   action-is-pristine: # make sure nothing changes in the action.
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -23,7 +23,7 @@ jobs:
   unit-test: # make sure unit-tests run
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -35,7 +35,7 @@ jobs:
   clean-build: # make sure nothing changes with a clean build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -48,7 +48,7 @@ jobs:
   coverage: # run coverage
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
