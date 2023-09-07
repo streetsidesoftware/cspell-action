@@ -57,7 +57,7 @@ jobs:
       - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} GITHUB_OUTPUT="" yarn coverage
 
       - name: Upload coverage Coveralls
-        uses: coverallsapp/github-action@95b1a2355bd0e526ad2fd62da9fd386ad4c98474 # 2.2.1
+        uses: coverallsapp/github-action@3dfc5567390f6fa9267c0ee9c251e4c8c3f18949 # 2.2.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./action-src/coverage/lcov.info
