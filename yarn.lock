@@ -1303,16 +1303,17 @@
     "@typescript-eslint/types" "5.62.0"
     eslint-visitor-keys "^3.3.0"
 
-"@vitest/coverage-istanbul@^0.34.3":
-  version "0.34.3"
-  resolved "https://registry.npmjs.org/@vitest/coverage-istanbul/-/coverage-istanbul-0.34.3.tgz#045bd6c44c1056246c12fbe735bc01bb88d06597"
-  integrity sha512-RdEGzydbbalyDLmmJ5Qm+T3Lrubw/U9iCnhzM2B1V57t4cVa1t6uyfIHdv68d1au4PRzkLhY7Xouwuhb7BeG+Q==
+"@vitest/coverage-istanbul@^0.34.4":
+  version "0.34.4"
+  resolved "https://registry.npmjs.org/@vitest/coverage-istanbul/-/coverage-istanbul-0.34.4.tgz#467089db9ac8c62169e1d82ac099bb8ed25a094b"
+  integrity sha512-jJiN+U5drYrv1fU39T8jOVWc3RklYkNeTR7UyiVD8fa+Tbav9pAxq02pti93OPZIDoXwwg+RhFAuRuAz///rkQ==
   dependencies:
     istanbul-lib-coverage "^3.2.0"
     istanbul-lib-instrument "^6.0.0"
     istanbul-lib-report "^3.0.1"
     istanbul-lib-source-maps "^4.0.1"
     istanbul-reports "^3.1.5"
+    picocolors "^1.0.0"
     test-exclude "^6.0.0"
 
 "@vitest/expect@0.34.3":
