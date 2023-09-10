@@ -30120,7 +30120,7 @@ var require_package = __commonJS({
   "node_modules/cspell/package.json"(exports, module2) {
     module2.exports = {
       name: "cspell",
-      version: "7.3.2",
+      version: "7.3.3",
       description: "A Spelling Checker for Code!",
       funding: "https://github.com/streetsidesoftware/cspell?sponsor=1",
       bin: {
@@ -30200,17 +30200,17 @@ var require_package = __commonJS({
       },
       homepage: "https://streetsidesoftware.github.io/cspell/",
       dependencies: {
-        "@cspell/cspell-json-reporter": "7.3.2",
-        "@cspell/cspell-pipe": "7.3.2",
-        "@cspell/cspell-types": "7.3.2",
-        "@cspell/dynamic-import": "7.3.2",
+        "@cspell/cspell-json-reporter": "7.3.3",
+        "@cspell/cspell-pipe": "7.3.3",
+        "@cspell/cspell-types": "7.3.3",
+        "@cspell/dynamic-import": "7.3.3",
         chalk: "^5.3.0",
         "chalk-template": "^1.1.0",
         commander: "^11.0.0",
-        "cspell-gitignore": "7.3.2",
-        "cspell-glob": "7.3.2",
-        "cspell-io": "7.3.2",
-        "cspell-lib": "7.3.2",
+        "cspell-gitignore": "7.3.3",
+        "cspell-glob": "7.3.3",
+        "cspell-io": "7.3.3",
+        "cspell-lib": "7.3.3",
         "fast-glob": "^3.3.1",
         "fast-json-stable-stringify": "^2.1.0",
         "file-entry-cache": "^6.0.1",
@@ -30230,7 +30230,7 @@ var require_package = __commonJS({
         micromatch: "^4.0.5",
         minimatch: "^9.0.3"
       },
-      gitHead: "71d88d4e4d2252124a952c78d4fc03ce0a6d67e3"
+      gitHead: "da65ffafaa6a039cedc52d9e029c53ddd273a1fb"
     };
   }
 });
