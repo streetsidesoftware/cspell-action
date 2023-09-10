@@ -12,14 +12,14 @@ jobs:
   test-action: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./
         id: cspell-action
 
   test-action-with-file: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./
         id: cspell-action
         with:
@@ -30,7 +30,7 @@ jobs:
   test-action-no-increment: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./
         id: cspell-action
         with:
@@ -47,7 +47,7 @@ jobs:
   test-action-no-increment-verbose: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./
         id: cspell-action
         with:
@@ -60,7 +60,7 @@ jobs:
   test-action-files-with-issues: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./
         id: cspell-action
         with:
