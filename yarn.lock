@@ -1763,10 +1763,17 @@ cspell-gitignore@7.3.3:
     cspell-glob "7.3.3"
     find-up "^5.0.0"
 
-cspell-glob@7.3.3, cspell-glob@^7.3.3:
+cspell-glob@7.3.3:
   version "7.3.3"
   resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-7.3.3.tgz#9177596088f1416b6ab8bce2a4956f7ca364e604"
   integrity sha512-ll59Zzvt+3/72MXmHGhIbD+CC6wv4DCQ45y49D4RnLtS2wG4Yvmvoqsdm4cEULzO9mf7loJ8zVQf5x+mwy2OTg==
+  dependencies:
+    micromatch "^4.0.5"
+
+cspell-glob@^7.3.5:
+  version "7.3.5"
+  resolved "https://registry.npmjs.org/cspell-glob/-/cspell-glob-7.3.5.tgz#9abba70235d02bab19596fa6eeb71d0f5741775d"
+  integrity sha512-ezM11DTv3HTGat6g9/fZMMS+Ufhr7+9QKptlGl8D4DBGtOGJ4Apg8qfIGaoMa261nXyVjxn87/I5yi1DrnuJ0w==
   dependencies:
     micromatch "^4.0.5"
 
