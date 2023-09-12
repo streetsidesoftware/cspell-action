@@ -72,7 +72,7 @@ jobs:
           echo 'git_body<<DIFF' >> $GITHUB_ENV
           git --no-pager diff --compact-summary >> $GITHUB_ENV
           echo 'DIFF' >> $GITHUB_ENV
-      - uses: tibdex/github-app-token@v1 # cspell:ignore tibdex
+      - uses: tibdex/github-app-token@v2 # cspell:ignore tibdex
         if: env.git_status == 'dirty'
         id: generate-token
         with:
