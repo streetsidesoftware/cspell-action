@@ -1622,7 +1622,7 @@ var require_oidc_utils = __commonJS({
  
         Error Code : ${error2.statusCode}
  
-        Error Message: ${error2.result.message}`);
+        Error Message: ${error2.message}`);
           });
           const id_token = (_a2 = res.result) === null || _a2 === void 0 ? void 0 : _a2.value;
           if (!id_token) {
