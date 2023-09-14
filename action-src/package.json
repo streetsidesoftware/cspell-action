@@ -30,7 +30,7 @@
     "@octokit/rest": "^19.0.13",
     "cspell": "^7.3.6",
     "cspell-glob": "^7.3.6",
-    "esbuild": "^0.19.2",
+    "esbuild": "^0.19.3",
     "vscode-uri": "^3.0.7"
   }
 }
