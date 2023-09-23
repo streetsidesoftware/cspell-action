@@ -23215,9 +23215,7 @@ var require_lib5 = __commonJS({
       return _chalk.default;
     }
     {
-      {
-        exports.getChalk = (options) => getChalk(options.forceColor);
-      }
+      exports.getChalk = (options) => getChalk(options.forceColor);
     }
     function highlight(code, options = {}) {
       if (code !== "" && shouldHighlight(options)) {
