@@ -29146,269 +29146,6 @@ var require_clear_module = __commonJS({
   }
 });
 
-// node_modules/vscode-languageserver-textdocument/lib/umd/main.js
-var require_main = __commonJS({
-  "node_modules/vscode-languageserver-textdocument/lib/umd/main.js"(exports, module2) {
-    var __spreadArray = exports && exports.__spreadArray || function(to, from, pack) {
-      if (pack || arguments.length === 2)
-        for (var i = 0, l = from.length, ar; i < l; i++) {
-          if (ar || !(i in from)) {
-            if (!ar)
-              ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-          }
-        }
-      return to.concat(ar || Array.prototype.slice.call(from));
-    };
-    (function(factory) {
-      if (typeof module2 === "object" && typeof module2.exports === "object") {
-        var v = factory(require, exports);
-        if (v !== void 0)
-          module2.exports = v;
-      } else if (typeof define === "function" && define.amd) {
-        define(["require", "exports"], factory);
-      }
-    })(function(require2, exports2) {
-      "use strict";
-      Object.defineProperty(exports2, "__esModule", { value: true });
-      exports2.TextDocument = void 0;
-      var FullTextDocument = (
-        /** @class */
-        function() {
-          function FullTextDocument2(uri, languageId, version4, content) {
-            this._uri = uri;
-            this._languageId = languageId;
-            this._version = version4;
-            this._content = content;
-            this._lineOffsets = void 0;
-          }
-          Object.defineProperty(FullTextDocument2.prototype, "uri", {
-            get: function() {
-              return this._uri;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(FullTextDocument2.prototype, "languageId", {
-            get: function() {
-              return this._languageId;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(FullTextDocument2.prototype, "version", {
-            get: function() {
-              return this._version;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          FullTextDocument2.prototype.getText = function(range) {
-            if (range) {
-              var start = this.offsetAt(range.start);
-              var end = this.offsetAt(range.end);
-              return this._content.substring(start, end);
-            }
-            return this._content;
-          };
-          FullTextDocument2.prototype.update = function(changes, version4) {
-            for (var _i = 0, changes_1 = changes; _i < changes_1.length; _i++) {
-              var change = changes_1[_i];
-              if (FullTextDocument2.isIncremental(change)) {
-                var range = getWellformedRange(change.range);
-                var startOffset = this.offsetAt(range.start);
-                var endOffset = this.offsetAt(range.end);
-                this._content = this._content.substring(0, startOffset) + change.text + this._content.substring(endOffset, this._content.length);
-                var startLine = Math.max(range.start.line, 0);
-                var endLine = Math.max(range.end.line, 0);
-                var lineOffsets = this._lineOffsets;
-                var addedLineOffsets = computeLineOffsets(change.text, false, startOffset);
-                if (endLine - startLine === addedLineOffsets.length) {
-                  for (var i = 0, len = addedLineOffsets.length; i < len; i++) {
-                    lineOffsets[i + startLine + 1] = addedLineOffsets[i];
-                  }
-                } else {
-                  if (addedLineOffsets.length < 1e4) {
-                    lineOffsets.splice.apply(lineOffsets, __spreadArray([startLine + 1, endLine - startLine], addedLineOffsets, false));
-                  } else {
-                    this._lineOffsets = lineOffsets = lineOffsets.slice(0, startLine + 1).concat(addedLineOffsets, lineOffsets.slice(endLine + 1));
-                  }
-                }
-                var diff = change.text.length - (endOffset - startOffset);
-                if (diff !== 0) {
-                  for (var i = startLine + 1 + addedLineOffsets.length, len = lineOffsets.length; i < len; i++) {
-                    lineOffsets[i] = lineOffsets[i] + diff;
-                  }
-                }
-              } else if (FullTextDocument2.isFull(change)) {
-                this._content = change.text;
-                this._lineOffsets = void 0;
-              } else {
-                throw new Error("Unknown change event received");
-              }
-            }
-            this._version = version4;
-          };
-          FullTextDocument2.prototype.getLineOffsets = function() {
-            if (this._lineOffsets === void 0) {
-              this._lineOffsets = computeLineOffsets(this._content, true);
-            }
-            return this._lineOffsets;
-          };
-          FullTextDocument2.prototype.positionAt = function(offset) {
-            offset = Math.max(Math.min(offset, this._content.length), 0);
-            var lineOffsets = this.getLineOffsets();
-            var low = 0, high = lineOffsets.length;
-            if (high === 0) {
-              return { line: 0, character: offset };
-            }
-            while (low < high) {
-              var mid = Math.floor((low + high) / 2);
-              if (lineOffsets[mid] > offset) {
-                high = mid;
-              } else {
-                low = mid + 1;
-              }
-            }
-            var line = low - 1;
-            return { line, character: offset - lineOffsets[line] };
-          };
-          FullTextDocument2.prototype.offsetAt = function(position) {
-            var lineOffsets = this.getLineOffsets();
-            if (position.line >= lineOffsets.length) {
-              return this._content.length;
-            } else if (position.line < 0) {
-              return 0;
-            }
-            var lineOffset = lineOffsets[position.line];
-            var nextLineOffset = position.line + 1 < lineOffsets.length ? lineOffsets[position.line + 1] : this._content.length;
-            return Math.max(Math.min(lineOffset + position.character, nextLineOffset), lineOffset);
-          };
-          Object.defineProperty(FullTextDocument2.prototype, "lineCount", {
-            get: function() {
-              return this.getLineOffsets().length;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          FullTextDocument2.isIncremental = function(event) {
-            var candidate = event;
-            return candidate !== void 0 && candidate !== null && typeof candidate.text === "string" && candidate.range !== void 0 && (candidate.rangeLength === void 0 || typeof candidate.rangeLength === "number");
-          };
-          FullTextDocument2.isFull = function(event) {
-            var candidate = event;
-            return candidate !== void 0 && candidate !== null && typeof candidate.text === "string" && candidate.range === void 0 && candidate.rangeLength === void 0;
-          };
-          return FullTextDocument2;
-        }()
-      );
-      var TextDocument;
-      (function(TextDocument2) {
-        function create(uri, languageId, version4, content) {
-          return new FullTextDocument(uri, languageId, version4, content);
-        }
-        TextDocument2.create = create;
-        function update(document, changes, version4) {
-          if (document instanceof FullTextDocument) {
-            document.update(changes, version4);
-            return document;
-          } else {
-            throw new Error("TextDocument.update: document must be created by TextDocument.create");
-          }
-        }
-        TextDocument2.update = update;
-        function applyEdits2(document, edits) {
-          var text = document.getText();
-          var sortedEdits = mergeSort(edits.map(getWellformedEdit), function(a, b) {
-            var diff = a.range.start.line - b.range.start.line;
-            if (diff === 0) {
-              return a.range.start.character - b.range.start.character;
-            }
-            return diff;
-          });
-          var lastModifiedOffset = 0;
-          var spans = [];
-          for (var _i = 0, sortedEdits_1 = sortedEdits; _i < sortedEdits_1.length; _i++) {
-            var e = sortedEdits_1[_i];
-            var startOffset = document.offsetAt(e.range.start);
-            if (startOffset < lastModifiedOffset) {
-              throw new Error("Overlapping edit");
-            } else if (startOffset > lastModifiedOffset) {
-              spans.push(text.substring(lastModifiedOffset, startOffset));
-            }
-            if (e.newText.length) {
-              spans.push(e.newText);
-            }
-            lastModifiedOffset = document.offsetAt(e.range.end);
-          }
-          spans.push(text.substr(lastModifiedOffset));
-          return spans.join("");
-        }
-        TextDocument2.applyEdits = applyEdits2;
-      })(TextDocument = exports2.TextDocument || (exports2.TextDocument = {}));
-      function mergeSort(data, compare4) {
-        if (data.length <= 1) {
-          return data;
-        }
-        var p = data.length / 2 | 0;
-        var left = data.slice(0, p);
-        var right = data.slice(p);
-        mergeSort(left, compare4);
-        mergeSort(right, compare4);
-        var leftIdx = 0;
-        var rightIdx = 0;
-        var i = 0;
-        while (leftIdx < left.length && rightIdx < right.length) {
-          var ret = compare4(left[leftIdx], right[rightIdx]);
-          if (ret <= 0) {
-            data[i++] = left[leftIdx++];
-          } else {
-            data[i++] = right[rightIdx++];
-          }
-        }
-        while (leftIdx < left.length) {
-          data[i++] = left[leftIdx++];
-        }
-        while (rightIdx < right.length) {
-          data[i++] = right[rightIdx++];
-        }
-        return data;
-      }
-      function computeLineOffsets(text, isAtLineStart, textOffset2) {
-        if (textOffset2 === void 0) {
-          textOffset2 = 0;
-        }
-        var result = isAtLineStart ? [textOffset2] : [];
-        for (var i = 0; i < text.length; i++) {
-          var ch = text.charCodeAt(i);
-          if (ch === 13 || ch === 10) {
-            if (ch === 13 && i + 1 < text.length && text.charCodeAt(i + 1) === 10) {
-              i++;
-            }
-            result.push(textOffset2 + i + 1);
-          }
-        }
-        return result;
-      }
-      function getWellformedRange(range) {
-        var start = range.start;
-        var end = range.end;
-        if (start.line > end.line || start.line === end.line && start.character > end.character) {
-          return { start: end, end: start };
-        }
-        return range;
-      }
-      function getWellformedEdit(textEdit) {
-        var range = getWellformedRange(textEdit.range);
-        if (range !== textEdit.range) {
-          return { newText: textEdit.newText, range };
-        }
-        return textEdit;
-      }
-    });
-  }
-});
-
 // node_modules/cspell-lib/dist/lib-cjs/index.cjs
 var require_lib_cjs = __commonJS({
   "node_modules/cspell-lib/dist/lib-cjs/index.cjs"(exports) {
@@ -47961,14 +47698,225 @@ var import_promises = require("fs/promises");
 
 // node_modules/cspell-lib/dist/esm/Models/TextDocument.js
 var import_assert8 = __toESM(require("assert"), 1);
-var import_vscode_languageserver_textdocument = __toESM(require_main(), 1);
+
+// node_modules/vscode-languageserver-textdocument/lib/esm/main.js
+var FullTextDocument = class _FullTextDocument {
+  constructor(uri, languageId, version4, content) {
+    this._uri = uri;
+    this._languageId = languageId;
+    this._version = version4;
+    this._content = content;
+    this._lineOffsets = void 0;
+  }
+  get uri() {
+    return this._uri;
+  }
+  get languageId() {
+    return this._languageId;
+  }
+  get version() {
+    return this._version;
+  }
+  getText(range) {
+    if (range) {
+      const start = this.offsetAt(range.start);
+      const end = this.offsetAt(range.end);
+      return this._content.substring(start, end);
+    }
+    return this._content;
+  }
+  update(changes, version4) {
+    for (let change of changes) {
+      if (_FullTextDocument.isIncremental(change)) {
+        const range = getWellformedRange(change.range);
+        const startOffset = this.offsetAt(range.start);
+        const endOffset = this.offsetAt(range.end);
+        this._content = this._content.substring(0, startOffset) + change.text + this._content.substring(endOffset, this._content.length);
+        const startLine = Math.max(range.start.line, 0);
+        const endLine = Math.max(range.end.line, 0);
+        let lineOffsets = this._lineOffsets;
+        const addedLineOffsets = computeLineOffsets(change.text, false, startOffset);
+        if (endLine - startLine === addedLineOffsets.length) {
+          for (let i = 0, len = addedLineOffsets.length; i < len; i++) {
+            lineOffsets[i + startLine + 1] = addedLineOffsets[i];
+          }
+        } else {
+          if (addedLineOffsets.length < 1e4) {
+            lineOffsets.splice(startLine + 1, endLine - startLine, ...addedLineOffsets);
+          } else {
+            this._lineOffsets = lineOffsets = lineOffsets.slice(0, startLine + 1).concat(addedLineOffsets, lineOffsets.slice(endLine + 1));
+          }
+        }
+        const diff = change.text.length - (endOffset - startOffset);
+        if (diff !== 0) {
+          for (let i = startLine + 1 + addedLineOffsets.length, len = lineOffsets.length; i < len; i++) {
+            lineOffsets[i] = lineOffsets[i] + diff;
+          }
+        }
+      } else if (_FullTextDocument.isFull(change)) {
+        this._content = change.text;
+        this._lineOffsets = void 0;
+      } else {
+        throw new Error("Unknown change event received");
+      }
+    }
+    this._version = version4;
+  }
+  getLineOffsets() {
+    if (this._lineOffsets === void 0) {
+      this._lineOffsets = computeLineOffsets(this._content, true);
+    }
+    return this._lineOffsets;
+  }
+  positionAt(offset) {
+    offset = Math.max(Math.min(offset, this._content.length), 0);
+    let lineOffsets = this.getLineOffsets();
+    let low = 0, high = lineOffsets.length;
+    if (high === 0) {
+      return { line: 0, character: offset };
+    }
+    while (low < high) {
+      let mid = Math.floor((low + high) / 2);
+      if (lineOffsets[mid] > offset) {
+        high = mid;
+      } else {
+        low = mid + 1;
+      }
+    }
+    let line = low - 1;
+    return { line, character: offset - lineOffsets[line] };
+  }
+  offsetAt(position) {
+    let lineOffsets = this.getLineOffsets();
+    if (position.line >= lineOffsets.length) {
+      return this._content.length;
+    } else if (position.line < 0) {
+      return 0;
+    }
+    let lineOffset = lineOffsets[position.line];
+    let nextLineOffset = position.line + 1 < lineOffsets.length ? lineOffsets[position.line + 1] : this._content.length;
+    return Math.max(Math.min(lineOffset + position.character, nextLineOffset), lineOffset);
+  }
+  get lineCount() {
+    return this.getLineOffsets().length;
+  }
+  static isIncremental(event) {
+    let candidate = event;
+    return candidate !== void 0 && candidate !== null && typeof candidate.text === "string" && candidate.range !== void 0 && (candidate.rangeLength === void 0 || typeof candidate.rangeLength === "number");
+  }
+  static isFull(event) {
+    let candidate = event;
+    return candidate !== void 0 && candidate !== null && typeof candidate.text === "string" && candidate.range === void 0 && candidate.rangeLength === void 0;
+  }
+};
+var TextDocument;
+(function(TextDocument2) {
+  function create(uri, languageId, version4, content) {
+    return new FullTextDocument(uri, languageId, version4, content);
+  }
+  TextDocument2.create = create;
+  function update(document, changes, version4) {
+    if (document instanceof FullTextDocument) {
+      document.update(changes, version4);
+      return document;
+    } else {
+      throw new Error("TextDocument.update: document must be created by TextDocument.create");
+    }
+  }
+  TextDocument2.update = update;
+  function applyEdits2(document, edits) {
+    let text = document.getText();
+    let sortedEdits = mergeSort(edits.map(getWellformedEdit), (a, b) => {
+      let diff = a.range.start.line - b.range.start.line;
+      if (diff === 0) {
+        return a.range.start.character - b.range.start.character;
+      }
+      return diff;
+    });
+    let lastModifiedOffset = 0;
+    const spans = [];
+    for (const e of sortedEdits) {
+      let startOffset = document.offsetAt(e.range.start);
+      if (startOffset < lastModifiedOffset) {
+        throw new Error("Overlapping edit");
+      } else if (startOffset > lastModifiedOffset) {
+        spans.push(text.substring(lastModifiedOffset, startOffset));
+      }
+      if (e.newText.length) {
+        spans.push(e.newText);
+      }
+      lastModifiedOffset = document.offsetAt(e.range.end);
+    }
+    spans.push(text.substr(lastModifiedOffset));
+    return spans.join("");
+  }
+  TextDocument2.applyEdits = applyEdits2;
+})(TextDocument || (TextDocument = {}));
+function mergeSort(data, compare4) {
+  if (data.length <= 1) {
+    return data;
+  }
+  const p = data.length / 2 | 0;
+  const left = data.slice(0, p);
+  const right = data.slice(p);
+  mergeSort(left, compare4);
+  mergeSort(right, compare4);
+  let leftIdx = 0;
+  let rightIdx = 0;
+  let i = 0;
+  while (leftIdx < left.length && rightIdx < right.length) {
+    let ret = compare4(left[leftIdx], right[rightIdx]);
+    if (ret <= 0) {
+      data[i++] = left[leftIdx++];
+    } else {
+      data[i++] = right[rightIdx++];
+    }
+  }
+  while (leftIdx < left.length) {
+    data[i++] = left[leftIdx++];
+  }
+  while (rightIdx < right.length) {
+    data[i++] = right[rightIdx++];
+  }
+  return data;
+}
+function computeLineOffsets(text, isAtLineStart, textOffset2 = 0) {
+  const result = isAtLineStart ? [textOffset2] : [];
+  for (let i = 0; i < text.length; i++) {
+    let ch = text.charCodeAt(i);
+    if (ch === 13 || ch === 10) {
+      if (ch === 13 && i + 1 < text.length && text.charCodeAt(i + 1) === 10) {
+        i++;
+      }
+      result.push(textOffset2 + i + 1);
+    }
+  }
+  return result;
+}
+function getWellformedRange(range) {
+  const start = range.start;
+  const end = range.end;
+  if (start.line > end.line || start.line === end.line && start.character > end.character) {
+    return { start: end, end: start };
+  }
+  return range;
+}
+function getWellformedEdit(textEdit) {
+  const range = getWellformedRange(textEdit.range);
+  if (range !== textEdit.range) {
+    return { newText: textEdit.newText, range };
+  }
+  return textEdit;
+}
+
+// node_modules/cspell-lib/dist/esm/Models/TextDocument.js
 var TextDocumentImpl = class {
   constructor(uri, text, languageId, locale, version4) {
     this.uri = uri;
     this.languageId = languageId;
     this.locale = locale;
     const primaryLanguageId = typeof languageId === "string" ? languageId : languageId[0] || "plaintext";
-    this.vsTextDoc = import_vscode_languageserver_textdocument.TextDocument.create(uri.toString(), primaryLanguageId, version4, text);
+    this.vsTextDoc = TextDocument.create(uri.toString(), primaryLanguageId, version4, text);
   }
   get version() {
     return this.vsTextDoc.version;
@@ -48035,7 +47983,7 @@ var TextDocumentImpl = class {
         range: { start: this.positionAt(edit.range[0]), end: this.positionAt(edit.range[1]) },
         text: edit.text
       } : edit;
-      import_vscode_languageserver_textdocument.TextDocument.update(this.vsTextDoc, [vsEdit], version4);
+      TextDocument.update(this.vsTextDoc, [vsEdit], version4);
     }
     return this;
   }
