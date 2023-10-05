@@ -31,6 +31,6 @@
     "cspell": "^7.3.7",
     "cspell-glob": "^7.3.7",
     "esbuild": "^0.19.4",
-    "vscode-uri": "^3.0.7"
+    "vscode-uri": "^3.0.8"
   }
 }
