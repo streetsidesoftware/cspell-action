@@ -23346,22 +23346,22 @@ var require_utils5 = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.getOctokitOptions = exports.GitHub = exports.defaults = exports.context = void 0;
     var Context2 = __importStar(require_context());
-    var Utils3 = __importStar(require_utils3());
+    var Utils2 = __importStar(require_utils3());
     var core_1 = require_dist_node8();
     var plugin_rest_endpoint_methods_1 = require_dist_node9();
     var plugin_paginate_rest_1 = require_dist_node10();
     exports.context = new Context2.Context();
-    var baseUrl = Utils3.getApiBaseUrl();
+    var baseUrl = Utils2.getApiBaseUrl();
     exports.defaults = {
       baseUrl,
       request: {
-        agent: Utils3.getProxyAgent(baseUrl)
+        agent: Utils2.getProxyAgent(baseUrl)
       }
     };
     exports.GitHub = core_1.Octokit.plugin(plugin_rest_endpoint_methods_1.restEndpointMethods, plugin_paginate_rest_1.paginateRest).defaults(exports.defaults);
     function getOctokitOptions(token, options) {
       const opts = Object.assign({}, options || {});
-      const auth = Utils3.getAuthString(token, opts);
+      const auth = Utils2.getAuthString(token, opts);
       if (auth) {
         opts.auth = auth;
       }
@@ -28183,469 +28183,6 @@ var require_dist_node11 = __commonJS({
       };
     }
     legacyRestEndpointMethods.VERSION = VERSION;
-  }
-});
-
-// node_modules/vscode-uri/lib/umd/index.js
-var require_umd = __commonJS({
-  "node_modules/vscode-uri/lib/umd/index.js"(exports, module2) {
-    !function(t, e) {
-      if ("object" == typeof exports && "object" == typeof module2)
-        module2.exports = e();
-      else if ("function" == typeof define && define.amd)
-        define([], e);
-      else {
-        var r = e();
-        for (var n in r)
-          ("object" == typeof exports ? exports : t)[n] = r[n];
-      }
-    }(exports, () => (() => {
-      "use strict";
-      var t = { 470: (t2) => {
-        function e2(t3) {
-          if ("string" != typeof t3)
-            throw new TypeError("Path must be a string. Received " + JSON.stringify(t3));
-        }
-        function r2(t3, e3) {
-          for (var r3, n3 = "", i = 0, o = -1, s = 0, a = 0; a <= t3.length; ++a) {
-            if (a < t3.length)
-              r3 = t3.charCodeAt(a);
-            else {
-              if (47 === r3)
-                break;
-              r3 = 47;
-            }
-            if (47 === r3) {
-              if (o === a - 1 || 1 === s)
-                ;
-              else if (o !== a - 1 && 2 === s) {
-                if (n3.length < 2 || 2 !== i || 46 !== n3.charCodeAt(n3.length - 1) || 46 !== n3.charCodeAt(n3.length - 2)) {
-                  if (n3.length > 2) {
-                    var h = n3.lastIndexOf("/");
-                    if (h !== n3.length - 1) {
-                      -1 === h ? (n3 = "", i = 0) : i = (n3 = n3.slice(0, h)).length - 1 - n3.lastIndexOf("/"), o = a, s = 0;
-                      continue;
-                    }
-                  } else if (2 === n3.length || 1 === n3.length) {
-                    n3 = "", i = 0, o = a, s = 0;
-                    continue;
-                  }
-                }
-                e3 && (n3.length > 0 ? n3 += "/.." : n3 = "..", i = 2);
-              } else
-                n3.length > 0 ? n3 += "/" + t3.slice(o + 1, a) : n3 = t3.slice(o + 1, a), i = a - o - 1;
-              o = a, s = 0;
-            } else
-              46 === r3 && -1 !== s ? ++s : s = -1;
-          }
-          return n3;
-        }
-        var n2 = { resolve: function() {
-          for (var t3, n3 = "", i = false, o = arguments.length - 1; o >= -1 && !i; o--) {
-            var s;
-            o >= 0 ? s = arguments[o] : (void 0 === t3 && (t3 = process.cwd()), s = t3), e2(s), 0 !== s.length && (n3 = s + "/" + n3, i = 47 === s.charCodeAt(0));
-          }
-          return n3 = r2(n3, !i), i ? n3.length > 0 ? "/" + n3 : "/" : n3.length > 0 ? n3 : ".";
-        }, normalize: function(t3) {
-          if (e2(t3), 0 === t3.length)
-            return ".";
-          var n3 = 47 === t3.charCodeAt(0), i = 47 === t3.charCodeAt(t3.length - 1);
-          return 0 !== (t3 = r2(t3, !n3)).length || n3 || (t3 = "."), t3.length > 0 && i && (t3 += "/"), n3 ? "/" + t3 : t3;
-        }, isAbsolute: function(t3) {
-          return e2(t3), t3.length > 0 && 47 === t3.charCodeAt(0);
-        }, join: function() {
-          if (0 === arguments.length)
-            return ".";
-          for (var t3, r3 = 0; r3 < arguments.length; ++r3) {
-            var i = arguments[r3];
-            e2(i), i.length > 0 && (void 0 === t3 ? t3 = i : t3 += "/" + i);
-          }
-          return void 0 === t3 ? "." : n2.normalize(t3);
-        }, relative: function(t3, r3) {
-          if (e2(t3), e2(r3), t3 === r3)
-            return "";
-          if ((t3 = n2.resolve(t3)) === (r3 = n2.resolve(r3)))
-            return "";
-          for (var i = 1; i < t3.length && 47 === t3.charCodeAt(i); ++i)
-            ;
-          for (var o = t3.length, s = o - i, a = 1; a < r3.length && 47 === r3.charCodeAt(a); ++a)
-            ;
-          for (var h = r3.length - a, c = s < h ? s : h, f = -1, u = 0; u <= c; ++u) {
-            if (u === c) {
-              if (h > c) {
-                if (47 === r3.charCodeAt(a + u))
-                  return r3.slice(a + u + 1);
-                if (0 === u)
-                  return r3.slice(a + u);
-              } else
-                s > c && (47 === t3.charCodeAt(i + u) ? f = u : 0 === u && (f = 0));
-              break;
-            }
-            var l = t3.charCodeAt(i + u);
-            if (l !== r3.charCodeAt(a + u))
-              break;
-            47 === l && (f = u);
-          }
-          var d = "";
-          for (u = i + f + 1; u <= o; ++u)
-            u !== o && 47 !== t3.charCodeAt(u) || (0 === d.length ? d += ".." : d += "/..");
-          return d.length > 0 ? d + r3.slice(a + f) : (a += f, 47 === r3.charCodeAt(a) && ++a, r3.slice(a));
-        }, _makeLong: function(t3) {
-          return t3;
-        }, dirname: function(t3) {
-          if (e2(t3), 0 === t3.length)
-            return ".";
-          for (var r3 = t3.charCodeAt(0), n3 = 47 === r3, i = -1, o = true, s = t3.length - 1; s >= 1; --s)
-            if (47 === (r3 = t3.charCodeAt(s))) {
-              if (!o) {
-                i = s;
-                break;
-              }
-            } else
-              o = false;
-          return -1 === i ? n3 ? "/" : "." : n3 && 1 === i ? "//" : t3.slice(0, i);
-        }, basename: function(t3, r3) {
-          if (void 0 !== r3 && "string" != typeof r3)
-            throw new TypeError('"ext" argument must be a string');
-          e2(t3);
-          var n3, i = 0, o = -1, s = true;
-          if (void 0 !== r3 && r3.length > 0 && r3.length <= t3.length) {
-            if (r3.length === t3.length && r3 === t3)
-              return "";
-            var a = r3.length - 1, h = -1;
-            for (n3 = t3.length - 1; n3 >= 0; --n3) {
-              var c = t3.charCodeAt(n3);
-              if (47 === c) {
-                if (!s) {
-                  i = n3 + 1;
-                  break;
-                }
-              } else
-                -1 === h && (s = false, h = n3 + 1), a >= 0 && (c === r3.charCodeAt(a) ? -1 == --a && (o = n3) : (a = -1, o = h));
-            }
-            return i === o ? o = h : -1 === o && (o = t3.length), t3.slice(i, o);
-          }
-          for (n3 = t3.length - 1; n3 >= 0; --n3)
-            if (47 === t3.charCodeAt(n3)) {
-              if (!s) {
-                i = n3 + 1;
-                break;
-              }
-            } else
-              -1 === o && (s = false, o = n3 + 1);
-          return -1 === o ? "" : t3.slice(i, o);
-        }, extname: function(t3) {
-          e2(t3);
-          for (var r3 = -1, n3 = 0, i = -1, o = true, s = 0, a = t3.length - 1; a >= 0; --a) {
-            var h = t3.charCodeAt(a);
-            if (47 !== h)
-              -1 === i && (o = false, i = a + 1), 46 === h ? -1 === r3 ? r3 = a : 1 !== s && (s = 1) : -1 !== r3 && (s = -1);
-            else if (!o) {
-              n3 = a + 1;
-              break;
-            }
-          }
-          return -1 === r3 || -1 === i || 0 === s || 1 === s && r3 === i - 1 && r3 === n3 + 1 ? "" : t3.slice(r3, i);
-        }, format: function(t3) {
-          if (null === t3 || "object" != typeof t3)
-            throw new TypeError('The "pathObject" argument must be of type Object. Received type ' + typeof t3);
-          return function(t4, e3) {
-            var r3 = e3.dir || e3.root, n3 = e3.base || (e3.name || "") + (e3.ext || "");
-            return r3 ? r3 === e3.root ? r3 + n3 : r3 + "/" + n3 : n3;
-          }(0, t3);
-        }, parse: function(t3) {
-          e2(t3);
-          var r3 = { root: "", dir: "", base: "", ext: "", name: "" };
-          if (0 === t3.length)
-            return r3;
-          var n3, i = t3.charCodeAt(0), o = 47 === i;
-          o ? (r3.root = "/", n3 = 1) : n3 = 0;
-          for (var s = -1, a = 0, h = -1, c = true, f = t3.length - 1, u = 0; f >= n3; --f)
-            if (47 !== (i = t3.charCodeAt(f)))
-              -1 === h && (c = false, h = f + 1), 46 === i ? -1 === s ? s = f : 1 !== u && (u = 1) : -1 !== s && (u = -1);
-            else if (!c) {
-              a = f + 1;
-              break;
-            }
-          return -1 === s || -1 === h || 0 === u || 1 === u && s === h - 1 && s === a + 1 ? -1 !== h && (r3.base = r3.name = 0 === a && o ? t3.slice(1, h) : t3.slice(a, h)) : (0 === a && o ? (r3.name = t3.slice(1, s), r3.base = t3.slice(1, h)) : (r3.name = t3.slice(a, s), r3.base = t3.slice(a, h)), r3.ext = t3.slice(s, h)), a > 0 ? r3.dir = t3.slice(0, a - 1) : o && (r3.dir = "/"), r3;
-        }, sep: "/", delimiter: ":", win32: null, posix: null };
-        n2.posix = n2, t2.exports = n2;
-      }, 674: (t2, e2) => {
-        if (Object.defineProperty(e2, "__esModule", { value: true }), e2.isWindows = void 0, "object" == typeof process)
-          e2.isWindows = "win32" === process.platform;
-        else if ("object" == typeof navigator) {
-          let t3 = navigator.userAgent;
-          e2.isWindows = t3.indexOf("Windows") >= 0;
-        }
-      }, 796: (t2, e2, r2) => {
-        Object.defineProperty(e2, "__esModule", { value: true }), e2.uriToFsPath = e2.URI = void 0;
-        const n2 = r2(674), i = /^\w[\w\d+.-]*$/, o = /^\//, s = /^\/\//;
-        function a(t3, e3) {
-          if (!t3.scheme && e3)
-            throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${t3.authority}", path: "${t3.path}", query: "${t3.query}", fragment: "${t3.fragment}"}`);
-          if (t3.scheme && !i.test(t3.scheme))
-            throw new Error("[UriError]: Scheme contains illegal characters.");
-          if (t3.path) {
-            if (t3.authority) {
-              if (!o.test(t3.path))
-                throw new Error('[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character');
-            } else if (s.test(t3.path))
-              throw new Error('[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")');
-          }
-        }
-        const h = "", c = "/", f = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
-        class u {
-          static isUri(t3) {
-            return t3 instanceof u || !!t3 && "string" == typeof t3.authority && "string" == typeof t3.fragment && "string" == typeof t3.path && "string" == typeof t3.query && "string" == typeof t3.scheme && "string" == typeof t3.fsPath && "function" == typeof t3.with && "function" == typeof t3.toString;
-          }
-          scheme;
-          authority;
-          path;
-          query;
-          fragment;
-          constructor(t3, e3, r3, n3, i2, o2 = false) {
-            "object" == typeof t3 ? (this.scheme = t3.scheme || h, this.authority = t3.authority || h, this.path = t3.path || h, this.query = t3.query || h, this.fragment = t3.fragment || h) : (this.scheme = function(t4, e4) {
-              return t4 || e4 ? t4 : "file";
-            }(t3, o2), this.authority = e3 || h, this.path = function(t4, e4) {
-              switch (t4) {
-                case "https":
-                case "http":
-                case "file":
-                  e4 ? e4[0] !== c && (e4 = c + e4) : e4 = c;
-              }
-              return e4;
-            }(this.scheme, r3 || h), this.query = n3 || h, this.fragment = i2 || h, a(this, o2));
-          }
-          get fsPath() {
-            return v(this, false);
-          }
-          with(t3) {
-            if (!t3)
-              return this;
-            let { scheme: e3, authority: r3, path: n3, query: i2, fragment: o2 } = t3;
-            return void 0 === e3 ? e3 = this.scheme : null === e3 && (e3 = h), void 0 === r3 ? r3 = this.authority : null === r3 && (r3 = h), void 0 === n3 ? n3 = this.path : null === n3 && (n3 = h), void 0 === i2 ? i2 = this.query : null === i2 && (i2 = h), void 0 === o2 ? o2 = this.fragment : null === o2 && (o2 = h), e3 === this.scheme && r3 === this.authority && n3 === this.path && i2 === this.query && o2 === this.fragment ? this : new d(e3, r3, n3, i2, o2);
-          }
-          static parse(t3, e3 = false) {
-            const r3 = f.exec(t3);
-            return r3 ? new d(r3[2] || h, w(r3[4] || h), w(r3[5] || h), w(r3[7] || h), w(r3[9] || h), e3) : new d(h, h, h, h, h);
-          }
-          static file(t3) {
-            let e3 = h;
-            if (n2.isWindows && (t3 = t3.replace(/\\/g, c)), t3[0] === c && t3[1] === c) {
-              const r3 = t3.indexOf(c, 2);
-              -1 === r3 ? (e3 = t3.substring(2), t3 = c) : (e3 = t3.substring(2, r3), t3 = t3.substring(r3) || c);
-            }
-            return new d("file", e3, t3, h, h);
-          }
-          static from(t3) {
-            const e3 = new d(t3.scheme, t3.authority, t3.path, t3.query, t3.fragment);
-            return a(e3, true), e3;
-          }
-          toString(t3 = false) {
-            return y(this, t3);
-          }
-          toJSON() {
-            return this;
-          }
-          static revive(t3) {
-            if (t3) {
-              if (t3 instanceof u)
-                return t3;
-              {
-                const e3 = new d(t3);
-                return e3._formatted = t3.external, e3._fsPath = t3._sep === l ? t3.fsPath : null, e3;
-              }
-            }
-            return t3;
-          }
-        }
-        e2.URI = u;
-        const l = n2.isWindows ? 1 : void 0;
-        class d extends u {
-          _formatted = null;
-          _fsPath = null;
-          get fsPath() {
-            return this._fsPath || (this._fsPath = v(this, false)), this._fsPath;
-          }
-          toString(t3 = false) {
-            return t3 ? y(this, true) : (this._formatted || (this._formatted = y(this, false)), this._formatted);
-          }
-          toJSON() {
-            const t3 = { $mid: 1 };
-            return this._fsPath && (t3.fsPath = this._fsPath, t3._sep = l), this._formatted && (t3.external = this._formatted), this.path && (t3.path = this.path), this.scheme && (t3.scheme = this.scheme), this.authority && (t3.authority = this.authority), this.query && (t3.query = this.query), this.fragment && (t3.fragment = this.fragment), t3;
-          }
-        }
-        const p = { 58: "%3A", 47: "%2F", 63: "%3F", 35: "%23", 91: "%5B", 93: "%5D", 64: "%40", 33: "%21", 36: "%24", 38: "%26", 39: "%27", 40: "%28", 41: "%29", 42: "%2A", 43: "%2B", 44: "%2C", 59: "%3B", 61: "%3D", 32: "%20" };
-        function g(t3, e3, r3) {
-          let n3, i2 = -1;
-          for (let o2 = 0; o2 < t3.length; o2++) {
-            const s2 = t3.charCodeAt(o2);
-            if (s2 >= 97 && s2 <= 122 || s2 >= 65 && s2 <= 90 || s2 >= 48 && s2 <= 57 || 45 === s2 || 46 === s2 || 95 === s2 || 126 === s2 || e3 && 47 === s2 || r3 && 91 === s2 || r3 && 93 === s2 || r3 && 58 === s2)
-              -1 !== i2 && (n3 += encodeURIComponent(t3.substring(i2, o2)), i2 = -1), void 0 !== n3 && (n3 += t3.charAt(o2));
-            else {
-              void 0 === n3 && (n3 = t3.substr(0, o2));
-              const e4 = p[s2];
-              void 0 !== e4 ? (-1 !== i2 && (n3 += encodeURIComponent(t3.substring(i2, o2)), i2 = -1), n3 += e4) : -1 === i2 && (i2 = o2);
-            }
-          }
-          return -1 !== i2 && (n3 += encodeURIComponent(t3.substring(i2))), void 0 !== n3 ? n3 : t3;
-        }
-        function m(t3) {
-          let e3;
-          for (let r3 = 0; r3 < t3.length; r3++) {
-            const n3 = t3.charCodeAt(r3);
-            35 === n3 || 63 === n3 ? (void 0 === e3 && (e3 = t3.substr(0, r3)), e3 += p[n3]) : void 0 !== e3 && (e3 += t3[r3]);
-          }
-          return void 0 !== e3 ? e3 : t3;
-        }
-        function v(t3, e3) {
-          let r3;
-          return r3 = t3.authority && t3.path.length > 1 && "file" === t3.scheme ? `//${t3.authority}${t3.path}` : 47 === t3.path.charCodeAt(0) && (t3.path.charCodeAt(1) >= 65 && t3.path.charCodeAt(1) <= 90 || t3.path.charCodeAt(1) >= 97 && t3.path.charCodeAt(1) <= 122) && 58 === t3.path.charCodeAt(2) ? e3 ? t3.path.substr(1) : t3.path[1].toLowerCase() + t3.path.substr(2) : t3.path, n2.isWindows && (r3 = r3.replace(/\//g, "\\")), r3;
-        }
-        function y(t3, e3) {
-          const r3 = e3 ? m : g;
-          let n3 = "", { scheme: i2, authority: o2, path: s2, query: a2, fragment: h2 } = t3;
-          if (i2 && (n3 += i2, n3 += ":"), (o2 || "file" === i2) && (n3 += c, n3 += c), o2) {
-            let t4 = o2.indexOf("@");
-            if (-1 !== t4) {
-              const e4 = o2.substr(0, t4);
-              o2 = o2.substr(t4 + 1), t4 = e4.lastIndexOf(":"), -1 === t4 ? n3 += r3(e4, false, false) : (n3 += r3(e4.substr(0, t4), false, false), n3 += ":", n3 += r3(e4.substr(t4 + 1), false, true)), n3 += "@";
-            }
-            o2 = o2.toLowerCase(), t4 = o2.lastIndexOf(":"), -1 === t4 ? n3 += r3(o2, false, true) : (n3 += r3(o2.substr(0, t4), false, true), n3 += o2.substr(t4));
-          }
-          if (s2) {
-            if (s2.length >= 3 && 47 === s2.charCodeAt(0) && 58 === s2.charCodeAt(2)) {
-              const t4 = s2.charCodeAt(1);
-              t4 >= 65 && t4 <= 90 && (s2 = `/${String.fromCharCode(t4 + 32)}:${s2.substr(3)}`);
-            } else if (s2.length >= 2 && 58 === s2.charCodeAt(1)) {
-              const t4 = s2.charCodeAt(0);
-              t4 >= 65 && t4 <= 90 && (s2 = `${String.fromCharCode(t4 + 32)}:${s2.substr(2)}`);
-            }
-            n3 += r3(s2, true, false);
-          }
-          return a2 && (n3 += "?", n3 += r3(a2, false, false)), h2 && (n3 += "#", n3 += e3 ? h2 : g(h2, false, false)), n3;
-        }
-        function b(t3) {
-          try {
-            return decodeURIComponent(t3);
-          } catch {
-            return t3.length > 3 ? t3.substr(0, 3) + b(t3.substr(3)) : t3;
-          }
-        }
-        e2.uriToFsPath = v;
-        const C = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
-        function w(t3) {
-          return t3.match(C) ? t3.replace(C, (t4) => b(t4)) : t3;
-        }
-      }, 679: function(t2, e2, r2) {
-        var n2 = this && this.__createBinding || (Object.create ? function(t3, e3, r3, n3) {
-          void 0 === n3 && (n3 = r3);
-          var i2 = Object.getOwnPropertyDescriptor(e3, r3);
-          i2 && !("get" in i2 ? !e3.__esModule : i2.writable || i2.configurable) || (i2 = { enumerable: true, get: function() {
-            return e3[r3];
-          } }), Object.defineProperty(t3, n3, i2);
-        } : function(t3, e3, r3, n3) {
-          void 0 === n3 && (n3 = r3), t3[n3] = e3[r3];
-        }), i = this && this.__setModuleDefault || (Object.create ? function(t3, e3) {
-          Object.defineProperty(t3, "default", { enumerable: true, value: e3 });
-        } : function(t3, e3) {
-          t3.default = e3;
-        }), o = this && this.__importStar || function(t3) {
-          if (t3 && t3.__esModule)
-            return t3;
-          var e3 = {};
-          if (null != t3)
-            for (var r3 in t3)
-              "default" !== r3 && Object.prototype.hasOwnProperty.call(t3, r3) && n2(e3, t3, r3);
-          return i(e3, t3), e3;
-        };
-        Object.defineProperty(e2, "__esModule", { value: true }), e2.Utils = void 0;
-        const s = o(r2(470)), a = s.posix || s, h = "/";
-        var c;
-        !function(t3) {
-          t3.joinPath = function(t4, ...e3) {
-            return t4.with({ path: a.join(t4.path, ...e3) });
-          }, t3.resolvePath = function(t4, ...e3) {
-            let r3 = t4.path, n3 = false;
-            r3[0] !== h && (r3 = h + r3, n3 = true);
-            let i2 = a.resolve(r3, ...e3);
-            return n3 && i2[0] === h && !t4.authority && (i2 = i2.substring(1)), t4.with({ path: i2 });
-          }, t3.dirname = function(t4) {
-            if (0 === t4.path.length || t4.path === h)
-              return t4;
-            let e3 = a.dirname(t4.path);
-            return 1 === e3.length && 46 === e3.charCodeAt(0) && (e3 = ""), t4.with({ path: e3 });
-          }, t3.basename = function(t4) {
-            return a.basename(t4.path);
-          }, t3.extname = function(t4) {
-            return a.extname(t4.path);
-          };
-        }(c || (e2.Utils = c = {}));
-      } }, e = {};
-      function r(n2) {
-        var i = e[n2];
-        if (void 0 !== i)
-          return i.exports;
-        var o = e[n2] = { exports: {} };
-        return t[n2].call(o.exports, o, o.exports, r), o.exports;
-      }
-      var n = {};
-      return (() => {
-        var t2 = n;
-        Object.defineProperty(t2, "__esModule", { value: true }), t2.Utils = t2.URI = void 0;
-        const e2 = r(796);
-        Object.defineProperty(t2, "URI", { enumerable: true, get: function() {
-          return e2.URI;
-        } });
-        const i = r(679);
-        Object.defineProperty(t2, "Utils", { enumerable: true, get: function() {
-          return i.Utils;
-        } });
-      })(), n;
-    })());
-  }
-});
-
-// node_modules/cspell-lib/dist/lib-cjs/vscodeUri.cjs
-var require_vscodeUri = __commonJS({
-  "node_modules/cspell-lib/dist/lib-cjs/vscodeUri.cjs"(exports) {
-    "use strict";
-    var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
-      var desc = Object.getOwnPropertyDescriptor(m, k);
-      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-        desc = { enumerable: true, get: function() {
-          return m[k];
-        } };
-      }
-      Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
-      o[k2] = m[k];
-    });
-    var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o, v) {
-      Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
-      o["default"] = v;
-    });
-    var __importStar = exports && exports.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
-      var result = {};
-      if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
-      }
-      __setModuleDefault(result, mod);
-      return result;
-    };
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Utils = exports.URI = void 0;
-    var vscodeUriPkg = __importStar(require_umd());
-    exports.URI = vscodeUriPkg.URI, exports.Utils = vscodeUriPkg.Utils;
   }
 });
 
@@ -45174,22 +44711,6 @@ var require_dist3 = __commonJS({
   }
 });
 
-// node_modules/cspell/dist/lib/uri.cjs
-var require_uri = __commonJS({
-  "node_modules/cspell/dist/lib/uri.cjs"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Utils = exports.URI = void 0;
-    var vscode_uri_1 = require_umd();
-    Object.defineProperty(exports, "URI", { enumerable: true, get: function() {
-      return vscode_uri_1.URI;
-    } });
-    Object.defineProperty(exports, "Utils", { enumerable: true, get: function() {
-      return vscode_uri_1.Utils;
-    } });
-  }
-});
-
 // node_modules/yocto-queue/index.js
 var require_yocto_queue = __commonJS({
   "node_modules/yocto-queue/index.js"(exports, module2) {
@@ -45510,7 +45031,7 @@ var require_package = __commonJS({
   "node_modules/cspell/package.json"(exports, module2) {
     module2.exports = {
       name: "cspell",
-      version: "7.3.7",
+      version: "7.3.8",
       description: "A Spelling Checker for Code!",
       funding: "https://github.com/streetsidesoftware/cspell?sponsor=1",
       bin: {
@@ -45590,24 +45111,24 @@ var require_package = __commonJS({
       },
       homepage: "https://streetsidesoftware.github.io/cspell/",
       dependencies: {
-        "@cspell/cspell-json-reporter": "7.3.7",
-        "@cspell/cspell-pipe": "7.3.7",
-        "@cspell/cspell-types": "7.3.7",
-        "@cspell/dynamic-import": "7.3.7",
+        "@cspell/cspell-json-reporter": "7.3.8",
+        "@cspell/cspell-pipe": "7.3.8",
+        "@cspell/cspell-types": "7.3.8",
+        "@cspell/dynamic-import": "7.3.8",
         chalk: "^5.3.0",
         "chalk-template": "^1.1.0",
-        commander: "^11.0.0",
-        "cspell-gitignore": "7.3.7",
-        "cspell-glob": "7.3.7",
-        "cspell-io": "7.3.7",
-        "cspell-lib": "7.3.7",
+        commander: "^11.1.0",
+        "cspell-gitignore": "7.3.8",
+        "cspell-glob": "7.3.8",
+        "cspell-io": "7.3.8",
+        "cspell-lib": "7.3.8",
         "fast-glob": "^3.3.1",
         "fast-json-stable-stringify": "^2.1.0",
-        "file-entry-cache": "^7.0.0",
+        "file-entry-cache": "^7.0.1",
         "get-stdin": "^9.0.0",
         semver: "^7.5.4",
         "strip-ansi": "^7.1.0",
-        "vscode-uri": "^3.0.7"
+        "vscode-uri": "^3.0.8"
       },
       engines: {
         node: ">=16"
@@ -45620,7 +45141,7 @@ var require_package = __commonJS({
         micromatch: "^4.0.5",
         minimatch: "^9.0.3"
       },
-      gitHead: "22246a7924b9ae27ae39f0d0217890a1c2736f68"
+      gitHead: "6717f5726b74c695d9023dbccf6f7e8a7ac6361f"
     };
   }
 });
@@ -53298,7 +52819,6 @@ __export(exclusionHelper_exports, {
 
 // node_modules/cspell-lib/dist/esm/util/Uri.js
 var import_assert = __toESM(require("assert"), 1);
-var import_vscodeUri = __toESM(require_vscodeUri(), 1);
 var isFile = /^(?:[a-zA-Z]:|[/\\])/;
 var isPossibleUri = /\w:\/\//;
 var isUrl = /^(file:|stdin:|https?:|s?ftp:)/;
@@ -53306,7 +52826,7 @@ var STDIN_PROTOCOL = "stdin:";
 function toUri(uriOrFile) {
   if (UriImpl.isUri(uriOrFile))
     return uriOrFile;
-  if (import_vscodeUri.URI.isUri(uriOrFile))
+  if (URI.isUri(uriOrFile))
     return UriImpl.from(uriOrFile);
   if (uriOrFile instanceof URL)
     return UriImpl.parse(uriOrFile.toString());
@@ -53321,7 +52841,7 @@ function toUri(uriOrFile) {
 var hasDriveLetter = /^[A-Z]:/i;
 function uriToFilePath(uri) {
   const adj = uri.scheme === "stdin" ? { scheme: "file" } : {};
-  return normalizeDriveLetter(import_vscodeUri.URI.from(UriImpl.from(uri, adj)).fsPath);
+  return normalizeDriveLetter(URI.from(UriImpl.from(uri, adj)).fsPath);
 }
 function normalizeDriveLetter(path26) {
   return hasDriveLetter.test(path26) ? path26[0].toLowerCase() + path26.slice(1) : path26;
@@ -53334,13 +52854,13 @@ function isUri(uri) {
     return false;
   if (UriImpl.isUri(uri))
     return true;
-  if (import_vscodeUri.URI.isUri(uri))
+  if (URI.isUri(uri))
     return true;
   const u = uri;
   return typeof u.path === "string" && typeof u.scheme === "string";
 }
 function basename(uri) {
-  return import_vscodeUri.Utils.basename(import_vscodeUri.URI.from(uri));
+  return Utils.basename(URI.from(uri));
 }
 var keys = ["scheme", "authority", "path", "query", "fragment"];
 var UriImpl = class _UriImpl {
@@ -53387,11 +52907,11 @@ var UriImpl = class _UriImpl {
     if (uri.startsWith(STDIN_PROTOCOL)) {
       return _UriImpl.from(parseStdinUri(uri));
     }
-    const u = import_vscodeUri.URI.parse(uri);
+    const u = URI.parse(uri);
     return _UriImpl.from(u);
   }
   static file(filename) {
-    return _UriImpl.from(import_vscodeUri.URI.file(normalizeFilePath(filename)));
+    return _UriImpl.from(URI.file(normalizeFilePath(filename)));
   }
   static stdin(filePath = "") {
     return _UriImpl.from(_UriImpl.file(filePath), { scheme: "stdin" });
@@ -70047,7 +69567,6 @@ var chalkTemplateStderr = makeChalkTemplate(templateStderr);
 
 // node_modules/cspell/dist/esm/cli-reporter.mjs
 var path15 = __toESM(require("path"), 1);
-var import_uri = __toESM(require_uri(), 1);
 var templateIssue = `{green $filename}:{yellow $row:$col} - $message ({red $text}) $quickFix`;
 var templateIssueNoFix = `{green $filename}:{yellow $row:$col} - $message ({red $text})`;
 var templateIssueWithSuggestions = `{green $filename}:{yellow $row:$col} - $message ({red $text}) Suggestions: {yellow [$suggestions]}`;
@@ -70084,7 +69603,7 @@ function relativeFilename(filename, cwd = process.cwd()) {
   return "." + path15.sep + rel;
 }
 function relativeUriFilename(uri, fsPathRoot) {
-  const fsPath = import_uri.URI.parse(uri).fsPath;
+  const fsPath = URI.parse(uri).fsPath;
   const rel = path15.relative(fsPathRoot, fsPath);
   if (rel.startsWith(".."))
     return fsPath;
@@ -70130,10 +69649,10 @@ function getReporter(options) {
   function infoEmitter(message, msgType) {
     emitters[msgType]?.(message);
   }
-  const root = import_uri.URI.file(options.root || process.cwd());
+  const root = URI.file(options.root || process.cwd());
   const fsPathRoot = root.fsPath;
   function relativeIssue(fn) {
-    const fnFilename = options.relative ? (uri) => relativeUriFilename(uri, fsPathRoot) : (uri) => import_uri.URI.parse(uri).fsPath;
+    const fnFilename = options.relative ? (uri) => relativeUriFilename(uri, fsPathRoot) : (uri) => URI.parse(uri).fsPath;
     return (i) => {
       const filename = i.uri ? fnFilename(i.uri) : "";
       const r = { ...i, filename };
@@ -70539,7 +70058,6 @@ async function asyncIterableToArray2(iter) {
 var path23 = __toESM(require("path"), 1);
 var import_util58 = require("util");
 var import_pkgInfo2 = __toESM(require_pkgInfo(), 1);
-var import_uri3 = __toESM(require_uri(), 1);
 
 // node_modules/cspell/dist/esm/util/cache/createCache.mjs
 var import_assert18 = __toESM(require("assert"), 1);
@@ -70636,7 +70154,6 @@ getStdin.buffer = async () => {
 // node_modules/cspell/dist/esm/util/fileHelper.mjs
 var path20 = __toESM(require("path"), 1);
 var import_url5 = require("url");
-var import_uri2 = __toESM(require_uri(), 1);
 
 // node_modules/cspell/dist/esm/util/async.mjs
 var { opMapAsync: asyncMap, opFilterAsync: asyncFilter, opAwaitAsync: asyncAwait, opFlattenAsync: asyncFlatten } = operators;
@@ -70822,7 +70339,7 @@ function filenameToUrlString(filename, cwd = ".") {
   return (0, import_url5.pathToFileURL)(path20.resolve(cwd, filename)).toString();
 }
 function filenameToUri(filename, cwd) {
-  return import_uri2.URI.parse(filenameToUrlString(filename, cwd));
+  return URI.parse(filenameToUrlString(filename, cwd));
 }
 function isBinaryFile2(filename, cwd) {
   const uri = filenameToUri(filename, cwd);
@@ -71655,7 +71172,7 @@ async function determineFilesToCheck(configInfo, cfg, reporter, globInfo) {
     return files;
   }
   function isExcluded(filename, globMatcherExclude) {
-    if (isBinaryFile(import_uri3.URI.file(filename))) {
+    if (isBinaryFile(URI.file(filename))) {
       return true;
     }
     const { root } = cfg;
