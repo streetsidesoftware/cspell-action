@@ -23,8 +23,8 @@ jobs:
     if: github.repository_owner == 'streetsidesoftware'
     runs-on: ubuntu-latest
     env:
-      NEW_BRANCH: "update-cspell"
-      REF_BRANCH: main
+      NEW_BRANCH: update-cspell-${{ inputs.base || 'main' }}
+      REF_BRANCH: ${{ inputs.base || 'main' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
