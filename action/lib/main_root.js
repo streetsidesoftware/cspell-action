@@ -51415,9 +51415,9 @@ async function getPullRequestFiles(git, prRef) {
   const { owner, repo, pull_number } = prRef;
   const { rest } = (0, import_plugin_rest_endpoint_methods.restEndpointMethods)(git);
   const commits = await rest.pulls.listCommits({ owner, repo, pull_number });
-  console.time("fetchFilesForCommits");
-  const files = fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
-  console.timeEnd("fetchFilesForCommits");
+  console.time("Fetch file names in commits");
+  const files = await fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
+  console.timeEnd("Fetch file names in commits");
   return files;
 }
 function isString(s) {
