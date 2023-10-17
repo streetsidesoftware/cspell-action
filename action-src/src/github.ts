@@ -1,6 +1,8 @@
 import type { Octokit } from '@octokit/core';
 import { restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods';
 
+type RestEndpointMethods = ReturnType<typeof restEndpointMethods>['rest'];
+
 export interface GitContext {
     owner: string;
     repo: string;
@@ -14,15 +16,15 @@ export async function getPullRequestFiles(git: Octokit, prRef: PullRequestRef): 
     const { owner, repo, pull_number } = prRef;
     const { rest } = restEndpointMethods(git);
 
-    console.info('getPullRequestFiles RateLimit start: %o', (await rest.rateLimit.get()).data);
-
+    await reportUsage(rest, 'getPullRequestFiles RateLimit start:');
     const commits = await rest.pulls.listCommits({ owner, repo, pull_number });
 
     console.time('Fetch file names in commits');
     const files = await fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
     console.timeEnd('Fetch file names in commits');
     // console.log('files %o', files);
-    console.info('getPullRequestFiles RateLimit end: %o', (await rest.rateLimit.get()).data);
+
+    await reportUsage(rest, 'getPullRequestFiles RateLimit end:');
     return files;
 }
 
@@ -59,4 +61,11 @@ async function* fetchFilesForCommitsX(
             }
         }
     }
+}
+
+async function reportUsage(rest: RestEndpointMethods, message: string) {
+    if (!process.env['DEBUG'] && !process.env['TEST'] && !process.env['GITHUB_USAGE']) return;
+    const rate = (await rest.rateLimit.get()).data.rate;
+    const now = Math.floor(Date.now() / 1000);
+    console.info('%s: %o, time until reset: %is', message, rate, rate.reset - now);
 }
