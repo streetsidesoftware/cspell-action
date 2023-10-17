@@ -28,7 +28,7 @@
     "@actions/github": "^5.1.1",
     "@cspell/cspell-bundled-dicts": "^7.3.8",
     "@octokit/core": "^4.2.4",
-    "@octokit/plugin-rest-endpoint-methods": "^7.2.3",
+    "@octokit/plugin-rest-endpoint-methods": "^10.0.1",
     "@octokit/rest": "^19.0.13",
     "cspell": "^7.3.8",
     "cspell-glob": "^7.3.8",
