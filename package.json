@@ -4,6 +4,7 @@
   "description": "GitHub Action: Check Spelling",
   "main": "action/lib/main.js",
   "private": true,
+  "packageManager": "pnpm@8.7.4",
   "scripts": {
     "prepare": "pnpm run build",
     "build": "pnpm build:src && pnpm build:action",
