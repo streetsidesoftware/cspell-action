@@ -40,7 +40,7 @@ jobs:
         run: |
           cd action-src
           echo CSPELL_VERSION_OLD=$(pnpm exec cspell -V) >> $GITHUB_ENV
-          pnpm add cspell@latest cspell-glob@latest
+          pnpm add cspell@latest cspell-glob@latest @cspell/cspell-bundled-dicts@latest
           pnpm i
           pnpm exec cspell -V
           echo "CSPELL_VERSION=$(pnpm exec cspell -V)" >> $GITHUB_ENV

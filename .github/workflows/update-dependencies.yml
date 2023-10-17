@@ -36,7 +36,8 @@ jobs:
 
       - name: Update packages
         run: |
-          pnpm up
+          pnpm up -w
+          pnpm up -r
 
       - name: Update packages Src
         run: pnpm clean-build
