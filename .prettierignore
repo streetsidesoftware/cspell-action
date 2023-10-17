@@ -5,3 +5,4 @@ node_modules/
 package-lock.json
 dist/
 action/
+pnpm-lock.yaml
