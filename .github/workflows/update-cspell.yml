@@ -108,7 +108,7 @@ jobs:
             ${{ env.git_body }}
             ```
 
-      - name: Summary
+      - name: Show Summary
         uses: streetsidesoftware/actions/public/summary@v1
         with:
           text: ${{ steps.summary.outputs.value }}
@@ -121,6 +121,6 @@ jobs:
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
           title: "${{ env.PR_TYPE }}: Update CSpell to (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
-          body: ${{ env.get_body }}
+          body: ${{ steps.summary.outputs.value }}
           app_id: ${{ secrets.AUTOMATION_APP_ID }}
           app_private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}

@@ -41,6 +41,10 @@ jobs:
       - name: Update packages Src
         run: pnpm clean-build
 
+      - name: Git Status
+        id: git-status
+        uses: streetsidesoftware/actions/public/dirty@v1
+
       - name: Has changes
         run: |
           git --no-pager diff --compact-summary  --exit-code action && echo "PR_TYPE=ci" >> $GITHUB_ENV || echo "PR_TYPE=fix" >> $GITHUB_ENV
@@ -53,8 +57,26 @@ jobs:
           git --no-pager diff --compact-summary >> $GITHUB_ENV
           echo 'DIFF' >> $GITHUB_ENV
 
-      - name: Echo git_status
-        run: echo ${{ env.git_status }}
+      - name: Summary
+        id: summary
+        uses: streetsidesoftware/actions/public/output@v1
+        with:
+          value: |
+            Type: ${{ env.PR_TYPE }}
+
+            Status: ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
+            ```
+            ${{ steps.git-status.outputs.status }}
+            ```
+
+            diff:
+            ```
+            ${{ env.git_body }}
+            ```
+      - name: Show Summary
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: ${{ steps.summary.outputs.value }}
 
       - name: PR
         uses: streetsidesoftware/actions/.github/actions/pr@v1
@@ -63,6 +85,6 @@ jobs:
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
           title: "${{ env.PR_TYPE }}: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})"
-          body: ${{ env.get_body }}
+          body: ${{ steps.summary.outputs.value }}
           app_id: ${{ secrets.AUTOMATION_APP_ID }}
           app_private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
