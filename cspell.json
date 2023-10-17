@@ -34,7 +34,9 @@
         "**/fixtures/**/*.json",
         "**/fixtures/sampleCode/*errors/",
         "node_modules",
+        "main_root.js",
         "package-lock.json",
+        "pnpm-lock.yaml",
         "yarn.lock"
     ],
     "patterns": [

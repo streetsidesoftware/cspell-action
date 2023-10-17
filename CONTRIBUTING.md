@@ -26,5 +26,5 @@ root
 ## Testing
 
 ```sh
-GITHUB_TOKEN=<pat_token> yarn test
+GITHUB_TOKEN=$(gh auth token) pnpm test
 ```

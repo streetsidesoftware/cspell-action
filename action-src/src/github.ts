@@ -15,7 +15,11 @@ export async function getPullRequestFiles(git: Octokit, prRef: PullRequestRef): 
     const { rest } = restEndpointMethods(git);
     const commits = await rest.pulls.listCommits({ owner, repo, pull_number });
 
-    return fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
+    console.time('Fetch file names in commits');
+    const files = await fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
+    console.timeEnd('Fetch file names in commits');
+    // console.log('files %o', files);
+    return files;
 }
 
 function isString(s: string | unknown): s is string {

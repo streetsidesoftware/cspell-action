@@ -2,13 +2,15 @@
   "name": "action",
   "version": "0.0.0",
   "private": true,
+  "type": "commonjs",
   "main": "./lib/main_root.js",
-  "workspaces": {
-    "nohoist": [
-      "**"
-    ]
-  },
+  "bundledDependencies": [
+    "@cspell/cspell-bundled-dicts"
+  ],
   "dependencies": {
     "@cspell/cspell-bundled-dicts": "^7.3.8"
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }
