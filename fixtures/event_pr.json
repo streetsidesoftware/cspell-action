@@ -159,10 +159,7 @@
                 "svn_url": "https://github.com/streetsidesoftware/cspell",
                 "tags_url": "https://api.github.com/repos/streetsidesoftware/cspell/tags",
                 "teams_url": "https://api.github.com/repos/streetsidesoftware/cspell/teams",
-                "topics": [
-                    "spell",
-                    "spell-checker"
-                ],
+                "topics": ["spell", "spell-checker"],
                 "trees_url": "https://api.github.com/repos/streetsidesoftware/cspell/git/trees{/sha}",
                 "updated_at": "2022-10-10T13:19:54Z",
                 "url": "https://api.github.com/repos/streetsidesoftware/cspell",
@@ -314,10 +311,7 @@
                 "svn_url": "https://github.com/streetsidesoftware/cspell",
                 "tags_url": "https://api.github.com/repos/streetsidesoftware/cspell/tags",
                 "teams_url": "https://api.github.com/repos/streetsidesoftware/cspell/teams",
-                "topics": [
-                    "spell",
-                    "spell-checker"
-                ],
+                "topics": ["spell", "spell-checker"],
                 "trees_url": "https://api.github.com/repos/streetsidesoftware/cspell/git/trees{/sha}",
                 "updated_at": "2022-10-10T13:19:54Z",
                 "url": "https://api.github.com/repos/streetsidesoftware/cspell",
@@ -530,10 +524,7 @@
         "svn_url": "https://github.com/streetsidesoftware/cspell",
         "tags_url": "https://api.github.com/repos/streetsidesoftware/cspell/tags",
         "teams_url": "https://api.github.com/repos/streetsidesoftware/cspell/teams",
-        "topics": [
-            "spell",
-            "spell-checker"
-        ],
+        "topics": ["spell", "spell-checker"],
         "trees_url": "https://api.github.com/repos/streetsidesoftware/cspell/git/trees{/sha}",
         "updated_at": "2022-10-10T13:19:54Z",
         "url": "https://api.github.com/repos/streetsidesoftware/cspell",

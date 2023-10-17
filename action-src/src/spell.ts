@@ -1,5 +1,5 @@
-import * as cspellApp from 'cspell';
-import { CSpellReporter } from 'cspell';
+import { type CSpellApplicationOptions, lint as cspellAppLint } from 'cspell';
+import type { CSpellReporter } from 'cspell';
 
 export interface LintOptions {
     root: string;
@@ -21,11 +21,11 @@ export interface LintOptions {
  */
 export async function lint(files: string[], lintOptions: LintOptions, reporter: CSpellReporter): Promise<void> {
     const { root, config, checkDotFiles } = lintOptions;
-    const options: cspellApp.CSpellApplicationOptions = { root, config };
+    const options: CSpellApplicationOptions = { root, config };
     if (checkDotFiles) {
         options.dot = true;
     } else if (checkDotFiles === false) {
         options.dot = false;
     }
-    await cspellApp.lint(files, options, reporter);
+    await cspellAppLint(files, options, reporter);
 }

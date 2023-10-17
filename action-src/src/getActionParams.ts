@@ -1,17 +1,17 @@
-import * as core from '@actions/core';
+import { getInput } from '@actions/core';
 import { ActionParamsInput, applyDefaults, TrueFalse } from './ActionParams';
 
 export function getActionParams(): ActionParamsInput {
     return applyDefaults({
-        github_token: core.getInput('github_token', { required: true }),
-        files: core.getInput('files'),
-        incremental_files_only: tf(core.getInput('incremental_files_only')),
-        config: core.getInput('config'),
-        root: core.getInput('root'),
-        inline: core.getInput('inline').toLowerCase(),
-        strict: tf(core.getInput('strict')),
-        verbose: tf(core.getInput('verbose')),
-        check_dot_files: tf(core.getInput('check_dot_files')),
+        github_token: getInput('github_token', { required: true }),
+        files: getInput('files'),
+        incremental_files_only: tf(getInput('incremental_files_only')),
+        config: getInput('config'),
+        root: getInput('root'),
+        inline: getInput('inline').toLowerCase(),
+        strict: tf(getInput('strict')),
+        verbose: tf(getInput('verbose')),
+        check_dot_files: tf(getInput('check_dot_files')),
     });
 }
 
