@@ -1,4 +1,4 @@
-import * as core from '@actions/core';
+import { debug, info, error, warning, setFailed, setOutput } from '@actions/core';
 import { Context as GitHubContext } from '@actions/github/lib/context';
 import { Octokit } from '@octokit/core';
 import { RunResult } from 'cspell';
@@ -9,6 +9,8 @@ import { getActionParams } from './getActionParams';
 import { fetchFilesForCommits, getPullRequestFiles } from './github';
 import { CSpellReporterForGithubAction } from './reporter';
 import { lint, LintOptions } from './spell';
+
+const core = { debug, error, info, warning };
 
 interface Context {
     githubContext: GitHubContext;
@@ -176,7 +178,7 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
         const err = `${result.issues} spelling issue${fnS(result.issues)} found in ${filesWithIssues} of the ${
             result.files
         } file${fnS(result.files)} checked.`;
-        core.setFailed(err);
+        setFailed(err);
     }
 
     return !(result.issues + result.errors);
@@ -185,12 +187,12 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
 function outputResult(runResult: RunResult) {
     const result = normalizeResult(runResult);
 
-    core.setOutput('success', result.success);
-    core.setOutput('number_of_files_checked', result.number_of_files_checked);
-    core.setOutput('number_of_issues', result.number_of_issues);
-    core.setOutput('number_of_files_with_issues', result.files_with_issues.length);
-    core.setOutput('files_with_issues', normalizeFiles(result.files_with_issues));
-    core.setOutput('result', result);
+    setOutput('success', result.success);
+    setOutput('number_of_files_checked', result.number_of_files_checked);
+    setOutput('number_of_issues', result.number_of_issues);
+    setOutput('number_of_files_with_issues', result.files_with_issues.length);
+    setOutput('files_with_issues', normalizeFiles(result.files_with_issues));
+    setOutput('result', result);
 }
 
 function normalizeResult(result: RunResult) {

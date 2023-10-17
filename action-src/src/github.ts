@@ -1,4 +1,4 @@
-import { Octokit } from '@octokit/core';
+import type { Octokit } from '@octokit/core';
 import { restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods';
 
 export interface GitContext {
@@ -13,12 +13,16 @@ export interface PullRequestRef extends GitContext {
 export async function getPullRequestFiles(git: Octokit, prRef: PullRequestRef): Promise<Set<string>> {
     const { owner, repo, pull_number } = prRef;
     const { rest } = restEndpointMethods(git);
+
+    console.info('getPullRequestFiles RateLimit start: %o', (await rest.rateLimit.get()).data);
+
     const commits = await rest.pulls.listCommits({ owner, repo, pull_number });
 
     console.time('Fetch file names in commits');
     const files = await fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
     console.timeEnd('Fetch file names in commits');
     // console.log('files %o', files);
+    console.info('getPullRequestFiles RateLimit end: %o', (await rest.rateLimit.get()).data);
     return files;
 }
 

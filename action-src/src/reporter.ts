@@ -1,4 +1,4 @@
-import * as core from '@actions/core';
+import { debug, info, warning, error } from '@actions/core';
 import { issueCommand } from '@actions/core/lib/command';
 import type {
     CSpellReporter,
@@ -10,6 +10,8 @@ import type {
 } from '@cspell/cspell-types';
 import { URI } from 'vscode-uri';
 import * as path from 'path';
+
+const core = { debug, info, warning, error };
 
 export interface LintResult {
     issues: Issue[];

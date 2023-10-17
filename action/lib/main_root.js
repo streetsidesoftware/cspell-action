@@ -724,7 +724,7 @@ var require_tunnel = __commonJS({
         connectOptions.headers = connectOptions.headers || {};
         connectOptions.headers["Proxy-Authorization"] = "Basic " + new Buffer(connectOptions.proxyAuth).toString("base64");
       }
-      debug("making CONNECT request");
+      debug3("making CONNECT request");
       var connectReq = self.request(connectOptions);
       connectReq.useChunkedEncodingByDefault = false;
       connectReq.once("response", onResponse);
@@ -744,40 +744,40 @@ var require_tunnel = __commonJS({
         connectReq.removeAllListeners();
         socket.removeAllListeners();
         if (res.statusCode !== 200) {
-          debug(
+          debug3(
             "tunneling socket could not be established, statusCode=%d",
             res.statusCode
           );
           socket.destroy();
-          var error2 = new Error("tunneling socket could not be established, statusCode=" + res.statusCode);
-          error2.code = "ECONNRESET";
-          options.request.emit("error", error2);
+          var error3 = new Error("tunneling socket could not be established, statusCode=" + res.statusCode);
+          error3.code = "ECONNRESET";
+          options.request.emit("error", error3);
           self.removeSocket(placeholder);
           return;
         }
         if (head.length > 0) {
-          debug("got illegal response body from proxy");
+          debug3("got illegal response body from proxy");
           socket.destroy();
-          var error2 = new Error("got illegal response body from proxy");
-          error2.code = "ECONNRESET";
-          options.request.emit("error", error2);
+          var error3 = new Error("got illegal response body from proxy");
+          error3.code = "ECONNRESET";
+          options.request.emit("error", error3);
           self.removeSocket(placeholder);
           return;
         }
-        debug("tunneling connection has established");
+        debug3("tunneling connection has established");
         self.sockets[self.sockets.indexOf(placeholder)] = socket;
         return cb(socket);
       }
       function onError(cause) {
         connectReq.removeAllListeners();
-        debug(
+        debug3(
           "tunneling socket could not be established, cause=%s\n",
           cause.message,
           cause.stack
         );
-        var error2 = new Error("tunneling socket could not be established, cause=" + cause.message);
-        error2.code = "ECONNRESET";
-        options.request.emit("error", error2);
+        var error3 = new Error("tunneling socket could not be established, cause=" + cause.message);
+        error3.code = "ECONNRESET";
+        options.request.emit("error", error3);
         self.removeSocket(placeholder);
       }
     };
@@ -832,9 +832,9 @@ var require_tunnel = __commonJS({
       }
       return target;
     }
-    var debug;
+    var debug3;
     if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
-      debug = function() {
+      debug3 = function() {
         var args = Array.prototype.slice.call(arguments);
         if (typeof args[0] === "string") {
           args[0] = "TUNNEL: " + args[0];
@@ -844,10 +844,10 @@ var require_tunnel = __commonJS({
         console.error.apply(console, args);
       };
     } else {
-      debug = function() {
+      debug3 = function() {
       };
     }
-    exports.debug = debug;
+    exports.debug = debug3;
   }
 });
 
@@ -5106,7 +5106,7 @@ Content-Type: ${value.type || "application/octet-stream"}\r
         throw new TypeError("Body is unusable");
       }
       const promise = createDeferredPromise();
-      const errorSteps = (error2) => promise.reject(error2);
+      const errorSteps = (error3) => promise.reject(error3);
       const successSteps = (data) => {
         try {
           promise.resolve(convertBytesToJSValue(data));
@@ -5350,15 +5350,15 @@ var require_request = __commonJS({
         }
         return this[kHandler].onComplete(trailers);
       }
-      onError(error2) {
+      onError(error3) {
         if (channels.error.hasSubscribers) {
-          channels.error.publish({ request: this, error: error2 });
+          channels.error.publish({ request: this, error: error3 });
         }
         if (this.aborted) {
           return;
         }
         this.aborted = true;
-        return this[kHandler].onError(error2);
+        return this[kHandler].onError(error3);
       }
       // TODO: adjust to support H2
       addHeader(key, value) {
@@ -6220,8 +6220,8 @@ var require_RedirectHandler = __commonJS({
       onUpgrade(statusCode, headers, socket) {
         this.handler.onUpgrade(statusCode, headers, socket);
       }
-      onError(error2) {
-        this.handler.onError(error2);
+      onError(error3) {
+        this.handler.onError(error3);
       }
       onHeaders(statusCode, headers, resume, statusText) {
         this.location = this.history.length >= this.maxRedirections || util.isDisturbed(this.opts.body) ? null : parseLocation(statusCode, headers);
@@ -9958,13 +9958,13 @@ var require_mock_utils = __commonJS({
       if (mockDispatch2.data.callback) {
         mockDispatch2.data = { ...mockDispatch2.data, ...mockDispatch2.data.callback(opts) };
       }
-      const { data: { statusCode, data, headers, trailers, error: error2 }, delay, persist } = mockDispatch2;
+      const { data: { statusCode, data, headers, trailers, error: error3 }, delay, persist } = mockDispatch2;
       const { timesInvoked, times } = mockDispatch2;
       mockDispatch2.consumed = !persist && timesInvoked >= times;
       mockDispatch2.pending = timesInvoked < times;
-      if (error2 !== null) {
+      if (error3 !== null) {
         deleteMockDispatch(this[kDispatches], key);
-        handler.onError(error2);
+        handler.onError(error3);
         return true;
       }
       if (typeof delay === "number" && delay > 0) {
@@ -10002,19 +10002,19 @@ var require_mock_utils = __commonJS({
         if (agent.isMockActive) {
           try {
             mockDispatch.call(this, opts, handler);
-          } catch (error2) {
-            if (error2 instanceof MockNotMatchedError) {
+          } catch (error3) {
+            if (error3 instanceof MockNotMatchedError) {
               const netConnect = agent[kGetNetConnect]();
               if (netConnect === false) {
-                throw new MockNotMatchedError(`${error2.message}: subsequent request to origin ${origin} was not allowed (net.connect disabled)`);
+                throw new MockNotMatchedError(`${error3.message}: subsequent request to origin ${origin} was not allowed (net.connect disabled)`);
               }
               if (checkNetConnect(netConnect, origin)) {
                 originalDispatch.call(this, opts, handler);
               } else {
-                throw new MockNotMatchedError(`${error2.message}: subsequent request to origin ${origin} was not allowed (net.connect is not enabled for this origin)`);
+                throw new MockNotMatchedError(`${error3.message}: subsequent request to origin ${origin} was not allowed (net.connect is not enabled for this origin)`);
               }
             } else {
-              throw error2;
+              throw error3;
             }
           }
         } else {
@@ -10177,11 +10177,11 @@ var require_mock_interceptor = __commonJS({
       /**
        * Mock an undici request with a defined error.
        */
-      replyWithError(error2) {
-        if (typeof error2 === "undefined") {
+      replyWithError(error3) {
+        if (typeof error3 === "undefined") {
           throw new InvalidArgumentError("error must be defined");
         }
-        const newMockDispatch = addMockDispatch(this[kDispatches], this[kDispatchKey], { error: error2 });
+        const newMockDispatch = addMockDispatch(this[kDispatches], this[kDispatchKey], { error: error3 });
         return new MockScope(newMockDispatch);
       }
       /**
@@ -12198,17 +12198,17 @@ var require_fetch = __commonJS({
         this.emit("terminated", reason);
       }
       // https://fetch.spec.whatwg.org/#fetch-controller-abort
-      abort(error2) {
+      abort(error3) {
         if (this.state !== "ongoing") {
           return;
         }
         this.state = "aborted";
-        if (!error2) {
-          error2 = new DOMException2("The operation was aborted.", "AbortError");
+        if (!error3) {
+          error3 = new DOMException2("The operation was aborted.", "AbortError");
         }
-        this.serializedAbortReason = error2;
-        this.connection?.destroy(error2);
-        this.emit("terminated", error2);
+        this.serializedAbortReason = error3;
+        this.connection?.destroy(error3);
+        this.emit("terminated", error3);
       }
     };
     async function fetch2(input, init = {}) {
@@ -12312,13 +12312,13 @@ var require_fetch = __commonJS({
         performance.markResourceTiming(timingInfo, originalURL.href, initiatorType, globalThis2, cacheState);
       }
     }
-    function abortFetch(p, request, responseObject, error2) {
-      if (!error2) {
-        error2 = new DOMException2("The operation was aborted.", "AbortError");
+    function abortFetch(p, request, responseObject, error3) {
+      if (!error3) {
+        error3 = new DOMException2("The operation was aborted.", "AbortError");
       }
-      p.reject(error2);
+      p.reject(error3);
       if (request.body != null && isReadable(request.body?.stream)) {
-        request.body.stream.cancel(error2).catch((err) => {
+        request.body.stream.cancel(error3).catch((err) => {
           if (err.code === "ERR_INVALID_STATE") {
             return;
           }
@@ -12330,7 +12330,7 @@ var require_fetch = __commonJS({
       }
       const response = responseObject[kState];
       if (response.body != null && isReadable(response.body?.stream)) {
-        response.body.stream.cancel(error2).catch((err) => {
+        response.body.stream.cancel(error3).catch((err) => {
           if (err.code === "ERR_INVALID_STATE") {
             return;
           }
@@ -13108,13 +13108,13 @@ var require_fetch = __commonJS({
               fetchParams.controller.ended = true;
               this.body.push(null);
             },
-            onError(error2) {
+            onError(error3) {
               if (this.abort) {
                 fetchParams.controller.off("terminated", this.abort);
               }
-              this.body?.destroy(error2);
-              fetchParams.controller.terminate(error2);
-              reject(error2);
+              this.body?.destroy(error3);
+              fetchParams.controller.terminate(error3);
+              reject(error3);
             },
             onUpgrade(status, headersList, socket) {
               if (status !== 101) {
@@ -13580,8 +13580,8 @@ var require_util4 = __commonJS({
                   }
                   fr[kResult] = result;
                   fireAProgressEvent("load", fr);
-                } catch (error2) {
-                  fr[kError] = error2;
+                } catch (error3) {
+                  fr[kError] = error3;
                   fireAProgressEvent("error", fr);
                 }
                 if (fr[kState] !== "loading") {
@@ -13590,13 +13590,13 @@ var require_util4 = __commonJS({
               });
               break;
             }
-          } catch (error2) {
+          } catch (error3) {
             if (fr[kAborted]) {
               return;
             }
             queueMicrotask(() => {
               fr[kState] = "done";
-              fr[kError] = error2;
+              fr[kError] = error3;
               fireAProgressEvent("error", fr);
               if (fr[kState] !== "loading") {
                 fireAProgressEvent("loadend", fr);
@@ -15612,11 +15612,11 @@ var require_connection = __commonJS({
         });
       }
     }
-    function onSocketError(error2) {
+    function onSocketError(error3) {
       const { ws } = this;
       ws[kReadyState] = states.CLOSING;
       if (channels.socketError.hasSubscribers) {
-        channels.socketError.publish(error2);
+        channels.socketError.publish(error3);
       }
       this.destroy();
     }
@@ -16763,12 +16763,12 @@ var require_lib = __commonJS({
             throw new Error("Client has already been disposed.");
           }
           const parsedUrl = new URL(requestUrl);
-          let info3 = this._prepareRequest(verb, parsedUrl, headers);
+          let info4 = this._prepareRequest(verb, parsedUrl, headers);
           const maxTries = this._allowRetries && RetryableHttpVerbs.includes(verb) ? this._maxRetries + 1 : 1;
           let numTries = 0;
           let response;
           do {
-            response = yield this.requestRaw(info3, data);
+            response = yield this.requestRaw(info4, data);
             if (response && response.message && response.message.statusCode === HttpCodes.Unauthorized) {
               let authenticationHandler;
               for (const handler of this.handlers) {
@@ -16778,7 +16778,7 @@ var require_lib = __commonJS({
                 }
               }
               if (authenticationHandler) {
-                return authenticationHandler.handleAuthentication(this, info3, data);
+                return authenticationHandler.handleAuthentication(this, info4, data);
               } else {
                 return response;
               }
@@ -16801,8 +16801,8 @@ var require_lib = __commonJS({
                   }
                 }
               }
-              info3 = this._prepareRequest(verb, parsedRedirectUrl, headers);
-              response = yield this.requestRaw(info3, data);
+              info4 = this._prepareRequest(verb, parsedRedirectUrl, headers);
+              response = yield this.requestRaw(info4, data);
               redirectsRemaining--;
             }
             if (!response.message.statusCode || !HttpResponseRetryCodes.includes(response.message.statusCode)) {
@@ -16831,7 +16831,7 @@ var require_lib = __commonJS({
        * @param info
        * @param data
        */
-      requestRaw(info3, data) {
+      requestRaw(info4, data) {
         return __awaiter(this, void 0, void 0, function* () {
           return new Promise((resolve13, reject) => {
             function callbackForResult(err, res) {
@@ -16843,7 +16843,7 @@ var require_lib = __commonJS({
                 resolve13(res);
               }
             }
-            this.requestRawWithCallback(info3, data, callbackForResult);
+            this.requestRawWithCallback(info4, data, callbackForResult);
           });
         });
       }
@@ -16853,12 +16853,12 @@ var require_lib = __commonJS({
        * @param data
        * @param onResult
        */
-      requestRawWithCallback(info3, data, onResult) {
+      requestRawWithCallback(info4, data, onResult) {
         if (typeof data === "string") {
-          if (!info3.options.headers) {
-            info3.options.headers = {};
+          if (!info4.options.headers) {
+            info4.options.headers = {};
           }
-          info3.options.headers["Content-Length"] = Buffer.byteLength(data, "utf8");
+          info4.options.headers["Content-Length"] = Buffer.byteLength(data, "utf8");
         }
         let callbackCalled = false;
         function handleResult(err, res) {
@@ -16867,7 +16867,7 @@ var require_lib = __commonJS({
             onResult(err, res);
           }
         }
-        const req = info3.httpModule.request(info3.options, (msg) => {
+        const req = info4.httpModule.request(info4.options, (msg) => {
           const res = new HttpClientResponse(msg);
           handleResult(void 0, res);
         });
@@ -16879,7 +16879,7 @@ var require_lib = __commonJS({
           if (socket) {
             socket.end();
           }
-          handleResult(new Error(`Request timeout: ${info3.options.path}`));
+          handleResult(new Error(`Request timeout: ${info4.options.path}`));
         });
         req.on("error", function(err) {
           handleResult(err);
@@ -16915,27 +16915,27 @@ var require_lib = __commonJS({
         return this._getProxyAgentDispatcher(parsedUrl, proxyUrl);
       }
       _prepareRequest(method, requestUrl, headers) {
-        const info3 = {};
-        info3.parsedUrl = requestUrl;
-        const usingSsl = info3.parsedUrl.protocol === "https:";
-        info3.httpModule = usingSsl ? https : http;
+        const info4 = {};
+        info4.parsedUrl = requestUrl;
+        const usingSsl = info4.parsedUrl.protocol === "https:";
+        info4.httpModule = usingSsl ? https : http;
         const defaultPort = usingSsl ? 443 : 80;
-        info3.options = {};
-        info3.options.host = info3.parsedUrl.hostname;
-        info3.options.port = info3.parsedUrl.port ? parseInt(info3.parsedUrl.port) : defaultPort;
-        info3.options.path = (info3.parsedUrl.pathname || "") + (info3.parsedUrl.search || "");
-        info3.options.method = method;
-        info3.options.headers = this._mergeHeaders(headers);
+        info4.options = {};
+        info4.options.host = info4.parsedUrl.hostname;
+        info4.options.port = info4.parsedUrl.port ? parseInt(info4.parsedUrl.port) : defaultPort;
+        info4.options.path = (info4.parsedUrl.pathname || "") + (info4.parsedUrl.search || "");
+        info4.options.method = method;
+        info4.options.headers = this._mergeHeaders(headers);
         if (this.userAgent != null) {
-          info3.options.headers["user-agent"] = this.userAgent;
+          info4.options.headers["user-agent"] = this.userAgent;
         }
-        info3.options.agent = this._getAgent(info3.parsedUrl);
+        info4.options.agent = this._getAgent(info4.parsedUrl);
         if (this.handlers) {
           for (const handler of this.handlers) {
-            handler.prepareRequest(info3.options);
+            handler.prepareRequest(info4.options);
           }
         }
-        return info3;
+        return info4;
       }
       _mergeHeaders(headers) {
         if (this.requestOptions && this.requestOptions.headers) {
@@ -17254,12 +17254,12 @@ var require_oidc_utils = __commonJS({
         var _a2;
         return __awaiter(this, void 0, void 0, function* () {
           const httpclient = _OidcClient.createHttpClient();
-          const res = yield httpclient.getJson(id_token_url).catch((error2) => {
+          const res = yield httpclient.getJson(id_token_url).catch((error3) => {
             throw new Error(`Failed to get ID Token. 
  
-        Error Code : ${error2.statusCode}
+        Error Code : ${error3.statusCode}
  
-        Error Message: ${error2.message}`);
+        Error Message: ${error3.message}`);
           });
           const id_token = (_a2 = res.result) === null || _a2 === void 0 ? void 0 : _a2.value;
           if (!id_token) {
@@ -17280,8 +17280,8 @@ var require_oidc_utils = __commonJS({
             const id_token = yield _OidcClient.getCall(id_token_url);
             core_1.setSecret(id_token);
             return id_token;
-          } catch (error2) {
-            throw new Error(`Error message: ${error2.message}`);
+          } catch (error3) {
+            throw new Error(`Error message: ${error3.message}`);
           }
         });
       }
@@ -17776,33 +17776,33 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
     exports.setCommandEcho = setCommandEcho;
     function setFailed3(message) {
       process.exitCode = ExitCode.Failure;
-      error2(message);
+      error3(message);
     }
     exports.setFailed = setFailed3;
     function isDebug() {
       return process.env["RUNNER_DEBUG"] === "1";
     }
     exports.isDebug = isDebug;
-    function debug(message) {
+    function debug3(message) {
       command_1.issueCommand("debug", {}, message);
     }
-    exports.debug = debug;
-    function error2(message, properties = {}) {
+    exports.debug = debug3;
+    function error3(message, properties = {}) {
       command_1.issueCommand("error", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
     }
-    exports.error = error2;
-    function warning2(message, properties = {}) {
+    exports.error = error3;
+    function warning3(message, properties = {}) {
       command_1.issueCommand("warning", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
     }
-    exports.warning = warning2;
+    exports.warning = warning3;
     function notice(message, properties = {}) {
       command_1.issueCommand("notice", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
     }
     exports.notice = notice;
-    function info3(message) {
+    function info4(message) {
       process.stdout.write(message + os5.EOL);
     }
-    exports.info = info3;
+    exports.info = info4;
     function startGroup(name) {
       command_1.issue("group", name);
     }
@@ -18095,8 +18095,8 @@ var require_add = __commonJS({
       }
       if (kind === "error") {
         hook = function(method, options) {
-          return Promise.resolve().then(method.bind(null, options)).catch(function(error2) {
-            return orig(error2, options);
+          return Promise.resolve().then(method.bind(null, options)).catch(function(error3) {
+            return orig(error3, options);
           });
         };
       }
@@ -18828,7 +18828,7 @@ var require_dist_node5 = __commonJS({
         }
         if (status >= 400) {
           const data = await getResponseData(response);
-          const error2 = new import_request_error.RequestError(toErrorMessage(data), status, {
+          const error3 = new import_request_error.RequestError(toErrorMessage(data), status, {
             response: {
               url,
               status,
@@ -18837,7 +18837,7 @@ var require_dist_node5 = __commonJS({
             },
             request: requestOptions
           });
-          throw error2;
+          throw error3;
         }
         return parseSuccessResponseBody ? await getResponseData(response) : response.body;
       }).then((data) => {
@@ -18847,17 +18847,17 @@ var require_dist_node5 = __commonJS({
           headers,
           data
         };
-      }).catch((error2) => {
-        if (error2 instanceof import_request_error.RequestError)
-          throw error2;
-        else if (error2.name === "AbortError")
-          throw error2;
-        let message = error2.message;
-        if (error2.name === "TypeError" && "cause" in error2) {
-          if (error2.cause instanceof Error) {
-            message = error2.cause.message;
-          } else if (typeof error2.cause === "string") {
-            message = error2.cause;
+      }).catch((error3) => {
+        if (error3 instanceof import_request_error.RequestError)
+          throw error3;
+        else if (error3.name === "AbortError")
+          throw error3;
+        let message = error3.message;
+        if (error3.name === "TypeError" && "cause" in error3) {
+          if (error3.cause instanceof Error) {
+            message = error3.cause.message;
+          } else if (typeof error3.cause === "string") {
+            message = error3.cause;
           }
         }
         throw new import_request_error.RequestError(message, 500, {
@@ -21382,9 +21382,9 @@ var require_dist_node10 = __commonJS({
                 /<([^>]+)>;\s*rel="next"/
               ) || [])[1];
               return { value: normalizedResponse };
-            } catch (error2) {
-              if (error2.status !== 409)
-                throw error2;
+            } catch (error3) {
+              if (error3.status !== 409)
+                throw error3;
               url = "";
               return {
                 value: {
@@ -29177,45 +29177,45 @@ var require_esprima = __commonJS({
                 this.errors = [];
                 this.tolerant = false;
               }
-              ErrorHandler2.prototype.recordError = function(error2) {
-                this.errors.push(error2);
+              ErrorHandler2.prototype.recordError = function(error3) {
+                this.errors.push(error3);
               };
-              ErrorHandler2.prototype.tolerate = function(error2) {
+              ErrorHandler2.prototype.tolerate = function(error3) {
                 if (this.tolerant) {
-                  this.recordError(error2);
+                  this.recordError(error3);
                 } else {
-                  throw error2;
+                  throw error3;
                 }
               };
               ErrorHandler2.prototype.constructError = function(msg, column) {
-                var error2 = new Error(msg);
+                var error3 = new Error(msg);
                 try {
-                  throw error2;
+                  throw error3;
                 } catch (base) {
                   if (Object.create && Object.defineProperty) {
-                    error2 = Object.create(base);
-                    Object.defineProperty(error2, "column", { value: column });
+                    error3 = Object.create(base);
+                    Object.defineProperty(error3, "column", { value: column });
                   }
                 }
-                return error2;
+                return error3;
               };
               ErrorHandler2.prototype.createError = function(index, line, col, description) {
                 var msg = "Line " + line + ": " + description;
-                var error2 = this.constructError(msg, col);
-                error2.index = index;
-                error2.lineNumber = line;
-                error2.description = description;
-                return error2;
+                var error3 = this.constructError(msg, col);
+                error3.index = index;
+                error3.lineNumber = line;
+                error3.description = description;
+                return error3;
               };
               ErrorHandler2.prototype.throwError = function(index, line, col, description) {
                 throw this.createError(index, line, col, description);
               };
               ErrorHandler2.prototype.tolerateError = function(index, line, col, description) {
-                var error2 = this.createError(index, line, col, description);
+                var error3 = this.createError(index, line, col, description);
                 if (this.tolerant) {
-                  this.recordError(error2);
+                  this.recordError(error3);
                 } else {
-                  throw error2;
+                  throw error3;
                 }
               };
               return ErrorHandler2;
@@ -31989,17 +31989,17 @@ var require_parse4 = __commonJS({
     );
     var transform2 = (k, v) => reviver ? reviver(k, v) : v;
     var unexpected = () => {
-      const error2 = new SyntaxError(`Unexpected token ${current.value.slice(0, 1)}`);
-      Object.assign(error2, current.loc.start);
-      throw error2;
+      const error3 = new SyntaxError(`Unexpected token ${current.value.slice(0, 1)}`);
+      Object.assign(error3, current.loc.start);
+      throw error3;
     };
     var unexpected_end = () => {
-      const error2 = new SyntaxError("Unexpected end of JSON input");
-      Object.assign(error2, last ? last.loc.end : {
+      const error3 = new SyntaxError("Unexpected end of JSON input");
+      Object.assign(error3, last ? last.loc.end : {
         line: 1,
         column: 0
       });
-      throw error2;
+      throw error3;
     };
     var next = () => {
       const new_token = tokens[++index];
@@ -35038,14 +35038,14 @@ var require_parse_json = __commonJS({
       try {
         try {
           return JSON.parse(string, reviver);
-        } catch (error2) {
+        } catch (error3) {
           fallback(string, reviver);
-          throw error2;
+          throw error3;
         }
-      } catch (error2) {
-        error2.message = error2.message.replace(/\n/g, "");
-        const indexMatch = error2.message.match(/in JSON at position (\d+) while parsing/);
-        const jsonError = new JSONError(error2);
+      } catch (error3) {
+        error3.message = error3.message.replace(/\n/g, "");
+        const indexMatch = error3.message.match(/in JSON at position (\d+) while parsing/);
+        const jsonError = new JSONError(error3);
         if (filename) {
           jsonError.fileName = filename;
         }
@@ -37958,10 +37958,10 @@ var require_loaders = __commonJS({
       try {
         const result = parseJson2(content);
         return result;
-      } catch (error2) {
-        error2.message = `JSON Error in ${filepath}:
-${error2.message}`;
-        throw error2;
+      } catch (error3) {
+        error3.message = `JSON Error in ${filepath}:
+${error3.message}`;
+        throw error3;
       }
     };
     var yaml;
@@ -37972,10 +37972,10 @@ ${error2.message}`;
       try {
         const result = yaml.load(content);
         return result;
-      } catch (error2) {
-        error2.message = `YAML Error in ${filepath}:
-${error2.message}`;
-        throw error2;
+      } catch (error3) {
+        error3.message = `YAML Error in ${filepath}:
+${error3.message}`;
+        throw error3;
       }
     };
     var loaders2 = {
@@ -38141,11 +38141,11 @@ var require_path_type = __commonJS({
       try {
         const stats = await promisify4(fs11[fsStatType])(filePath);
         return stats[statsMethodName]();
-      } catch (error2) {
-        if (error2.code === "ENOENT") {
+      } catch (error3) {
+        if (error3.code === "ENOENT") {
           return false;
         }
-        throw error2;
+        throw error3;
       }
     }
     function isTypeSync(fsStatType, statsMethodName, filePath) {
@@ -38154,11 +38154,11 @@ var require_path_type = __commonJS({
       }
       try {
         return fs11[fsStatType](filePath)[statsMethodName]();
-      } catch (error2) {
-        if (error2.code === "ENOENT") {
+      } catch (error3) {
+        if (error3.code === "ENOENT") {
           return false;
         }
-        throw error2;
+        throw error3;
       }
     }
     exports.isFile = isType.bind(null, "stat", "isFile");
@@ -38218,9 +38218,9 @@ var require_readFile = __commonJS({
     }
     async function fsReadFileAsync(pathname, encoding) {
       return new Promise((resolve13, reject) => {
-        _fs.default.readFile(pathname, encoding, (error2, contents) => {
-          if (error2) {
-            reject(error2);
+        _fs.default.readFile(pathname, encoding, (error3, contents) => {
+          if (error3) {
+            reject(error3);
             return;
           }
           resolve13(contents);
@@ -38232,11 +38232,11 @@ var require_readFile = __commonJS({
       try {
         const content = await fsReadFileAsync(filepath, "utf8");
         return content;
-      } catch (error2) {
-        if (throwNotFound === false && (error2.code === "ENOENT" || error2.code === "EISDIR")) {
+      } catch (error3) {
+        if (throwNotFound === false && (error3.code === "ENOENT" || error3.code === "EISDIR")) {
           return null;
         }
-        throw error2;
+        throw error3;
       }
     }
     function readFileSync4(filepath, options = {}) {
@@ -38244,11 +38244,11 @@ var require_readFile = __commonJS({
       try {
         const content = _fs.default.readFileSync(filepath, "utf8");
         return content;
-      } catch (error2) {
-        if (throwNotFound === false && (error2.code === "ENOENT" || error2.code === "EISDIR")) {
+      } catch (error3) {
+        if (throwNotFound === false && (error3.code === "ENOENT" || error3.code === "EISDIR")) {
           return null;
         }
-        throw error2;
+        throw error3;
       }
     }
   }
@@ -38807,21 +38807,21 @@ var require_tr46 = __commonJS({
         label = punycode.toUnicode(label);
         processing_option = PROCESSING_OPTIONS.NONTRANSITIONAL;
       }
-      var error2 = false;
+      var error3 = false;
       if (normalize3(label) !== label || label[3] === "-" && label[4] === "-" || label[0] === "-" || label[label.length - 1] === "-" || label.indexOf(".") !== -1 || label.search(combiningMarksRegex) === 0) {
-        error2 = true;
+        error3 = true;
       }
       var len = countSymbols(label);
       for (var i = 0; i < len; ++i) {
         var status = findStatus(label.codePointAt(i));
         if (processing === PROCESSING_OPTIONS.TRANSITIONAL && status[1] !== "valid" || processing === PROCESSING_OPTIONS.NONTRANSITIONAL && status[1] !== "valid" && status[1] !== "deviation") {
-          error2 = true;
+          error3 = true;
           break;
         }
       }
       return {
         label,
-        error: error2
+        error: error3
       };
     }
     function processing(domain_name, useSTD3, processing_option) {
@@ -40473,8 +40473,8 @@ var require_lib6 = __commonJS({
       this.timeout = timeout;
       if (body instanceof Stream3) {
         body.on("error", function(err) {
-          const error2 = err.name === "AbortError" ? err : new FetchError(`Invalid response body while trying to fetch ${_this.url}: ${err.message}`, "system", err);
-          _this[INTERNALS].error = error2;
+          const error3 = err.name === "AbortError" ? err : new FetchError(`Invalid response body while trying to fetch ${_this.url}: ${err.message}`, "system", err);
+          _this[INTERNALS].error = error3;
         });
       }
     }
@@ -41319,14 +41319,14 @@ var require_lib6 = __commonJS({
         const signal = request.signal;
         let response = null;
         const abort = function abort2() {
-          let error2 = new AbortError("The user aborted a request.");
-          reject(error2);
+          let error3 = new AbortError("The user aborted a request.");
+          reject(error3);
           if (request.body && request.body instanceof Stream3.Readable) {
-            destroyStream(request.body, error2);
+            destroyStream(request.body, error3);
           }
           if (!response || !response.body)
             return;
-          response.body.emit("error", error2);
+          response.body.emit("error", error3);
         };
         if (signal && signal.aborted) {
           abort();
@@ -41862,13 +41862,13 @@ var require_resolve_from2 = __commonJS({
       }
       try {
         fromDirectory = fs11.realpathSync(fromDirectory);
-      } catch (error2) {
-        if (error2.code === "ENOENT") {
+      } catch (error3) {
+        if (error3.code === "ENOENT") {
           fromDirectory = path26.resolve(fromDirectory);
         } else if (silent) {
           return;
         } else {
-          throw error2;
+          throw error3;
         }
       }
       const fromFile = path26.join(fromDirectory, "noop.js");
@@ -41880,7 +41880,7 @@ var require_resolve_from2 = __commonJS({
       if (silent) {
         try {
           return resolveFileName();
-        } catch (error2) {
+        } catch (error3) {
           return;
         }
       }
@@ -42365,11 +42365,11 @@ var require_graceful_fs = __commonJS({
         }
       });
     }
-    var debug = noop;
+    var debug3 = noop;
     if (util.debuglog)
-      debug = util.debuglog("gfs4");
+      debug3 = util.debuglog("gfs4");
     else if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || ""))
-      debug = function() {
+      debug3 = function() {
         var m = util.format.apply(util, arguments);
         m = "GFS4: " + m.split(/\n/).join("\nGFS4: ");
         console.error(m);
@@ -42404,7 +42404,7 @@ var require_graceful_fs = __commonJS({
       }(fs11.closeSync);
       if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || "")) {
         process.on("exit", function() {
-          debug(fs11[gracefulQueue]);
+          debug3(fs11[gracefulQueue]);
           require("assert").equal(fs11[gracefulQueue].length, 0);
         });
       }
@@ -42657,7 +42657,7 @@ var require_graceful_fs = __commonJS({
       return fs12;
     }
     function enqueue(elem) {
-      debug("ENQUEUE", elem[0].name, elem[1]);
+      debug3("ENQUEUE", elem[0].name, elem[1]);
       fs11[gracefulQueue].push(elem);
       retry();
     }
@@ -42684,10 +42684,10 @@ var require_graceful_fs = __commonJS({
       var startTime = elem[3];
       var lastTime = elem[4];
       if (startTime === void 0) {
-        debug("RETRY", fn.name, args);
+        debug3("RETRY", fn.name, args);
         fn.apply(null, args);
       } else if (Date.now() - startTime >= 6e4) {
-        debug("TIMEOUT", fn.name, args);
+        debug3("TIMEOUT", fn.name, args);
         var cb = args.pop();
         if (typeof cb === "function")
           cb.call(null, err);
@@ -42696,7 +42696,7 @@ var require_graceful_fs = __commonJS({
         var sinceStart = Math.max(lastTime - startTime, 1);
         var desiredDelay = Math.min(sinceStart * 1.2, 100);
         if (sinceAttempt >= desiredDelay) {
-          debug("RETRY", fn.name, args);
+          debug3("RETRY", fn.name, args);
           fn.apply(null, args.concat([startTime]));
         } else {
           fs11[gracefulQueue].push(elem);
@@ -44003,11 +44003,11 @@ var require_p_locate = __commonJS({
       const checkLimit = pLimit2(options.preserveOrder ? 1 : Infinity);
       try {
         await Promise.all(items.map((element) => checkLimit(finder2, element)));
-      } catch (error2) {
-        if (error2 instanceof EndError2) {
-          return error2.value;
+      } catch (error3) {
+        if (error3 instanceof EndError2) {
+          return error3.value;
         }
-        throw error2;
+        throw error3;
       }
     };
     module2.exports = pLocate2;
@@ -44335,8 +44335,8 @@ var require_errno = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.isEnoentCodeError = void 0;
-    function isEnoentCodeError(error2) {
-      return error2.code === "ENOENT";
+    function isEnoentCodeError(error3) {
+      return error3.code === "ENOENT";
     }
     exports.isEnoentCodeError = isEnoentCodeError;
   }
@@ -44875,7 +44875,7 @@ var require_stream = __commonJS({
     function merge4(streams) {
       const mergedStream = merge22(streams);
       streams.forEach((stream) => {
-        stream.once("error", (error2) => mergedStream.emit("error", error2));
+        stream.once("error", (error3) => mergedStream.emit("error", error3));
       });
       mergedStream.once("close", () => propagateCloseEventToSources(streams));
       mergedStream.once("end", () => propagateCloseEventToSources(streams));
@@ -45057,8 +45057,8 @@ var require_async = __commonJS({
       });
     }
     exports.read = read2;
-    function callFailureCallback(callback, error2) {
-      callback(error2);
+    function callFailureCallback(callback, error3) {
+      callback(error3);
     }
     function callSuccessCallback(callback, result) {
       callback(null, result);
@@ -45083,11 +45083,11 @@ var require_sync = __commonJS({
           stat2.isSymbolicLink = () => true;
         }
         return stat2;
-      } catch (error2) {
+      } catch (error3) {
         if (!settings.throwErrorOnBrokenSymbolicLink) {
           return lstat;
         }
-        throw error2;
+        throw error3;
       }
     }
     exports.read = read2;
@@ -45380,9 +45380,9 @@ var require_async2 = __commonJS({
         const tasks = names.map((name) => {
           const path26 = common.joinPathSegments(directory, name, settings.pathSegmentSeparator);
           return (done) => {
-            fsStat.stat(path26, settings.fsStatSettings, (error2, stats) => {
-              if (error2 !== null) {
-                done(error2);
+            fsStat.stat(path26, settings.fsStatSettings, (error3, stats) => {
+              if (error3 !== null) {
+                done(error3);
                 return;
               }
               const entry = {
@@ -45407,8 +45407,8 @@ var require_async2 = __commonJS({
       });
     }
     exports.readdir = readdir;
-    function callFailureCallback(callback, error2) {
-      callback(error2);
+    function callFailureCallback(callback, error3) {
+      callback(error3);
     }
     function callSuccessCallback(callback, result) {
       callback(null, result);
@@ -45445,9 +45445,9 @@ var require_sync2 = __commonJS({
           try {
             const stats = settings.fs.statSync(entry.path);
             entry.dirent = utils.fs.createDirentFromStats(entry.name, stats);
-          } catch (error2) {
+          } catch (error3) {
             if (settings.throwErrorOnBrokenSymbolicLink) {
-              throw error2;
+              throw error3;
             }
           }
         }
@@ -45628,7 +45628,7 @@ var require_queue = __commonJS({
         empty: noop,
         kill,
         killAndDrain,
-        error: error2
+        error: error3
       };
       return self;
       function running() {
@@ -45742,7 +45742,7 @@ var require_queue = __commonJS({
         self.drain();
         self.drain = noop;
       }
-      function error2(handler) {
+      function error3(handler) {
         errorHandler = handler;
       }
     }
@@ -45840,11 +45840,11 @@ var require_common4 = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.joinPathSegments = exports.replacePathSegmentSeparator = exports.isAppliedFilter = exports.isFatalError = void 0;
-    function isFatalError(settings, error2) {
+    function isFatalError(settings, error3) {
       if (settings.errorFilter === null) {
         return true;
       }
-      return !settings.errorFilter(error2);
+      return !settings.errorFilter(error3);
     }
     exports.isFatalError = isFatalError;
     function isAppliedFilter(filter3, value) {
@@ -45939,16 +45939,16 @@ var require_async3 = __commonJS({
       }
       _pushToQueue(directory, base) {
         const queueItem = { directory, base };
-        this._queue.push(queueItem, (error2) => {
-          if (error2 !== null) {
-            this._handleError(error2);
+        this._queue.push(queueItem, (error3) => {
+          if (error3 !== null) {
+            this._handleError(error3);
           }
         });
       }
       _worker(item, done) {
-        this._scandir(item.directory, this._settings.fsScandirSettings, (error2, entries) => {
-          if (error2 !== null) {
-            done(error2, void 0);
+        this._scandir(item.directory, this._settings.fsScandirSettings, (error3, entries) => {
+          if (error3 !== null) {
+            done(error3, void 0);
             return;
           }
           for (const entry of entries) {
@@ -45957,13 +45957,13 @@ var require_async3 = __commonJS({
           done(null, void 0);
         });
       }
-      _handleError(error2) {
-        if (this._isDestroyed || !common.isFatalError(this._settings, error2)) {
+      _handleError(error3) {
+        if (this._isDestroyed || !common.isFatalError(this._settings, error3)) {
           return;
         }
         this._isFatalError = true;
         this._isDestroyed = true;
-        this._emitter.emit("error", error2);
+        this._emitter.emit("error", error3);
       }
       _handleEntry(entry, base) {
         if (this._isDestroyed || this._isFatalError) {
@@ -46002,8 +46002,8 @@ var require_async4 = __commonJS({
         this._storage = [];
       }
       read(callback) {
-        this._reader.onError((error2) => {
-          callFailureCallback(callback, error2);
+        this._reader.onError((error3) => {
+          callFailureCallback(callback, error3);
         });
         this._reader.onEntry((entry) => {
           this._storage.push(entry);
@@ -46015,8 +46015,8 @@ var require_async4 = __commonJS({
       }
     };
     exports.default = AsyncProvider;
-    function callFailureCallback(callback, error2) {
-      callback(error2);
+    function callFailureCallback(callback, error3) {
+      callback(error3);
     }
     function callSuccessCallback(callback, entries) {
       callback(null, entries);
@@ -46048,8 +46048,8 @@ var require_stream2 = __commonJS({
         });
       }
       read() {
-        this._reader.onError((error2) => {
-          this._stream.emit("error", error2);
+        this._reader.onError((error3) => {
+          this._stream.emit("error", error3);
         });
         this._reader.onEntry((entry) => {
           this._stream.push(entry);
@@ -46099,15 +46099,15 @@ var require_sync3 = __commonJS({
           for (const entry of entries) {
             this._handleEntry(entry, base);
           }
-        } catch (error2) {
-          this._handleError(error2);
+        } catch (error3) {
+          this._handleError(error3);
         }
       }
-      _handleError(error2) {
-        if (!common.isFatalError(this._settings, error2)) {
+      _handleError(error3) {
+        if (!common.isFatalError(this._settings, error3)) {
           return;
         }
-        throw error2;
+        throw error3;
       }
       _handleEntry(entry, base) {
         const fullpath = entry.path;
@@ -46252,8 +46252,8 @@ var require_reader2 = __commonJS({
         }
         return entry;
       }
-      _isFatalError(error2) {
-        return !utils.errno.isEnoentCodeError(error2) && !this._settings.suppressErrors;
+      _isFatalError(error3) {
+        return !utils.errno.isEnoentCodeError(error3) && !this._settings.suppressErrors;
       }
     };
     exports.default = Reader;
@@ -46298,17 +46298,17 @@ var require_stream3 = __commonJS({
         return stream;
       }
       _getEntry(filepath, pattern, options) {
-        return this._getStat(filepath).then((stats) => this._makeEntry(stats, pattern)).catch((error2) => {
-          if (options.errorFilter(error2)) {
+        return this._getStat(filepath).then((stats) => this._makeEntry(stats, pattern)).catch((error3) => {
+          if (options.errorFilter(error3)) {
             return null;
           }
-          throw error2;
+          throw error3;
         });
       }
       _getStat(filepath) {
         return new Promise((resolve13, reject) => {
-          this._stat(filepath, this._fsStatSettings, (error2, stats) => {
-            return error2 === null ? resolve13(stats) : reject(error2);
+          this._stat(filepath, this._fsStatSettings, (error3, stats) => {
+            return error3 === null ? resolve13(stats) : reject(error3);
           });
         });
       }
@@ -46333,11 +46333,11 @@ var require_async5 = __commonJS({
       }
       dynamic(root, options) {
         return new Promise((resolve13, reject) => {
-          this._walkAsync(root, options, (error2, entries) => {
-            if (error2 === null) {
+          this._walkAsync(root, options, (error3, entries) => {
+            if (error3 === null) {
               resolve13(entries);
             } else {
-              reject(error2);
+              reject(error3);
             }
           });
         });
@@ -46417,7 +46417,7 @@ var require_partial = __commonJS({
       match(filepath) {
         const parts = filepath.split("/");
         const levels = parts.length;
-        const patterns = this._storage.filter((info3) => !info3.complete || info3.segments.length > levels);
+        const patterns = this._storage.filter((info4) => !info4.complete || info4.segments.length > levels);
         for (const pattern of patterns) {
           const section = pattern.sections[0];
           if (!pattern.complete && levels > section.length) {
@@ -46586,10 +46586,10 @@ var require_error = __commonJS({
         this._settings = _settings;
       }
       getFilter() {
-        return (error2) => this._isNonFatalError(error2);
+        return (error3) => this._isNonFatalError(error3);
       }
-      _isNonFatalError(error2) {
-        return utils.errno.isEnoentCodeError(error2) || this._settings.suppressErrors;
+      _isNonFatalError(error3) {
+        return utils.errno.isEnoentCodeError(error3) || this._settings.suppressErrors;
       }
     };
     exports.default = ErrorFilter;
@@ -46730,7 +46730,7 @@ var require_stream4 = __commonJS({
         const source = this.api(root, task, options);
         const destination = new stream_1.Readable({ objectMode: true, read: () => {
         } });
-        source.once("error", (error2) => destination.emit("error", error2)).on("data", (entry) => destination.emit("data", options.transform(entry))).once("end", () => destination.emit("end"));
+        source.once("error", (error3) => destination.emit("error", error3)).on("data", (entry) => destination.emit("data", options.transform(entry))).once("end", () => destination.emit("end"));
         destination.once("close", () => source.destroy());
         return destination;
       }
@@ -46778,11 +46778,11 @@ var require_sync5 = __commonJS({
         try {
           const stats = this._getStat(filepath);
           return this._makeEntry(stats, pattern);
-        } catch (error2) {
-          if (options.errorFilter(error2)) {
+        } catch (error3) {
+          if (options.errorFilter(error3)) {
             return null;
           }
-          throw error2;
+          throw error3;
         }
       }
       _getStat(filepath) {
@@ -47091,7 +47091,7 @@ var require_src3 = __commonJS({
           this.opts.deserialize = compression.deserialize.bind(compression);
         }
         if (typeof this.opts.store.on === "function" && emitErrors) {
-          this.opts.store.on("error", (error2) => this.emit("error", error2));
+          this.opts.store.on("error", (error3) => this.emit("error", error3));
         }
         this.opts.store.namespace = this.opts.namespace;
         const generateIterator = (iterator) => async function* () {
@@ -47998,7 +47998,7 @@ var require_minimatch = __commonJS({
       this.parseNegate();
       var set = this.globSet = this.braceExpand();
       if (options.debug)
-        this.debug = function debug() {
+        this.debug = function debug3() {
           console.error.apply(console, arguments);
         };
       this.debug(this.pattern, set);
@@ -48950,10 +48950,10 @@ var require_sync7 = __commonJS({
           var abs = this._makeAbs(f);
           this.cache[abs] = "FILE";
           if (abs === this.cwdAbs) {
-            var error2 = new Error(er.code + " invalid cwd " + this.cwd);
-            error2.path = this.cwd;
-            error2.code = er.code;
-            throw error2;
+            var error3 = new Error(er.code + " invalid cwd " + this.cwd);
+            error3.path = this.cwd;
+            error3.code = er.code;
+            throw error3;
           }
           break;
         case "ENOENT":
@@ -49526,10 +49526,10 @@ var require_glob = __commonJS({
           var abs = this._makeAbs(f);
           this.cache[abs] = "FILE";
           if (abs === this.cwdAbs) {
-            var error2 = new Error(er.code + " invalid cwd " + this.cwd);
-            error2.path = this.cwd;
-            error2.code = er.code;
-            this.emit("error", error2);
+            var error3 = new Error(er.code + " invalid cwd " + this.cwd);
+            error3.path = this.cwd;
+            error3.code = er.code;
+            this.emit("error", error3);
             this.abort();
           }
           break;
@@ -50457,7 +50457,7 @@ var require_file_entry_cache = __commonJS({
 });
 
 // src/main.ts
-var import_core = __toESM(require_core());
+var import_core4 = __toESM(require_core());
 var import_github2 = __toESM(require_github());
 var import_context = __toESM(require_context());
 var import_assert20 = __toESM(require("assert"));
@@ -50481,7 +50481,7 @@ function isAppError(e) {
 }
 
 // src/action.ts
-var core3 = __toESM(require_core());
+var import_core3 = __toESM(require_core());
 
 // ../node_modules/.pnpm/cspell-glob@7.3.8/node_modules/cspell-glob/dist/esm/globHelper.js
 var Path = __toESM(require("path"), 1);
@@ -50803,18 +50803,18 @@ function validateActionParams(params, logError2) {
 }
 
 // src/getActionParams.ts
-var core = __toESM(require_core());
+var import_core = __toESM(require_core());
 function getActionParams() {
   return applyDefaults({
-    github_token: core.getInput("github_token", { required: true }),
-    files: core.getInput("files"),
-    incremental_files_only: tf(core.getInput("incremental_files_only")),
-    config: core.getInput("config"),
-    root: core.getInput("root"),
-    inline: core.getInput("inline").toLowerCase(),
-    strict: tf(core.getInput("strict")),
-    verbose: tf(core.getInput("verbose")),
-    check_dot_files: tf(core.getInput("check_dot_files"))
+    github_token: (0, import_core.getInput)("github_token", { required: true }),
+    files: (0, import_core.getInput)("files"),
+    incremental_files_only: tf((0, import_core.getInput)("incremental_files_only")),
+    config: (0, import_core.getInput)("config"),
+    root: (0, import_core.getInput)("root"),
+    inline: (0, import_core.getInput)("inline").toLowerCase(),
+    strict: tf((0, import_core.getInput)("strict")),
+    verbose: tf((0, import_core.getInput)("verbose")),
+    check_dot_files: tf((0, import_core.getInput)("check_dot_files"))
   });
 }
 function tf(v) {
@@ -50838,10 +50838,12 @@ var import_plugin_rest_endpoint_methods = __toESM(require_dist_node9());
 async function getPullRequestFiles(git, prRef) {
   const { owner, repo, pull_number } = prRef;
   const { rest } = (0, import_plugin_rest_endpoint_methods.restEndpointMethods)(git);
+  console.info("getPullRequestFiles RateLimit start: %o", (await rest.rateLimit.get()).data);
   const commits = await rest.pulls.listCommits({ owner, repo, pull_number });
   console.time("Fetch file names in commits");
   const files = await fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
   console.timeEnd("Fetch file names in commits");
+  console.info("getPullRequestFiles RateLimit end: %o", (await rest.rateLimit.get()).data);
   return files;
 }
 function isString(s) {
@@ -50871,7 +50873,7 @@ async function* fetchFilesForCommitsX(git, context, commitIds) {
 }
 
 // src/reporter.ts
-var core2 = __toESM(require_core());
+var import_core2 = __toESM(require_core());
 var import_command = __toESM(require_command());
 
 // ../node_modules/.pnpm/vscode-uri@3.0.8/node_modules/vscode-uri/lib/esm/index.mjs
@@ -51254,10 +51256,11 @@ var { URI, Utils } = LIB;
 
 // src/reporter.ts
 var path = __toESM(require("path"));
+var core = { debug: import_core2.debug, info: import_core2.info, warning: import_core2.warning, error: import_core2.error };
 function nullEmitter(_msg) {
 }
 var CSpellReporterForGithubAction = class {
-  constructor(reportIssueCommand, options, logger = core2) {
+  constructor(reportIssueCommand, options, logger = core) {
     this.reportIssueCommand = reportIssueCommand;
     this.options = options;
     this.logger = logger;
@@ -51304,13 +51307,13 @@ var CSpellReporterForGithubAction = class {
     const timeMsg = elapsedTimeMs ? `(${elapsedTimeMs.toFixed(2)}ms)` : "-";
     logger.info(`${fileNum}/${fileCount} ${filename}${issues} ${timeMsg}`);
   }
-  _error(message, error2) {
+  _error(message, error3) {
     const { logger } = this;
     logger.error(`${message}
-        name: ${error2.name}
-        msg: ${error2.message}
+        name: ${error3.name}
+        msg: ${error3.message}
         stack:
-${error2.stack}
+${error3.stack}
         `);
     return;
   }
@@ -52258,8 +52261,8 @@ var ServiceRequestCls = class extends BaseServiceRequest {
 function createResponse(value, _req) {
   return { value };
 }
-function createResponseFail(_request, error2) {
-  return { error: error2 };
+function createResponseFail(_request, error3) {
+  return { error: error3 };
 }
 function isServiceResponseSuccess(res) {
   return "value" in res && res.error === void 0;
@@ -53264,11 +53267,11 @@ function makeNodeErrorWithCode(Base, key) {
     const limit = Error.stackTraceLimit;
     if (isErrorStackTraceLimitWritable())
       Error.stackTraceLimit = 0;
-    const error2 = new Base();
+    const error3 = new Base();
     if (isErrorStackTraceLimitWritable())
       Error.stackTraceLimit = limit;
-    const message = getMessage(key, args, error2);
-    Object.defineProperties(error2, {
+    const message = getMessage(key, args, error3);
+    Object.defineProperties(error3, {
       // Note: no need to implement `kIsNodeError` symbol, would be hard,
       // probably.
       message: {
@@ -53287,9 +53290,9 @@ function makeNodeErrorWithCode(Base, key) {
         configurable: true
       }
     });
-    captureLargerStackTrace(error2);
-    error2.code = key;
-    return error2;
+    captureLargerStackTrace(error3);
+    error3.code = key;
+    return error3;
   }
 }
 function isErrorStackTraceLimitWritable() {
@@ -53316,16 +53319,16 @@ var captureLargerStackTrace = hideStackFrames(
    * @returns {Error}
    */
   // @ts-expect-error: fine
-  function(error2) {
+  function(error3) {
     const stackTraceLimitIsWritable = isErrorStackTraceLimitWritable();
     if (stackTraceLimitIsWritable) {
       userStackTraceLimit = Error.stackTraceLimit;
       Error.stackTraceLimit = Number.POSITIVE_INFINITY;
     }
-    Error.captureStackTrace(error2);
+    Error.captureStackTrace(error3);
     if (stackTraceLimitIsWritable)
       Error.stackTraceLimit = userStackTraceLimit;
-    return error2;
+    return error3;
   }
 );
 function getMessage(key, args, self) {
@@ -53384,10 +53387,10 @@ function read(jsonPath) {
       "utf8"
     );
     return { string };
-  } catch (error2) {
+  } catch (error3) {
     const exception = (
       /** @type {ErrnoException} */
-      error2
+      error3
     );
     if (exception.code === "ENOENT") {
       return { string: void 0 };
@@ -53421,10 +53424,10 @@ function getPackageConfig(path26, specifier, base) {
   let packageJson;
   try {
     packageJson = JSON.parse(source);
-  } catch (error2) {
+  } catch (error3) {
     const exception = (
       /** @type {ErrnoException} */
-      error2
+      error3
     );
     throw new ERR_INVALID_PACKAGE_CONFIG(
       path26,
@@ -53709,9 +53712,9 @@ function finalizeResolution(resolved, base, preserveSymlinks) {
     filePath.endsWith("/") ? filePath.slice(-1) : filePath
   );
   if (stats.isDirectory()) {
-    const error2 = new ERR_UNSUPPORTED_DIR_IMPORT(filePath, (0, import_node_url3.fileURLToPath)(base));
-    error2.url = String(resolved);
-    throw error2;
+    const error3 = new ERR_UNSUPPORTED_DIR_IMPORT(filePath, (0, import_node_url3.fileURLToPath)(base));
+    error3.url = String(resolved);
+    throw error3;
   }
   if (!stats.isFile()) {
     throw new ERR_MODULE_NOT_FOUND(
@@ -53888,15 +53891,15 @@ function resolvePackageTarget(packageJsonUrl, target, subpath, packageSubpath, b
           isPathMap,
           conditions
         );
-      } catch (error2) {
+      } catch (error3) {
         const exception = (
           /** @type {ErrnoException} */
-          error2
+          error3
         );
         lastException = exception;
         if (exception.code === "ERR_INVALID_PACKAGE_TARGET")
           continue;
-        throw error2;
+        throw error3;
       }
       if (resolveResult === void 0)
         continue;
@@ -54388,15 +54391,15 @@ function resolve2(specifier, parent) {
   }
   try {
     return defaultResolve(specifier, { parentURL: parent }).url;
-  } catch (error2) {
+  } catch (error3) {
     const exception = (
       /** @type {ErrnoException} */
-      error2
+      error3
     );
     if (exception.code === "ERR_UNSUPPORTED_DIR_IMPORT" && typeof exception.url === "string") {
       return exception.url;
     }
-    throw error2;
+    throw error3;
   }
 }
 
@@ -54530,7 +54533,7 @@ function tryResolveExists(filename) {
 function tryResolveFrom(filename, relativeTo) {
   try {
     return { filename: (0, import_resolve_from.default)(relativeTo, filename), relativeTo, found: true };
-  } catch (error2) {
+  } catch (error3) {
     return { filename, relativeTo, found: false };
   }
 }
@@ -56287,8 +56290,8 @@ function mergeOptionalWithDefaults(...options) {
 }
 
 // ../node_modules/.pnpm/cspell-trie-lib@7.3.8/node_modules/cspell-trie-lib/dist/lib/TrieBlob/FastTrieBlobBitMaskInfo.js
-function extractInfo(info3) {
-  const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = info3;
+function extractInfo(info4) {
+  const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = info4;
   return {
     NodeMaskEOW,
     NodeMaskChildCharIndex,
@@ -56394,9 +56397,9 @@ var FastTrieBlobINode = class _FastTrieBlobINode {
   }
 };
 var FastTrieBlobIRoot = class extends FastTrieBlobINode {
-  constructor(trie, nodeIdx, info3) {
+  constructor(trie, nodeIdx, info4) {
     super(trie, nodeIdx);
-    this.info = info3;
+    this.info = info4;
   }
   resolveId(id) {
     return new FastTrieBlobINode(this.trie, id);
@@ -56499,9 +56502,9 @@ var TrieBlobINode = class _TrieBlobINode {
   }
 };
 var TrieBlobIRoot = class extends TrieBlobINode {
-  constructor(trie, nodeIdx, info3) {
+  constructor(trie, nodeIdx, info4) {
     super(trie, nodeIdx);
-    this.info = info3;
+    this.info = info4;
   }
   resolveId(id) {
     return new TrieBlobINode(this.trie, id);
@@ -56535,10 +56538,10 @@ var headerSig = "TrieBlob";
 var version2 = "00.01.00";
 var endianSig = 67305985;
 var TrieBlob = class _TrieBlob {
-  constructor(nodes, charIndex, info3) {
+  constructor(nodes, charIndex, info4) {
     this.nodes = nodes;
     this.charIndex = charIndex;
-    this.info = mergeOptionalWithDefaults(info3);
+    this.info = mergeOptionalWithDefaults(info4);
     this.charToIndexMap = /* @__PURE__ */ Object.create(null);
     for (let i = 0; i < charIndex.length; ++i) {
       const char = charIndex[i];
@@ -57319,8 +57322,8 @@ var ITrieImpl = class _ITrieImpl {
   iterate() {
     return walker(this.root);
   }
-  static create(words, info3) {
-    const builder2 = new FastTrieBlobBuilder(info3);
+  static create(words, info4) {
+    const builder2 = new FastTrieBlobBuilder(info4);
     builder2.insert(words);
     const root = builder2.build();
     return new _ITrieImpl(root, void 0);
@@ -57343,8 +57346,8 @@ var ITrieImpl = class _ITrieImpl {
 };
 
 // ../node_modules/.pnpm/cspell-trie-lib@7.3.8/node_modules/cspell-trie-lib/dist/lib/buildITrie.js
-function buildITrieFromWords(words, info3 = {}) {
-  const builder2 = new FastTrieBlobBuilder(info3);
+function buildITrieFromWords(words, info4 = {}) {
+  const builder2 = new FastTrieBlobBuilder(info4);
   builder2.insert(words);
   return new ITrieImpl(builder2.build());
 }
@@ -59267,8 +59270,8 @@ function lookupLocaleInfo(locale) {
   return codesByLocale.get(locale);
 }
 function buildLocaleLookup() {
-  const info3 = codes2.map(([locale, language, country]) => ({ locale, language, country }));
-  return new Map(info3.map((i) => [i.locale, i]));
+  const info4 = codes2.map(([locale, language, country]) => ({ locale, language, country }));
+  return new Map(info4.map((i) => [i.locale, i]));
 }
 function createLocale(locale) {
   return new Locale(locale);
@@ -60665,33 +60668,33 @@ var Configstore = class {
   get all() {
     try {
       return JSON.parse(import_graceful_fs.default.readFileSync(this._path, "utf8"));
-    } catch (error2) {
-      if (error2.code === "ENOENT") {
+    } catch (error3) {
+      if (error3.code === "ENOENT") {
         return {};
       }
-      if (error2.code === "EACCES") {
-        error2.message = `${error2.message}
+      if (error3.code === "EACCES") {
+        error3.message = `${error3.message}
 ${permissionError}
 `;
       }
-      if (error2.name === "SyntaxError") {
+      if (error3.name === "SyntaxError") {
         import_write_file_atomic.default.sync(this._path, "", writeFileOptions);
         return {};
       }
-      throw error2;
+      throw error3;
     }
   }
   set all(value) {
     try {
       import_graceful_fs.default.mkdirSync(import_path3.default.dirname(this._path), mkdirOptions);
       import_write_file_atomic.default.sync(this._path, JSON.stringify(value, void 0, "	"), writeFileOptions);
-    } catch (error2) {
-      if (error2.code === "EACCES") {
-        error2.message = `${error2.message}
+    } catch (error3) {
+      if (error3.code === "EACCES") {
+        error3.message = `${error3.message}
 ${permissionError}
 `;
       }
-      throw error2;
+      throw error3;
     }
   }
   get size() {
@@ -60750,9 +60753,9 @@ function getRawGlobalSettings() {
         filename: cfgStore.path
       };
     }
-  } catch (error2) {
-    if (!isErrnoException(error2) || !error2.code || !["ENOENT", "EACCES", "ENOTDIR", "EISDIR"].includes(error2.code)) {
-      logError(error2);
+  } catch (error3) {
+    if (!isErrnoException(error3) || !error3.code || !["ENOENT", "EACCES", "ENOTDIR", "EISDIR"].includes(error3.code)) {
+      logError(error3);
     }
   }
   return globalConf;
@@ -60765,10 +60768,10 @@ function writeRawGlobalSettings(settings) {
     const cfgStore = new ConfigStore(packageName);
     cfgStore.set(toWrite);
     return void 0;
-  } catch (error2) {
-    if (error2 instanceof Error)
-      return error2;
-    return new Error((0, import_util36.format)(error2));
+  } catch (error3) {
+    if (error3 instanceof Error)
+      return error3;
+    return new Error((0, import_util36.format)(error3));
   }
 }
 
@@ -60925,11 +60928,11 @@ async function pLocate(iterable, tester, {
   const checkLimit = pLimit(preserveOrder ? 1 : Number.POSITIVE_INFINITY);
   try {
     await Promise.all(items.map((element) => checkLimit(finder, element)));
-  } catch (error2) {
-    if (error2 instanceof EndError) {
-      return error2.value;
+  } catch (error3) {
+    if (error3 instanceof EndError) {
+      return error3.value;
     }
-    throw error2;
+    throw error3;
   }
 }
 
@@ -61453,9 +61456,9 @@ var ConfigLoader = class {
    * @param fileRef - filename plus context, injected into the resulting config.
    */
   readConfig(fileRef) {
-    const { filename, error: error2 } = fileRef;
-    if (error2) {
-      fileRef.error = error2 instanceof ImportError ? error2 : new ImportError(`Failed to read config file: "${filename}"`, error2);
+    const { filename, error: error3 } = fileRef;
+    if (error3) {
+      fileRef.error = error3 instanceof ImportError ? error3 : new ImportError(`Failed to read config file: "${filename}"`, error3);
       return { __importRef: fileRef };
     }
     const s = {};
@@ -61571,7 +61574,7 @@ var ConfigLoaderInternal = class extends ConfigLoader {
     return this.normalizeSearchForConfigResult(searchPath, result, pnpSettings);
   }
   normalizeSearchForConfigResult(searchPath, searchResult, pnpSettings) {
-    const error2 = searchResult instanceof ImportError ? searchResult : void 0;
+    const error3 = searchResult instanceof ImportError ? searchResult : void 0;
     const result = searchResult instanceof ImportError ? void 0 : searchResult;
     const filepath = result?.filepath;
     if (filepath) {
@@ -61580,13 +61583,13 @@ var ConfigLoaderInternal = class extends ConfigLoader {
         return {
           config: cached,
           filepath,
-          error: error2
+          error: error3
         };
       }
     }
     const { config = createCSpellSettingsInternal({}) } = result || {};
     const filename = result?.filepath ?? searchPath;
-    const importRef = { filename, error: error2 };
+    const importRef = { filename, error: error3 };
     const id = [path12.basename(path12.dirname(filename)), path12.basename(filename)].join("/");
     const name = result?.filepath ? id : `Config not found: ${id}`;
     const finalizeSettings2 = createCSpellSettingsInternal({ id, name, __importRef: importRef });
@@ -61596,7 +61599,7 @@ var ConfigLoaderInternal = class extends ConfigLoader {
     return {
       config: finalizeSettings2,
       filepath,
-      error: error2
+      error: error3
     };
   }
 };
@@ -61768,9 +61771,9 @@ function readSettingsFiles(filenames) {
 // ../node_modules/.pnpm/cspell-lib@7.3.8/node_modules/cspell-lib/dist/esm/Settings/link.js
 function listGlobalImports() {
   const globalSettings = getRawGlobalSettings();
-  const list = resolveImports(globalSettings).map(({ filename, settings, error: error2 }) => ({
+  const list = resolveImports(globalSettings).map(({ filename, settings, error: error3 }) => ({
     filename,
-    error: error2,
+    error: error3,
     id: settings.id,
     name: settings.name,
     dictionaryDefinitions: settings.dictionaryDefinitions,
@@ -61802,10 +61805,10 @@ function addPathsToGlobalImports(paths) {
   const globalSettings = {
     import: [...imports]
   };
-  const error2 = writeRawGlobalSettings(globalSettings);
+  const error3 = writeRawGlobalSettings(globalSettings);
   return {
-    success: !error2,
-    error: error2?.message,
+    success: !error3,
+    error: error3?.message,
     resolvedSettings
   };
 }
@@ -61840,22 +61843,22 @@ function removePathsFromGlobalImports(paths) {
   const updatedSettings = {
     import: toImport
   };
-  const error2 = toRemove.size > 0 ? writeRawGlobalSettings(updatedSettings) : void 0;
+  const error3 = toRemove.size > 0 ? writeRawGlobalSettings(updatedSettings) : void 0;
   return {
     success: true,
     removed: [...toRemove],
-    error: error2?.toString()
+    error: error3?.toString()
   };
 }
 function resolveSettings(filename) {
   const settings = readRawSettings(filename);
   const ref = settings.__importRef;
   const resolvedToFilename = ref?.filename;
-  const error2 = ref?.error?.message || !resolvedToFilename && "File not Found" || void 0;
+  const error3 = ref?.error?.message || !resolvedToFilename && "File not Found" || void 0;
   return clean({
     filename,
     resolvedToFilename,
-    error: error2,
+    error: error3,
     settings
   });
 }
@@ -64863,7 +64866,7 @@ function _createSpellingDictionary(params) {
   }
   return new SpellingDictionaryFromTrie(trie, name, opts, source);
 }
-function createFailedToLoadDictionary(name, source, error2, options) {
+function createFailedToLoadDictionary(name, source, error3, options) {
   options = options || {};
   return {
     name,
@@ -64882,7 +64885,7 @@ function createFailedToLoadDictionary(name, source, error2, options) {
     size: 0,
     options,
     isDictionaryCaseSensitive: false,
-    getErrors: () => [error2]
+    getErrors: () => [error3]
   };
 }
 
@@ -65882,8 +65885,8 @@ var DictionaryLoader = class {
         sig
       };
     } catch (e) {
-      const error2 = toError3(e);
-      const dictionary = createFailedToLoadDictionary(options.name, uri, new SpellingDictionaryLoadError(uri, options, error2, "failed to load"), options);
+      const error3 = toError3(e);
+      const dictionary = createFailedToLoadDictionary(options.name, uri, new SpellingDictionaryLoadError(uri, options, error3, "failed to load"), options);
       const pending = Promise.resolve([dictionary, stat2]);
       return {
         uri,
@@ -67696,10 +67699,10 @@ var DocumentValidator = class {
       }
     }
   }
-  addPossibleError(error2) {
-    if (!error2)
+  addPossibleError(error3) {
+    if (!error3)
       return;
-    error2 = this.errors.push(toError3(error2));
+    error3 = this.errors.push(toError3(error3));
   }
   _parse() {
     (0, import_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
@@ -67785,10 +67788,10 @@ function searchForDocumentConfigSync(document, defaultConfig, pnpSettings) {
 }
 async function shouldCheckDocument(doc, options, settings) {
   const errors = [];
-  function addPossibleError(error2) {
-    if (!error2)
+  function addPossibleError(error3) {
+    if (!error3)
       return void 0;
-    error2 = errors.push(toError3(error2));
+    error3 = errors.push(toError3(error3));
     return void 0;
   }
   async function shouldCheck() {
@@ -68737,11 +68740,11 @@ function genIssueEmitter(template3) {
     console.log(formatIssue(template3, issue, Math.ceil(maxWidth)));
   };
 }
-function errorEmitter(message, error2) {
-  if (isSpellingDictionaryLoadError(error2)) {
-    error2 = error2.cause;
+function errorEmitter(message, error3) {
+  if (isSpellingDictionaryLoadError(error3)) {
+    error3 = error3.cause;
   }
-  console.error(source_default.red(message), error2.toString());
+  console.error(source_default.red(message), error3.toString());
 }
 function nullEmitter2() {
 }
@@ -68789,9 +68792,9 @@ function reportTime(elapsedTimeMs, cached) {
 }
 function getReporter(options) {
   const issueTemplate = options.wordsOnly ? templateIssueWordsOnly : options.legacy ? templateIssueLegacy : options.showContext ? options.showSuggestions ? templateIssueWithContextWithSuggestions : templateIssueWithContext : options.showSuggestions ? templateIssueWithSuggestions : options.showSuggestions === false ? templateIssueNoFix : templateIssue;
-  const { fileGlobs, silent, summary, issues, progress, verbose, debug } = options;
+  const { fileGlobs, silent, summary, issues, progress, verbose, debug: debug3 } = options;
   const emitters = {
-    Debug: !silent && debug ? (s) => console.info(source_default.cyan(s)) : nullEmitter2,
+    Debug: !silent && debug3 ? (s) => console.info(source_default.cyan(s)) : nullEmitter2,
     Info: !silent && verbose ? (s) => console.info(source_default.yellow(s)) : nullEmitter2,
     Warning: (s) => console.info(source_default.yellow(s))
   };
@@ -69375,10 +69378,10 @@ function calcGlobs(commandLineExclude) {
   return commandLineExcludes.globs.length ? commandLineExcludes : defaultExcludes;
 }
 function extractPatterns(globs) {
-  const r = globs.reduce((info3, g) => {
+  const r = globs.reduce((info4, g) => {
     const source = g.source;
     const patterns = g.matcher.patternsNormalizedToRoot;
-    return info3.concat(patterns.map((glob2) => ({ glob: glob2, source })));
+    return info4.concat(patterns.map((glob2) => ({ glob: glob2, source })));
   }, []);
   return r;
 }
@@ -69512,12 +69515,12 @@ function readFileInfo(filename, encoding = UTF8, handleNotFound = false) {
   filename = resolveFilename2(filename);
   const pText = filename.startsWith(STDINProtocol) ? getStdin() : readFileText2(filename, encoding);
   return pText.then((text) => ({ text, filename }), (e) => {
-    const error2 = toError4(e);
-    return handleNotFound && error2.code === "EISDIR" ? Promise.resolve({ text: "", filename, errorCode: error2.code }) : handleNotFound && error2.code === "ENOENT" ? Promise.resolve({ text: "", filename, errorCode: error2.code }) : Promise.reject(new IOError(`Error reading file: "${filename}"`, error2));
+    const error3 = toError4(e);
+    return handleNotFound && error3.code === "EISDIR" ? Promise.resolve({ text: "", filename, errorCode: error3.code }) : handleNotFound && error3.code === "ENOENT" ? Promise.resolve({ text: "", filename, errorCode: error3.code }) : Promise.reject(new IOError(`Error reading file: "${filename}"`, error3));
   });
 }
 function readFile2(filename, encoding = UTF8) {
-  return readFileInfo(filename, encoding).then((info3) => info3.text);
+  return readFileInfo(filename, encoding).then((info4) => info4.text);
 }
 async function findFiles(globPatterns, options) {
   const stdin2 = [];
@@ -70206,13 +70209,13 @@ async function runLint(cfg) {
     dictCollection.dictionaries.forEach((dict) => {
       const dictErrors = dict.getErrors?.() || [];
       const msg = `Dictionary Error with (${dict.name})`;
-      dictErrors.forEach((error2) => {
-        const key = msg + error2.toString();
+      dictErrors.forEach((error3) => {
+        const key = msg + error3.toString();
         if (configErrors.has(key))
           return;
         configErrors.add(key);
         count3 += 1;
-        reporter.error(msg, error2);
+        reporter.error(msg, error3);
       });
     });
     return count3;
@@ -70388,7 +70391,7 @@ function getLoggerFromReporter(reporter) {
     const msg = (0, import_util58.format)(...params);
     reporter.info(msg, "Info");
   };
-  const error2 = (...params) => {
+  const error3 = (...params) => {
     const msg = (0, import_util58.format)(...params);
     const err = { message: "", name: "error", toString: () => "" };
     reporter.error(msg, err);
@@ -70400,7 +70403,7 @@ function getLoggerFromReporter(reporter) {
   return {
     log,
     warn,
-    error: error2
+    error: error3
   };
 }
 async function generateGitIgnore(roots) {
@@ -70582,6 +70585,7 @@ async function lint2(files, lintOptions, reporter) {
 }
 
 // src/action.ts
+var core2 = { debug: import_core3.debug, error: import_core3.error, info: import_core3.info, warning: import_core3.warning };
 var supportedIncrementalEvents = /* @__PURE__ */ new Set(["push", "pull_request"]);
 async function gatherPullRequestFiles(context) {
   const { github, githubContext } = context;
@@ -70614,7 +70618,7 @@ async function checkSpelling(params, files) {
   const reporterOptions = {
     verbose: params.verbose === "true"
   };
-  const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core3);
+  const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core2);
   await lint2(files, options, collector.reporter);
   return collector.result;
 }
@@ -70665,11 +70669,11 @@ function filterFiles(globPattern, files, dot) {
 }
 async function action(githubContext, octokit) {
   const params = getActionParams();
-  validateActionParams(params, core3.error);
+  validateActionParams(params, core2.error);
   const eventName = githubContext.eventName;
   if (params.incremental_files_only === "true" && !isSupportedEvent(eventName)) {
     params.files = params.files || "**";
-    core3.warning("Unable to determine which files have changed, checking files: " + params.files);
+    core2.warning("Unable to determine which files have changed, checking files: " + params.files);
     params.incremental_files_only = "false";
   }
   params.files = params.files || (params.incremental_files_only !== "true" ? "**" : "");
@@ -70681,31 +70685,31 @@ async function action(githubContext, octokit) {
     useEventFiles: params.incremental_files_only === "true",
     dot
   };
-  core3.info(friendlyEventName(eventName));
+  core2.info(friendlyEventName(eventName));
   const files = await gatherFilesFromContext(context);
   const result = await checkSpelling(params, [...files]);
   if (result === true) {
     return true;
   }
   const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
-  core3.info(message);
+  core2.info(message);
   outputResult(result);
   const fnS = (n) => n === 1 ? "" : "s";
   if (params.strict === "true" && result.issues) {
     const filesWithIssues = result.filesWithIssues.size;
     const err = `${result.issues} spelling issue${fnS(result.issues)} found in ${filesWithIssues} of the ${result.files} file${fnS(result.files)} checked.`;
-    core3.setFailed(err);
+    (0, import_core3.setFailed)(err);
   }
   return !(result.issues + result.errors);
 }
 function outputResult(runResult2) {
   const result = normalizeResult(runResult2);
-  core3.setOutput("success", result.success);
-  core3.setOutput("number_of_files_checked", result.number_of_files_checked);
-  core3.setOutput("number_of_issues", result.number_of_issues);
-  core3.setOutput("number_of_files_with_issues", result.files_with_issues.length);
-  core3.setOutput("files_with_issues", normalizeFiles(result.files_with_issues));
-  core3.setOutput("result", result);
+  (0, import_core3.setOutput)("success", result.success);
+  (0, import_core3.setOutput)("number_of_files_checked", result.number_of_files_checked);
+  (0, import_core3.setOutput)("number_of_issues", result.number_of_issues);
+  (0, import_core3.setOutput)("number_of_files_with_issues", result.files_with_issues.length);
+  (0, import_core3.setOutput)("files_with_issues", normalizeFiles(result.files_with_issues));
+  (0, import_core3.setOutput)("result", result);
 }
 function normalizeResult(result) {
   const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
@@ -70724,7 +70728,7 @@ function normalizeFiles(files) {
 // src/main.ts
 var import_util59 = require("util");
 function getGithubToken() {
-  const t0 = (0, import_core.getInput)("github_token", { required: true });
+  const t0 = (0, import_core4.getInput)("github_token", { required: true });
   if (t0[0] !== "$") {
     return t0 !== "undefined" ? t0 : void 0;
   }
@@ -70732,17 +70736,17 @@ function getGithubToken() {
 }
 async function run() {
   try {
-    (0, import_core.info)("cspell-action");
+    (0, import_core4.info)("cspell-action");
     const githubContext = new import_context.Context();
     const githubToken = getGithubToken();
     (0, import_assert20.default)(githubToken, "GITHUB_TOKEN is required.");
     await action(githubContext, (0, import_github2.getOctokit)(githubToken));
-    (0, import_core.info)("Done.");
+    (0, import_core4.info)("Done.");
     return void 0;
-  } catch (error2) {
-    console.error(error2);
-    (0, import_core.setFailed)(isAppError(error2) ? error2.message : isError(error2) ? error2 : (0, import_util59.format)(error2));
-    return isError(error2) ? error2 : Error((0, import_util59.format)(error2));
+  } catch (error3) {
+    console.error(error3);
+    (0, import_core4.setFailed)(isAppError(error3) ? error3.message : isError(error3) ? error3 : (0, import_util59.format)(error3));
+    return isError(error3) ? error3 : Error((0, import_util59.format)(error3));
   }
 }
 
