@@ -26209,9 +26209,9 @@ var require_micromatch = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@octokit+plugin-rest-endpoint-methods@7.1.3_@octokit+core@4.2.4/node_modules/@octokit/plugin-rest-endpoint-methods/dist-node/index.js
+// ../node_modules/.pnpm/@octokit+plugin-rest-endpoint-methods@7.2.3_@octokit+core@4.2.4/node_modules/@octokit/plugin-rest-endpoint-methods/dist-node/index.js
 var require_dist_node11 = __commonJS({
-  "../node_modules/.pnpm/@octokit+plugin-rest-endpoint-methods@7.1.3_@octokit+core@4.2.4/node_modules/@octokit/plugin-rest-endpoint-methods/dist-node/index.js"(exports, module2) {
+  "../node_modules/.pnpm/@octokit+plugin-rest-endpoint-methods@7.2.3_@octokit+core@4.2.4/node_modules/@octokit/plugin-rest-endpoint-methods/dist-node/index.js"(exports, module2) {
     "use strict";
     var __defProp2 = Object.defineProperty;
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
@@ -26236,6 +26236,7 @@ var require_dist_node11 = __commonJS({
       restEndpointMethods: () => restEndpointMethods2
     });
     module2.exports = __toCommonJS2(dist_src_exports);
+    var VERSION = "7.2.3";
     var Endpoints = {
       actions: {
         addCustomLabelsToSelfHostedRunnerForOrg: [
@@ -26344,6 +26345,12 @@ var require_dist_node11 = __commonJS({
         ],
         enableWorkflow: [
           "PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
+        ],
+        generateRunnerJitconfigForOrg: [
+          "POST /orgs/{org}/actions/runners/generate-jitconfig"
+        ],
+        generateRunnerJitconfigForRepo: [
+          "POST /repos/{owner}/{repo}/actions/runners/generate-jitconfig"
         ],
         getActionsCacheList: ["GET /repos/{owner}/{repo}/actions/caches"],
         getActionsCacheUsage: ["GET /repos/{owner}/{repo}/actions/cache/usage"],
@@ -28097,33 +28104,53 @@ var require_dist_node11 = __commonJS({
       }
     };
     var endpoints_default = Endpoints;
-    var VERSION = "7.1.3";
-    function endpointsToMethods(octokit, endpointsMap) {
-      const newMethods = {};
-      for (const [scope, endpoints] of Object.entries(endpointsMap)) {
-        for (const [methodName, endpoint] of Object.entries(endpoints)) {
-          const [route, defaults, decorations] = endpoint;
-          const [method, url] = route.split(/ /);
-          const endpointDefaults = Object.assign(
-            { method, url },
-            defaults
-          );
-          if (!newMethods[scope]) {
-            newMethods[scope] = {};
-          }
-          const scopeMethods = newMethods[scope];
-          if (decorations) {
-            scopeMethods[methodName] = decorate(
-              octokit,
-              scope,
-              methodName,
-              endpointDefaults,
-              decorations
-            );
-            continue;
-          }
-          scopeMethods[methodName] = octokit.request.defaults(endpointDefaults);
+    var endpointMethodsMap = /* @__PURE__ */ new Map();
+    for (const [scope, endpoints] of Object.entries(endpoints_default)) {
+      for (const [methodName, endpoint] of Object.entries(endpoints)) {
+        const [route, defaults, decorations] = endpoint;
+        const [method, url] = route.split(/ /);
+        const endpointDefaults = Object.assign(
+          {
+            method,
+            url
+          },
+          defaults
+        );
+        if (!endpointMethodsMap.has(scope)) {
+          endpointMethodsMap.set(scope, /* @__PURE__ */ new Map());
         }
+        endpointMethodsMap.get(scope).set(methodName, {
+          scope,
+          methodName,
+          endpointDefaults,
+          decorations
+        });
+      }
+    }
+    var handler = {
+      get({ octokit, scope, cache: cache2 }, methodName) {
+        if (cache2[methodName]) {
+          return cache2[methodName];
+        }
+        const { decorations, endpointDefaults } = endpointMethodsMap.get(scope).get(methodName);
+        if (decorations) {
+          cache2[methodName] = decorate(
+            octokit,
+            scope,
+            methodName,
+            endpointDefaults,
+            decorations
+          );
+        } else {
+          cache2[methodName] = octokit.request.defaults(endpointDefaults);
+        }
+        return cache2[methodName];
+      }
+    };
+    function endpointsToMethods(octokit) {
+      const newMethods = {};
+      for (const scope of endpointMethodsMap.keys()) {
+        newMethods[scope] = new Proxy({ octokit, scope, cache: {} }, handler);
       }
       return newMethods;
     }
@@ -28169,14 +28196,14 @@ var require_dist_node11 = __commonJS({
       return Object.assign(withDecorations, requestWithDefaults);
     }
     function restEndpointMethods2(octokit) {
-      const api = endpointsToMethods(octokit, endpoints_default);
+      const api = endpointsToMethods(octokit);
       return {
         rest: api
       };
     }
     restEndpointMethods2.VERSION = VERSION;
     function legacyRestEndpointMethods(octokit) {
-      const api = endpointsToMethods(octokit, endpoints_default);
+      const api = endpointsToMethods(octokit);
       return {
         ...api,
         rest: api
