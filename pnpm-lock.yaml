@@ -57,7 +57,7 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1
       '@cspell/cspell-bundled-dicts':
-        specifier: 7.3.8
+        specifier: ^7.3.8
         version: 7.3.8
       '@octokit/core':
         specifier: ^4.2.4
@@ -69,10 +69,10 @@ importers:
         specifier: ^19.0.13
         version: 19.0.13
       cspell:
-        specifier: 7.3.8
+        specifier: ^7.3.8
         version: 7.3.8
       cspell-glob:
-        specifier: 7.3.8
+        specifier: ^7.3.8
         version: 7.3.8
       vscode-uri:
         specifier: ^3.0.8
