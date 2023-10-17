@@ -13,48 +13,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+      - run: pnpm i
       - run: git --no-pager diff --compact-summary --exit-code
 
   unit-test: # make sure unit-tests run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+      - run: pnpm i
       # Build should not be necessary to run tests
-      - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} GITHUB_OUTPUT="" yarn test
+      - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} GITHUB_OUTPUT="" pnpm test
 
   clean-build: # make sure nothing changes with a clean build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+      - run: pnpm i
       # Ensure the repository is clean after build
-      - run: yarn clean-build
+      - run: pnpm clean-build
       - run: git --no-pager diff --compact-summary --exit-code
 
   coverage: # run coverage
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} GITHUB_OUTPUT="" yarn coverage
+      - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+      - run: pnpm i
+      - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} GITHUB_OUTPUT="" pnpm coverage
 
       - name: Upload coverage Coveralls
         uses: coverallsapp/github-action@3dfc5567390f6fa9267c0ee9c251e4c8c3f18949 # 2.2.3

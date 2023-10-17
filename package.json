@@ -4,30 +4,22 @@
   "description": "GitHub Action: Check Spelling",
   "main": "action/lib/main.js",
   "private": true,
+  "packageManager": "pnpm@8.7.4",
   "scripts": {
-    "prepare": "yarn build",
-    "build": "yarn workspace action-src build",
-    "clean": "yarn workspace action-src clean",
-    "clean-build": "yarn workspace action-src clean-build",
+    "prepare": "pnpm run build",
+    "build": "pnpm build:src && pnpm build:action",
+    "build:action": "cd action && npm i",
+    "build:src": "pnpm -r run build",
+    "clean": "pnpm clean:action && pnpm clean:src",
+    "clean:src": "pnpm -r --filter ./action-src clean",
+    "clean:action": "shx rm -rf action/node_modules action/package-lock.json",
+    "clean-build": "pnpm -r --filter ./action-src clean-build",
+    "lint": "eslint . --fix",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
-    "test": "yarn workspace action-src test",
-    "coverage": "yarn workspace action-src coverage",
-    "update-packages": "yarn update:root",
-    "update:root": "yarn upgrade && npx package-json-dependency-updater -u && yarn"
-  },
-  "workspaces": {
-    "packages": [
-      "action",
-      "action-src"
-    ],
-    "nohoist": [
-      "action",
-      "action-src"
-    ]
-  },
-  "installConfig": {
-    "hoistingLimits": "workspace"
+    "test": "pnpm -r --filter ./action-src test",
+    "coverage": "pnpm -r --filter ./action-src coverage",
+    "update-packages": "pnpm up -r"
   },
   "repository": "git+https://github.com/streetsidesoftware/cspell-action.git",
   "keywords": [

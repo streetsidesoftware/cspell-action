@@ -80,7 +80,7 @@ outputs:
       The JSON encoded results.
 
 runs:
-  using: "node16"
+  using: "node20"
   main: "./action/lib/main_root.js"
 branding:
   icon: "code"

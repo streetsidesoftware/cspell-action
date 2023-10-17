@@ -1,3 +1,4 @@
 install-state.gz
 .yarn/cache
 node_modules
+lib
