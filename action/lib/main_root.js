@@ -50838,12 +50838,12 @@ var import_plugin_rest_endpoint_methods = __toESM(require_dist_node9());
 async function getPullRequestFiles(git, prRef) {
   const { owner, repo, pull_number } = prRef;
   const { rest } = (0, import_plugin_rest_endpoint_methods.restEndpointMethods)(git);
-  console.info("getPullRequestFiles RateLimit start: %o", (await rest.rateLimit.get()).data);
+  await reportUsage(rest, "getPullRequestFiles RateLimit start:");
   const commits = await rest.pulls.listCommits({ owner, repo, pull_number });
   console.time("Fetch file names in commits");
   const files = await fetchFilesForCommits(git, prRef, commits.data.map((c) => c.sha).filter(isString));
   console.timeEnd("Fetch file names in commits");
-  console.info("getPullRequestFiles RateLimit end: %o", (await rest.rateLimit.get()).data);
+  await reportUsage(rest, "getPullRequestFiles RateLimit end:");
   return files;
 }
 function isString(s) {
@@ -50870,6 +50870,13 @@ async function* fetchFilesForCommitsX(git, context, commitIds) {
       }
     }
   }
+}
+async function reportUsage(rest, message) {
+  if (!process.env["DEBUG"] && !process.env["TEST"] && !process.env["GITHUB_USAGE"])
+    return;
+  const rate = (await rest.rateLimit.get()).data.rate;
+  const now = Math.floor(Date.now() / 1e3);
+  console.info("%s: %o, time until reset: %is", message, rate, rate.reset - now);
 }
 
 // src/reporter.ts
