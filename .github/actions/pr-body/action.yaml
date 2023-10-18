@@ -31,7 +31,7 @@ runs:
 
     - name: Section Diff
       id: section-diff
-      if: inputs.path && steps.diff.outputs.diff
+      if: inputs.path
       uses: streetsidesoftware/actions/public/output@v1
       with:
         value: |
@@ -40,6 +40,12 @@ runs:
           ```diff
           ${{ steps.diff.outputs.diff }}
           ```
+
+    - name: Gen Summary
+      run: |
+        echo 'git_summary<<DIFF' >> $GITHUB_ENV
+        git --no-pager diff --compact-summary >> $GITHUB_ENV
+        echo 'DIFF' >> $GITHUB_ENV
 
     - name: Body
       id: body
@@ -55,5 +61,5 @@ runs:
           ## Summary
 
           ```
-          ${{ env.git_body }}
+          ${{ env.git_summary }}
           ```
