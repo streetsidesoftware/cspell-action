@@ -31,7 +31,7 @@ runs:
 
     - name: Section Diff
       id: section-diff
-      if: inputs.path
+      if: inputs.path && steps.diff.outputs.diff
       uses: streetsidesoftware/actions/public/output@v1
       with:
         value: |
