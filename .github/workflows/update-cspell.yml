@@ -67,51 +67,41 @@ jobs:
         id: git-status
         uses: streetsidesoftware/actions/public/dirty@v1
 
-      - name: Has changes
-        run: |
-          git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
-          git --no-pager diff --compact-summary
-
       - name: Echo git_status
         env:
           REPORT: |
             Dirty: ${{ steps.git-status.outputs.isDirty && 'yes' || 'no' }}
-            Status: ${{ env.git_status }}
             CSpell Version: ${{ env.CSPELL_VERSION }}
             Old Version: ${{ env.CSPELL_VERSION_OLD }}
-
         run: |
           echo "$REPORT"
 
-      - name: Gen Body
-        run: |
-          echo 'git_body<<DIFF' >> $GITHUB_ENV
-          git --no-pager diff --compact-summary >> $GITHUB_ENV
-          echo 'DIFF' >> $GITHUB_ENV
-
-      - name: Summary
-        id: summary
-        uses: streetsidesoftware/actions/public/output@v1
+      - name: Gen PR Body
+        id: body
+        uses: ./.github/actions/pr-body
         with:
-          value: |
-            CSpell Version: ${{ env.CSPELL_VERSION }}
-            Old Version: ${{ env.CSPELL_VERSION_OLD }}
-            Type: ${{ env.PR_TYPE }}
-
-            Status: ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
-            ```
-            ${{ steps.git-status.outputs.status }}
-            ```
-
-            diff:
-            ```
-            ${{ env.git_body }}
-            ```
+          title: Update CSpell to (${{ env.CSPELL_VERSION }})
+          message: |
+            **CSpell Version:** ${{ env.CSPELL_VERSION_OLD }} -> ${{ env.CSPELL_VERSION }}
+            **Type:** ${{ env.PR_TYPE }}
+          path: >-
+            package.json
+            action-src/package.json
+            action/package.json
 
       - name: Show Summary
         uses: streetsidesoftware/actions/public/summary@v1
         with:
-          text: ${{ steps.summary.outputs.value }}
+          text: |
+            ${{ steps.body.outputs.body }}
+
+            **Status:** ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
+
+            ## Changes:
+
+            ```
+            ${{ steps.git-status.outputs.status }}
+            ```
 
       - name: PR
         if: steps.git-status.outputs.isDirty
@@ -121,6 +111,6 @@ jobs:
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
           title: "${{ env.PR_TYPE }}: Update CSpell to (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
-          body: ${{ steps.summary.outputs.value }}
+          body: ${{ steps.body.outputs.body }}
           app_id: ${{ secrets.AUTOMATION_APP_ID }}
           app_private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}

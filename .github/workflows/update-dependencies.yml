@@ -59,8 +59,6 @@ jobs:
           title: Update Dependencies
           message: |
             **Type:** ${{ env.PR_TYPE }}
-
-            **Status:** ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
           path: >-
             package.json
             action-src/package.json
@@ -69,7 +67,10 @@ jobs:
       - name: Show Summary
         uses: streetsidesoftware/actions/public/summary@v1
         with:
-          text: ${{ steps.body.outputs.body }}
+          text: |
+            ${{ steps.body.outputs.body }}
+
+            **Status:** ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
 
       - name: PR
         uses: streetsidesoftware/actions/.github/actions/pr@v1
