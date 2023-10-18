@@ -57,7 +57,7 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0
       '@cspell/cspell-bundled-dicts':
-        specifier: ^7.3.8
+        specifier: ^7.3.7
         version: 7.3.8
       '@octokit/core':
         specifier: ^5.0.1

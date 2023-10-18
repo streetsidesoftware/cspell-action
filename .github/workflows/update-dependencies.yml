@@ -61,7 +61,10 @@ jobs:
             **Type:** ${{ env.PR_TYPE }}
 
             **Status:** ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
-          path: package.json action-src/package.json action/package.json
+          path: >-
+            package.json
+            action-src/package.json
+            action/package.json
 
       - name: Show Summary
         uses: streetsidesoftware/actions/public/summary@v1
