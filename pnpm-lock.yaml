@@ -36,7 +36,7 @@ importers:
         specifier: ^8.51.0
         version: 8.51.0
       prettier:
-        specifier: ^3.0.3
+        specifier: ^3.0.0
         version: 3.0.3
       shx:
         specifier: ^0.3.4

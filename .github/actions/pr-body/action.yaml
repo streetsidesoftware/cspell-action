@@ -1,0 +1,59 @@
+name: gen-pr-body
+description: Generate a Pull Request body based upon the diff
+
+inputs:
+  message:
+    description: The PR message
+    required: false
+
+  title:
+    description: The title
+    required: false
+
+  path:
+    description: Path of the files to `git diff`
+    required: false
+
+outputs:
+  body:
+    description: The resulting PR Body text
+    value: ${{ !!steps.body.outputs.value }}
+
+runs:
+  using: composite
+  steps:
+    - name: Git Diff
+      id: diff
+      uses: ./.github/actions/diff
+      if: imputs.path
+      with:
+        path: ${{ inputs.path }}
+
+    - name: Section Diff
+      id: section-diff
+      if: inputs.path && steps.diff.outputs.diff
+      uses: streetsidesoftware/actions/public/output@v1
+      with:
+        value: |
+          ## Selected Diffs
+
+          ```diff
+          ${{ steps.diff.outputs.diff }}
+          ```
+
+    - name: Body
+      id: body
+      uses: streetsidesoftware/actions/public/output@v1
+      with:
+        value: |
+          # ${{ inputs.title || 'Changes' }}
+
+          ${{ inputs.message }}
+
+          ${{ steps.section-diff.outputs.value }}
+
+          ## Summary
+
+          ```
+          ${{ env.git_body }}
+          ```
