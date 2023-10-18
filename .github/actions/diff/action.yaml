@@ -1,0 +1,25 @@
+name: diff
+description: Generate Git Diff for specified files
+
+inputs:
+  path:
+    description: Path of the files to `git diff`
+    required: false
+
+outputs:
+  diff:
+    description: The result of the git diff.
+    value: ${{ steps.diff.outputs.git_diff  }}
+
+runs:
+  using: composite
+  steps:
+    - name: Git Diff
+      id: diff
+      shell: bash
+      env:
+        FILES: ${{ inputs.path }}
+      run: |
+        echo 'git_diff<<@@GIT_STATUS@@' >> $GITHUB_OUTPUT
+        git --no-pager diff $FILES >> $GITHUB_OUTPUT
+        echo '@@GIT_STATUS@@' >> $GITHUB_OUTPUT
