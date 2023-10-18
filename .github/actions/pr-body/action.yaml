@@ -42,6 +42,7 @@ runs:
           ```
 
     - name: Gen Summary
+      shell: bash
       run: |
         echo 'git_summary<<DIFF' >> $GITHUB_ENV
         git --no-pager diff --compact-summary >> $GITHUB_ENV
