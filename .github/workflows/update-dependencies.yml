@@ -58,10 +58,10 @@ jobs:
         with:
           title: Update Dependencies
           message: |
-            Type: ${{ env.PR_TYPE }}
+            **Type:** ${{ env.PR_TYPE }}
 
-            Status: ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
-          path: "**/package.json"
+            **Status:** ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
+          path: '"**/package.json"'
 
       - name: Show Summary
         uses: streetsidesoftware/actions/public/summary@v1

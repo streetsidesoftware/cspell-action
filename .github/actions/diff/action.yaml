@@ -5,10 +5,12 @@ inputs:
   path:
     description: Path of the files to `git diff`
     required: false
+
 outputs:
   diff:
     description: The result of the git diff.
     value: ${{ steps.diff.outputs.git_diff  }}
+
 runs:
   using: composite
   steps:
