@@ -15,7 +15,7 @@
         {
             "type": "chore",
             "section": "Miscellaneous",
-            "hidden": false
+            "hidden": true
         },
         {
             "type": "ci",
@@ -42,7 +42,8 @@
         },
         {
             "type": "feature",
-            "section": "Features"
+            "section": "Features",
+            "hidden": false
         },
         {
             "type": "fix",
