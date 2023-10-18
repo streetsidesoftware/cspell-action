@@ -16,7 +16,7 @@ runs:
       id: diff
       shell: bash
       env:
-        FILES: ${{ imputs.path }}
+        FILES: ${{ inputs.path }}
       run: |
         echo 'git_diff<<@@GIT_STATUS@@' >> $GITHUB_OUTPUT
         git --no-pager diff $FILES >> $GITHUB_OUTPUT

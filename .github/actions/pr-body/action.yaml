@@ -25,7 +25,7 @@ runs:
     - name: Git Diff
       id: diff
       uses: ./.github/actions/diff
-      if: imputs.path
+      if: inputs.path
       with:
         path: ${{ inputs.path }}
 
