@@ -1,4 +1,6 @@
 {
+    "bootstrap-sha": "22e32eb3d70acf30e3fc09bd46edc1d30fb2d6db",
+    "include-component-in-tag": false,
     "changelog-sections": [
         {
             "type": "",
