@@ -52,8 +52,8 @@ jobs:
           git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
           git --no-pager diff --compact-summary
 
-      - name: Summary
-        id: summary
+      - name: Gen PR Body
+        id: body
         uses: ./.github/actions/pr-body
         with:
           title: Update Dependencies
@@ -66,7 +66,7 @@ jobs:
       - name: Show Summary
         uses: streetsidesoftware/actions/public/summary@v1
         with:
-          text: ${{ steps.summary.outputs.body }}
+          text: ${{ steps.body.outputs.body }}
 
       - name: PR
         uses: streetsidesoftware/actions/.github/actions/pr@v1
@@ -75,6 +75,6 @@ jobs:
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
           title: "${{ env.PR_TYPE }}: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})"
-          body: ${{ steps.summary.outputs.value }}
+          body: ${{ steps.body.outputs.body }}
           app_id: ${{ secrets.AUTOMATION_APP_ID }}
           app_private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
