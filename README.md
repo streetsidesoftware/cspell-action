@@ -16,8 +16,8 @@ jobs:
   spellcheck: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: streetsidesoftware/cspell-action@v3
+      - uses: actions/checkout@v4
+      - uses: streetsidesoftware/cspell-action@v4
 ```
 
 ## Usage
