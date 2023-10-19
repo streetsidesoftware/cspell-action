@@ -60,8 +60,10 @@ jobs:
         run: |
           pnpm i
 
-      - name: Update packages Src
-        run: pnpm clean-build
+      - name: Clean Build
+        run: |
+          pnpm clean
+          pnpm build
 
       - name: Git Status
         id: git-status
