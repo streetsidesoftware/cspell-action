@@ -23,7 +23,7 @@ jobs:
 ## Usage
 
 ```yaml
-- uses: streetsidesoftware/cspell-action@v3
+- uses: streetsidesoftware/cspell-action@v4
   with:
     # Github token used to fetch the list of changed files in the commit.
     # Default: ${{ github.token }}
