@@ -89,7 +89,7 @@ jobs:
         uses: streetsidesoftware/actions/public/output@v1
         with:
           value: >-
-            Update ${{ env.CSPELL_VERSION == env.CSPELL_VERSION_OLD && steps.cspell_version_msg.outputs.value || 'Dictionaries and Dependencies' }}
+            Update ${{ env.CSPELL_VERSION == env.CSPELL_VERSION_OLD && 'Dictionaries and Dependencies' || steps.cspell_version_msg.outputs.value }}
 
       - name: Gen PR Body
         id: body
