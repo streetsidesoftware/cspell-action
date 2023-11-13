@@ -36,8 +36,8 @@ importers:
         specifier: ^8.53.0
         version: 8.53.0
       prettier:
-        specifier: ^3.0.3
-        version: 3.0.3
+        specifier: ^3.1.0
+        version: 3.1.0
       shx:
         specifier: ^0.3.4
         version: 0.3.4
@@ -63,8 +63,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1
       '@octokit/plugin-rest-endpoint-methods':
-        specifier: ^10.1.3
-        version: 10.1.3(@octokit/core@5.0.1)
+        specifier: ^10.1.4
+        version: 10.1.4(@octokit/core@5.0.1)
       '@octokit/rest':
         specifier: ^20.0.2
         version: 20.0.2
@@ -101,8 +101,8 @@ packages:
     dependencies:
       '@actions/http-client': 2.2.0
       '@octokit/core': 5.0.1
-      '@octokit/plugin-paginate-rest': 9.1.3(@octokit/core@5.0.1)
-      '@octokit/plugin-rest-endpoint-methods': 10.1.3(@octokit/core@5.0.1)
+      '@octokit/plugin-paginate-rest': 9.1.4(@octokit/core@5.0.1)
+      '@octokit/plugin-rest-endpoint-methods': 10.1.4(@octokit/core@5.0.1)
     dev: false
 
   /@actions/http-client@2.2.0:
@@ -1132,7 +1132,7 @@ packages:
       '@octokit/graphql': 7.0.2
       '@octokit/request': 8.1.5
       '@octokit/request-error': 5.0.1
-      '@octokit/types': 12.2.0
+      '@octokit/types': 12.3.0
       before-after-hook: 2.2.3
       universal-user-agent: 6.0.1
     dev: false
@@ -1141,7 +1141,7 @@ packages:
     resolution: {integrity: sha512-qhKW8YLIi+Kmc92FQUFGr++DYtkx/1fBv+Thua6baqnjnOsgBYJDCvWZR1YcINuHGOEQt416WOfE+A/oG60NBQ==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/types': 12.2.0
+      '@octokit/types': 12.3.0
       is-plain-object: 5.0.0
       universal-user-agent: 6.0.1
     dev: false
@@ -1151,7 +1151,7 @@ packages:
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/request': 8.1.5
-      '@octokit/types': 12.2.0
+      '@octokit/types': 12.3.0
       universal-user-agent: 6.0.1
     dev: false
 
@@ -1159,14 +1159,14 @@ packages:
     resolution: {integrity: sha512-8li32fUDUeml/ACRp/njCWTsk5t17cfTM1jp9n08pBrqs5cDFJubtjsSnuz56r5Tad6jdEPJld7LxNp9dNcyjQ==}
     dev: false
 
-  /@octokit/plugin-paginate-rest@9.1.3(@octokit/core@5.0.1):
-    resolution: {integrity: sha512-gm4KmW+pdAfCO5cXJyRZnNfnPE9r6OGpRG8JZpI0eSo1XVk7LXoRcdS7aP4L9azdV0ncHazsLAI0knKjr+snPg==}
+  /@octokit/plugin-paginate-rest@9.1.4(@octokit/core@5.0.1):
+    resolution: {integrity: sha512-MvZx4WvfhBnt7PtH5XE7HORsO7bBk4er1FgRIUr1qJ89NR2I6bWjGyKsxk8z42FPQ34hFQm0Baanh4gzdZR4gQ==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': '>=5'
     dependencies:
       '@octokit/core': 5.0.1
-      '@octokit/types': 12.2.0
+      '@octokit/types': 12.3.0
     dev: false
 
   /@octokit/plugin-request-log@4.0.0(@octokit/core@5.0.1):
@@ -1178,21 +1178,21 @@ packages:
       '@octokit/core': 5.0.1
     dev: false
 
-  /@octokit/plugin-rest-endpoint-methods@10.1.3(@octokit/core@5.0.1):
-    resolution: {integrity: sha512-rB6MPuu/TLkDpn9SONbOeD/Q8u3nX/c39KudIrxAuEclepIIFh61534Un0GVCJRSYoIss1r/yAs6b0xUF2/9ew==}
+  /@octokit/plugin-rest-endpoint-methods@10.1.4(@octokit/core@5.0.1):
+    resolution: {integrity: sha512-e8dSb9ypW1Q2I+qkOPzs3A9f4/EGpSZSI45wWBfXiqcvpoxSywVcZajZRhFwAutKI+/NNoeKxsxMwCx73oQyWw==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': '>=5'
     dependencies:
       '@octokit/core': 5.0.1
-      '@octokit/types': 12.2.0
+      '@octokit/types': 12.3.0
     dev: false
 
   /@octokit/request-error@5.0.1:
     resolution: {integrity: sha512-X7pnyTMV7MgtGmiXBwmO6M5kIPrntOXdyKZLigNfQWSEQzVxR4a4vo49vJjTWX70mPndj8KhfT4Dx+2Ng3vnBQ==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/types': 12.2.0
+      '@octokit/types': 12.3.0
       deprecation: 2.3.1
       once: 1.4.0
     dev: false
@@ -1203,7 +1203,7 @@ packages:
     dependencies:
       '@octokit/endpoint': 9.0.2
       '@octokit/request-error': 5.0.1
-      '@octokit/types': 12.2.0
+      '@octokit/types': 12.3.0
       is-plain-object: 5.0.0
       universal-user-agent: 6.0.1
     dev: false
@@ -1213,13 +1213,13 @@ packages:
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/core': 5.0.1
-      '@octokit/plugin-paginate-rest': 9.1.3(@octokit/core@5.0.1)
+      '@octokit/plugin-paginate-rest': 9.1.4(@octokit/core@5.0.1)
       '@octokit/plugin-request-log': 4.0.0(@octokit/core@5.0.1)
-      '@octokit/plugin-rest-endpoint-methods': 10.1.3(@octokit/core@5.0.1)
+      '@octokit/plugin-rest-endpoint-methods': 10.1.4(@octokit/core@5.0.1)
     dev: false
 
-  /@octokit/types@12.2.0:
-    resolution: {integrity: sha512-ZkdHqHJdifVndN7Pha10+qrgAjy3AcG//Vmjr/o5UFuTiYCcMhqDj39Yr9VM9zJ/42KO2xAYhV7cvLnLI9Kvwg==}
+  /@octokit/types@12.3.0:
+    resolution: {integrity: sha512-nJ8X2HRr234q3w/FcovDlA+ttUU4m1eJAourvfUUtwAWeqL8AsyRqfnLvVnYn3NFbUnsmzQCzLNdFerPwdmcDQ==}
     dependencies:
       '@octokit/openapi-types': 19.0.2
     dev: false
@@ -2374,14 +2374,14 @@ packages:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
-      flat-cache: 3.1.1
+      flat-cache: 3.2.0
     dev: true
 
   /file-entry-cache@7.0.1:
     resolution: {integrity: sha512-uLfFktPmRetVCbHe5UPuekWrQ6hENufnA46qEGbfACkK5drjTTdQYUragRgMjHldcbYG+nslUerqMPjbBSHXjQ==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      flat-cache: 3.1.1
+      flat-cache: 3.2.0
     dev: false
 
   /fill-range@7.0.1:
@@ -2420,9 +2420,9 @@ packages:
       path-exists: 5.0.0
     dev: false
 
-  /flat-cache@3.1.1:
-    resolution: {integrity: sha512-/qM2b3LUIaIgviBQovTLvijfyOQXPtSRnRK26ksj2J7rzPIecePUIpJsZ4T02Qg+xiAEKIs5K8dsHEd+VaKa/Q==}
-    engines: {node: '>=12.0.0'}
+  /flat-cache@3.2.0:
+    resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
+    engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flatted: 3.2.9
       keyv: 4.5.4
@@ -3189,8 +3189,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@3.0.3:
-    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+  /prettier@3.1.0:
+    resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
