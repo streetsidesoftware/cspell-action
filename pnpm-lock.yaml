@@ -63,8 +63,8 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2
       '@octokit/plugin-rest-endpoint-methods':
-        specifier: ^10.1.5
-        version: 10.1.5(@octokit/core@5.0.2)
+        specifier: ^10.2.0
+        version: 10.2.0(@octokit/core@5.0.2)
       '@octokit/rest':
         specifier: ^20.0.2
         version: 20.0.2
@@ -102,7 +102,7 @@ packages:
       '@actions/http-client': 2.2.0
       '@octokit/core': 5.0.2
       '@octokit/plugin-paginate-rest': 9.1.4(@octokit/core@5.0.2)
-      '@octokit/plugin-rest-endpoint-methods': 10.1.5(@octokit/core@5.0.2)
+      '@octokit/plugin-rest-endpoint-methods': 10.2.0(@octokit/core@5.0.2)
     dev: false
 
   /@actions/http-client@2.2.0:
@@ -979,8 +979,8 @@ packages:
       '@octokit/core': 5.0.2
     dev: false
 
-  /@octokit/plugin-rest-endpoint-methods@10.1.5(@octokit/core@5.0.2):
-    resolution: {integrity: sha512-LMEdsMV8TTMjMTqVoqMzV95XTbv0ZsWxCxQtjAunQOCdwoDH4BVF/Ke5JMSZEVCWGI2kzxnUNbFnK/MxwV7NjA==}
+  /@octokit/plugin-rest-endpoint-methods@10.2.0(@octokit/core@5.0.2):
+    resolution: {integrity: sha512-ePbgBMYtGoRNXDyKGvr9cyHjQ163PbwD0y1MkDJCpkO2YH4OeXX40c4wYHKikHGZcpGPbcRLuy0unPUuafco8Q==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': '>=5'
@@ -1015,7 +1015,7 @@ packages:
       '@octokit/core': 5.0.2
       '@octokit/plugin-paginate-rest': 9.1.4(@octokit/core@5.0.2)
       '@octokit/plugin-request-log': 4.0.0(@octokit/core@5.0.2)
-      '@octokit/plugin-rest-endpoint-methods': 10.1.5(@octokit/core@5.0.2)
+      '@octokit/plugin-rest-endpoint-methods': 10.2.0(@octokit/core@5.0.2)
     dev: false
 
   /@octokit/types@12.3.0:
