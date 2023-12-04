@@ -22,8 +22,10 @@ jobs:
       - uses: google-github-actions/release-please-action@v4
         id: release
         with:
-          release-type: node
-          command: manifest
+          # optional. customize path to release-please-config.json
+          config-file: release-please-config.json
+          # optional. customize path to .release-please-manifest.json
+          manifest-file: .release-please-manifest.json
 
       # The logic below handles the npm publication:
       - uses: actions/checkout@v4
