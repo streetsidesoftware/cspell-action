@@ -18,8 +18,9 @@
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
     "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
     "test": "pnpm -r --filter ./action-src test",
+    "test-with-auth": "GITHUB_TOKEN=$(gh auth token) pnpm test",
     "coverage": "pnpm -r --filter ./action-src coverage",
-    "update-packages": "pnpm up -r"
+    "update-packages": "pnpm up -r -w"
   },
   "repository": "git+https://github.com/streetsidesoftware/cspell-action.git",
   "keywords": [
@@ -44,12 +45,12 @@
     "@tsconfig/node16": "^16.1.1",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
-    "@vitest/coverage-istanbul": "^0.34.6",
+    "@vitest/coverage-istanbul": "^1.0.1",
     "env-cmd": "^10.1.0",
     "eslint": "^8.55.0",
     "prettier": "^3.1.0",
     "shx": "^0.3.4",
     "typescript": "^5.3.2",
-    "vitest": "^0.34.6"
+    "vitest": "^1.0.1"
   }
 }
