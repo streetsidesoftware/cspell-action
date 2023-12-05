@@ -75,7 +75,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
+    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -83,7 +83,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -99,8 +99,8 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
-  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
+  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -168,7 +168,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
+    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -176,7 +176,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -192,8 +192,8 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
-  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
+  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -261,7 +261,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
+    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -269,7 +269,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":6,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":6,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -285,8 +285,8 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
   "::set-output name=number_of_files_checked::6",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
-  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":6,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
+  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":6,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -358,7 +358,7 @@ exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_un
 ",
   ],
   [
-    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
+    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -366,7 +366,7 @@ exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_un
 ",
   ],
   [
-    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
@@ -387,8 +387,8 @@ exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_un
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
-  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
+  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
   "::error::2 spelling issues found in 1 of the 4 files checked.",
 ]
 `;
@@ -461,7 +461,7 @@ exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_
 ",
   ],
   [
-    "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]
+    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -469,7 +469,7 @@ exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_
 ",
   ],
   [
-    "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
@@ -490,8 +490,8 @@ exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]",
-  "::set-output name=result::{\\"success\\":false,\\"number_of_issues\\":2,\\"number_of_files_checked\\":4,\\"files_with_issues\\":[\\"../fixtures/sampleCode/samples_with_errors/withErrors.ts\\"]}",
+  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
   "::error::2 spelling issues found in 1 of the 4 files checked.",
 ]
 `;
@@ -555,7 +555,7 @@ exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: f
 ",
   ],
   [
-    "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":0,\\"files_with_issues\\":[]}
+    "::set-output name=result::{"success":true,"number_of_issues":0,"number_of_files_checked":0,"files_with_issues":[]}
 ",
   ],
 ]
@@ -570,7 +570,7 @@ exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: f
   "::set-output name=number_of_issues::0",
   "::set-output name=number_of_files_with_issues::0",
   "::set-output name=files_with_issues::[]",
-  "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":0,\\"files_with_issues\\":[]}",
+  "::set-output name=result::{"success":true,"number_of_issues":0,"number_of_files_checked":0,"files_with_issues":[]}",
 ]
 `;
 
@@ -637,7 +637,7 @@ exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: t
 ",
   ],
   [
-    "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":0,\\"files_with_issues\\":[]}
+    "::set-output name=result::{"success":true,"number_of_issues":0,"number_of_files_checked":0,"files_with_issues":[]}
 ",
   ],
 ]
@@ -653,6 +653,6 @@ exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: t
   "::set-output name=number_of_issues::0",
   "::set-output name=number_of_files_with_issues::0",
   "::set-output name=files_with_issues::[]",
-  "::set-output name=result::{\\"success\\":true,\\"number_of_issues\\":0,\\"number_of_files_checked\\":0,\\"files_with_issues\\":[]}",
+  "::set-output name=result::{"success":true,"number_of_issues":0,"number_of_files_checked":0,"files_with_issues":[]}",
 ]
 `;
