@@ -43,7 +43,7 @@
     "@pollyjs/core": "^6.0.6",
     "@pollyjs/persister-fs": "^6.0.6",
     "@tsconfig/node16": "^16.1.1",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vitest/coverage-istanbul": "^1.1.0",
     "env-cmd": "^10.1.0",
