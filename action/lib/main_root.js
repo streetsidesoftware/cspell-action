@@ -1249,7 +1249,7 @@ var require_util = __commonJS({
     function deepClone(obj) {
       return JSON.parse(JSON.stringify(obj));
     }
-    function isAsyncIterable5(obj) {
+    function isAsyncIterable4(obj) {
       return !!(obj != null && typeof obj[Symbol.asyncIterator] === "function");
     }
     function isIterable4(obj) {
@@ -1499,7 +1499,7 @@ var require_util = __commonJS({
       getServerName,
       isStream,
       isIterable: isIterable4,
-      isAsyncIterable: isAsyncIterable5,
+      isAsyncIterable: isAsyncIterable4,
       isDestroyed,
       parseRawHeaders,
       parseHeaders,
@@ -63205,22 +63205,6 @@ async function reduceAsync(i, fnReduce, initialValue) {
   }
   return previousValue;
 }
-async function reduceAsyncForAsyncIterator(i, fnReduce, initialValue) {
-  const iter = makeAsyncIterable(i[Symbol.asyncIterator]());
-  let index = 0;
-  if (initialValue === void 0) {
-    index = 1;
-    const r = await iter.next();
-    initialValue = r.value;
-  }
-  let previousValue = await initialValue;
-  for await (const t of iter) {
-    const nextValue = await fnReduce(previousValue, t, index);
-    previousValue = nextValue;
-    index += 1;
-  }
-  return previousValue;
-}
 function makeIterable(i) {
   function* fromIterator(i2) {
     for (let r = i2.next(); !r.done; r = i2.next()) {
@@ -63236,28 +63220,6 @@ function isIterable2(i) {
   return !!i[Symbol.iterator];
 }
 function isIterableIterator(i) {
-  return typeof i.next == "function";
-}
-function makeAsyncIterable(i) {
-  async function* fromIterable(i2) {
-    for (const v of i2) {
-      yield v;
-    }
-  }
-  async function* fromIterator(i2) {
-    for (let r = await i2.next(); !r.done; r = await i2.next()) {
-      yield r.value;
-    }
-  }
-  async function* fromAsyncIterable(i2) {
-    yield* i2;
-  }
-  return isAsyncIterable3(i) ? isAsyncIterableIterator(i) ? i : fromAsyncIterable(i) : isIterable2(i) ? fromIterable(i) : fromIterator(i);
-}
-function isAsyncIterable3(i) {
-  return !!i[Symbol.asyncIterator];
-}
-function isAsyncIterableIterator(i) {
   return typeof i.next == "function";
 }
 
@@ -63312,9 +63274,6 @@ function reduce2(fnReduce, initialValue) {
 }
 function reduceAsync2(fnReduceAsync, initialValue) {
   return (i) => reduceAsync(i, fnReduceAsync, initialValue);
-}
-function reduceAsyncForAsyncIterator2(fnReduceAsync, initialValue) {
-  return (i) => reduceAsyncForAsyncIterator(i, fnReduceAsync, initialValue);
 }
 function pipe(...fns) {
   return (i) => {
@@ -63443,22 +63402,6 @@ function sequenceFromRegExpMatch(pattern, text) {
   }
   return genSequence(() => doMatch());
 }
-
-// ../node_modules/.pnpm/gensequence@6.0.0/node_modules/gensequence/dist/esm/ImplAsyncSequence.mjs
-var ImplAsyncSequence = class {
-  constructor(i) {
-    this.i = i;
-  }
-  get iter() {
-    return typeof this.i === "function" ? this.i() : this.i;
-  }
-  [Symbol.asyncIterator]() {
-    return this.iter[Symbol.asyncIterator]();
-  }
-  reduceAsync(fnReduceAsync, initialValue) {
-    return reduceAsyncForAsyncIterator2(fnReduceAsync, initialValue)(this.iter);
-  }
-};
 
 // ../node_modules/.pnpm/gensequence@6.0.0/node_modules/gensequence/dist/esm/ImplSequenceBuilder.mjs
 var ImplSequenceBuilder = class _ImplSequenceBuilder {
@@ -75251,7 +75194,7 @@ var GitIgnore = class {
   }
   filterOutIgnored(files) {
     const iter = this.filterOutIgnoredAsync(files);
-    return isAsyncIterable4(files) ? iter : asyncIterableToArray2(iter);
+    return isAsyncIterable3(files) ? iter : asyncIterableToArray2(iter);
   }
   async *filterOutIgnoredAsync(files) {
     for await (const file of files) {
@@ -75314,7 +75257,7 @@ function sortRoots(roots) {
   roots.sort((a, b) => a.length - b.length);
   return roots;
 }
-function isAsyncIterable4(i) {
+function isAsyncIterable3(i) {
   const as = i;
   return typeof as[Symbol.asyncIterator] === "function";
 }
