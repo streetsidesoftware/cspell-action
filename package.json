@@ -43,14 +43,14 @@
     "@pollyjs/core": "^6.0.6",
     "@pollyjs/persister-fs": "^6.0.6",
     "@tsconfig/node16": "^16.1.1",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
-    "@vitest/coverage-istanbul": "^1.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vitest/coverage-istanbul": "^1.2.1",
     "env-cmd": "^10.1.0",
     "eslint": "^8.56.0",
-    "prettier": "^3.2.2",
+    "prettier": "^3.2.4",
     "shx": "^0.3.4",
     "typescript": "^5.3.3",
-    "vitest": "^1.2.0"
+    "vitest": "^1.2.1"
   }
 }
