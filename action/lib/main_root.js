@@ -47562,9 +47562,9 @@ var require_cjs2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/lru-cache@10.1.0/node_modules/lru-cache/dist/commonjs/index.js
+// ../node_modules/.pnpm/lru-cache@10.2.0/node_modules/lru-cache/dist/commonjs/index.js
 var require_commonjs = __commonJS({
-  "../node_modules/.pnpm/lru-cache@10.1.0/node_modules/lru-cache/dist/commonjs/index.js"(exports2) {
+  "../node_modules/.pnpm/lru-cache@10.2.0/node_modules/lru-cache/dist/commonjs/index.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.LRUCache = void 0;
@@ -48157,6 +48157,11 @@ var require_commonjs = __commonJS({
       [Symbol.iterator]() {
         return this.entries();
       }
+      /**
+       * A String value that is used in the creation of the default string description of an object.
+       * Called by the built-in method Object.prototype.toString.
+       */
+      [Symbol.toStringTag] = "LRUCache";
       /**
        * Find a value for which the supplied fn method returns a truthy value,
        * similar to Array.find().  fn is called as fn(value, key, cache).
