@@ -48,7 +48,7 @@
     "@vitest/coverage-istanbul": "^1.2.2",
     "env-cmd": "^10.1.0",
     "eslint": "^8.56.0",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "shx": "^0.3.4",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"
