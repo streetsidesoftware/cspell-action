@@ -45863,9 +45863,9 @@ var require_src3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/flatted@3.2.9/node_modules/flatted/cjs/index.js
+// ../node_modules/.pnpm/flatted@3.3.0/node_modules/flatted/cjs/index.js
 var require_cjs = __commonJS({
-  "../node_modules/.pnpm/flatted@3.2.9/node_modules/flatted/cjs/index.js"(exports2) {
+  "../node_modules/.pnpm/flatted@3.3.0/node_modules/flatted/cjs/index.js"(exports2) {
     "use strict";
     var { parse: $parse, stringify: $stringify } = JSON;
     var { keys: keys3 } = Object;
@@ -45940,9 +45940,9 @@ var require_cjs = __commonJS({
       }
     };
     exports2.stringify = stringify4;
-    var toJSON = (any3) => $parse(stringify4(any3));
+    var toJSON = (value) => $parse(stringify4(value));
     exports2.toJSON = toJSON;
-    var fromJSON = (any3) => parse5($stringify(any3));
+    var fromJSON = (value) => parse5($stringify(value));
     exports2.fromJSON = fromJSON;
   }
 });
@@ -76943,7 +76943,4 @@ queue-microtask/index.js:
 
 run-parallel/index.js:
   (*! run-parallel. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> *)
-
-flatted/cjs/index.js:
-  (*! (c) 2020 Andrea Giammarchi *)
 */
