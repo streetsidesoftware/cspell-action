@@ -63,8 +63,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       '@octokit/plugin-rest-endpoint-methods':
-        specifier: ^10.4.0
-        version: 10.4.0(@octokit/core@5.1.0)
+        specifier: ^11.0.0
+        version: 11.0.0(@octokit/core@5.1.0)
       '@octokit/rest':
         specifier: ^20.0.2
         version: 20.0.2
@@ -1215,6 +1215,16 @@ packages:
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': '>=5'
+    dependencies:
+      '@octokit/core': 5.1.0
+      '@octokit/types': 12.6.0
+    dev: false
+
+  /@octokit/plugin-rest-endpoint-methods@11.0.0(@octokit/core@5.1.0):
+    resolution: {integrity: sha512-+NYPG2m2nxEB+yCVtNHZfJ8aUBAli3ylg1yS+ik4YwdyfTrxaRO5EcljuywHbwgWlhAnCzA6ag/l+Nk7W7hmeQ==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@octokit/core': '>=6'
     dependencies:
       '@octokit/core': 5.1.0
       '@octokit/types': 12.6.0
