@@ -1,5 +1,5 @@
 import { debug, info, warning, error } from '@actions/core';
-import { issueCommand } from '@actions/core/lib/command';
+import { issueCommand } from '@actions/core/lib/command.js';
 import type {
     CSpellReporter,
     Issue,

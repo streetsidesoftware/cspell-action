@@ -1,9 +1,9 @@
 import { describe, test, expect, vi } from 'vitest';
-import { run } from './main';
+import { run } from './main.js';
 
 vi.mock('./main');
 
-import './main_root';
+import './main_root.js';
 
 const runMocked = vi.mocked(run);
 

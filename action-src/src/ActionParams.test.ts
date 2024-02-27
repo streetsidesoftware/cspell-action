@@ -1,5 +1,5 @@
 import { describe, expect, test, vi } from 'vitest';
-import { ActionParamsInput, __testing__, applyDefaults, validateActionParams } from './ActionParams';
+import { ActionParamsInput, __testing__, applyDefaults, validateActionParams } from './ActionParams.js';
 
 describe('ActionParams', () => {
     test.each`

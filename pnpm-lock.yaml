@@ -17,9 +17,9 @@ importers:
       '@pollyjs/persister-fs':
         specifier: ^6.0.6
         version: 6.0.6
-      '@tsconfig/node16':
-        specifier: ^16.1.1
-        version: 16.1.1
+      '@tsconfig/node18':
+        specifier: ^18.2.2
+        version: 18.2.2
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.2
         version: 7.0.2(@typescript-eslint/parser@7.0.2)(eslint@8.57.0)(typescript@5.3.3)
@@ -1449,8 +1449,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@tsconfig/node16@16.1.1:
-    resolution: {integrity: sha512-+pio93ejHN4nINX4pXqfnR/fPLRtJBaT4ORaa5RH0Oc1zoYmo2B2koG+M328CQhHKn1Wj6FcOxCDFXAot9NhvA==}
+  /@tsconfig/node18@18.2.2:
+    resolution: {integrity: sha512-d6McJeGsuoRlwWZmVIeE8CUA27lu6jLjvv1JzqmpsytOYYbVi1tHZEnwCNVOXnj4pyLvneZlFlpXUK+X9wBWyw==}
     dev: true
 
   /@types/estree@1.0.5:

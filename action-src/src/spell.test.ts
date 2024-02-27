@@ -1,6 +1,6 @@
-import * as spell from './spell';
-import { root } from './test/helper';
-import { CSpellReporterForGithubAction, Logger } from './reporter';
+import * as spell from './spell.js';
+import { root } from './test/helper.js';
+import { CSpellReporterForGithubAction, Logger } from './reporter.js';
 import { describe, expect, test, vi } from 'vitest';
 
 const sc = expect.stringContaining;

@@ -1,5 +1,5 @@
 import { Octokit } from '@octokit/rest';
-import { getPullRequestFiles } from './github';
+import { getPullRequestFiles } from './github.js';
 import { describe, expect, test } from 'vitest';
 
 describe('validate github', () => {

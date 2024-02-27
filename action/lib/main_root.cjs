@@ -54197,10 +54197,10 @@ var require_file_entry_cache = __commonJS({
 });
 
 // src/main.ts
-var import_core4 = __toESM(require_core());
-var import_github2 = __toESM(require_github());
-var import_context = __toESM(require_context());
-var import_assert20 = __toESM(require("assert"));
+var import_core4 = __toESM(require_core(), 1);
+var import_github2 = __toESM(require_github(), 1);
+var import_context = __toESM(require_context(), 1);
+var import_assert20 = __toESM(require("assert"), 1);
 
 // src/error.ts
 var AppError = class extends Error {
@@ -54221,7 +54221,7 @@ function isAppError(e) {
 }
 
 // src/action.ts
-var import_core3 = __toESM(require_core());
+var import_core3 = __toESM(require_core(), 1);
 
 // ../node_modules/.pnpm/cspell-glob@8.4.1/node_modules/cspell-glob/dist/esm/globHelper.js
 var Path = __toESM(require("path"), 1);
@@ -54484,7 +54484,7 @@ function buildMatcherFn(patterns, options) {
 }
 
 // src/action.ts
-var path25 = __toESM(require("path"));
+var path25 = __toESM(require("path"), 1);
 
 // src/ActionParams.ts
 var import_fs = require("fs");
@@ -54564,7 +54564,7 @@ function validateActionParams(params, logError2) {
 }
 
 // src/getActionParams.ts
-var import_core = __toESM(require_core());
+var import_core = __toESM(require_core(), 1);
 function getActionParams() {
   return applyDefaults({
     github_token: (0, import_core.getInput)("github_token", { required: true }),
@@ -54595,7 +54595,7 @@ function tf(v) {
 }
 
 // src/github.ts
-var import_plugin_rest_endpoint_methods = __toESM(require_dist_node9());
+var import_plugin_rest_endpoint_methods = __toESM(require_dist_node9(), 1);
 async function getPullRequestFiles(git, prRef) {
   const { owner, repo, pull_number } = prRef;
   const { rest } = (0, import_plugin_rest_endpoint_methods.restEndpointMethods)(git);
@@ -54641,8 +54641,8 @@ async function reportUsage(rest, message) {
 }
 
 // src/reporter.ts
-var import_core2 = __toESM(require_core());
-var import_command = __toESM(require_command());
+var import_core2 = __toESM(require_core(), 1);
+var import_command = __toESM(require_command(), 1);
 
 // ../node_modules/.pnpm/vscode-uri@3.0.8/node_modules/vscode-uri/lib/esm/index.mjs
 var LIB;
@@ -55023,7 +55023,7 @@ var LIB;
 var { URI, Utils } = LIB;
 
 // src/reporter.ts
-var path = __toESM(require("path"));
+var path = __toESM(require("path"), 1);
 var core = { debug: import_core2.debug, info: import_core2.info, warning: import_core2.warning, error: import_core2.error };
 function nullEmitter(_msg) {
 }
@@ -55032,26 +55032,19 @@ var CSpellReporterForGithubAction = class {
     this.reportIssueCommand = reportIssueCommand;
     this.options = options;
     this.logger = logger;
-    this.issues = [];
-    this.issueCounts = /* @__PURE__ */ new Map();
-    this.result = {
-      files: -1,
-      filesWithIssues: /* @__PURE__ */ new Set(),
-      issues: -1,
-      errors: -1,
-      cachedFiles: 0
-    };
-    this.finished = false;
-    this.reporter = {
-      debug: (...args) => this._debug(...args),
-      error: (...args) => this._error(...args),
-      info: (...args) => this._info(...args),
-      issue: (...args) => this._issue(...args),
-      progress: (...args) => this._progress(...args),
-      result: (...args) => this._result(...args)
-    };
     this.verbose = options.verbose;
   }
+  issues = [];
+  issueCounts = /* @__PURE__ */ new Map();
+  result = {
+    files: -1,
+    filesWithIssues: /* @__PURE__ */ new Set(),
+    issues: -1,
+    errors: -1,
+    cachedFiles: 0
+  };
+  finished = false;
+  verbose;
   _issue(issue) {
     const { issues, issueCounts } = this;
     const uri = issue.uri;
@@ -55106,6 +55099,14 @@ ${error3.stack}
       console.warn(`${relative2(cwd, item.uri || "")}:${item.row}:${item.col} Unknown word (${item.text})`);
     });
   }
+  reporter = {
+    debug: (...args) => this._debug(...args),
+    error: (...args) => this._error(...args),
+    info: (...args) => this._info(...args),
+    issue: (...args) => this._issue(...args),
+    progress: (...args) => this._progress(...args),
+    result: (...args) => this._result(...args)
+  };
 };
 function isProgressFileComplete(p) {
   return p.type === "ProgressFileComplete";
