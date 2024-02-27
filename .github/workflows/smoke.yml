@@ -12,21 +12,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Get Environment
+        id: get-env
+        uses: actions/github-script@v7
+        with:
+          script: |
+            return process.env;
+
+      - name: View context attributes
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            console.log('Env %o', process.env);
+            console.log('context: %o', context);
+            return process.env.GITHUB_EVENT_PATH;
+
       - name: View context in summary
         uses: streetsidesoftware/actions/public/summary@v1
         with:
           text: |
             Env:
             `````json
-            ${{ toJson(env) }}
+            ${{ steps.get-env.outputs.result }}
             `````
             GitHub Context:
             `````json
             ${{ toJson(github) }}
             `````
-      - name: View context attributes
-        uses: actions/github-script@v7
-        with:
-          script: |
-            console.log('Env %o', process.env);
-            console.log('context: %o', context);
