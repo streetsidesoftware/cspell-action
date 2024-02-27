@@ -42,6 +42,9 @@ jobs:
             # Context Summary
 
             Event Name: `${{ github.event_name }}`
+            After: `${{ github.event.after }}`
+            Before: `${{ github.event.before }}`
+            Base.sha: `${{ github.event.base.sha }}`
 
             Commits Ids:
             ```
