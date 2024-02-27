@@ -1,5 +1,5 @@
 import { existsSync } from 'fs';
-import { AppError } from './error';
+import { AppError } from './error.js';
 
 /**
  * [Workflow commands for GitHub Actions - GitHub Docs](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter)

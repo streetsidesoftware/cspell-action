@@ -81,7 +81,7 @@ outputs:
 
 runs:
   using: "node20"
-  main: "./action/lib/main_root.js"
+  main: "./action/lib/main_root.cjs"
 branding:
   icon: "code"
   color: "green"

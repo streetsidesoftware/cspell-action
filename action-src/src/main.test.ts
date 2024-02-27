@@ -1,6 +1,6 @@
 import * as process from 'process';
-import * as helper from './test/helper';
-import { run } from './main';
+import * as helper from './test/helper.js';
+import { run } from './main.js';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
 const timeout = 20000;

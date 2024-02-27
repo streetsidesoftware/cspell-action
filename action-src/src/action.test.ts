@@ -1,13 +1,13 @@
 import * as process from 'process';
 import * as path from 'path';
 import * as fs from 'fs';
-import { Context } from '@actions/github/lib/context';
+import { Context } from '@actions/github/lib/context.js';
 import * as core from '@actions/core';
 import { Octokit } from '@octokit/rest';
-import { action } from './action';
-import { AppError } from './error';
-import { fixturesLocation, root } from './test/helper';
-import * as helper from './test/helper';
+import { action } from './action.js';
+import { AppError } from './error.js';
+import { fixturesLocation, root } from './test/helper.js';
+import * as helper from './test/helper.js';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const configFile = path.resolve(root, 'cspell.json');

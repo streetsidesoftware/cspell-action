@@ -2,6 +2,7 @@
   "name": "action-src",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "node ./build.mjs",
     "clean-build": "pnpm clean && pnpm build",

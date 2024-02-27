@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "npm@10.1.0",
-  "type": "commonjs",
-  "main": "./lib/main_root.js",
+  "type": "module",
+  "main": "./lib/main_root.cjs",
   "bundledDependencies": [
     "@cspell/cspell-bundled-dicts"
   ],

@@ -1,14 +1,14 @@
 import { debug, info, error, warning, setFailed, setOutput } from '@actions/core';
-import { Context as GitHubContext } from '@actions/github/lib/context';
+import { Context as GitHubContext } from '@actions/github/lib/context.js';
 import { Octokit } from '@octokit/core';
 import { RunResult } from 'cspell';
 import * as glob from 'cspell-glob';
 import * as path from 'path';
-import { ActionParams, validateActionParams } from './ActionParams';
-import { getActionParams } from './getActionParams';
-import { fetchFilesForCommits, getPullRequestFiles } from './github';
-import { CSpellReporterForGithubAction } from './reporter';
-import { lint, LintOptions } from './spell';
+import { ActionParams, validateActionParams } from './ActionParams.js';
+import { getActionParams } from './getActionParams.js';
+import { fetchFilesForCommits, getPullRequestFiles } from './github.js';
+import { CSpellReporterForGithubAction } from './reporter.js';
+import { lint, LintOptions } from './spell.js';
 
 const core = { debug, error, info, warning };
 

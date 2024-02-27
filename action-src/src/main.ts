@@ -1,9 +1,9 @@
 import { info, getInput, setFailed } from '@actions/core';
 import { getOctokit } from '@actions/github';
-import { Context } from '@actions/github/lib/context';
+import { Context } from '@actions/github/lib/context.js';
 import assert from 'assert';
-import { isAppError, isError } from './error';
-import { action } from './action';
+import { isAppError, isError } from './error.js';
+import { action } from './action.js';
 import { format } from 'util';
 
 function getGithubToken(): string | undefined {
