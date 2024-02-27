@@ -39,6 +39,13 @@ jobs:
         uses: streetsidesoftware/actions/public/summary@v1
         with:
           text: |
+            # Context Summary
+
+            Commits Ids:
+            ```
+            ${{ github.event.commits.*.id }}
+            ```
+
             Env:
             `````json
             ${{ toJson(fromJson(steps.get-env.outputs.result)) }}
