@@ -29,3 +29,4 @@ jobs:
         with:
           script: |
             console.log('Env %o', process.env);
+            console.log('context: %o', context);
