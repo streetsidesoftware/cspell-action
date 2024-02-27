@@ -35,7 +35,7 @@ jobs:
           text: |
             Env:
             `````json
-            ${{ steps.get-env.outputs.result }}
+            ${{ toJson(fromJson(steps.get-env.outputs.result)) }}
             `````
             GitHub Context:
             `````json
