@@ -45,7 +45,7 @@ jobs:
 
             Commits Ids:
             ```
-            ${{ github.event.commits.*.id }}
+            ${{ toJSON(github.event.commits.*.id  || 'undefined') }}
             ```
 
             Env:
