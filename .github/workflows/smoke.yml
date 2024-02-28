@@ -2,6 +2,8 @@ name: Smoke Test Context
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
+  issues:
+  issue_comment:
   workflow_dispatch:
 
 permissions:
