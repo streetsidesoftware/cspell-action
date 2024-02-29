@@ -1,6 +1,6 @@
 {
     "action": "synchronize",
-    "after": "7ea7d5b885b5df07f5a268d5e92c15c1041d7a67",
+    "after": "5d9717389b2b4df98a9c824c5f74f6971eeb431f",
     "before": "4c2036a1311b4ffc8b3851b83c30df7212c6692b",
     "number": 1587,
     "organization": {
@@ -41,7 +41,7 @@
                 "href": "https://api.github.com/repos/streetsidesoftware/cspell-action/pulls/1587"
             },
             "statuses": {
-                "href": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/7ea7d5b885b5df07f5a268d5e92c15c1041d7a67"
+                "href": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/5d9717389b2b4df98a9c824c5f74f6971eeb431f"
             }
         },
         "active_lock_reason": null,
@@ -323,7 +323,7 @@
                 "watchers_count": 66,
                 "web_commit_signoff_required": false
             },
-            "sha": "7ea7d5b885b5df07f5a268d5e92c15c1041d7a67",
+            "sha": "5d9717389b2b4df98a9c824c5f74f6971eeb431f",
             "user": {
                 "avatar_url": "https://avatars.githubusercontent.com/u/50543896?v=4",
                 "events_url": "https://api.github.com/users/streetsidesoftware/events{/privacy}",
@@ -378,7 +378,7 @@
         "review_comments": 0,
         "review_comments_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/pulls/1587/comments",
         "state": "open",
-        "statuses_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/7ea7d5b885b5df07f5a268d5e92c15c1041d7a67",
+        "statuses_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/5d9717389b2b4df98a9c824c5f74f6971eeb431f",
         "title": "chore(main): release 5.4.1",
         "updated_at": "2024-02-27T15:03:48Z",
         "url": "https://api.github.com/repos/streetsidesoftware/cspell-action/pulls/1587",

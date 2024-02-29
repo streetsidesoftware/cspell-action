@@ -27,9 +27,9 @@ describe('git', () => {
 
     test.each`
         contextFile                        | expected
-        ${'./pull_request_2_context.json'} | ${ac(['package.json'])}
+        ${'./pull_request_2_context.json'} | ${ac(['README.md'])}
         ${'./pr_1594_context.json'}        | ${ac(['action-src/build.mjs', 'package.json'])}
-    `('gitListFilesForContext', async ({ contextFile, expected }) => {
+    `('gitListFilesForContext $contextFile', async ({ contextFile, expected }) => {
         const context = await readFixtureFileJSON<Context>(contextFile);
         const files = await gitListFilesForContext(context);
         expect(files).toEqual(expected);
