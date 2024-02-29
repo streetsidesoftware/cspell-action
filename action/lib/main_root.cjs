@@ -50467,7 +50467,6 @@ var path25 = __toESM(require("path"), 1);
 // src/ActionParams.ts
 var import_fs = require("fs");
 var defaultActionParams = {
-  github_token: "",
   files: "",
   incremental_files_only: "true",
   config: "",
@@ -50484,10 +50483,6 @@ function applyDefaults(params) {
     alias[key] = alias[key] || value;
   }
   return results;
-}
-function validateToken(params) {
-  const token = params.github_token;
-  return !token ? "Missing GITHUB Token" : void 0;
 }
 function validateConfig(params) {
   const config = params.config;
@@ -50527,7 +50522,6 @@ function isInlineWorkflowCommand(cmd) {
 }
 function validateActionParams(params, logError2) {
   const validations = [
-    validateToken,
     validateConfig,
     validateRoot,
     validateInlineLevel,
@@ -50545,7 +50539,7 @@ function validateActionParams(params, logError2) {
 var import_core = __toESM(require_core(), 1);
 function getActionParams() {
   return applyDefaults({
-    github_token: (0, import_core.getInput)("github_token", { required: true }),
+    // github_token: getInput('github_token', { required: true }),
     files: (0, import_core.getInput)("files"),
     incremental_files_only: tf((0, import_core.getInput)("incremental_files_only")),
     config: (0, import_core.getInput)("config"),
@@ -72714,8 +72708,11 @@ function cleanSha(sha) {
   return s.replace(/^0+$/, "");
 }
 async function gitListFilesForPullRequest(pr) {
-  const sha12 = pr.pull_request.base.sha;
-  const sha2 = pr.pull_request.head.sha;
+  const sha12 = pr.pull_request?.base?.sha;
+  const sha2 = pr.pull_request?.head?.sha;
+  if (!sha12 || !sha2) {
+    throw new GitError(`Invalid PR event base.sha: ${sha12}, head.sha: ${sha2}`);
+  }
   try {
     return gitListFiles(sha12, sha2);
   } catch (e) {
@@ -72739,6 +72736,7 @@ var GitError = class extends Error {
 
 // src/action.ts
 var core2 = { debug: import_core3.debug, error: import_core3.error, info: import_core3.info, warning: import_core3.warning };
+var defaultGlob = "**";
 var supportedIncrementalEvents = /* @__PURE__ */ new Set(["push", "pull_request"]);
 var checkDotMap = {
   true: true,
@@ -72786,12 +72784,15 @@ async function gatherFilesFromContext(context) {
 }
 async function gatherFiles(context) {
   const eventName = context.githubContext.eventName;
-  console.warn("gatherFiles %o", { context: context.githubContext, eventName });
-  switch (eventName) {
-    case "push":
-      return new Set(await gitListFilesForPush(context.githubContext.payload));
-    case "pull_request":
-      return new Set(await gitListFilesForPullRequest(context.githubContext.payload));
+  try {
+    switch (eventName) {
+      case "push":
+        return new Set(await gitListFilesForPush(context.githubContext.payload));
+      case "pull_request":
+        return new Set(await gitListFilesForPullRequest(context.githubContext.payload));
+    }
+  } catch (e) {
+    core2.warning("Unable to determine which files have changed, checking files: " + defaultGlob);
   }
   return /* @__PURE__ */ new Set();
 }
@@ -72812,11 +72813,11 @@ async function action(githubContext) {
   validateActionParams(params, core2.error);
   const eventName = githubContext.eventName;
   if (params.incremental_files_only === "true" && !isSupportedEvent(eventName)) {
-    params.files = params.files || "**";
+    params.files = params.files || defaultGlob;
     core2.warning("Unable to determine which files have changed, checking files: " + params.files);
     params.incremental_files_only = "false";
   }
-  params.files = params.files || (params.incremental_files_only !== "true" ? "**" : "");
+  params.files = params.files || (params.incremental_files_only !== "true" ? defaultGlob : "");
   const dot = !!checkDotMap[params.check_dot_files];
   const context = {
     githubContext,

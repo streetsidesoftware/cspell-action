@@ -11,7 +11,6 @@ export type TrueFalse = 'true' | 'false';
 export interface ActionParamsInput extends Record<keyof ActionParams, string> {}
 
 export interface ActionParams {
-    github_token: string;
     files: string;
     incremental_files_only: TrueFalse;
     config: string;
@@ -42,7 +41,6 @@ export interface ActionParams {
 }
 
 const defaultActionParams: ActionParams = {
-    github_token: '',
     files: '',
     incremental_files_only: 'true',
     config: '',
@@ -62,11 +60,6 @@ export function applyDefaults(params: ActionParamsInput): ActionParamsInput {
         alias[key] = alias[key] || value;
     }
     return results;
-}
-
-function validateToken(params: ActionParamsInput) {
-    const token = params.github_token;
-    return !token ? 'Missing GITHUB Token' : undefined;
 }
 
 function validateConfig(params: ActionParamsInput) {
@@ -117,7 +110,6 @@ export function validateActionParams(
     logError: (msg: string) => void,
 ): asserts params is ActionParams {
     const validations: ValidationFunction[] = [
-        validateToken,
         validateConfig,
         validateRoot,
         validateInlineLevel,

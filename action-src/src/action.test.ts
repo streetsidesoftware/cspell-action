@@ -29,7 +29,6 @@ describe('Validate Action', () => {
         spyError.mockClear();
         spyLog.mockClear();
         spyStdout.mockClear();
-        process.env.INPUT_GITHUB_TOKEN = process.env['GITHUB_TOKEN'];
     });
 
     test.each`

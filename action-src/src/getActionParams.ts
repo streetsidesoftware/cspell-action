@@ -3,7 +3,7 @@ import { ActionParamsInput, applyDefaults, TrueFalse } from './ActionParams.js';
 
 export function getActionParams(): ActionParamsInput {
     return applyDefaults({
-        github_token: getInput('github_token', { required: true }),
+        // github_token: getInput('github_token', { required: true }),
         files: getInput('files'),
         incremental_files_only: tf(getInput('incremental_files_only')),
         config: getInput('config'),

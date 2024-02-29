@@ -1,6 +1,13 @@
 import { promises as fs } from 'node:fs';
 import { describe, expect, test } from 'vitest';
-import { Context, gitListFiles, gitListFilesForContext } from './git.js';
+import {
+    Context,
+    GitError,
+    gitListFiles,
+    gitListFilesForContext,
+    gitListFilesForPullRequest,
+    gitListFilesForPush,
+} from './git.js';
 
 const urlFixtures = new URL('../fixtures/', import.meta.url);
 
@@ -24,6 +31,11 @@ describe('git', () => {
         const context = await readFixtureFileJSON<Context>(contextFile);
         const files = await gitListFilesForContext(context);
         expect(files).toEqual(expected);
+    });
+
+    test('bad Requests', async () => {
+        await expect(gitListFilesForPullRequest({} as any)).rejects.toThrowError(GitError);
+        await expect(gitListFilesForPush(undefined as any)).rejects.toThrowError(GitError);
     });
 });
 
