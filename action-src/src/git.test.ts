@@ -3,6 +3,7 @@ import { describe, expect, test } from 'vitest';
 import {
     Context,
     GitError,
+    gitListCommits,
     gitListFiles,
     gitListFilesForContext,
     gitListFilesForPullRequest,
@@ -37,6 +38,14 @@ describe('git', () => {
         await expect(gitListFilesForPullRequest({} as any)).rejects.toThrowError(GitError);
         await expect(gitListFilesForPush(undefined as any)).rejects.toThrowError(GitError);
     });
+
+    test('gitListCommits', async () => {
+        const commits = await gitListCommits();
+        console.log('%o', commits);
+        expect(commits.length).toBeGreaterThanOrEqual(1);
+        const hexCommits = commits.filter(isHex);
+        expect(hexCommits).toEqual(commits);
+    });
 });
 
 function readFixtureFile(file: string | URL): Promise<string> {
@@ -45,4 +54,8 @@ function readFixtureFile(file: string | URL): Promise<string> {
 
 async function readFixtureFileJSON<T = unknown>(file: string | URL): Promise<T> {
     return JSON.parse(await readFixtureFile(file));
+}
+
+function isHex(v: string): boolean {
+    return /^[a-fA-F0-9]+$/.test(v);
 }

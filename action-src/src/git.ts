@@ -5,6 +5,16 @@ import type { PushEvent, PullRequestEvent } from '@octokit/webhooks-types';
 
 const execP = promisify(exec);
 
+export async function gitListCommits(count = 100, _since?: Date): Promise<string[]> {
+    const args = ['log', '--pretty=format:"%H"', `-${count}`];
+    const cmd = `git ${args.join(' ')}`;
+    const cmdResult = await execP(cmd);
+    return cmdResult.stdout
+        .split('\n')
+        .map((a) => a.trim())
+        .filter((a) => !!a);
+}
+
 export async function gitListFiles(sha1: string, sha2?: string): Promise<string[]> {
     const SHAs = [sha1, sha2].map(cleanSha).filter((a) => !!a);
     if (!SHAs.length) return [];
@@ -24,11 +34,10 @@ function cleanSha(sha: string | undefined): string {
     return s.replace(/^0+$/, '');
 }
 
-export async function gitListFilesForPullRequest(
-    pr: PullRequestEvent & { before?: undefined; after?: undefined },
-): Promise<string[]> {
-    const sha1 = pr?.pull_request?.base?.sha || pr?.before;
-    const sha2 = pr?.after || pr?.pull_request?.head?.sha;
+export async function gitListFilesForPullRequest(pr: PullRequestEvent): Promise<string[]> {
+    const event = pr as { before?: undefined; after?: undefined };
+    const sha1 = pr?.pull_request?.base?.sha || event?.before;
+    const sha2 = event?.after || pr?.pull_request?.head?.sha;
     if (!sha1 || !sha2) {
         throw new GitError(`Invalid PR event base.sha: ${sha1}, head.sha: ${sha2}`);
     }

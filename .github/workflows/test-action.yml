@@ -2,8 +2,6 @@ name: "test-action"
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
-    branches:
-      - main
 
 permissions:
   contents: read
@@ -43,6 +41,11 @@ jobs:
             ``````json
             ${{ toJSON(steps.cspell-action.outputs) }}
             ``````
+
+            Commits Ids:
+            ```
+            ${{ toJSON(github.event.commits.*.id  || 'undefined') }}
+            ```
 
   test-action-no-increment: # run the action
     runs-on: ubuntu-latest
