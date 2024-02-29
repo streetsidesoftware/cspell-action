@@ -1,5 +1,5 @@
 {
-    "payload": {
+    "event": {
         "action": "opened",
         "number": 3,
         "organization": {

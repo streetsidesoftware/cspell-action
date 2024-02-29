@@ -25,10 +25,6 @@ jobs:
 ```yaml
 - uses: streetsidesoftware/cspell-action@v5
   with:
-    # Github token used to fetch the list of changed files in the commit.
-    # Default: ${{ github.token }}
-    github_token: ''
-
     # Define glob patterns to filter the files to be checked. Use a new line between patterns to define multiple patterns.
     # The default is to check ALL files that were changed in in the pull_request or push.
     # Note: `ignorePaths` defined in cspell.json still apply.

@@ -1,28 +1,29 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { Polly, PollyConfig } from '@pollyjs/core';
-import NodeHttpAdapter from '@pollyjs/adapter-node-http';
-import FSPersister from '@pollyjs/persister-fs';
+import { fileURLToPath } from 'url';
 
-Polly.register(NodeHttpAdapter);
-Polly.register(FSPersister);
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+const urlTSConfig = new URL('../../tsconfig.json', import.meta.url);
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const tsconfig = require('../../tsconfig.json');
+const tsconfig = JSON.parse(fs.readFileSync(urlTSConfig, 'utf-8'));
 
 export const sourceDir = path.resolve(path.join(__dirname, '..', '..'));
 /** Repo Root */
 export const root = path.resolve(path.join(sourceDir, '..'));
-export const fixturesLocation = path.join(sourceDir, 'fixtures');
+export const fixturesLocation = path.join(sourceDir, './fixtures');
 
 const outputDir = path.resolve(sourceDir, tsconfig.compilerOptions.outDir);
 
 export const debugDir = outputDir;
 
 export function fetchGithubActionFixture(filename: string): Record<string, string> {
-    const githubEnv = JSON.parse(fs.readFileSync(path.resolve(fixturesLocation, filename), 'utf-8'));
+    const absFixtureFile = path.resolve(fixturesLocation, filename);
+    const absFixtureDir = path.dirname(absFixtureFile);
+    const githubEnv = JSON.parse(fs.readFileSync(absFixtureFile, 'utf-8'));
     if (githubEnv['GITHUB_EVENT_PATH']) {
-        githubEnv['GITHUB_EVENT_PATH'] = path.resolve(root, githubEnv['GITHUB_EVENT_PATH']);
+        githubEnv['GITHUB_EVENT_PATH'] = path.resolve(absFixtureDir, githubEnv['GITHUB_EVENT_PATH']);
     }
     const env = {
         ...process.env,
@@ -30,59 +31,4 @@ export function fetchGithubActionFixture(filename: string): Record<string, strin
     };
 
     return env;
-}
-
-type SetupPolyOptions = Pick<PollyConfig, 'recordIfMissing'>;
-
-function setupPolly(name: string, dir: string, options?: SetupPolyOptions): Polly {
-    const polly = new Polly(name, {
-        adapters: ['node-http'],
-        persister: 'fs',
-        persisterOptions: {
-            fs: {
-                recordingsDir: dir,
-            },
-        },
-        recordIfMissing: options?.recordIfMissing ?? false,
-        matchRequestsBy: {
-            method: true,
-            headers: false,
-            body: true,
-            order: false,
-
-            url: {
-                protocol: true,
-                username: true,
-                password: true,
-                hostname: true,
-                port: true,
-                pathname: true,
-                query: true,
-                hash: false,
-            },
-        },
-    });
-    const { server } = polly;
-    server.any().on('beforePersist', (_req, recording) => {
-        recording.request.headers = [];
-    });
-    return polly;
-}
-
-export async function pollyRun(
-    testFile: string,
-    testName: string,
-    fn: (poly: Polly) => Promise<unknown>,
-    options?: SetupPolyOptions,
-): Promise<void> {
-    const rel = path.relative(sourceDir, testFile);
-    const dir = path.resolve(fixturesLocation, '__recordings__', rel);
-    const poly = setupPolly(testName, dir, options);
-    try {
-        // console.warn('Poly Context: %o', { testFile, testName, dir });
-        poly.replay();
-        await fn(poly);
-    } finally {
-        poly.stop();
-    }
 }

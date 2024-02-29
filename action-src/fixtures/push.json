@@ -1,6 +1,6 @@
 {
     "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
-    "GITHUB_EVENT_PATH": "./fixtures/push_payload.json",
+    "GITHUB_EVENT_PATH": "./push_payload.json",
     "GITHUB_EVENT_NAME": "push",
     "GITHUB_SHA": "a16b47a16f6c11b63cfdcf510c15ba26edd0f3d1",
     "GITHUB_REF": "refs/heads/fix-resolve-path",

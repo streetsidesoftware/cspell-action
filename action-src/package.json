@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node ./build.mjs",
+    "build:tsc": "tsc -p .",
     "clean-build": "pnpm clean && pnpm build",
     "clean": "shx rm -rf ../action/lib dist",
     "lint": "eslint . --fix",
@@ -26,11 +27,15 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.1",
+    "@actions/exec": "^1.1.1",
     "@actions/github": "^6.0.0",
     "@cspell/cspell-bundled-dicts": "^8.4.1",
     "@octokit/core": "^6.0.1",
     "@octokit/plugin-rest-endpoint-methods": "^11.0.0",
     "@octokit/rest": "^20.0.2",
+    "@octokit/webhooks-schemas": "^7.3.2",
+    "@octokit/webhooks-types": "^7.3.2",
+    "@types/node": "20",
     "cspell": "^8.4.1",
     "cspell-glob": "^8.4.1",
     "vscode-uri": "^3.0.8"

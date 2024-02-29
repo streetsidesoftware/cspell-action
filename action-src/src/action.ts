@@ -1,20 +1,20 @@
 import { debug, info, error, warning, setFailed, setOutput } from '@actions/core';
-import { Context as GitHubContext } from '@actions/github/lib/context.js';
-import { Octokit } from '@octokit/core';
-import { RunResult } from 'cspell';
+import type { Context as GitHubContext } from '@actions/github/lib/context.js';
+import type { RunResult } from 'cspell';
 import * as glob from 'cspell-glob';
 import * as path from 'path';
 import { ActionParams, validateActionParams } from './ActionParams.js';
 import { getActionParams } from './getActionParams.js';
-import { fetchFilesForCommits, getPullRequestFiles } from './github.js';
 import { CSpellReporterForGithubAction } from './reporter.js';
 import { lint, LintOptions } from './spell.js';
+import { gitListFilesForPullRequest, gitListFilesForPush } from './git.js';
+
+import type { PushEvent, PullRequestEvent } from '@octokit/webhooks-types';
 
 const core = { debug, error, info, warning };
 
 interface Context {
     githubContext: GitHubContext;
-    github: Octokit;
     files: string;
     useEventFiles: boolean;
     dot: boolean;
@@ -22,29 +22,6 @@ interface Context {
 
 type EventNames = 'push' | 'pull_request';
 const supportedIncrementalEvents = new Set<EventNames | string>(['push', 'pull_request']);
-
-async function gatherPullRequestFiles(context: Context): Promise<Set<string>> {
-    const { github, githubContext } = context;
-    const pull_number = githubContext.payload.pull_request?.number;
-    if (!pull_number) return new Set();
-    return getPullRequestFiles(github as Octokit, { ...githubContext.repo, pull_number });
-}
-
-interface Commit {
-    id: string;
-}
-
-interface PushPayload {
-    commits?: Commit[];
-}
-
-async function gatherPushFiles(context: Context): Promise<Set<string>> {
-    const { github, githubContext } = context;
-    const push = githubContext.payload as PushPayload;
-    const commits = push.commits?.map((c) => c.id);
-    const files = commits && (await fetchFilesForCommits(github as Octokit, githubContext.repo, commits));
-    return files || new Set();
-}
 
 const checkDotMap = {
     true: true,
@@ -110,11 +87,13 @@ async function gatherFilesFromContext(context: Context): Promise<Set<string>> {
 async function gatherFiles(context: Context): Promise<Set<string>> {
     const eventName = context.githubContext.eventName;
 
+    console.warn('gatherFiles %o', { context: context.githubContext, eventName });
+
     switch (eventName) {
         case 'push':
-            return gatherPushFiles(context);
+            return new Set(await gitListFilesForPush(context.githubContext.payload as PushEvent));
         case 'pull_request':
-            return gatherPullRequestFiles(context);
+            return new Set(await gitListFilesForPullRequest(context.githubContext.payload as PullRequestEvent));
     }
     return new Set();
 }
@@ -140,7 +119,7 @@ function filterFiles(globPattern: string, files: Set<string>, dot: boolean): Set
  * @param octokit
  * @returns a promise that resolves to `true` if no issues were found.
  */
-export async function action(githubContext: GitHubContext, octokit: Octokit): Promise<boolean> {
+export async function action(githubContext: GitHubContext): Promise<boolean> {
     const params = getActionParams();
     validateActionParams(params, core.error);
     const eventName = githubContext.eventName;
@@ -153,7 +132,6 @@ export async function action(githubContext: GitHubContext, octokit: Octokit): Pr
     const dot = !!checkDotMap[params.check_dot_files];
     const context: Context = {
         githubContext,
-        github: octokit,
         files: params.files,
         useEventFiles: params.incremental_files_only === 'true',
         dot,

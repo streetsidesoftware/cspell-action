@@ -1,27 +1,15 @@
-import { info, getInput, setFailed } from '@actions/core';
-import { getOctokit } from '@actions/github';
+import { info, setFailed } from '@actions/core';
 import { Context } from '@actions/github/lib/context.js';
-import assert from 'assert';
 import { isAppError, isError } from './error.js';
 import { action } from './action.js';
 import { format } from 'util';
-
-function getGithubToken(): string | undefined {
-    const t0 = getInput('github_token', { required: true });
-    if (t0[0] !== '$') {
-        return t0 !== 'undefined' ? t0 : undefined;
-    }
-    return process.env[t0.slice(1)] || undefined;
-}
 
 export async function run(): Promise<undefined | Error> {
     try {
         info('cspell-action');
         const githubContext = new Context();
-        const githubToken = getGithubToken();
-        assert(githubToken, 'GITHUB_TOKEN is required.');
 
-        await action(githubContext, getOctokit(githubToken));
+        await action(githubContext);
         info('Done.');
         return undefined;
     } catch (error) {
