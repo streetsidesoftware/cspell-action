@@ -66,7 +66,7 @@
         "review_comments_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/pulls/1594/comments",
         "review_comment_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/pulls/comments{/number}",
         "comments_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/issues/1594/comments",
-        "statuses_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/54491c1e15a4b6d1c1fe1d6983f7776fae7c1f6f",
+        "statuses_url": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/5c5ba0cca65718402a67fbdcfec7097d289620d2",
         "head": {
             "label": "streetsidesoftware:dev-esm",
             "ref": "dev-esm",
@@ -352,7 +352,7 @@
                 "href": "https://api.github.com/repos/streetsidesoftware/cspell-action/pulls/1594/commits"
             },
             "statuses": {
-                "href": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/54491c1e15a4b6d1c1fe1d6983f7776fae7c1f6f"
+                "href": "https://api.github.com/repos/streetsidesoftware/cspell-action/statuses/5c5ba0cca65718402a67fbdcfec7097d289620d2"
             }
         },
         "author_association": "MEMBER",
