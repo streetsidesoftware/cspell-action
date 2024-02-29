@@ -72693,7 +72693,7 @@ var import_node_util2 = require("node:util");
 var import_node_child_process = require("node:child_process");
 var execP = (0, import_node_util2.promisify)(import_node_child_process.exec);
 async function gitListCommits(count3 = 100, _since) {
-  const args = ["log", '--pretty=format:"%H"', `-${count3}`];
+  const args = ["rev-list", "HEAD", `-${count3}`];
   const cmd = `git ${args.join(" ")}`;
   const cmdResult = await execP(cmd);
   return cmdResult.stdout.split("\n").map((a) => a.trim()).filter((a) => !!a);

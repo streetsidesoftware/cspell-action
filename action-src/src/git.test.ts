@@ -42,7 +42,7 @@ describe('git', () => {
 
     test('gitListCommits', async () => {
         const commits = await gitListCommits();
-        console.log('%o', commits);
+        // console.log('%o', commits);
         expect(commits.length).toBeGreaterThanOrEqual(1);
         const hexCommits = commits.filter(isHex);
         expect(hexCommits).toEqual(commits);

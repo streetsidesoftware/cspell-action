@@ -6,7 +6,7 @@ import type { PushEvent, PullRequestEvent } from '@octokit/webhooks-types';
 const execP = promisify(exec);
 
 export async function gitListCommits(count = 100, _since?: Date): Promise<string[]> {
-    const args = ['log', '--pretty=format:"%H"', `-${count}`];
+    const args = ['rev-list', 'HEAD', `-${count}`];
     const cmd = `git ${args.join(' ')}`;
     const cmdResult = await execP(cmd);
     return cmdResult.stdout
