@@ -72708,22 +72708,22 @@ function cleanSha(sha) {
   return s.replace(/^0+$/, "");
 }
 async function gitListFilesForPullRequest(pr) {
-  const sha12 = pr.pull_request?.base?.sha;
-  const sha2 = pr.pull_request?.head?.sha;
+  const sha12 = pr?.pull_request?.base?.sha;
+  const sha2 = pr?.pull_request?.head?.sha;
   if (!sha12 || !sha2) {
     throw new GitError(`Invalid PR event base.sha: ${sha12}, head.sha: ${sha2}`);
   }
   try {
     return gitListFiles(sha12, sha2);
   } catch (e) {
-    throw new GitError(`Error getting files for PR ${pr.number} from git`, e);
+    throw new GitError(`Error getting files for PR ${pr?.number} from git`, e);
   }
 }
 async function gitListFilesForPush(push) {
   try {
     return gitListFiles(push.before, push.after);
   } catch (e) {
-    throw new GitError(`Error getting files for Push, (Commit: ${push.after}) from git`, e);
+    throw new GitError(`Error getting files for Push, (Commit: ${push?.after}) from git`, e);
   }
 }
 var GitError = class extends Error {
