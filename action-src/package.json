@@ -31,11 +31,11 @@
     "@actions/github": "^6.0.0",
     "@cspell/cspell-bundled-dicts": "^8.4.1",
     "@octokit/core": "^6.0.1",
-    "@octokit/plugin-rest-endpoint-methods": "^11.0.0",
+    "@octokit/plugin-rest-endpoint-methods": "^11.0.1",
     "@octokit/rest": "^20.0.2",
     "@octokit/webhooks-schemas": "^7.3.2",
     "@octokit/webhooks-types": "^7.3.2",
-    "@types/node": "20",
+    "@types/node": "^20.11.23",
     "cspell": "^8.4.1",
     "cspell-glob": "^8.4.1",
     "vscode-uri": "^3.0.8"
