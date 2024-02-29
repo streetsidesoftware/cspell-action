@@ -8,6 +8,9 @@ on: # rebuild any PRs and main branch changes
 permissions:
   contents: read
 
+env:
+  FETCH_DEPTH: 100
+
 jobs:
   test-action: # run the action
     runs-on: ubuntu-latest
@@ -22,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
         env:
@@ -43,6 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
         env:
@@ -64,6 +71,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
         with:
@@ -85,6 +94,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
         with:
