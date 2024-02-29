@@ -18,6 +18,19 @@ jobs:
         id: cspell-action
         env:
           TEST: true
+      - name: Show Results
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: |
+            outputs:
+            ``````json
+            ${{ toJSON(steps.cspell-action.outputs) }}
+            ``````
+
+            Commits Ids:
+            ```
+            ${{ toJSON(github.event.commits.*.id  || 'undefined') }}
+            ```
 
   test-action-with-file: # run the action
     runs-on: ubuntu-latest
@@ -41,11 +54,6 @@ jobs:
             ``````json
             ${{ toJSON(steps.cspell-action.outputs) }}
             ``````
-
-            Commits Ids:
-            ```
-            ${{ toJSON(github.event.commits.*.id  || 'undefined') }}
-            ```
 
   test-action-no-increment: # run the action
     runs-on: ubuntu-latest
