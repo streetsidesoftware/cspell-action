@@ -72708,8 +72708,8 @@ function cleanSha(sha) {
   return s.replace(/^0+$/, "");
 }
 async function gitListFilesForPullRequest(pr) {
-  const sha12 = pr?.pull_request?.base?.sha;
-  const sha2 = pr?.pull_request?.head?.sha;
+  const sha12 = pr?.pull_request?.base?.sha || pr?.before;
+  const sha2 = pr?.after || pr?.pull_request?.head?.sha;
   if (!sha12 || !sha2) {
     throw new GitError(`Invalid PR event base.sha: ${sha12}, head.sha: ${sha2}`);
   }

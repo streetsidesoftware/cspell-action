@@ -28,7 +28,6 @@ describe('Validate Main', () => {
         'action test $test $file',
         async ({ file }) => {
             const env = helper.fetchGithubActionFixture(file);
-            console.log('%o', { env });
             env.FIXTURE_FILE_NAME = file;
             Object.assign(process.env, env);
 

@@ -24,9 +24,11 @@ function cleanSha(sha: string | undefined): string {
     return s.replace(/^0+$/, '');
 }
 
-export async function gitListFilesForPullRequest(pr: PullRequestEvent): Promise<string[]> {
-    const sha1 = pr?.pull_request?.base?.sha;
-    const sha2 = pr?.pull_request?.head?.sha;
+export async function gitListFilesForPullRequest(
+    pr: PullRequestEvent & { before?: undefined; after?: undefined },
+): Promise<string[]> {
+    const sha1 = pr?.pull_request?.base?.sha || pr?.before;
+    const sha2 = pr?.after || pr?.pull_request?.head?.sha;
     if (!sha1 || !sha2) {
         throw new GitError(`Invalid PR event base.sha: ${sha1}, head.sha: ${sha2}`);
     }
