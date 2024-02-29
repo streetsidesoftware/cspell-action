@@ -1606,9 +1606,9 @@ var require_timers = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/deps/streamsearch/sbmh.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/deps/streamsearch/sbmh.js
 var require_sbmh = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/deps/streamsearch/sbmh.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/deps/streamsearch/sbmh.js"(exports2, module2) {
     "use strict";
     var EventEmitter = require("node:events").EventEmitter;
     var inherits = require("node:util").inherits;
@@ -1743,9 +1743,9 @@ var require_sbmh = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/deps/dicer/lib/PartStream.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/deps/dicer/lib/PartStream.js
 var require_PartStream = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/deps/dicer/lib/PartStream.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/deps/dicer/lib/PartStream.js"(exports2, module2) {
     "use strict";
     var inherits = require("node:util").inherits;
     var ReadableStream = require("node:stream").Readable;
@@ -1759,9 +1759,9 @@ var require_PartStream = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/getLimit.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/getLimit.js
 var require_getLimit = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/getLimit.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/getLimit.js"(exports2, module2) {
     "use strict";
     module2.exports = function getLimit(limits, name, defaultLimit) {
       if (!limits || limits[name] === void 0 || limits[name] === null) {
@@ -1775,9 +1775,9 @@ var require_getLimit = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/deps/dicer/lib/HeaderParser.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/deps/dicer/lib/HeaderParser.js
 var require_HeaderParser = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/deps/dicer/lib/HeaderParser.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/deps/dicer/lib/HeaderParser.js"(exports2, module2) {
     "use strict";
     var EventEmitter = require("node:events").EventEmitter;
     var inherits = require("node:util").inherits;
@@ -1875,9 +1875,9 @@ var require_HeaderParser = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/deps/dicer/lib/Dicer.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/deps/dicer/lib/Dicer.js
 var require_Dicer = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/deps/dicer/lib/Dicer.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/deps/dicer/lib/Dicer.js"(exports2, module2) {
     "use strict";
     var WritableStream = require("node:stream").Writable;
     var inherits = require("node:util").inherits;
@@ -1957,7 +1957,7 @@ var require_Dicer = __commonJS({
       if (this._headerFirst && this._isPreamble) {
         if (!this._part) {
           this._part = new PartStream(this._partOpts);
-          if (this._events.preamble) {
+          if (this.listenerCount("preamble") !== 0) {
             this.emit("preamble", this._part);
           } else {
             this._ignore();
@@ -2020,7 +2020,7 @@ var require_Dicer = __commonJS({
           }
         }
         if (this._dashes === 2) {
-          if (start + i < end && this._events.trailer) {
+          if (start + i < end && this.listenerCount("trailer") !== 0) {
             this.emit("trailer", data.slice(start + i, end));
           }
           this.reset();
@@ -2043,9 +2043,9 @@ var require_Dicer = __commonJS({
         this._part._read = function(n) {
           self._unpause();
         };
-        if (this._isPreamble && this._events.preamble) {
+        if (this._isPreamble && this.listenerCount("preamble") !== 0) {
           this.emit("preamble", this._part);
-        } else if (this._isPreamble !== true && this._events.part) {
+        } else if (this._isPreamble !== true && this.listenerCount("part") !== 0) {
           this.emit("part", this._part);
         } else {
           this._ignore();
@@ -2115,9 +2115,9 @@ var require_Dicer = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/decodeText.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/decodeText.js
 var require_decodeText = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/decodeText.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/decodeText.js"(exports2, module2) {
     "use strict";
     var utf8Decoder = new TextDecoder("utf-8");
     var textDecoders = /* @__PURE__ */ new Map([
@@ -2207,7 +2207,7 @@ var require_decodeText = __commonJS({
         if (textDecoders.has(exports2.toString())) {
           try {
             return textDecoders.get(exports2).decode(data);
-          } catch (e) {
+          } catch {
           }
         }
         return typeof data === "string" ? data : data.toString();
@@ -2223,9 +2223,9 @@ var require_decodeText = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/parseParams.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/parseParams.js
 var require_parseParams = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/parseParams.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/parseParams.js"(exports2, module2) {
     "use strict";
     var decodeText = require_decodeText();
     var RE_ENCODED = /%[a-fA-F0-9][a-fA-F0-9]/g;
@@ -2821,9 +2821,9 @@ var require_parseParams = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/basename.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/basename.js
 var require_basename = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/basename.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/basename.js"(exports2, module2) {
     "use strict";
     module2.exports = function basename5(path26) {
       if (typeof path26 !== "string") {
@@ -2842,9 +2842,9 @@ var require_basename = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/types/multipart.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/types/multipart.js
 var require_multipart = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/types/multipart.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/types/multipart.js"(exports2, module2) {
     "use strict";
     var { Readable: Readable2 } = require("node:stream");
     var { inherits } = require("node:util");
@@ -2990,7 +2990,7 @@ var require_multipart = __commonJS({
               return skipPart(part);
             }
             ++nfiles;
-            if (!boy._events.file) {
+            if (boy.listenerCount("file") === 0) {
               self.parser._ignore();
               return;
             }
@@ -3122,9 +3122,9 @@ var require_multipart = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/Decoder.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/Decoder.js
 var require_Decoder = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/utils/Decoder.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/utils/Decoder.js"(exports2, module2) {
     "use strict";
     var RE_PLUS = /\+/g;
     var HEX = [
@@ -3301,9 +3301,9 @@ var require_Decoder = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/types/urlencoded.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/types/urlencoded.js
 var require_urlencoded = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/types/urlencoded.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/types/urlencoded.js"(exports2, module2) {
     "use strict";
     var Decoder = require_Decoder();
     var decodeText = require_decodeText();
@@ -3516,9 +3516,9 @@ var require_urlencoded = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/main.js
+// ../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/main.js
 var require_main = __commonJS({
-  "../node_modules/.pnpm/@fastify+busboy@2.1.0/node_modules/@fastify/busboy/lib/main.js"(exports2, module2) {
+  "../node_modules/.pnpm/@fastify+busboy@2.1.1/node_modules/@fastify/busboy/lib/main.js"(exports2, module2) {
     "use strict";
     var WritableStream = require("node:stream").Writable;
     var { inherits } = require("node:util");
