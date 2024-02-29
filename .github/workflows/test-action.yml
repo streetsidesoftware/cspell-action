@@ -30,6 +30,14 @@ jobs:
           files: |
             **/*.ts
             **/*.md
+      - name: Show Results
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: |
+            outputs:
+            ``````json
+            ${{ toJSON(steps.cspell-action.outputs) }}
+            ``````
 
   test-action-no-increment: # run the action
     runs-on: ubuntu-latest
@@ -42,13 +50,15 @@ jobs:
         with:
           incremental_files_only: false
           files: |
-            **
-            .*/**
+            .
       - name: Show Results
-        env:
-          outputs: ${{ toJSON(steps.cspell-action.outputs) }}
-        run: |
-          echo "$outputs"
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: |
+            outputs:
+            ``````json
+            ${{ toJSON(steps.cspell-action.outputs) }}
+            ``````
 
   test-action-no-increment-verbose: # run the action
     runs-on: ubuntu-latest
@@ -62,6 +72,14 @@ jobs:
             **
             .*/**
           verbose: true
+      - name: Show Results
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: |
+            outputs:
+            ``````json
+            ${{ toJSON(steps.cspell-action.outputs) }}
+            ``````
 
   test-action-files-with-issues: # run the action
     runs-on: ubuntu-latest
@@ -77,42 +95,10 @@ jobs:
           strict: false
           inline: none
       - name: Show Results
-        env:
-          outputs: ${{ toJSON(steps.cspell-action.outputs) }}
-        run: |
-          echo "$outputs"
-
-  # Experiment with writing the status to a PR.
-  # show_status:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Env
-  #       env:
-  #         github: ${{ toJSON(github) }}
-  #       run: |
-  #         echo GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER
-  #         echo GITHUB_REPOSITORY=$GITHUB_REPOSITORY
-  #         echo GITHUB_REF=$GITHUB_REF
-  #         echo SHA=${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
-  #         echo github="$github"
-  #         env
-  #     - name: GH Status
-  #       env:
-  #         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       run: |
-  #         gh api \
-  #           -H "Accept: application/vnd.github+json" \
-  #           /repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF/statuses
-  #     - name: Write Status
-  #       env:
-  #         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         SHA: ${{ github.event.pull_request.head.sha || env.GITHUB_SHA }}
-  #       run: |
-  #         gh api \
-  #           --method POST \
-  #           -H "Accept: application/vnd.github+json" \
-  #           /repos/$GITHUB_REPOSITORY/statuses/$SHA \
-  #           -f state='success' \
-  #           -f target_url='https://example.com/build/status' \
-  #           -f description='The test succeeded!' \
-  #           -f context='continuous-integration/testing for fun'
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: |
+            outputs:
+            ``````json
+            ${{ toJSON(steps.cspell-action.outputs) }}
+            ``````
