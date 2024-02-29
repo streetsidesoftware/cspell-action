@@ -29,6 +29,11 @@ jobs:
       # Ensure the repository is clean after build
       - run: pnpm clean-build
 
+      # test TypeScript build
+      - run: |
+          cd action-src
+          pnpm build:tsc
+
       - run: git --no-pager diff --compact-summary --exit-code
 
   coverage: # run coverage and unit tests
