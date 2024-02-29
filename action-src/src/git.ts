@@ -49,10 +49,7 @@ export async function gitListFilesForPullRequest(pr: PullRequestEvent): Promise<
     }
     const commitCount = pr.pull_request.commits || 0;
     try {
-        const commits = await gitListCommits(commitCount + 1);
-        if (commits.length < commitCount) {
-            await gitDeepen(commitCount + 1);
-        }
+        await deepenIfNecessary(commitCount + 1);
         return gitListFiles(sha1, sha2);
     } catch (e) {
         throw new GitError(`Error getting files for PR ${pr?.number} from git`, e);
@@ -61,9 +58,18 @@ export async function gitListFilesForPullRequest(pr: PullRequestEvent): Promise<
 
 export async function gitListFilesForPush(push: PushEvent): Promise<string[]> {
     try {
+        const commitCount = push.commits?.length || 0;
+        await deepenIfNecessary(commitCount + 1);
         return gitListFiles(push.before, push.after);
     } catch (e) {
         throw new GitError(`Error getting files for Push, (Commit: ${push?.after}) from git`, e);
+    }
+}
+
+async function deepenIfNecessary(commitCount: number) {
+    const commits = await gitListCommits(commitCount);
+    if (commits.length < commitCount) {
+        await gitDeepen(commitCount);
     }
 }
 

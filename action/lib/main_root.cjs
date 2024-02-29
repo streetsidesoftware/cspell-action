@@ -72727,10 +72727,7 @@ async function gitListFilesForPullRequest(pr) {
   }
   const commitCount = pr.pull_request.commits || 0;
   try {
-    const commits = await gitListCommits(commitCount + 1);
-    if (commits.length < commitCount) {
-      await gitDeepen(commitCount + 1);
-    }
+    await deepenIfNecessary(commitCount + 1);
     return gitListFiles(sha12, sha2);
   } catch (e) {
     throw new GitError(`Error getting files for PR ${pr?.number} from git`, e);
@@ -72738,9 +72735,17 @@ async function gitListFilesForPullRequest(pr) {
 }
 async function gitListFilesForPush(push) {
   try {
+    const commitCount = push.commits?.length || 0;
+    await deepenIfNecessary(commitCount + 1);
     return gitListFiles(push.before, push.after);
   } catch (e) {
     throw new GitError(`Error getting files for Push, (Commit: ${push?.after}) from git`, e);
+  }
+}
+async function deepenIfNecessary(commitCount) {
+  const commits = await gitListCommits(commitCount);
+  if (commits.length < commitCount) {
+    await gitDeepen(commitCount);
   }
 }
 var GitError = class extends Error {
