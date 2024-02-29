@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 env:
-  FETCH_DEPTH: 100
+  FETCH_DEPTH: 1
 
 jobs:
   test-action: # run the action

@@ -72692,6 +72692,17 @@ async function lint2(files, lintOptions, reporter) {
 var import_node_util2 = require("node:util");
 var import_node_child_process = require("node:child_process");
 var execP = (0, import_node_util2.promisify)(import_node_child_process.exec);
+async function gitListCommits(count3 = 100, _since) {
+  const args = ["log", '--pretty=format:"%H"', `-${count3}`];
+  const cmd = `git ${args.join(" ")}`;
+  const cmdResult = await execP(cmd);
+  return cmdResult.stdout.split("\n").map((a) => a.trim()).filter((a) => !!a);
+}
+async function gitDeepen(count3) {
+  const args = ["fetch", `--deepen=${count3}`];
+  const cmd = `git ${args.join(" ")}`;
+  await execP(cmd);
+}
 async function gitListFiles(sha12, sha2) {
   const SHAs = [sha12, sha2].map(cleanSha).filter((a) => !!a);
   if (!SHAs.length)
@@ -72708,12 +72719,18 @@ function cleanSha(sha) {
   return s.replace(/^0+$/, "");
 }
 async function gitListFilesForPullRequest(pr) {
-  const sha12 = pr?.pull_request?.base?.sha || pr?.before;
-  const sha2 = pr?.after || pr?.pull_request?.head?.sha;
-  if (!sha12 || !sha2) {
+  const event = pr;
+  const sha12 = pr?.pull_request?.base?.sha || event?.before;
+  const sha2 = event?.after || pr?.pull_request?.head?.sha;
+  if (!sha12 || !sha2 || !pr.pull_request) {
     throw new GitError(`Invalid PR event base.sha: ${sha12}, head.sha: ${sha2}`);
   }
+  const commitCount = pr.pull_request.commits || 0;
   try {
+    const commits = await gitListCommits(commitCount + 1);
+    if (commits.length < commitCount) {
+      await gitDeepen(commitCount + 1);
+    }
     return gitListFiles(sha12, sha2);
   } catch (e) {
     throw new GitError(`Error getting files for PR ${pr?.number} from git`, e);

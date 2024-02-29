@@ -15,6 +15,12 @@ export async function gitListCommits(count = 100, _since?: Date): Promise<string
         .filter((a) => !!a);
 }
 
+export async function gitDeepen(count: number): Promise<void> {
+    const args = ['fetch', `--deepen=${count}`];
+    const cmd = `git ${args.join(' ')}`;
+    await execP(cmd);
+}
+
 export async function gitListFiles(sha1: string, sha2?: string): Promise<string[]> {
     const SHAs = [sha1, sha2].map(cleanSha).filter((a) => !!a);
     if (!SHAs.length) return [];
@@ -38,10 +44,15 @@ export async function gitListFilesForPullRequest(pr: PullRequestEvent): Promise<
     const event = pr as { before?: undefined; after?: undefined };
     const sha1 = pr?.pull_request?.base?.sha || event?.before;
     const sha2 = event?.after || pr?.pull_request?.head?.sha;
-    if (!sha1 || !sha2) {
+    if (!sha1 || !sha2 || !pr.pull_request) {
         throw new GitError(`Invalid PR event base.sha: ${sha1}, head.sha: ${sha2}`);
     }
+    const commitCount = pr.pull_request.commits || 0;
     try {
+        const commits = await gitListCommits(commitCount + 1);
+        if (commits.length < commitCount) {
+            await gitDeepen(commitCount + 1);
+        }
         return gitListFiles(sha1, sha2);
     } catch (e) {
         throw new GitError(`Error getting files for PR ${pr?.number} from git`, e);

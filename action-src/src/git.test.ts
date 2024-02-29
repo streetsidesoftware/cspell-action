@@ -3,6 +3,7 @@ import { describe, expect, test } from 'vitest';
 import {
     Context,
     GitError,
+    gitDeepen,
     gitListCommits,
     gitListFiles,
     gitListFilesForContext,
@@ -45,6 +46,10 @@ describe('git', () => {
         expect(commits.length).toBeGreaterThanOrEqual(1);
         const hexCommits = commits.filter(isHex);
         expect(hexCommits).toEqual(commits);
+    });
+
+    test('gitDeepen', async () => {
+        await expect(gitDeepen(0)).resolves.toBeUndefined();
     });
 });
 
