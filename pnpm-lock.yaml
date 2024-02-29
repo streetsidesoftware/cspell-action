@@ -50,6 +50,9 @@ importers:
       '@cspell/cspell-bundled-dicts':
         specifier: ^8.4.1
         version: 8.4.1
+      '@cspell/cspell-types':
+        specifier: ^8.4.1
+        version: 8.4.1
       '@octokit/webhooks-types':
         specifier: ^7.3.2
         version: 7.3.2
