@@ -23,7 +23,9 @@ export function fetchGithubActionFixture(filename: string): Record<string, strin
     const absFixtureDir = path.dirname(absFixtureFile);
     const githubEnv = JSON.parse(fs.readFileSync(absFixtureFile, 'utf-8'));
     if (githubEnv['GITHUB_EVENT_PATH']) {
-        githubEnv['GITHUB_EVENT_PATH'] = path.resolve(absFixtureDir, githubEnv['GITHUB_EVENT_PATH']);
+        githubEnv['GITHUB_EVENT_PATH'] = path
+            .resolve(absFixtureDir, githubEnv['GITHUB_EVENT_PATH'])
+            .replace(/fixtures[/\\]fixtures/, 'fixtures');
     }
     const env = {
         ...process.env,

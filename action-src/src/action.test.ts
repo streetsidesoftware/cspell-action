@@ -1,10 +1,9 @@
 import * as process from 'process';
 import * as path from 'path';
-import * as fs from 'fs';
 import { Context } from '@actions/github/lib/context.js';
 import { action } from './action.js';
 import { AppError } from './error.js';
-import { fixturesLocation, root } from './test/helper.js';
+import { fetchGithubActionFixture, root } from './test/helper.js';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const configFile = path.resolve(root, 'cspell.json');
@@ -134,14 +133,6 @@ function cleanEnv() {
             delete process.env[key];
         }
     }
-}
-
-function fetchGithubActionFixture(filename: string): Record<string, string> {
-    const githubEnv = JSON.parse(fs.readFileSync(path.resolve(fixturesLocation, filename), 'utf-8'));
-    if (githubEnv['GITHUB_EVENT_PATH']) {
-        githubEnv['GITHUB_EVENT_PATH'] = path.resolve(root, githubEnv['GITHUB_EVENT_PATH']);
-    }
-    return githubEnv;
 }
 
 function createContextFromFile(filename: string, ...params: Record<string, string>[]): Context {

@@ -13,6 +13,8 @@ import type { PushEvent, PullRequestEvent } from '@octokit/webhooks-types';
 
 const core = { debug, error, info, warning };
 
+const defaultGlob = '**';
+
 interface Context {
     githubContext: GitHubContext;
     files: string;
@@ -87,14 +89,19 @@ async function gatherFilesFromContext(context: Context): Promise<Set<string>> {
 async function gatherFiles(context: Context): Promise<Set<string>> {
     const eventName = context.githubContext.eventName;
 
-    console.warn('gatherFiles %o', { context: context.githubContext, eventName });
+    // console.warn('gatherFiles %o', { context: context.githubContext, eventName });
 
-    switch (eventName) {
-        case 'push':
-            return new Set(await gitListFilesForPush(context.githubContext.payload as PushEvent));
-        case 'pull_request':
-            return new Set(await gitListFilesForPullRequest(context.githubContext.payload as PullRequestEvent));
+    try {
+        switch (eventName) {
+            case 'push':
+                return new Set(await gitListFilesForPush(context.githubContext.payload as PushEvent));
+            case 'pull_request':
+                return new Set(await gitListFilesForPullRequest(context.githubContext.payload as PullRequestEvent));
+        }
+    } catch (e) {
+        core.warning('Unable to determine which files have changed, checking files: ' + defaultGlob);
     }
+
     return new Set();
 }
 
@@ -124,11 +131,11 @@ export async function action(githubContext: GitHubContext): Promise<boolean> {
     validateActionParams(params, core.error);
     const eventName = githubContext.eventName;
     if (params.incremental_files_only === 'true' && !isSupportedEvent(eventName)) {
-        params.files = params.files || '**';
+        params.files = params.files || defaultGlob;
         core.warning('Unable to determine which files have changed, checking files: ' + params.files);
         params.incremental_files_only = 'false';
     }
-    params.files = params.files || (params.incremental_files_only !== 'true' ? '**' : '');
+    params.files = params.files || (params.incremental_files_only !== 'true' ? defaultGlob : '');
     const dot = !!checkDotMap[params.check_dot_files];
     const context: Context = {
         githubContext,

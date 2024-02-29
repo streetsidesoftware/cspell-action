@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { Context, gitListFiles, gitListFilesForContext } from './git.js';
 
-const urlFixtures = new URL('../../fixtures/', import.meta.url);
+const urlFixtures = new URL('../fixtures/', import.meta.url);
 
 const ac = expect.arrayContaining;
 
