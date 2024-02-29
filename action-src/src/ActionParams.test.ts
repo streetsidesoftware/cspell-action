@@ -12,7 +12,6 @@ describe('ActionParams', () => {
 
     test.each`
         params                                | expected
-        ${{ github_token: '' }}               | ${'Missing GITHUB Token'}
         ${{ incremental_files_only: 'sure' }} | ${'Invalid incremental_files_only setting, must be one of (true, false)'}
         ${{ config: 'config_not_found' }}     | ${'Configuration file "config_not_found" not found.'}
         ${{ root: 'root_not_found' }}         | ${'Root path does not exist: "root_not_found"'}
@@ -35,5 +34,5 @@ describe('ActionParams', () => {
 });
 
 function ap(p: Partial<ActionParamsInput>): ActionParamsInput {
-    return { ...__testing__.defaultActionParams, github_token: 'token', ...p };
+    return { ...__testing__.defaultActionParams, ...p };
 }

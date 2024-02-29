@@ -18,57 +18,20 @@ describe('Validate Main', () => {
         vi.resetAllMocks();
     });
 
-    test('GITHUB_TOKEN', () => {
-        expect(process.env['GITHUB_TOKEN']).not.toBeUndefined();
-    });
-
     test.each`
         test                                       | file
+        ${'event PR 1594'}                         | ${'pr_1594_env.json'}
         ${'event pull_request main.js'}            | ${'pull_request.json'}
         ${'event pull_request_with_files main.js'} | ${'pull_request_with_files.json'}
         ${'event push main.js'}                    | ${'push.json'}
     `(
-        '$test',
-        async ({ test: testName, file }) => {
-            await helper.pollyRun(__filename, testName, async () => {
-                const env = helper.fetchGithubActionFixture(file);
-                env.FIXTURE_FILE_NAME = file;
-                Object.assign(process.env, env);
+        'action test $test $file',
+        async ({ file }) => {
+            const env = helper.fetchGithubActionFixture(file);
+            env.FIXTURE_FILE_NAME = file;
+            Object.assign(process.env, env);
 
-                await expect(run()).resolves.toBeUndefined();
-            });
-        },
-        timeout,
-    );
-});
-
-describe('Validate Main No Token', () => {
-    beforeEach(() => {
-        vi.spyOn(console, 'error').mockImplementation(() => undefined);
-    });
-
-    afterEach(() => {
-        vi.resetAllMocks();
-    });
-
-    test.each`
-        test                                       | file
-        ${'event pull_request main.js'}            | ${'pull_request.json'}
-        ${'event pull_request_with_files main.js'} | ${'pull_request_with_files.json'}
-        ${'event push main.js'}                    | ${'push.json'}
-    `(
-        '$test',
-        async ({ test: testName, file }) => {
-            await helper.pollyRun(__filename, testName, async () => {
-                const env = helper.fetchGithubActionFixture(file);
-                env.FIXTURE_FILE_NAME = file;
-                Object.assign(process.env, env);
-
-                process.env['INPUT_GITHUB_TOKEN'] = undefined;
-                process.env['GITHUB_TOKEN'] = undefined;
-
-                await expect(run()).resolves.toEqual(expect.any(Error));
-            });
+            await expect(run()).resolves.toBeUndefined();
         },
         timeout,
     );

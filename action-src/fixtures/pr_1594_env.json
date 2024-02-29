@@ -1,0 +1,15 @@
+{
+    "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
+    "INPUT_INCREMENTAL_FILES_ONLY": "true",
+    "INPUT_CONFIG": "./fixtures/cspell.json",
+    "GITHUB_EVENT_PATH": "./fixtures/pr_1594_event.json",
+    "GITHUB_EVENT_NAME": "pull_request",
+    "GITHUB_SHA": "cec275611af23de6ea51492e561d6c9955c8d08d",
+    "GITHUB_REF": "refs/pull/1594/merge",
+    "GITHUB_WORKFLOW": "build-test",
+    "GITHUB_ACTION": "self",
+    "GITHUB_ACTOR": "Jason3S",
+    "GITHUB_JOB": "test-action",
+    "GITHUB_RUN_NUMBER": "1",
+    "GITHUB_RUN_ID": "8066854052"
+}

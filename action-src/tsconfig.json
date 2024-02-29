@@ -2,11 +2,10 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@tsconfig/node18/tsconfig.json",
     "compilerOptions": {
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
         "skipLibCheck": true,
         "noUnusedParameters": true,
         "noUnusedLocals": true,
+        "types": ["node"],
         "outDir": "dist",
         "rootDir": "./src"
     },

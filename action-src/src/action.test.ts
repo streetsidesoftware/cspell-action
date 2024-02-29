@@ -1,21 +1,21 @@
 import * as process from 'process';
 import * as path from 'path';
-import * as fs from 'fs';
 import { Context } from '@actions/github/lib/context.js';
-import * as core from '@actions/core';
-import { Octokit } from '@octokit/rest';
 import { action } from './action.js';
 import { AppError } from './error.js';
-import { fixturesLocation, root } from './test/helper.js';
-import * as helper from './test/helper.js';
+import { fetchGithubActionFixture, root } from './test/helper.js';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const configFile = path.resolve(root, 'cspell.json');
 
 const timeout = 30000;
 
-const spyLog = vi.spyOn(console, 'log').mockImplementation(() => {});
+const debug = false;
+
+const log: typeof console.log = debug ? console.log : () => undefined;
+
 const spyWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+const spyLog = vi.spyOn(console, 'log').mockImplementation(() => {});
 const spyError = vi.spyOn(console, 'error').mockImplementation(() => {});
 
 const spyStdout = vi.spyOn(process.stdout, 'write').mockImplementation(function () {
@@ -29,7 +29,6 @@ describe('Validate Action', () => {
         spyError.mockClear();
         spyLog.mockClear();
         spyStdout.mockClear();
-        process.env.INPUT_GITHUB_TOKEN = process.env['GITHUB_TOKEN'];
     });
 
     test.each`
@@ -43,35 +42,28 @@ describe('Validate Action', () => {
         '$test',
         async ({ file, expected }) => {
             const context = createContextFromFile(file);
-            const octokit = createOctokit();
             expect.assertions(1);
-            await expect(action(context, octokit)).rejects.toEqual(expected);
+            await expect(action(context)).rejects.toEqual(expected);
         },
         timeout,
     );
 
     test.each`
         testName                                   | file                              | expected
+        ${'event pr 1594'}                         | ${'pr_1594_env.json'}             | ${true}
         ${'event push main.js'}                    | ${'push.json'}                    | ${true}
         ${'event pull_request main.js'}            | ${'pull_request.json'}            | ${true}
         ${'event pull_request_with_files main.js'} | ${'pull_request_with_files.json'} | ${true}
     `(
         '$testName',
-        async ({ testName, file, expected }) => {
-            return helper.pollyRun(
-                __filename,
-                testName,
-                async () => {
-                    const context = createContextFromFile(file);
-                    const octokit = createOctokit();
-                    expect.assertions(1);
-                    await expect(action(context, octokit)).resolves.toBe(expected);
-                },
-                { recordIfMissing: true },
-            );
+        async ({ file, expected }) => {
+            const context = createContextFromFile(file);
+            expect.assertions(1);
+            await expect(action(context)).resolves.toBe(expected);
         },
         timeout,
     );
+
     test.each`
         files        | expected
         ${'**'}      | ${false}
@@ -85,8 +77,7 @@ describe('Validate Action', () => {
                 INPUT_FILES: files,
                 INPUT_INCREMENTAL_FILES_ONLY: 'false',
             });
-            const octokit = createOctokit();
-            await expect(action(context, octokit)).resolves.toBe(expected);
+            await expect(action(context)).resolves.toBe(expected);
             expect(warnings).toMatchSnapshot();
             expect(spyStdout).toHaveBeenCalled();
         },
@@ -115,8 +106,7 @@ describe('Validate Action', () => {
                 INPUT_CONFIG: path.resolve(root, 'fixtures/cspell.json'),
             };
             const context = createContextFromFile(contextFile, params);
-            const octokit = createOctokit();
-            await expect(action(context, octokit)).resolves.toBe(expected);
+            await expect(action(context)).resolves.toBe(expected);
             expect(warnings).toMatchSnapshot();
             expect(spyLog.mock.calls).toMatchSnapshot();
             expect(spyStdout.mock.calls).toMatchSnapshot();
@@ -144,22 +134,6 @@ function cleanEnv() {
     }
 }
 
-function fetchGithubActionFixture(filename: string): Record<string, string> {
-    const githubEnv = JSON.parse(fs.readFileSync(path.resolve(fixturesLocation, filename), 'utf-8'));
-    if (githubEnv['GITHUB_EVENT_PATH']) {
-        githubEnv['GITHUB_EVENT_PATH'] = path.resolve(root, githubEnv['GITHUB_EVENT_PATH']);
-    }
-    return githubEnv;
-}
-
-function getGithubToken(): string {
-    const t0 = core.getInput('github_token', { required: true });
-    if (t0[0] !== '$') {
-        return t0;
-    }
-    return process.env[t0.slice(1)] || 'undefined';
-}
-
 function createContextFromFile(filename: string, ...params: Record<string, string>[]): Context {
     return createContext(fetchGithubActionFixture(filename), ...params);
 }
@@ -170,18 +144,19 @@ function createContext(...params: Record<string, string>[]): Context {
     setEnvIfNotExist('INPUT_CONFIG', configFile);
     process.env.INPUT_CONFIG = path.resolve(root, process.env.INPUT_CONFIG || configFile);
 
-    return new Context();
+    const context = new Context();
+
+    log('Create Context: %o', {
+        env: process.env,
+        context,
+        payload: context.payload,
+    });
+
+    return context;
 }
 
 function setEnvIfNotExist(key: string, value: string) {
     if (process.env[key] === undefined) {
         process.env[key] = value;
     }
-}
-
-function createOctokit(): Octokit {
-    return new Octokit({
-        auth: getGithubToken(),
-        userAgent: 'cspell-action-test',
-    });
 }
