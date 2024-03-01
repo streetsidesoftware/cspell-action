@@ -9,7 +9,10 @@ import {
     gitListFilesForContext,
     gitListFilesForPullRequest,
     gitListFilesForPush,
+    gitRoot,
 } from './git.js';
+
+import { root } from './test/helper.js';
 
 const urlFixtures = new URL('../fixtures/', import.meta.url);
 
@@ -50,6 +53,11 @@ describe('git', () => {
 
     test('gitDeepen', async () => {
         await expect(gitDeepen(0)).resolves.toBeUndefined();
+    });
+
+    test('gitRoot', async () => {
+        const rootGit = await gitRoot();
+        expect(rootGit).toEqual(root);
     });
 });
 

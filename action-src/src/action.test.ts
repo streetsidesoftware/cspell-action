@@ -8,8 +8,6 @@ import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const configFile = path.resolve(root, 'cspell.json');
 
-const timeout = 30000;
-
 const debug = false;
 
 const log: typeof console.log = debug ? console.log : () => undefined;
@@ -38,15 +36,11 @@ describe('Validate Action', () => {
         ${'bad inline'}                 | ${'bad_params/bad_inline.json'}                 | ${new AppError('Bad Configuration.')}
         ${'bad_incremental_files_only'} | ${'bad_params/bad_incremental_files_only.json'} | ${new AppError('Bad Configuration.')}
         ${'bad strict'}                 | ${'bad_params/bad_strict.json'}                 | ${new AppError('Bad Configuration.')}
-    `(
-        '$test',
-        async ({ file, expected }) => {
-            const context = createContextFromFile(file);
-            expect.assertions(1);
-            await expect(action(context)).rejects.toEqual(expected);
-        },
-        timeout,
-    );
+    `('$test', async ({ file, expected }) => {
+        const context = createContextFromFile(file);
+        expect.assertions(1);
+        await expect(action(context)).rejects.toEqual(expected);
+    });
 
     test.each`
         testName                                   | file                              | expected
@@ -54,35 +48,36 @@ describe('Validate Action', () => {
         ${'event push main.js'}                    | ${'push.json'}                    | ${true}
         ${'event pull_request main.js'}            | ${'pull_request.json'}            | ${true}
         ${'event pull_request_with_files main.js'} | ${'pull_request_with_files.json'} | ${true}
-    `(
-        '$testName',
-        async ({ file, expected }) => {
-            const context = createContextFromFile(file);
-            expect.assertions(1);
-            await expect(action(context)).resolves.toBe(expected);
-        },
-        timeout,
-    );
+    `('$testName', async ({ file, expected }) => {
+        const context = createContextFromFile(file);
+        expect.assertions(1);
+        await expect(action(context)).resolves.toBe(expected);
+    });
+
+    test.only.each`
+        testName           | file                  | expected
+        ${'event pr 1594'} | ${'pr_1594_env.json'} | ${true}
+    `('$testName', async ({ file, expected }) => {
+        const context = createContextFromFile(file);
+        expect.assertions(1);
+        await expect(action(context)).resolves.toBe(expected);
+    });
 
     test.each`
         files        | expected
         ${'**'}      | ${false}
         ${'**/*.md'} | ${true}
-    `(
-        'check all $files',
-        async ({ files, expected }) => {
-            const warnings: string[] = [];
-            spyWarn.mockImplementation((msg: string) => warnings.push(msg));
-            const context = createContextFromFile('pull_request.json', {
-                INPUT_FILES: files,
-                INPUT_INCREMENTAL_FILES_ONLY: 'false',
-            });
-            await expect(action(context)).resolves.toBe(expected);
-            expect(warnings).toMatchSnapshot();
-            expect(spyStdout).toHaveBeenCalled();
-        },
-        timeout,
-    );
+    `('check all $files', async ({ files, expected }) => {
+        const warnings: string[] = [];
+        spyWarn.mockImplementation((msg: string) => warnings.push(msg));
+        const context = createContextFromFile('pull_request.json', {
+            INPUT_FILES: files,
+            INPUT_INCREMENTAL_FILES_ONLY: 'false',
+        });
+        await expect(action(context)).resolves.toBe(expected);
+        expect(warnings).toMatchSnapshot();
+        expect(spyStdout).toHaveBeenCalled();
+    });
 
     test.each`
         files                       | incremental | dot           | contextFile                                | expected
@@ -112,7 +107,6 @@ describe('Validate Action', () => {
             expect(spyStdout.mock.calls).toMatchSnapshot();
             expect(spyStdout.mock.calls.map((call) => call.join('').trim()).filter((a) => !!a)).toMatchSnapshot();
         },
-        timeout,
     );
 });
 
