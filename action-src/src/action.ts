@@ -1,25 +1,15 @@
-import path from 'node:path';
-import { debug, info, error, warning, setFailed, setOutput } from '@actions/core';
+import { debug, error, info, setFailed, setOutput, warning } from '@actions/core';
 import type { Context as GitHubContext } from '@actions/github/lib/context.js';
 import type { RunResult } from 'cspell';
-import * as glob from 'cspell-glob';
+import path from 'node:path';
 import { validateActionParams } from './ActionParams.js';
-import { getActionParams } from './getActionParams.js';
-import { gitListFilesForPullRequest, gitListFilesForPush, gitRoot } from './git.js';
-import type { PushEvent, PullRequestEvent } from '@octokit/webhooks-types';
 import { checkDotMap } from './checkDotMap.js';
-import { checkSpellingForContext } from './checkSpellingForContext.js';
+import { checkSpellingForContext, type Context } from './checkSpelling.js';
+import { getActionParams } from './getActionParams.js';
 
 const core = { debug, error, info, warning };
 
 const defaultGlob = '**';
-
-export interface Context {
-    githubContext: GitHubContext;
-    files: string;
-    useEventFiles: boolean;
-    dot: boolean;
-}
 
 type EventNames = 'push' | 'pull_request';
 const supportedIncrementalEvents = new Set<EventNames | string>(['push', 'pull_request']);
@@ -37,64 +27,6 @@ function friendlyEventName(eventName: EventNames | string): string {
 
 function isSupportedEvent(eventName: EventNames | string): eventName is EventNames {
     return supportedIncrementalEvents.has(eventName);
-}
-
-export async function gatherGitCommitFilesFromContext(context: Context): Promise<string[] | undefined> {
-    if (context.useEventFiles) {
-        const eventFiles = await gatherFiles(context);
-        if (!eventFiles) return undefined;
-        const files = filterFiles(context.files, eventFiles, context.dot);
-        const root = await gitRoot();
-        return [...files].map((f) => path.resolve(root, f));
-    }
-}
-
-export async function gatherFileGlobsFromContext(context: Context): Promise<Set<string>> {
-    const files = new Set<string>(
-        context.files
-            .split('\n')
-            .map((a) => a.trim())
-            .filter((a) => !!a),
-    );
-    return files;
-}
-
-/**
- * Gather the set of files to be spell checked.
- * @param context Context
- */
-async function gatherFiles(context: Context): Promise<Set<string> | undefined> {
-    const eventName = context.githubContext.eventName;
-
-    // console.warn('gatherFiles %o', { context: context.githubContext, eventName });
-
-    try {
-        switch (eventName) {
-            case 'push':
-                return new Set(await gitListFilesForPush(context.githubContext.payload as PushEvent));
-            case 'pull_request':
-                return new Set(await gitListFilesForPullRequest(context.githubContext.payload as PullRequestEvent));
-        }
-    } catch (e) {
-        core.warning('Unable to determine which files have changed, checking files: ' + defaultGlob);
-    }
-
-    return undefined;
-}
-
-function filterFiles(globPattern: string, files: Set<string>, dot: boolean): Set<string> {
-    if (!globPattern) return files;
-
-    const matchingFiles = new Set<string>();
-
-    const g = new glob.GlobMatcher(globPattern, { mode: 'include', dot });
-    for (const p of files) {
-        if (g.match(p)) {
-            matchingFiles.add(p);
-        }
-    }
-
-    return matchingFiles;
 }
 
 /**
@@ -116,8 +48,9 @@ export async function action(githubContext: GitHubContext): Promise<boolean> {
     const dot = !!checkDotMap[params.check_dot_files];
     const context: Context = {
         githubContext,
-        files: params.files,
+        globs: params.files,
         useEventFiles: params.incremental_files_only === 'true',
+        useCSpellFiles: params.use_cspell_files === 'true',
         dot,
     };
 

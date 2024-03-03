@@ -7,14 +7,22 @@ export class AppError extends Error {
 export function isError(e: unknown): e is Error {
     if (!e) return false;
     if (typeof e !== 'object') return false;
-    const err = <Error>e;
-    return (
-        err.message !== undefined &&
-        err.name !== undefined &&
-        (err.stack === undefined || typeof err.stack === 'string')
-    );
+    return e instanceof Error;
 }
 
 export function isAppError(e: unknown): e is AppError {
     return e instanceof AppError;
+}
+
+/**
+ * Convert an unknown value to an error
+ * @param e - the unknown error
+ * @returns Error
+ */
+export function toError(e: unknown): Error {
+    if (e instanceof Error) return e;
+    if (typeof e === 'string') return new Error(e);
+    const err = new Error('Unknown error');
+    err.cause = e;
+    return err;
 }

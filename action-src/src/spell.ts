@@ -1,6 +1,5 @@
 import { type CSpellApplicationOptions, lint as cspellAppLint } from 'cspell';
 import type { CSpellReporter } from 'cspell';
-import assert from 'node:assert';
 
 export interface LintOptions {
     root: string;
@@ -23,10 +22,6 @@ export interface LintOptions {
  */
 export async function lint(globs: string[], lintOptions: LintOptions, reporter: CSpellReporter): Promise<void> {
     const { root, config, checkDotFiles, files } = lintOptions;
-    assert(
-        (globs.length && !files) || (files && !globs.length),
-        'Either globs or files must be specified, but not both.',
-    );
     // It is expected that `files` in the configuration will be used to filter the files.
     const mustFindFiles = !files;
     const options: CSpellApplicationOptions = {
@@ -41,6 +36,6 @@ export async function lint(globs: string[], lintOptions: LintOptions, reporter: 
     } else if (checkDotFiles === false) {
         options.dot = false;
     }
-    console.warn('lint: %o', { globs, lintOptions, options });
+    // console.warn('lint: %o', { globs, lintOptions, options });
     await cspellAppLint(globs, options, reporter);
 }

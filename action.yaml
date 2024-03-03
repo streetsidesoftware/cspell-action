@@ -15,7 +15,8 @@ inputs:
     required: false
   config:
     description: >
-      Path to `cspell.json`
+      Path to CSpell configuration file, i.e. `cspell.json` or `cspell.config.yaml`.
+      If not provided, the spell checker will search for the nearest configuration file.
     required: false
   root:
     description: >
@@ -46,6 +47,13 @@ inputs:
       - "false" - `.dot` files will NOT be checked.
       - "explicit" - glob patterns can match explicit `.dot` patterns.
     default: "explicit"
+    required: false
+  use_cspell_files:
+    description: |
+      Use the `files` setting from the CSpell configuration file.
+      - "true" - Overrides the `input.files` setting.
+      - "false" - Use the `input.files` setting.
+    default: "false"
     required: false
 
 outputs:

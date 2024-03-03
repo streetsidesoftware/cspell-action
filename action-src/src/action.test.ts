@@ -54,7 +54,7 @@ describe('Validate Action', () => {
         await expect(action(context)).resolves.toBe(expected);
     });
 
-    test.only.each`
+    test.each`
         testName           | file                  | expected
         ${'event pr 1594'} | ${'pr_1594_env.json'} | ${true}
     `('$testName', async ({ file, expected }) => {

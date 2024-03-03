@@ -1,7 +1,8 @@
-import * as spell from './spell.js';
-import { root, sourceDir, resolveFiles, resolveFile } from './test/helper.js';
-import { CSpellReporterForGithubAction, Logger } from './reporter.js';
+import path from 'node:path';
 import { describe, expect, test, vi } from 'vitest';
+import { CSpellReporterForGithubAction, Logger } from './reporter.js';
+import * as spell from './spell.js';
+import { resolveFile, resolveFiles, root, sourceDir } from './test/helper.js';
 
 const sc = expect.stringContaining;
 
@@ -91,13 +92,20 @@ describe('Validate Spell Checking', () => {
     const sampleConfig = resolveFile('fixtures/cspell.json', sourceDir);
     const sampleConfigTs = resolveFile('fixtures/sampleCode/ts/cspell.config.yaml', sourceDir);
 
-    test.only.each`
+    const sampleCodeTsOptions = {
+        root: path.join(sourceDir, 'fixtures/sampleCode/ts'),
+    };
+
+    test.each`
         globs                   | files                                            | options                       | expected
         ${[]}                   | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1 }}
+        ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1 }}
         ${[]}                   | ${['fixtures/sampleCode/ts/missing.ts']}         | ${{}}                         | ${{ files: 0 }}
+        ${[]}                   | ${[]}                                            | ${{}}                         | ${{ files: 0 }}
+        ${[]}                   | ${undefined}                                     | ${sampleCodeTsOptions}        | ${{ files: 1 }}
         ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 1 }}
         ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfigTs }} | ${{ files: 0 }}
-        ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 1 }}
+        ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 0 }}
         ${['**/ts/missing.ts']} | ${undefined}                                     | ${{}}                         | ${{ files: 0 }}
     `('Linting $globs $files $options', async ({ globs, files, options, expected }) => {
         const opts: spell.LintOptions = {

@@ -13,8 +13,8 @@ exports[`Validate Action > check all '**/*.md' 1`] = `[]`;
 
 exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "''" 1`] = `
 [
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
@@ -27,11 +27,11 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
 ",
   ],
   [
@@ -75,7 +75,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -83,7 +83,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -92,22 +92,22 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "''" 4`] = `
 [
   "Pull Request",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "Files checked: 4, Issues found: 2 in 1 files.",
   "::set-output name=success::false",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
 exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 1`] = `
 [
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
@@ -120,11 +120,11 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
 ",
   ],
   [
@@ -168,7 +168,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -176,7 +176,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -185,22 +185,22 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 4`] = `
 [
   "Pull Request",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "Files checked: 4, Issues found: 2 in 1 files.",
   "::set-output name=success::false",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
 exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'true'" 1`] = `
 [
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
@@ -213,15 +213,15 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
 ",
   ],
   [
-    "Files checked: 6, Issues found: 2 in 1 files.
+    "Files checked: 4, Issues found: 2 in 1 files.
 ",
   ],
   [
@@ -237,7 +237,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=number_of_files_checked::6
+    "::set-output name=number_of_files_checked::4
 ",
   ],
   [
@@ -261,7 +261,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -269,7 +269,7 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":6,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -278,22 +278,22 @@ exports[`Validate Action > check files "''" incremental: false 'pull_request_wit
 exports[`Validate Action > check files "''" incremental: false 'pull_request_with_files.json', dot: "'true'" 4`] = `
 [
   "Pull Request",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
-  "Files checked: 6, Issues found: 2 in 1 files.",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
+  "Files checked: 4, Issues found: 2 in 1 files.",
   "::set-output name=success::false",
-  "::set-output name=number_of_files_checked::6",
+  "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":6,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
 exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 1`] = `
 [
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
@@ -310,11 +310,11 @@ exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_un
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
 ",
   ],
   [
@@ -358,7 +358,7 @@ exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_un
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -366,7 +366,7 @@ exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_un
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
@@ -380,23 +380,23 @@ exports[`Validate Action > check files "''" incremental: true 'bad_params/bad_un
 [
   "::warning::Unable to determine which files have changed, checking files: **",
   "'fork'",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "Files checked: 4, Issues found: 2 in 1 files.",
   "::set-output name=success::false",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
   "::error::2 spelling issues found in 1 of the 4 files checked.",
 ]
 `;
 
 exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_unsupported_event.json', dot: "'explicit'" 1`] = `
 [
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
@@ -413,11 +413,11 @@ exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)
 ",
   ],
   [
-    "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)
 ",
   ],
   [
@@ -461,7 +461,7 @@ exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_
 ",
   ],
   [
-    "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+    "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]
 ",
   ],
   [
@@ -469,7 +469,7 @@ exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
@@ -483,15 +483,15 @@ exports[`Validate Action > check files "'**'" incremental: true 'bad_params/bad_
 [
   "::warning::Unable to determine which files have changed, checking files: **",
   "'fork'",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
-  "::warning file=../fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "Files checked: 4, Issues found: 2 in 1 files.",
   "::set-output name=success::false",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::2",
   "::set-output name=number_of_files_with_issues::1",
-  "::set-output name=files_with_issues::["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["../fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":2,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
   "::error::2 spelling issues found in 1 of the 4 files checked.",
 ]
 `;
