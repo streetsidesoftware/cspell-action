@@ -50214,7 +50214,7 @@ var defaultActionParams = {
   use_cspell_files: "false"
 };
 function applyDefaults(params) {
-  const results = { ...params };
+  const results = { ...defaultActionParams, ...params };
   const alias = results;
   for (const [key, value] of Object.entries(defaultActionParams)) {
     alias[key] = alias[key] || value;
@@ -50296,6 +50296,8 @@ async function gitRoot() {
 function cleanSha(sha) {
   if (!sha)
     return "";
+  if (["HEAD"].includes(sha))
+    return sha;
   const s = sha.trim().replace(/[^a-fA-F0-9]/g, "");
   return s.replace(/^0+$/, "");
 }
