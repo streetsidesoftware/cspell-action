@@ -15,21 +15,14 @@ describe('ActionParams', () => {
         ${{ incremental_files_only: 'sure' }} | ${'Invalid incremental_files_only setting, must be one of (true, false)'}
         ${{ config: 'config_not_found' }}     | ${'Configuration file "config_not_found" not found.'}
         ${{ root: 'root_not_found' }}         | ${'Root path does not exist: "root_not_found"'}
-        ${{ inline: 'swizzle' }}              | ${'Invalid inline level (swizzle), must be one of (error, warning, none)'}
+        ${{ inline: 'swizzle' }}              | ${'Invalid inline setting, must be one of (error, warning, none)'}
         ${{ strict: 'sure' }}                 | ${'Invalid strict setting, must be one of (true, false)'}
+        ${{ use_cspell_files: 'sure' }}       | ${'Invalid use_cspell_files setting, must be one of (true, false)'}
+        ${{ check_dot_files: 'sure' }}        | ${'Invalid check_dot_files setting, must be one of (true, false, explicit)'}
     `('validateActionParams Errors $params', ({ params, expected }) => {
         const logger = vi.fn();
         expect(() => validateActionParams(ap(params), logger)).toThrow();
         expect(logger).toHaveBeenCalledWith(expected);
-    });
-
-    test.each`
-        params
-        ${{ github_token: 'token' }}
-    `('validateActionParams $params', ({ params }) => {
-        const logger = vi.fn();
-        expect(() => validateActionParams(ap(params), logger)).not.toThrow();
-        expect(logger).not.toHaveBeenCalled();
     });
 });
 

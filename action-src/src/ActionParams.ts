@@ -11,16 +11,22 @@ export type TrueFalse = 'true' | 'false';
 export interface ActionParamsInput extends Record<keyof ActionParams, string> {}
 
 export interface ActionParams {
+    /**
+     * Files or glob patterns to check.
+     */
     files: string;
     incremental_files_only: TrueFalse;
     config: string;
     root: string;
+    /**
+     * @default 'warning'
+     */
     inline: InlineWorkflowCommand;
     /**
      * Determines if the action should be failed if any spelling issues are found.
      *
      * Allowed values are: true, false
-     * @default 'warning'
+     * @default 'false'
      */
     strict: TrueFalse;
     /**
@@ -38,6 +44,12 @@ export interface ActionParams {
      * @default 'explicit'
      */
     check_dot_files: TrueFalse | 'explicit';
+
+    /**
+     * Use the `files` setting in the CSpell configuration to determine the files to check.
+     * @default 'false'
+     */
+    use_cspell_files: TrueFalse;
 }
 
 const defaultActionParams: ActionParams = {
@@ -49,12 +61,13 @@ const defaultActionParams: ActionParams = {
     strict: 'true',
     verbose: 'false',
     check_dot_files: 'explicit',
+    use_cspell_files: 'false',
 };
 
 type ValidationFunction = (params: ActionParamsInput) => string | undefined;
 
-export function applyDefaults(params: ActionParamsInput): ActionParamsInput {
-    const results = { ...params };
+export function applyDefaults(params: Partial<ActionParamsInput>): ActionParamsInput {
+    const results = { ...defaultActionParams, ...params };
     const alias = results as Record<string, string>;
     for (const [key, value] of Object.entries(defaultActionParams)) {
         alias[key] = alias[key] || value;
@@ -74,35 +87,22 @@ function validateRoot(params: ActionParamsInput) {
     return !success ? `Root path does not exist: "${root}"` : undefined;
 }
 
-function validateInlineLevel(params: ActionParamsInput) {
-    const inline = params.inline;
-    const success = isInlineWorkflowCommand(inline);
-    return !success ? `Invalid inline level (${inline}), must be one of (error, warning, none)` : undefined;
+function validateTrueFalse(key: keyof ActionParamsInput): ValidationFunction {
+    return validateOptions(key, ['true', 'false']);
 }
 
-const validateStrict = validateTrueFalse('strict', 'Invalid strict setting, must be one of (true, false)');
-const validateIncrementalFilesOnly = validateTrueFalse(
-    'incremental_files_only',
-    'Invalid incremental_files_only setting, must be one of (true, false)',
-);
-const validateVerbose = validateTrueFalse('verbose', 'Invalid verbose setting, must be one of (true, false)');
-
-function validateTrueFalse(key: keyof ActionParamsInput, msg: string): ValidationFunction {
+function validateOptions(key: keyof ActionParamsInput, options: string[]): ValidationFunction {
     return (params: ActionParamsInput) => {
         const value = params[key];
-        const success = value === 'true' || value === 'false';
-        return !success ? msg : undefined;
+        const success = options.includes(value);
+        return !success ? `Invalid ${key} setting, must be one of (${options.join(', ')})` : undefined;
     };
 }
 
-const inlineWorkflowCommandSet: Record<InlineWorkflowCommand | string, boolean | undefined> = {
-    error: true,
-    warning: true,
-    none: true,
-};
-
-function isInlineWorkflowCommand(cmd: InlineWorkflowCommand | string): cmd is InlineWorkflowCommand {
-    return !!inlineWorkflowCommandSet[cmd];
+export function toActionParams(params: Partial<ActionParamsInput>): ActionParams {
+    const p = applyDefaults(params);
+    validateActionParams(p, () => undefined);
+    return p;
 }
 
 export function validateActionParams(
@@ -112,10 +112,12 @@ export function validateActionParams(
     const validations: ValidationFunction[] = [
         validateConfig,
         validateRoot,
-        validateInlineLevel,
-        validateStrict,
-        validateIncrementalFilesOnly,
-        validateVerbose,
+        validateOptions('inline', ['error', 'warning', 'none']),
+        validateTrueFalse('strict'),
+        validateTrueFalse('incremental_files_only'),
+        validateTrueFalse('verbose'),
+        validateTrueFalse('use_cspell_files'),
+        validateOptions('check_dot_files', ['true', 'false', 'explicit']),
     ];
     const success = validations
         .map((fn) => fn(params))

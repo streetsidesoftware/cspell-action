@@ -6,75 +6,15 @@
     "configurations": [
         {
             "type": "node",
-            "name": "vscode-jest-tests",
             "request": "launch",
-            "runtimeArgs": [
-                "jest"
-            ],
+            "name": "Vitest: Current Test File",
+            "autoAttachChildProcesses": true,
+            "skipFiles": [],
+            "program": "${fileWorkspaceFolder}/node_modules/vitest/vitest.mjs",
+            "args": ["run", "--test-timeout=600000", "${fileBasenameNoExtension}"],
             "cwd": "${workspaceFolder}/action-src",
-            "args": [
-                "--runInBand"
-            ],
-            "runtimeExecutable": "yarn",
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "disableOptimisticBPs": true,
-        },
-        {
-            "type": "node",
-            "name": "Jest Current File",
-            "request": "launch",
-            "runtimeArgs": [
-                "jest"
-            ],
-            "cwd": "${workspaceFolder}/action-src",
-            "args": [
-                "${fileBasename}",
-                "--runInBand"
-            ],
-            "runtimeExecutable": "yarn",
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "disableOptimisticBPs": true,
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "XX Jest Current File",
-            "cwd": "${workspaceFolder}/action-src",
-            "args": [
-                "--runInBand",
-                "${fileBasename}"
-            ],
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "disableOptimisticBPs": true,
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "windows": {
-                "program": "${workspaceFolder}/action-src/yarn",
-            }
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Jest Test All",
-            "program": "${workspaceFolder}/action-src/yarn",
-            "cwd": "${workspaceFolder}",
-            "args": [
-                "jest",
-                "--runInBand"
-            ],
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "disableOptimisticBPs": true,
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "windows": {
-                "program": "${workspaceFolder}/action-src/yarn",
-            }
+            "smartStep": true,
+            "console": "integratedTerminal"
         },
         {
             "type": "node",
@@ -83,10 +23,9 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/action/lib/main_root.js",
+            "program": "${workspaceFolder}/action/lib/main_root.cjs",
             "cwd": "${workspaceFolder}",
             "env": {
-                "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
                 "GITHUB_EVENT_PATH": "./fixtures/pull_request_payload.json",
                 "GITHUB_EVENT_NAME": "pull_request",
                 "GITHUB_SHA": "fac78ee45538f198c00ae651db5aedc7336f7ccc",
@@ -99,7 +38,7 @@
                 "GITHUB_RUN_ID": "421485606"
             },
             "outFiles": [
-                "${workspaceFolder}/action/**/*.js"
+                "${workspaceFolder}/action/**/*.cjs"
             ]
         }
     ]

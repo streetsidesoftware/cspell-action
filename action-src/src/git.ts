@@ -7,9 +7,8 @@ const execP = promisify(exec);
 
 export async function gitListCommits(count = 100, _since?: Date): Promise<string[]> {
     const args = ['rev-list', 'HEAD', `-${count}`];
-    const cmd = `git ${args.join(' ')}`;
-    const cmdResult = await execP(cmd);
-    return cmdResult.stdout
+    const cmdResult = await runGit(args);
+    return cmdResult
         .split('\n')
         .map((a) => a.trim())
         .filter((a) => !!a);
@@ -17,8 +16,7 @@ export async function gitListCommits(count = 100, _since?: Date): Promise<string
 
 export async function gitDeepen(count: number): Promise<void> {
     const args = ['fetch', `--deepen=${count}`];
-    const cmd = `git ${args.join(' ')}`;
-    await execP(cmd);
+    await runGit(args);
 }
 
 export async function gitListFiles(sha1: string, sha2?: string): Promise<string[]> {
@@ -26,16 +24,20 @@ export async function gitListFiles(sha1: string, sha2?: string): Promise<string[
     if (!SHAs.length) return [];
 
     const args = ['diff-tree', '--no-commit-id', '--name-only', '-r', ...SHAs];
-    const cmd = `git ${args.join(' ')}`;
-    const cmdResult = await execP(cmd);
-    return cmdResult.stdout
+    const cmdResult = await runGit(args);
+    return cmdResult
         .split('\n')
         .map((a) => a.trim())
         .filter((a) => !!a);
 }
 
+export async function gitRoot(): Promise<string> {
+    return (await runGit(['rev-parse', '--show-toplevel'])).trim();
+}
+
 function cleanSha(sha: string | undefined): string {
     if (!sha) return '';
+    if (['HEAD'].includes(sha)) return sha;
     const s = sha.trim().replace(/[^a-fA-F0-9]/g, '');
     return s.replace(/^0+$/, '');
 }
@@ -100,4 +102,9 @@ export class GitError extends Error {
         super(message);
         this.name = 'GitError';
     }
+}
+
+async function runGit(args: string[]): Promise<string> {
+    const { stdout } = await execP(`git ${args.join(' ')}`);
+    return stdout;
 }

@@ -11,21 +11,31 @@ export interface LintOptions {
      * - `undefined` - glob patterns can match explicit `.dot` patterns.
      */
     checkDotFiles: boolean | undefined;
+    files?: string[] | undefined;
 }
 
 /**
  * Spell check files.
- * @param files - files or glob patterns to check
+ * @param globs - files or glob patterns to check
  * @param root - the root directory to scan
  * @param reporter - reporter to use.
  */
-export async function lint(files: string[], lintOptions: LintOptions, reporter: CSpellReporter): Promise<void> {
-    const { root, config, checkDotFiles } = lintOptions;
-    const options: CSpellApplicationOptions = { root, config };
+export async function lint(globs: string[], lintOptions: LintOptions, reporter: CSpellReporter): Promise<void> {
+    const { root, config, checkDotFiles, files } = lintOptions;
+    // It is expected that `files` in the configuration will be used to filter the files.
+    const mustFindFiles = !files;
+    const options: CSpellApplicationOptions = {
+        root,
+        config,
+        files,
+        // filterFiles: files ? false : undefined,
+        mustFindFiles,
+    };
     if (checkDotFiles) {
         options.dot = true;
     } else if (checkDotFiles === false) {
         options.dot = false;
     }
-    await cspellAppLint(files, options, reporter);
+    // console.warn('lint: %o', { globs, lintOptions, options });
+    await cspellAppLint(globs, options, reporter);
 }

@@ -9,7 +9,10 @@ import {
     gitListFilesForContext,
     gitListFilesForPullRequest,
     gitListFilesForPush,
+    gitRoot,
 } from './git.js';
+
+import { root } from './test/helper.js';
 
 const urlFixtures = new URL('../fixtures/', import.meta.url);
 
@@ -28,7 +31,7 @@ describe('git', () => {
     test.each`
         contextFile                        | expected
         ${'./pull_request_2_context.json'} | ${ac(['README.md'])}
-        ${'./pr_1594_context.json'}        | ${ac(['action-src/build.mjs', 'package.json'])}
+        ${'./pr_1594_context.json'}        | ${ac(['action-src/build.mjs', 'package.json', 'action-src/package.json', 'action.yaml'])}
     `('gitListFilesForContext $contextFile', async ({ contextFile, expected }) => {
         const context = await readFixtureFileJSON<Context>(contextFile);
         const files = await gitListFilesForContext(context);
@@ -50,6 +53,11 @@ describe('git', () => {
 
     test('gitDeepen', async () => {
         await expect(gitDeepen(0)).resolves.toBeUndefined();
+    });
+
+    test('gitRoot', async () => {
+        const rootGit = await gitRoot();
+        expect(rootGit).toEqual(root);
     });
 });
 

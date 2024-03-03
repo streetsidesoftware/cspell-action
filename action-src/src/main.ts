@@ -1,8 +1,7 @@
 import { info, setFailed } from '@actions/core';
 import { Context } from '@actions/github/lib/context.js';
-import { isAppError, isError } from './error.js';
+import { toError } from './error.js';
 import { action } from './action.js';
-import { format } from 'util';
 
 export async function run(): Promise<undefined | Error> {
     try {
@@ -14,7 +13,8 @@ export async function run(): Promise<undefined | Error> {
         return undefined;
     } catch (error) {
         console.error(error);
-        setFailed(isAppError(error) ? error.message : isError(error) ? error : format(error));
-        return isError(error) ? error : Error(format(error));
+        const err = toError(error);
+        setFailed(err.message);
+        return err;
     }
 }

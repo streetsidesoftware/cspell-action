@@ -32,11 +32,6 @@ jobs:
     # files: |
     #   **/*.{ts,js}
     #   !dist/**/*.{ts,js}
-    #   # Hidden directories need an explicit .* to be included
-    #   .*/**/*.yml
-    #
-    # To not check hidden files, use:
-    # files: "**"
     #
     # Default: ALL files
     files: ''
@@ -70,6 +65,9 @@ jobs:
     # Log progress and other information during the action execution.
     # Default: false
     verbose: false
+
+    # Use the `files` setting found in the CSpell configuration instead of `input.files`.
+    use_cspell_files: false
 ```
 
 ## Yarn 2 - PlugNPlay
