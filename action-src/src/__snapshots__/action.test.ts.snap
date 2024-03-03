@@ -507,6 +507,10 @@ exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: f
 ",
   ],
   [
+    "::error::No files found to check.
+",
+  ],
+  [
     "Files checked: 0, Issues found: 0 in 0 files.
 ",
   ],
@@ -564,6 +568,7 @@ exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: f
 exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: false 'pull_request_with_files.json', dot: "'explicit'" 4`] = `
 [
   "Pull Request",
+  "::error::No files found to check.",
   "Files checked: 0, Issues found: 0 in 0 files.",
   "::set-output name=success::true",
   "::set-output name=number_of_files_checked::0",
@@ -586,6 +591,10 @@ exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: t
   ],
   [
     "'fork'
+",
+  ],
+  [
+    "::error::No files found to check.
 ",
   ],
   [
@@ -647,6 +656,7 @@ exports[`Validate Action > check files "'fixtures/sampleCode/**'" incremental: t
 [
   "::warning::Unable to determine which files have changed, checking files: fixtures/sampleCode/**",
   "'fork'",
+  "::error::No files found to check.",
   "Files checked: 0, Issues found: 0 in 0 files.",
   "::set-output name=success::true",
   "::set-output name=number_of_files_checked::0",

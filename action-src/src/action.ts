@@ -56,8 +56,9 @@ export async function action(githubContext: GitHubContext): Promise<boolean> {
 
     core.info(friendlyEventName(eventName));
     const result = await checkSpellingForContext(params, context);
-    if (result === true) {
-        return true;
+
+    if (!result.files && !context.useEventFiles) {
+        core.error('No files found to check.');
     }
 
     const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
