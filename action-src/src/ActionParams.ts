@@ -66,8 +66,8 @@ const defaultActionParams: ActionParams = {
 
 type ValidationFunction = (params: ActionParamsInput) => string | undefined;
 
-export function applyDefaults(params: ActionParamsInput): ActionParamsInput {
-    const results = { ...params };
+export function applyDefaults(params: Partial<ActionParamsInput>): ActionParamsInput {
+    const results = { ...defaultActionParams, ...params };
     const alias = results as Record<string, string>;
     for (const [key, value] of Object.entries(defaultActionParams)) {
         alias[key] = alias[key] || value;
@@ -97,6 +97,12 @@ function validateOptions(key: keyof ActionParamsInput, options: string[]): Valid
         const success = options.includes(value);
         return !success ? `Invalid ${key} setting, must be one of (${options.join(', ')})` : undefined;
     };
+}
+
+export function toActionParams(params: Partial<ActionParamsInput>): ActionParams {
+    const p = applyDefaults(params);
+    validateActionParams(p, () => undefined);
+    return p;
 }
 
 export function validateActionParams(

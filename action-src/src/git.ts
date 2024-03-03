@@ -37,6 +37,7 @@ export async function gitRoot(): Promise<string> {
 
 function cleanSha(sha: string | undefined): string {
     if (!sha) return '';
+    if (['HEAD'].includes(sha)) return sha;
     const s = sha.trim().replace(/[^a-fA-F0-9]/g, '');
     return s.replace(/^0+$/, '');
 }

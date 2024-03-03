@@ -1,5 +1,4 @@
 import { debug, error, info, warning } from '@actions/core';
-import type { Context as GitHubContext } from '@actions/github/lib/context.js';
 import type { PullRequestEvent, PushEvent } from '@octokit/webhooks-types';
 import type { RunResult } from 'cspell';
 import path from 'node:path';
@@ -12,11 +11,16 @@ import { LintOptions, lint } from './spell.js';
 
 const core = { debug, error, info, warning };
 
-export async function checkSpellingForContext(params: ActionParams, context: Context): Promise<true | RunResult> {
+export async function checkSpellingForContext(params: ActionParams, context: Context): Promise<RunResult> {
     const files = await gatherGitCommitFilesFromContext(context);
     const globs = await gatherFileGlobsFromContext(context);
     const result = await checkSpelling(params, globs, files);
     return result;
+}
+
+export interface GitHubContext {
+    eventName: string;
+    payload: object;
 }
 
 export interface Context {
@@ -96,3 +100,7 @@ async function checkSpelling(
 
     return collector.result;
 }
+
+export const __testing__ = {
+    gatherFileGlobsFromContext,
+};
