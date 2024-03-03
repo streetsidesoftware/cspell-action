@@ -27,12 +27,20 @@ export async function lint(globs: string[], lintOptions: LintOptions, reporter: 
         (globs.length && !files) || (files && !globs.length),
         'Either globs or files must be specified, but not both.',
     );
-    // console.warn('lint: %o', { globs, lintOptions });
-    const options: CSpellApplicationOptions = { root, config, files, filterFiles: !files };
+    // It is expected that `files` in the configuration will be used to filter the files.
+    const mustFindFiles = !files;
+    const options: CSpellApplicationOptions = {
+        root,
+        config,
+        files,
+        // filterFiles: files ? false : undefined,
+        mustFindFiles,
+    };
     if (checkDotFiles) {
         options.dot = true;
     } else if (checkDotFiles === false) {
         options.dot = false;
     }
+    console.warn('lint: %o', { globs, lintOptions, options });
     await cspellAppLint(globs, options, reporter);
 }

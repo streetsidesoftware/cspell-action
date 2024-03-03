@@ -1,0 +1,4 @@
+import:
+  - "../../cspell.json"
+files:
+  - "*.ts"

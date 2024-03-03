@@ -3,7 +3,7 @@ import * as path from 'path';
 import { Context } from '@actions/github/lib/context.js';
 import { action } from './action.js';
 import { AppError } from './error.js';
-import { fetchGithubActionFixture, root } from './test/helper.js';
+import { fetchGithubActionFixture, root, sourceDir } from './test/helper.js';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const configFile = path.resolve(root, 'cspell.json');
@@ -97,8 +97,8 @@ describe('Validate Action', () => {
                 INPUT_FILES: files,
                 INPUT_INCREMENTAL_FILES_ONLY: incremental ? 'true' : 'false',
                 INPUT_CHECK_DOT_FILES: dot,
-                INPUT_ROOT: path.resolve(root, 'fixtures'),
-                INPUT_CONFIG: path.resolve(root, 'fixtures/cspell.json'),
+                INPUT_ROOT: path.resolve(sourceDir, 'fixtures'),
+                INPUT_CONFIG: path.resolve(sourceDir, 'fixtures/cspell.json'),
             };
             const context = createContextFromFile(contextFile, params);
             await expect(action(context)).resolves.toBe(expected);

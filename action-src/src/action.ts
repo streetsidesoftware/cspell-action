@@ -3,19 +3,18 @@ import { debug, info, error, warning, setFailed, setOutput } from '@actions/core
 import type { Context as GitHubContext } from '@actions/github/lib/context.js';
 import type { RunResult } from 'cspell';
 import * as glob from 'cspell-glob';
-import { ActionParams, validateActionParams } from './ActionParams.js';
+import { validateActionParams } from './ActionParams.js';
 import { getActionParams } from './getActionParams.js';
-import { CSpellReporterForGithubAction } from './reporter.js';
-import { lint, LintOptions } from './spell.js';
 import { gitListFilesForPullRequest, gitListFilesForPush, gitRoot } from './git.js';
-
 import type { PushEvent, PullRequestEvent } from '@octokit/webhooks-types';
+import { checkDotMap } from './checkDotMap.js';
+import { checkSpellingForContext } from './checkSpellingForContext.js';
 
 const core = { debug, error, info, warning };
 
 const defaultGlob = '**';
 
-interface Context {
+export interface Context {
     githubContext: GitHubContext;
     files: string;
     useEventFiles: boolean;
@@ -24,38 +23,6 @@ interface Context {
 
 type EventNames = 'push' | 'pull_request';
 const supportedIncrementalEvents = new Set<EventNames | string>(['push', 'pull_request']);
-
-const checkDotMap = {
-    true: true,
-    false: false,
-    explicit: undefined,
-} as const;
-
-async function checkSpelling(
-    params: ActionParams,
-    globs: string[],
-    files: string[] | undefined,
-): Promise<RunResult | true> {
-    const options: LintOptions = {
-        root: params.root || process.cwd(),
-        config: params.config || undefined,
-        checkDotFiles: checkDotMap[params.check_dot_files],
-        files,
-    };
-
-    if (!globs.length && !files?.length) {
-        return true;
-    }
-
-    const reporterOptions = {
-        verbose: params.verbose === 'true',
-    };
-
-    const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core);
-    await lint(globs, options, collector.reporter);
-
-    return collector.result;
-}
 
 function friendlyEventName(eventName: EventNames | string): string {
     switch (eventName) {
@@ -72,7 +39,7 @@ function isSupportedEvent(eventName: EventNames | string): eventName is EventNam
     return supportedIncrementalEvents.has(eventName);
 }
 
-async function gatherGitCommitFilesFromContext(context: Context): Promise<string[] | undefined> {
+export async function gatherGitCommitFilesFromContext(context: Context): Promise<string[] | undefined> {
     if (context.useEventFiles) {
         const eventFiles = await gatherFiles(context);
         if (!eventFiles) return undefined;
@@ -82,7 +49,7 @@ async function gatherGitCommitFilesFromContext(context: Context): Promise<string
     }
 }
 
-async function gatherFileGlobsFromContext(context: Context): Promise<Set<string>> {
+export async function gatherFileGlobsFromContext(context: Context): Promise<Set<string>> {
     const files = new Set<string>(
         context.files
             .split('\n')
@@ -155,9 +122,7 @@ export async function action(githubContext: GitHubContext): Promise<boolean> {
     };
 
     core.info(friendlyEventName(eventName));
-    const fileList = await gatherGitCommitFilesFromContext(context);
-    const files = await gatherFileGlobsFromContext(context);
-    const result = await checkSpelling(params, fileList ? [] : [...files], fileList);
+    const result = await checkSpellingForContext(params, context);
     if (result === true) {
         return true;
     }

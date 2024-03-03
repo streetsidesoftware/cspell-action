@@ -1,5 +1,5 @@
 import * as spell from './spell.js';
-import { root } from './test/helper.js';
+import { root, sourceDir, resolveFiles, resolveFile } from './test/helper.js';
 import { CSpellReporterForGithubAction, Logger } from './reporter.js';
 import { describe, expect, test, vi } from 'vitest';
 
@@ -78,5 +78,44 @@ describe('Validate Spell Checking', () => {
         const reporter = new CSpellReporterForGithubAction('none', { verbose: true }, logger);
         await spell.lint([glob], options, reporter.reporter);
         expect(info.sort()).toEqual(expected);
+    });
+
+    const defaultResult = {
+        cachedFiles: 0,
+        errors: 0,
+        files: 0,
+        filesWithIssues: new Set(),
+        issues: 0,
+    };
+
+    const sampleConfig = resolveFile('fixtures/cspell.json', sourceDir);
+    const sampleConfigTs = resolveFile('fixtures/sampleCode/ts/cspell.config.yaml', sourceDir);
+
+    test.only.each`
+        globs                   | files                                            | options                       | expected
+        ${[]}                   | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1 }}
+        ${[]}                   | ${['fixtures/sampleCode/ts/missing.ts']}         | ${{}}                         | ${{ files: 0 }}
+        ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 1 }}
+        ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfigTs }} | ${{ files: 0 }}
+        ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 1 }}
+        ${['**/ts/missing.ts']} | ${undefined}                                     | ${{}}                         | ${{ files: 0 }}
+    `('Linting $globs $files $options', async ({ globs, files, options, expected }) => {
+        const opts: spell.LintOptions = {
+            root,
+            checkDotFiles: undefined,
+            files: resolveFiles(files, sourceDir),
+            ...options,
+        };
+        const info: string[] = [];
+        const f = () => {};
+        const logger: Logger = {
+            error: vi.fn(f),
+            debug: vi.fn(f),
+            info: vi.fn((msg) => info.push(msg)),
+            warning: vi.fn(f),
+        };
+        const reporter = new CSpellReporterForGithubAction('none', { verbose: false }, logger);
+        await spell.lint(globs, opts, reporter.reporter);
+        expect(reporter.result).toEqual({ ...defaultResult, ...expected });
     });
 });

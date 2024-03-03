@@ -34,3 +34,12 @@ export function fetchGithubActionFixture(filename: string): Record<string, strin
 
     return env;
 }
+
+export function resolveFile(file: string, rootDir = root): string {
+    return path.resolve(rootDir, file);
+}
+
+export function resolveFiles(files: string[] | undefined, rootDir?: string): string[] | undefined {
+    if (!files) return files;
+    return files.map((file) => resolveFile(file, rootDir));
+}
