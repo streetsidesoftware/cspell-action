@@ -552,9 +552,9 @@ var require_file_command = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@2.2.0/node_modules/@actions/http-client/lib/proxy.js
+// ../node_modules/.pnpm/@actions+http-client@2.2.1/node_modules/@actions/http-client/lib/proxy.js
 var require_proxy = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@2.2.0/node_modules/@actions/http-client/lib/proxy.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@2.2.1/node_modules/@actions/http-client/lib/proxy.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.checkBypass = exports2.getProxyUrl = void 0;
@@ -17454,9 +17454,9 @@ var require_undici = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@2.2.0/node_modules/@actions/http-client/lib/index.js
+// ../node_modules/.pnpm/@actions+http-client@2.2.1/node_modules/@actions/http-client/lib/index.js
 var require_lib = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@2.2.0/node_modules/@actions/http-client/lib/index.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@2.2.1/node_modules/@actions/http-client/lib/index.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -17950,7 +17950,7 @@ var require_lib = __commonJS({
         if (this._keepAlive && useProxy) {
           agent = this._proxyAgent;
         }
-        if (this._keepAlive && !useProxy) {
+        if (!useProxy) {
           agent = this._agent;
         }
         if (agent) {
@@ -17979,13 +17979,10 @@ var require_lib = __commonJS({
           agent = tunnelAgent(agentOptions);
           this._proxyAgent = agent;
         }
-        if (this._keepAlive && !agent) {
+        if (!agent) {
           const options = { keepAlive: this._keepAlive, maxSockets };
           agent = usingSsl ? new https.Agent(options) : new http.Agent(options);
           this._agent = agent;
-        }
-        if (!agent) {
-          agent = usingSsl ? https.globalAgent : http.globalAgent;
         }
         if (usingSsl && this._ignoreSslError) {
           agent.options = Object.assign(agent.options || {}, {
@@ -18081,9 +18078,9 @@ var require_lib = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@2.2.0/node_modules/@actions/http-client/lib/auth.js
+// ../node_modules/.pnpm/@actions+http-client@2.2.1/node_modules/@actions/http-client/lib/auth.js
 var require_auth = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@2.2.0/node_modules/@actions/http-client/lib/auth.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@2.2.1/node_modules/@actions/http-client/lib/auth.js"(exports2) {
     "use strict";
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
