@@ -54,8 +54,8 @@ importers:
         specifier: ^8.6.1
         version: 8.6.1
       '@octokit/webhooks-types':
-        specifier: ^7.4.0
-        version: 7.4.0
+        specifier: ^7.5.0
+        version: 7.5.0
       '@types/node':
         specifier: ^20.11.30
         version: 20.11.30
@@ -1019,8 +1019,8 @@ packages:
       '@octokit/openapi-types': 20.0.0
     dev: false
 
-  /@octokit/webhooks-types@7.4.0:
-    resolution: {integrity: sha512-FE2V+QZ2UYlh+9wWd5BPLNXG+J/XUD/PPq0ovS+nCcGX4+3qVbi3jYOmCTW48hg9SBBLtInx9+o7fFt4H5iP0Q==}
+  /@octokit/webhooks-types@7.5.0:
+    resolution: {integrity: sha512-oFypF1oD0z1x4qi+Ff4ienJ/iZ3GBXoht+0B+x8gMIWiNhRJZADYO+2KOh03ZGOX8WF6iJELZWw+giHieBO7rg==}
     dev: false
 
   /@rollup/rollup-android-arm-eabi@4.13.1:
