@@ -3,7 +3,7 @@
   "version": "6.2.0",
   "description": "GitHub Action: Check Spelling",
   "private": true,
-  "packageManager": "pnpm@8.7.4",
+  "packageManager": "pnpm@8.15.7",
   "type": "module",
   "scripts": {
     "prepare": "pnpm run build",
