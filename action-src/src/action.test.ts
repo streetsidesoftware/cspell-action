@@ -1,10 +1,11 @@
-import * as process from 'process';
-import * as path from 'path';
 import { Context } from '@actions/github/lib/context.js';
+import * as path from 'path';
+import * as process from 'process';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+
 import { action } from './action.js';
 import { AppError } from './error.js';
 import { fetchGithubActionFixture, root, sourceDir } from './test/helper.js';
-import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const configFile = path.resolve(root, 'cspell.json');
 

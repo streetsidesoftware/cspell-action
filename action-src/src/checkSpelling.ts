@@ -1,13 +1,15 @@
+import path from 'node:path';
+
 import { debug, error, info, warning } from '@actions/core';
 import type { PullRequestEvent, PushEvent } from '@octokit/webhooks-types';
 import type { RunResult } from 'cspell';
-import path from 'node:path';
+
 import { ActionParams } from './ActionParams.js';
 import { checkDotMap } from './checkDotMap.js';
 import { toError } from './error.js';
 import { gitListFiles, gitListFilesForPullRequest, gitListFilesForPush, gitRoot } from './git.js';
 import { CSpellReporterForGithubAction } from './reporter.js';
-import { LintOptions, lint } from './spell.js';
+import { lint,LintOptions } from './spell.js';
 
 const core = { debug, error, info, warning };
 

@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { AppError, isAppError, isError, toError } from './error.js';
 
 describe('error', () => {

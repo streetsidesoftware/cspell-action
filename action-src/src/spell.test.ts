@@ -1,5 +1,7 @@
 import path from 'node:path';
+
 import { describe, expect, test, vi } from 'vitest';
+
 import { CSpellReporterForGithubAction, Logger } from './reporter.js';
 import * as spell from './spell.js';
 import { resolveFile, resolveFiles, root, sourceDir } from './test/helper.js';

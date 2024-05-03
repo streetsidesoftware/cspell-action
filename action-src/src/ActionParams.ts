@@ -1,4 +1,5 @@
 import { existsSync } from 'fs';
+
 import { AppError } from './error.js';
 
 /**

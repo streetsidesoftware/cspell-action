@@ -1,7 +1,8 @@
 import { info, setFailed } from '@actions/core';
 import { Context } from '@actions/github/lib/context.js';
-import { toError } from './error.js';
+
 import { action } from './action.js';
+import { toError } from './error.js';
 
 export async function run(): Promise<undefined | Error> {
     try {
