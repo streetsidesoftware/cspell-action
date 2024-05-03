@@ -1,9 +1,11 @@
 import { promises as fs } from 'node:fs';
+
 import { describe, expect, test } from 'vitest';
+
 import {
     Context,
-    GitError,
     gitDeepen,
+    GitError,
     gitListCommits,
     gitListFiles,
     gitListFilesForContext,
@@ -11,7 +13,6 @@ import {
     gitListFilesForPush,
     gitRoot,
 } from './git.js';
-
 import { root } from './test/helper.js';
 
 const urlFixtures = new URL('../fixtures/', import.meta.url);

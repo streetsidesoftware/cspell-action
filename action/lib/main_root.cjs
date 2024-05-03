@@ -42726,6 +42726,13 @@ var require_file_entry_cache = __commonJS({
 var import_core5 = __toESM(require_core(), 1);
 var import_context = __toESM(require_context(), 1);
 
+// src/action.ts
+var import_node_path6 = __toESM(require("node:path"), 1);
+var import_core4 = __toESM(require_core(), 1);
+
+// src/ActionParams.ts
+var import_fs = require("fs");
+
 // src/error.ts
 var AppError = class extends Error {
   constructor(message) {
@@ -42742,12 +42749,7 @@ function toError(e) {
   return err;
 }
 
-// src/action.ts
-var import_core4 = __toESM(require_core(), 1);
-var import_node_path6 = __toESM(require("node:path"), 1);
-
 // src/ActionParams.ts
-var import_fs = require("fs");
 var defaultActionParams = {
   files: "",
   incremental_files_only: "true",
@@ -42812,12 +42814,12 @@ var checkDotMap = {
 };
 
 // src/checkSpelling.ts
-var import_core2 = __toESM(require_core(), 1);
 var import_node_path5 = __toESM(require("node:path"), 1);
+var import_core2 = __toESM(require_core(), 1);
 
 // src/git.ts
-var import_node_util = require("node:util");
 var import_node_child_process = require("node:child_process");
+var import_node_util = require("node:util");
 var execP = (0, import_node_util.promisify)(import_node_child_process.exec);
 async function gitListCommits(count3 = 100, _since) {
   const args = ["rev-list", "HEAD", `-${count3}`];
@@ -42892,6 +42894,7 @@ async function runGit(args) {
 // src/reporter.ts
 var import_core = __toESM(require_core(), 1);
 var import_command = __toESM(require_command(), 1);
+var path = __toESM(require("path"), 1);
 
 // ../node_modules/.pnpm/vscode-uri@3.0.8/node_modules/vscode-uri/lib/esm/index.mjs
 var LIB;
@@ -43272,7 +43275,6 @@ var LIB;
 var { URI, Utils } = LIB;
 
 // src/reporter.ts
-var path = __toESM(require("path"), 1);
 var core = { debug: import_core.debug, info: import_core.info, warning: import_core.warning, error: import_core.error };
 function nullEmitter(_msg) {
 }

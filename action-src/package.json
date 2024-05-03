@@ -37,7 +37,8 @@
     "vscode-uri": "^3.0.8"
   },
   "files": [
-    "lib"
+    "lib",
+    "build.mjs"
   ],
   "engines": {
     "node": ">=20"

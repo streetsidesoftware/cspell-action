@@ -1,4 +1,5 @@
 import { getInput } from '@actions/core';
+
 import { ActionParamsInput, applyDefaults, TrueFalse } from './ActionParams.js';
 
 export function getActionParams(): ActionParamsInput {

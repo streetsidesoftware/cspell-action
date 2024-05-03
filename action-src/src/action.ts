@@ -1,7 +1,9 @@
+import path from 'node:path';
+
 import { debug, error, info, setFailed, setOutput, warning } from '@actions/core';
 import type { Context as GitHubContext } from '@actions/github/lib/context.js';
 import type { RunResult } from 'cspell';
-import path from 'node:path';
+
 import { validateActionParams } from './ActionParams.js';
 import { checkDotMap } from './checkDotMap.js';
 import { checkSpellingForContext, type Context } from './checkSpelling.js';

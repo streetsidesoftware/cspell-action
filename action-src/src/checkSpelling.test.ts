@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { type Context, checkSpellingForContext, __testing__ } from './checkSpelling.js';
+
 import { toActionParams } from './ActionParams.js';
+import { __testing__,checkSpellingForContext, type Context } from './checkSpelling.js';
 
 const { gatherFileGlobsFromContext } = __testing__;
 
