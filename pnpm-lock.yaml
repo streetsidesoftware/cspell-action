@@ -69,8 +69,8 @@ importers:
         specifier: ^8.7.0
         version: 8.7.0
       cspell-glob:
-        specifier: ^8.7.0
-        version: 8.7.0
+        specifier: ^8.8.0
+        version: 8.8.0
       vscode-uri:
         specifier: ^3.0.8
         version: 3.0.8
@@ -1684,6 +1684,13 @@ packages:
 
   /cspell-glob@8.7.0:
     resolution: {integrity: sha512-AMdfx0gvROA/aIL8t8b5Y5NtMgscGZELFj6WhCSZiQSuWRxXUKiLGGLUFjx2y0hgXN9LUYOo6aBjvhnxI/v71g==}
+    engines: {node: '>=18'}
+    dependencies:
+      micromatch: 4.0.5
+    dev: false
+
+  /cspell-glob@8.8.0:
+    resolution: {integrity: sha512-LAq4PrE92vvuKoIbZN6B6HqmNlSEw9yds6pkmugYYpd6vLMBvzMbtTGjIEq0o+KhfoJPOnfOxRssPoiezwvIhA==}
     engines: {node: '>=18'}
     dependencies:
       micromatch: 4.0.5
