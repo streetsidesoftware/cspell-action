@@ -8,11 +8,9 @@
     "build:tsc": "tsc -p .",
     "clean-build": "pnpm clean && pnpm build",
     "clean": "shx rm -rf ../action/lib dist",
-    "lint": "eslint . --fix",
-    "prettier": "prettier -w \"**/*.{md,yaml,yml,json,ts}\"",
     "prepublishOnly": "pnpm build",
-    "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
-    "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
+    "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.cjs",
+    "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.cjs",
     "test": "vitest run",
     "coverage": "vitest run --coverage"
   },
