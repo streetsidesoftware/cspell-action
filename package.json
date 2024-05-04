@@ -41,7 +41,7 @@
   "devDependencies": {
     "@eslint/js": "^8.57.0",
     "@tsconfig/node20": "^20.1.4",
-    "@vitest/coverage-istanbul": "^1.5.3",
+    "@vitest/coverage-istanbul": "^1.6.0",
     "env-cmd": "^10.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-n": "^17.4.0",
@@ -50,7 +50,7 @@
     "shx": "^0.3.4",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.8.0",
-    "vitest": "^1.5.3"
+    "vitest": "^1.6.0"
   },
   "engines": {
     "node": ">=20"
