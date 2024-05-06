@@ -29,7 +29,7 @@
     "@cspell/cspell-bundled-dicts": "^8.8.0",
     "@cspell/cspell-types": "^8.8.0",
     "@octokit/webhooks-types": "^7.5.1",
-    "@types/node": "^20.12.8",
+    "@types/node": "^20.12.10",
     "cspell": "^8.8.0",
     "cspell-glob": "^8.8.0",
     "vscode-uri": "^3.0.8"
