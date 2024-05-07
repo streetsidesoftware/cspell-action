@@ -1,7 +1,7 @@
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 
-import type { PullRequestEvent,PushEvent } from '@octokit/webhooks-types';
+import type { PullRequestEvent, PushEvent } from '@octokit/webhooks-types';
 
 const execP = promisify(exec);
 

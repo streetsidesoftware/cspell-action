@@ -9,7 +9,7 @@ import { checkDotMap } from './checkDotMap.js';
 import { toError } from './error.js';
 import { gitListFiles, gitListFilesForPullRequest, gitListFilesForPush, gitRoot } from './git.js';
 import { CSpellReporterForGithubAction } from './reporter.js';
-import { lint,LintOptions } from './spell.js';
+import { lint, LintOptions } from './spell.js';
 
 const core = { debug, error, info, warning };
 
