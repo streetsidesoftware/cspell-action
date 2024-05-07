@@ -6,7 +6,6 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const urlTSConfig = new URL('../../tsconfig.json', import.meta.url);
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const tsconfig = JSON.parse(fs.readFileSync(urlTSConfig, 'utf-8'));
 
 export const sourceDir = path.resolve(path.join(__dirname, '..', '..'));
