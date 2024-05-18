@@ -50,4 +50,4 @@ jobs:
           git push origin v${{ steps.release.outputs.major }}
           git push origin v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}
 
-# cspell:ignore noreply
+# cspell:ignore noreply googleapis
