@@ -24,8 +24,8 @@ importers:
         specifier: ^9.4.0
         version: 9.4.0
       eslint-plugin-n:
-        specifier: ^17.8.1
-        version: 17.8.1(eslint@9.4.0)
+        specifier: ^17.9.0
+        version: 17.9.0(eslint@9.4.0)
       eslint-plugin-simple-import-sort:
         specifier: ^12.1.0
         version: 12.1.0(eslint@9.4.0)
@@ -2121,8 +2121,8 @@ packages:
       eslint-compat-utils: 0.5.1(eslint@9.4.0)
     dev: true
 
-  /eslint-plugin-n@17.8.1(eslint@9.4.0):
-    resolution: {integrity: sha512-KdG0h0voZms8UhndNu8DeWx1eM4sY+A4iXtsNo6kOfJLYHNeTGPacGalJ9GcvrbmOL3r/7QOMwVZDSw+1SqsrA==}
+  /eslint-plugin-n@17.9.0(eslint@9.4.0):
+    resolution: {integrity: sha512-CPSaXDXdrT4nsrOrO4mT4VB6FMUkoySRkHWuuJJHVqsIEjIeZgMY1H7AzSwPbDScikBmLN82KeM1u7ixV7PzGg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
