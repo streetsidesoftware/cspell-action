@@ -14,6 +14,7 @@ export function getActionParams(): ActionParamsInput {
         verbose: tf(getInput('verbose')),
         check_dot_files: tf(getInput('check_dot_files')),
         use_cspell_files: tf(getInput('use_cspell_files')),
+        suggestions: tf(getInput('suggestions')),
     });
 }
 

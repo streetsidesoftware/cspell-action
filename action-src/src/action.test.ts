@@ -81,17 +81,18 @@ describe('Validate Action', () => {
     });
 
     test.each`
-        files                       | incremental | dot           | contextFile                                | expected
-        ${'fixtures/sampleCode/**'} | ${false}    | ${'explicit'} | ${'pull_request_with_files.json'}          | ${true}
-        ${'fixtures/sampleCode/**'} | ${true}     | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${true}
-        ${''}                       | ${true}     | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${false}
-        ${'**'}                     | ${true}     | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${false}
-        ${''}                       | ${false}    | ${'explicit'} | ${'pull_request_with_files.json'}          | ${false}
-        ${''}                       | ${false}    | ${''}         | ${'pull_request_with_files.json'}          | ${false}
-        ${''}                       | ${false}    | ${'true'}     | ${'pull_request_with_files.json'}          | ${false}
+        files              | incremental | suggestions | dot           | contextFile                                | expected
+        ${'sampleCode/**'} | ${false}    | ${false}    | ${'explicit'} | ${'pull_request_with_files.json'}          | ${false}
+        ${'sampleCode/**'} | ${false}    | ${true}     | ${'explicit'} | ${'pull_request_with_files.json'}          | ${false}
+        ${'sampleCode/**'} | ${true}     | ${false}    | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${false}
+        ${''}              | ${true}     | ${false}    | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${false}
+        ${'**'}            | ${true}     | ${false}    | ${'explicit'} | ${'bad_params/bad_unsupported_event.json'} | ${false}
+        ${''}              | ${false}    | ${false}    | ${'explicit'} | ${'pull_request_with_files.json'}          | ${false}
+        ${''}              | ${false}    | ${false}    | ${''}         | ${'pull_request_with_files.json'}          | ${false}
+        ${''}              | ${false}    | ${false}    | ${'true'}     | ${'pull_request_with_files.json'}          | ${false}
     `(
-        'check files "$files" incremental: $incremental $contextFile, dot: "$dot"',
-        async ({ files, incremental, contextFile, dot, expected }) => {
+        'check files "$files" incremental: $incremental sugs: $suggestions $contextFile, dot: "$dot"',
+        async ({ files, incremental, suggestions, contextFile, dot, expected }) => {
             const warnings: string[] = [];
             spyWarn.mockImplementation((msg: string) => warnings.push(msg));
             const params = {
@@ -100,6 +101,7 @@ describe('Validate Action', () => {
                 INPUT_CHECK_DOT_FILES: dot,
                 INPUT_ROOT: path.resolve(sourceDir, 'fixtures'),
                 INPUT_CONFIG: path.resolve(sourceDir, 'fixtures/cspell.json'),
+                INPUT_SUGGESTIONS: suggestions ? 'true' : 'false',
             };
             const context = createContextFromFile(contextFile, params);
             await expect(action(context)).resolves.toBe(expected);

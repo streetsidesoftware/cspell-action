@@ -114,6 +114,12 @@ ${error.stack}
         const cwd = process.cwd();
 
         this.issues.forEach((item) => {
+            const hasPreferred = item.suggestionsEx?.some((s) => s.isPreferred) || false;
+            const msgPrefix = item.isFlagged ? 'Forbidden word' : hasPreferred ? 'Misspelled word' : 'Unknown word';
+            const suggestions = item.suggestionsEx?.map((s) => s.word + (s.isPreferred ? '*' : '')).join(', ') || '';
+            const sugMsg = suggestions ? ` Suggestions: (${suggestions})` : '';
+            const message = `${msgPrefix} (${item.text})${sugMsg}`;
+
             // format: ::warning file={name},line={line},col={col}::{message}
             issueCommand(
                 command,
@@ -122,9 +128,9 @@ ${error.stack}
                     line: item.row,
                     col: item.col,
                 },
-                `Unknown word (${item.text})`,
+                message,
             );
-            console.warn(`${relative(cwd, item.uri || '')}:${item.row}:${item.col} Unknown word (${item.text})`);
+            console.warn(`${relative(cwd, item.uri || '')}:${item.row}:${item.col} ${message}`);
         });
     }
 

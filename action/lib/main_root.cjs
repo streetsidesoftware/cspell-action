@@ -41202,7 +41202,8 @@ var defaultActionParams = {
   strict: "true",
   verbose: "false",
   check_dot_files: "explicit",
-  use_cspell_files: "false"
+  use_cspell_files: "false",
+  suggestions: "false"
 };
 function applyDefaults(params) {
   const results = { ...defaultActionParams, ...params };
@@ -41241,6 +41242,7 @@ function validateActionParams(params, logError2) {
     validateTrueFalse("incremental_files_only"),
     validateTrueFalse("verbose"),
     validateTrueFalse("use_cspell_files"),
+    validateTrueFalse("suggestions"),
     validateOptions("check_dot_files", ["true", "false", "explicit"])
   ];
   const success = validations.map((fn) => fn(params)).map((msg) => !msg || (logError2(msg), false)).reduce((a, b) => a && b, true);
@@ -41737,6 +41739,11 @@ ${error4.stack}
     }
     const cwd = process.cwd();
     this.issues.forEach((item) => {
+      const hasPreferred = item.suggestionsEx?.some((s) => s.isPreferred) || false;
+      const msgPrefix = item.isFlagged ? "Forbidden word" : hasPreferred ? "Misspelled word" : "Unknown word";
+      const suggestions2 = item.suggestionsEx?.map((s) => s.word + (s.isPreferred ? "*" : "")).join(", ") || "";
+      const sugMsg = suggestions2 ? ` Suggestions: (${suggestions2})` : "";
+      const message = `${msgPrefix} (${item.text})${sugMsg}`;
       (0, import_command.issueCommand)(
         command,
         {
@@ -41744,9 +41751,9 @@ ${error4.stack}
           line: item.row,
           col: item.col
         },
-        `Unknown word (${item.text})`
+        message
       );
-      console.warn(`${relative2(cwd, item.uri || "")}:${item.row}:${item.col} Unknown word (${item.text})`);
+      console.warn(`${relative2(cwd, item.uri || "")}:${item.row}:${item.col} ${message}`);
     });
   }
   reporter = {
@@ -64306,14 +64313,15 @@ __reExport(esm_exports2, dist_exports);
 
 // src/spell.ts
 async function lint2(globs, lintOptions, reporter) {
-  const { root, config, checkDotFiles, files } = lintOptions;
+  const { root, config, checkDotFiles, files, showSuggestions } = lintOptions;
   const mustFindFiles = !files;
   const options = {
     root,
     config,
     files,
     // filterFiles: files ? false : undefined,
-    mustFindFiles
+    mustFindFiles,
+    showSuggestions
   };
   if (checkDotFiles) {
     options.dot = true;
@@ -64370,7 +64378,8 @@ async function checkSpelling(params, globs, files) {
     root: params.root || process.cwd(),
     config: params.config || void 0,
     checkDotFiles: checkDotMap[params.check_dot_files],
-    files
+    files,
+    showSuggestions: params.suggestions === "true"
   };
   const reporterOptions = {
     verbose: params.verbose === "true"
@@ -64393,7 +64402,8 @@ function getActionParams() {
     strict: tf((0, import_core3.getInput)("strict")),
     verbose: tf((0, import_core3.getInput)("verbose")),
     check_dot_files: tf((0, import_core3.getInput)("check_dot_files")),
-    use_cspell_files: tf((0, import_core3.getInput)("use_cspell_files"))
+    use_cspell_files: tf((0, import_core3.getInput)("use_cspell_files")),
+    suggestions: tf((0, import_core3.getInput)("suggestions"))
   });
 }
 function tf(v) {
