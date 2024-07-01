@@ -39,11 +39,11 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
+    "@eslint/js": "^9.6.0",
     "@tsconfig/node20": "^20.1.4",
     "@vitest/coverage-istanbul": "^1.6.0",
     "env-cmd": "^10.1.0",
-    "eslint": "^9.5.0",
+    "eslint": "^9.6.0",
     "eslint-plugin-n": "^17.9.0",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "prettier": "^3.3.2",
