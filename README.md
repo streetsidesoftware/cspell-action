@@ -52,6 +52,7 @@ jobs:
     inline: warning
 
     # Reports flagged / forbidden words as errors.
+    # If true, errors will still be reported even if `inline` is "none"
     treat_flagged_words_as_errors: false
 
     # Generate Spelling suggestions.
