@@ -39,6 +39,7 @@ export type ReportIssueCommand = 'error' | 'warning' | 'none';
 
 export interface ReporterOptions {
     verbose: boolean;
+    treatFlaggedWordsAsErrors: boolean;
 }
 
 export class CSpellReporterForGithubAction {
@@ -106,23 +107,26 @@ ${error.stack}
         Object.assign(this.result, result);
         this.finished = true;
         const command = this.reportIssueCommand;
-
-        if (!['error', 'warning'].includes(command)) {
-            return;
-        }
+        const errorCommand = this.options.treatFlaggedWordsAsErrors ? 'error' : command;
 
         const cwd = process.cwd();
 
         this.issues.forEach((item) => {
+            const isError = item.isFlagged || false;
             const hasPreferred = item.suggestionsEx?.some((s) => s.isPreferred) || false;
-            const msgPrefix = item.isFlagged ? 'Forbidden word' : hasPreferred ? 'Misspelled word' : 'Unknown word';
+            const msgPrefix = isError ? 'Forbidden word' : hasPreferred ? 'Misspelled word' : 'Unknown word';
             const suggestions = item.suggestionsEx?.map((s) => s.word + (s.isPreferred ? '*' : '')).join(', ') || '';
             const sugMsg = suggestions ? ` Suggestions: (${suggestions})` : '';
             const message = `${msgPrefix} (${item.text})${sugMsg}`;
+            const cmd = isError ? errorCommand : command;
+
+            if (!['error', 'warning'].includes(cmd)) {
+                return;
+            }
 
             // format: ::warning file={name},line={line},col={col}::{message}
             issueCommand(
-                command,
+                cmd,
                 {
                     file: relative(cwd, item.uri || ''),
                     line: item.row,

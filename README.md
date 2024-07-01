@@ -51,6 +51,9 @@ jobs:
     # Default: warning
     inline: warning
 
+    # Reports flagged / forbidden words as errors.
+    treat_flagged_words_as_errors: false
+
     # Generate Spelling suggestions.
     suggestions: false
 

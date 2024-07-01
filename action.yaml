@@ -28,6 +28,11 @@ inputs:
       Allowed values are: warning, error, none
     default: warning
     required: false
+  treat_flagged_words_as_errors:
+    description: >
+      Treat flagged / forbidden words as errors.
+      Allowed values are: true, false
+    default: "false"
   strict:
     description: |
       Determines if the action should be failed if any spelling issues are found.
