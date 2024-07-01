@@ -34,6 +34,11 @@ inputs:
       Allowed values are: true, false
     default: "true"
     required: false
+  suggestions:
+    description: >
+      Generate Spelling suggestions.
+    default: "false"
+    required: false
   verbose:
     description: |
       Increase the log output to include progress.
