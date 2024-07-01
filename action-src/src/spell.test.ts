@@ -8,6 +8,8 @@ import { resolveFile, resolveFiles, root, sourceDir } from './test/helper.js';
 
 const sc = expect.stringContaining;
 
+const rOptions = { verbose: false, treatFlaggedWordsAsErrors: false };
+
 describe('Validate Spell Checking', () => {
     test('Linting some files', async () => {
         const options = {
@@ -21,7 +23,7 @@ describe('Validate Spell Checking', () => {
             info: vi.fn(f),
             warning: vi.fn(f),
         };
-        const reporter = new CSpellReporterForGithubAction('none', { verbose: false }, logger);
+        const reporter = new CSpellReporterForGithubAction('none', { ...rOptions, verbose: false }, logger);
         await spell.lint(['action-src/src/spell.ts', 'fixtures/sampleCode/ts/**/*.ts'], options, reporter.reporter);
         const r = reporter;
         expect(r.result.files).toBe(2);
@@ -82,7 +84,7 @@ describe('Validate Spell Checking', () => {
             info: vi.fn((msg) => info.push(msg)),
             warning: vi.fn(f),
         };
-        const reporter = new CSpellReporterForGithubAction('none', { verbose: true }, logger);
+        const reporter = new CSpellReporterForGithubAction('none', { ...rOptions, verbose: true }, logger);
         await spell.lint([glob], options, reporter.reporter);
         expect(info.sort()).toEqual(expected);
     });
@@ -128,7 +130,7 @@ describe('Validate Spell Checking', () => {
             info: vi.fn((msg) => info.push(msg)),
             warning: vi.fn(f),
         };
-        const reporter = new CSpellReporterForGithubAction('none', { verbose: false }, logger);
+        const reporter = new CSpellReporterForGithubAction('none', { ...rOptions, verbose: false }, logger);
         await spell.lint(globs, opts, reporter.reporter);
         expect(reporter.result).toEqual({ ...defaultResult, ...expected });
     });
