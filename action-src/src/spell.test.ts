@@ -44,7 +44,11 @@ describe('Validate Spell Checking', () => {
             info: vi.fn(f),
             warning: vi.fn(f),
         };
-        const reporter = new CSpellReporterForGithubAction('none', { verbose: true }, logger);
+        const reporter = new CSpellReporterForGithubAction(
+            'none',
+            { verbose: true, treatFlaggedWordsAsErrors: false },
+            logger,
+        );
         await spell.lint(['action-src/src/spell.ts', 'fixtures/sampleCode/ts/**/*.ts'], options, reporter.reporter);
         const r = reporter;
         expect(r.result.files).toBe(2);
