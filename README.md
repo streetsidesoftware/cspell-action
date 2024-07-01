@@ -51,6 +51,9 @@ jobs:
     # Default: warning
     inline: warning
 
+    # Generate Spelling suggestions.
+    suggestions: false
+
     # Determines if the action should be failed if any spelling issues are found.
     # Allowed values are: true, false
     # Default: true

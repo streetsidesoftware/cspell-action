@@ -91,6 +91,7 @@ async function checkSpelling(
         config: params.config || undefined,
         checkDotFiles: checkDotMap[params.check_dot_files],
         files,
+        showSuggestions: params.suggestions === 'true',
     };
 
     const reporterOptions = {

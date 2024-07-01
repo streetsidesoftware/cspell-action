@@ -31,6 +31,12 @@ export interface ActionParams {
      */
     strict: TrueFalse;
     /**
+     * Should generate spelling suggestions.
+     * Note: Preferred suggestions will always be shown if available.
+     * @default 'false'
+     */
+    suggestions: TrueFalse;
+    /**
      * Increases the amount of information logged during the action.
      * true - show progress
      * false - less information
@@ -63,6 +69,7 @@ const defaultActionParams: ActionParams = {
     verbose: 'false',
     check_dot_files: 'explicit',
     use_cspell_files: 'false',
+    suggestions: 'false',
 };
 
 type ValidationFunction = (params: ActionParamsInput) => string | undefined;
@@ -118,6 +125,7 @@ export function validateActionParams(
         validateTrueFalse('incremental_files_only'),
         validateTrueFalse('verbose'),
         validateTrueFalse('use_cspell_files'),
+        validateTrueFalse('suggestions'),
         validateOptions('check_dot_files', ['true', 'false', 'explicit']),
     ];
     const success = validations

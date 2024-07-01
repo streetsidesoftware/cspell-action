@@ -1,0 +1,14 @@
+import:
+  - "../../cspell.json"
+files:
+  - "*.ts"
+# cspell:disable
+flagWords:
+  - blacklist->denylist
+  - blacklists->denylists
+  - whitelist->allowlist
+  - whitelists->allowlists
+suggestWords:
+  - colour->color
+  - colours->colors
+# cspell:enable
