@@ -24,6 +24,11 @@ export interface ActionParams {
      */
     inline: InlineWorkflowCommand;
     /**
+     * Determines if flagged words should be treated as errors.
+     * @default 'false'
+     */
+    treat_flagged_words_as_errors: TrueFalse;
+    /**
      * Determines if the action should be failed if any spelling issues are found.
      *
      * Allowed values are: true, false
@@ -65,6 +70,7 @@ const defaultActionParams: ActionParams = {
     config: '',
     root: '',
     inline: 'warning',
+    treat_flagged_words_as_errors: 'false',
     strict: 'true',
     verbose: 'false',
     check_dot_files: 'explicit',
@@ -121,6 +127,7 @@ export function validateActionParams(
         validateConfig,
         validateRoot,
         validateOptions('inline', ['error', 'warning', 'none']),
+        validateTrueFalse('treat_flagged_words_as_errors'),
         validateTrueFalse('strict'),
         validateTrueFalse('incremental_files_only'),
         validateTrueFalse('verbose'),

@@ -111,6 +111,34 @@ describe('Validate Action', () => {
             expect(spyStdout.mock.calls.map((call) => call.join('').trim()).filter((a) => !!a)).toMatchSnapshot();
         },
     );
+
+    test.each`
+        files              | suggestions | inline       | contextFile                       | expected
+        ${'sampleCode/**'} | ${true}     | ${'warning'} | ${'pull_request_with_files.json'} | ${false}
+        ${'sampleCode/**'} | ${true}     | ${'error'}   | ${'pull_request_with_files.json'} | ${false}
+        ${'sampleCode/**'} | ${true}     | ${'none'}    | ${'pull_request_with_files.json'} | ${false}
+    `(
+        'check files flag errors "$files" sugs: $suggestions $contextFile, "$inline"',
+        async ({ files, suggestions, contextFile, inline, expected }) => {
+            const warnings: string[] = [];
+            spyWarn.mockImplementation((msg: string) => warnings.push(msg));
+            const params = {
+                INPUT_FILES: files,
+                INPUT_INCREMENTAL_FILES_ONLY: 'false',
+                INPUT_INLINE: inline,
+                INPUT_ROOT: path.resolve(sourceDir, 'fixtures'),
+                INPUT_CONFIG: path.resolve(sourceDir, 'fixtures/cspell.json'),
+                INPUT_SUGGESTIONS: suggestions ? 'true' : 'false',
+                INPUT_TREAT_FLAGGED_WORDS_AS_ERRORS: 'true',
+            };
+            const context = createContextFromFile(contextFile, params);
+            await expect(action(context)).resolves.toBe(expected);
+            expect(warnings).toMatchSnapshot();
+            expect(spyLog.mock.calls).toMatchSnapshot();
+            expect(spyStdout.mock.calls).toMatchSnapshot();
+            expect(spyStdout.mock.calls.map((call) => call.join('').trim()).filter((a) => !!a)).toMatchSnapshot();
+        },
+    );
 });
 
 function cleanEnv() {

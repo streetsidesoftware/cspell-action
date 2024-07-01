@@ -96,6 +96,7 @@ async function checkSpelling(
 
     const reporterOptions = {
         verbose: params.verbose === 'true',
+        treatFlaggedWordsAsErrors: params.treat_flagged_words_as_errors === 'true',
     };
 
     const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core);

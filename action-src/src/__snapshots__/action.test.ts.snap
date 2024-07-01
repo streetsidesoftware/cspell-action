@@ -882,3 +882,300 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: true sugs:
   "::error::4 spelling issues found in 1 of the 4 files checked.",
 ]
 `;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'error'" 1`] = `
+[
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon) Suggestions: (functor, function, Function, futon, fulton)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt) Suggestions: (count, Count, counts, county, cont)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)",
+]
+`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'error'" 2`] = `[]`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'error'" 3`] = `
+[
+  [
+    "Pull Request
+",
+  ],
+  [
+    "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon) Suggestions: (functor, function, Function, futon, fulton)
+",
+  ],
+  [
+    "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt) Suggestions: (count, Count, counts, county, cont)
+",
+  ],
+  [
+    "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)
+",
+  ],
+  [
+    "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)
+",
+  ],
+  [
+    "Files checked: 4, Issues found: 4 in 1 files.
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=success::false
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_files_checked::4
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_issues::4
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_files_with_issues::1
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+",
+  ],
+]
+`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'error'" 4`] = `
+[
+  "Pull Request",
+  "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon) Suggestions: (functor, function, Function, futon, fulton)",
+  "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt) Suggestions: (count, Count, counts, county, cont)",
+  "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)",
+  "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)",
+  "Files checked: 4, Issues found: 4 in 1 files.",
+  "::set-output name=success::false",
+  "::set-output name=number_of_files_checked::4",
+  "::set-output name=number_of_issues::4",
+  "::set-output name=number_of_files_with_issues::1",
+  "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+]
+`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'none'" 1`] = `
+[
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)",
+]
+`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'none'" 2`] = `[]`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'none'" 3`] = `
+[
+  [
+    "Pull Request
+",
+  ],
+  [
+    "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)
+",
+  ],
+  [
+    "Files checked: 4, Issues found: 4 in 1 files.
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=success::false
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_files_checked::4
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_issues::4
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_files_with_issues::1
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+",
+  ],
+]
+`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'none'" 4`] = `
+[
+  "Pull Request",
+  "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)",
+  "Files checked: 4, Issues found: 4 in 1 files.",
+  "::set-output name=success::false",
+  "::set-output name=number_of_files_checked::4",
+  "::set-output name=number_of_issues::4",
+  "::set-output name=number_of_files_with_issues::1",
+  "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+]
+`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'warning'" 1`] = `
+[
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Unknown word (Functon) Suggestions: (functor, function, Function, futon, fulton)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt) Suggestions: (count, Count, counts, county, cont)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)",
+  "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)",
+]
+`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'warning'" 2`] = `[]`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'warning'" 3`] = `
+[
+  [
+    "Pull Request
+",
+  ],
+  [
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon) Suggestions: (functor, function, Function, futon, fulton)
+",
+  ],
+  [
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt) Suggestions: (count, Count, counts, county, cont)
+",
+  ],
+  [
+    "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)
+",
+  ],
+  [
+    "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)
+",
+  ],
+  [
+    "Files checked: 4, Issues found: 4 in 1 files.
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=success::false
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_files_checked::4
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_issues::4
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=number_of_files_with_issues::1
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]
+",
+  ],
+  [
+    "
+",
+  ],
+  [
+    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+",
+  ],
+]
+`;
+
+exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 'pull_request_with_files.json', "'warning'" 4`] = `
+[
+  "Pull Request",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Unknown word (Functon) Suggestions: (functor, function, Function, futon, fulton)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt) Suggestions: (count, Count, counts, county, cont)",
+  "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)",
+  "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)",
+  "Files checked: 4, Issues found: 4 in 1 files.",
+  "::set-output name=success::false",
+  "::set-output name=number_of_files_checked::4",
+  "::set-output name=number_of_issues::4",
+  "::set-output name=number_of_files_with_issues::1",
+  "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
+  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+]
+`;
