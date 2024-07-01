@@ -113,17 +113,19 @@ describe('Validate Action', () => {
     );
 
     test.each`
-        files              | incremental | suggestions | dot           | contextFile                       | expected
-        ${'sampleCode/**'} | ${false}    | ${true}     | ${'explicit'} | ${'pull_request_with_files.json'} | ${false}
+        files              | suggestions | inline       | contextFile                       | expected
+        ${'sampleCode/**'} | ${true}     | ${'warning'} | ${'pull_request_with_files.json'} | ${false}
+        ${'sampleCode/**'} | ${true}     | ${'error'}   | ${'pull_request_with_files.json'} | ${false}
+        ${'sampleCode/**'} | ${true}     | ${'none'}    | ${'pull_request_with_files.json'} | ${false}
     `(
-        'check files flag errors "$files" incremental: $incremental sugs: $suggestions $contextFile, dot: "$dot"',
-        async ({ files, incremental, suggestions, contextFile, dot, expected }) => {
+        'check files flag errors "$files" sugs: $suggestions $contextFile, "$inline"',
+        async ({ files, suggestions, contextFile, inline, expected }) => {
             const warnings: string[] = [];
             spyWarn.mockImplementation((msg: string) => warnings.push(msg));
             const params = {
                 INPUT_FILES: files,
-                INPUT_INCREMENTAL_FILES_ONLY: incremental ? 'true' : 'false',
-                INPUT_CHECK_DOT_FILES: dot,
+                INPUT_INCREMENTAL_FILES_ONLY: 'false',
+                INPUT_INLINE: inline,
                 INPUT_ROOT: path.resolve(sourceDir, 'fixtures'),
                 INPUT_CONFIG: path.resolve(sourceDir, 'fixtures/cspell.json'),
                 INPUT_SUGGESTIONS: suggestions ? 'true' : 'false',
