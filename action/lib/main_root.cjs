@@ -41199,6 +41199,7 @@ var defaultActionParams = {
   config: "",
   root: "",
   inline: "warning",
+  treat_flagged_words_as_errors: "false",
   strict: "true",
   verbose: "false",
   check_dot_files: "explicit",
@@ -41238,6 +41239,7 @@ function validateActionParams(params, logError2) {
     validateConfig,
     validateRoot,
     validateOptions("inline", ["error", "warning", "none"]),
+    validateTrueFalse("treat_flagged_words_as_errors"),
     validateTrueFalse("strict"),
     validateTrueFalse("incremental_files_only"),
     validateTrueFalse("verbose"),
@@ -41734,18 +41736,21 @@ ${error4.stack}
     Object.assign(this.result, result);
     this.finished = true;
     const command = this.reportIssueCommand;
-    if (!["error", "warning"].includes(command)) {
-      return;
-    }
+    const errorCommand = this.options.treatFlaggedWordsAsErrors ? "error" : command;
     const cwd = process.cwd();
     this.issues.forEach((item) => {
+      const isError6 = item.isFlagged || false;
       const hasPreferred = item.suggestionsEx?.some((s) => s.isPreferred) || false;
-      const msgPrefix = item.isFlagged ? "Forbidden word" : hasPreferred ? "Misspelled word" : "Unknown word";
+      const msgPrefix = isError6 ? "Forbidden word" : hasPreferred ? "Misspelled word" : "Unknown word";
       const suggestions2 = item.suggestionsEx?.map((s) => s.word + (s.isPreferred ? "*" : "")).join(", ") || "";
       const sugMsg = suggestions2 ? ` Suggestions: (${suggestions2})` : "";
       const message = `${msgPrefix} (${item.text})${sugMsg}`;
+      const cmd = isError6 ? errorCommand : command;
+      if (!["error", "warning"].includes(cmd)) {
+        return;
+      }
       (0, import_command.issueCommand)(
-        command,
+        cmd,
         {
           file: relative2(cwd, item.uri || ""),
           line: item.row,
@@ -64382,7 +64387,8 @@ async function checkSpelling(params, globs, files) {
     showSuggestions: params.suggestions === "true"
   };
   const reporterOptions = {
-    verbose: params.verbose === "true"
+    verbose: params.verbose === "true",
+    treatFlaggedWordsAsErrors: params.treat_flagged_words_as_errors === "true"
   };
   const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core2);
   await lint2(globs || [], options, collector.reporter);
@@ -64392,19 +64398,21 @@ async function checkSpelling(params, globs, files) {
 // src/getActionParams.ts
 var import_core3 = __toESM(require_core(), 1);
 function getActionParams() {
-  return applyDefaults({
+  const params = {
     // github_token: getInput('github_token', { required: true }),
     files: (0, import_core3.getInput)("files"),
     incremental_files_only: tf((0, import_core3.getInput)("incremental_files_only")),
     config: (0, import_core3.getInput)("config"),
     root: (0, import_core3.getInput)("root"),
     inline: (0, import_core3.getInput)("inline").toLowerCase(),
+    treat_flagged_words_as_errors: tf((0, import_core3.getInput)("treat_flagged_words_as_errors")),
     strict: tf((0, import_core3.getInput)("strict")),
     verbose: tf((0, import_core3.getInput)("verbose")),
     check_dot_files: tf((0, import_core3.getInput)("check_dot_files")),
     use_cspell_files: tf((0, import_core3.getInput)("use_cspell_files")),
     suggestions: tf((0, import_core3.getInput)("suggestions"))
-  });
+  };
+  return applyDefaults(params);
 }
 function tf(v) {
   const mapValues = {
