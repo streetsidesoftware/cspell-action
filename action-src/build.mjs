@@ -17,6 +17,7 @@ async function buildLib() {
         absWorkingDir: __dirname,
         entryPoints: ['src/main_root.ts'],
         bundle: true,
+        packages: 'bundle',
         platform: 'node',
         outfile: path.join(targetPackageDir, 'lib/main_root.cjs'),
     });
