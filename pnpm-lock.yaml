@@ -69,8 +69,8 @@ importers:
         specifier: ^8.10.0
         version: 8.10.0
       cspell-glob:
-        specifier: ^8.10.0
-        version: 8.10.0
+        specifier: ^8.10.2
+        version: 8.10.2
       vscode-uri:
         specifier: ^3.0.8
         version: 3.0.8
@@ -378,6 +378,10 @@ packages:
 
   '@cspell/url@8.10.0':
     resolution: {integrity: sha512-U4+uMJKe3d+BwBjrzhNVxc1CUBVynlw5qeJkSdZJzqOdDFFA9yiKfLpHYmY5Sc/Iin8XAYuAd09Mxsc3E714Iw==}
+    engines: {node: '>=18.0'}
+
+  '@cspell/url@8.10.2':
+    resolution: {integrity: sha512-ImrFRopPDzyc1ZtRuSNGVGAT2Kgq5YaR1bSQio9Je8V4IizFP5kzg1rPiJxJL0pbqlWDJe226xlPUfJhj/ygjw==}
     engines: {node: '>=18.0'}
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -1124,6 +1128,10 @@ packages:
 
   cspell-glob@8.10.0:
     resolution: {integrity: sha512-d/q5PZYY+dgMEbmpnkDcs8FjUiR5e5IsCMiiDzhTRslswRPNXwZq9tUKhrGod/hbNH9M28fxnLEHZJFBy91wRQ==}
+    engines: {node: '>=18'}
+
+  cspell-glob@8.10.2:
+    resolution: {integrity: sha512-GnrPWoKdQaMqRha+slwoyzZNpfM5boeVE52gPVTGWKTP/nw7w2hg4r3jVliYEVWMJbFknFEyg+WSd3C+KIP5zQ==}
     engines: {node: '>=18'}
 
   cspell-grammar@8.10.0:
@@ -2353,6 +2361,8 @@ snapshots:
 
   '@cspell/url@8.10.0': {}
 
+  '@cspell/url@8.10.2': {}
+
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
 
@@ -2978,6 +2988,11 @@ snapshots:
   cspell-glob@8.10.0:
     dependencies:
       '@cspell/url': 8.10.0
+      micromatch: 4.0.7
+
+  cspell-glob@8.10.2:
+    dependencies:
+      '@cspell/url': 8.10.2
       micromatch: 4.0.7
 
   cspell-grammar@8.10.0:
