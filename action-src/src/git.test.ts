@@ -17,7 +17,7 @@ import { root } from './test/helper.js';
 
 const urlFixtures = new URL('../fixtures/', import.meta.url);
 
-const ac = expect.arrayContaining;
+const ac: typeof expect.arrayContaining = (...p) => expect.arrayContaining(...p);
 
 describe('git', () => {
     test.each`

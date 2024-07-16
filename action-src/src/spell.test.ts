@@ -6,8 +6,7 @@ import { CSpellReporterForGithubAction, Logger } from './reporter.js';
 import * as spell from './spell.js';
 import { resolveFile, resolveFiles, root, sourceDir } from './test/helper.js';
 
-const sc = expect.stringContaining;
-
+const sc: typeof expect.stringContaining = (...s) => expect.stringContaining(...s);
 const rOptions = { verbose: false, treatFlaggedWordsAsErrors: false };
 
 describe('Validate Spell Checking', () => {
