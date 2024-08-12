@@ -140,6 +140,9 @@ jobs:
           config: ./fixtures/cspell-missing-import.yaml
           strict: false
           inline: none
+      - name: Check Failure
+        if: ${{ success() && steps.cspell-action.conclusion == 'success' }}
+        run: exit 1
       - name: Show Results
         if: ${{ failure() && steps.cspell-action.conclusion == 'failure' }}
         uses: streetsidesoftware/actions/public/summary@v1
