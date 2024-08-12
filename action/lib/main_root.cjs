@@ -65645,6 +65645,7 @@ async function action(githubContext) {
 function outputResult(runResult2) {
   const result = normalizeResult(runResult2);
   (0, import_core4.setOutput)("success", result.success);
+  (0, import_core4.setOutput)("errors", result.errors);
   (0, import_core4.setOutput)("number_of_files_checked", result.number_of_files_checked);
   (0, import_core4.setOutput)("number_of_issues", result.number_of_issues);
   (0, import_core4.setOutput)("number_of_files_with_issues", result.files_with_issues.length);
@@ -65654,7 +65655,8 @@ function outputResult(runResult2) {
 function normalizeResult(result) {
   const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
   return {
-    success: !number_of_issues,
+    success: !number_of_issues && !result.errors,
+    errors: result.errors,
     number_of_issues,
     number_of_files_checked,
     files_with_issues: normalizeFiles(filesWithIssues).slice(0, 1e3)

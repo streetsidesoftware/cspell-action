@@ -87,8 +87,8 @@ export async function action(githubContext: GitHubContext): Promise<boolean> {
 
 function outputResult(runResult: RunResult) {
     const result = normalizeResult(runResult);
-
     setOutput('success', result.success);
+    setOutput('errors', result.errors);
     setOutput('number_of_files_checked', result.number_of_files_checked);
     setOutput('number_of_issues', result.number_of_issues);
     setOutput('number_of_files_with_issues', result.files_with_issues.length);
@@ -99,7 +99,8 @@ function outputResult(runResult: RunResult) {
 function normalizeResult(result: RunResult) {
     const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
     return {
-        success: !number_of_issues,
+        success: !number_of_issues && !result.errors,
+        errors: result.errors,
         number_of_issues,
         number_of_files_checked,
         files_with_issues: normalizeFiles(filesWithIssues).slice(0, 1000),

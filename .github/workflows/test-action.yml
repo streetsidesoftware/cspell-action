@@ -142,7 +142,7 @@ jobs:
           strict: false
           inline: none
       - name: Check Failure
-        if: ${{ steps.cspell-action.conclusion != 'failure' }}
+        if: ${{ steps.cspell-action.outputs.errors != '1' }}
         run: exit 1
       - name: Show Results
         if: ${{ !cancelled() }}
