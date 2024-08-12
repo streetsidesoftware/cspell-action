@@ -37,6 +37,7 @@ describe('Validate Action', () => {
         ${'bad inline'}                 | ${'bad_params/bad_inline.json'}                 | ${new AppError('Bad Configuration.')}
         ${'bad_incremental_files_only'} | ${'bad_params/bad_incremental_files_only.json'} | ${new AppError('Bad Configuration.')}
         ${'bad strict'}                 | ${'bad_params/bad_strict.json'}                 | ${new AppError('Bad Configuration.')}
+        ${'missing import'}             | ${'missing-include/missing_include.json'}       | ${new AppError('Bad Configuration.')}
     `('$test', async ({ file, expected }) => {
         const context = createContextFromFile(file);
         expect.assertions(1);

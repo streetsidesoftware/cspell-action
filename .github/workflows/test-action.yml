@@ -124,3 +124,36 @@ jobs:
             ``````json
             ${{ toJSON(steps.cspell-action.outputs) }}
             ``````
+
+  test-bad-config: # run the action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.FETCH_DEPTH }}
+      - uses: ./
+        id: cspell-action
+        continue-on-error: true
+        with:
+          incremental_files_only: false
+          files: |
+            fixtures/**
+          config: ./fixtures/cspell-missing-import.yaml
+          strict: false
+          inline: none
+      - name: Check Failure
+        if: ${{ steps.cspell-action.outputs.errors != '1' }}
+        run: exit 1
+      - name: Show Results
+        if: ${{ !cancelled() }}
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: |
+            outputs:
+            ``````json
+            ${{ toJSON(steps.cspell-action.outputs) }}
+            ``````
+            conclusion:
+            ``````json
+            ${{ toJSON(steps.cspell-action.conclusion) }}
+            ``````
