@@ -29073,9 +29073,9 @@ var require_has_own_prop = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/common.js
+// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/common.js
 var require_common = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/common.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/common.js"(exports2, module2) {
     var hasOwnProperty4 = require_has_own_prop();
     var {
       isObject,
@@ -29221,9 +29221,9 @@ var require_common = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/array.js
+// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/array.js
 var require_array = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/array.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/array.js"(exports2, module2) {
     var { isArray: isArray3 } = require_util8();
     var { sort } = require_src();
     var {
@@ -29389,9 +29389,9 @@ var require_array = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/parse.js
+// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/parse.js
 var require_parse4 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/parse.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/parse.js"(exports2, module2) {
     var esprima = require_esprima();
     var {
       CommentArray
@@ -29723,9 +29723,9 @@ var require_repeat_string = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/stringify.js
+// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/stringify.js
 var require_stringify2 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/stringify.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/stringify.js"(exports2, module2) {
     var {
       isArray: isArray3,
       isObject,
@@ -29922,9 +29922,9 @@ var require_stringify2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/index.js
+// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/index.js
 var require_src2 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.4/node_modules/comment-json/src/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/index.js"(exports2, module2) {
     var { parse: parse5, tokenize } = require_parse4();
     var stringify4 = require_stringify2();
     var { CommentArray } = require_array();
