@@ -63,6 +63,14 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::6
 ",
   ],
@@ -95,7 +103,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -110,11 +118,12 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
   "Files checked: 6, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::6",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -168,6 +177,14 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::6
 ",
   ],
@@ -200,7 +217,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -215,11 +232,12 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
   "Files checked: 6, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::6",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -273,6 +291,14 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::6
 ",
   ],
@@ -305,7 +331,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -320,11 +346,12 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
   "Files checked: 6, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::6",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -382,6 +409,14 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::6
 ",
   ],
@@ -414,7 +449,7 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
@@ -434,11 +469,12 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
   "Files checked: 6, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::6",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
   "::error::4 spelling issues found in 1 of the 6 files checked.",
 ]
 `;
@@ -497,6 +533,14 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::6
 ",
   ],
@@ -529,7 +573,7 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
@@ -549,11 +593,12 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
   "Files checked: 6, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::6",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":6,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
   "::error::4 spelling issues found in 1 of the 6 files checked.",
 ]
 `;
@@ -608,6 +653,14 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: false sugs
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::4
 ",
   ],
@@ -640,7 +693,7 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: false sugs
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -655,11 +708,12 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: false sugs
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
   "Files checked: 4, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -713,6 +767,14 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: false sugs
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::4
 ",
   ],
@@ -745,7 +807,7 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: false sugs
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -760,11 +822,12 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: false sugs
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)",
   "Files checked: 4, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -822,6 +885,14 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: true sugs:
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::4
 ",
   ],
@@ -854,7 +925,7 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: true sugs:
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
@@ -874,11 +945,12 @@ exports[`Validate Action > check files "'sampleCode/**'" incremental: true sugs:
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
   "Files checked: 4, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
   "::error::4 spelling issues found in 1 of the 4 files checked.",
 ]
 `;
@@ -933,6 +1005,14 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::4
 ",
   ],
@@ -965,7 +1045,7 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -980,11 +1060,12 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
   "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)",
   "Files checked: 4, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -1023,6 +1104,14 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::4
 ",
   ],
@@ -1055,7 +1144,7 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -1067,11 +1156,12 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
   "::error file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*, backlist, blocklist, blockList, BlockList)",
   "Files checked: 4, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -1125,6 +1215,14 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
 ",
   ],
   [
+    "::set-output name=errors::0
+",
+  ],
+  [
+    "
+",
+  ],
+  [
     "::set-output name=number_of_files_checked::4
 ",
   ],
@@ -1157,7 +1255,7 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -1172,10 +1270,11 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*, coolers, color, coors, clouds)",
   "Files checked: 4, Issues found: 4 in 1 files.",
   "::set-output name=success::false",
+  "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::4",
   "::set-output name=number_of_issues::4",
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["fixtures/sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["fixtures/sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
