@@ -65637,6 +65637,9 @@ async function action(githubContext) {
     const err = `${result.issues} spelling issue${fnS(result.issues)} found in ${filesWithIssues} of the ${result.files} file${fnS(result.files)} checked.`;
     (0, import_core4.setFailed)(err);
   }
+  if (result.errors) {
+    (0, import_core4.setFailed)("Errors encountered.");
+  }
   return !(result.issues + result.errors);
 }
 function outputResult(runResult2) {
@@ -65667,10 +65670,7 @@ async function run() {
   try {
     (0, import_core5.info)("cspell-action");
     const githubContext = new import_context.Context();
-    const success = await action(githubContext);
-    if (!success) {
-      (0, import_core5.setFailed)("Errors found.");
-    }
+    await action(githubContext);
     (0, import_core5.info)("Done.");
     return void 0;
   } catch (error4) {

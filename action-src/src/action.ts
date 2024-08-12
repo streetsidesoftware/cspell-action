@@ -78,6 +78,10 @@ export async function action(githubContext: GitHubContext): Promise<boolean> {
         setFailed(err);
     }
 
+    if (result.errors) {
+        setFailed('Errors encountered.');
+    }
+
     return !(result.issues + result.errors);
 }
 
