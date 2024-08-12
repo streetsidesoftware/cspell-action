@@ -145,6 +145,7 @@ jobs:
         if: ${{ steps.cspell-action.conclusion != 'failure' }}
         run: exit 1
       - name: Show Results
+        if: always()
         uses: streetsidesoftware/actions/public/summary@v1
         with:
           text: |
