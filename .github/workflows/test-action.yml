@@ -133,6 +133,7 @@ jobs:
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
+        continue-on-error: true
         with:
           incremental_files_only: false
           files: |
@@ -141,14 +142,17 @@ jobs:
           strict: false
           inline: none
       - name: Check Failure
-        if: ${{ success() }}
+        if: ${{ steps.cspell-action.conclusion != 'failure' }}
         run: exit 1
       - name: Show Results
-        if: ${{ failure() && steps.cspell-action.conclusion == 'failure' }}
         uses: streetsidesoftware/actions/public/summary@v1
         with:
           text: |
             outputs:
             ``````json
             ${{ toJSON(steps.cspell-action.outputs) }}
+            ``````
+            conclusion:
+            ``````json
+            ${{ toJSON(steps.cspell-action.conclusion) }}
             ``````
