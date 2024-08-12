@@ -141,7 +141,7 @@ jobs:
           strict: false
           inline: none
       - name: Check Failure
-        if: ${{ success() && steps.cspell-action.conclusion == 'success' }}
+        if: ${{ success() }}
         run: exit 1
       - name: Show Results
         if: ${{ failure() && steps.cspell-action.conclusion == 'failure' }}

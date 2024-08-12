@@ -9,7 +9,10 @@ export async function run(): Promise<undefined | Error> {
         info('cspell-action');
         const githubContext = new Context();
 
-        await action(githubContext);
+        const success = await action(githubContext);
+        if (!success) {
+            setFailed('Errors found.');
+        }
         info('Done.');
         return undefined;
     } catch (error) {
