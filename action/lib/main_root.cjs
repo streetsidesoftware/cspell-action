@@ -542,9 +542,9 @@ var require_file_command = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@2.2.2/node_modules/@actions/http-client/lib/proxy.js
+// ../node_modules/.pnpm/@actions+http-client@2.2.3/node_modules/@actions/http-client/lib/proxy.js
 var require_proxy = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@2.2.2/node_modules/@actions/http-client/lib/proxy.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@2.2.3/node_modules/@actions/http-client/lib/proxy.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.checkBypass = exports2.getProxyUrl = void 0;
@@ -17613,9 +17613,9 @@ var require_undici = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@2.2.2/node_modules/@actions/http-client/lib/index.js
+// ../node_modules/.pnpm/@actions+http-client@2.2.3/node_modules/@actions/http-client/lib/index.js
 var require_lib = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@2.2.2/node_modules/@actions/http-client/lib/index.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@2.2.3/node_modules/@actions/http-client/lib/index.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
@@ -18155,7 +18155,7 @@ var require_lib = __commonJS({
         }
         const usingSsl = parsedUrl.protocol === "https:";
         proxyAgent = new undici_1.ProxyAgent(Object.assign({ uri: proxyUrl.href, pipelining: !this._keepAlive ? 0 : 1 }, (proxyUrl.username || proxyUrl.password) && {
-          token: `${proxyUrl.username}:${proxyUrl.password}`
+          token: `Basic ${Buffer.from(`${proxyUrl.username}:${proxyUrl.password}`).toString("base64")}`
         }));
         this._proxyAgentDispatcher = proxyAgent;
         if (usingSsl && this._ignoreSslError) {
@@ -18232,9 +18232,9 @@ var require_lib = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@2.2.2/node_modules/@actions/http-client/lib/auth.js
+// ../node_modules/.pnpm/@actions+http-client@2.2.3/node_modules/@actions/http-client/lib/auth.js
 var require_auth = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@2.2.2/node_modules/@actions/http-client/lib/auth.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@2.2.3/node_modules/@actions/http-client/lib/auth.js"(exports2) {
     "use strict";
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
@@ -21920,15 +21920,19 @@ var require_picomatch2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/micromatch@4.0.7/node_modules/micromatch/index.js
+// ../node_modules/.pnpm/micromatch@4.0.8/node_modules/micromatch/index.js
 var require_micromatch = __commonJS({
-  "../node_modules/.pnpm/micromatch@4.0.7/node_modules/micromatch/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/micromatch@4.0.8/node_modules/micromatch/index.js"(exports2, module2) {
     "use strict";
     var util = require("util");
     var braces = require_braces();
     var picomatch = require_picomatch2();
     var utils = require_utils4();
-    var isEmptyString = (val) => val === "" || val === "./";
+    var isEmptyString = (v) => v === "" || v === "./";
+    var hasBraces = (v) => {
+      const index = v.indexOf("{");
+      return index > -1 && v.indexOf("}", index) > -1;
+    };
     var micromatch = (list, patterns, options) => {
       patterns = [].concat(patterns);
       list = [].concat(list);
@@ -22063,7 +22067,7 @@ var require_micromatch = __commonJS({
     };
     micromatch.braces = (pattern, options) => {
       if (typeof pattern !== "string") throw new TypeError("Expected a string");
-      if (options && options.nobrace === true || !/\{.*\}/.test(pattern)) {
+      if (options && options.nobrace === true || !hasBraces(pattern)) {
         return [pattern];
       }
       return braces(pattern, options);
@@ -22072,6 +22076,7 @@ var require_micromatch = __commonJS({
       if (typeof pattern !== "string") throw new TypeError("Expected a string");
       return micromatch.braces(pattern, { ...options, expand: true });
     };
+    micromatch.hasBraces = hasBraces;
     module2.exports = micromatch;
   }
 });
@@ -40780,19 +40785,18 @@ var require_cache2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/file-entry-cache@9.0.0/node_modules/file-entry-cache/cache.js
+// ../node_modules/.pnpm/file-entry-cache@9.1.0/node_modules/file-entry-cache/cache.js
 var require_cache3 = __commonJS({
-  "../node_modules/.pnpm/file-entry-cache@9.0.0/node_modules/file-entry-cache/cache.js"(exports2, module2) {
+  "../node_modules/.pnpm/file-entry-cache@9.1.0/node_modules/file-entry-cache/cache.js"(exports2, module2) {
     var path26 = require("node:path");
-    var process7 = require("node:process");
     var crypto5 = require("node:crypto");
     module2.exports = {
-      createFromFile(filePath, useChecksum) {
+      createFromFile(filePath, useChecksum, currentWorkingDir) {
         const fname = path26.basename(filePath);
         const dir = path26.dirname(filePath);
-        return this.create(fname, dir, useChecksum);
+        return this.create(fname, dir, useChecksum, currentWorkingDir);
       },
-      create(cacheId, _path, useChecksum) {
+      create(cacheId, _path, useChecksum, currentWorkingDir) {
         const fs12 = require("node:fs");
         const flatCache = require_cache2();
         const cache5 = flatCache.load(cacheId, _path);
@@ -40801,7 +40805,11 @@ var require_cache3 = __commonJS({
           const cachedEntries = cache5.keys();
           for (const fPath of cachedEntries) {
             try {
-              fs12.statSync(fPath);
+              let filePath = fPath;
+              if (currentWorkingDir) {
+                filePath = path26.join(currentWorkingDir, fPath);
+              }
+              fs12.statSync(filePath);
             } catch (error4) {
               if (error4.code === "ENOENT") {
                 cache5.removeKey(fPath);
@@ -40816,6 +40824,11 @@ var require_cache3 = __commonJS({
               * @type {Object}
               */
           cache: cache5,
+          /**
+              * To enable relative paths as the key with current working directory
+              * @type {string}
+              */
+          currentWorkingDir: currentWorkingDir ?? void 0,
           /**
               * Given a buffer, calculate md5 hash of its content.
               * @method getHash
@@ -40867,9 +40880,6 @@ var require_cache3 = __commonJS({
           getFileDescriptor(file) {
             let fstat;
             try {
-              if (!path26.isAbsolute(file)) {
-                file = path26.resolve(process7.cwd(), file);
-              }
               fstat = fs12.statSync(file);
             } catch (error4) {
               this.removeEntry(file);
@@ -40880,8 +40890,14 @@ var require_cache3 = __commonJS({
             }
             return this._getFileDescriptorUsingMtimeAndSize(file, fstat);
           },
+          _getFileKey(file) {
+            if (this.currentWorkingDir) {
+              return file.split(this.currentWorkingDir).pop();
+            }
+            return file;
+          },
           _getFileDescriptorUsingMtimeAndSize(file, fstat) {
-            let meta = cache5.getKey(file);
+            let meta = cache5.getKey(this._getFileKey(file));
             const cacheExists = Boolean(meta);
             const cSize = fstat.size;
             const cTime = fstat.mtime.getTime();
@@ -40893,15 +40909,15 @@ var require_cache3 = __commonJS({
             } else {
               meta = { size: cSize, mtime: cTime };
             }
-            const nEntry = normalizedEntries[file] = {
-              key: file,
+            const nEntry = normalizedEntries[this._getFileKey(file)] = {
+              key: this._getFileKey(file),
               changed: !cacheExists || isDifferentDate || isDifferentSize,
               meta
             };
             return nEntry;
           },
           _getFileDescriptorUsingChecksum(file) {
-            let meta = cache5.getKey(file);
+            let meta = cache5.getKey(this._getFileKey(file));
             const cacheExists = Boolean(meta);
             let contentBuffer;
             try {
@@ -40916,8 +40932,8 @@ var require_cache3 = __commonJS({
             } else {
               meta = { hash };
             }
-            const nEntry = normalizedEntries[file] = {
-              key: file,
+            const nEntry = normalizedEntries[this._getFileKey(file)] = {
+              key: this._getFileKey(file),
               changed: !cacheExists || isDifferent,
               meta
             };
@@ -40956,11 +40972,8 @@ var require_cache3 = __commonJS({
               * @param entryName
               */
           removeEntry(entryName) {
-            if (!path26.isAbsolute(entryName)) {
-              entryName = path26.resolve(process7.cwd(), entryName);
-            }
-            delete normalizedEntries[entryName];
-            cache5.removeKey(entryName);
+            delete normalizedEntries[this._getFileKey(entryName)];
+            cache5.removeKey(this._getFileKey(entryName));
           },
           /**
               * Delete the cache file from the disk
@@ -40977,7 +40990,11 @@ var require_cache3 = __commonJS({
             cache5.destroy();
           },
           _getMetaForFileUsingCheckSum(cacheEntry) {
-            const contentBuffer = fs12.readFileSync(cacheEntry.key);
+            let filePath = cacheEntry.key;
+            if (this.currentWorkingDir) {
+              filePath = path26.join(this.currentWorkingDir, filePath);
+            }
+            const contentBuffer = fs12.readFileSync(filePath);
             const hash = this.getHash(contentBuffer);
             const meta = Object.assign(cacheEntry.meta, { hash });
             delete meta.size;
@@ -40985,7 +41002,11 @@ var require_cache3 = __commonJS({
             return meta;
           },
           _getMetaForFileUsingMtimeAndSize(cacheEntry) {
-            const stat3 = fs12.statSync(cacheEntry.key);
+            let filePath = cacheEntry.key;
+            if (currentWorkingDir) {
+              filePath = path26.join(currentWorkingDir, filePath);
+            }
+            const stat3 = fs12.statSync(filePath);
             const meta = Object.assign(cacheEntry.meta, {
               size: stat3.size,
               mtime: stat3.mtime.getTime()
@@ -41010,7 +41031,7 @@ var require_cache3 = __commonJS({
               const cacheEntry = entries[entryName];
               try {
                 const meta = useChecksum ? me._getMetaForFileUsingCheckSum(cacheEntry) : me._getMetaForFileUsingMtimeAndSize(cacheEntry);
-                cache5.setKey(entryName, meta);
+                cache5.setKey(this._getFileKey(entryName), meta);
               } catch (error4) {
                 if (error4.code !== "ENOENT") {
                   throw error4;
