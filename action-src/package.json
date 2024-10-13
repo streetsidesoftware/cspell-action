@@ -27,9 +27,9 @@
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
     "@cspell/cspell-bundled-dicts": "^8.15.1",
-    "@cspell/cspell-types": "^8.14.4",
+    "@cspell/cspell-types": "^8.15.1",
     "@octokit/webhooks-types": "^7.6.1",
-    "@types/node": "^20.16.10",
+    "@types/node": "^20.16.11",
     "cspell": "^8.15.1",
     "cspell-glob": "^8.15.1",
     "vscode-uri": "^3.0.8"
