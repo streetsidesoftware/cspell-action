@@ -31,7 +31,7 @@
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^20.16.11",
     "cspell": "^8.15.1",
-    "cspell-glob": "^8.15.1",
+    "cspell-glob": "^8.15.2",
     "vscode-uri": "^3.0.8"
   },
   "files": [
