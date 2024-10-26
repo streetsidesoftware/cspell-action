@@ -64984,7 +64984,7 @@ var import_node_fs8 = require("node:fs");
 var path19 = __toESM(require("node:path"), 1);
 var import_node_path12 = require("node:path");
 
-// ../node_modules/.pnpm/tinyglobby@0.2.9/node_modules/tinyglobby/dist/index.mjs
+// ../node_modules/.pnpm/tinyglobby@0.2.10/node_modules/tinyglobby/dist/index.mjs
 var import_path2 = __toESM(require("path"), 1);
 var import_fdir = __toESM(require_dist3(), 1);
 var import_picomatch = __toESM(require_picomatch4(), 1);
@@ -65054,21 +65054,27 @@ function normalizePattern3(pattern, expandDirectories, cwd, properties, isIgnore
 function processPatterns({ patterns, ignore = [], expandDirectories = true }, cwd, properties) {
   if (typeof patterns === "string") {
     patterns = [patterns];
+  } else if (!patterns) {
+    patterns = ["**/*"];
   }
   if (typeof ignore === "string") {
     ignore = [ignore];
   }
   const matchPatterns = [];
-  const ignorePatterns = ignore.map((p) => normalizePattern3(p, expandDirectories, cwd, properties, true));
-  if (!patterns) {
-    return { match: ["**/*"], ignore: ignorePatterns };
+  const ignorePatterns = [];
+  for (const pattern of ignore) {
+    if (!pattern.startsWith("!") || pattern[1] === "(") {
+      const newPattern = normalizePattern3(pattern, expandDirectories, cwd, properties, true);
+      ignorePatterns.push(newPattern);
+    }
   }
-  for (let pattern of patterns) {
-    pattern = normalizePattern3(pattern, expandDirectories, cwd, properties, false);
-    if (pattern.startsWith("!") && pattern[1] !== "(") {
-      ignorePatterns.push(pattern.slice(1));
-    } else {
-      matchPatterns.push(pattern);
+  for (const pattern of patterns) {
+    if (!pattern.startsWith("!") || pattern[1] === "(") {
+      const newPattern = normalizePattern3(pattern, expandDirectories, cwd, properties, false);
+      matchPatterns.push(newPattern);
+    } else if (pattern[1] !== "!" || pattern[2] === "(") {
+      const newPattern = normalizePattern3(pattern.slice(1), expandDirectories, cwd, properties, true);
+      ignorePatterns.push(newPattern);
     }
   }
   return { match: matchPatterns, ignore: ignorePatterns };
@@ -65104,8 +65110,8 @@ function crawl(options, cwd, sync) {
     filters: [(p, isDirectory2) => matcher(processPath(p, cwd, properties.root, isDirectory2, options.absolute))],
     exclude: (_, p) => exclude(processPath(p, cwd, properties.root, true, true)),
     pathSeparator: "/",
-    relativePaths: true
-    // resolveSymlinks: true
+    relativePaths: true,
+    resolveSymlinks: true
   };
   if (options.deep) {
     fdirOptions.maxDepth = Math.round(options.deep - properties.depthOffset);
