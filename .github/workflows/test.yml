@@ -57,7 +57,7 @@ jobs:
           path-to-lcov: ./action-src/coverage/lcov.info
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@5c47607acb93fed5485fdbf7232e8a31425f672a # v3
+        uses: codecov/codecov-action@d168679d447a7d9f9917d4b26caf2cfbf080cfb4 # v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: "./action-src"
