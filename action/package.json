@@ -9,7 +9,7 @@
     "@cspell/cspell-bundled-dicts"
   ],
   "dependencies": {
-    "@cspell/cspell-bundled-dicts": "^8.16.0"
+    "@cspell/cspell-bundled-dicts": "^8.16.1"
   },
   "files": [
     "lib"
