@@ -63650,7 +63650,7 @@ __reExport(lib_exports, dist_exports);
 var import_node_assert19 = __toESM(require("node:assert"), 1);
 var import_node_util8 = require("node:util");
 
-// ../node_modules/.pnpm/chalk@5.3.0/node_modules/chalk/source/vendor/ansi-styles/index.js
+// ../node_modules/.pnpm/chalk@5.4.0/node_modules/chalk/source/vendor/ansi-styles/index.js
 var ANSI_BACKGROUND_OFFSET = 10;
 var wrapAnsi16 = (offset = 0) => (code) => `\x1B[${code + offset}m`;
 var wrapAnsi256 = (offset = 0) => (code) => `\x1B[${38 + offset};5;${code}m`;
@@ -63836,7 +63836,7 @@ function assembleStyles() {
 var ansiStyles = assembleStyles();
 var ansi_styles_default = ansiStyles;
 
-// ../node_modules/.pnpm/chalk@5.3.0/node_modules/chalk/source/vendor/supports-color/index.js
+// ../node_modules/.pnpm/chalk@5.4.0/node_modules/chalk/source/vendor/supports-color/index.js
 var import_node_process4 = __toESM(require("node:process"), 1);
 var import_node_os5 = __toESM(require("node:os"), 1);
 var import_node_tty = __toESM(require("node:tty"), 1);
@@ -63910,10 +63910,10 @@ function _supportsColor(haveStream, { streamIsTTY, sniffFlags = true } = {}) {
     return 1;
   }
   if ("CI" in env3) {
-    if ("GITHUB_ACTIONS" in env3 || "GITEA_ACTIONS" in env3) {
+    if (["GITHUB_ACTIONS", "GITEA_ACTIONS", "CIRCLECI"].some((key) => key in env3)) {
       return 3;
     }
-    if (["TRAVIS", "CIRCLECI", "APPVEYOR", "GITLAB_CI", "BUILDKITE", "DRONE"].some((sign) => sign in env3) || env3.CI_NAME === "codeship") {
+    if (["TRAVIS", "APPVEYOR", "GITLAB_CI", "BUILDKITE", "DRONE"].some((sign) => sign in env3) || env3.CI_NAME === "codeship") {
       return 1;
     }
     return min3;
@@ -63962,7 +63962,7 @@ var supportsColor = {
 };
 var supports_color_default = supportsColor;
 
-// ../node_modules/.pnpm/chalk@5.3.0/node_modules/chalk/source/utilities.js
+// ../node_modules/.pnpm/chalk@5.4.0/node_modules/chalk/source/utilities.js
 function stringReplaceAll(string, substring, replacer) {
   let index = string.indexOf(substring);
   if (index === -1) {
@@ -63992,7 +63992,7 @@ function stringEncaseCRLFWithFirstIndex(string, prefix, postfix, index) {
   return returnValue;
 }
 
-// ../node_modules/.pnpm/chalk@5.3.0/node_modules/chalk/source/index.js
+// ../node_modules/.pnpm/chalk@5.4.0/node_modules/chalk/source/index.js
 var { stdout: stdoutColor, stderr: stderrColor } = supports_color_default;
 var GENERATOR = Symbol("GENERATOR");
 var STYLER = Symbol("STYLER");
