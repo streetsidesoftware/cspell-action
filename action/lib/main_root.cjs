@@ -49473,7 +49473,7 @@ function isDefined2(v) {
 // ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 var import_node_url = require("node:url");
 
-// ../node_modules/.pnpm/fast-equals@5.0.1/node_modules/fast-equals/dist/esm/index.mjs
+// ../node_modules/.pnpm/fast-equals@5.2.2/node_modules/fast-equals/dist/esm/index.mjs
 var getOwnPropertyNames = Object.getOwnPropertyNames;
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -49508,9 +49508,11 @@ var hasOwn = Object.hasOwn || function(object, property) {
   return hasOwnProperty.call(object, property);
 };
 function sameValueZeroEqual(a, b) {
-  return a || b ? a === b : a === b || a !== a && b !== b;
+  return a === b || !a && !b && a !== a && b !== b;
 }
-var OWNER = "_owner";
+var PREACT_VNODE = "__v";
+var PREACT_OWNER = "__o";
+var REACT_OWNER = "_owner";
 var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 var keys = Object.keys;
 function areArraysEqual(a, b, state) {
@@ -49528,15 +49530,25 @@ function areArraysEqual(a, b, state) {
 function areDatesEqual(a, b) {
   return sameValueZeroEqual(a.getTime(), b.getTime());
 }
+function areErrorsEqual(a, b) {
+  return a.name === b.name && a.message === b.message && a.cause === b.cause && a.stack === b.stack;
+}
+function areFunctionsEqual(a, b) {
+  return a === b;
+}
 function areMapsEqual(a, b, state) {
-  if (a.size !== b.size) {
+  var size = a.size;
+  if (size !== b.size) {
     return false;
   }
-  var matchedIndices = {};
+  if (!size) {
+    return true;
+  }
+  var matchedIndices = new Array(size);
   var aIterable = a.entries();
-  var index = 0;
   var aResult;
   var bResult;
+  var index = 0;
   while (aResult = aIterable.next()) {
     if (aResult.done) {
       break;
@@ -49548,10 +49560,15 @@ function areMapsEqual(a, b, state) {
       if (bResult.done) {
         break;
       }
-      var _a3 = aResult.value, aKey = _a3[0], aValue = _a3[1];
-      var _b = bResult.value, bKey = _b[0], bValue = _b[1];
-      if (!hasMatch && !matchedIndices[matchIndex] && (hasMatch = state.equals(aKey, bKey, index, matchIndex, a, b, state) && state.equals(aValue, bValue, aKey, bKey, a, b, state))) {
-        matchedIndices[matchIndex] = true;
+      if (matchedIndices[matchIndex]) {
+        matchIndex++;
+        continue;
+      }
+      var aEntry = aResult.value;
+      var bEntry = bResult.value;
+      if (state.equals(aEntry[0], bEntry[0], index, matchIndex, a, b, state) && state.equals(aEntry[1], bEntry[1], aEntry[0], bEntry[0], a, b, state)) {
+        hasMatch = matchedIndices[matchIndex] = true;
+        break;
       }
       matchIndex++;
     }
@@ -49562,19 +49579,15 @@ function areMapsEqual(a, b, state) {
   }
   return true;
 }
+var areNumbersEqual = sameValueZeroEqual;
 function areObjectsEqual(a, b, state) {
   var properties = keys(a);
   var index = properties.length;
   if (keys(b).length !== index) {
     return false;
   }
-  var property;
   while (index-- > 0) {
-    property = properties[index];
-    if (property === OWNER && (a.$$typeof || b.$$typeof) && a.$$typeof !== b.$$typeof) {
-      return false;
-    }
-    if (!hasOwn(b, property) || !state.equals(a[property], b[property], property, property, a, b, state)) {
+    if (!isPropertyEqual(a, b, state, properties[index])) {
       return false;
     }
   }
@@ -49591,13 +49604,7 @@ function areObjectsEqualStrict(a, b, state) {
   var descriptorB;
   while (index-- > 0) {
     property = properties[index];
-    if (property === OWNER && (a.$$typeof || b.$$typeof) && a.$$typeof !== b.$$typeof) {
-      return false;
-    }
-    if (!hasOwn(b, property)) {
-      return false;
-    }
-    if (!state.equals(a[property], b[property], property, property, a, b, state)) {
+    if (!isPropertyEqual(a, b, state, property)) {
       return false;
     }
     descriptorA = getOwnPropertyDescriptor(a, property);
@@ -49615,10 +49622,14 @@ function areRegExpsEqual(a, b) {
   return a.source === b.source && a.flags === b.flags;
 }
 function areSetsEqual(a, b, state) {
-  if (a.size !== b.size) {
+  var size = a.size;
+  if (size !== b.size) {
     return false;
   }
-  var matchedIndices = {};
+  if (!size) {
+    return true;
+  }
+  var matchedIndices = new Array(size);
   var aIterable = a.values();
   var aResult;
   var bResult;
@@ -49633,8 +49644,9 @@ function areSetsEqual(a, b, state) {
       if (bResult.done) {
         break;
       }
-      if (!hasMatch && !matchedIndices[matchIndex] && (hasMatch = state.equals(aResult.value, bResult.value, aResult.value, bResult.value, a, b, state))) {
-        matchedIndices[matchIndex] = true;
+      if (!matchedIndices[matchIndex] && state.equals(aResult.value, bResult.value, aResult.value, bResult.value, a, b, state)) {
+        hasMatch = matchedIndices[matchIndex] = true;
+        break;
       }
       matchIndex++;
     }
@@ -49656,27 +49668,51 @@ function areTypedArraysEqual(a, b) {
   }
   return true;
 }
+function areUrlsEqual(a, b) {
+  return a.hostname === b.hostname && a.pathname === b.pathname && a.protocol === b.protocol && a.port === b.port && a.hash === b.hash && a.username === b.username && a.password === b.password;
+}
+function isPropertyEqual(a, b, state, property) {
+  if ((property === REACT_OWNER || property === PREACT_OWNER || property === PREACT_VNODE) && (a.$$typeof || b.$$typeof)) {
+    return true;
+  }
+  return hasOwn(b, property) && state.equals(a[property], b[property], property, property, a, b, state);
+}
 var ARGUMENTS_TAG = "[object Arguments]";
 var BOOLEAN_TAG = "[object Boolean]";
 var DATE_TAG = "[object Date]";
+var ERROR_TAG = "[object Error]";
 var MAP_TAG = "[object Map]";
 var NUMBER_TAG = "[object Number]";
 var OBJECT_TAG = "[object Object]";
 var REG_EXP_TAG = "[object RegExp]";
 var SET_TAG = "[object Set]";
 var STRING_TAG = "[object String]";
+var URL_TAG = "[object URL]";
 var isArray = Array.isArray;
 var isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView ? ArrayBuffer.isView : null;
 var assign2 = Object.assign;
 var getTag = Object.prototype.toString.call.bind(Object.prototype.toString);
 function createEqualityComparator(_a3) {
-  var areArraysEqual2 = _a3.areArraysEqual, areDatesEqual2 = _a3.areDatesEqual, areMapsEqual2 = _a3.areMapsEqual, areObjectsEqual2 = _a3.areObjectsEqual, arePrimitiveWrappersEqual2 = _a3.arePrimitiveWrappersEqual, areRegExpsEqual2 = _a3.areRegExpsEqual, areSetsEqual2 = _a3.areSetsEqual, areTypedArraysEqual2 = _a3.areTypedArraysEqual;
+  var areArraysEqual2 = _a3.areArraysEqual, areDatesEqual2 = _a3.areDatesEqual, areErrorsEqual2 = _a3.areErrorsEqual, areFunctionsEqual2 = _a3.areFunctionsEqual, areMapsEqual2 = _a3.areMapsEqual, areNumbersEqual2 = _a3.areNumbersEqual, areObjectsEqual2 = _a3.areObjectsEqual, arePrimitiveWrappersEqual2 = _a3.arePrimitiveWrappersEqual, areRegExpsEqual2 = _a3.areRegExpsEqual, areSetsEqual2 = _a3.areSetsEqual, areTypedArraysEqual2 = _a3.areTypedArraysEqual, areUrlsEqual2 = _a3.areUrlsEqual;
   return function comparator(a, b, state) {
     if (a === b) {
       return true;
     }
-    if (a == null || b == null || typeof a !== "object" || typeof b !== "object") {
-      return a !== a && b !== b;
+    if (a == null || b == null) {
+      return false;
+    }
+    var type = typeof a;
+    if (type !== typeof b) {
+      return false;
+    }
+    if (type !== "object") {
+      if (type === "number") {
+        return areNumbersEqual2(a, b, state);
+      }
+      if (type === "function") {
+        return areFunctionsEqual2(a, b, state);
+      }
+      return false;
     }
     var constructor = a.constructor;
     if (constructor !== b.constructor) {
@@ -49719,6 +49755,12 @@ function createEqualityComparator(_a3) {
     if (tag === OBJECT_TAG) {
       return typeof a.then !== "function" && typeof b.then !== "function" && areObjectsEqual2(a, b, state);
     }
+    if (tag === URL_TAG) {
+      return areUrlsEqual2(a, b, state);
+    }
+    if (tag === ERROR_TAG) {
+      return areErrorsEqual2(a, b, state);
+    }
     if (tag === ARGUMENTS_TAG) {
       return areObjectsEqual2(a, b, state);
     }
@@ -49733,12 +49775,16 @@ function createEqualityComparatorConfig(_a3) {
   var config = {
     areArraysEqual: strict ? areObjectsEqualStrict : areArraysEqual,
     areDatesEqual,
+    areErrorsEqual,
+    areFunctionsEqual,
     areMapsEqual: strict ? combineComparators(areMapsEqual, areObjectsEqualStrict) : areMapsEqual,
+    areNumbersEqual,
     areObjectsEqual: strict ? areObjectsEqualStrict : areObjectsEqual,
     arePrimitiveWrappersEqual,
     areRegExpsEqual,
     areSetsEqual: strict ? combineComparators(areSetsEqual, areObjectsEqualStrict) : areSetsEqual,
-    areTypedArraysEqual: strict ? areObjectsEqualStrict : areTypedArraysEqual
+    areTypedArraysEqual: strict ? areObjectsEqualStrict : areTypedArraysEqual,
+    areUrlsEqual
   };
   if (createCustomConfig) {
     config = assign2({}, config, createCustomConfig(config));
