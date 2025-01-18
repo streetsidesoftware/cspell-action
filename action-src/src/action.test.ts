@@ -9,10 +9,6 @@ import { fetchGithubActionFixture, root, sourceDir } from './test/helper.js';
 
 const configFile = path.resolve(root, 'cspell.json');
 
-const debug = false;
-
-const log: typeof console.log = debug ? console.log : () => undefined;
-
 const spyWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 const spyLog = vi.spyOn(console, 'log').mockImplementation(() => {});
 const spyError = vi.spyOn(console, 'error').mockImplementation(() => {});
@@ -171,12 +167,6 @@ function createContext(...params: Record<string, string>[]): Context {
     process.env.INPUT_CONFIG = path.resolve(root, process.env.INPUT_CONFIG || configFile);
 
     const context = new Context();
-
-    log('Create Context: %o', {
-        env: process.env,
-        context,
-        payload: context.payload,
-    });
 
     return context;
 }

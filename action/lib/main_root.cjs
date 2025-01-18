@@ -20,7 +20,6 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
   // If the importer is in node compatibility mode or this is not an ESM
   // file that has been converted to a CommonJS file using a Babel-
@@ -182,7 +181,7 @@ var require_file_command = __commonJS({
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.prepareKeyValueMessage = exports2.issueFileCommand = void 0;
     var crypto2 = __importStar(require("crypto"));
-    var fs12 = __importStar(require("fs"));
+    var fs10 = __importStar(require("fs"));
     var os6 = __importStar(require("os"));
     var utils_1 = require_utils();
     function issueFileCommand(command, message) {
@@ -190,10 +189,10 @@ var require_file_command = __commonJS({
       if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
       }
-      if (!fs12.existsSync(filePath)) {
+      if (!fs10.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
       }
-      fs12.appendFileSync(filePath, `${(0, utils_1.toCommandValue)(message)}${os6.EOL}`, {
+      fs10.appendFileSync(filePath, `${(0, utils_1.toCommandValue)(message)}${os6.EOL}`, {
         encoding: "utf8"
       });
     }
@@ -234,7 +233,7 @@ var require_proxy = __commonJS({
       if (proxyVar) {
         try {
           return new DecodedURL(proxyVar);
-        } catch (_a3) {
+        } catch (_a) {
           if (!proxyVar.startsWith("http://") && !proxyVar.startsWith("https://"))
             return new DecodedURL(`http://${proxyVar}`);
         }
@@ -304,7 +303,7 @@ var require_tunnel = __commonJS({
     var http = require("http");
     var https = require("https");
     var events = require("events");
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var util = require("util");
     exports2.httpOverHttp = httpOverHttp;
     exports2.httpsOverHttp = httpsOverHttp;
@@ -532,9 +531,9 @@ var require_tunnel2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/symbols.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/symbols.js
 var require_symbols = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/symbols.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/symbols.js"(exports2, module2) {
     module2.exports = {
       kClose: Symbol("close"),
       kDestroy: Symbol("destroy"),
@@ -601,9 +600,9 @@ var require_symbols = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/errors.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/errors.js
 var require_errors = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/errors.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/errors.js"(exports2, module2) {
     "use strict";
     var UndiciError = class extends Error {
       constructor(message) {
@@ -816,9 +815,9 @@ var require_errors = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/constants.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/constants.js
 var require_constants = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/constants.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/constants.js"(exports2, module2) {
     "use strict";
     var headerNameLowerCasedRecord = {};
     var wellknownHeaderNames = [
@@ -931,11 +930,11 @@ var require_constants = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/util.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/util.js
 var require_util = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/util.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/util.js"(exports2, module2) {
     "use strict";
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { kDestroyed, kBodyUsed } = require_symbols();
     var { IncomingMessage } = require("http");
     var stream = require("stream");
@@ -1017,7 +1016,7 @@ var require_util = __commonJS({
     function getHostname(host) {
       if (host[0] === "[") {
         const idx3 = host.indexOf("]");
-        assert25(idx3 !== -1);
+        assert24(idx3 !== -1);
         return host.substring(1, idx3);
       }
       const idx2 = host.indexOf(":");
@@ -1028,7 +1027,7 @@ var require_util = __commonJS({
       if (!host) {
         return null;
       }
-      assert25.strictEqual(typeof host, "string");
+      assert24.strictEqual(typeof host, "string");
       const servername = getHostname(host);
       if (net.isIP(servername)) {
         return "";
@@ -1038,7 +1037,7 @@ var require_util = __commonJS({
     function deepClone(obj) {
       return JSON.parse(JSON.stringify(obj));
     }
-    function isAsyncIterable4(obj) {
+    function isAsyncIterable3(obj) {
       return !!(obj != null && typeof obj[Symbol.asyncIterator] === "function");
     }
     function isIterable4(obj) {
@@ -1289,7 +1288,7 @@ var require_util = __commonJS({
       getServerName,
       isStream,
       isIterable: isIterable4,
-      isAsyncIterable: isAsyncIterable4,
+      isAsyncIterable: isAsyncIterable3,
       isDestroyed,
       headerNameToString,
       parseRawHeaders,
@@ -1315,9 +1314,9 @@ var require_util = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/timers.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/timers.js
 var require_timers = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/timers.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/timers.js"(exports2, module2) {
     "use strict";
     var fastNow = Date.now();
     var fastNowTimeout;
@@ -3388,9 +3387,9 @@ var require_main = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/constants.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/constants.js
 var require_constants2 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/constants.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/constants.js"(exports2, module2) {
     "use strict";
     var { MessageChannel, receiveMessageOnPort } = require("worker_threads");
     var corsSafeListedMethods = ["GET", "HEAD", "POST"];
@@ -3587,9 +3586,9 @@ var require_constants2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/global.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/global.js
 var require_global = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/global.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/global.js"(exports2, module2) {
     "use strict";
     var globalOrigin = Symbol.for("undici.globalOrigin.1");
     function getGlobalOrigin() {
@@ -3623,15 +3622,15 @@ var require_global = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/util.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/util.js
 var require_util2 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/util.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/util.js"(exports2, module2) {
     "use strict";
     var { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = require_constants2();
     var { getGlobalOrigin } = require_global();
     var { performance: performance2 } = require("perf_hooks");
     var { isBlobLike, toUSVString, ReadableStreamFrom } = require_util();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { isUint8Array } = require("util/types");
     var supportedHashes = [];
     var crypto2;
@@ -3821,7 +3820,7 @@ var require_util2 = __commonJS({
     }
     function determineRequestsReferrer(request) {
       const policy = request.referrerPolicy;
-      assert25(policy);
+      assert24(policy);
       let referrerSource = null;
       if (request.referrer === "client") {
         const globalOrigin = getGlobalOrigin();
@@ -3879,7 +3878,7 @@ var require_util2 = __commonJS({
       }
     }
     function stripURLForReferrer(url2, originOnly) {
-      assert25(url2 instanceof URL);
+      assert24(url2 instanceof URL);
       if (url2.protocol === "file:" || url2.protocol === "about:" || url2.protocol === "blank:") {
         return "no-referrer";
       }
@@ -4058,7 +4057,7 @@ var require_util2 = __commonJS({
       if (result === void 0) {
         throw new TypeError("Value is not JSON serializable");
       }
-      assert25(typeof result === "string");
+      assert24(typeof result === "string");
       return result;
     }
     var esIteratorPrototype = Object.getPrototypeOf(Object.getPrototypeOf([][Symbol.iterator]()));
@@ -4152,7 +4151,7 @@ var require_util2 = __commonJS({
     }
     function isomorphicEncode(input) {
       for (let i = 0; i < input.length; i++) {
-        assert25(input.charCodeAt(i) <= 255);
+        assert24(input.charCodeAt(i) <= 255);
       }
       return input;
     }
@@ -4172,7 +4171,7 @@ var require_util2 = __commonJS({
       }
     }
     function urlIsLocal(url2) {
-      assert25("protocol" in url2);
+      assert24("protocol" in url2);
       const protocol = url2.protocol;
       return protocol === "about:" || protocol === "blob:" || protocol === "data:";
     }
@@ -4183,7 +4182,7 @@ var require_util2 = __commonJS({
       return url2.protocol === "https:";
     }
     function urlIsHttpHttpsScheme(url2) {
-      assert25("protocol" in url2);
+      assert24("protocol" in url2);
       const protocol = url2.protocol;
       return protocol === "http:" || protocol === "https:";
     }
@@ -4238,9 +4237,9 @@ var require_util2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/symbols.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/symbols.js
 var require_symbols2 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/symbols.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/symbols.js"(exports2, module2) {
     "use strict";
     module2.exports = {
       kUrl: Symbol("url"),
@@ -4253,9 +4252,9 @@ var require_symbols2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/webidl.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/webidl.js
 var require_webidl = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/webidl.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/webidl.js"(exports2, module2) {
     "use strict";
     var { types } = require("util");
     var { hasOwn: hasOwn2, toUSVString } = require_util2();
@@ -4622,10 +4621,10 @@ var require_webidl = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/dataURL.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/dataURL.js
 var require_dataURL = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/dataURL.js"(exports2, module2) {
-    var assert25 = require("assert");
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/dataURL.js"(exports2, module2) {
+    var assert24 = require("assert");
     var { atob: atob2 } = require("buffer");
     var { isomorphicDecode } = require_util2();
     var encoder = new TextEncoder();
@@ -4633,7 +4632,7 @@ var require_dataURL = __commonJS({
     var HTTP_WHITESPACE_REGEX = /(\u000A|\u000D|\u0009|\u0020)/;
     var HTTP_QUOTED_STRING_TOKENS = /[\u0009|\u0020-\u007E|\u0080-\u00FF]/;
     function dataURLProcessor(dataURL) {
-      assert25(dataURL.protocol === "data:");
+      assert24(dataURL.protocol === "data:");
       let input = URLSerializer(dataURL, true);
       input = input.slice(5);
       const position = { position: 0 };
@@ -4819,7 +4818,7 @@ var require_dataURL = __commonJS({
     function collectAnHTTPQuotedString(input, position, extractValue) {
       const positionStart = position.position;
       let value = "";
-      assert25(input[position.position] === '"');
+      assert24(input[position.position] === '"');
       position.position++;
       while (true) {
         value += collectASequenceOfCodePoints(
@@ -4840,7 +4839,7 @@ var require_dataURL = __commonJS({
           value += input[position.position];
           position.position++;
         } else {
-          assert25(quoteOrBackslash === '"');
+          assert24(quoteOrBackslash === '"');
           break;
         }
       }
@@ -4850,7 +4849,7 @@ var require_dataURL = __commonJS({
       return input.slice(positionStart, position.position);
     }
     function serializeAMimeType(mimeType) {
-      assert25(mimeType !== "failure");
+      assert24(mimeType !== "failure");
       const { parameters, essence } = mimeType;
       let serialization = essence;
       for (let [name2, value] of parameters.entries()) {
@@ -4907,9 +4906,9 @@ var require_dataURL = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/file.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/file.js
 var require_file = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/file.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/file.js"(exports2, module2) {
     "use strict";
     var { Blob: Blob2, File: NativeFile } = require("buffer");
     var { types } = require("util");
@@ -5093,9 +5092,9 @@ var require_file = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/formdata.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/formdata.js
 var require_formdata = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/formdata.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/formdata.js"(exports2, module2) {
     "use strict";
     var { isBlobLike, toUSVString, makeIterator } = require_util2();
     var { kState } = require_symbols2();
@@ -5249,9 +5248,9 @@ var require_formdata = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/body.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/body.js
 var require_body = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/body.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/body.js"(exports2, module2) {
     "use strict";
     var Busboy = require_main();
     var util = require_util();
@@ -5269,11 +5268,18 @@ var require_body = __commonJS({
     var { DOMException: DOMException2, structuredClone } = require_constants2();
     var { Blob: Blob2, File: NativeFile } = require("buffer");
     var { kBodyUsed } = require_symbols();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { isErrored } = require_util();
     var { isUint8Array, isArrayBuffer } = require("util/types");
     var { File: UndiciFile } = require_file();
     var { parseMIMEType, serializeAMimeType } = require_dataURL();
+    var random;
+    try {
+      const crypto2 = require("node:crypto");
+      random = (max4) => crypto2.randomInt(0, max4);
+    } catch {
+      random = (max4) => Math.floor(Math.random(max4));
+    }
     var ReadableStream = globalThis.ReadableStream;
     var File = NativeFile ?? UndiciFile;
     var textEncoder = new TextEncoder();
@@ -5300,7 +5306,7 @@ var require_body = __commonJS({
           type: void 0
         });
       }
-      assert25(isReadableStreamLike(stream));
+      assert24(isReadableStreamLike(stream));
       let action2 = null;
       let source = null;
       let length = null;
@@ -5316,7 +5322,7 @@ var require_body = __commonJS({
       } else if (ArrayBuffer.isView(object)) {
         source = new Uint8Array(object.buffer.slice(object.byteOffset, object.byteOffset + object.byteLength));
       } else if (util.isFormDataLike(object)) {
-        const boundary = `----formdata-undici-0${`${Math.floor(Math.random() * 1e11)}`.padStart(11, "0")}`;
+        const boundary = `----formdata-undici-0${`${random(1e11)}`.padStart(11, "0")}`;
         const prefix = `--${boundary}\r
 Content-Disposition: form-data`;
         const escape = (str) => str.replace(/\n/g, "%0A").replace(/\r/g, "%0D").replace(/"/g, "%22");
@@ -5416,8 +5422,8 @@ Content-Type: ${value.type || "application/octet-stream"}\r
         ReadableStream = require("stream/web").ReadableStream;
       }
       if (object instanceof ReadableStream) {
-        assert25(!util.isDisturbed(object), "The body has already been consumed.");
-        assert25(!object.locked, "The stream is locked.");
+        assert24(!util.isDisturbed(object), "The body has already been consumed.");
+        assert24(!object.locked, "The stream is locked.");
       }
       return extractBody(object, keepalive);
     }
@@ -5620,15 +5626,15 @@ Content-Type: ${value.type || "application/octet-stream"}\r
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/request.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/request.js
 var require_request = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/request.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/request.js"(exports2, module2) {
     "use strict";
     var {
       InvalidArgumentError,
       NotSupportedError
     } = require_errors();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { kHTTP2BuildRequest, kHTTP2CopyHeaders, kHTTP1BuildRequest } = require_symbols();
     var util = require_util();
     var tokenRegExp = /^[\^_`a-zA-Z\-0-9!#$%&'*+.|~]+$/;
@@ -5809,8 +5815,8 @@ var require_request = __commonJS({
         }
       }
       onConnect(abort) {
-        assert25(!this.aborted);
-        assert25(!this.completed);
+        assert24(!this.aborted);
+        assert24(!this.completed);
         if (this.error) {
           abort(this.error);
         } else {
@@ -5819,8 +5825,8 @@ var require_request = __commonJS({
         }
       }
       onHeaders(statusCode, headers, resume, statusText) {
-        assert25(!this.aborted);
-        assert25(!this.completed);
+        assert24(!this.aborted);
+        assert24(!this.completed);
         if (channels.headers.hasSubscribers) {
           channels.headers.publish({ request: this, response: { statusCode, headers, statusText } });
         }
@@ -5831,8 +5837,8 @@ var require_request = __commonJS({
         }
       }
       onData(chunk) {
-        assert25(!this.aborted);
-        assert25(!this.completed);
+        assert24(!this.aborted);
+        assert24(!this.completed);
         try {
           return this[kHandler].onData(chunk);
         } catch (err) {
@@ -5841,13 +5847,13 @@ var require_request = __commonJS({
         }
       }
       onUpgrade(statusCode, headers, socket) {
-        assert25(!this.aborted);
-        assert25(!this.completed);
+        assert24(!this.aborted);
+        assert24(!this.completed);
         return this[kHandler].onUpgrade(statusCode, headers, socket);
       }
       onComplete(trailers) {
         this.onFinally();
-        assert25(!this.aborted);
+        assert24(!this.aborted);
         this.completed = true;
         if (channels.trailers.hasSubscribers) {
           channels.trailers.publish({ request: this, trailers });
@@ -5990,9 +5996,9 @@ var require_request = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/dispatcher.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/dispatcher.js
 var require_dispatcher = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/dispatcher.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/dispatcher.js"(exports2, module2) {
     "use strict";
     var EventEmitter2 = require("events");
     var Dispatcher = class extends EventEmitter2 {
@@ -6010,9 +6016,9 @@ var require_dispatcher = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/dispatcher-base.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/dispatcher-base.js
 var require_dispatcher_base = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/dispatcher-base.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/dispatcher-base.js"(exports2, module2) {
     "use strict";
     var Dispatcher = require_dispatcher();
     var {
@@ -6173,12 +6179,12 @@ var require_dispatcher_base = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/connect.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/connect.js
 var require_connect = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/core/connect.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/core/connect.js"(exports2, module2) {
     "use strict";
     var net = require("net");
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var util = require_util();
     var { InvalidArgumentError, ConnectTimeoutError } = require_errors();
     var tls;
@@ -6248,7 +6254,7 @@ var require_connect = __commonJS({
           servername = servername || options.servername || util.getServerName(host) || null;
           const sessionKey = servername || hostname;
           const session = sessionCache.get(sessionKey) || null;
-          assert25(sessionKey);
+          assert24(sessionKey);
           socket = tls.connect({
             highWaterMark: 16384,
             // TLS in node can't have bigger HWM anyway...
@@ -6267,7 +6273,7 @@ var require_connect = __commonJS({
             sessionCache.set(sessionKey, session2);
           });
         } else {
-          assert25(!httpSocket, "httpSocket can only be sent on TLS update");
+          assert24(!httpSocket, "httpSocket can only be sent on TLS update");
           socket = net.connect({
             highWaterMark: 64 * 1024,
             // Same as nodejs fs streams.
@@ -6329,9 +6335,9 @@ var require_connect = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/llhttp/utils.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/llhttp/utils.js
 var require_utils2 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/llhttp/utils.js"(exports2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/llhttp/utils.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.enumToMap = void 0;
@@ -6349,9 +6355,9 @@ var require_utils2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/llhttp/constants.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/llhttp/constants.js
 var require_constants3 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/llhttp/constants.js"(exports2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/llhttp/constants.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.SPECIAL_HEADERS = exports2.HEADER_STATE = exports2.MINOR = exports2.MAJOR = exports2.CONNECTION_TOKEN_CHARS = exports2.HEADER_CHARS = exports2.TOKEN = exports2.STRICT_TOKEN = exports2.HEX = exports2.URL_CHAR = exports2.STRICT_URL_CHAR = exports2.USERINFO_CHARS = exports2.MARK = exports2.ALPHANUM = exports2.NUM = exports2.HEX_MAP = exports2.NUM_MAP = exports2.ALPHA = exports2.FINISH = exports2.H_METHOD_MAP = exports2.METHOD_MAP = exports2.METHODS_RTSP = exports2.METHODS_ICE = exports2.METHODS_HTTP = exports2.METHODS = exports2.LENIENT_FLAGS = exports2.FLAGS = exports2.TYPE = exports2.ERROR = void 0;
@@ -6670,13 +6676,13 @@ var require_constants3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/handler/RedirectHandler.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/handler/RedirectHandler.js
 var require_RedirectHandler = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/handler/RedirectHandler.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/handler/RedirectHandler.js"(exports2, module2) {
     "use strict";
     var util = require_util();
     var { kBodyUsed } = require_symbols();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { InvalidArgumentError } = require_errors();
     var EE = require("events");
     var redirectableStatusCodes = [300, 301, 302, 303, 307, 308];
@@ -6687,7 +6693,7 @@ var require_RedirectHandler = __commonJS({
         this[kBodyUsed] = false;
       }
       async *[Symbol.asyncIterator]() {
-        assert25(!this[kBodyUsed], "disturbed");
+        assert24(!this[kBodyUsed], "disturbed");
         this[kBodyUsed] = true;
         yield* this[kBody];
       }
@@ -6708,7 +6714,7 @@ var require_RedirectHandler = __commonJS({
         if (util.isStream(this.opts.body)) {
           if (util.bodyLength(this.opts.body) === 0) {
             this.opts.body.on("data", function() {
-              assert25(false);
+              assert24(false);
             });
           }
           if (typeof this.opts.body.readableDidRead !== "boolean") {
@@ -6812,7 +6818,7 @@ var require_RedirectHandler = __commonJS({
           }
         }
       } else {
-        assert25(headers == null, "headers must be an object or an array");
+        assert24(headers == null, "headers must be an object or an array");
       }
       return ret;
     }
@@ -6820,9 +6826,9 @@ var require_RedirectHandler = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/interceptor/redirectInterceptor.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/interceptor/redirectInterceptor.js
 var require_redirectInterceptor = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/interceptor/redirectInterceptor.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/interceptor/redirectInterceptor.js"(exports2, module2) {
     "use strict";
     var RedirectHandler = require_RedirectHandler();
     function createRedirectInterceptor({ maxRedirections: defaultMaxRedirections }) {
@@ -6842,25 +6848,25 @@ var require_redirectInterceptor = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/llhttp/llhttp-wasm.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/llhttp/llhttp-wasm.js
 var require_llhttp_wasm = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/llhttp/llhttp-wasm.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/llhttp/llhttp-wasm.js"(exports2, module2) {
     module2.exports = "AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn9/AGAGf39/f39/AALLAQgDZW52GHdhc21fb25faGVhZGVyc19jb21wbGV0ZQACA2VudhV3YXNtX29uX21lc3NhZ2VfYmVnaW4AAANlbnYLd2FzbV9vbl91cmwAAQNlbnYOd2FzbV9vbl9zdGF0dXMAAQNlbnYUd2FzbV9vbl9oZWFkZXJfZmllbGQAAQNlbnYUd2FzbV9vbl9oZWFkZXJfdmFsdWUAAQNlbnYMd2FzbV9vbl9ib2R5AAEDZW52GHdhc21fb25fbWVzc2FnZV9jb21wbGV0ZQAAA0ZFAwMEAAAFAAAAAAAABQEFAAUFBQAABgAAAAAGBgYGAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAABAQcAAAUFAwABBAUBcAESEgUDAQACBggBfwFBgNQECwfRBSIGbWVtb3J5AgALX2luaXRpYWxpemUACRlfX2luZGlyZWN0X2Z1bmN0aW9uX3RhYmxlAQALbGxodHRwX2luaXQAChhsbGh0dHBfc2hvdWxkX2tlZXBfYWxpdmUAQQxsbGh0dHBfYWxsb2MADAZtYWxsb2MARgtsbGh0dHBfZnJlZQANBGZyZWUASA9sbGh0dHBfZ2V0X3R5cGUADhVsbGh0dHBfZ2V0X2h0dHBfbWFqb3IADxVsbGh0dHBfZ2V0X2h0dHBfbWlub3IAEBFsbGh0dHBfZ2V0X21ldGhvZAARFmxsaHR0cF9nZXRfc3RhdHVzX2NvZGUAEhJsbGh0dHBfZ2V0X3VwZ3JhZGUAEwxsbGh0dHBfcmVzZXQAFA5sbGh0dHBfZXhlY3V0ZQAVFGxsaHR0cF9zZXR0aW5nc19pbml0ABYNbGxodHRwX2ZpbmlzaAAXDGxsaHR0cF9wYXVzZQAYDWxsaHR0cF9yZXN1bWUAGRtsbGh0dHBfcmVzdW1lX2FmdGVyX3VwZ3JhZGUAGhBsbGh0dHBfZ2V0X2Vycm5vABsXbGxodHRwX2dldF9lcnJvcl9yZWFzb24AHBdsbGh0dHBfc2V0X2Vycm9yX3JlYXNvbgAdFGxsaHR0cF9nZXRfZXJyb3JfcG9zAB4RbGxodHRwX2Vycm5vX25hbWUAHxJsbGh0dHBfbWV0aG9kX25hbWUAIBJs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ADcDACAAQShqQgA3AwAgAEEgakIANwMAIABBEGpCADcDACAAQQhqQgA3AwAgAEHdATYCHEEAC3sBAX8CQCAAKAIMIgMNAAJAIAAoAgRFDQAgACABNgIECwJAIAAgASACEMSAgIAAIgMNACAAKAIMDwsgACADNgIcQQAhAyAAKAIEIgFFDQAgACABIAIgACgCCBGBgICAAAAiAUUNACAAIAI2AhQgACABNgIMIAEhAwsgAwvk8wEDDn8DfgR/I4CAgIAAQRBrIgMkgICAgAAgASEEIAEhBSABIQYgASEHIAEhCCABIQkgASEKIAEhCyABIQwgASENIAEhDiABIQ8CQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkAgACgCHCIQQX9qDt0B2gEB2QECAwQFBgcICQoLDA0O2AEPENcBERLWARMUFRYXGBkaG+AB3wEcHR7VAR8gISIjJCXUASYnKCkqKyzTAdIBLS7RAdABLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVG2wFHSElKzwHOAUvNAUzMAU1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4ABgQGCAYMBhAGFAYYBhwGIAYkB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QAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkAC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FCAAIBA2AgxBACEQDLIBCyAAKAIEIRAgAEEANgIEAkAgACAQIAEQp4CAgAAiEA0AIAEhAQxNCyAAQdMANgIcIAAgATYCFCAAIBA2AgxBACEQDLEBCyAAKAIEIRAgAEEANgIEAkAgACAQIAEQp4CAgAAiEA0AIAEhAQxRCyAAQeUANgIcIAAgATYCFCAAIBA2AgxBACEQDLABCyAAQQA2AhwgACABNgIUIABBxoqAgAA2AhAgAEEHNgIMQQAhEAyvAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMSQsgAEHSADYCHCAAIAE2AhQgACAQNgIMQQAhEAyuAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMSQsgAEHTADYCHCAAIAE2AhQgACAQNgIMQQAhEAytAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMTQsgAEHlADYCHCAAIAE2AhQgACAQNgIMQQAhEAysAQsgAEEANgIcIAAgATYCFCAAQdyIgIAANgIQIABBBzYCDEEAIRAMqwELIBBBP0cNASABQQFqIQELQQUhEAyQAQtBACEQIABBADYCHCAAIAE2AhQgAEH9koCAADYCECAAQQc2AgwMqAELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEILIABB0gA2AhwgACABNgIUIAAgEDYCDEEAIRAMpwELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEILIABB0wA2AhwgACABNgIUIAAgEDYCDEEAIRAMpgELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEYLIABB5QA2AhwgACABNgIUIAAgEDYCDEEAIRAMpQELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDD8LIABB0gA2AhwgACAUNgIUIAAgATYCDEEAIRAMpAELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDD8LIABB0wA2AhwgACAUNgIUIAAgATYCDEEAIRAMowELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDEMLIABB5QA2AhwgACAUNgIUIAAgATYCDEEAIRAMogELIABBADYCHCAAIBQ2AhQgAEHDj4CAADYCECAAQQc2AgxBACEQDKEBCyAAQQA2AhwgACABNgIUIABBw4+AgAA2AhAgAEEHNgIMQQAhEAygAQtBACEQIABBADYCHCAAIBQ2AhQgAEGMnICAADYCECAAQQc2AgwMnwELIABBADYCHCAAIBQ2AhQgAEGMnICAADYCECAAQQc2AgxBACEQDJ4BCyAAQQA2AhwgACAUNgIUIABB/pGAgAA2AhAgAEEHNgIMQQAhEAydAQsgAEEANgIcIAAgATYCFCAAQY6bgIAANgIQIABBBjYCDEEAIRAMnAELIBBBFUYNVyAAQQA2AhwgACABNgIUIABBzI6AgAA2AhAgAEEgNgIMQQAhEAybAQsgAEEANgIAIBBBAWohAUEkIRALIAAgEDoAKSAAKAIEIRAgAEEANgIEIAAgECABEKuAgIAAIhANVCABIQEMPgsgAEEANgIAC0EAIRAgAEEANgIcIAAgBDYCFCAAQfGbgIAANgIQIABBBjYCDAyXAQsgAUEVRg1QIABBADYCHCAAIAU2AhQgAEHwjICAADYCECAAQRs2AgxBACEQDJYBCyAAKAIEIQUgAEEANgIEIAAgBSAQEKmAgIAAIgUNASAQQQFqIQULQa0BIRAMewsgAEHBATYCHCAAIAU2AgwgACAQQQFqNgIUQQAhEAyTAQsgACgCBCEGIABBADYCBCAAIAYgEBCpgICAACIGDQEgEEEBaiEGC0GuASEQDHgLIABBwgE2AhwgACAGNgIMIAAgEEEBajYCFEEAIRAMkAELIABBADYCHCAAIAc2AhQgAEGXi4CAADYCECAAQQ02AgxBACEQDI8BCyAAQQA2AhwgACAINgIUIABB45CAgAA2AhAgAEEJNgIMQQAhEAyOAQsgAEEANgIcIAAgCDYCFCAAQZSNgIAANgIQIABBITYCDEEAIRAMjQELQQEhFkEAIRdBACEUQQEhEAsgACAQOgArIAlBAWohCAJAAkAgAC0ALUEQcQ0AAkACQAJAIAAtACoOAwEAAgQLIBZFDQMMAgsgFA0BDAILIBdFDQELIAAoAgQhECAAQQA2AgQgACAQIAgQrYCAgAAiEEUNPSAAQckBNgIcIAAgCDYCFCAAIBA2AgxBACEQDIwBCyAAKAIEIQQgAEEANgIEIAAgBCAIEK2AgIAAIgRFDXYgAEHKATYCHCAAIAg2AhQgACAENgIMQQAhEAyLAQsgACgCBCEEIABBADYCBCAAIAQgCRCtgICAACIERQ10IABBywE2AhwgACAJNgIUIAAgBDYCDEEAIRAMigELIAAoAgQhBCAAQQA2AgQgACAEIAoQrYCAgAAiBEUNciAAQc0BNgIcIAAgCjYCFCAAIAQ2AgxBACEQDIkBCwJAIAstAABBUGoiEEH/AXFBCk8NACAAIBA6ACogC0EBaiEKQbYBIRAMcAsgACgCBCEEIABBADYCBCAAIAQgCxCtgICAACIERQ1wIABBzwE2AhwgACALNgIUIAAgBDYCDEEAIRAMiAELIABBADYCHCAAIAQ2AhQgAEGQs4CAADYCECAAQQg2AgwgAEEANgIAQQAhEAyHAQsgAUEVRg0/IABBADYCHCAAIAw2AhQgAEHMjoCAADYCECAAQSA2AgxBACEQDIYBCyAAQYEEOwEoIAAoAgQhECAAQgA3AwAgACAQIAxBAWoiDBCrgICAACIQRQ04IABB0wE2AhwgACAMNgIUIAAgEDYCDEEAIRAMhQELIABBADYCAAtBACEQIABBADYCHCAAIAQ2AhQgAEHYm4CAADYCECAAQQg2AgwMgwELIAAoAgQhECAAQgA3AwAgACAQIAtBAWoiCxCrgICAACIQDQFBxgEhEAxpCyAAQQI6ACgMVQsgAEHVATYCHCAAIAs2AhQgACAQNgIMQQAhEAyAAQsgEEEVRg03IABBADYCHCAAIAQ2AhQgAEGkjICAADYCECAAQRA2AgxBACEQDH8LIAAtADRBAUcNNCAAIAQgAhC8gICAACIQRQ00IBBBFUcNNSAAQdwBNgIcIAAgBDYCFCAAQdWWgIAANgIQIABBFTYCDEEAIRAMfgtBACEQIABBADYCHCAAQa+LgIAANgIQIABBAjYCDCAAIBRBAWo2AhQMfQtBACEQDGMLQQIhEAxiC0ENIRAMYQtBDyEQDGALQSUhEAxfC0ETIRAMXgtBFSEQDF0LQRYhEAxcC0EXIRAMWwtBGCEQDFoLQRkhEAxZC0EaIRAMWAtBGyEQDFcLQRwhEAxWC0EdIRAMVQtBHyEQDFQLQSEhEAxTC0EjIRAMUgtBxgAhEAxRC0EuIRAMUAtBLyEQDE8LQTshEAxOC0E9IRAMTQtByAAhEAxMC0HJACEQDEsLQcsAIRAMSgtBzAAhEAxJC0HOACEQDEgLQdEAIRAMRwtB1QAhEAxGC0HYACEQDEULQdkAIRAMRAtB2wAhEAxDC0HkACEQDEILQeUAIRAMQQtB8QAhEAxAC0H0ACEQDD8LQY0BIRAMPgtBlwEhEAw9C0GpASEQDDwLQawBIRAMOwtBwAEhEAw6C0G5ASEQDDkLQa8BIRAMOAtBsQEhEAw3C0GyASEQDDYLQbQBIRAMNQtBtQEhEAw0C0G6ASEQDDMLQb0BIRAMMgtBvwEhEAwxC0HBASEQDDALIABBADYCHCAAIAQ2AhQgAEHpi4CAADYCECAAQR82AgxBACEQDEgLIABB2wE2AhwgACAENgIUIABB+paAgAA2AhAgAEEVNgIMQQAhEAxHCyAAQfgANgIcIAAgDDYCFCAAQcqYgIAANgIQIABBFTYCDEEAIRAMRgsgAEHRADYCHCAAIAU2AhQgAEGwl4CAADYCECAAQRU2AgxBACEQDEULIABB+QA2AhwgACABNgIUIAAgEDYCDEEAIRAMRAsgAEH4ADYCHCAAIAE2AhQgAEHKmICAADYCECAAQRU2AgxBACEQDEMLIABB5AA2AhwgACABNgIUIABB45eAgAA2AhAgAEEVNgIMQQAhEAxCCyAAQdcANgIcIAAgATYCFCAAQcmXgIAANgIQIABBFTYCDEEAIRAMQQsgAEEANgIcIAAgATYCFCAAQbmNgIAANgIQIABBGjYCDEEAIRAMQAsgAEHCADYCHCAAIAE2AhQgAEHjmICAADYCECAAQRU2AgxBACEQDD8LIABBADYCBCAAIA8gDxCxgICAACIERQ0BIABBOjYCHCAAIAQ2AgwgACAPQQFqNgIUQQAhEAw+CyAAKAIEIQQgAEEANgIEAkAgACAEIAEQsYCAgAAiBEUNACAAQTs2AhwgACAENgIMIAAgAUEBajYCFEEAIRAMPgsgAUEBaiEBDC0LIA9BAWohAQwtCyAAQQA2AhwgACAPNgIUIABB5JKAgAA2AhAgAEEENgIMQQAhEAw7CyAAQTY2AhwgACAENgIUIAAgAjYCDEEAIRAMOgsgAEEuNgIcIAAgDjYCFCAAIAQ2AgxBACEQDDkLIABB0AA2AhwgACABNgIUIABBkZiAgAA2AhAgAEEVNgIMQQAhEAw4CyANQQFqIQEMLAsgAEEVNgIcIAAgATYCFCAAQYKZgIAANgIQIABBFTYCDEEAIRAMNgsgAEEbNgIcIAAgATYCFCAAQZGXgIAANgIQIABBFTYCDEEAIRAMNQsgAEEPNgIcIAAgATYCFCAAQZGXgIAANgIQIABBFTYCDEEAIRAMNAsgAEELNgIcIAAgATYCFCAAQZGXgIAANgIQIABBFTYCDEEAIRAMMwsgAEEaNgIcIAAgATYCFCAAQYKZgIAANgIQIABBFTYCDEEAIRAMMgsgAEELNgIcIAAgATYCFCAAQYKZgIAANgIQIABBFTYCDEEAIRAMMQsgAEEKNgIcIAAgATYCFCAAQeSWgIAANgIQIABBFTYCDEEAIRAMMAsgAEEeNgIcIAAgATYCFCAAQfmXgIAANgIQIABBFTYCDEEAIRAMLwsgAEEANgIcIAAgEDYCFCAAQdqNgIAANgIQIABBFDYCDEEAIRAMLgsgAEEENgIcIAAgATYCFCAAQbCYgIAANgIQIABBFTYCDEEAIRAMLQsgAEEANgIAIAtBAWohCwtBuAEhEAwSCyAAQQA2AgAgEEEBaiEBQfUAIRAMEQsgASEBAkAgAC0AKUEFRw0AQeMAIRAMEQtB4gAhEAwQC0EAIRAgAEEANgIcIABB5JGAgAA2AhAgAEEHNgIMIAAgFEEBajYCFAwoCyAAQQA2AgAgF0EBaiEBQcAAIRAMDgtBASEBCyAAIAE6ACwgAEEANgIAIBdBAWohAQtBKCEQDAsLIAEhAQtBOCEQDAkLAkAgASIPIAJGDQADQAJAIA8tAABBgL6AgABqLQAAIgFBAUYNACABQQJHDQMgD0EBaiEBDAQLIA9BAWoiDyACRw0AC0E+IRAMIgtBPiEQDCELIABBADoALCAPIQEMAQtBCyEQDAYLQTohEAwFCyABQQFqIQFBLSEQDAQLIAAgAToALCAAQQA2AgAgFkEBaiEBQQwhEAwDCyAAQQA2AgAgF0EBaiEBQQohEAwCCyAAQQA2AgALIABBADoALCANIQFBCSEQDAALC0EAIRAgAEEANgIcIAAgCzYCFCAAQc2QgIAANgIQIABBCTYCDAwXC0EAIRAgAEEANgIcIAAgCjYCFCAAQemKgIAANgIQIABBCTYCDAwWC0EAIRAgAEEANgIcIAAgCTYCFCAAQbeQgIAANgIQIABBCTYCDAwVC0EAIRAgAEEANgIcIAAgCDYCFCAAQZyRgIAANgIQIABBCTYCDAwUC0EAIRAgAEEANgIcIAAgATYCFCAAQc2QgIAANgIQIABBCTYCDAwTC0EAIRAgAEEANgIcIAAgATYCFCAAQemKgIAANgIQIABBCTYCDAwSC0EAIRAgAEEANgIcIAAgATYCFCAAQbeQgIAANgIQIABBCTYCDAwRC0EAIRAgAEEANgIcIAAgATYCFCAAQZyRgIAANgIQIABBCTYCDAwQC0EAIRAgAEEANgIcIAAgATYCFCAAQZeVgIAANgIQIABBDzYCDAwPC0EAIRAgAEEANgIcIAAgATYCFCAAQZeVgIAANgIQIABBDzYCDAwOC0EAIRAgAEEANgIcIAAgATYCFCAAQcCSgIAANgIQIABBCzYCDAwNC0EAIRAgAEEANgIcIAAgATYCFCAAQZWJgIAANgIQIABBCzYCDAwMC0EAIRAgAEEANgIcIAAgATYCFCAAQeGPgIAANgIQIABBCjYCDAwLC0EAIRAgAEEANgIcIAAgATYCFCAAQfuPgIAANgIQIABBCjYCDAwKC0EAIRAgAEEANgIcIAAgATYCFCAAQfGZgIAANgIQIABBAjYCDAwJC0EAIRAgAEEANgIcIAAgATYCFCAAQcSUgIAANgIQIABBAjYCDAwIC0EAIRAgAEEANgIcIAAgATYCFCAAQfKVgIAANgIQIABBAjYCDAwHCyAAQQI2AhwgACABNgIUIABBnJqAgAA2AhAgAEEWNgIMQQAhEAwGC0EBIRAMBQtB1AAhECABIgQgAkYNBCADQQhqIAAgBCACQdjCgIAAQQoQxYCAgAAgAygCDCEEIAMoAggOAwEEAgALEMqAgIAAAAsgAEEANgIcIABBtZqAgAA2AhAgAEEXNgIMIAAgBEEBajYCFEEAIRAMAgsgAEEANgIcIAAgBDYCFCAAQcqagIAANgIQIABBCTYCDEEAIRAMAQsCQCABIgQgAkcNAEEiIRAMAQsgAEGJgICAADYCCCAAIAQ2AgRBISEQCyADQRBqJICAgIAAIBALrwEBAn8gASgCACEGAkACQCACIANGDQAgBCAGaiEEIAYgA2ogAmshByACIAZBf3MgBWoiBmohBQNAAkAgAi0AACAELQAARg0AQQIhBAwDCwJAIAYNAEEAIQQgBSECDAMLIAZBf2ohBiAEQQFqIQQgAkEBaiICIANHDQALIAchBiADIQILIABBATYCACABIAY2AgAgACACNgIEDwsgAUEANgIAIAAgBDYCACAAIAI2AgQLCgAgABDHgICAAAvyNgELfyOAgICAAEEQayIBJICAgIAAAkBBACgCoNCAgAANAEEAEMuAgIAAQYDUhIAAayICQdkASQ0AQQAhAwJAQQAoAuDTgIAAIgQNAEEAQn83AuzTgIAAQQBCgICEgICAwAA3AuTTgIAAQQAgAUEIakFwcUHYqtWqBXMiBDYC4NOAgABBAEEANgL004CAAEEAQQA2AsTTgIAAC0EAIAI2AszTgIAAQQBBgNSEgAA2AsjTgIAAQQBBgNSEgAA2ApjQgIAAQQAgBDYCrNCAgABBAEF/NgKo0ICAAANAIANBxNCAgABqIANBuNCAgABqIgQ2AgAgBCADQbDQgIAAaiIFNgIAIANBvNCAgABqIAU2AgAgA0HM0ICAAGogA0HA0ICAAGoiBTYCACAFIAQ2AgAgA0HU0ICAAGogA0HI0ICAAGoiBDYCACAEIAU2AgAgA0HQ0ICAAGogBDYCACADQSBqIgNBgAJHDQALQYDUhIAAQXhBgNSEgABrQQ9xQQBBgNSEgABBCGpBD3EbIgNqIgRBBGogAkFIaiIFIANrIgNBAXI2AgBBAEEAKALw04CAADYCpNCAgABBACADNgKU0ICAAEEAIAQ2AqDQgIAAQYDUhIAAIAVqQTg2AgQLAkACQAJAAkACQAJAAkACQAJAAkACQAJAIABB7AFLDQACQEEAKAKI0ICAACIGQRAgAEETakFwcSAAQQtJGyICQQN2IgR2IgNBA3FFDQACQAJAIANBAXEgBHJBAXMiBUEDdCIEQbDQgIAAaiIDIARBuNCAgABqKAIAIgQoAggiAkcNAEEAIAZBfiAFd3E2AojQgIAADAELIAMgAjYCCCACIAM2AgwLIARBCGohAyAEIAVBA3QiBUEDcjYCBCAEIAVqIgQgBCgCBEEBcjYCBAwMCyACQQAoApDQgIAAIgdNDQECQCADRQ0AAkACQCADIAR0QQIgBHQiA0EAIANrcnEiA0EAIANrcUF/aiIDIANBDHZBEHEiA3YiBEEFdkEIcSIFIANyIAQgBXYiA0ECdkEEcSIEciADIAR2IgNBAXZBAnEiBHIgAyAEdiIDQQF2QQFxIgRyIAMgBHZqIgRBA3QiA0Gw0ICAAGoiBSADQbjQgIAAaigCACIDKAIIIgBHDQBBACAGQX4gBHdxIgY2AojQgIAADAELIAUgADYCCCAAIAU2AgwLIAMgAkEDcjYCBCADIARBA3QiBGogBCACayIFNgIAIAMgAmoiACAFQQFyNgIEAkAgB0UNACAHQXhxQbDQgIAAaiECQQAoApzQgIAAIQQCQAJAIAZBASAHQQN2dCIIcQ0AQQAgBiAIcjYCiNCAgAAgAiEIDAELIAIoAgghCAsgCCAENgIMIAIgBDYCCCAEIAI2AgwgBCAINgIICyADQQhqIQNBACAANgKc0ICAAEEAIAU2ApDQgIAADAwLQQAoAozQgIAAIglFDQEgCUEAIAlrcUF/aiIDIANBDHZBEHEiA3YiBEEFdkEIcSIFIANyIAQgBXYiA0ECdkEEcSIEciADIAR2IgNBAXZBAnEiBHIgAyAEdiIDQQF2QQFxIgRyIAMgBHZqQQJ0QbjSgIAAaigCACIAKAIEQXhxIAJrIQQgACEFAkADQAJAIAUoAhAiAw0AIAVBFGooAgAiA0UNAgsgAygCBEF4cSACayIFIAQgBSAESSIFGyEEIAMgACAFGyEAIAMhBQwACwsgACgCGCEKAkAgACgCDCIIIABGDQAgACgCCCIDQQAoApjQgIAASRogCCADNgIIIAMgCDYCDAwLCwJAIABBFGoiBSgCACIDDQAgACgCECIDRQ0DIABBEGohBQsDQCAFIQsgAyIIQRRqIgUoAgAiAw0AIAhBEGohBSAIKAIQIgMNAAsgC0EANgIADAoLQX8hAiAAQb9/Sw0AIABBE2oiA0FwcSECQQAoAozQgIAAIgdFDQBBACELAkAgAkGAAkkNAEEfIQsgAkH///8HSw0AIANBCHYiAyADQYD+P2pBEHZBCHEiA3QiBCAEQYDgH2pBEHZBBHEiBHQiBSAFQYCAD2pBEHZBAnEiBXRBD3YgAyAEciAFcmsiA0EBdCACIANBFWp2QQFxckEcaiELC0EAIAJrIQQCQAJAAkACQCALQQJ0QbjSgIAAaigCACIFDQBBACEDQQAhCAwBC0EAIQMgAkEAQRkgC0EBdmsgC0EfRht0IQBBACEIA0ACQCAFKAIEQXhxIAJrIgYgBE8NACAGIQQgBSEIIAYNAEEAIQQgBSEIIAUhAwwDCyADIAVBFGooAgAiBiAGIAUgAEEddkEEcWpBEGooAgAiBUYbIAMgBhshAyAAQQF0IQAgBQ0ACwsCQCADIAhyDQBBACEIQQIgC3QiA0EAIANrciAHcSIDRQ0DIANBACADa3FBf2oiAyADQQx2QRBxIgN2IgVBBXZBCHEiACADciAFIAB2IgNBAnZBBHEiBXIgAyAFdiIDQQF2QQJxIgVyIAMgBXYiA0EBdkEBcSIFciADIAV2akECdEG40oCAAGooAgAhAwsgA0UNAQsDQCADKAIEQXhxIAJrIgYgBEkhAAJAIAMoAhAiBQ0AIANBFGooAgAhBQsgBiAEIAAbIQQgAyAIIAAbIQggBSEDIAUNAAsLIAhFDQAgBEEAKAKQ0ICAACACa08NACAIKAIYIQsCQCAIKAIMIgAgCEYNACAIKAIIIgNBACgCmNCAgABJGiAAIAM2AgggAyAANgIMDAkLAkAgCEEUaiIFKAIAIgMNACAIKAIQIgNFDQMgCEEQaiEFCwNAIAUhBiADIgBBFGoiBSgCACIDDQAgAEEQaiEFIAAoAhAiAw0ACyAGQQA2AgAMCAsCQEEAKAKQ0ICAACIDIAJJDQBBACgCnNCAgAAhBAJAAkAgAyACayIFQRBJDQAgBCACaiIAIAVBAXI2AgRBACAFNgKQ0ICAAEEAIAA2ApzQgIAAIAQgA2ogBTYCACAEIAJBA3I2AgQMAQsgBCADQQNyNgIEIAQgA2oiAyADKAIEQQFyNgIEQQBBADYCnNCAgABBAEEANgKQ0ICAAAsgBEEIaiEDDAoLAkBBACgClNCAgAAiACACTQ0AQQAoAqDQgIAAIgMgAmoiBCAAIAJrIgVBAXI2AgRBACAFNgKU0ICAAEEAIAQ2AqDQgIAAIAMgAkEDcjYCBCADQQhqIQMMCgsCQAJAQQAoAuDTgIAARQ0AQQAoAujTgIAAIQQMAQtBAEJ/NwLs04CAAEEAQoCAhICAgMAANwLk04CAAEEAIAFBDGpBcHFB2KrVqgVzNgLg04CAAEEAQQA2AvTTgIAAQQBBADYCxNOAgABBgIAEIQQLQQAhAwJAIAQgAkHHAGoiB2oiBkEAIARrIgtxIgggAksNAEEAQTA2AvjTgIAADAoLAkBBACgCwNOAgAAiA0UNAAJAQQAoArjTgIAAIgQgCGoiBSAETQ0AIAUgA00NAQtBACEDQQBBMDYC+NOAgAAMCgtBAC0AxNOAgABBBHENBAJAAkACQEEAKAKg0ICAACIERQ0AQcjTgIAAIQMDQAJAIAMoAgAiBSAESw0AIAUgAygCBGogBEsNAwsgAygCCCIDDQALC0EAEMuAgIAAIgBBf0YNBSAIIQYCQEEAKALk04CAACIDQX9qIgQgAHFFDQAgCCAAayAEIABqQQAgA2txaiEGCyAGIAJNDQUgBkH+////B0sNBQJAQQAoAsDTgIAAIgNFDQBBACgCuNOAgAAiBCAGaiIFIARNDQYgBSADSw0GCyAGEMuAgIAAIgMgAEcNAQwHCyAGIABrIAtxIgZB/v///wdLDQQgBhDLgICAACIAIAMoAgAgAygCBGpGDQMgACEDCwJAIANBf0YNACACQcgAaiAGTQ0AAkAgByAGa0EAKALo04CAACIEakEAIARrcSIEQf7///8HTQ0AIAMhAAwHCwJAIAQQy4CAgABBf0YNACAEIAZqIQYgAyEADAcLQQAgBmsQy4CAgAAaDAQLIAMhACADQX9HDQUMAwtBACEIDAcLQQAhAAwFCyAAQX9HDQILQQBBACgCxNOAgABBBHI2AsTTgIAACyAIQf7///8HSw0BIAgQy4CAgAAhAEEAEMuAgIAAIQMgAEF/Rg0BIANBf0YNASAAIANPDQEgAyAAayIGIAJBOGpNDQELQQBBACgCuNOAgAAgBmoiAzYCuNOAgAACQCADQQAoArzTgIAATQ0AQQAgAzYCvNOAgAALAkACQAJAAkBBACgCoNCAgAAiBEUNAEHI04CAACEDA0AgACADKAIAIgUgAygCBCIIakYNAiADKAIIIgMNAAwDCwsCQAJAQQAoApjQgIAAIgNFDQAgACADTw0BC0EAIAA2ApjQgIAAC0EAIQNBACAGNgLM04CAAEEAIAA2AsjTgIAAQQBBfzYCqNCAgABBAEEAKALg04CAADYCrNCAgABBAEEANgLU04CAAANAIANBxNCAgABqIANBuNCAgABqIgQ2AgAgBCADQbDQgIAAaiIFNgIAIANBvNCAgABqIAU2AgAgA0HM0ICAAGogA0HA0ICAAGoiBTYCACAFIAQ2AgAgA0HU0ICAAGogA0HI0ICAAGoiBDYCACAEIAU2AgAgA0HQ0ICAAGogBDYCACADQSBqIgNBgAJHDQALIABBeCAAa0EPcUEAIABBCGpBD3EbIgNqIgQgBkFIaiIFIANrIgNBAXI2AgRBAEEAKALw04CAADYCpNCAgABBACADNgKU0ICAAEEAIAQ2AqDQgIAAIAAgBWpBODYCBAwCCyADLQAMQQhxDQAgBCAFSQ0AIAQgAE8NACAEQXggBGtBD3FBACAEQQhqQQ9xGyIFaiIAQQAoApTQgIAAIAZqIgsgBWsiBUEBcjYCBCADIAggBmo2AgRBAEEAKALw04CAADYCpNCAgABBACAFNgKU0ICAAEEAIAA2AqDQgIAAIAQgC2pBODYCBAwBCwJAIABBACgCmNCAgAAiCE8NAEEAIAA2ApjQgIAAIAAhCAsgACAGaiEFQcjTgIAAIQMCQAJAAkACQAJAAkACQANAIAMoAgAgBUYNASADKAIIIgMNAAwCCwsgAy0ADEEIcUUNAQtByNOAgAAhAwNAAkAgAygCACIFIARLDQAgBSADKAIEaiIFIARLDQMLIAMoAgghAwwACwsgAyAANgIAIAMgAygCBCAGajYCBCAAQXggAGtBD3FBACAAQQhqQQ9xG2oiCyACQQNyNgIEIAVBeCAFa0EPcUEAIAVBCGpBD3EbaiIGIAsgAmoiAmshAwJAIAYgBEcNAEEAIAI2AqDQgIAAQQBBACgClNCAgAAgA2oiAzYClNCAgAAgAiADQQFyNgIEDAMLAkAgBkEAKAKc0ICAAEcNAEEAIAI2ApzQgIAAQQBBACgCkNCAgAAgA2oiAzYCkNCAgAAgAiADQQFyNgIEIAIgA2ogAzYCAAwDCwJAIAYoAgQiBEEDcUEBRw0AIARBeHEhBwJAAkAgBEH/AUsNACAGKAIIIgUgBEEDdiIIQQN0QbDQgIAAaiIARhoCQCAGKAIMIgQgBUcNAEEAQQAoAojQgIAAQX4gCHdxNgKI0ICAAAwCCyAEIABGGiAEIAU2AgggBSAENgIMDAELIAYoAhghCQJAAkAgBigCDCIAIAZGDQAgBigCCCIEIAhJGiAAIAQ2AgggBCAANgIMDAELAkAgBkEUaiIEKAIAIgUNACAGQRBqIgQoAgAiBQ0AQQAhAAwBCwNAIAQhCCAFIgBBFGoiBCgCACIFDQAgAEEQaiEEIAAoAhAiBQ0ACyAIQQA2AgALIAlFDQACQAJAIAYgBigCHCIFQQJ0QbjSgIAAaiIEKAIARw0AIAQgADYCACAADQFBAEEAKAKM0ICAAEF+IAV3cTYCjNCAgAAMAgsgCUEQQRQgCSgCECAGRhtqIAA2AgAgAEUNAQsgACAJNgIYAkAgBigCECIERQ0AIAAgBDYCECAEIAA2AhgLIAYoAhQiBEUNACAAQRRqIAQ2AgAgBCAANgIYCyAHIANqIQMgBiAHaiIGKAIEIQQLIAYgBEF+cTYCBCACIANqIAM2AgAgAiADQQFyNgIEAkAgA0H/AUsNACADQXhxQbDQgIAAaiEEAkACQEEAKAKI0ICAACIFQQEgA0EDdnQiA3ENAEEAIAUgA3I2AojQgIAAIAQhAwwBCyAEKAIIIQMLIAMgAjYCDCAEIAI2AgggAiAENgIMIAIgAzYCCAwDC0EfIQQCQCADQf///wdLDQAgA0EIdiIEIARBgP4/akEQdkEIcSIEdCIFIAVBgOAfakEQdkEEcSIFdCIAIABBgIAPakEQdkECcSIAdEEPdiAEIAVyIAByayIEQQF0IAMgBEEVanZBAXFyQRxqIQQLIAIgBDYCHCACQgA3AhAgBEECdEG40oCAAGohBQJAQQAoAozQgIAAIgBBASAEdCIIcQ0AIAUgAjYCAEEAIAAgCHI2AozQgIAAIAIgBTYCGCACIAI2AgggAiACNgIMDAMLIANBAEEZIARBAXZrIARBH0YbdCEEIAUoAgAhAANAIAAiBSgCBEF4cSADRg0CIARBHXYhACAEQQF0IQQgBSAAQQRxakEQaiIIKAIAIgANAAsgCCACNgIAIAIgBTYCGCACIAI2AgwgAiACNgIIDAILIABBeCAAa0EPcUEAIABBCGpBD3EbIgNqIgsgBkFIaiIIIANrIgNBAXI2AgQgACAIakE4NgIEIAQgBUE3IAVrQQ9xQQAgBUFJakEPcRtqQUFqIgggCCAEQRBqSRsiCEEjNgIEQQBBACgC8NOAgAA2AqTQgIAAQQAgAzYClNCAgABBACALNgKg0ICAACAIQRBqQQApAtDTgIAANwIAIAhBACkCyNOAgAA3AghBACAIQQhqNgLQ04CAAEEAIAY2AszTgIAAQQAgADYCyNOAgABBAEEANgLU04CAACAIQSRqIQMDQCADQQc2AgAgA0EEaiIDIAVJDQALIAggBEYNAyAIIAgoAgRBfnE2AgQgCCAIIARrIgA2AgAgBCAAQQFyNgIEAkAgAEH/AUsNACAAQXhxQbDQgIAAaiEDAkACQEEAKAKI0ICAACIFQQEgAEEDdnQiAHENAEEAIAUgAHI2AojQgIAAIAMhBQwBCyADKAIIIQULIAUgBDYCDCADIAQ2AgggBCADNgIMIAQgBTYCCAwEC0EfIQMCQCAAQf///wdLDQAgAEEIdiIDIANBgP4/akEQdkEIcSIDdCIFIAVBgOAfakEQdkEEcSIFdCIIIAhBgIAPakEQdkECcSIIdEEPdiADIAVyIAhyayIDQQF0IAAgA0EVanZBAXFyQRxqIQMLIAQgAzYCHCAEQgA3AhAgA0ECdEG40oCAAGohBQJAQQAoAozQgIAAIghBASADdCIGcQ0AIAUgBDYCAEEAIAggBnI2AozQgIAAIAQgBTYCGCAEIAQ2AgggBCAENgIMDAQLIABBAEEZIANBAXZrIANBH0YbdCEDIAUoAgAhCANAIAgiBSgCBEF4cSAARg0DIANBHXYhCCADQQF0IQMgBSAIQQRxakEQaiIGKAIAIggNAAsgBiAENgIAIAQgBTYCGCAEIAQ2AgwgBCAENgIIDAMLIAUoAggiAyACNgIMIAUgAjYCCCACQQA2AhggAiAFNgIMIAIgAzYCCAsgC0EIaiEDDAULIAUoAggiAyAENgIMIAUgBDYCCCAEQQA2AhggBCAFNgIMIAQgAzYCCAtBACgClNCAgAAiAyACTQ0AQQAoAqDQgIAAIgQgAmoiBSADIAJrIgNBAXI2AgRBACADNgKU0ICAAEEAIAU2AqDQgIAAIAQgAkEDcjYCBCAEQQhqIQMMAwtBACEDQQBBMDYC+NOAgAAMAgsCQCALRQ0AAkACQCAIIAgoAhwiBUECdEG40oCAAGoiAygCAEcNACADIAA2AgAgAA0BQQAgB0F+IAV3cSIHNgKM0ICAAAwCCyALQRBBFCALKAIQIAhGG2ogADYCACAARQ0BCyAAIAs2AhgCQCAIKAIQIgNFDQAgACADNgIQIAMgADYCGAsgCEEUaigCACIDRQ0AIABBFGogAzYCACADIAA2AhgLAkACQCAEQQ9LDQAgCCAEIAJqIgNBA3I2AgQgCCADaiIDIAMoAgRBAXI2AgQMAQsgCCACaiIAIARBAXI2AgQgCCACQQNyNgIEIAAgBGogBDYCAAJAIARB/wFLDQAgBEF4cUGw0ICAAGohAwJAAkBBACgCiNCAgAAiBUEBIARBA3Z0IgRxDQBBACAFIARyNgKI0ICAACADIQQMAQsgAygCCCEECyAEIAA2AgwgAyAANgIIIAAgAzYCDCAAIAQ2AggMAQtBHyEDAkAgBEH///8HSw0AIARBCHYiAyADQYD+P2pBEHZBCHEiA3QiBSAFQYDgH2pBEHZBBHEiBXQiAiACQYCAD2pBEHZBAnEiAnRBD3YgAyAFciACcmsiA0EBdCAEIANBFWp2QQFxckEcaiEDCyAAIAM2AhwgAEIANwIQIANBAnRBuNKAgABqIQUCQCAHQQEgA3QiAnENACAFIAA2AgBBACAHIAJyNgKM0ICAACAAIAU2AhggACAANgIIIAAgADYCDAwBCyAEQQBBGSADQQF2ayADQR9GG3QhAyAFKAIAIQICQANAIAIiBSgCBEF4cSAERg0BIANBHXYhAiADQQF0IQMgBSACQQRxakEQaiIGKAIAIgINAAsgBiAANgIAIAAgBTYCGCAAIAA2AgwgACAANgIIDAELIAUoAggiAyAANgIMIAUgADYCCCAAQQA2AhggACAFNgIMIAAgAzYCCAsgCEEIaiEDDAELAkAgCkUNAAJAAkAgACAAKAIcIgVBAnRBuNKAgABqIgMoAgBHDQAgAyAINgIAIAgNAUEAIAlBfiAFd3E2AozQgIAADAILIApBEEEUIAooAhAgAEYbaiAINgIAIAhFDQELIAggCjYCGAJAIAAoAhAiA0UNACAIIAM2AhAgAyAINgIYCyAAQRRqKAIAIgNFDQAgCEEUaiADNgIAIAMgCDYCGAsCQAJAIARBD0sNACAAIAQgAmoiA0EDcjYCBCAAIANqIgMgAygCBEEBcjYCBAwBCyAAIAJqIgUgBEEBcjYCBCAAIAJBA3I2AgQgBSAEaiAENgIAAkAgB0UNACAHQXhxQbDQgIAAaiECQQAoApzQgIAAIQMCQAJAQQEgB0EDdnQiCCAGcQ0AQQAgCCAGcjYCiNCAgAAgAiEIDAELIAIoAgghCAsgCCADNgIMIAIgAzYCCCADIAI2AgwgAyAINgIIC0EAIAU2ApzQgIAAQQAgBDYCkNCAgAALIABBCGohAwsgAUEQaiSAgICAACADCwoAIAAQyYCAgAAL4g0BB38CQCAARQ0AIABBeGoiASAAQXxqKAIAIgJBeHEiAGohAwJAIAJBAXENACACQQNxRQ0BIAEgASgCACICayIBQQAoApjQgIAAIgRJDQEgAiAAaiEAAkAgAUEAKAKc0ICAAEYNAAJAIAJB/wFLDQAgASgCCCIEIAJBA3YiBUEDdEGw0ICAAGoiBkYaAkAgASgCDCICIARHDQBBAEEAKAKI0ICAAEF+IAV3cTYCiNCAgAAMAwsgAiAGRhogAiAENgIIIAQgAjYCDAwCCyABKAIYIQcCQAJAIAEoAgwiBiABRg0AIAEoAggiAiAESRogBiACNgIIIAIgBjYCDAwBCwJAIAFBFGoiAigCACIEDQAgAUEQaiICKAIAIgQNAEEAIQYMAQsDQCACIQUgBCIGQRRqIgIoAgAiBA0AIAZBEGohAiAGKAIQIgQNAAsgBUEANgIACyAHRQ0BAkACQCABIAEoAhwiBEECdEG40oCAAGoiAigCAEcNACACIAY2AgAgBg0BQQBBACgCjNCAgABBfiAEd3E2AozQgIAADAMLIAdBEEEUIAcoAhAgAUYbaiAGNgIAIAZFDQILIAYgBzYCGAJAIAEoAhAiAkUNACAGIAI2AhAgAiAGNgIYCyABKAIUIgJFDQEgBkEUaiACNgIAIAIgBjYCGAwBCyADKAIEIgJBA3FBA0cNACADIAJBfnE2AgRBACAANgKQ0ICAACABIABqIAA2AgAgASAAQQFyNgIEDwsgASADTw0AIAMoAgQiAkEBcUUNAAJAAkAgAkECcQ0AAkAgA0EAKAKg0ICAAEcNAEEAIAE2AqDQgIAAQQBBACgClNCAgAAgAGoiADYClNCAgAAgASAAQQFyNgIEIAFBACgCnNCAgABHDQNBAEEANgKQ0ICAAEEAQQA2ApzQgIAADwsCQCADQQAoApzQgIAARw0AQQAgATYCnNCAgABBAEEAKAKQ0ICAACAAaiIANgKQ0ICAACABIABBAXI2AgQgASAAaiAANgIADwsgAkF4cSAAaiEAAkACQCACQf8BSw0AIAMoAggiBCACQQN2IgVBA3RBsNCAgABqIgZGGgJAIAMoAgwiAiAERw0AQQBBACgCiNCAgABBfiAFd3E2AojQgIAADAILIAIgBkYaIAIgBDYCCCAEIAI2AgwMAQsgAygCGCEHAkACQCADKAIMIgYgA0YNACADKAIIIgJBACgCmNCAgABJGiAGIAI2AgggAiAGNgIMDAELAkAgA0EUaiICKAIAIgQNACADQRBqIgIoAgAiBA0AQQAhBgwBCwNAIAIhBSAEIgZBFGoiAigCACIEDQAgBkEQaiECIAYoAhAiBA0ACyAFQQA2AgALIAdFDQACQAJAIAMgAygCHCIEQQJ0QbjSgIAAaiICKAIARw0AIAIgBjYCACAGDQFBAEEAKAKM0ICAAEF+IAR3cTYCjNCAgAAMAgsgB0EQQRQgBygCECADRhtqIAY2AgAgBkUNAQsgBiAHNgIYAkAgAygCECICRQ0AIAYgAjYCECACIAY2AhgLIAMoAhQiAkUNACAGQRRqIAI2AgAgAiAGNgIYCyABIABqIAA2AgAgASAAQQFyNgIEIAFBACgCnNCAgABHDQFBACAANgKQ0ICAAA8LIAMgAkF+cTYCBCABIABqIAA2AgAgASAAQQFyNgIECwJAIABB/wFLDQAgAEF4cUGw0ICAAGohAgJAAkBBACgCiNCAgAAiBEEBIABBA3Z0IgBxDQBBACAEIAByNgKI0ICAACACIQAMAQsgAigCCCEACyAAIAE2AgwgAiABNgIIIAEgAjYCDCABIAA2AggPC0EfIQICQCAAQf///wdLDQAgAEEIdiICIAJBgP4/akEQdkEIcSICdCIEIARBgOAfakEQdkEEcSIEdCIGIAZBgIAPakEQdkECcSIGdEEPdiACIARyIAZyayICQQF0IAAgAkEVanZBAXFyQRxqIQILIAEgAjYCHCABQgA3AhAgAkECdEG40oCAAGohBAJAAkBBACgCjNCAgAAiBkEBIAJ0IgNxDQAgBCABNgIAQQAgBiADcjYCjNCAgAAgASAENgIYIAEgATYCCCABIAE2AgwMAQsgAEEAQRkgAkEBdmsgAkEfRht0IQIgBCgCACEGAkADQCAGIgQoAgRBeHEgAEYNASACQR12IQYgAkEBdCECIAQgBkEEcWpBEGoiAygCACIGDQALIAMgATYCACABIAQ2AhggASABNgIMIAEgATYCCAwBCyAEKAIIIgAgATYCDCAEIAE2AgggAUEANgIYIAEgBDYCDCABIAA2AggLQQBBACgCqNCAgABBf2oiAUF/IAEbNgKo0ICAAAsLBAAAAAtOAAJAIAANAD8AQRB0DwsCQCAAQf//A3ENACAAQX9MDQACQCAAQRB2QAAiAEF/Rw0AQQBBMDYC+NOAgABBfw8LIABBEHQPCxDKgICAAAAL8gICA38BfgJAIAJFDQAgACABOgAAIAIgAGoiA0F/aiABOgAAIAJBA0kNACAAIAE6AAIgACABOgABIANBfWogAToAACADQX5qIAE6AAAgAkEHSQ0AIAAgAToAAyADQXxqIAE6AAAgAkEJSQ0AIABBACAAa0EDcSIEaiIDIAFB/wFxQYGChAhsIgE2AgAgAyACIARrQXxxIgRqIgJBfGogATYCACAEQQlJDQAgAyABNgIIIAMgATYCBCACQXhqIAE2AgAgAkF0aiABNgIAIARBGUkNACADIAE2AhggAyABNgIUIAMgATYCECADIAE2AgwgAkFwaiABNgIAIAJBbGogATYCACACQWhqIAE2AgAgAkFkaiABNgIAIAQgA0EEcUEYciIFayICQSBJDQAgAa1CgYCAgBB+IQYgAyAFaiEBA0AgASAGNwMYIAEgBjcDECABIAY3AwggASAGNwMAIAFBIGohASACQWBqIgJBH0sNAAsLIAALC45IAQBBgAgLhkgBAAAAAgAAAAMAAAAAAAAAAAAAAAQAAAAFAAAAAAAAAAAAAAAGAAAABwAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEludmFsaWQgY2hhciBpbiB1cmwgcXVlcnkAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9ib2R5AENvbnRlbnQtTGVuZ3RoIG92ZXJmbG93AENodW5rIHNpemUgb3ZlcmZsb3cAUmVzcG9uc2Ugb3ZlcmZsb3cASW52YWxpZCBtZXRob2QgZm9yIEhUVFAveC54IHJlcXVlc3QASW52YWxpZCBtZXRob2QgZm9yIFJUU1AveC54IHJlcXVlc3QARXhwZWN0ZWQgU09VUkNFIG1ldGhvZCBmb3IgSUNFL3gueCByZXF1ZXN0AEludmFsaWQgY2hhciBpbiB1cmwgZnJhZ21lbnQgc3RhcnQARXhwZWN0ZWQgZG90AFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25fc3RhdHVzAEludmFsaWQgcmVzcG9uc2Ugc3RhdHVzAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMAVXNlciBjYWxsYmFjayBlcnJvcgBgb25fcmVzZXRgIGNhbGxiYWNrIGVycm9yAGBvbl9jaHVua19oZWFkZXJgIGNhbGxiYWNrIGVycm9yAGBvbl9tZXNzYWdlX2JlZ2luYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlYCBjYWxsYmFjayBlcnJvcgBgb25fc3RhdHVzX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fdmVyc2lvbl9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX3VybF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2NodW5rX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25faGVhZGVyX3ZhbHVlX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fbWVzc2FnZV9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX21ldGhvZF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2hlYWRlcl9maWVsZF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lYCBjYWxsYmFjayBlcnJvcgBVbmV4cGVjdGVkIGNoYXIgaW4gdXJsIHNlcnZlcgBJbnZhbGlkIGhlYWRlciB2YWx1ZSBjaGFyAEludmFsaWQgaGVhZGVyIGZpZWxkIGNoYXIAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl92ZXJzaW9uAEludmFsaWQgbWlub3IgdmVyc2lvbgBJbnZhbGlkIG1ham9yIHZlcnNpb24ARXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgdmVyc2lvbgBFeHBlY3RlZCBDUkxGIGFmdGVyIHZlcnNpb24ASW52YWxpZCBIVFRQIHZlcnNpb24ASW52YWxpZCBoZWFkZXIgdG9rZW4AU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl91cmwASW52YWxpZCBjaGFyYWN0ZXJzIGluIHVybABVbmV4cGVjdGVkIHN0YXJ0IGNoYXIgaW4gdXJsAERvdWJsZSBAIGluIHVybABFbXB0eSBDb250ZW50LUxlbmd0aABJbnZhbGlkIGNoYXJhY3RlciBpbiBDb250ZW50LUxlbmd0aABEdXBsaWNhdGUgQ29udGVudC1MZW5ndGgASW52YWxpZCBjaGFyIGluIHVybCBwYXRoAENvbnRlbnQtTGVuZ3RoIGNhbid0IGJlIHByZXNlbnQgd2l0aCBUcmFuc2Zlci1FbmNvZGluZwBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBzaXplAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25faGVhZGVyX3ZhbHVlAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgdmFsdWUATWlzc2luZyBleHBlY3RlZCBMRiBhZnRlciBoZWFkZXIgdmFsdWUASW52YWxpZCBgVHJhbnNmZXItRW5jb2RpbmdgIGhlYWRlciB2YWx1ZQBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBleHRlbnNpb25zIHF1b3RlIHZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgcXVvdGVkIHZhbHVlAFBhdXNlZCBieSBvbl9oZWFkZXJzX2NvbXBsZXRlAEludmFsaWQgRU9GIHN0YXRlAG9uX3Jlc2V0IHBhdXNlAG9uX2NodW5rX2hlYWRlciBwYXVzZQBvbl9tZXNzYWdlX2JlZ2luIHBhdXNlAG9uX2NodW5rX2V4dGVuc2lvbl92YWx1ZSBwYXVzZQBvbl9zdGF0dXNfY29tcGxldGUgcGF1c2UAb25fdmVyc2lvbl9jb21wbGV0ZSBwYXVzZQBvbl91cmxfY29tcGxldGUgcGF1c2UAb25fY2h1bmtfY29tcGxldGUgcGF1c2UAb25faGVhZGVyX3ZhbHVlX2NvbXBsZXRlIHBhdXNlAG9uX21lc3NhZ2VfY29tcGxldGUgcGF1c2UAb25fbWV0aG9kX2NvbXBsZXRlIHBhdXNlAG9uX2hlYWRlcl9maWVsZF9jb21wbGV0ZSBwYXVzZQBvbl9jaHVua19leHRlbnNpb25fbmFtZSBwYXVzZQBVbmV4cGVjdGVkIHNwYWNlIGFmdGVyIHN0YXJ0IGxpbmUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9jaHVua19leHRlbnNpb25fbmFtZQBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBleHRlbnNpb25zIG5hbWUAUGF1c2Ugb24gQ09OTkVDVC9VcGdyYWRlAFBhdXNlIG9uIFBSSS9VcGdyYWRlAEV4cGVjdGVkIEhUVFAvMiBDb25uZWN0aW9uIFByZWZhY2UAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9tZXRob2QARXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgbWV0aG9kAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25faGVhZGVyX2ZpZWxkAFBhdXNlZABJbnZhbGlkIHdvcmQgZW5jb3VudGVyZWQASW52YWxpZCBtZXRob2QgZW5jb3VudGVyZWQAVW5leHBlY3RlZCBjaGFyIGluIHVybCBzY2hlbWEAUmVxdWVzdCBoYXMgaW52YWxpZCBgVHJhbnNmZXItRW5jb2RpbmdgAFNXSVRDSF9QUk9YWQBVU0VfUFJPWFkATUtBQ1RJVklUWQBVTlBST0NFU1NBQkxFX0VOVElUWQBDT1BZAE1PVkVEX1BFUk1BTkVOVExZAFRPT19FQVJMWQBOT1RJRlkARkFJTEVEX0RFUEVOREVOQ1kAQkFEX0dBVEVXQVkAUExBWQBQVVQAQ0hFQ0tPVVQAR0FURVdBWV9USU1FT1VUAFJFUVVFU1RfVElNRU9VVABORVRXT1JLX0NPTk5FQ1RfVElNRU9VVABDT05ORUNUSU9OX1RJTUVPVVQATE9HSU5fVElNRU9VVABORVRXT1JLX1JFQURfVElNRU9VVABQT1NUAE1JU0RJUkVDVEVEX1JFUVVFU1QAQ0xJRU5UX0NMT1NFRF9SRVFVRVNUAENMSUVOVF9DTE9TRURfTE9BRF9CQUxBTkNFRF9SRVFVRVNUAEJBRF9SRVFVRVNUAEhUVFBfUkVRVUVTVF9TRU5UX1RPX0hUVFBTX1BPUlQAUkVQT1JUAElNX0FfVEVBUE9UAFJFU0VUX0NPTlRFTlQATk9fQ09OVEVOVABQQVJUSUFMX0NPTlRFTlQASFBFX0lOVkFMSURfQ09OU1RBTlQASFBFX0NCX1JFU0VUAEdFVABIUEVfU1RSSUNUAENPTkZMSUNUAFRFTVBPUkFSWV9SRURJUkVDVABQRVJNQU5FTlRfUkVESVJFQ1QAQ09OTkVDVABNVUxUSV9TVEFUVVMASFBFX0lOVkFMSURfU1RBVFVTAFRPT19NQU5ZX1JFUVVFU1RTAEVBUkxZX0hJTlRTAFVOQVZBSUxBQkxFX0ZPUl9MRUdBTF9SRUFTT05TAE9QVElPTlMAU1dJVENISU5HX1BST1RPQ09MUwBWQVJJQU5UX0FMU09fTkVHT1RJQVRFUwBNVUxUSVBMRV9DSE9JQ0VTAElOVEVSTkFMX1NFUlZFUl9FUlJPUgBXRUJfU0VSVkVSX1VOS05PV05fRVJST1IAUkFJTEdVTl9FUlJPUgBJREVOVElUWV9QUk9WSURFUl9BVVRIRU5USUNBVElPTl9FUlJPUgBTU0xfQ0VSVElGSUNBVEVfRVJST1IASU5WQUxJRF9YX0ZPUldBUkRFRF9GT1IAU0VUX1BBUkFNRVRFUgBHRVRfUEFSQU1FVEVSAEhQRV9VU0VSAFNFRV9PVEhFUgBIUEVfQ0JfQ0hVTktfSEVBREVSAE1LQ0FMRU5EQVIAU0VUVVAAV0VCX1NFUlZFUl9JU19ET1dOAFRFQVJET1dOAEhQRV9DTE9TRURfQ09OTkVDVElPTgBIRVVSSVNUSUNfRVhQSVJBVElPTgBESVNDT05ORUNURURfT1BFUkFUSU9OAE5PTl9BVVRIT1JJVEFUSVZFX0lORk9STUFUSU9OAEhQRV9JTlZBTElEX1ZFUlNJT04ASFBFX0NCX01FU1NBR0VfQkVHSU4AU0lURV9JU19GUk9aRU4ASFBFX0lOVkFMSURfSEVBREVSX1RPS0VOAElOVkFMSURfVE9LRU4ARk9SQklEREVOAEVOSEFOQ0VfWU9VUl9DQUxNAEhQRV9JTlZBTElEX1VSTABCTE9DS0VEX0JZX1BBUkVOVEFMX0NPTlRST0wATUtDT0wAQUNMAEhQRV9JTlRFUk5BTABSRVFVRVNUX0hFQURFUl9GSUVMRFNfVE9PX0xBUkdFX1VOT0ZGSUNJQUwASFBFX09LAFVOTElOSwBVTkxPQ0sAUFJJAFJFVFJZX1dJVEgASFBFX0lOVkFMSURfQ09OVEVOVF9MRU5HVEgASFBFX1VORVhQRUNURURfQ09OVEVOVF9MRU5HVEgARkxVU0gAUFJPUFBBVENIAE0tU0VBUkNIAFVSSV9UT09fTE9ORwBQUk9DRVNTSU5HAE1JU0NFTExBTkVPVVNfUEVSU0lTVEVOVF9XQVJOSU5HAE1JU0NFTExBTkVPVVNfV0FSTklORwBIUEVfSU5WQUxJRF9UUkFOU0ZFUl9FTkNPRElORwBFeHBlY3RlZCBDUkxGAEhQRV9JTlZBTElEX0NIVU5LX1NJWkUATU9WRQBDT05USU5VRQBIUEVfQ0JfU1RBVFVTX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJTX0NPTVBMRVRFAEhQRV9DQl9WRVJTSU9OX0NPTVBMRVRFAEhQRV9DQl9VUkxfQ09NUExFVEUASFBFX0NCX0NIVU5LX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJfVkFMVUVfQ09NUExFVEUASFBFX0NCX0NIVU5LX0VYVEVOU0lPTl9WQUxVRV9DT01QTEVURQBIUEVfQ0JfQ0hVTktfRVhURU5TSU9OX05BTUVfQ09NUExFVEUASFBFX0NCX01FU1NBR0VfQ09NUExFVEUASFBFX0NCX01FVEhPRF9DT01QTEVURQBIUEVfQ0JfSEVBREVSX0ZJRUxEX0NPTVBMRVRFAERFTEVURQBIUEVfSU5WQUxJRF9FT0ZfU1RBVEUASU5WQUxJRF9TU0xfQ0VSVElGSUNBVEUAUEFVU0UATk9fUkVTUE9OU0UAVU5TVVBQT1JURURfTUVESUFfVFlQRQBHT05FAE5PVF9BQ0NFUFRBQkxFAFNFUlZJQ0VfVU5BVkFJTEFCTEUAUkFOR0VfTk9UX1NBVElTRklBQkxFAE9SSUdJTl9JU19VTlJFQUNIQUJMRQBSRVNQT05TRV9JU19TVEFMRQBQVVJHRQBNRVJHRQBSRVFVRVNUX0hFQURFUl9GSUVMRFNfVE9PX0xBUkdFAFJFUVVFU1RfSEVBREVSX1RPT19MQVJHRQBQQVlMT0FEX1RPT19MQVJHRQBJTlNVRkZJQ0lFTlRfU1RPUkFHRQBIUEVfUEFVU0VEX1VQR1JBREUASFBFX1BBVVNFRF9IMl9VUEdSQURFAFNPVVJDRQBBTk5PVU5DRQBUUkFDRQBIUEVfVU5FWFBFQ1RFRF9TUEFDRQBERVNDUklCRQBVTlNVQlNDUklCRQBSRUNPUkQASFBFX0lOVkFMSURfTUVUSE9EAE5PVF9GT1VORABQUk9QRklORABVTkJJTkQAUkVCSU5EAFVOQVVUSE9SSVpFRABNRVRIT0RfTk9UX0FMTE9XRUQASFRUUF9WRVJTSU9OX05PVF9TVVBQT1JURUQAQUxSRUFEWV9SRVBPUlRFRABBQ0NFUFRFRABOT1RfSU1QTEVNRU5URUQATE9PUF9ERVRFQ1RFRABIUEVfQ1JfRVhQRUNURUQASFBFX0xGX0VYUEVDVEVEAENSRUFURUQASU1fVVNFRABIUEVfUEFVU0VEAFRJTUVPVVRfT0NDVVJFRABQQVlNRU5UX1JFUVVJUkVEAFBSRUNPTkRJVElPTl9SRVFVSVJFRABQUk9YWV9BVVRIRU5USUNBVElPTl9SRVFVSVJFRABORVRXT1JLX0FVVEhFTlRJQ0FUSU9OX1JFUVVJUkVEAExFTkdUSF9SRVFVSVJFRABTU0xfQ0VSVElGSUNBVEVfUkVRVUlSRUQAVVBHUkFERV9SRVFVSVJFRABQQUdFX0VYUElSRUQAUFJFQ09ORElUSU9OX0ZBSUxFRABFWFBFQ1RBVElPTl9GQUlMRUQAUkVWQUxJREFUSU9OX0ZBSUxFRABTU0xfSEFORFNIQUtFX0ZBSUxFRABMT0NLRUQAVFJBTlNGT1JNQVRJT05fQVBQTElFRABOT1RfTU9ESUZJRUQATk9UX0VYVEVOREVEAEJBTkRXSURUSF9MSU1JVF9FWENFRURFRABTSVRFX0lTX09WRVJMT0FERUQASEVBRABFeHBlY3RlZCBIVFRQLwAAXhMAACYTAAAwEAAA8BcAAJ0TAAAVEgAAORcAAPASAAAKEAAAdRIAAK0SAACCEwAATxQAAH8QAACgFQAAIxQAAIkSAACLFAAATRUAANQRAADPFAAAEBgAAMkWAADcFgAAwREAAOAXAAC7FAAAdBQAAHwVAADlFAAACBcAAB8QAABlFQAAoxQAACgVAAACFQAAmRUAACwQAACLGQAATw8AANQOAABqEAAAzhAAAAIXAACJDgAAbhMAABwTAABmFAAAVhcAAMETAADNEwAAbBMAAGgXAABmFwAAXxcAACITAADODwAAaQ4AANgOAABjFgAAyxMAAKoOAAAoFwAAJhcAAMUTAABdFgAA6BEAAGcTAABlEwAA8hYAAHMTAAAdFwAA+RYAAPMRAADPDgAAzhUAAAwSAACzEQAApREAAGEQAAAyFwAAuxMAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAIDAgICAgIAAAICAAICAAICAgICAgICAgIABAAAAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgIAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAACAAICAgICAAACAgACAgACAgICAgICAgICAAMABAAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAAgACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbG9zZWVlcC1hbGl2ZQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQEBAQEBAQEBAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBY2h1bmtlZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQEBAQEAAAEBAAEBAAEBAQEBAQEBAQEAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABlY3Rpb25lbnQtbGVuZ3Rob25yb3h5LWNvbm5lY3Rpb24AAAAAAAAAAAAAAAAAAAByYW5zZmVyLWVuY29kaW5ncGdyYWRlDQoNCg0KU00NCg0KVFRQL0NFL1RTUC8AAAAAAAAAAAAAAAABAgABAwAAAAAAAAAAAAAAAAAAAAAAAAQBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAQIAAQMAAAAAAAAAAAAAAAAAAAAAAAAEAQEFAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAAAAQAAAgAAAAAAAAAAAAAAAAAAAAAAAAMEAAAEBAQEBAQEBAQEBAUEBAQEBAQEBAQEBAQABAAGBwQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEAAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABOT1VOQ0VFQ0tPVVRORUNURVRFQ1JJQkVMVVNIRVRFQURTRUFSQ0hSR0VDVElWSVRZTEVOREFSVkVPVElGWVBUSU9OU0NIU0VBWVNUQVRDSEdFT1JESVJFQ1RPUlRSQ0hQQVJBTUVURVJVUkNFQlNDUklCRUFSRE9XTkFDRUlORE5LQ0tVQlNDUklCRUhUVFAvQURUUC8=";
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/llhttp/llhttp_simd-wasm.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/llhttp/llhttp_simd-wasm.js
 var require_llhttp_simd_wasm = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/llhttp/llhttp_simd-wasm.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/llhttp/llhttp_simd-wasm.js"(exports2, module2) {
     module2.exports = "AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn9/AGAGf39/f39/AALLAQgDZW52GHdhc21fb25faGVhZGVyc19jb21wbGV0ZQACA2VudhV3YXNtX29uX21lc3NhZ2VfYmVnaW4AAANlbnYLd2FzbV9vbl91cmwAAQNlbnYOd2FzbV9vbl9zdGF0dXMAAQNlbnYUd2FzbV9vbl9oZWFkZXJfZmllbGQAAQNlbnYUd2FzbV9vbl9oZWFkZXJfdmFsdWUAAQNlbnYMd2FzbV9vbl9ib2R5AAEDZW52GHdhc21fb25fbWVzc2FnZV9jb21wbGV0ZQAAA0ZFAwMEAAAFAAAAAAAABQEFAAUFBQAABgAAAAAGBgYGAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAABAQcAAAUFAwABBAUBcAESEgUDAQACBggBfwFBgNQECwfRBSIGbWVtb3J5AgALX2luaXRpYWxpemUACRlfX2luZGlyZWN0X2Z1bmN0aW9uX3RhYmxlAQALbGxodHRwX2luaXQAChhsbGh0dHBfc2hvdWxkX2tlZXBfYWxpdmUAQQxsbGh0dHBfYWxsb2MADAZtYWxsb2MARgtsbGh0dHBfZnJlZQANBGZyZWUASA9sbGh0dHBfZ2V0X3R5cGUADhVsbGh0dHBfZ2V0X2h0dHBfbWFqb3IADxVsbGh0dHBfZ2V0X2h0dHBfbWlub3IAEBFsbGh0dHBfZ2V0X21ldGhvZAARFmxsaHR0cF9nZXRfc3RhdHVzX2NvZGUAEhJsbGh0dHBfZ2V0X3VwZ3JhZGUAEwxsbGh0dHBfcmVzZXQAFA5sbGh0dHBfZXhlY3V0ZQAVFGxsaHR0cF9zZXR0aW5nc19pbml0ABYNbGxodHRwX2ZpbmlzaAAXDGxsaHR0cF9wYXVzZQAYDWxsaHR0cF9yZXN1bWUAGRtsbGh0dHBfcmVzdW1lX2FmdGVyX3VwZ3JhZGUAGhBsbGh0dHBfZ2V0X2Vycm5vABsXbGxodHRwX2dldF9lcnJvcl9yZWFzb24AHBdsbGh0dHBfc2V0X2Vycm9yX3JlYXNvbgAdFGxsaHR0cF9nZXRfZXJyb3JfcG9zAB4RbGxodHRwX2Vycm5vX25hbWUAHxJsbGh0dHBfbWV0aG9kX25hbWUAIBJsbGh0dHBfc3RhdHVzX25hbWUAIRpsbGh0dHBfc2V0X2xlbmllbnRfaGVhZGVycwAiIWxsaHR0cF9zZXRfbGVuaWVudF9jaHVua2VkX2xlbmd0aAAjHWxsaHR0cF9zZXRfbGVuaWVudF9rZWVwX2FsaXZlACQkbGxodHRwX3NldF9sZW5pZW50X3RyYW5zZmVyX2VuY29kaW5nACUYbGxodHRwX21lc3NhZ2VfbmVlZHNfZW9mAD8JFwEAQQELEQECAwQFCwYHNTk3MS8tJyspCrLgAkUCAAsIABCIgICAAAsZACAAEMKAgIAAGiAAIAI2AjggACABOgAoCxwAIAAgAC8BMiAALQAuIAAQwYCAgAAQgICAgAALKgEBf0HAABDGgICAACIBEMKAgIAAGiABQYCIgIAANgI4IAEgADoAKCABCwoAIAAQyICAgAALBwAgAC0AKAsHACAALQAqCwcAIAAtACsLBwAgAC0AKQsHACAALwEyCwcAIAAtAC4LRQEEfyAAKAIYIQEgAC0ALSECIAAtACghAyAAKAI4IQQgABDCgICAABogACAENgI4IAAgAzoAKCAAIAI6AC0gACABNgIYCxEAIAAgASABIAJqEMOAgIAACxAAIABBAEHcABDMgICAABoLZwEBf0EAIQECQCAAKAIMDQACQAJAAkACQCAALQAvDgMBAAMCCyAAKAI4IgFFDQAgASgCLCIBRQ0AIAAgARGAgICAAAAiAQ0DC0EADwsQyoCAgAAACyAAQcOWgIAANgIQQQ4hAQsgAQseAAJAIAAoAgwNACAAQdGbgIAANgIQIABBFTYCDAsLFgACQCAAKAIMQRVHDQAgAEEANgIMCwsWAAJAIAAoAgxBFkcNACAAQQA2AgwLCwcAIAAoAgwLBwAgACgCEAsJACAAIAE2AhALBwAgACgCFAsiAAJAIABBJEkNABDKgICAAAALIABBAnRBoLOAgABqKAIACyIAAkAgAEEuSQ0AEMqAgIAAAAsgAEECdEGwtICAAGooAgAL7gsBAX9B66iAgAAhAQJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAIABBnH9qDvQDY2IAAWFhYWFhYQIDBAVhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhBgcICQoLDA0OD2FhYWFhEGFhYWFhYWFhYWFhEWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYRITFBUWFxgZGhthYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2YTc4OTphYWFhYWFhYTthYWE8YWFhYT0+P2FhYWFhYWFhQGFhQWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYUJDREVGR0hJSktMTU5PUFFSU2FhYWFhYWFhVFVWV1hZWlthXF1hYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFeYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhX2BhC0Hhp4CAAA8LQaShgIAADwtBy6yAgAAPC0H+sYCAAA8LQcCkgIAADwtBq6SAgAAPC0GNqICAAA8LQeKmgIAADwtBgLCAgAAPC0G5r4CAAA8LQdekgIAADwtB75+AgAAPC0Hhn4CAAA8LQfqfgIAADwtB8qCAgAAPC0Gor4CAAA8LQa6ygIAADwtBiLCAgAAPC0Hsp4CAAA8LQYKigIAADwtBjp2AgAAPC0HQroCAAA8LQcqjgIAADwtBxbKAgAAPC0HfnICAAA8LQdKcgIAADwtBxKCAgAAPC0HXoICAAA8LQaKfgIAADwtB7a6AgAAPC0GrsICAAA8LQdSlgIAADwtBzK6AgAAPC0H6roCAAA8LQfyrgIAADwtB0rCAgAAPC0HxnYCAAA8LQbuggIAADwtB96uAgAAPC0GQsYCAAA8LQdexgIAADwtBoq2AgAAPC0HUp4CAAA8LQeCrgIAADwtBn6yAgAAPC0HrsYCAAA8LQdWfgIAADwtByrGAgAAPC0HepYCAAA8LQdSegIAADwtB9JyAgAAPC0GnsoCAAA8LQbGdgIAADwtBoJ2AgAAPC0G5sYCAAA8LQbywgIAADwtBkqGAgAAPC0GzpoCAAA8LQemsgIAADwtBrJ6AgAAPC0HUq4CAAA8LQfemgIAADwtBgKaAgAAPC0GwoYCAAA8LQf6egIAADwtBjaOAgAAPC0GJrYCAAA8LQfeigIAADwtBoLGAgAAPC0Gun4CAAA8LQcalgIAADwtB6J6AgAAPC0GTooCAAA8LQcKvgIAADwtBw52AgAAPC0GLrICAAA8LQeGdgIAADwtBja+AgAAPC0HqoYCAAA8LQbStgIAADwtB0q+AgAAPC0HfsoCAAA8LQdKygIAADwtB8LCAgAAPC0GpooCAAA8LQfmjgIAADwtBmZ6AgAAPC0G1rICAAA8LQZuwgIAADwtBkrKAgAAPC0G2q4CAAA8LQcKigIAADwtB+LKAgAAPC0GepYCAAA8LQdCigIAADwtBup6AgAAPC0GBnoCAAA8LEMqAgIAAAAtB1qGAgAAhAQsgAQsWACAAIAAtAC1B/gFxIAFBAEdyOgAtCxkAIAAgAC0ALUH9AXEgAUEAR0EBdHI6AC0LGQAgACAALQAtQfsBcSABQQBHQQJ0cjoALQsZACAAIAAtAC1B9wFxIAFBAEdBA3RyOgAtCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAgAiBEUNACAAIAQRgICAgAAAIQMLIAMLSQECf0EAIQMCQCAAKAI4IgRFDQAgBCgCBCIERQ0AIAAgASACIAFrIAQRgYCAgAAAIgNBf0cNACAAQcaRgIAANgIQQRghAwsgAwsuAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIwIgRFDQAgACAEEYCAgIAAACEDCyADC0kBAn9BACEDAkAgACgCOCIERQ0AIAQoAggiBEUNACAAIAEgAiABayAEEYGAgIAAACIDQX9HDQAgAEH2ioCAADYCEEEYIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCNCIERQ0AIAAgBBGAgICAAAAhAwsgAwtJAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIMIgRFDQAgACABIAIgAWsgBBGBgICAAAAiA0F/Rw0AIABB7ZqAgAA2AhBBGCEDCyADCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAjgiBEUNACAAIAQRgICAgAAAIQMLIAMLSQECf0EAIQMCQCAAKAI4IgRFDQAgBCgCECIERQ0AIAAgASACIAFrIAQRgYCAgAAAIgNBf0cNACAAQZWQgIAANgIQQRghAwsgAwsuAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAI8IgRFDQAgACAEEYCAgIAAACEDCyADC0kBAn9BACEDAkAgACgCOCIERQ0AIAQoAhQiBEUNACAAIAEgAiABayAEEYGAgIAAACIDQX9HDQAgAEGqm4CAADYCEEEYIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCQCIERQ0AIAAgBBGAgICAAAAhAwsgAwtJAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIYIgRFDQAgACABIAIgAWsgBBGBgICAAAAiA0F/Rw0AIABB7ZOAgAA2AhBBGCEDCyADCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAkQiBEUNACAAIAQRgICAgAAAIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCJCIERQ0AIAAgBBGAgICAAAAhAwsgAwsuAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIsIgRFDQAgACAEEYCAgIAAACEDCyADC0kBAn9BACEDAkAgACgCOCIERQ0AIAQoAigiBEUNACAAIAEgAiABayAEEYGAgIAAACIDQX9HDQAgAEH2iICAADYCEEEYIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCUCIERQ0AIAAgBBGAgICAAAAhAwsgAwtJAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIcIgRFDQAgACABIAIgAWsgBBGBgICAAAAiA0F/Rw0AIABBwpmAgAA2AhBBGCEDCyADCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAkgiBEUNACAAIAQRgICAgAAAIQMLIAMLSQECf0EAIQMCQCAAKAI4IgRFDQAgBCgCICIERQ0AIAAgASACIAFrIAQRgYCAgAAAIgNBf0cNACAAQZSUgIAANgIQQRghAwsgAwsuAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAJMIgRFDQAgACAEEYCAgIAAACEDCyADCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAlQiBEUNACAAIAQRgICAgAAAIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCWCIERQ0AIAAgBBGAgICAAAAhAwsgAwtFAQF/AkACQCAALwEwQRRxQRRHDQBBASEDIAAtAChBAUYNASAALwEyQeUARiEDDAELIAAtAClBBUYhAwsgACADOgAuQQAL/gEBA39BASEDAkAgAC8BMCIEQQhxDQAgACkDIEIAUiEDCwJAAkAgAC0ALkUNAEEBIQUgAC0AKUEFRg0BQQEhBSAEQcAAcUUgA3FBAUcNAQtBACEFIARBwABxDQBBAiEFIARB//8DcSIDQQhxDQACQCADQYAEcUUNAAJAIAAtAChBAUcNACAALQAtQQpxDQBBBQ8LQQQPCwJAIANBIHENAAJAIAAtAChBAUYNACAALwEyQf//A3EiAEGcf2pB5ABJDQAgAEHMAUYNACAAQbACRg0AQQQhBSAEQShxRQ0CIANBiARxQYAERg0CC0EADwtBAEEDIAApAyBQGyEFCyAFC2IBAn9BACEBAkAgAC0AKEEBRg0AIAAvATJB//8DcSICQZx/akHkAEkNACACQcwBRg0AIAJBsAJGDQAgAC8BMCIAQcAAcQ0AQQEhASAAQYgEcUGABEYNACAAQShxRSEBCyABC6cBAQN/AkACQAJAIAAtACpFDQAgAC0AK0UNAEEAIQMgAC8BMCIEQQJxRQ0BDAILQQAhAyAALwEwIgRBAXFFDQELQQEhAyAALQAoQQFGDQAgAC8BMkH//wNxIgVBnH9qQeQASQ0AIAVBzAFGDQAgBUGwAkYNACAEQcAAcQ0AQQAhAyAEQYgEcUGABEYNACAEQShxQQBHIQMLIABBADsBMCAAQQA6AC8gAwuZAQECfwJAAkACQCAALQAqRQ0AIAAtACtFDQBBACEBIAAvATAiAkECcUUNAQwCC0EAIQEgAC8BMCICQQFxRQ0BC0EBIQEgAC0AKEEBRg0AIAAvATJB//8DcSIAQZx/akHkAEkNACAAQcwBRg0AIABBsAJGDQAgAkHAAHENAEEAIQEgAkGIBHFBgARGDQAgAkEocUEARyEBCyABC0kBAXsgAEEQav0MAAAAAAAAAAAAAAAAAAAAACIB/QsDACAAIAH9CwMAIABBMGogAf0LAwAgAEEgaiAB/QsDACAAQd0BNgIcQQALewEBfwJAIAAoAgwiAw0AAkAgACgCBEUNACAAIAE2AgQLAkAgACABIAIQxICAgAAiAw0AIAAoAgwPCyAAIAM2AhxBACEDIAAoAgQiAUUNACAAIAEgAiAAKAIIEYGAgIAAACIBRQ0AIAAgAjYCFCAAIAE2AgwgASEDCyADC+TzAQMOfwN+BH8jgICAgABBEGsiAySAgICAACABIQQgASEFIAEhBiABIQcgASEIIAEhCSABIQogASELIAEhDCABIQ0gASEOIAEhDwJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQCAAKAIcIhBBf2oO3QHaAQHZAQIDBAUGBwgJCgsMDQ7YAQ8Q1wEREtYBExQVFhcYGRob4AHfARwdHtUBHyAhIiMkJdQBJicoKSorLNMB0gEtLtEB0AEvMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUbbAUdISUrPAc4BS80BTMwBTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gAGBAYIBgwGEAYUBhgGHAYgBiQGKAYsBjAGNAY4BjwGQAZEB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QAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAIBAOxwEAAQID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YWNrIGVycm9yAGBvbl9jaHVua19leHRlbnNpb25fdmFsdWVgIGNhbGxiYWNrIGVycm9yAGBvbl9zdGF0dXNfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl92ZXJzaW9uX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fdXJsX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl9oZWFkZXJfdmFsdWVfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl9tZXNzYWdlX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fbWV0aG9kX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25faGVhZGVyX2ZpZWxkX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfZXh0ZW5zaW9uX25hbWVgIGNhbGxiYWNrIGVycm9yAFVuZXhwZWN0ZWQgY2hhciBpbiB1cmwgc2VydmVyAEludmFsaWQgaGVhZGVyIHZhbHVlIGNoYXIASW52YWxpZCBoZWFkZXIgZmllbGQgY2hhcgBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX3ZlcnNpb24ASW52YWxpZCBtaW5vciB2ZXJzaW9uAEludmFsaWQgbWFqb3IgdmVyc2lvbgBFeHBlY3RlZCBzcGFjZSBhZnRlciB2ZXJzaW9uAEV4cGVjdGVkIENSTEYgYWZ0ZXIgdmVyc2lvbgBJbnZhbGlkIEhUVFAgdmVyc2lvbgBJbnZhbGlkIGhlYWRlciB0b2tlbgBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX3VybABJbnZhbGlkIGNoYXJhY3RlcnMgaW4gdXJsAFVuZXhwZWN0ZWQgc3RhcnQgY2hhciBpbiB1cmwARG91YmxlIEAgaW4gdXJsAEVtcHR5IENvbnRlbnQtTGVuZ3RoAEludmFsaWQgY2hhcmFjdGVyIGluIENvbnRlbnQtTGVuZ3RoAER1cGxpY2F0ZSBDb250ZW50LUxlbmd0aABJbnZhbGlkIGNoYXIgaW4gdXJsIHBhdGgAQ29udGVudC1MZW5ndGggY2FuJ3QgYmUgcHJlc2VudCB3aXRoIFRyYW5zZmVyLUVuY29kaW5nAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIHNpemUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9oZWFkZXJfdmFsdWUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9jaHVua19leHRlbnNpb25fdmFsdWUASW52YWxpZCBjaGFyYWN0ZXIgaW4gY2h1bmsgZXh0ZW5zaW9ucyB2YWx1ZQBNaXNzaW5nIGV4cGVjdGVkIExGIGFmdGVyIGhlYWRlciB2YWx1ZQBJbnZhbGlkIGBUcmFuc2Zlci1FbmNvZGluZ2AgaGVhZGVyIHZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgcXVvdGUgdmFsdWUASW52YWxpZCBjaGFyYWN0ZXIgaW4gY2h1bmsgZXh0ZW5zaW9ucyBxdW90ZWQgdmFsdWUAUGF1c2VkIGJ5IG9uX2hlYWRlcnNfY29tcGxldGUASW52YWxpZCBFT0Ygc3RhdGUAb25fcmVzZXQgcGF1c2UAb25fY2h1bmtfaGVhZGVyIHBhdXNlAG9uX21lc3NhZ2VfYmVnaW4gcGF1c2UAb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlIHBhdXNlAG9uX3N0YXR1c19jb21wbGV0ZSBwYXVzZQBvbl92ZXJzaW9uX2NvbXBsZXRlIHBhdXNlAG9uX3VybF9jb21wbGV0ZSBwYXVzZQBvbl9jaHVua19jb21wbGV0ZSBwYXVzZQBvbl9oZWFkZXJfdmFsdWVfY29tcGxldGUgcGF1c2UAb25fbWVzc2FnZV9jb21wbGV0ZSBwYXVzZQBvbl9tZXRob2RfY29tcGxldGUgcGF1c2UAb25faGVhZGVyX2ZpZWxkX2NvbXBsZXRlIHBhdXNlAG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lIHBhdXNlAFVuZXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgc3RhcnQgbGluZQBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgbmFtZQBQYXVzZSBvbiBDT05ORUNUL1VwZ3JhZGUAUGF1c2Ugb24gUFJJL1VwZ3JhZGUARXhwZWN0ZWQgSFRUUC8yIENvbm5lY3Rpb24gUHJlZmFjZQBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX21ldGhvZABFeHBlY3RlZCBzcGFjZSBhZnRlciBtZXRob2QAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9oZWFkZXJfZmllbGQAUGF1c2VkAEludmFsaWQgd29yZCBlbmNvdW50ZXJlZABJbnZhbGlkIG1ldGhvZCBlbmNvdW50ZXJlZABVbmV4cGVjdGVkIGNoYXIgaW4gdXJsIHNjaGVtYQBSZXF1ZXN0IGhhcyBpbnZhbGlkIGBUcmFuc2Zlci1FbmNvZGluZ2AAU1dJVENIX1BST1hZAFVTRV9QUk9YWQBNS0FDVElWSVRZAFVOUFJPQ0VTU0FCTEVfRU5USVRZAENPUFkATU9WRURfUEVSTUFORU5UTFkAVE9PX0VBUkxZAE5PVElGWQBGQUlMRURfREVQRU5ERU5DWQBCQURfR0FURVdBWQBQTEFZAFBVVABDSEVDS09VVABHQVRFV0FZX1RJTUVPVVQAUkVRVUVTVF9USU1FT1VUAE5FVFdPUktfQ09OTkVDVF9USU1FT1VUAENPTk5FQ1RJT05fVElNRU9VVABMT0dJTl9USU1FT1VUAE5FVFdPUktfUkVBRF9USU1FT1VUAFBPU1QATUlTRElSRUNURURfUkVRVUVTVABDTElFTlRfQ0xPU0VEX1JFUVVFU1QAQ0xJRU5UX0NMT1NFRF9MT0FEX0JBTEFOQ0VEX1JFUVVFU1QAQkFEX1JFUVVFU1QASFRUUF9SRVFVRVNUX1NFTlRfVE9fSFRUUFNfUE9SVABSRVBPUlQASU1fQV9URUFQT1QAUkVTRVRfQ09OVEVOVABOT19DT05URU5UAFBBUlRJQUxfQ09OVEVOVABIUEVfSU5WQUxJRF9DT05TVEFOVABIUEVfQ0JfUkVTRVQAR0VUAEhQRV9TVFJJQ1QAQ09ORkxJQ1QAVEVNUE9SQVJZX1JFRElSRUNUAFBFUk1BTkVOVF9SRURJUkVDVABDT05ORUNUAE1VTFRJX1NUQVRVUwBIUEVfSU5WQUxJRF9TVEFUVVMAVE9PX01BTllfUkVRVUVTVFMARUFSTFlfSElOVFMAVU5BVkFJTEFCTEVfRk9SX0xFR0FMX1JFQVNPTlMAT1BUSU9OUwBTV0lUQ0hJTkdfUFJPVE9DT0xTAFZBUklBTlRfQUxTT19ORUdPVElBVEVTAE1VTFRJUExFX0NIT0lDRVMASU5URVJOQUxfU0VSVkVSX0VSUk9SAFdFQl9TRVJWRVJfVU5LTk9XTl9FUlJPUgBSQUlMR1VOX0VSUk9SAElERU5USVRZX1BST1ZJREVSX0FVVEhFTlRJQ0FUSU9OX0VSUk9SAFNTTF9DRVJUSUZJQ0FURV9FUlJPUgBJTlZBTElEX1hfRk9SV0FSREVEX0ZPUgBTRVRfUEFSQU1FVEVSAEdFVF9QQVJBTUVURVIASFBFX1VTRVIAU0VFX09USEVSAEhQRV9DQl9DSFVOS19IRUFERVIATUtDQUxFTkRBUgBTRVRVUABXRUJfU0VSVkVSX0lTX0RPV04AVEVBUkRPV04ASFBFX0NMT1NFRF9DT05ORUNUSU9OAEhFVVJJU1RJQ19FWFBJUkFUSU9OAERJU0NPTk5FQ1RFRF9PUEVSQVRJT04ATk9OX0FVVEhPUklUQVRJVkVfSU5GT1JNQVRJT04ASFBFX0lOVkFMSURfVkVSU0lPTgBIUEVfQ0JfTUVTU0FHRV9CRUdJTgBTSVRFX0lTX0ZST1pFTgBIUEVfSU5WQUxJRF9IRUFERVJfVE9LRU4ASU5WQUxJRF9UT0tFTgBGT1JCSURERU4ARU5IQU5DRV9ZT1VSX0NBTE0ASFBFX0lOVkFMSURfVVJMAEJMT0NLRURfQllfUEFSRU5UQUxfQ09OVFJPTABNS0NPTABBQ0wASFBFX0lOVEVSTkFMAFJFUVVFU1RfSEVBREVSX0ZJRUxEU19UT09fTEFSR0VfVU5PRkZJQ0lBTABIUEVfT0sAVU5MSU5LAFVOTE9DSwBQUkkAUkVUUllfV0lUSABIUEVfSU5WQUxJRF9DT05URU5UX0xFTkdUSABIUEVfVU5FWFBFQ1RFRF9DT05URU5UX0xFTkdUSABGTFVTSABQUk9QUEFUQ0gATS1TRUFSQ0gAVVJJX1RPT19MT05HAFBST0NFU1NJTkcATUlTQ0VMTEFORU9VU19QRVJTSVNURU5UX1dBUk5JTkcATUlTQ0VMTEFORU9VU19XQVJOSU5HAEhQRV9JTlZBTElEX1RSQU5TRkVSX0VOQ09ESU5HAEV4cGVjdGVkIENSTEYASFBFX0lOVkFMSURfQ0hVTktfU0laRQBNT1ZFAENPTlRJTlVFAEhQRV9DQl9TVEFUVVNfQ09NUExFVEUASFBFX0NCX0hFQURFUlNfQ09NUExFVEUASFBFX0NCX1ZFUlNJT05fQ09NUExFVEUASFBFX0NCX1VSTF9DT01QTEVURQBIUEVfQ0JfQ0hVTktfQ09NUExFVEUASFBFX0NCX0hFQURFUl9WQUxVRV9DT01QTEVURQBIUEVfQ0JfQ0hVTktfRVhURU5TSU9OX1ZBTFVFX0NPTVBMRVRFAEhQRV9DQl9DSFVOS19FWFRFTlNJT05fTkFNRV9DT01QTEVURQBIUEVfQ0JfTUVTU0FHRV9DT01QTEVURQBIUEVfQ0JfTUVUSE9EX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJfRklFTERfQ09NUExFVEUAREVMRVRFAEhQRV9JTlZBTElEX0VPRl9TVEFURQBJTlZBTElEX1NTTF9DRVJUSUZJQ0FURQBQQVVTRQBOT19SRVNQT05TRQBVTlNVUFBPUlRFRF9NRURJQV9UWVBFAEdPTkUATk9UX0FDQ0VQVEFCTEUAU0VSVklDRV9VTkFWQUlMQUJMRQBSQU5HRV9OT1RfU0FUSVNGSUFCTEUAT1JJR0lOX0lTX1VOUkVBQ0hBQkxFAFJFU1BPTlNFX0lTX1NUQUxFAFBVUkdFAE1FUkdFAFJFUVVFU1RfSEVBREVSX0ZJRUxEU19UT09fTEFSR0UAUkVRVUVTVF9IRUFERVJfVE9PX0xBUkdFAFBBWUxPQURfVE9PX0xBUkdFAElOU1VGRklDSUVOVF9TVE9SQUdFAEhQRV9QQVVTRURfVVBHUkFERQBIUEVfUEFVU0VEX0gyX1VQR1JBREUAU09VUkNFAEFOTk9VTkNFAFRSQUNFAEhQRV9VTkVYUEVDVEVEX1NQQUNFAERFU0NSSUJFAFVOU1VCU0NSSUJFAFJFQ09SRABIUEVfSU5WQUxJRF9NRVRIT0QATk9UX0ZPVU5EAFBST1BGSU5EAFVOQklORABSRUJJTkQAVU5BVVRIT1JJWkVEAE1FVEhPRF9OT1RfQUxMT1dFRABIVFRQX1ZFUlNJT05fTk9UX1NVUFBPUlRFRABBTFJFQURZX1JFUE9SVEVEAEFDQ0VQVEVEAE5PVF9JTVBMRU1FTlRFRABMT09QX0RFVEVDVEVEAEhQRV9DUl9FWFBFQ1RFRABIUEVfTEZfRVhQRUNURUQAQ1JFQVRFRABJTV9VU0VEAEhQRV9QQVVTRUQAVElNRU9VVF9PQ0NVUkVEAFBBWU1FTlRfUkVRVUlSRUQAUFJFQ09ORElUSU9OX1JFUVVJUkVEAFBST1hZX0FVVEhFTlRJQ0FUSU9OX1JFUVVJUkVEAE5FVFdPUktfQVVUSEVOVElDQVRJT05fUkVRVUlSRUQATEVOR1RIX1JFUVVJUkVEAFNTTF9DRVJUSUZJQ0FURV9SRVFVSVJFRABVUEdSQURFX1JFUVVJUkVEAFBBR0VfRVhQSVJFRABQUkVDT05ESVRJT05fRkFJTEVEAEVYUEVDVEFUSU9OX0ZBSUxFRABSRVZBTElEQVRJT05fRkFJTEVEAFNTTF9IQU5EU0hBS0VfRkFJTEVEAExPQ0tFRABUUkFOU0ZPUk1BVElPTl9BUFBMSUVEAE5PVF9NT0RJRklFRABOT1RfRVhURU5ERUQAQkFORFdJRFRIX0xJTUlUX0VYQ0VFREVEAFNJVEVfSVNfT1ZFUkxPQURFRABIRUFEAEV4cGVjdGVkIEhUVFAvAABeEwAAJhMAADAQAADwFwAAnRMAABUSAAA5FwAA8BIAAAoQAAB1EgAArRIAAIITAABPFAAAfxAAAKAVAAAjFAAAiRIAAIsUAABNFQAA1BEAAM8UAAAQGAAAyRYAANwWAADBEQAA4BcAALsUAAB0FAAAfBUAAOUUAAAIFwAAHxAAAGUVAACjFAAAKBUAAAIVAACZFQAALBAAAIsZAABPDwAA1A4AAGoQAADOEAAAAhcAAIkOAABuEwAAHBMAAGYUAABWFwAAwRMAAM0TAABsEwAAaBcAAGYXAABfFwAAIhMAAM4PAABpDgAA2A4AAGMWAADLEwAAqg4AACgXAAAmFwAAxRMAAF0WAADoEQAAZxMAAGUTAADyFgAAcxMAAB0XAAD5FgAA8xEAAM8OAADOFQAADBIAALMRAAClEQAAYRAAADIXAAC7EwAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAgMCAgICAgAAAgIAAgIAAgICAgICAgICAgAEAAAAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAAIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAIAAgICAgIAAAICAAICAAICAgICAgICAgIAAwAEAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgIAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABsb3NlZWVwLWFsaXZlAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQFjaHVua2VkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQABAQEBAQAAAQEAAQEAAQEBAQEBAQEBAQAAAAAAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGVjdGlvbmVudC1sZW5ndGhvbnJveHktY29ubmVjdGlvbgAAAAAAAAAAAAAAAAAAAHJhbnNmZXItZW5jb2RpbmdwZ3JhZGUNCg0KDQpTTQ0KDQpUVFAvQ0UvVFNQLwAAAAAAAAAAAAAAAAECAAEDAAAAAAAAAAAAAAAAAAAAAAAABAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAABAgABAwAAAAAAAAAAAAAAAAAAAAAAAAQBAQUBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAABAAACAAAAAAAAAAAAAAAAAAAAAAAAAwQAAAQEBAQEBAQEBAQEBQQEBAQEBAQEBAQEBAAEAAYHBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQABAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAAACAAAAAAAAAAAAAAAAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE5PVU5DRUVDS09VVE5FQ1RFVEVDUklCRUxVU0hFVEVBRFNFQVJDSFJHRUNUSVZJVFlMRU5EQVJWRU9USUZZUFRJT05TQ0hTRUFZU1RBVENIR0VPUkRJUkVDVE9SVFJDSFBBUkFNRVRFUlVSQ0VCU0NSSUJFQVJET1dOQUNFSU5ETktDS1VCU0NSSUJFSFRUUC9BRFRQLw==";
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/client.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/client.js
 var require_client = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/client.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/client.js"(exports2, module2) {
     "use strict";
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var net = require("net");
     var http = require("http");
     var { pipeline: pipeline3 } = require("stream");
@@ -7198,7 +7204,7 @@ var require_client = __commonJS({
       }
     };
     function onHttp2SessionError(err) {
-      assert25(err.code !== "ERR_TLS_CERT_ALTNAME_INVALID");
+      assert24(err.code !== "ERR_TLS_CERT_ALTNAME_INVALID");
       this[kSocket][kError] = err;
       onError(this[kClient], err);
     }
@@ -7219,7 +7225,7 @@ var require_client = __commonJS({
       client[kSocket] = null;
       client[kHTTP2Session] = null;
       if (client.destroyed) {
-        assert25(this[kPending] === 0);
+        assert24(this[kPending] === 0);
         const requests = client[kQueue].splice(client[kRunningIdx]);
         for (let i = 0; i < requests.length; i++) {
           const request = requests[i];
@@ -7231,7 +7237,7 @@ var require_client = __commonJS({
         errorRequest(client, request, err);
       }
       client[kPendingIdx] = client[kRunningIdx];
-      assert25(client[kRunning] === 0);
+      assert24(client[kRunning] === 0);
       client.emit(
         "disconnect",
         client[kUrl],
@@ -7258,35 +7264,35 @@ var require_client = __commonJS({
             return 0;
           },
           wasm_on_status: (p, at, len) => {
-            assert25.strictEqual(currentParser.ptr, p);
+            assert24.strictEqual(currentParser.ptr, p);
             const start = at - currentBufferPtr + currentBufferRef.byteOffset;
             return currentParser.onStatus(new FastBuffer(currentBufferRef.buffer, start, len)) || 0;
           },
           wasm_on_message_begin: (p) => {
-            assert25.strictEqual(currentParser.ptr, p);
+            assert24.strictEqual(currentParser.ptr, p);
             return currentParser.onMessageBegin() || 0;
           },
           wasm_on_header_field: (p, at, len) => {
-            assert25.strictEqual(currentParser.ptr, p);
+            assert24.strictEqual(currentParser.ptr, p);
             const start = at - currentBufferPtr + currentBufferRef.byteOffset;
             return currentParser.onHeaderField(new FastBuffer(currentBufferRef.buffer, start, len)) || 0;
           },
           wasm_on_header_value: (p, at, len) => {
-            assert25.strictEqual(currentParser.ptr, p);
+            assert24.strictEqual(currentParser.ptr, p);
             const start = at - currentBufferPtr + currentBufferRef.byteOffset;
             return currentParser.onHeaderValue(new FastBuffer(currentBufferRef.buffer, start, len)) || 0;
           },
           wasm_on_headers_complete: (p, statusCode, upgrade, shouldKeepAlive) => {
-            assert25.strictEqual(currentParser.ptr, p);
+            assert24.strictEqual(currentParser.ptr, p);
             return currentParser.onHeadersComplete(statusCode, Boolean(upgrade), Boolean(shouldKeepAlive)) || 0;
           },
           wasm_on_body: (p, at, len) => {
-            assert25.strictEqual(currentParser.ptr, p);
+            assert24.strictEqual(currentParser.ptr, p);
             const start = at - currentBufferPtr + currentBufferRef.byteOffset;
             return currentParser.onBody(new FastBuffer(currentBufferRef.buffer, start, len)) || 0;
           },
           wasm_on_message_complete: (p) => {
-            assert25.strictEqual(currentParser.ptr, p);
+            assert24.strictEqual(currentParser.ptr, p);
             return currentParser.onMessageComplete() || 0;
           }
           /* eslint-enable camelcase */
@@ -7305,7 +7311,7 @@ var require_client = __commonJS({
     var TIMEOUT_IDLE = 3;
     var Parser = class {
       constructor(client, socket, { exports: exports3 }) {
-        assert25(Number.isFinite(client[kMaxHeadersSize]) && client[kMaxHeadersSize] > 0);
+        assert24(Number.isFinite(client[kMaxHeadersSize]) && client[kMaxHeadersSize] > 0);
         this.llhttp = exports3;
         this.ptr = this.llhttp.llhttp_alloc(constants.TYPE.RESPONSE);
         this.client = client;
@@ -7351,10 +7357,10 @@ var require_client = __commonJS({
         if (this.socket.destroyed || !this.paused) {
           return;
         }
-        assert25(this.ptr != null);
-        assert25(currentParser == null);
+        assert24(this.ptr != null);
+        assert24(currentParser == null);
         this.llhttp.llhttp_resume(this.ptr);
-        assert25(this.timeoutType === TIMEOUT_BODY);
+        assert24(this.timeoutType === TIMEOUT_BODY);
         if (this.timeout) {
           if (this.timeout.refresh) {
             this.timeout.refresh();
@@ -7374,9 +7380,9 @@ var require_client = __commonJS({
         }
       }
       execute(data) {
-        assert25(this.ptr != null);
-        assert25(currentParser == null);
-        assert25(!this.paused);
+        assert24(this.ptr != null);
+        assert24(currentParser == null);
+        assert24(!this.paused);
         const { socket, llhttp } = this;
         if (data.length > currentBufferSize) {
           if (currentBufferPtr) {
@@ -7418,8 +7424,8 @@ var require_client = __commonJS({
         }
       }
       destroy() {
-        assert25(this.ptr != null);
-        assert25(currentParser == null);
+        assert24(this.ptr != null);
+        assert24(currentParser == null);
         this.llhttp.llhttp_free(this.ptr);
         this.ptr = null;
         timers.clearTimeout(this.timeout);
@@ -7476,17 +7482,17 @@ var require_client = __commonJS({
       }
       onUpgrade(head) {
         const { upgrade, client, socket, headers, statusCode } = this;
-        assert25(upgrade);
+        assert24(upgrade);
         const request = client[kQueue][client[kRunningIdx]];
-        assert25(request);
-        assert25(!socket.destroyed);
-        assert25(socket === client[kSocket]);
-        assert25(!this.paused);
-        assert25(request.upgrade || request.method === "CONNECT");
+        assert24(request);
+        assert24(!socket.destroyed);
+        assert24(socket === client[kSocket]);
+        assert24(!this.paused);
+        assert24(request.upgrade || request.method === "CONNECT");
         this.statusCode = null;
         this.statusText = "";
         this.shouldKeepAlive = null;
-        assert25(this.headers.length % 2 === 0);
+        assert24(this.headers.length % 2 === 0);
         this.headers = [];
         this.headersSize = 0;
         socket.unshift(head);
@@ -7514,8 +7520,8 @@ var require_client = __commonJS({
         if (!request) {
           return -1;
         }
-        assert25(!this.upgrade);
-        assert25(this.statusCode < 200);
+        assert24(!this.upgrade);
+        assert24(this.statusCode < 200);
         if (statusCode === 100) {
           util.destroy(socket, new SocketError("bad response", util.getSocketInfo(socket)));
           return -1;
@@ -7524,7 +7530,7 @@ var require_client = __commonJS({
           util.destroy(socket, new SocketError("bad upgrade", util.getSocketInfo(socket)));
           return -1;
         }
-        assert25.strictEqual(this.timeoutType, TIMEOUT_HEADERS);
+        assert24.strictEqual(this.timeoutType, TIMEOUT_HEADERS);
         this.statusCode = statusCode;
         this.shouldKeepAlive = shouldKeepAlive || // Override llhttp value which does not allow keepAlive for HEAD.
         request.method === "HEAD" && !socket[kReset] && this.connection.toLowerCase() === "keep-alive";
@@ -7537,16 +7543,16 @@ var require_client = __commonJS({
           }
         }
         if (request.method === "CONNECT") {
-          assert25(client[kRunning] === 1);
+          assert24(client[kRunning] === 1);
           this.upgrade = true;
           return 2;
         }
         if (upgrade) {
-          assert25(client[kRunning] === 1);
+          assert24(client[kRunning] === 1);
           this.upgrade = true;
           return 2;
         }
-        assert25(this.headers.length % 2 === 0);
+        assert24(this.headers.length % 2 === 0);
         this.headers = [];
         this.headersSize = 0;
         if (this.shouldKeepAlive && client[kPipelining]) {
@@ -7589,14 +7595,14 @@ var require_client = __commonJS({
           return -1;
         }
         const request = client[kQueue][client[kRunningIdx]];
-        assert25(request);
-        assert25.strictEqual(this.timeoutType, TIMEOUT_BODY);
+        assert24(request);
+        assert24.strictEqual(this.timeoutType, TIMEOUT_BODY);
         if (this.timeout) {
           if (this.timeout.refresh) {
             this.timeout.refresh();
           }
         }
-        assert25(statusCode >= 200);
+        assert24(statusCode >= 200);
         if (maxResponseSize > -1 && this.bytesRead + buf.length > maxResponseSize) {
           util.destroy(socket, new ResponseExceededMaxSizeError());
           return -1;
@@ -7615,15 +7621,15 @@ var require_client = __commonJS({
           return;
         }
         const request = client[kQueue][client[kRunningIdx]];
-        assert25(request);
-        assert25(statusCode >= 100);
+        assert24(request);
+        assert24(statusCode >= 100);
         this.statusCode = null;
         this.statusText = "";
         this.bytesRead = 0;
         this.contentLength = "";
         this.keepAlive = "";
         this.connection = "";
-        assert25(this.headers.length % 2 === 0);
+        assert24(this.headers.length % 2 === 0);
         this.headers = [];
         this.headersSize = 0;
         if (statusCode < 200) {
@@ -7636,7 +7642,7 @@ var require_client = __commonJS({
         request.onComplete(headers);
         client[kQueue][client[kRunningIdx]++] = null;
         if (socket[kWriting]) {
-          assert25.strictEqual(client[kRunning], 0);
+          assert24.strictEqual(client[kRunning], 0);
           util.destroy(socket, new InformationalError("reset"));
           return constants.ERROR.PAUSED;
         } else if (!shouldKeepAlive) {
@@ -7656,7 +7662,7 @@ var require_client = __commonJS({
       const { socket, timeoutType, client } = parser2;
       if (timeoutType === TIMEOUT_HEADERS) {
         if (!socket[kWriting] || socket.writableNeedDrain || client[kRunning] > 1) {
-          assert25(!parser2.paused, "cannot be paused while waiting for headers");
+          assert24(!parser2.paused, "cannot be paused while waiting for headers");
           util.destroy(socket, new HeadersTimeoutError());
         }
       } else if (timeoutType === TIMEOUT_BODY) {
@@ -7664,7 +7670,7 @@ var require_client = __commonJS({
           util.destroy(socket, new BodyTimeoutError());
         }
       } else if (timeoutType === TIMEOUT_IDLE) {
-        assert25(client[kRunning] === 0 && client[kKeepAliveTimeoutValue]);
+        assert24(client[kRunning] === 0 && client[kKeepAliveTimeoutValue]);
         util.destroy(socket, new InformationalError("socket idle timeout"));
       }
     }
@@ -7676,7 +7682,7 @@ var require_client = __commonJS({
     }
     function onSocketError(err) {
       const { [kClient]: client, [kParser]: parser2 } = this;
-      assert25(err.code !== "ERR_TLS_CERT_ALTNAME_INVALID");
+      assert24(err.code !== "ERR_TLS_CERT_ALTNAME_INVALID");
       if (client[kHTTPConnVersion] !== "h2") {
         if (err.code === "ECONNRESET" && parser2.statusCode && !parser2.shouldKeepAlive) {
           parser2.onMessageComplete();
@@ -7688,13 +7694,13 @@ var require_client = __commonJS({
     }
     function onError(client, err) {
       if (client[kRunning] === 0 && err.code !== "UND_ERR_INFO" && err.code !== "UND_ERR_SOCKET") {
-        assert25(client[kPendingIdx] === client[kRunningIdx]);
+        assert24(client[kPendingIdx] === client[kRunningIdx]);
         const requests = client[kQueue].splice(client[kRunningIdx]);
         for (let i = 0; i < requests.length; i++) {
           const request = requests[i];
           errorRequest(client, request, err);
         }
-        assert25(client[kSize] === 0);
+        assert24(client[kSize] === 0);
       }
     }
     function onSocketEnd() {
@@ -7719,7 +7725,7 @@ var require_client = __commonJS({
       const err = this[kError] || new SocketError("closed", util.getSocketInfo(this));
       client[kSocket] = null;
       if (client.destroyed) {
-        assert25(client[kPending] === 0);
+        assert24(client[kPending] === 0);
         const requests = client[kQueue].splice(client[kRunningIdx]);
         for (let i = 0; i < requests.length; i++) {
           const request = requests[i];
@@ -7731,19 +7737,19 @@ var require_client = __commonJS({
         errorRequest(client, request, err);
       }
       client[kPendingIdx] = client[kRunningIdx];
-      assert25(client[kRunning] === 0);
+      assert24(client[kRunning] === 0);
       client.emit("disconnect", client[kUrl], [client], err);
       resume(client);
     }
     async function connect(client) {
-      assert25(!client[kConnecting]);
-      assert25(!client[kSocket]);
+      assert24(!client[kConnecting]);
+      assert24(!client[kSocket]);
       let { host, hostname, protocol, port } = client[kUrl];
       if (hostname[0] === "[") {
         const idx2 = hostname.indexOf("]");
-        assert25(idx2 !== -1);
+        assert24(idx2 !== -1);
         const ip = hostname.substring(1, idx2);
-        assert25(net.isIP(ip));
+        assert24(net.isIP(ip));
         hostname = ip;
       }
       client[kConnecting] = true;
@@ -7783,7 +7789,7 @@ var require_client = __commonJS({
           return;
         }
         client[kConnecting] = false;
-        assert25(socket);
+        assert24(socket);
         const isH2 = socket.alpnProtocol === "h2";
         if (isH2) {
           if (!h2ExperimentalWarned) {
@@ -7859,7 +7865,7 @@ var require_client = __commonJS({
           });
         }
         if (err.code === "ERR_TLS_CERT_ALTNAME_INVALID") {
-          assert25(client[kRunning] === 0);
+          assert24(client[kRunning] === 0);
           while (client[kPending] > 0 && client[kQueue][client[kPendingIdx]].servername === client[kServerName]) {
             const request = client[kQueue][client[kPendingIdx]++];
             errorRequest(client, request, err);
@@ -7891,7 +7897,7 @@ var require_client = __commonJS({
     function _resume(client, sync) {
       while (true) {
         if (client.destroyed) {
-          assert25(client[kPending] === 0);
+          assert24(client[kPending] === 0);
           return;
         }
         if (client[kClosedResolve] && !client[kSize]) {
@@ -8063,13 +8069,13 @@ upgrade: ${upgrade}\r
 \r
 `, "latin1");
         } else {
-          assert25(contentLength === null, "no body must not have content length");
+          assert24(contentLength === null, "no body must not have content length");
           socket.write(`${header}\r
 `, "latin1");
         }
         request.onRequestSent();
       } else if (util.isBuffer(body)) {
-        assert25(contentLength === body.byteLength, "buffer body must have content length");
+        assert24(contentLength === body.byteLength, "buffer body must have content length");
         socket.cork();
         socket.write(`${header}content-length: ${contentLength}\r
 \r
@@ -8092,7 +8098,7 @@ upgrade: ${upgrade}\r
       } else if (util.isIterable(body)) {
         writeIterable({ body, client, request, socket, contentLength, header, expectsPayload });
       } else {
-        assert25(false);
+        assert24(false);
       }
       return true;
     }
@@ -8161,7 +8167,7 @@ upgrade: ${upgrade}\r
         process.emitWarning(new RequestContentLengthMismatchError());
       }
       if (contentLength != null) {
-        assert25(body, "no body must not have content length");
+        assert24(body, "no body must not have content length");
         headers[HTTP2_HEADER_CONTENT_LENGTH] = `${contentLength}`;
       }
       session.ref();
@@ -8217,7 +8223,7 @@ upgrade: ${upgrade}\r
         if (!body) {
           request.onRequestSent();
         } else if (util.isBuffer(body)) {
-          assert25(contentLength === body.byteLength, "buffer body must have content length");
+          assert24(contentLength === body.byteLength, "buffer body must have content length");
           stream.cork();
           stream.write(body);
           stream.uncork();
@@ -8271,12 +8277,12 @@ upgrade: ${upgrade}\r
             socket: client[kSocket]
           });
         } else {
-          assert25(false);
+          assert24(false);
         }
       }
     }
     function writeStream2({ h2stream, body, client, request, socket, contentLength, header, expectsPayload }) {
-      assert25(contentLength !== 0 || client[kRunning] === 0, "stream body cannot be pipelined");
+      assert24(contentLength !== 0 || client[kRunning] === 0, "stream body cannot be pipelined");
       if (client[kHTTPConnVersion] === "h2") {
         let onPipeData = function(chunk) {
           request.onBodySent(chunk);
@@ -8334,7 +8340,7 @@ upgrade: ${upgrade}\r
           return;
         }
         finished = true;
-        assert25(socket.destroyed || socket[kWriting] && client[kRunning] <= 1);
+        assert24(socket.destroyed || socket[kWriting] && client[kRunning] <= 1);
         socket.off("drain", onDrain).off("error", onFinished);
         body.removeListener("data", onData).removeListener("end", onFinished).removeListener("error", onFinished).removeListener("close", onAbort);
         if (!err) {
@@ -8358,7 +8364,7 @@ upgrade: ${upgrade}\r
       socket.on("drain", onDrain).on("error", onFinished);
     }
     async function writeBlob({ h2stream, body, client, request, socket, contentLength, header, expectsPayload }) {
-      assert25(contentLength === body.size, "blob body must have content length");
+      assert24(contentLength === body.size, "blob body must have content length");
       const isH2 = client[kHTTPConnVersion] === "h2";
       try {
         if (contentLength != null && contentLength !== body.size) {
@@ -8388,7 +8394,7 @@ upgrade: ${upgrade}\r
       }
     }
     async function writeIterable({ h2stream, body, client, request, socket, contentLength, header, expectsPayload }) {
-      assert25(contentLength !== 0 || client[kRunning] === 0, "iterator body cannot be pipelined");
+      assert24(contentLength !== 0 || client[kRunning] === 0, "iterator body cannot be pipelined");
       let callback = null;
       function onDrain() {
         if (callback) {
@@ -8398,7 +8404,7 @@ upgrade: ${upgrade}\r
         }
       }
       const waitForDrain = () => new Promise((resolve10, reject) => {
-        assert25(callback === null);
+        assert24(callback === null);
         if (socket[kError]) {
           reject(socket[kError]);
         } else {
@@ -8546,7 +8552,7 @@ ${len.toString(16)}\r
         const { socket, client } = this;
         socket[kWriting] = false;
         if (err) {
-          assert25(client[kRunning] <= 1, "pipeline should only contain this request");
+          assert24(client[kRunning] <= 1, "pipeline should only contain this request");
           util.destroy(socket, err);
         }
       }
@@ -8554,7 +8560,7 @@ ${len.toString(16)}\r
     function errorRequest(client, request, err) {
       try {
         request.onError(err);
-        assert25(request.aborted);
+        assert24(request.aborted);
       } catch (err2) {
         client.emit("error", err2);
       }
@@ -8563,9 +8569,9 @@ ${len.toString(16)}\r
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/node/fixed-queue.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/node/fixed-queue.js
 var require_fixed_queue = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/node/fixed-queue.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/node/fixed-queue.js"(exports2, module2) {
     "use strict";
     var kSize = 2048;
     var kMask = kSize - 1;
@@ -8620,9 +8626,9 @@ var require_fixed_queue = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/pool-stats.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/pool-stats.js
 var require_pool_stats = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/pool-stats.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/pool-stats.js"(exports2, module2) {
     var { kFree, kConnected, kPending, kQueued, kRunning, kSize } = require_symbols();
     var kPool = Symbol("pool");
     var PoolStats = class {
@@ -8652,9 +8658,9 @@ var require_pool_stats = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/pool-base.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/pool-base.js
 var require_pool_base = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/pool-base.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/pool-base.js"(exports2, module2) {
     "use strict";
     var DispatcherBase = require_dispatcher_base();
     var FixedQueue = require_fixed_queue();
@@ -8807,9 +8813,9 @@ var require_pool_base = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/pool.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/pool.js
 var require_pool = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/pool.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/pool.js"(exports2, module2) {
     "use strict";
     var {
       PoolBase,
@@ -8889,9 +8895,9 @@ var require_pool = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/balanced-pool.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/balanced-pool.js
 var require_balanced_pool = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/balanced-pool.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/balanced-pool.js"(exports2, module2) {
     "use strict";
     var {
       BalancedPoolMissingUpstreamError,
@@ -9024,9 +9030,9 @@ var require_balanced_pool = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/compat/dispatcher-weakref.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/compat/dispatcher-weakref.js
 var require_dispatcher_weakref = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/compat/dispatcher-weakref.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/compat/dispatcher-weakref.js"(exports2, module2) {
     "use strict";
     var { kConnected, kSize } = require_symbols();
     var CompatWeakRef = class {
@@ -9066,9 +9072,9 @@ var require_dispatcher_weakref = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/agent.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/agent.js
 var require_agent = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/agent.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/agent.js"(exports2, module2) {
     "use strict";
     var { InvalidArgumentError } = require_errors();
     var { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = require_symbols();
@@ -9184,11 +9190,11 @@ var require_agent = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/readable.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/readable.js
 var require_readable = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/readable.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/readable.js"(exports2, module2) {
     "use strict";
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { Readable: Readable2 } = require("stream");
     var { RequestAbortedError, NotSupportedError, InvalidArgumentError } = require_errors();
     var util = require_util();
@@ -9297,7 +9303,7 @@ var require_readable = __commonJS({
           this[kBody] = ReadableStreamFrom(this);
           if (this[kConsume]) {
             this[kBody].getReader();
-            assert25(this[kBody].locked);
+            assert24(this[kBody].locked);
           }
         }
         return this[kBody];
@@ -9348,7 +9354,7 @@ var require_readable = __commonJS({
       if (isUnusable(stream)) {
         throw new TypeError("unusable");
       }
-      assert25(!stream[kConsume]);
+      assert24(!stream[kConsume]);
       return new Promise((resolve10, reject) => {
         stream[kConsume] = {
           type,
@@ -9436,16 +9442,16 @@ var require_readable = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/util.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/util.js
 var require_util3 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/util.js"(exports2, module2) {
-    var assert25 = require("assert");
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/util.js"(exports2, module2) {
+    var assert24 = require("assert");
     var {
       ResponseStatusCodeError
     } = require_errors();
     var { toUSVString } = require_util();
     async function getResolveErrorBodyCallback({ callback, body, contentType, statusCode, statusMessage, headers }) {
-      assert25(body);
+      assert24(body);
       let chunks = [];
       let limit = 0;
       for await (const chunk of body) {
@@ -9479,9 +9485,9 @@ var require_util3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/abort-signal.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/abort-signal.js
 var require_abort_signal = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/abort-signal.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/abort-signal.js"(exports2, module2) {
     var { addAbortListener } = require_util();
     var { RequestAbortedError } = require_errors();
     var kListener = Symbol("kListener");
@@ -9528,9 +9534,9 @@ var require_abort_signal = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-request.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-request.js
 var require_api_request = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-request.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-request.js"(exports2, module2) {
     "use strict";
     var Readable2 = require_readable();
     var {
@@ -9682,9 +9688,9 @@ var require_api_request = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-stream.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-stream.js
 var require_api_stream = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-stream.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-stream.js"(exports2, module2) {
     "use strict";
     var { finished, PassThrough: PassThrough2 } = require("stream");
     var {
@@ -9856,9 +9862,9 @@ var require_api_stream = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-pipeline.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-pipeline.js
 var require_api_pipeline = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-pipeline.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-pipeline.js"(exports2, module2) {
     "use strict";
     var {
       Readable: Readable2,
@@ -9873,7 +9879,7 @@ var require_api_pipeline = __commonJS({
     var util = require_util();
     var { AsyncResource } = require("async_hooks");
     var { addSignal, removeSignal } = require_abort_signal();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var kResume = Symbol("resume");
     var PipelineRequest = class extends Readable2 {
       constructor() {
@@ -9973,7 +9979,7 @@ var require_api_pipeline = __commonJS({
       }
       onConnect(abort, context) {
         const { ret, res } = this;
-        assert25(!res, "pipeline cannot be retried");
+        assert24(!res, "pipeline cannot be retried");
         if (ret.destroyed) {
           throw new RequestAbortedError();
         }
@@ -10054,15 +10060,15 @@ var require_api_pipeline = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-upgrade.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-upgrade.js
 var require_api_upgrade = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-upgrade.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-upgrade.js"(exports2, module2) {
     "use strict";
     var { InvalidArgumentError, RequestAbortedError, SocketError } = require_errors();
     var { AsyncResource } = require("async_hooks");
     var util = require_util();
     var { addSignal, removeSignal } = require_abort_signal();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var UpgradeHandler = class extends AsyncResource {
       constructor(opts, callback) {
         if (!opts || typeof opts !== "object") {
@@ -10095,7 +10101,7 @@ var require_api_upgrade = __commonJS({
       }
       onUpgrade(statusCode, rawHeaders, socket) {
         const { callback, opaque, context } = this;
-        assert25.strictEqual(statusCode, 101);
+        assert24.strictEqual(statusCode, 101);
         removeSignal(this);
         this.callback = null;
         const headers = this.responseHeaders === "raw" ? util.parseRawHeaders(rawHeaders) : util.parseHeaders(rawHeaders);
@@ -10144,9 +10150,9 @@ var require_api_upgrade = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-connect.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-connect.js
 var require_api_connect = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/api-connect.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/api-connect.js"(exports2, module2) {
     "use strict";
     var { AsyncResource } = require("async_hooks");
     var { InvalidArgumentError, RequestAbortedError, SocketError } = require_errors();
@@ -10231,9 +10237,9 @@ var require_api_connect = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/index.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/index.js
 var require_api = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/api/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/api/index.js"(exports2, module2) {
     "use strict";
     module2.exports.request = require_api_request();
     module2.exports.stream = require_api_stream();
@@ -10243,9 +10249,9 @@ var require_api = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-errors.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-errors.js
 var require_mock_errors = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-errors.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-errors.js"(exports2, module2) {
     "use strict";
     var { UndiciError } = require_errors();
     var MockNotMatchedError = class _MockNotMatchedError extends UndiciError {
@@ -10263,9 +10269,9 @@ var require_mock_errors = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-symbols.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-symbols.js
 var require_mock_symbols = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-symbols.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-symbols.js"(exports2, module2) {
     "use strict";
     module2.exports = {
       kAgent: Symbol("agent"),
@@ -10291,9 +10297,9 @@ var require_mock_symbols = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-utils.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-utils.js
 var require_mock_utils = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-utils.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-utils.js"(exports2, module2) {
     "use strict";
     var { MockNotMatchedError } = require_mock_errors();
     var {
@@ -10571,9 +10577,9 @@ var require_mock_utils = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-interceptor.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-interceptor.js
 var require_mock_interceptor = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-interceptor.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-interceptor.js"(exports2, module2) {
     "use strict";
     var { getResponseData, buildKey, addMockDispatch } = require_mock_utils();
     var {
@@ -10732,11 +10738,11 @@ var require_mock_interceptor = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-client.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-client.js
 var require_mock_client = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-client.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-client.js"(exports2, module2) {
     "use strict";
-    var { promisify: promisify4 } = require("util");
+    var { promisify: promisify3 } = require("util");
     var Client = require_client();
     var { buildMockDispatch } = require_mock_utils();
     var {
@@ -10776,7 +10782,7 @@ var require_mock_client = __commonJS({
         return new MockInterceptor(opts, this[kDispatches]);
       }
       async [kClose]() {
-        await promisify4(this[kOriginalClose])();
+        await promisify3(this[kOriginalClose])();
         this[kConnected] = 0;
         this[kMockAgent][Symbols.kClients].delete(this[kOrigin]);
       }
@@ -10785,11 +10791,11 @@ var require_mock_client = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-pool.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-pool.js
 var require_mock_pool = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-pool.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-pool.js"(exports2, module2) {
     "use strict";
-    var { promisify: promisify4 } = require("util");
+    var { promisify: promisify3 } = require("util");
     var Pool = require_pool();
     var { buildMockDispatch } = require_mock_utils();
     var {
@@ -10829,7 +10835,7 @@ var require_mock_pool = __commonJS({
         return new MockInterceptor(opts, this[kDispatches]);
       }
       async [kClose]() {
-        await promisify4(this[kOriginalClose])();
+        await promisify3(this[kOriginalClose])();
         this[kConnected] = 0;
         this[kMockAgent][Symbols.kClients].delete(this[kOrigin]);
       }
@@ -10838,9 +10844,9 @@ var require_mock_pool = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/pluralizer.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/pluralizer.js
 var require_pluralizer = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/pluralizer.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/pluralizer.js"(exports2, module2) {
     "use strict";
     var singulars = {
       pronoun: "it",
@@ -10869,9 +10875,9 @@ var require_pluralizer = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/pending-interceptors-formatter.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/pending-interceptors-formatter.js
 var require_pending_interceptors_formatter = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/pending-interceptors-formatter.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/pending-interceptors-formatter.js"(exports2, module2) {
     "use strict";
     var { Transform } = require("stream");
     var { Console: Console2 } = require("console");
@@ -10908,9 +10914,9 @@ var require_pending_interceptors_formatter = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-agent.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-agent.js
 var require_mock_agent = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/mock/mock-agent.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/mock/mock-agent.js"(exports2, module2) {
     "use strict";
     var { kClients } = require_symbols();
     var Agent = require_agent();
@@ -11047,9 +11053,9 @@ ${pendingInterceptorsFormatter.format(pending)}
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/proxy-agent.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/proxy-agent.js
 var require_proxy_agent = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/proxy-agent.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/proxy-agent.js"(exports2, module2) {
     "use strict";
     var { kProxy, kClose, kDestroy, kInterceptors } = require_symbols();
     var { URL: URL3 } = require("url");
@@ -11199,10 +11205,10 @@ var require_proxy_agent = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/handler/RetryHandler.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/handler/RetryHandler.js
 var require_RetryHandler = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/handler/RetryHandler.js"(exports2, module2) {
-    var assert25 = require("assert");
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/handler/RetryHandler.js"(exports2, module2) {
+    var assert24 = require("assert");
     var { kRetryHandlerDefaultRetry } = require_symbols();
     var { RequestRetryError } = require_errors();
     var { isDisturbed, parseHeaders, parseRangeHeader } = require_util();
@@ -11367,8 +11373,8 @@ var require_RetryHandler = __commonJS({
             return false;
           }
           const { start, size, end = size } = contentRange;
-          assert25(this.start === start, "content-range mismatch");
-          assert25(this.end == null || this.end === end, "content-range mismatch");
+          assert24(this.start === start, "content-range mismatch");
+          assert24(this.end == null || this.end === end, "content-range mismatch");
           this.resume = resume;
           return true;
         }
@@ -11384,12 +11390,12 @@ var require_RetryHandler = __commonJS({
               );
             }
             const { start, size, end = size } = range;
-            assert25(
+            assert24(
               start != null && Number.isFinite(start) && this.start !== start,
               "content-range mismatch"
             );
-            assert25(Number.isFinite(start));
-            assert25(
+            assert24(Number.isFinite(start));
+            assert24(
               end != null && Number.isFinite(end) && this.end !== end,
               "invalid content-length"
             );
@@ -11400,8 +11406,8 @@ var require_RetryHandler = __commonJS({
             const contentLength = headers["content-length"];
             this.end = contentLength != null ? Number(contentLength) : null;
           }
-          assert25(Number.isFinite(this.start));
-          assert25(
+          assert24(Number.isFinite(this.start));
+          assert24(
             this.end == null || Number.isFinite(this.end),
             "invalid content-length"
           );
@@ -11466,9 +11472,9 @@ var require_RetryHandler = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/global.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/global.js
 var require_global2 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/global.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/global.js"(exports2, module2) {
     "use strict";
     var globalDispatcher = Symbol.for("undici.globalDispatcher.1");
     var { InvalidArgumentError } = require_errors();
@@ -11497,9 +11503,9 @@ var require_global2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/handler/DecoratorHandler.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/handler/DecoratorHandler.js
 var require_DecoratorHandler = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/handler/DecoratorHandler.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/handler/DecoratorHandler.js"(exports2, module2) {
     "use strict";
     module2.exports = class DecoratorHandler {
       constructor(handler) {
@@ -11530,9 +11536,9 @@ var require_DecoratorHandler = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/headers.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/headers.js
 var require_headers = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/headers.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/headers.js"(exports2, module2) {
     "use strict";
     var { kHeadersList, kConstruct } = require_symbols();
     var { kGuard } = require_symbols2();
@@ -11543,7 +11549,7 @@ var require_headers = __commonJS({
       isValidHeaderValue
     } = require_util2();
     var { webidl } = require_webidl();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var kHeadersMap = Symbol("headers map");
     var kHeadersSortedMap = Symbol("headers map sorted");
     function isHTTPWhiteSpaceCharCode(code) {
@@ -11801,7 +11807,7 @@ var require_headers = __commonJS({
               headers.push([name2, cookies[j]]);
             }
           } else {
-            assert25(value !== null);
+            assert24(value !== null);
             headers.push([name2, value]);
           }
         }
@@ -11916,9 +11922,9 @@ var require_headers = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/response.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/response.js
 var require_response = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/response.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/response.js"(exports2, module2) {
     "use strict";
     var { Headers, HeadersList, fill } = require_headers();
     var { extractBody, cloneBody, mixinBody } = require_body();
@@ -11944,7 +11950,7 @@ var require_response = __commonJS({
     var { getGlobalOrigin } = require_global();
     var { URLSerializer } = require_dataURL();
     var { kHeadersList, kConstruct } = require_symbols();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { types } = require("util");
     var ReadableStream = globalThis.ReadableStream || require("stream/web").ReadableStream;
     var textEncoder = new TextEncoder("utf-8");
@@ -12160,7 +12166,7 @@ var require_response = __commonJS({
           return p in state ? state[p] : target[p];
         },
         set(target, p, value) {
-          assert25(!(p in state));
+          assert24(!(p in state));
           target[p] = value;
           return true;
         }
@@ -12194,11 +12200,11 @@ var require_response = __commonJS({
           body: null
         });
       } else {
-        assert25(false);
+        assert24(false);
       }
     }
     function makeAppropriateNetworkError(fetchParams, err = null) {
-      assert25(isCancelled(fetchParams));
+      assert24(isCancelled(fetchParams));
       return isAborted(fetchParams) ? makeNetworkError(Object.assign(new DOMException2("The operation was aborted.", "AbortError"), { cause: err })) : makeNetworkError(Object.assign(new DOMException2("Request was cancelled."), { cause: err }));
     }
     function initializeResponse(response, init, body) {
@@ -12295,9 +12301,9 @@ var require_response = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/request.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/request.js
 var require_request2 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/request.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/request.js"(exports2, module2) {
     "use strict";
     var { extractBody, mixinBody, cloneBody } = require_body();
     var { Headers, fill: fillHeaders, HeadersList } = require_headers();
@@ -12326,7 +12332,7 @@ var require_request2 = __commonJS({
     var { getGlobalOrigin } = require_global();
     var { URLSerializer } = require_dataURL();
     var { kHeadersList, kConstruct } = require_symbols();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { getMaxListeners, setMaxListeners, getEventListeners, defaultMaxListeners } = require("events");
     var TransformStream = globalThis.TransformStream;
     var kAbortController = Symbol("abortController");
@@ -12370,7 +12376,7 @@ var require_request2 = __commonJS({
           request = makeRequest({ urlList: [parsedURL] });
           fallbackMode = "cors";
         } else {
-          assert25(input instanceof _Request);
+          assert24(input instanceof _Request);
           request = input[kState];
           signal = input[kSignal];
         }
@@ -12934,9 +12940,9 @@ var require_request2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/index.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/index.js
 var require_fetch = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fetch/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fetch/index.js"(exports2, module2) {
     "use strict";
     var {
       Response,
@@ -12947,7 +12953,7 @@ var require_fetch = __commonJS({
     } = require_response();
     var { Headers } = require_headers();
     var { Request: Request2, makeRequest } = require_request2();
-    var zlib2 = require("zlib");
+    var zlib = require("zlib");
     var {
       bytesMatch,
       makePolicyContainer,
@@ -12979,7 +12985,7 @@ var require_fetch = __commonJS({
       urlHasHttpsScheme
     } = require_util2();
     var { kState, kHeaders, kGuard, kRealm } = require_symbols2();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { safelyExtractBody } = require_body();
     var {
       redirectStatusSet,
@@ -13059,7 +13065,7 @@ var require_fetch = __commonJS({
         requestObject.signal,
         () => {
           locallyAborted = true;
-          assert25(controller != null);
+          assert24(controller != null);
           controller.abort(requestObject.signal.reason);
           abortFetch(p, request, responseObject, requestObject.signal.reason);
         }
@@ -13192,7 +13198,7 @@ var require_fetch = __commonJS({
         taskDestination,
         crossOriginIsolatedCapability
       };
-      assert25(!request.body || request.body.stream);
+      assert24(!request.body || request.body.stream);
       if (request.window === "client") {
         request.window = request.client?.globalObject?.constructor?.name === "Window" ? request.client : "no-window";
       }
@@ -13285,7 +13291,7 @@ var require_fetch = __commonJS({
         } else if (request.responseTainting === "opaque") {
           response = filterResponse(response, "opaque");
         } else {
-          assert25(false);
+          assert24(false);
         }
       }
       let internalResponse = response.status === 0 ? response : response.internalResponse;
@@ -13477,7 +13483,7 @@ var require_fetch = __commonJS({
         } else if (request.redirect === "follow") {
           response = await httpRedirectFetch(fetchParams, response);
         } else {
-          assert25(false);
+          assert24(false);
         }
       }
       response.timingInfo = timingInfo;
@@ -13530,7 +13536,7 @@ var require_fetch = __commonJS({
         request.headersList.delete("host");
       }
       if (request.body != null) {
-        assert25(request.body.source != null);
+        assert24(request.body.source != null);
         request.body = safelyExtractBody(request.body.source)[0];
       }
       const timingInfo = fetchParams.timingInfo;
@@ -13663,7 +13669,7 @@ var require_fetch = __commonJS({
       return response;
     }
     async function httpNetworkFetch(fetchParams, includeCredentials = false, forceNewConnection = false) {
-      assert25(!fetchParams.controller.connection || fetchParams.controller.connection.destroyed);
+      assert24(!fetchParams.controller.connection || fetchParams.controller.connection.destroyed);
       fetchParams.controller.connection = {
         abort: null,
         destroyed: false,
@@ -13888,18 +13894,18 @@ var require_fetch = __commonJS({
               if (request.method !== "HEAD" && request.method !== "CONNECT" && !nullBodyStatus.includes(status) && !willFollow) {
                 for (const coding of codings) {
                   if (coding === "x-gzip" || coding === "gzip") {
-                    decoders.push(zlib2.createGunzip({
+                    decoders.push(zlib.createGunzip({
                       // Be less strict when decoding compressed responses, since sometimes
                       // servers send slightly invalid responses that are still accepted
                       // by common browsers.
                       // Always using Z_SYNC_FLUSH is what cURL does.
-                      flush: zlib2.constants.Z_SYNC_FLUSH,
-                      finishFlush: zlib2.constants.Z_SYNC_FLUSH
+                      flush: zlib.constants.Z_SYNC_FLUSH,
+                      finishFlush: zlib.constants.Z_SYNC_FLUSH
                     }));
                   } else if (coding === "deflate") {
-                    decoders.push(zlib2.createInflate());
+                    decoders.push(zlib.createInflate());
                   } else if (coding === "br") {
-                    decoders.push(zlib2.createBrotliDecompress());
+                    decoders.push(zlib.createBrotliDecompress());
                   } else {
                     decoders.length = 0;
                     break;
@@ -13970,9 +13976,9 @@ var require_fetch = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/symbols.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/symbols.js
 var require_symbols3 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/symbols.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/symbols.js"(exports2, module2) {
     "use strict";
     module2.exports = {
       kState: Symbol("FileReader state"),
@@ -13985,9 +13991,9 @@ var require_symbols3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/progressevent.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/progressevent.js
 var require_progressevent = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/progressevent.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/progressevent.js"(exports2, module2) {
     "use strict";
     var { webidl } = require_webidl();
     var kState = Symbol("ProgressEvent state");
@@ -14053,9 +14059,9 @@ var require_progressevent = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/encoding.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/encoding.js
 var require_encoding = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/encoding.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/encoding.js"(exports2, module2) {
     "use strict";
     function getEncoding(label) {
       if (!label) {
@@ -14339,9 +14345,9 @@ var require_encoding = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/util.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/util.js
 var require_util4 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/util.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/util.js"(exports2, module2) {
     "use strict";
     var {
       kState,
@@ -14525,9 +14531,9 @@ var require_util4 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/filereader.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/filereader.js
 var require_filereader = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/fileapi/filereader.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/fileapi/filereader.js"(exports2, module2) {
     "use strict";
     var {
       staticPropertyDescriptors,
@@ -14784,9 +14790,9 @@ var require_filereader = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cache/symbols.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cache/symbols.js
 var require_symbols4 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cache/symbols.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cache/symbols.js"(exports2, module2) {
     "use strict";
     module2.exports = {
       kConstruct: require_symbols().kConstruct
@@ -14794,11 +14800,11 @@ var require_symbols4 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cache/util.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cache/util.js
 var require_util5 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cache/util.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cache/util.js"(exports2, module2) {
     "use strict";
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { URLSerializer } = require_dataURL();
     var { isValidHeaderName } = require_util2();
     function urlEquals(A, B, excludeFragment = false) {
@@ -14807,7 +14813,7 @@ var require_util5 = __commonJS({
       return serializedA === serializedB;
     }
     function fieldValues(header) {
-      assert25(header !== null);
+      assert24(header !== null);
       const values = [];
       for (let value of header.split(",")) {
         value = value.trim();
@@ -14827,9 +14833,9 @@ var require_util5 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cache/cache.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cache/cache.js
 var require_cache = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cache/cache.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cache/cache.js"(exports2, module2) {
     "use strict";
     var { kConstruct } = require_symbols4();
     var { urlEquals, fieldValues: getFieldValues } = require_util5();
@@ -14841,7 +14847,7 @@ var require_cache = __commonJS({
     var { kState, kHeaders, kGuard, kRealm } = require_symbols2();
     var { fetching } = require_fetch();
     var { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = require_util2();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { getGlobalDispatcher } = require_global2();
     var Cache = class _Cache {
       /**
@@ -15102,7 +15108,7 @@ var require_cache = __commonJS({
             return false;
           }
         } else {
-          assert25(typeof request === "string");
+          assert24(typeof request === "string");
           r = new Request2(request)[kState];
         }
         const operations = [];
@@ -15211,7 +15217,7 @@ var require_cache = __commonJS({
               }
               for (const requestResponse of requestResponses) {
                 const idx2 = cache5.indexOf(requestResponse);
-                assert25(idx2 !== -1);
+                assert24(idx2 !== -1);
                 cache5.splice(idx2, 1);
               }
             } else if (operation.type === "put") {
@@ -15243,7 +15249,7 @@ var require_cache = __commonJS({
               requestResponses = this.#queryCache(operation.request);
               for (const requestResponse of requestResponses) {
                 const idx2 = cache5.indexOf(requestResponse);
-                assert25(idx2 !== -1);
+                assert24(idx2 !== -1);
                 cache5.splice(idx2, 1);
               }
               cache5.push([operation.request, operation.response]);
@@ -15359,9 +15365,9 @@ var require_cache = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cache/cachestorage.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cache/cachestorage.js
 var require_cachestorage = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cache/cachestorage.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cache/cachestorage.js"(exports2, module2) {
     "use strict";
     var { kConstruct } = require_symbols4();
     var { Cache } = require_cache();
@@ -15465,9 +15471,9 @@ var require_cachestorage = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cookies/constants.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cookies/constants.js
 var require_constants4 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cookies/constants.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cookies/constants.js"(exports2, module2) {
     "use strict";
     var maxAttributeValueSize = 1024;
     var maxNameValuePairSize = 4096;
@@ -15478,11 +15484,11 @@ var require_constants4 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cookies/util.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cookies/util.js
 var require_util6 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cookies/util.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cookies/util.js"(exports2, module2) {
     "use strict";
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     var { kHeadersList } = require_symbols();
     function isCTLExcludingHtab(value) {
       if (value.length === 0) {
@@ -15623,10 +15629,10 @@ var require_util6 = __commonJS({
         kHeadersListNode = Object.getOwnPropertySymbols(headers).find(
           (symbol) => symbol.description === "headers list"
         );
-        assert25(kHeadersListNode, "Headers cannot be parsed");
+        assert24(kHeadersListNode, "Headers cannot be parsed");
       }
       const headersList = headers[kHeadersListNode];
-      assert25(headersList);
+      assert24(headersList);
       return headersList;
     }
     module2.exports = {
@@ -15637,14 +15643,14 @@ var require_util6 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cookies/parse.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cookies/parse.js
 var require_parse = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cookies/parse.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cookies/parse.js"(exports2, module2) {
     "use strict";
     var { maxNameValuePairSize, maxAttributeValueSize } = require_constants4();
     var { isCTLExcludingHtab } = require_util6();
     var { collectASequenceOfCodePointsFast } = require_dataURL();
-    var assert25 = require("assert");
+    var assert24 = require("assert");
     function parseSetCookie(header) {
       if (isCTLExcludingHtab(header)) {
         return null;
@@ -15686,7 +15692,7 @@ var require_parse = __commonJS({
       if (unparsedAttributes.length === 0) {
         return cookieAttributeList;
       }
-      assert25(unparsedAttributes[0] === ";");
+      assert24(unparsedAttributes[0] === ";");
       unparsedAttributes = unparsedAttributes.slice(1);
       let cookieAv = "";
       if (unparsedAttributes.includes(";")) {
@@ -15777,9 +15783,9 @@ var require_parse = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cookies/index.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cookies/index.js
 var require_cookies = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/cookies/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/cookies/index.js"(exports2, module2) {
     "use strict";
     var { parseSetCookie } = require_parse();
     var { stringify: stringify3, getHeadersList } = require_util6();
@@ -15905,9 +15911,9 @@ var require_cookies = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/constants.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/constants.js
 var require_constants5 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/constants.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/constants.js"(exports2, module2) {
     "use strict";
     var uid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
     var staticPropertyDescriptors = {
@@ -15949,9 +15955,9 @@ var require_constants5 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/symbols.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/symbols.js
 var require_symbols5 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/symbols.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/symbols.js"(exports2, module2) {
     "use strict";
     module2.exports = {
       kWebSocketURL: Symbol("url"),
@@ -15966,9 +15972,9 @@ var require_symbols5 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/events.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/events.js
 var require_events = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/events.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/events.js"(exports2, module2) {
     "use strict";
     var { webidl } = require_webidl();
     var { kEnumerableProperty } = require_util();
@@ -16209,9 +16215,9 @@ var require_events = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/util.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/util.js
 var require_util7 = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/util.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/util.js"(exports2, module2) {
     "use strict";
     var { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = require_symbols5();
     var { states, opcodes } = require_constants5();
@@ -16299,9 +16305,9 @@ var require_util7 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/connection.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/connection.js
 var require_connection = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/connection.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/connection.js"(exports2, module2) {
     "use strict";
     var diagnosticsChannel = require("diagnostics_channel");
     var { uid, states } = require_constants5();
@@ -16447,9 +16453,9 @@ var require_connection = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/frame.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/frame.js
 var require_frame = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/frame.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/frame.js"(exports2, module2) {
     "use strict";
     var { maxUnsigned16Bit } = require_constants5();
     var crypto2;
@@ -16504,9 +16510,9 @@ var require_frame = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/receiver.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/receiver.js
 var require_receiver = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/receiver.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/receiver.js"(exports2, module2) {
     "use strict";
     var { Writable } = require("stream");
     var diagnosticsChannel = require("diagnostics_channel");
@@ -16740,9 +16746,9 @@ var require_receiver = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/websocket.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/websocket.js
 var require_websocket = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/lib/websocket/websocket.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/lib/websocket/websocket.js"(exports2, module2) {
     "use strict";
     var { webidl } = require_webidl();
     var { DOMException: DOMException2 } = require_constants2();
@@ -17145,9 +17151,9 @@ var require_websocket = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/undici@5.28.4/node_modules/undici/index.js
+// ../node_modules/.pnpm/undici@5.28.5/node_modules/undici/index.js
 var require_undici = __commonJS({
-  "../node_modules/.pnpm/undici@5.28.4/node_modules/undici/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/undici@5.28.5/node_modules/undici/index.js"(exports2, module2) {
     "use strict";
     var Client = require_client();
     var Dispatcher = require_dispatcher();
@@ -18066,7 +18072,7 @@ var require_oidc_utils = __commonJS({
         return runtimeUrl;
       }
       static getCall(id_token_url) {
-        var _a3;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
           const httpclient = _OidcClient.createHttpClient();
           const res = yield httpclient.getJson(id_token_url).catch((error4) => {
@@ -18076,7 +18082,7 @@ var require_oidc_utils = __commonJS({
  
         Error Message: ${error4.message}`);
           });
-          const id_token = (_a3 = res.result) === null || _a3 === void 0 ? void 0 : _a3.value;
+          const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
           if (!id_token) {
             throw new Error("Response json body do not have ID Token field");
           }
@@ -18164,7 +18170,7 @@ var require_summary = __commonJS({
           }
           try {
             yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
-          } catch (_a3) {
+          } catch (_a) {
             throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
           }
           this._filePath = pathFromEnv;
@@ -18502,15 +18508,15 @@ var require_io_util = __commonJS({
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
     };
-    var _a3;
+    var _a;
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.getCmdPath = exports2.tryGetExecutablePath = exports2.isRooted = exports2.isDirectory = exports2.exists = exports2.READONLY = exports2.UV_FS_O_EXLOCK = exports2.IS_WINDOWS = exports2.unlink = exports2.symlink = exports2.stat = exports2.rmdir = exports2.rm = exports2.rename = exports2.readlink = exports2.readdir = exports2.open = exports2.mkdir = exports2.lstat = exports2.copyFile = exports2.chmod = void 0;
-    var fs12 = __importStar(require("fs"));
+    var fs10 = __importStar(require("fs"));
     var path26 = __importStar(require("path"));
-    _a3 = fs12.promises, exports2.chmod = _a3.chmod, exports2.copyFile = _a3.copyFile, exports2.lstat = _a3.lstat, exports2.mkdir = _a3.mkdir, exports2.open = _a3.open, exports2.readdir = _a3.readdir, exports2.readlink = _a3.readlink, exports2.rename = _a3.rename, exports2.rm = _a3.rm, exports2.rmdir = _a3.rmdir, exports2.stat = _a3.stat, exports2.symlink = _a3.symlink, exports2.unlink = _a3.unlink;
+    _a = fs10.promises, exports2.chmod = _a.chmod, exports2.copyFile = _a.copyFile, exports2.lstat = _a.lstat, exports2.mkdir = _a.mkdir, exports2.open = _a.open, exports2.readdir = _a.readdir, exports2.readlink = _a.readlink, exports2.rename = _a.rename, exports2.rm = _a.rm, exports2.rmdir = _a.rmdir, exports2.stat = _a.stat, exports2.symlink = _a.symlink, exports2.unlink = _a.unlink;
     exports2.IS_WINDOWS = process.platform === "win32";
     exports2.UV_FS_O_EXLOCK = 268435456;
-    exports2.READONLY = fs12.constants.O_RDONLY;
+    exports2.READONLY = fs10.constants.O_RDONLY;
     function exists(fsPath) {
       return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -18614,8 +18620,8 @@ var require_io_util = __commonJS({
       return (stats2.mode & 1) > 0 || (stats2.mode & 8) > 0 && stats2.gid === process.getgid() || (stats2.mode & 64) > 0 && stats2.uid === process.getuid();
     }
     function getCmdPath() {
-      var _a4;
-      return (_a4 = process.env["COMSPEC"]) !== null && _a4 !== void 0 ? _a4 : `cmd.exe`;
+      var _a2;
+      return (_a2 = process.env["COMSPEC"]) !== null && _a2 !== void 0 ? _a2 : `cmd.exe`;
     }
     exports2.getCmdPath = getCmdPath;
   }
@@ -19425,13 +19431,13 @@ var require_exec = __commonJS({
     }
     exports2.exec = exec2;
     function getExecOutput(commandLine, args, options) {
-      var _a3, _b;
+      var _a, _b;
       return __awaiter(this, void 0, void 0, function* () {
         let stdout = "";
         let stderr = "";
         const stdoutDecoder = new string_decoder_1.StringDecoder("utf8");
         const stderrDecoder = new string_decoder_1.StringDecoder("utf8");
-        const originalStdoutListener = (_a3 = options === null || options === void 0 ? void 0 : options.listeners) === null || _a3 === void 0 ? void 0 : _a3.stdout;
+        const originalStdoutListener = (_a = options === null || options === void 0 ? void 0 : options.listeners) === null || _a === void 0 ? void 0 : _a.stdout;
         const originalStdErrListener = (_b = options === null || options === void 0 ? void 0 : options.listeners) === null || _b === void 0 ? void 0 : _b.stderr;
         const stdErrListener = (data) => {
           stderr += stderrDecoder.write(data);
@@ -19538,11 +19544,11 @@ var require_platform = __commonJS({
       };
     });
     var getMacOsInfo = () => __awaiter(void 0, void 0, void 0, function* () {
-      var _a3, _b, _c, _d;
+      var _a, _b, _c, _d;
       const { stdout } = yield exec2.getExecOutput("sw_vers", void 0, {
         silent: true
       });
-      const version4 = (_b = (_a3 = stdout.match(/ProductVersion:\s*(.+)/)) === null || _a3 === void 0 ? void 0 : _a3[1]) !== null && _b !== void 0 ? _b : "";
+      const version4 = (_b = (_a = stdout.match(/ProductVersion:\s*(.+)/)) === null || _a === void 0 ? void 0 : _a[1]) !== null && _b !== void 0 ? _b : "";
       const name2 = (_d = (_c = stdout.match(/ProductName:\s*(.+)/)) === null || _c === void 0 ? void 0 : _c[1]) !== null && _d !== void 0 ? _d : "";
       return {
         name: name2,
@@ -19821,7 +19827,7 @@ var require_context = __commonJS({
        * Hydrate the context from the environment
        */
       constructor() {
-        var _a3, _b, _c;
+        var _a, _b, _c;
         this.payload = {};
         if (process.env.GITHUB_EVENT_PATH) {
           if ((0, fs_1.existsSync)(process.env.GITHUB_EVENT_PATH)) {
@@ -19840,7 +19846,7 @@ var require_context = __commonJS({
         this.job = process.env.GITHUB_JOB;
         this.runNumber = parseInt(process.env.GITHUB_RUN_NUMBER, 10);
         this.runId = parseInt(process.env.GITHUB_RUN_ID, 10);
-        this.apiUrl = (_a3 = process.env.GITHUB_API_URL) !== null && _a3 !== void 0 ? _a3 : `https://api.github.com`;
+        this.apiUrl = (_a = process.env.GITHUB_API_URL) !== null && _a !== void 0 ? _a : `https://api.github.com`;
         this.serverUrl = (_b = process.env.GITHUB_SERVER_URL) !== null && _b !== void 0 ? _b : `https://github.com`;
         this.graphqlUrl = (_c = process.env.GITHUB_GRAPHQL_URL) !== null && _c !== void 0 ? _c : `https://api.github.com/graphql`;
       }
@@ -19866,9 +19872,9 @@ var require_context = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@8.17.1/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
+// ../node_modules/.pnpm/@cspell+cspell-resolver@8.17.2/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
 var require_requireResolve = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-resolver@8.17.1/node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports2) {
+  "../node_modules/.pnpm/@cspell+cspell-resolver@8.17.2/node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.requireResolve = requireResolve2;
@@ -20100,7 +20106,7 @@ var require_resolve_from = __commonJS({
     "use strict";
     var path26 = require("path");
     var Module = require("module");
-    var fs12 = require("fs");
+    var fs10 = require("fs");
     var resolveFrom2 = (fromDirectory, moduleId, silent) => {
       if (typeof fromDirectory !== "string") {
         throw new TypeError(`Expected \`fromDir\` to be of type \`string\`, got \`${typeof fromDirectory}\``);
@@ -20109,7 +20115,7 @@ var require_resolve_from = __commonJS({
         throw new TypeError(`Expected \`moduleId\` to be of type \`string\`, got \`${typeof moduleId}\``);
       }
       try {
-        fromDirectory = fs12.realpathSync(fromDirectory);
+        fromDirectory = fs10.realpathSync(fromDirectory);
       } catch (error4) {
         if (error4.code === "ENOENT") {
           fromDirectory = path26.resolve(fromDirectory);
@@ -20358,7 +20364,7 @@ var require_to_regex_range = __commonJS({
         stop = countZeros(max4 + 1, zeros) - 1;
       }
       stops = [...stops];
-      stops.sort(compare4);
+      stops.sort(compare5);
       return stops;
     }
     function rangeToPattern(start, stop, options) {
@@ -20430,7 +20436,7 @@ var require_to_regex_range = __commonJS({
       for (let i = 0; i < a.length; i++) arr.push([a[i], b[i]]);
       return arr;
     }
-    function compare4(a, b) {
+    function compare5(a, b) {
       return a > b ? 1 : b > a ? -1 : 0;
     }
     function contains2(arr, key, val) {
@@ -20680,7 +20686,7 @@ var require_compile = __commonJS({
     var fill = require_fill_range();
     var utils = require_utils3();
     var compile = (ast, options = {}) => {
-      const walk3 = (node, parent = {}) => {
+      const walk2 = (node, parent = {}) => {
         const invalidBlock = utils.isInvalidBrace(parent);
         const invalidNode = node.invalid === true && options.escapeInvalid === true;
         const invalid = invalidBlock === true || invalidNode === true;
@@ -20714,12 +20720,12 @@ var require_compile = __commonJS({
         }
         if (node.nodes) {
           for (const child of node.nodes) {
-            output += walk3(child, node);
+            output += walk2(child, node);
           }
         }
         return output;
       };
-      return walk3(ast);
+      return walk2(ast);
     };
     module2.exports = compile;
   }
@@ -20756,7 +20762,7 @@ var require_expand = __commonJS({
     };
     var expand = (ast, options = {}) => {
       const rangeLimit = options.rangeLimit === void 0 ? 1e3 : options.rangeLimit;
-      const walk3 = (node, parent = {}) => {
+      const walk2 = (node, parent = {}) => {
         node.queue = [];
         let p = parent;
         let q = parent.queue;
@@ -20808,12 +20814,12 @@ var require_expand = __commonJS({
             continue;
           }
           if (child.nodes) {
-            walk3(child, node);
+            walk2(child, node);
           }
         }
         return queue;
       };
-      return utils.flatten(walk3(ast));
+      return utils.flatten(walk2(ast));
     };
     module2.exports = expand;
   }
@@ -22086,9 +22092,9 @@ var require_parse3 = __commonJS({
                 const idx2 = prev.value.lastIndexOf("[");
                 const pre = prev.value.slice(0, idx2);
                 const rest2 = prev.value.slice(idx2 + 2);
-                const posix5 = POSIX_REGEX_SOURCE[rest2];
-                if (posix5) {
-                  prev.value = pre + posix5;
+                const posix4 = POSIX_REGEX_SOURCE[rest2];
+                if (posix4) {
+                  prev.value = pre + posix4;
                   state.backtrack = true;
                   advance();
                   if (!bos.output && tokens.indexOf(prev) === 1) {
@@ -22609,7 +22615,7 @@ var require_picomatch = __commonJS({
         throw new TypeError("Expected pattern to be a non-empty string");
       }
       const opts = options || {};
-      const posix5 = utils.isWindows(options);
+      const posix4 = utils.isWindows(options);
       const regex = isState ? picomatch3.compileRe(glob2, options) : picomatch3.makeRe(glob2, options, false, true);
       const state = regex.state;
       delete regex.state;
@@ -22619,8 +22625,8 @@ var require_picomatch = __commonJS({
         isIgnored = picomatch3(opts.ignore, ignoreOpts, returnState);
       }
       const matcher = (input, returnObject = false) => {
-        const { isMatch, match: match2, output } = picomatch3.test(input, regex, options, { glob: glob2, posix: posix5 });
-        const result = { glob: glob2, state, regex, posix: posix5, input, output, match: match2, isMatch };
+        const { isMatch, match: match2, output } = picomatch3.test(input, regex, options, { glob: glob2, posix: posix4 });
+        const result = { glob: glob2, state, regex, posix: posix4, input, output, match: match2, isMatch };
         if (typeof opts.onResult === "function") {
           opts.onResult(result);
         }
@@ -22645,7 +22651,7 @@ var require_picomatch = __commonJS({
       }
       return matcher;
     };
-    picomatch3.test = (input, regex, options, { glob: glob2, posix: posix5 } = {}) => {
+    picomatch3.test = (input, regex, options, { glob: glob2, posix: posix4 } = {}) => {
       if (typeof input !== "string") {
         throw new TypeError("Expected input to be a string");
       }
@@ -22653,7 +22659,7 @@ var require_picomatch = __commonJS({
         return { isMatch: false, output: "" };
       }
       const opts = options || {};
-      const format5 = opts.format || (posix5 ? utils.toPosixSlashes : null);
+      const format5 = opts.format || (posix4 ? utils.toPosixSlashes : null);
       let match2 = input === glob2;
       let output = match2 && format5 ? format5(input) : input;
       if (match2 === false) {
@@ -22662,14 +22668,14 @@ var require_picomatch = __commonJS({
       }
       if (match2 === false || opts.capture === true) {
         if (opts.matchBase === true || opts.basename === true) {
-          match2 = picomatch3.matchBase(input, regex, options, posix5);
+          match2 = picomatch3.matchBase(input, regex, options, posix4);
         } else {
           match2 = regex.exec(output);
         }
       }
       return { isMatch: Boolean(match2), match: match2, output };
     };
-    picomatch3.matchBase = (input, glob2, options, posix5 = utils.isWindows(options)) => {
+    picomatch3.matchBase = (input, glob2, options, posix4 = utils.isWindows(options)) => {
       const regex = glob2 instanceof RegExp ? glob2 : picomatch3.makeRe(glob2, options);
       return regex.test(path26.basename(input));
     };
@@ -22858,9 +22864,9 @@ var require_micromatch = __commonJS({
       return [].concat(patterns).every((p) => picomatch3(p, options)(str));
     };
     micromatch.capture = (glob2, input, options) => {
-      let posix5 = utils.isWindows(options);
+      let posix4 = utils.isWindows(options);
       let regex = picomatch3.makeRe(String(glob2), { ...options, capture: true });
-      let match2 = regex.exec(posix5 ? utils.toPosixSlashes(input) : input);
+      let match2 = regex.exec(posix4 ? utils.toPosixSlashes(input) : input);
       if (match2) {
         return match2.slice(1).map((v) => v === void 0 ? "" : v);
       }
@@ -27464,12 +27470,12 @@ var require_esprima = __commonJS({
           function(module3, exports3) {
             "use strict";
             Object.defineProperty(exports3, "__esModule", { value: true });
-            function assert25(condition, message) {
+            function assert24(condition, message) {
               if (!condition) {
                 throw new Error("ASSERT: " + message);
               }
             }
-            exports3.assert = assert25;
+            exports3.assert = assert24;
           },
           /* 10 */
           /***/
@@ -29153,10 +29159,10 @@ var require_util8 = __commonJS({
       return typeof arg === "number";
     }
     exports2.isNumber = isNumber;
-    function isString3(arg) {
+    function isString2(arg) {
       return typeof arg === "string";
     }
-    exports2.isString = isString3;
+    exports2.isString = isString2;
     function isSymbol(arg) {
       return typeof arg === "symbol";
     }
@@ -29256,19 +29262,19 @@ var require_src = __commonJS({
       }
       return n + r;
     }
-    function makeAscendingRun(array, lo, hi, compare4) {
+    function makeAscendingRun(array, lo, hi, compare5) {
       let runHi = lo + 1;
       if (runHi === hi) {
         return 1;
       }
-      if (compare4(array[runHi++], array[lo]) < 0) {
-        while (runHi < hi && compare4(array[runHi], array[runHi - 1]) < 0) {
+      if (compare5(array[runHi++], array[lo]) < 0) {
+        while (runHi < hi && compare5(array[runHi], array[runHi - 1]) < 0) {
           runHi++;
         }
         reverseRun(array, lo, runHi);
         reverseRun(results, lo, runHi);
       } else {
-        while (runHi < hi && compare4(array[runHi], array[runHi - 1]) >= 0) {
+        while (runHi < hi && compare5(array[runHi], array[runHi - 1]) >= 0) {
           runHi++;
         }
       }
@@ -29282,7 +29288,7 @@ var require_src = __commonJS({
         array[hi--] = t;
       }
     }
-    function binaryInsertionSort(array, lo, hi, start, compare4) {
+    function binaryInsertionSort(array, lo, hi, start, compare5) {
       if (start === lo) {
         start++;
       }
@@ -29293,7 +29299,7 @@ var require_src = __commonJS({
         let right = start;
         while (left < right) {
           const mid = left + right >>> 1;
-          if (compare4(pivot, array[mid]) < 0) {
+          if (compare5(pivot, array[mid]) < 0) {
             right = mid;
           } else {
             left = mid + 1;
@@ -29324,13 +29330,13 @@ var require_src = __commonJS({
         results[left] = pivotIndex;
       }
     }
-    function gallopLeft(value, array, start, length, hint, compare4) {
+    function gallopLeft(value, array, start, length, hint, compare5) {
       let lastOffset = 0;
       let maxOffset = 0;
       let offset = 1;
-      if (compare4(value, array[start + hint]) > 0) {
+      if (compare5(value, array[start + hint]) > 0) {
         maxOffset = length - hint;
-        while (offset < maxOffset && compare4(value, array[start + hint + offset]) > 0) {
+        while (offset < maxOffset && compare5(value, array[start + hint + offset]) > 0) {
           lastOffset = offset;
           offset = (offset << 1) + 1;
           if (offset <= 0) {
@@ -29344,7 +29350,7 @@ var require_src = __commonJS({
         offset += hint;
       } else {
         maxOffset = hint + 1;
-        while (offset < maxOffset && compare4(value, array[start + hint - offset]) <= 0) {
+        while (offset < maxOffset && compare5(value, array[start + hint - offset]) <= 0) {
           lastOffset = offset;
           offset = (offset << 1) + 1;
           if (offset <= 0) {
@@ -29361,7 +29367,7 @@ var require_src = __commonJS({
       lastOffset++;
       while (lastOffset < offset) {
         const m = lastOffset + (offset - lastOffset >>> 1);
-        if (compare4(value, array[start + m]) > 0) {
+        if (compare5(value, array[start + m]) > 0) {
           lastOffset = m + 1;
         } else {
           offset = m;
@@ -29369,13 +29375,13 @@ var require_src = __commonJS({
       }
       return offset;
     }
-    function gallopRight(value, array, start, length, hint, compare4) {
+    function gallopRight(value, array, start, length, hint, compare5) {
       let lastOffset = 0;
       let maxOffset = 0;
       let offset = 1;
-      if (compare4(value, array[start + hint]) < 0) {
+      if (compare5(value, array[start + hint]) < 0) {
         maxOffset = hint + 1;
-        while (offset < maxOffset && compare4(value, array[start + hint - offset]) < 0) {
+        while (offset < maxOffset && compare5(value, array[start + hint - offset]) < 0) {
           lastOffset = offset;
           offset = (offset << 1) + 1;
           if (offset <= 0) {
@@ -29390,7 +29396,7 @@ var require_src = __commonJS({
         offset = hint - tmp;
       } else {
         maxOffset = length - hint;
-        while (offset < maxOffset && compare4(value, array[start + hint + offset]) >= 0) {
+        while (offset < maxOffset && compare5(value, array[start + hint + offset]) >= 0) {
           lastOffset = offset;
           offset = (offset << 1) + 1;
           if (offset <= 0) {
@@ -29406,7 +29412,7 @@ var require_src = __commonJS({
       lastOffset++;
       while (lastOffset < offset) {
         const m = lastOffset + (offset - lastOffset >>> 1);
-        if (compare4(value, array[start + m]) < 0) {
+        if (compare5(value, array[start + m]) < 0) {
           offset = m;
         } else {
           lastOffset = m + 1;
@@ -29415,9 +29421,9 @@ var require_src = __commonJS({
       return offset;
     }
     var TimSort = class {
-      constructor(array, compare4) {
+      constructor(array, compare5) {
         this.array = array;
-        this.compare = compare4;
+        this.compare = compare5;
         const { length } = array;
         this.length = length;
         this.minGallop = DEFAULT_MIN_GALLOPING;
@@ -29477,7 +29483,7 @@ var require_src = __commonJS({
        * @param {number} i - Index of the run to merge in TimSort's stack.
        */
       mergeAt(i) {
-        const { compare: compare4 } = this;
+        const { compare: compare5 } = this;
         const { array } = this;
         let start1 = this.runStart[i];
         let length1 = this.runLength[i];
@@ -29489,7 +29495,7 @@ var require_src = __commonJS({
           this.runLength[i + 1] = this.runLength[i + 2];
         }
         this.stackSize--;
-        const k = gallopRight(array[start2], array, start1, length1, 0, compare4);
+        const k = gallopRight(array[start2], array, start1, length1, 0, compare5);
         start1 += k;
         length1 -= k;
         if (length1 === 0) {
@@ -29501,7 +29507,7 @@ var require_src = __commonJS({
           start2,
           length2,
           length2 - 1,
-          compare4
+          compare5
         );
         if (length2 === 0) {
           return;
@@ -29526,7 +29532,7 @@ var require_src = __commonJS({
        * @param {number} length2 - Length of run2.
        */
       mergeLow(start1, length1, start2, length2) {
-        const { compare: compare4 } = this;
+        const { compare: compare5 } = this;
         const { array } = this;
         const { tmp } = this;
         const { tmpIndex } = this;
@@ -29564,7 +29570,7 @@ var require_src = __commonJS({
           let count22 = 0;
           let exit = false;
           do {
-            if (compare4(array[cursor2], tmp[cursor1]) < 0) {
+            if (compare5(array[cursor2], tmp[cursor1]) < 0) {
               array[dest] = array[cursor2];
               results[dest] = results[cursor2];
               dest++;
@@ -29592,7 +29598,7 @@ var require_src = __commonJS({
             break;
           }
           do {
-            count1 = gallopRight(array[cursor2], tmp, cursor1, length1, 0, compare4);
+            count1 = gallopRight(array[cursor2], tmp, cursor1, length1, 0, compare5);
             if (count1 !== 0) {
               for (i = 0; i < count1; i++) {
                 array[dest + i] = tmp[cursor1 + i];
@@ -29614,7 +29620,7 @@ var require_src = __commonJS({
               exit = true;
               break;
             }
-            count22 = gallopLeft(tmp[cursor1], array, cursor2, length2, 0, compare4);
+            count22 = gallopLeft(tmp[cursor1], array, cursor2, length2, 0, compare5);
             if (count22 !== 0) {
               for (i = 0; i < count22; i++) {
                 array[dest + i] = array[cursor2 + i];
@@ -29680,7 +29686,7 @@ var require_src = __commonJS({
        * @param {number} length2 - Length of run2.
        */
       mergeHigh(start1, length1, start2, length2) {
-        const { compare: compare4 } = this;
+        const { compare: compare5 } = this;
         const { array } = this;
         const { tmp } = this;
         const { tmpIndex } = this;
@@ -29725,7 +29731,7 @@ var require_src = __commonJS({
           let count22 = 0;
           let exit = false;
           do {
-            if (compare4(tmp[cursor2], array[cursor1]) < 0) {
+            if (compare5(tmp[cursor2], array[cursor1]) < 0) {
               array[dest] = array[cursor1];
               results[dest] = results[cursor1];
               dest--;
@@ -29759,7 +29765,7 @@ var require_src = __commonJS({
               start1,
               length1,
               length1 - 1,
-              compare4
+              compare5
             );
             if (count1 !== 0) {
               dest -= count1;
@@ -29790,7 +29796,7 @@ var require_src = __commonJS({
               0,
               length2,
               length2 - 1,
-              compare4
+              compare5
             );
             if (count22 !== 0) {
               dest -= count22;
@@ -29851,7 +29857,7 @@ var require_src = __commonJS({
         }
       }
     };
-    function sort(array, compare4, lo, hi) {
+    function sort(array, compare5, lo, hi) {
       if (!Array.isArray(array)) {
         throw new TypeError(
           `The "array" argument must be an array. Received ${array}`
@@ -29863,12 +29869,12 @@ var require_src = __commonJS({
       while (i < length) {
         results[i] = i++;
       }
-      if (!compare4) {
-        compare4 = alphabeticalCompare;
-      } else if (typeof compare4 !== "function") {
+      if (!compare5) {
+        compare5 = alphabeticalCompare;
+      } else if (typeof compare5 !== "function") {
         hi = lo;
-        lo = compare4;
-        compare4 = alphabeticalCompare;
+        lo = compare5;
+        compare5 = alphabeticalCompare;
       }
       if (!lo) {
         lo = 0;
@@ -29882,20 +29888,20 @@ var require_src = __commonJS({
       }
       let runLength = 0;
       if (remaining < DEFAULT_MIN_MERGE) {
-        runLength = makeAscendingRun(array, lo, hi, compare4);
-        binaryInsertionSort(array, lo, hi, lo + runLength, compare4);
+        runLength = makeAscendingRun(array, lo, hi, compare5);
+        binaryInsertionSort(array, lo, hi, lo + runLength, compare5);
         return results;
       }
-      const ts = new TimSort(array, compare4);
+      const ts = new TimSort(array, compare5);
       const minRun = minRunLength(remaining);
       do {
-        runLength = makeAscendingRun(array, lo, hi, compare4);
+        runLength = makeAscendingRun(array, lo, hi, compare5);
         if (runLength < minRun) {
           let force = remaining;
           if (force > minRun) {
             force = minRun;
           }
-          binaryInsertionSort(array, lo, lo + force, lo + runLength, compare4);
+          binaryInsertionSort(array, lo, lo + force, lo + runLength, compare5);
           runLength = force;
         }
         ts.pushRun(lo, runLength);
@@ -29928,7 +29934,7 @@ var require_common = __commonJS({
     var {
       isObject,
       isArray: isArray3,
-      isString: isString3,
+      isString: isString2,
       isNumber
     } = require_util8();
     var PREFIX_BEFORE = "before";
@@ -30014,7 +30020,7 @@ var require_common = __commonJS({
     };
     var assign3 = (target, source, keys3) => {
       keys3.forEach((key) => {
-        if (!isString3(key) && !isNumber(key)) {
+        if (!isString2(key) && !isNumber(key)) {
           return;
         }
         if (!hasOwnProperty4(source, key)) {
@@ -30421,7 +30427,7 @@ var require_parse4 = __commonJS({
         expect(COLON);
         next();
         parse_comments(PREFIX_AFTER_COLON);
-        obj[name2] = transform2(name2, walk3());
+        obj[name2] = transform2(name2, walk2());
         parse_comments();
       }
       if (started) {
@@ -30457,7 +30463,7 @@ var require_parse4 = __commonJS({
         started = true;
         set_prop(i);
         assign_comments(PREFIX_BEFORE);
-        array[i] = transform2(i, walk3());
+        array[i] = transform2(i, walk2());
         i++;
         parse_comments();
       }
@@ -30473,7 +30479,7 @@ var require_parse4 = __commonJS({
       restore_prop();
       return array;
     };
-    function walk3() {
+    function walk2() {
       let tt = type();
       if (tt === CURLY_BRACKET_OPEN) {
         next();
@@ -30514,7 +30520,7 @@ var require_parse4 = __commonJS({
       next();
       set_comments_host({});
       parse_comments(PREFIX_BEFORE_ALL);
-      let result = walk3();
+      let result = walk2();
       parse_comments(PREFIX_AFTER_ALL);
       if (current) {
         unexpected();
@@ -30579,7 +30585,7 @@ var require_stringify2 = __commonJS({
       isObject,
       isFunction,
       isNumber,
-      isString: isString3
+      isString: isString2
     } = require_util8();
     var repeat = require_repeat_string();
     var {
@@ -30652,10 +30658,10 @@ var require_stringify2 = __commonJS({
       replacer = null;
       indent = EMPTY;
     };
-    var join4 = (one, two, gap) => one ? two ? one + two.trim() + LF2 + gap : one.trimRight() + LF2 + gap : two ? two.trimRight() + LF2 + gap : EMPTY;
+    var join3 = (one, two, gap) => one ? two ? one + two.trim() + LF2 + gap : one.trimRight() + LF2 + gap : two ? two.trimRight() + LF2 + gap : EMPTY;
     var join_content = (inside, value, gap) => {
       const comment = process_comments(value, PREFIX_BEFORE, gap + indent, true);
-      return join4(comment, inside, gap);
+      return join3(comment, inside, gap);
     };
     var array_stringify = (value, gap) => {
       const deeper_gap = gap + indent;
@@ -30666,7 +30672,7 @@ var require_stringify2 = __commonJS({
         if (i !== 0) {
           inside += COMMA;
         }
-        const before = join4(
+        const before = join3(
           after_comma,
           process_comments(value, BEFORE(i), deeper_gap),
           deeper_gap
@@ -30676,7 +30682,7 @@ var require_stringify2 = __commonJS({
         inside += process_comments(value, AFTER_VALUE(i), deeper_gap);
         after_comma = process_comments(value, AFTER(i), deeper_gap);
       }
-      inside += join4(
+      inside += join3(
         after_comma,
         process_comments(value, PREFIX_AFTER, deeper_gap),
         deeper_gap
@@ -30701,7 +30707,7 @@ var require_stringify2 = __commonJS({
           inside += COMMA;
         }
         first3 = false;
-        const before = join4(
+        const before = join3(
           after_comma,
           process_comments(value, BEFORE(key), deeper_gap),
           deeper_gap
@@ -30711,7 +30717,7 @@ var require_stringify2 = __commonJS({
         after_comma = process_comments(value, AFTER(key), deeper_gap);
       };
       keys3.forEach(iteratee);
-      inside += join4(
+      inside += join3(
         after_comma,
         process_comments(value, PREFIX_AFTER, deeper_gap),
         deeper_gap
@@ -30742,7 +30748,7 @@ var require_stringify2 = __commonJS({
         default:
       }
     }
-    var get_indent = (space) => isString3(space) ? space : isNumber(space) ? repeat(SPACE, space) : EMPTY;
+    var get_indent = (space) => isString2(space) ? space : isNumber(space) ? repeat(SPACE, space) : EMPTY;
     var { toString } = Object.prototype;
     var PRIMITIVE_OBJECT_TYPES = [
       "[object Number]",
@@ -34730,10 +34736,10 @@ var require_resolve_block_map = __commonJS({
       let offset = bm.offset;
       let commentEnd = null;
       for (const collItem of bm.items) {
-        const { start, key, sep: sep5, value } = collItem;
+        const { start, key, sep: sep4, value } = collItem;
         const keyProps = resolveProps.resolveProps(start, {
           indicator: "explicit-key-ind",
-          next: key ?? sep5?.[0],
+          next: key ?? sep4?.[0],
           offset,
           onError,
           parentIndent: bm.indent,
@@ -34747,7 +34753,7 @@ var require_resolve_block_map = __commonJS({
             else if ("indent" in key && key.indent !== bm.indent)
               onError(offset, "BAD_INDENT", startColMsg);
           }
-          if (!keyProps.anchor && !keyProps.tag && !sep5) {
+          if (!keyProps.anchor && !keyProps.tag && !sep4) {
             commentEnd = keyProps.end;
             if (keyProps.comment) {
               if (map3.comment)
@@ -34771,7 +34777,7 @@ var require_resolve_block_map = __commonJS({
         ctx.atKey = false;
         if (utilMapIncludes.mapIncludes(ctx, map3.items, keyNode))
           onError(keyStart, "DUPLICATE_KEY", "Map keys must be unique");
-        const valueProps = resolveProps.resolveProps(sep5 ?? [], {
+        const valueProps = resolveProps.resolveProps(sep4 ?? [], {
           indicator: "map-value-ind",
           next: value,
           offset: keyNode.range[2],
@@ -34787,7 +34793,7 @@ var require_resolve_block_map = __commonJS({
             if (ctx.options.strict && keyProps.start < valueProps.found.offset - 1024)
               onError(keyNode.range, "KEY_OVER_1024_CHARS", "The : indicator must be at most 1024 chars after the start of an implicit block mapping key");
           }
-          const valueNode = value ? composeNode(ctx, value, valueProps, onError) : composeEmptyNode(ctx, offset, sep5, null, valueProps, onError);
+          const valueNode = value ? composeNode(ctx, value, valueProps, onError) : composeEmptyNode(ctx, offset, sep4, null, valueProps, onError);
           if (ctx.schema.compat)
             utilFlowIndentCheck.flowIndentCheck(bm.indent, value, onError);
           offset = valueNode.range[2];
@@ -34878,7 +34884,7 @@ var require_resolve_end = __commonJS({
       let comment = "";
       if (end) {
         let hasSpace = false;
-        let sep5 = "";
+        let sep4 = "";
         for (const token of end) {
           const { source, type } = token;
           switch (type) {
@@ -34892,13 +34898,13 @@ var require_resolve_end = __commonJS({
               if (!comment)
                 comment = cb;
               else
-                comment += sep5 + cb;
-              sep5 = "";
+                comment += sep4 + cb;
+              sep4 = "";
               break;
             }
             case "newline":
               if (comment)
-                sep5 += source;
+                sep4 += source;
               hasSpace = true;
               break;
             default:
@@ -34941,18 +34947,18 @@ var require_resolve_flow_collection = __commonJS({
       let offset = fc.offset + fc.start.source.length;
       for (let i = 0; i < fc.items.length; ++i) {
         const collItem = fc.items[i];
-        const { start, key, sep: sep5, value } = collItem;
+        const { start, key, sep: sep4, value } = collItem;
         const props = resolveProps.resolveProps(start, {
           flow: fcName,
           indicator: "explicit-key-ind",
-          next: key ?? sep5?.[0],
+          next: key ?? sep4?.[0],
           offset,
           onError,
           parentIndent: fc.indent,
           startOnNewline: false
         });
         if (!props.found) {
-          if (!props.anchor && !props.tag && !sep5 && !value) {
+          if (!props.anchor && !props.tag && !sep4 && !value) {
             if (i === 0 && props.comma)
               onError(props.comma, "UNEXPECTED_TOKEN", `Unexpected , in ${fcName}`);
             else if (i < fc.items.length - 1)
@@ -35006,8 +35012,8 @@ var require_resolve_flow_collection = __commonJS({
             }
           }
         }
-        if (!isMap && !sep5 && !props.found) {
-          const valueNode = value ? composeNode(ctx, value, props, onError) : composeEmptyNode(ctx, props.end, sep5, null, props, onError);
+        if (!isMap && !sep4 && !props.found) {
+          const valueNode = value ? composeNode(ctx, value, props, onError) : composeEmptyNode(ctx, props.end, sep4, null, props, onError);
           coll.items.push(valueNode);
           offset = valueNode.range[2];
           if (isBlock(value))
@@ -35019,7 +35025,7 @@ var require_resolve_flow_collection = __commonJS({
           if (isBlock(key))
             onError(keyNode.range, "BLOCK_IN_FLOW", blockMsg);
           ctx.atKey = false;
-          const valueProps = resolveProps.resolveProps(sep5 ?? [], {
+          const valueProps = resolveProps.resolveProps(sep4 ?? [], {
             flow: fcName,
             indicator: "map-value-ind",
             next: value,
@@ -35030,8 +35036,8 @@ var require_resolve_flow_collection = __commonJS({
           });
           if (valueProps.found) {
             if (!isMap && !props.found && ctx.options.strict) {
-              if (sep5)
-                for (const st of sep5) {
+              if (sep4)
+                for (const st of sep4) {
                   if (st === valueProps.found)
                     break;
                   if (st.type === "newline") {
@@ -35048,7 +35054,7 @@ var require_resolve_flow_collection = __commonJS({
             else
               onError(valueProps.start, "MISSING_CHAR", `Missing , or : between ${fcName} items`);
           }
-          const valueNode = value ? composeNode(ctx, value, valueProps, onError) : valueProps.found ? composeEmptyNode(ctx, valueProps.end, sep5, null, valueProps, onError) : null;
+          const valueNode = value ? composeNode(ctx, value, valueProps, onError) : valueProps.found ? composeEmptyNode(ctx, valueProps.end, sep4, null, valueProps, onError) : null;
           if (valueNode) {
             if (isBlock(value))
               onError(valueNode.range, "BLOCK_IN_FLOW", blockMsg);
@@ -35228,7 +35234,7 @@ var require_resolve_block_scalar = __commonJS({
           chompStart = i + 1;
       }
       let value = "";
-      let sep5 = "";
+      let sep4 = "";
       let prevMoreIndented = false;
       for (let i = 0; i < contentStart; ++i)
         value += lines[i][0].slice(trimIndent) + "\n";
@@ -35245,24 +35251,24 @@ var require_resolve_block_scalar = __commonJS({
           indent = "";
         }
         if (type === Scalar.Scalar.BLOCK_LITERAL) {
-          value += sep5 + indent.slice(trimIndent) + content;
-          sep5 = "\n";
+          value += sep4 + indent.slice(trimIndent) + content;
+          sep4 = "\n";
         } else if (indent.length > trimIndent || content[0] === "	") {
-          if (sep5 === " ")
-            sep5 = "\n";
-          else if (!prevMoreIndented && sep5 === "\n")
-            sep5 = "\n\n";
-          value += sep5 + indent.slice(trimIndent) + content;
-          sep5 = "\n";
+          if (sep4 === " ")
+            sep4 = "\n";
+          else if (!prevMoreIndented && sep4 === "\n")
+            sep4 = "\n\n";
+          value += sep4 + indent.slice(trimIndent) + content;
+          sep4 = "\n";
           prevMoreIndented = true;
         } else if (content === "") {
-          if (sep5 === "\n")
+          if (sep4 === "\n")
             value += "\n";
           else
-            sep5 = "\n";
+            sep4 = "\n";
         } else {
-          value += sep5 + content;
-          sep5 = " ";
+          value += sep4 + content;
+          sep4 = " ";
           prevMoreIndented = false;
         }
       }
@@ -35444,25 +35450,25 @@ var require_resolve_flow_scalar = __commonJS({
       if (!match2)
         return source;
       let res = match2[1];
-      let sep5 = " ";
+      let sep4 = " ";
       let pos = first3.lastIndex;
       line.lastIndex = pos;
       while (match2 = line.exec(source)) {
         if (match2[1] === "") {
-          if (sep5 === "\n")
-            res += sep5;
+          if (sep4 === "\n")
+            res += sep4;
           else
-            sep5 = "\n";
+            sep4 = "\n";
         } else {
-          res += sep5 + match2[1];
-          sep5 = " ";
+          res += sep4 + match2[1];
+          sep4 = " ";
         }
         pos = line.lastIndex;
       }
       const last = /[ \t]*(.*)/sy;
       last.lastIndex = pos;
       match2 = last.exec(source);
-      return res + sep5 + (match2?.[1] ?? "");
+      return res + sep4 + (match2?.[1] ?? "");
     }
     function doubleQuotedValue(source, onError) {
       let res = "";
@@ -36265,14 +36271,14 @@ var require_cst_stringify = __commonJS({
         }
       }
     }
-    function stringifyItem({ start, key, sep: sep5, value }) {
+    function stringifyItem({ start, key, sep: sep4, value }) {
       let res = "";
       for (const st of start)
         res += st.source;
       if (key)
         res += stringifyToken(key);
-      if (sep5)
-        for (const st of sep5)
+      if (sep4)
+        for (const st of sep4)
           res += st.source;
       if (value)
         res += stringifyToken(value);
@@ -37422,18 +37428,18 @@ var require_parser = __commonJS({
         if (this.type === "map-value-ind") {
           const prev = getPrevProps(this.peek(2));
           const start = getFirstKeyStartProps(prev);
-          let sep5;
+          let sep4;
           if (scalar.end) {
-            sep5 = scalar.end;
-            sep5.push(this.sourceToken);
+            sep4 = scalar.end;
+            sep4.push(this.sourceToken);
             delete scalar.end;
           } else
-            sep5 = [this.sourceToken];
+            sep4 = [this.sourceToken];
           const map3 = {
             type: "block-map",
             offset: scalar.offset,
             indent: scalar.indent,
-            items: [{ start, key: scalar, sep: sep5 }]
+            items: [{ start, key: scalar, sep: sep4 }]
           };
           this.onKeyLine = true;
           this.stack[this.stack.length - 1] = map3;
@@ -37586,15 +37592,15 @@ var require_parser = __commonJS({
                 } else if (isFlowToken(it.key) && !includesToken(it.sep, "newline")) {
                   const start2 = getFirstKeyStartProps(it.start);
                   const key = it.key;
-                  const sep5 = it.sep;
-                  sep5.push(this.sourceToken);
+                  const sep4 = it.sep;
+                  sep4.push(this.sourceToken);
                   delete it.key;
                   delete it.sep;
                   this.stack.push({
                     type: "block-map",
                     offset: this.offset,
                     indent: this.indent,
-                    items: [{ start: start2, key, sep: sep5 }]
+                    items: [{ start: start2, key, sep: sep4 }]
                   });
                 } else if (start.length > 0) {
                   it.sep = it.sep.concat(start, this.sourceToken);
@@ -37623,14 +37629,14 @@ var require_parser = __commonJS({
             case "scalar":
             case "single-quoted-scalar":
             case "double-quoted-scalar": {
-              const fs12 = this.flowScalar(this.type);
+              const fs10 = this.flowScalar(this.type);
               if (atNextItem || it.value) {
-                map3.items.push({ start, key: fs12, sep: [] });
+                map3.items.push({ start, key: fs10, sep: [] });
                 this.onKeyLine = true;
               } else if (it.sep) {
-                this.stack.push(fs12);
+                this.stack.push(fs10);
               } else {
-                Object.assign(it, { key: fs12, sep: [] });
+                Object.assign(it, { key: fs10, sep: [] });
                 this.onKeyLine = true;
               }
               return;
@@ -37748,13 +37754,13 @@ var require_parser = __commonJS({
             case "scalar":
             case "single-quoted-scalar":
             case "double-quoted-scalar": {
-              const fs12 = this.flowScalar(this.type);
+              const fs10 = this.flowScalar(this.type);
               if (!it || it.value)
-                fc.items.push({ start: [], key: fs12, sep: [] });
+                fc.items.push({ start: [], key: fs10, sep: [] });
               else if (it.sep)
-                this.stack.push(fs12);
+                this.stack.push(fs10);
               else
-                Object.assign(it, { key: fs12, sep: [] });
+                Object.assign(it, { key: fs10, sep: [] });
               return;
             }
             case "flow-map-end":
@@ -37778,13 +37784,13 @@ var require_parser = __commonJS({
             const prev = getPrevProps(parent);
             const start = getFirstKeyStartProps(prev);
             fixFlowSeqItems(fc);
-            const sep5 = fc.end.splice(1, fc.end.length);
-            sep5.push(this.sourceToken);
+            const sep4 = fc.end.splice(1, fc.end.length);
+            sep4.push(this.sourceToken);
             const map3 = {
               type: "block-map",
               offset: fc.offset,
               indent: fc.indent,
-              items: [{ start, key: fc, sep: sep5 }]
+              items: [{ start, key: fc, sep: sep4 }]
             };
             this.onKeyLine = true;
             this.stack[this.stack.length - 1] = map3;
@@ -38176,7 +38182,7 @@ var require_resolve_from2 = __commonJS({
     "use strict";
     var path26 = require("path");
     var Module = require("module");
-    var fs12 = require("fs");
+    var fs10 = require("fs");
     var resolveFrom2 = (fromDir, moduleId, silent) => {
       if (typeof fromDir !== "string") {
         throw new TypeError(`Expected \`fromDir\` to be of type \`string\`, got \`${typeof fromDir}\``);
@@ -38185,7 +38191,7 @@ var require_resolve_from2 = __commonJS({
         throw new TypeError(`Expected \`moduleId\` to be of type \`string\`, got \`${typeof moduleId}\``);
       }
       try {
-        fromDir = fs12.realpathSync(fromDir);
+        fromDir = fs10.realpathSync(fromDir);
       } catch (err) {
         if (err.code === "ENOENT") {
           fromDir = path26.resolve(fromDir);
@@ -38274,141 +38280,6 @@ var require_import_fresh = __commonJS({
       const parent = require.cache[parentPath];
       return parent === void 0 ? require(filePath) : parent.require(filePath);
     };
-  }
-});
-
-// ../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/configFields.js
-var require_configFields = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/configFields.js"(exports2) {
-    "use strict";
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.ConfigFields = void 0;
-    exports2.ConfigFields = {
-      allowCompoundWords: "allowCompoundWords",
-      cache: "cache",
-      caseSensitive: "caseSensitive",
-      description: "description",
-      dictionaries: "dictionaries",
-      dictionaryDefinitions: "dictionaryDefinitions",
-      enabled: "enabled",
-      enabledLanguageIds: "enabledLanguageIds",
-      enableFiletypes: "enableFiletypes",
-      enabledFileTypes: "enabledFileTypes",
-      enableGlobDot: "enableGlobDot",
-      failFast: "failFast",
-      features: "features",
-      files: "files",
-      flagWords: "flagWords",
-      gitignoreRoot: "gitignoreRoot",
-      globRoot: "globRoot",
-      ignorePaths: "ignorePaths",
-      ignoreRegExpList: "ignoreRegExpList",
-      ignoreWords: "ignoreWords",
-      ignoreRandomStrings: "ignoreRandomStrings",
-      import: "import",
-      includeRegExpList: "includeRegExpList",
-      language: "language",
-      languageId: "languageId",
-      languageSettings: "languageSettings",
-      loadDefaultConfiguration: "loadDefaultConfiguration",
-      maxDuplicateProblems: "maxDuplicateProblems",
-      maxNumberOfProblems: "maxNumberOfProblems",
-      minWordLength: "minWordLength",
-      minRandomLength: "minRandomLength",
-      name: "name",
-      noConfigSearch: "noConfigSearch",
-      noSuggestDictionaries: "noSuggestDictionaries",
-      numSuggestions: "numSuggestions",
-      overrides: "overrides",
-      patterns: "patterns",
-      pnpFiles: "pnpFiles",
-      readonly: "readonly",
-      reporters: "reporters",
-      showStatus: "showStatus",
-      spellCheckDelayMs: "spellCheckDelayMs",
-      suggestionNumChanges: "suggestionNumChanges",
-      suggestionsTimeout: "suggestionsTimeout",
-      suggestWords: "suggestWords",
-      useGitignore: "useGitignore",
-      usePnP: "usePnP",
-      userWords: "userWords",
-      validateDirectives: "validateDirectives",
-      words: "words",
-      // Experimental
-      parser: "parser"
-    };
-  }
-});
-
-// ../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/CSpellReporter.js
-var require_CSpellReporter = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/CSpellReporter.js"(exports2) {
-    "use strict";
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.MessageTypes = exports2.IssueType = void 0;
-    var IssueType3;
-    (function(IssueType4) {
-      IssueType4[IssueType4["spelling"] = 0] = "spelling";
-      IssueType4[IssueType4["directive"] = 1] = "directive";
-    })(IssueType3 || (exports2.IssueType = IssueType3 = {}));
-    exports2.MessageTypes = {
-      Debug: "Debug",
-      Info: "Info",
-      Warning: "Warning"
-    };
-  }
-});
-
-// ../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/defaultConfigSettings.js
-var require_defaultConfigSettings = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/defaultConfigSettings.js"(exports2) {
-    "use strict";
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.defaultCSpellSettings = void 0;
-    exports2.defaultCSpellSettings = {
-      ignoreRandomStrings: true,
-      minRandomLength: 40
-    };
-  }
-});
-
-// ../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/defineConfig.js
-var require_defineConfig = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/defineConfig.js"(exports2) {
-    "use strict";
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.defineConfig = defineConfig;
-    function defineConfig(config) {
-      return config;
-    }
-  }
-});
-
-// ../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/index.js
-var require_dist2 = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/index.js"(exports2) {
-    "use strict";
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.defineConfig = exports2.defaultCSpellSettings = exports2.MessageTypes = exports2.IssueType = exports2.ConfigFields = void 0;
-    var configFields_js_1 = require_configFields();
-    Object.defineProperty(exports2, "ConfigFields", { enumerable: true, get: function() {
-      return configFields_js_1.ConfigFields;
-    } });
-    var CSpellReporter_js_1 = require_CSpellReporter();
-    Object.defineProperty(exports2, "IssueType", { enumerable: true, get: function() {
-      return CSpellReporter_js_1.IssueType;
-    } });
-    Object.defineProperty(exports2, "MessageTypes", { enumerable: true, get: function() {
-      return CSpellReporter_js_1.MessageTypes;
-    } });
-    var defaultConfigSettings_js_1 = require_defaultConfigSettings();
-    Object.defineProperty(exports2, "defaultCSpellSettings", { enumerable: true, get: function() {
-      return defaultConfigSettings_js_1.defaultCSpellSettings;
-    } });
-    var defineConfig_js_1 = require_defineConfig();
-    Object.defineProperty(exports2, "defineConfig", { enumerable: true, get: function() {
-      return defineConfig_js_1.defineConfig;
-    } });
   }
 });
 
@@ -38967,8 +38838,8 @@ var require_async = __commonJS({
     }
     exports2.promise = promise;
     function callback(root, options, callback2) {
-      let walker3 = new walker_1.Walker(root, options, callback2);
-      walker3.start();
+      let walker2 = new walker_1.Walker(root, options, callback2);
+      walker2.start();
     }
     exports2.callback = callback;
   }
@@ -38982,8 +38853,8 @@ var require_sync = __commonJS({
     exports2.sync = void 0;
     var walker_1 = require_walker();
     function sync(root, options) {
-      const walker3 = new walker_1.Walker(root, options);
-      return walker3.start();
+      const walker2 = new walker_1.Walker(root, options);
+      return walker2.start();
     }
     exports2.sync = sync;
   }
@@ -39886,9 +39757,9 @@ var require_parse5 = __commonJS({
                 const idx2 = prev.value.lastIndexOf("[");
                 const pre = prev.value.slice(0, idx2);
                 const rest2 = prev.value.slice(idx2 + 2);
-                const posix5 = POSIX_REGEX_SOURCE[rest2];
-                if (posix5) {
-                  prev.value = pre + posix5;
+                const posix4 = POSIX_REGEX_SOURCE[rest2];
+                if (posix4) {
+                  prev.value = pre + posix4;
                   state.backtrack = true;
                   advance();
                   if (!bos.output && tokens.indexOf(prev) === 1) {
@@ -40404,7 +40275,7 @@ var require_picomatch3 = __commonJS({
         throw new TypeError("Expected pattern to be a non-empty string");
       }
       const opts = options || {};
-      const posix5 = opts.windows;
+      const posix4 = opts.windows;
       const regex = isState ? picomatch3.compileRe(glob2, options) : picomatch3.makeRe(glob2, options, false, true);
       const state = regex.state;
       delete regex.state;
@@ -40414,8 +40285,8 @@ var require_picomatch3 = __commonJS({
         isIgnored = picomatch3(opts.ignore, ignoreOpts, returnState);
       }
       const matcher = (input, returnObject = false) => {
-        const { isMatch, match: match2, output } = picomatch3.test(input, regex, options, { glob: glob2, posix: posix5 });
-        const result = { glob: glob2, state, regex, posix: posix5, input, output, match: match2, isMatch };
+        const { isMatch, match: match2, output } = picomatch3.test(input, regex, options, { glob: glob2, posix: posix4 });
+        const result = { glob: glob2, state, regex, posix: posix4, input, output, match: match2, isMatch };
         if (typeof opts.onResult === "function") {
           opts.onResult(result);
         }
@@ -40440,7 +40311,7 @@ var require_picomatch3 = __commonJS({
       }
       return matcher;
     };
-    picomatch3.test = (input, regex, options, { glob: glob2, posix: posix5 } = {}) => {
+    picomatch3.test = (input, regex, options, { glob: glob2, posix: posix4 } = {}) => {
       if (typeof input !== "string") {
         throw new TypeError("Expected input to be a string");
       }
@@ -40448,7 +40319,7 @@ var require_picomatch3 = __commonJS({
         return { isMatch: false, output: "" };
       }
       const opts = options || {};
-      const format5 = opts.format || (posix5 ? utils.toPosixSlashes : null);
+      const format5 = opts.format || (posix4 ? utils.toPosixSlashes : null);
       let match2 = input === glob2;
       let output = match2 && format5 ? format5(input) : input;
       if (match2 === false) {
@@ -40457,7 +40328,7 @@ var require_picomatch3 = __commonJS({
       }
       if (match2 === false || opts.capture === true) {
         if (opts.matchBase === true || opts.basename === true) {
-          match2 = picomatch3.matchBase(input, regex, options, posix5);
+          match2 = picomatch3.matchBase(input, regex, options, posix4);
         } else {
           match2 = regex.exec(output);
         }
@@ -40681,7 +40552,7 @@ var require_types = __commonJS({
 });
 
 // ../node_modules/.pnpm/fdir@6.4.2_picomatch@4.0.2/node_modules/fdir/dist/index.js
-var require_dist3 = __commonJS({
+var require_dist2 = __commonJS({
   "../node_modules/.pnpm/fdir@6.4.2_picomatch@4.0.2/node_modules/fdir/dist/index.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
@@ -41049,7 +40920,7 @@ var require_cjs = __commonJS({
 // ../node_modules/.pnpm/flat-cache@5.0.0/node_modules/flat-cache/src/utils.js
 var require_utils7 = __commonJS({
   "../node_modules/.pnpm/flat-cache@5.0.0/node_modules/flat-cache/src/utils.js"(exports2, module2) {
-    var fs12 = require("node:fs");
+    var fs10 = require("node:fs");
     var path26 = require("node:path");
     var flatted = require_cjs();
     function tryParse(filePath, defaultValue) {
@@ -41063,16 +40934,16 @@ var require_utils7 = __commonJS({
     }
     function readJSON(filePath) {
       return flatted.parse(
-        fs12.readFileSync(filePath, {
+        fs10.readFileSync(filePath, {
           encoding: "utf8"
         })
       );
     }
     function writeJSON(filePath, data) {
-      fs12.mkdirSync(path26.dirname(filePath), {
+      fs10.mkdirSync(path26.dirname(filePath), {
         recursive: true
       });
-      fs12.writeFileSync(filePath, flatted.stringify(data));
+      fs10.writeFileSync(filePath, flatted.stringify(data));
     }
     module2.exports = { tryParse, readJSON, writeJSON };
   }
@@ -41081,23 +40952,23 @@ var require_utils7 = __commonJS({
 // ../node_modules/.pnpm/flat-cache@5.0.0/node_modules/flat-cache/src/del.js
 var require_del = __commonJS({
   "../node_modules/.pnpm/flat-cache@5.0.0/node_modules/flat-cache/src/del.js"(exports2, module2) {
-    var fs12 = require("node:fs");
+    var fs10 = require("node:fs");
     var path26 = require("node:path");
     function del(targetPath) {
-      if (!fs12.existsSync(targetPath)) {
+      if (!fs10.existsSync(targetPath)) {
         return false;
       }
       try {
-        if (fs12.statSync(targetPath).isDirectory()) {
-          for (const file of fs12.readdirSync(targetPath)) {
+        if (fs10.statSync(targetPath).isDirectory()) {
+          for (const file of fs10.readdirSync(targetPath)) {
             const currentPath = path26.join(targetPath, file);
-            if (fs12.statSync(currentPath).isFile()) {
-              fs12.unlinkSync(currentPath);
+            if (fs10.statSync(currentPath).isFile()) {
+              fs10.unlinkSync(currentPath);
             }
           }
-          fs12.rmdirSync(targetPath);
+          fs10.rmdirSync(targetPath);
         } else {
-          fs12.unlinkSync(targetPath);
+          fs10.unlinkSync(targetPath);
         }
         return true;
       } catch (error4) {
@@ -41112,7 +40983,7 @@ var require_del = __commonJS({
 var require_cache2 = __commonJS({
   "../node_modules/.pnpm/flat-cache@5.0.0/node_modules/flat-cache/src/cache.js"(exports2, module2) {
     var path26 = require("node:path");
-    var fs12 = require("node:fs");
+    var fs10 = require("node:fs");
     var Keyv = require_src3();
     var { writeJSON, tryParse } = require_utils7();
     var { del } = require_del();
@@ -41132,7 +41003,7 @@ var require_cache2 = __commonJS({
         me.__visited = {};
         me.__persisted = {};
         me._pathToFile = cacheDir ? path26.resolve(cacheDir, documentId) : path26.resolve(__dirname, "../.cache/", documentId);
-        if (fs12.existsSync(me._pathToFile)) {
+        if (fs10.existsSync(me._pathToFile)) {
           me._persisted = tryParse(me._pathToFile, {});
         }
       },
@@ -41316,7 +41187,7 @@ var require_cache3 = __commonJS({
         return this.create(fname, dir, useChecksum, currentWorkingDir);
       },
       create(cacheId, _path, useChecksum, currentWorkingDir) {
-        const fs12 = require("node:fs");
+        const fs10 = require("node:fs");
         const flatCache = require_cache2();
         const cache5 = flatCache.load(cacheId, _path);
         let normalizedEntries = {};
@@ -41328,7 +41199,7 @@ var require_cache3 = __commonJS({
               if (currentWorkingDir) {
                 filePath = path26.join(currentWorkingDir, fPath);
               }
-              fs12.statSync(filePath);
+              fs10.statSync(filePath);
             } catch (error4) {
               if (error4.code === "ENOENT") {
                 cache5.removeKey(fPath);
@@ -41399,7 +41270,7 @@ var require_cache3 = __commonJS({
           getFileDescriptor(file) {
             let fstat;
             try {
-              fstat = fs12.statSync(file);
+              fstat = fs10.statSync(file);
             } catch (error4) {
               this.removeEntry(file);
               return { key: file, notFound: true, err: error4 };
@@ -41440,7 +41311,7 @@ var require_cache3 = __commonJS({
             const cacheExists = Boolean(meta);
             let contentBuffer;
             try {
-              contentBuffer = fs12.readFileSync(file);
+              contentBuffer = fs10.readFileSync(file);
             } catch {
               contentBuffer = "";
             }
@@ -41513,7 +41384,7 @@ var require_cache3 = __commonJS({
             if (this.currentWorkingDir) {
               filePath = path26.join(this.currentWorkingDir, filePath);
             }
-            const contentBuffer = fs12.readFileSync(filePath);
+            const contentBuffer = fs10.readFileSync(filePath);
             const hash = this.getHash(contentBuffer);
             const meta = Object.assign(cacheEntry.meta, { hash });
             delete meta.size;
@@ -41525,7 +41396,7 @@ var require_cache3 = __commonJS({
             if (currentWorkingDir) {
               filePath = path26.join(currentWorkingDir, filePath);
             }
-            const stat3 = fs12.statSync(filePath);
+            const stat3 = fs10.statSync(filePath);
             const meta = Object.assign(cacheEntry.meta, {
               size: stat3.size,
               mtime: stat3.mtime.getTime()
@@ -42100,7 +41971,9 @@ var CSpellReporterForGithubAction = class {
   _issue(issue) {
     const { issues, issueCounts } = this;
     const uri = issue.uri;
-    uri && issueCounts.set(uri, (issueCounts.get(uri) || 0) + 1);
+    if (uri) {
+      issueCounts.set(uri, (issueCounts.get(uri) || 0) + 1);
+    }
     issues.push(issue);
   }
   _info(message, _msgType) {
@@ -42140,8 +42013,8 @@ ${error4.stack}
       const isError6 = item.isFlagged || false;
       const hasPreferred = item.suggestionsEx?.some((s) => s.isPreferred) || false;
       const msgPrefix = isError6 ? "Forbidden word" : hasPreferred ? "Misspelled word" : "Unknown word";
-      const suggestions2 = item.suggestionsEx?.map((s) => s.word + (s.isPreferred ? "*" : "")).join(", ") || "";
-      const sugMsg = suggestions2 ? ` Suggestions: (${suggestions2})` : "";
+      const suggestions = item.suggestionsEx?.map((s) => s.word + (s.isPreferred ? "*" : "")).join(", ") || "";
+      const sugMsg = suggestions ? ` Suggestions: (${suggestions})` : "";
       const message = `${msgPrefix} (${item.text})${sugMsg}`;
       const cmd = isError6 ? errorCommand : command;
       if (!["error", "warning"].includes(cmd)) {
@@ -42176,20 +42049,7 @@ function relative2(cwd, fileUri) {
   return path.relative(cwd, fsPath);
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/index.mjs
-var esm_exports = {};
-__export(esm_exports, {
-  IncludeExcludeFlag: () => IncludeExcludeFlag,
-  checkText: () => checkText2,
-  createInit: () => createInit,
-  getDefaultReporter: () => getReporter,
-  lint: () => lint,
-  parseApplicationFeatureFlags: () => parseApplicationFeatureFlags,
-  suggestions: () => suggestions,
-  trace: () => trace
-});
-
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
 function* iteratorToIterable(iterator) {
   try {
     let n;
@@ -42221,7 +42081,7 @@ async function* asyncIteratorToAsyncIterable(iterator) {
   }
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
 function toPipeFn(syncFn, asyncFn) {
   function _(i) {
     return isAsyncIterable(i) ? asyncFn(i) : syncFn(i);
@@ -42232,7 +42092,7 @@ function isAsyncIterable(i) {
   return typeof i[Symbol.asyncIterator] === "function";
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
 function toArray(i) {
   return isAsyncIterable(i) ? toArrayAsync(i) : toArraySync(i);
 }
@@ -42247,7 +42107,7 @@ async function toArrayAsync(iter) {
   return collection;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
 async function* mergeAsyncIterables(iter, ...rest) {
   for await (const i of [iter, ...rest]) {
     yield* i;
@@ -42255,7 +42115,7 @@ async function* mergeAsyncIterables(iter, ...rest) {
 }
 var toAsyncIterable = mergeAsyncIterables;
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/index.js
 var operators_exports = {};
 __export(operators_exports, {
   opAppend: () => opAppend,
@@ -42304,7 +42164,7 @@ __export(operators_exports, {
   opUniqueSync: () => opUniqueSync
 });
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/append.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/append.js
 function opAppendAsync(...iterablesToAppend) {
   async function* fnAppend(iter) {
     yield* iter;
@@ -42330,7 +42190,7 @@ function opAppend(...iterablesToAppend) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/await.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/await.js
 async function* _asyncAwait(iter) {
   for await (const v of iter) {
     yield v;
@@ -42340,7 +42200,7 @@ function opAwaitAsync() {
   return _asyncAwait;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
 function opBufferAsync(size) {
   async function* fnBuffer(iter) {
     let buffer = [];
@@ -42382,7 +42242,7 @@ function opBuffer(size) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
 function opCombineAsync(...fns) {
   function combine4(iter) {
     for (const fn of fns) {
@@ -42402,7 +42262,7 @@ function opCombineSync(...fns) {
   return combine4;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
 function opConcatMapAsync(mapFn) {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -42444,7 +42304,7 @@ function opConcatMapSync(mapFn) {
 }
 var opConcatMap = (fn) => toPipeFn(opConcatMapSync(fn), opConcatMapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
 function opFilterAsync(filterFn) {
   async function* genFilter(iter) {
     for await (const v of iter) {
@@ -42487,7 +42347,7 @@ function opFilter(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/first.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/first.js
 function opFirstAsync(firstFn) {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -42520,7 +42380,7 @@ function opFirst(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
 function opFlattenAsync() {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -42539,7 +42399,7 @@ function opFlattenSync() {
 }
 var opFlatten = () => toPipeFn(opFlattenSync(), opFlattenAsync());
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
 function opJoinStringsAsync(joinCharacter = ",") {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -42560,7 +42420,7 @@ function opJoinStringsSync(joinCharacter = ",") {
 }
 var opJoinStrings = (joinCharacter) => toPipeFn(opJoinStringsSync(joinCharacter), opJoinStringsAsync(joinCharacter));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/last.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/last.js
 var symNotFound = Symbol("LastNotFound");
 function opLastAsync(lastFn) {
   async function* fn(iter) {
@@ -42598,7 +42458,7 @@ function opLast(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/map.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/map.js
 function opMapAsync(mapFn) {
   async function* genMap(iter) {
     for await (const v of iter) {
@@ -42629,7 +42489,7 @@ function opMapSync(mapFn) {
 }
 var opMap = (fn) => toPipeFn(opMapSync(fn), opMapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
 function opReduceAsync(reduceFn, initialValue) {
   async function* reduce3(head, tail) {
     for await (const v of tail) {
@@ -42678,7 +42538,7 @@ function isIterable(i) {
   return typeof i[Symbol.iterator] === "function";
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
 function opSkipAsync(count3) {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -42705,7 +42565,7 @@ function opSkipSync(count3) {
 }
 var opSkip = (count3) => toPipeFn(opSkipSync(count3), opSkipAsync(count3));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/take.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/take.js
 function opTakeAsync(count3) {
   async function* fn(iter) {
     if (count3 <= 0)
@@ -42732,7 +42592,7 @@ function opTakeSync(count3) {
 }
 var opTake = (count3) => toPipeFn(opTakeSync(count3), opTakeAsync(count3));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
 function opTapAsync(tapFn) {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -42753,7 +42613,7 @@ function opTapSync(tapFn) {
 }
 var opTap = (fn) => toPipeFn(opTapSync(fn), opTapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
 function opUniqueAsync(k) {
   function fnK(k2) {
     async function* fn2(iter) {
@@ -42806,7 +42666,7 @@ function opUniqueSync(k) {
 }
 var opUnique = (getKey) => toPipeFn(opUniqueSync(getKey), opUniqueAsync(getKey));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/pipe.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/pipe.js
 function pipeAsync(i, ...fns) {
   const iter = toAsyncIterable(i);
   return opCombineAsync(...fns)(iter);
@@ -42815,101 +42675,16 @@ function pipeSync(i, ...fns) {
   return opCombineSync(...fns)(i);
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/reduce.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/reduce.js
 function reduceSync(iter, reduceFn, initialValue) {
   const i = initialValue === void 0 ? pipeSync(iter, opReduceSync(reduceFn)) : pipeSync(iter, opReduceSync(reduceFn, initialValue));
   return [...i][0];
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.1/node_modules/@cspell/cspell-pipe/dist/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@8.17.2/node_modules/@cspell/cspell-pipe/dist/index.js
 var operators = operators_exports;
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/index.js
-var lib_exports = {};
-__export(lib_exports, {
-  CompoundWordsMethod: () => CompoundWordsMethod,
-  DocumentValidator: () => DocumentValidator,
-  ENV_CSPELL_GLOB_ROOT: () => ENV_CSPELL_GLOB_ROOT,
-  ExclusionHelper: () => exclusionHelper_exports,
-  FSCapabilityFlags: () => FSCapabilityFlags,
-  FeatureFlags: () => FeatureFlags,
-  ImportError: () => ImportError,
-  IncludeExcludeFlag: () => IncludeExcludeFlag,
-  Link: () => index_link_exports,
-  SpellingDictionaryLoadError: () => SpellingDictionaryLoadError,
-  SuggestionError: () => SuggestionError,
-  Text: () => textApi_exports,
-  UnknownFeatureFlagError: () => UnknownFeatureFlagError,
-  asyncIterableToArray: () => toArray2,
-  calcOverrideSettings: () => calcOverrideSettings,
-  checkFilenameMatchesGlob: () => checkFilenameMatchesExcludeGlob,
-  checkText: () => checkText,
-  checkTextDocument: () => checkTextDocument,
-  clearCachedFiles: () => clearCachedFiles,
-  clearCaches: () => clearCaches,
-  combineTextAndLanguageSettings: () => combineTextAndLanguageSettings,
-  constructSettingsForText: () => combineTextAndLanguageSettings,
-  createConfigLoader: () => createConfigLoader,
-  createPerfTimer: () => createPerfTimer2,
-  createSpellingDictionary: () => createSpellingDictionary,
-  createSpellingDictionaryCollection: () => createCollection,
-  createTextDocument: () => createTextDocument,
-  currentSettingsFileVersion: () => currentSettingsFileVersion,
-  defaultConfigFilenames: () => defaultConfigFilenames,
-  defaultFileName: () => defaultFileName,
-  defaultSettingsFilename: () => defaultFileName,
-  determineFinalDocumentSettings: () => determineFinalDocumentSettings,
-  extractDependencies: () => extractDependencies,
-  extractImportErrors: () => extractImportErrors,
-  fileToDocument: () => fileToDocument,
-  fileToTextDocument: () => fileToTextDocument,
-  finalizeSettings: () => finalizeSettings,
-  getCachedFileSize: () => getCachedFileSize,
-  getDefaultBundledSettingsAsync: () => getDefaultBundledSettingsAsync,
-  getDefaultConfigLoader: () => getDefaultConfigLoader,
-  getDefaultSettings: () => getDefaultSettings,
-  getDictionary: () => getDictionary,
-  getGlobalSettings: () => getGlobalSettings,
-  getGlobalSettingsAsync: () => getGlobalSettingsAsync,
-  getLanguageIdsForBaseFilename: () => findMatchingFileTypes,
-  getLanguagesForExt: () => getFileTypesForExt,
-  getLogger: () => getLogger,
-  getSources: () => getSources,
-  getSystemFeatureFlags: () => getSystemFeatureFlags,
-  getVirtualFS: () => getVirtualFS,
-  isBinaryFile: () => isBinaryFile2,
-  isSpellingDictionaryLoadError: () => isSpellingDictionaryLoadError,
-  loadConfig: () => loadConfig,
-  loadPnP: () => loadPnP,
-  mergeInDocSettings: () => mergeInDocSettings,
-  mergeSettings: () => mergeSettings,
-  readConfigFile: () => readConfigFile,
-  readFile: () => readFileText,
-  readFileSync: () => readFileTextSync,
-  readRawSettings: () => readRawSettings,
-  readSettings: () => readSettings,
-  readSettingsFiles: () => readSettingsFiles,
-  refreshDictionaryCache: () => refreshDictionaryCache,
-  resolveConfigFileImports: () => resolveConfigFileImports,
-  resolveFile: () => resolveFile,
-  searchForConfig: () => searchForConfig,
-  sectionCSpell: () => sectionCSpell,
-  setLogger: () => setLogger,
-  shouldCheckDocument: () => shouldCheckDocument,
-  spellCheckDocument: () => spellCheckDocument,
-  spellCheckFile: () => spellCheckFile,
-  suggestionsForWord: () => suggestionsForWord,
-  suggestionsForWords: () => suggestionsForWords,
-  traceWords: () => traceWords,
-  traceWordsAsync: () => traceWordsAsync,
-  updateTextDocument: () => updateTextDocument,
-  validateText: () => validateText2,
-  writeToFile: () => writeToFile,
-  writeToFileIterable: () => writeToFileIterable,
-  writeToFileIterableP: () => writeToFileIterable
-});
-
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/errors.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/errors.js
 var import_node_util2 = require("node:util");
 var allowStringOrUndefined = {
   string: true,
@@ -42948,7 +42723,7 @@ async function _catchPromiseError(p, handler) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/events/events.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/events/events.js
 var EventEmitter = class {
   name;
   #listeners = /* @__PURE__ */ new Set();
@@ -43001,11 +42776,8 @@ var clearCacheEvent = new ClearCacheEvent();
 function onClearCache(listener) {
   return clearCacheEvent.on(listener);
 }
-function dispatchClearCache() {
-  clearCacheEvent.fire(void 0);
-}
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/AutoCache.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/AutoCache.js
 var CACHE_SIZE = 100;
 var Cache01 = class {
   maxSize;
@@ -43083,4147 +42855,10 @@ function extractStats(ac) {
   return { hits, misses, swaps };
 }
 
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/memorizeLastCall.js
-var SymEmpty = Symbol("memorizeLastCall");
-function memorizeLastCall(fn) {
-  let lastP = void 0;
-  let lastR = SymEmpty;
-  function calc(p) {
-    if (lastR !== SymEmpty && lastP === p)
-      return lastR;
-    lastP = p;
-    lastR = fn(p);
-    return lastR;
-  }
-  return calc;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/ITrieNode/find.js
-var defaultLegacyMinCompoundLength = 3;
-var _defaultFindOptions = {
-  matchCase: false,
-  compoundMode: "compound",
-  legacyMinCompoundLength: defaultLegacyMinCompoundLength
-};
-Object.freeze(_defaultFindOptions);
-var arrayCompoundModes = ["none", "compound", "legacy"];
-var knownCompoundModes = new Map(arrayCompoundModes.map((a) => [a, a]));
-var notFound = { found: false, compoundUsed: false, caseMatched: false, forbidden: void 0 };
-Object.freeze(notFound);
-function findWordNode(root, word, options) {
-  return _findWordNode(root, word, options);
-}
-function findWord(root, word, options) {
-  if (root.find) {
-    const found = root.find(word, options?.matchCase || false);
-    if (found)
-      return found;
-    if (!root.hasCompoundWords) {
-      return notFound;
-    }
-  }
-  const v = _findWordNode(root, word, options);
-  return {
-    found: v.found,
-    compoundUsed: v.compoundUsed,
-    caseMatched: v.caseMatched,
-    forbidden: v.forbidden
-  };
-}
-function _findWordNode(root, word, options) {
-  const trieInfo = root.info;
-  const matchCase3 = options?.matchCase || false;
-  const compoundMode = knownCompoundModes.get(options?.compoundMode) || _defaultFindOptions.compoundMode;
-  const compoundPrefix = compoundMode === "compound" ? trieInfo.compoundCharacter ?? root.compoundFix : "";
-  const ignoreCasePrefix = matchCase3 ? "" : trieInfo.stripCaseAndAccentsPrefix ?? root.caseInsensitivePrefix;
-  const checkForbidden = options?.checkForbidden ?? true;
-  function __findCompound() {
-    const f = findCompoundWord(root, word, compoundPrefix, ignoreCasePrefix);
-    const result = { ...f };
-    if (f.found !== false && f.compoundUsed) {
-      const r = !f.caseMatched ? walk(root, root.caseInsensitivePrefix) : root;
-      result.forbidden = checkForbidden ? isForbiddenWord(r, word, root.forbidPrefix) : void 0;
-    }
-    return result;
-  }
-  function __findExact() {
-    const n = root.getNode ? root.getNode(word) : walk(root, word);
-    const isFound = isEndOfWordNode(n);
-    const result = {
-      found: isFound && word,
-      compoundUsed: false,
-      forbidden: checkForbidden ? isForbiddenWord(root, word, root.forbidPrefix) : void 0,
-      node: n,
-      caseMatched: true
-    };
-    return result;
-  }
-  switch (compoundMode) {
-    case "none": {
-      return matchCase3 ? __findExact() : __findCompound();
-    }
-    case "compound": {
-      return __findCompound();
-    }
-    case "legacy": {
-      return findLegacyCompound(root, word, options);
-    }
-  }
-}
-function findLegacyCompound(root, word, options) {
-  const roots = [root];
-  if (!options?.matchCase) {
-    roots.push(walk(root, root.caseInsensitivePrefix));
-  }
-  return findLegacyCompoundNode(roots, word, options?.legacyMinCompoundLength || defaultLegacyMinCompoundLength);
-}
-function findCompoundNode(root, word, compoundCharacter, ignoreCasePrefix) {
-  const stack = [
-    // { n: root, compoundPrefix: '', cr: undefined, caseMatched: true },
-    { n: root, compoundPrefix: ignoreCasePrefix, cr: void 0, caseMatched: true }
-  ];
-  const compoundPrefix = compoundCharacter || ignoreCasePrefix;
-  const possibleCompoundPrefix = ignoreCasePrefix && compoundCharacter ? ignoreCasePrefix + compoundCharacter : "";
-  const nw = word.normalize();
-  const w = [...nw];
-  function determineRoot(s) {
-    const prefix = s.compoundPrefix;
-    let r = root;
-    let i2;
-    for (i2 = 0; i2 < prefix.length && r; ++i2) {
-      r = r.get(prefix[i2]);
-    }
-    const caseMatched2 = s.caseMatched && prefix[0] !== ignoreCasePrefix;
-    return {
-      n: s.n,
-      compoundPrefix: prefix === compoundPrefix ? possibleCompoundPrefix : "",
-      cr: r,
-      caseMatched: caseMatched2
-    };
-  }
-  let compoundUsed = false;
-  let caseMatched = true;
-  let i = 0;
-  let node;
-  while (true) {
-    const s = stack[i];
-    const h = w[i++];
-    const n = s.cr || s.n;
-    const c = h && n?.get(h) || void 0;
-    if (c && i < word.length) {
-      caseMatched = s.caseMatched;
-      stack[i] = { n: c, compoundPrefix, cr: void 0, caseMatched };
-    } else if (!c || !c.eow) {
-      node = node || c;
-      while (--i > 0) {
-        const s2 = stack[i];
-        if (!s2.compoundPrefix || !s2.n?.hasChildren())
-          continue;
-        if (s2.n.get(compoundCharacter))
-          break;
-      }
-      if (i >= 0 && stack[i].compoundPrefix) {
-        compoundUsed = i > 0;
-        const r = determineRoot(stack[i]);
-        stack[i] = r;
-        if (!r.cr) {
-          break;
-        }
-        if (!i && !r.caseMatched && nw !== nw.toLowerCase()) {
-          break;
-        }
-      } else {
-        break;
-      }
-    } else {
-      node = c;
-      caseMatched = s.caseMatched;
-      break;
-    }
-  }
-  const found = i === word.length && word || false;
-  const result = { found, compoundUsed, node, forbidden: void 0, caseMatched };
-  return result;
-}
-function findCompoundWord(root, word, compoundCharacter, ignoreCasePrefix) {
-  const { found, compoundUsed, node, caseMatched } = findCompoundNode(root, word, compoundCharacter, ignoreCasePrefix);
-  if (!node || !node.eow) {
-    return { found: false, compoundUsed, node, forbidden: void 0, caseMatched };
-  }
-  return { found, compoundUsed, node, forbidden: void 0, caseMatched };
-}
-function findWordExact(root, word) {
-  const r = root;
-  if (r?.findExact)
-    return r.findExact(word);
-  return isEndOfWordNode(walk(root, word));
-}
-function isEndOfWordNode(n) {
-  return !!n?.eow;
-}
-function walk(root, word) {
-  const w = [...word];
-  let n = root;
-  let i = 0;
-  while (n && i < w.length) {
-    const h = w[i++];
-    n = n.get(h);
-  }
-  return n;
-}
-function findLegacyCompoundNode(roots, word, minCompoundLength) {
-  const root = roots[0];
-  const numRoots = roots.length;
-  const stack = [
-    { n: root, usedRoots: 1, subLength: 0, isCompound: false, cr: void 0, caseMatched: true }
-  ];
-  const w = word;
-  const wLen = w.length;
-  let compoundUsed = false;
-  let caseMatched = true;
-  let i = 0;
-  let node;
-  while (true) {
-    const s = stack[i];
-    const h = w[i++];
-    const n = s.cr || s.n;
-    const c = n?.get(h);
-    if (c && i < wLen) {
-      stack[i] = {
-        n: c,
-        usedRoots: 0,
-        subLength: s.subLength + 1,
-        isCompound: s.isCompound,
-        cr: void 0,
-        caseMatched: s.caseMatched
-      };
-    } else if (!c || !c.eow || c.eow && s.subLength < minCompoundLength - 1) {
-      while (--i > 0) {
-        const s2 = stack[i];
-        if (s2.usedRoots < numRoots && s2.n?.eow && (s2.subLength >= minCompoundLength || !s2.subLength) && wLen - i >= minCompoundLength) {
-          break;
-        }
-      }
-      if (i > 0 || stack[i].usedRoots < numRoots) {
-        compoundUsed = i > 0;
-        const s2 = stack[i];
-        s2.cr = roots[s2.usedRoots++];
-        s2.subLength = 0;
-        s2.isCompound = compoundUsed;
-        s2.caseMatched = s2.caseMatched && s2.usedRoots <= 1;
-      } else {
-        break;
-      }
-    } else {
-      node = c;
-      caseMatched = s.caseMatched;
-      break;
-    }
-  }
-  function extractWord() {
-    if (!word || i < word.length)
-      return false;
-    const letters = [];
-    let subLen = 0;
-    for (let j = 0; j < i; ++j) {
-      const { subLength } = stack[j];
-      if (subLength < subLen) {
-        letters.push("+");
-      }
-      letters.push(word[j]);
-      subLen = subLength;
-    }
-    return letters.join("");
-  }
-  const found = extractWord();
-  const result = { found, compoundUsed, node, forbidden: void 0, caseMatched };
-  return result;
-}
-function isForbiddenWord(root, word, forbiddenPrefix) {
-  const r = root;
-  if (r?.isForbidden)
-    return r.isForbidden(word);
-  return findWordExact(root?.get(forbiddenPrefix), word);
-}
-var createFindOptions = memorizeLastCall(_createFindOptions);
-function _createFindOptions(options) {
-  if (!options)
-    return _defaultFindOptions;
-  const d = _defaultFindOptions;
-  return {
-    matchCase: options.matchCase ?? d.matchCase,
-    compoundMode: options.compoundMode ?? d.compoundMode,
-    legacyMinCompoundLength: options.legacyMinCompoundLength ?? d.legacyMinCompoundLength,
-    checkForbidden: options.checkForbidden ?? d.checkForbidden
-  };
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/walker/walkerTypes.js
-var JOIN_SEPARATOR = "+";
-var WORD_SEPARATOR = " ";
-var CompoundWordsMethod;
-(function(CompoundWordsMethod2) {
-  CompoundWordsMethod2[CompoundWordsMethod2["NONE"] = 0] = "NONE";
-  CompoundWordsMethod2[CompoundWordsMethod2["SEPARATE_WORDS"] = 1] = "SEPARATE_WORDS";
-  CompoundWordsMethod2[CompoundWordsMethod2["JOIN_WORDS"] = 2] = "JOIN_WORDS";
-})(CompoundWordsMethod || (CompoundWordsMethod = {}));
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/ITrieNode/walker/walker.js
-function* compoundWalker(root, compoundingMethod) {
-  const empty = Object.freeze([]);
-  const roots = {
-    [CompoundWordsMethod.NONE]: empty,
-    [CompoundWordsMethod.JOIN_WORDS]: [[JOIN_SEPARATOR, root]],
-    [CompoundWordsMethod.SEPARATE_WORDS]: [[WORD_SEPARATOR, root]]
-  };
-  const rc = roots[compoundingMethod].length ? roots[compoundingMethod] : void 0;
-  function children(n) {
-    if (n.hasChildren()) {
-      const entries = n.entries();
-      const c = Array.isArray(entries) ? entries : [...entries];
-      return n.eow && rc ? [...c, ...rc] : c;
-    }
-    if (n.eow) {
-      return roots[compoundingMethod];
-    }
-    return empty;
-  }
-  let depth = 0;
-  const stack = [];
-  stack[depth] = { t: "", c: children(root), ci: 0 };
-  while (depth >= 0) {
-    let s = stack[depth];
-    let baseText = s.t;
-    while (s.ci < s.c.length) {
-      const [char, node] = s.c[s.ci++];
-      const text = baseText + char;
-      const goDeeper = yield { text, node, depth };
-      if (goDeeper ?? true) {
-        depth++;
-        baseText = text;
-        stack[depth] = { t: text, c: children(node), ci: 0 };
-      }
-      s = stack[depth];
-    }
-    depth -= 1;
-  }
-}
-function* nodeWalker(root) {
-  let depth = 0;
-  const stack = [];
-  const entries = root.entries();
-  stack[depth] = { t: "", n: root, c: Array.isArray(entries) ? entries : [...entries], ci: 0 };
-  while (depth >= 0) {
-    let s = stack[depth];
-    let baseText = s.t;
-    while (s.ci < s.c.length && s.n) {
-      const idx2 = s.ci++;
-      const [char, node] = s.c[idx2];
-      const text = baseText + char;
-      const goDeeper = yield { text, node, depth };
-      if (goDeeper !== false) {
-        depth++;
-        baseText = text;
-        const s2 = stack[depth];
-        const entries2 = node.entries();
-        const c = Array.isArray(entries2) ? entries2 : [...entries2];
-        if (s2) {
-          s2.t = text;
-          s2.n = node;
-          s2.c = c;
-          s2.ci = 0;
-        } else {
-          stack[depth] = { t: text, n: node, c, ci: 0 };
-        }
-      }
-      s = stack[depth];
-    }
-    depth -= 1;
-  }
-}
-function walker(root, compoundingMethod = CompoundWordsMethod.NONE) {
-  return compoundingMethod === CompoundWordsMethod.NONE ? nodeWalker(root) : compoundWalker(root, compoundingMethod);
-}
-function walkerWords(root) {
-  return walkerWordsITrie(root);
-}
-function* walkerWordsITrie(root) {
-  let depth = 0;
-  const stack = [];
-  const entries = root.entries();
-  const c = Array.isArray(entries) ? entries : [...entries];
-  stack[depth] = { t: "", n: root, c, ci: 0 };
-  while (depth >= 0) {
-    let s = stack[depth];
-    let baseText = s.t;
-    while (s.ci < s.c.length && s.n) {
-      const [char, node] = s.c[s.ci++];
-      if (!node)
-        continue;
-      const text = baseText + char;
-      if (node.eow)
-        yield text;
-      depth++;
-      baseText = text;
-      const entries2 = node.entries();
-      const c2 = Array.isArray(entries2) ? entries2 : [...entries2];
-      if (stack[depth]) {
-        s = stack[depth];
-        s.t = text;
-        s.n = node;
-        s.c = c2;
-        s.ci = 0;
-      } else {
-        stack[depth] = { t: text, n: node, c: c2, ci: 0 };
-      }
-      s = stack[depth];
-    }
-    depth -= 1;
-  }
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/ITrieNode/trie-util.js
-function iteratorTrieWords(node) {
-  return walkerWords(node);
-}
-function findNode(node, word) {
-  for (let i = 0; i < word.length; ++i) {
-    const n = node.get(word[i]);
-    if (!n)
-      return void 0;
-    node = n;
-  }
-  return node;
-}
-function countWords(root) {
-  const visited = /* @__PURE__ */ new Map();
-  function walk3(n) {
-    const nestedCount = visited.get(n.id);
-    if (nestedCount !== void 0) {
-      return nestedCount;
-    }
-    let cnt = n.eow ? 1 : 0;
-    visited.set(n, cnt);
-    for (const c of n.values()) {
-      cnt += walk3(c);
-    }
-    visited.set(n, cnt);
-    return cnt;
-  }
-  return walk3(root);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieNode/trie.js
-function trieRootToITrieRoot(root) {
-  return ImplITrieRoot.toITrieNode(root);
-}
-function trieNodeToITrieNode(node) {
-  return ImplITrieNode.toITrieNode(node);
-}
-var EmptyKeys = Object.freeze([]);
-var EmptyValues = Object.freeze([]);
-var EmptyEntries = Object.freeze([]);
-var ImplITrieNode = class _ImplITrieNode {
-  node;
-  id;
-  _keys;
-  constructor(node) {
-    this.node = node;
-    this.id = node;
-  }
-  /** flag End of Word */
-  get eow() {
-    return !!this.node.f;
-  }
-  /** number of children */
-  get size() {
-    if (!this.node.c)
-      return 0;
-    return this.keys().length;
-  }
-  /** get keys to children */
-  keys() {
-    if (this._keys)
-      return this._keys;
-    const keys3 = this.node.c ? Object.keys(this.node.c) : EmptyKeys;
-    this._keys = keys3;
-    return keys3;
-  }
-  /** get the child nodes */
-  values() {
-    return !this.node.c ? EmptyValues : Object.values(this.node.c).map((n) => _ImplITrieNode.toITrieNode(n));
-  }
-  entries() {
-    return !this.node.c ? EmptyEntries : Object.entries(this.node.c).map(([k, n]) => [k, _ImplITrieNode.toITrieNode(n)]);
-  }
-  /** get child ITrieNode */
-  get(char) {
-    const n = this.node.c?.[char];
-    if (!n)
-      return void 0;
-    return _ImplITrieNode.toITrieNode(n);
-  }
-  getNode(chars) {
-    return this.findNode(chars);
-  }
-  has(char) {
-    const c = this.node.c;
-    return c && char in c || false;
-  }
-  child(keyIdx) {
-    const char = this.keys()[keyIdx];
-    const n = char && this.get(char);
-    if (!n)
-      throw new Error("Index out of range.");
-    return n;
-  }
-  hasChildren() {
-    return !!this.node.c;
-  }
-  #findTrieNode(word) {
-    let node = this.node;
-    for (const char of word) {
-      if (!node)
-        return void 0;
-      node = node.c?.[char];
-    }
-    return node;
-  }
-  findNode(word) {
-    const node = this.#findTrieNode(word);
-    return node && _ImplITrieNode.toITrieNode(node);
-  }
-  findExact(word) {
-    const node = this.#findTrieNode(word);
-    return !!node && !!node.f;
-  }
-  static toITrieNode(node) {
-    return new this(node);
-  }
-};
-var ImplITrieRoot = class extends ImplITrieNode {
-  root;
-  info;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(root) {
-    super(root);
-    this.root = root;
-    const { stripCaseAndAccentsPrefix, compoundCharacter, forbiddenWordPrefix, isCaseAware } = root;
-    this.info = { stripCaseAndAccentsPrefix, compoundCharacter, forbiddenWordPrefix, isCaseAware };
-    this.hasForbiddenWords = !!root.c[forbiddenWordPrefix];
-    this.hasCompoundWords = !!root.c[compoundCharacter];
-    this.hasNonStrictWords = !!root.c[stripCaseAndAccentsPrefix];
-  }
-  get eow() {
-    return false;
-  }
-  resolveId(id) {
-    const n = id;
-    return new ImplITrieNode(n);
-  }
-  get forbidPrefix() {
-    return this.root.forbiddenWordPrefix;
-  }
-  get compoundFix() {
-    return this.root.compoundCharacter;
-  }
-  get caseInsensitivePrefix() {
-    return this.root.stripCaseAndAccentsPrefix;
-  }
-  static toITrieNode(node) {
-    return new this(node);
-  }
-};
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/walker/walker.js
-var useITrie = false;
-var walkerWords2 = useITrie ? _walkerWords2 : _walkerWords;
-function* _walkerWords(root) {
-  const empty = [];
-  function children(n) {
-    if (n.c) {
-      return Object.keys(n.c);
-    }
-    return empty;
-  }
-  let depth = 0;
-  const stack = [];
-  stack[depth] = { t: "", n: root.c, c: children(root), ci: 0 };
-  while (depth >= 0) {
-    let s = stack[depth];
-    let baseText = s.t;
-    while (s.ci < s.c.length && s.n) {
-      const char = s.c[s.ci++];
-      const node = s.n[char];
-      const text = baseText + char;
-      if (node.f)
-        yield text;
-      depth++;
-      baseText = text;
-      const c = children(node);
-      if (stack[depth]) {
-        s = stack[depth];
-        s.t = text;
-        s.n = node.c;
-        s.c = c;
-        s.ci = 0;
-      } else {
-        stack[depth] = { t: text, n: node.c, c, ci: 0 };
-      }
-      s = stack[depth];
-    }
-    depth -= 1;
-  }
-}
-function _walkerWords2(root) {
-  return walkerWordsITrie2(trieNodeToITrieNode(root));
-}
-function* walkerWordsITrie2(root) {
-  let depth = 0;
-  const stack = [];
-  stack[depth] = { t: "", n: root, c: [...root.entries()], ci: 0 };
-  while (depth >= 0) {
-    let s = stack[depth];
-    let baseText = s.t;
-    while (s.ci < s.c.length && s.n) {
-      const [char, node] = s.c[s.ci++];
-      if (!node)
-        continue;
-      const text = baseText + char;
-      if (node.eow)
-        yield text;
-      depth++;
-      baseText = text;
-      const c = [...node.entries()];
-      if (stack[depth]) {
-        s = stack[depth];
-        s.t = text;
-        s.n = node;
-        s.c = c;
-        s.ci = 0;
-      } else {
-        stack[depth] = { t: text, n: node, c, ci: 0 };
-      }
-      s = stack[depth];
-    }
-    depth -= 1;
-  }
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/suggestions/genSuggestionsOptions.js
-var defaultGenSuggestionOptions = {
-  compoundMethod: CompoundWordsMethod.NONE,
-  ignoreCase: true,
-  changeLimit: 5
-};
-var defaultSuggestionOptions = {
-  ...defaultGenSuggestionOptions,
-  numSuggestions: 8,
-  includeTies: true,
-  timeout: 5e3
-};
-var keyMapOfGenSuggestionOptionsStrict = {
-  changeLimit: "changeLimit",
-  compoundMethod: "compoundMethod",
-  ignoreCase: "ignoreCase",
-  compoundSeparator: "compoundSeparator"
-};
-var keyMapOfSuggestionOptionsStrict = {
-  ...keyMapOfGenSuggestionOptionsStrict,
-  filter: "filter",
-  includeTies: "includeTies",
-  numSuggestions: "numSuggestions",
-  timeout: "timeout",
-  weightMap: "weightMap"
-};
-function createSuggestionOptions(...opts) {
-  const options = { ...defaultSuggestionOptions };
-  const keys3 = Object.keys(keyMapOfSuggestionOptionsStrict);
-  for (const opt of opts) {
-    for (const key of keys3) {
-      assign(options, opt, key);
-    }
-  }
-  return options;
-}
-function assign(dest, src, k) {
-  dest[k] = src[k] ?? dest[k];
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/PairingHeap.js
-var PairingHeap = class {
-  compare;
-  _heap;
-  _size = 0;
-  constructor(compare4) {
-    this.compare = compare4;
-  }
-  /** Add an item to the heap. */
-  add(v) {
-    this._heap = insert(this.compare, this._heap, v);
-    ++this._size;
-    return this;
-  }
-  /** take an item from the heap. */
-  dequeue() {
-    const n = this.next();
-    if (n.done)
-      return void 0;
-    return n.value;
-  }
-  /** Add items to the heap */
-  append(i) {
-    for (const v of i) {
-      this.add(v);
-    }
-    return this;
-  }
-  /** get the next value */
-  next() {
-    if (!this._heap) {
-      return { value: void 0, done: true };
-    }
-    const value = this._heap.v;
-    --this._size;
-    this._heap = removeHead(this.compare, this._heap);
-    return { value };
-  }
-  /** peek at the next value without removing it. */
-  peek() {
-    return this._heap?.v;
-  }
-  [Symbol.iterator]() {
-    return this;
-  }
-  /** alias of `size` */
-  get length() {
-    return this._size;
-  }
-  /** number of entries in the heap. */
-  get size() {
-    return this._size;
-  }
-};
-function removeHead(compare4, heap) {
-  if (!heap || !heap.c)
-    return void 0;
-  return mergeSiblings(compare4, heap.c);
-}
-function insert(compare4, heap, v) {
-  const n = {
-    v,
-    s: void 0,
-    c: void 0
-  };
-  if (!heap || compare4(v, heap.v) <= 0) {
-    n.c = heap;
-    return n;
-  }
-  n.s = heap.c;
-  heap.c = n;
-  return heap;
-}
-function merge(compare4, a, b) {
-  if (compare4(a.v, b.v) <= 0) {
-    a.s = void 0;
-    b.s = a.c;
-    a.c = b;
-    return a;
-  }
-  b.s = void 0;
-  a.s = b.c;
-  b.c = a;
-  return b;
-}
-function mergeSiblings(compare4, n) {
-  if (!n.s)
-    return n;
-  const s = n.s;
-  const ss = s.s;
-  const m = merge(compare4, n, s);
-  return ss ? merge(compare4, m, mergeSiblings(compare4, ss)) : m;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/suggestions/constants.js
-var DEFAULT_COMPOUNDED_WORD_SEPARATOR = "\u2219";
-var opCosts = {
-  baseCost: 100,
-  swapCost: 75,
-  duplicateLetterCost: 80,
-  compound: 1,
-  visuallySimilar: 1,
-  firstLetterBias: 5,
-  wordBreak: 99,
-  wordLengthCostFactor: 0.5
-};
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/suggestions/orthography.js
-var intl = new Intl.Collator("en", { sensitivity: "base" });
-var compare = intl.compare;
-var visualLetterGroups = [
-  // cspell:disable
-  forms("\u01CE\xE0\xE5\xC4\xC0A\xE3\xE2\xE1\u01DF\u1EB7\u1EAF\u1EA5\u0100\u0101\u0103\u0105a\xE4\xE6\u0250\u0251\u03B1\u0430\u1FB3") + "\u1FB3",
-  forms("Bb\u1E03\u0432\u044A\u044C"),
-  forms("\u010B\u010C\u010Dc\u0109\xE7C\xC7\u0107\u010A\u0421\u0441\u03C2"),
-  forms("\u1E0E\u1E0B\u1E0F\u1E11\u010F\u0111\u1E0DDd"),
-  forms("\u0113\xEB\xC8\xCA\xCB\u1EC1\xE9\xE8\u1EBF\u1EC7\u0115eE\u0112\u0117\u0119\u011B\xEA\u0259\u025B\u0451\u0401\u0435\u0292"),
-  forms("f\u1E1FF\uFB00"),
-  forms("\u0121\u0120\u011E\u01E7\u011D\u0123Gg\u0263"),
-  forms("\u0127\u0126\u0125\u1E25Hh\u1E24\u021F\u043D"),
-  forms("I\u012F\xEF\u0130\xCE\xCD\u012Bi\xCC\xEC\xED\xEE\u0131\u026A\u0268\u0457\u038A\u0399"),
-  forms("jJ\u0135"),
-  forms("\u0137Kk\u03BA\u043A\u045C"),
-  forms("\u1E37\u0142\u013E\u013CLl\u013A\u1E36\u03AF\u03B9"),
-  forms("M\u1E43\u1E41m"),
-  forms("n\u0146\xD1N\u1E47\u0148\u0147\xF1\u0144\u014B\u045D\u0438\u0439"),
-  forms("\xD2O\xF8\u022D\u014C\u014D\u0151\u1ECFo\xD6\xF2\u0231\u022F\xF3\xF4\xF5\xF6\u01A1\u0254\u03CC\u03B4\u043E"),
-  forms("P\u1E57p\u0440\u0420\u03C1"),
-  forms("Qq"),
-  forms("\u0159R\u1E5Br\u0155\u0157\u0453\u0433\u044F"),
-  forms("\u1E63\u0161\u0218\u1E62sS\u0160\u1E61\u015E\u015D\u015B\u0219\u0283\u03A3"),
-  forms("t\u021B\u021A\u0165T\u1E6D\u1E6C\u1E6B"),
-  forms("\xDC\xFC\xFB\u016A\u01B0\u016F\u016B\u0171\xFA\xDB\u016D\xD9\xF9u\u0173U"),
-  forms("Vv\u03BD"),
-  forms("\u0175wW\u1E83\u1E85\u1E81\u03C9\u0448"),
-  forms("xX\u0445"),
-  forms("\xFF\xFDY\u0177y\xDD\u1EF3\u0423\u045E\u0443"),
-  forms("Z\u1E93\u017E\u017D\u017C\u017B\u017Az")
-  // cspell:enable
-];
-function forms(letters) {
-  const n = letters.normalize("NFC").replaceAll(/\p{M}/gu, "");
-  const na = n.normalize("NFD").replaceAll(/\p{M}/gu, "");
-  const s = new Set(n + n.toLowerCase() + n.toUpperCase() + na + na.toLowerCase() + na.toUpperCase());
-  return [...s].join("");
-}
-var visualLetterMaskMap = calcVisualLetterMasks(visualLetterGroups);
-function calcVisualLetterMasks(groups) {
-  const map3 = /* @__PURE__ */ Object.create(null);
-  for (let i = 0; i < groups.length; ++i) {
-    const m = 1 << i;
-    const g = groups[i];
-    for (const c of g) {
-      map3[c] = (map3[c] || 0) | m;
-    }
-  }
-  return map3;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/distance/distanceAStarWeighted.js
+// ../node_modules/.pnpm/cspell-trie-lib@8.17.2/node_modules/cspell-trie-lib/dist/index.js
 var import_node_assert = __toESM(require("node:assert"), 1);
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/distance/weightedMaps.js
-var matchPossibleWordSeparators = /[+∙•・●]/g;
-function createWeightMap(...defs) {
-  const map3 = _createWeightMap();
-  addDefsToWeightMap(map3, defs);
-  return map3;
-}
-function addDefToWeightMap(map3, ...defs) {
-  return addDefsToWeightMap(map3, defs);
-}
-function addAdjustment(map3, ...adjustments) {
-  for (const adj of adjustments) {
-    map3.adjustments.set(adj.id, adj);
-  }
-  return map3;
-}
-function addDefsToWeightMap(map3, defs) {
-  function addSet(set, def) {
-    addSetToTrieCost(map3.insDel, set, def.insDel, def.penalty);
-    addSetToTrieTrieCost(map3.replace, set, def.replace, def.penalty);
-    addSetToTrieTrieCost(map3.swap, set, def.swap, def.penalty);
-  }
-  for (const _def of defs) {
-    const def = normalizeDef(_def);
-    const mapSets = splitMap(def);
-    mapSets.forEach((s) => addSet(s, def));
-  }
-  return map3;
-}
-function _createWeightMap() {
-  return {
-    insDel: {},
-    replace: {},
-    swap: {},
-    adjustments: /* @__PURE__ */ new Map()
-  };
-}
-function lowest(a, b) {
-  if (a === void 0)
-    return b;
-  if (b === void 0)
-    return a;
-  return a <= b ? a : b;
-}
-function highest(a, b) {
-  if (a === void 0)
-    return b;
-  if (b === void 0)
-    return a;
-  return a >= b ? a : b;
-}
-function normalize(s) {
-  const f = /* @__PURE__ */ new Set([s]);
-  f.add(s.normalize("NFC"));
-  f.add(s.normalize("NFD"));
-  return f;
-}
-function* splitMapSubstringsIterable(map3) {
-  let seq = "";
-  let mode = 0;
-  for (const char of map3) {
-    if (mode && char === ")") {
-      yield* normalize(seq);
-      mode = 0;
-      continue;
-    }
-    if (mode) {
-      seq += char;
-      continue;
-    }
-    if (char === "(") {
-      mode = 1;
-      seq = "";
-      continue;
-    }
-    yield* normalize(char);
-  }
-}
-function splitMapSubstrings(map3) {
-  return [...splitMapSubstringsIterable(map3)];
-}
-function splitMap(def) {
-  const { map: map3 } = def;
-  const sets = map3.split("|");
-  return sets.map(splitMapSubstrings).filter((s) => s.length > 0);
-}
-function addToTrieCost(trie, str, cost, penalties) {
-  if (!str)
-    return;
-  let t = trie;
-  for (const c of str) {
-    const n = t.n = t.n || /* @__PURE__ */ Object.create(null);
-    t = n[c] = n[c] || /* @__PURE__ */ Object.create(null);
-  }
-  t.c = lowest(t.c, cost);
-  t.p = highest(t.p, penalties);
-}
-function addToTrieTrieCost(trie, left, right, cost, penalties) {
-  let t = trie;
-  for (const c of left) {
-    const n = t.n = t.n || /* @__PURE__ */ Object.create(null);
-    t = n[c] = n[c] || /* @__PURE__ */ Object.create(null);
-  }
-  const trieCost = t.t = t.t || /* @__PURE__ */ Object.create(null);
-  addToTrieCost(trieCost, right, cost, penalties);
-}
-function addSetToTrieCost(trie, set, cost, penalties) {
-  if (cost === void 0)
-    return;
-  for (const str of set) {
-    addToTrieCost(trie, str, cost, penalties);
-  }
-}
-function addSetToTrieTrieCost(trie, set, cost, penalties) {
-  if (cost === void 0)
-    return;
-  for (const left of set) {
-    for (const right of set) {
-      if (left === right)
-        continue;
-      addToTrieTrieCost(trie, left, right, cost, penalties);
-    }
-  }
-}
-function* searchTrieNodes(trie, str, i) {
-  const len = str.length;
-  for (let n = trie.n; i < len && n; ) {
-    const t = n[str[i]];
-    if (!t)
-      return;
-    ++i;
-    yield { i, t };
-    n = t.n;
-  }
-}
-function* findTrieCostPrefixes(trie, str, i) {
-  for (const n of searchTrieNodes(trie, str, i)) {
-    const { c, p } = n.t;
-    if (c !== void 0) {
-      yield { i: n.i, c, p: p || 0 };
-    }
-  }
-}
-function* findTrieTrieCostPrefixes(trie, str, i) {
-  for (const n of searchTrieNodes(trie, str, i)) {
-    const t = n.t.t;
-    if (t !== void 0) {
-      yield { i: n.i, t };
-    }
-  }
-}
-function createWeightCostCalculator(weightMap) {
-  return new _WeightCostCalculator(weightMap);
-}
-var _WeightCostCalculator = class {
-  weightMap;
-  constructor(weightMap) {
-    this.weightMap = weightMap;
-  }
-  *calcInsDelCosts(pos) {
-    const { a, ai, b, bi, c, p } = pos;
-    for (const del of findTrieCostPrefixes(this.weightMap.insDel, a, ai)) {
-      yield { a, b, ai: del.i, bi, c: c + del.c, p: p + del.p };
-    }
-    for (const ins of findTrieCostPrefixes(this.weightMap.insDel, b, bi)) {
-      yield { a, b, ai, bi: ins.i, c: c + ins.c, p: p + ins.p };
-    }
-  }
-  *calcReplaceCosts(pos) {
-    const { a, ai, b, bi, c, p } = pos;
-    for (const del of findTrieTrieCostPrefixes(this.weightMap.replace, a, ai)) {
-      for (const ins of findTrieCostPrefixes(del.t, b, bi)) {
-        yield { a, b, ai: del.i, bi: ins.i, c: c + ins.c, p: p + ins.p };
-      }
-    }
-  }
-  *calcSwapCosts(pos) {
-    const { a, ai, b, bi, c, p } = pos;
-    const swap = this.weightMap.swap;
-    for (const left of findTrieTrieCostPrefixes(swap, a, ai)) {
-      for (const right of findTrieCostPrefixes(left.t, a, left.i)) {
-        const sw = a.slice(left.i, right.i) + a.slice(ai, left.i);
-        if (b.slice(bi).startsWith(sw)) {
-          const len = sw.length;
-          yield { a, b, ai: ai + len, bi: bi + len, c: c + right.c, p: p + right.p };
-        }
-      }
-    }
-  }
-  calcAdjustment(word) {
-    let penalty = 0;
-    for (const adj of this.weightMap.adjustments.values()) {
-      if (adj.regexp.global) {
-        for (const _m of word.matchAll(adj.regexp)) {
-          penalty += adj.penalty;
-        }
-      } else if (adj.regexp.test(word)) {
-        penalty += adj.penalty;
-      }
-    }
-    return penalty;
-  }
-};
-function normalizeDef(def) {
-  const { map: map3, ...rest } = def;
-  return { ...rest, map: normalizeMap(map3) };
-}
-function normalizeMap(map3) {
-  return map3.replaceAll(matchPossibleWordSeparators, DEFAULT_COMPOUNDED_WORD_SEPARATOR);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/distance/distanceAStarWeighted.js
-function distanceAStarWeighted(wordA, wordB, map3, cost = 100) {
-  const calc = createWeightCostCalculator(map3);
-  const best = _distanceAStarWeightedEx(wordA, wordB, calc, cost);
-  const penalty = calc.calcAdjustment(wordB);
-  return best.c + best.p + penalty;
-}
-function _distanceAStarWeightedEx(wordA, wordB, map3, cost = 100) {
-  const a = "^" + wordA + "$";
-  const b = "^" + wordB + "$";
-  const aN = a.length;
-  const bN = b.length;
-  const candidates = new CandidatePool(aN, bN);
-  candidates.add({ ai: 0, bi: 0, c: 0, p: 0, f: void 0 });
-  function opSub(n) {
-    const { ai, bi, c, p } = n;
-    if (ai < aN && bi < bN) {
-      const cc = a[ai] === b[bi] ? c : c + cost;
-      candidates.add({ ai: ai + 1, bi: bi + 1, c: cc, p, f: n });
-    }
-  }
-  function opIns(n) {
-    const { ai, bi, c, p } = n;
-    if (bi < bN) {
-      candidates.add({ ai, bi: bi + 1, c: c + cost, p, f: n });
-    }
-  }
-  function opDel(n) {
-    const { ai, bi, c, p } = n;
-    if (ai < aN) {
-      candidates.add({ ai: ai + 1, bi, c: c + cost, p, f: n });
-    }
-  }
-  function opSwap(n) {
-    const { ai, bi, c, p } = n;
-    if (a[ai] === b[bi + 1] && a[ai + 1] === b[bi]) {
-      candidates.add({ ai: ai + 2, bi: bi + 2, c: c + cost, p, f: n });
-    }
-  }
-  function opMap2(n) {
-    const { ai, bi, c, p } = n;
-    const pos = { a, b, ai, bi, c, p };
-    const costCalculations = [map3.calcInsDelCosts(pos), map3.calcSwapCosts(pos), map3.calcReplaceCosts(pos)];
-    costCalculations.forEach((iter) => {
-      for (const nn of iter) {
-        candidates.add({ ...nn, f: n });
-      }
-    });
-  }
-  let best;
-  while (best = candidates.next()) {
-    if (best.ai === aN && best.bi === bN)
-      break;
-    opSwap(best);
-    opIns(best);
-    opDel(best);
-    opMap2(best);
-    opSub(best);
-  }
-  (0, import_node_assert.default)(best);
-  return best;
-}
-var CandidatePool = class {
-  aN;
-  bN;
-  pool = new PairingHeap(compare2);
-  grid = [];
-  constructor(aN, bN) {
-    this.aN = aN;
-    this.bN = bN;
-  }
-  next() {
-    let n;
-    while (n = this.pool.dequeue()) {
-      if (!n.d)
-        return n;
-    }
-    return void 0;
-  }
-  add(n) {
-    const i = idx(n.ai, n.bi, this.bN);
-    const g = this.grid[i];
-    if (!g) {
-      this.grid[i] = n;
-      this.pool.add(n);
-      return;
-    }
-    if (g.c <= n.c)
-      return;
-    g.d = true;
-    this.grid[i] = n;
-    this.pool.add(n);
-  }
-};
-function idx(r, c, cols) {
-  return r * cols + c;
-}
-function compare2(a, b) {
-  return a.c - b.c || b.ai + b.bi - a.ai - a.bi;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/distance/distance.js
-var defaultCost = 100;
-function editDistanceWeighted(wordA, wordB, weights, editCost = defaultCost) {
-  return distanceAStarWeighted(wordA, wordB, weights, editCost);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/timer.js
-function startTimer() {
-  const start = performance.now();
-  return () => performance.now() - start;
-}
-function createPerfTimer() {
-  const timer = startTimer();
-  const active = /* @__PURE__ */ new Map();
-  const events = [{ name: "start", at: 0 }];
-  function updateEvent(event, atTime = timer()) {
-    const elapsed = atTime - event.at;
-    event.elapsed = (event.elapsed || 0) + elapsed;
-    return elapsed;
-  }
-  function start(name2) {
-    const event = createEvent(name2 || "start");
-    events.push(event);
-    name2 && active.set(name2, event);
-    return () => updateEvent(event);
-  }
-  function stop(name2) {
-    const knownEvent = name2 && active.get(name2);
-    if (knownEvent) {
-      return updateEvent(knownEvent);
-    }
-    return mark(name2 || "stop");
-  }
-  function createEvent(name2) {
-    return { name: name2, at: timer() };
-  }
-  function mark(name2) {
-    const event = createEvent(name2);
-    events.push(event);
-    return event.at;
-  }
-  function formatReport() {
-    const lineElements = [
-      { name: "Event Name", at: "Time", elapsed: "Elapsed" },
-      { name: "----------", at: "----", elapsed: "-------" },
-      ...mapEvents()
-    ];
-    function mapEvents() {
-      const stack = [];
-      return events.map((e) => {
-        for (let s = stack.pop(); s; s = stack.pop()) {
-          if (s >= e.at + (e.elapsed || 0)) {
-            stack.push(s);
-            break;
-          }
-        }
-        const d = stack.length;
-        if (e.elapsed) {
-          stack.push(e.at + e.elapsed);
-        }
-        return {
-          name: "| ".repeat(d) + (e.name || "").replaceAll("	", "  "),
-          at: `${t(e.at)}`,
-          elapsed: e.elapsed ? `${t(e.elapsed)}` : "--"
-        };
-      });
-    }
-    function t(ms) {
-      return ms.toFixed(3) + "ms";
-    }
-    function m(v, s) {
-      return Math.max(v, s.length);
-    }
-    const lengths = lineElements.reduce((a, b) => ({ name: m(a.name, b.name), at: m(a.at, b.at), elapsed: m(a.elapsed, b.elapsed) }), { name: 0, at: 0, elapsed: 0 });
-    const lines = lineElements.map((e) => `${e.at.padStart(lengths.at)}  ${e.name.padEnd(lengths.name)}  ${e.elapsed.padStart(lengths.elapsed)}`);
-    return lines.join("\n");
-  }
-  function measureFn(name2, fn) {
-    const s = start(name2);
-    const v = fn();
-    s();
-    return v;
-  }
-  async function measureAsyncFn(name2, fn) {
-    const s = start(name2);
-    const v = await fn();
-    s();
-    return v;
-  }
-  function report(reporter = console.log) {
-    reporter(formatReport());
-  }
-  return {
-    start,
-    stop,
-    mark,
-    elapsed: timer,
-    report,
-    formatReport,
-    measureFn,
-    measureAsyncFn
-  };
-}
-var globalPerfTimer = void 0;
-function getGlobalPerfTimer() {
-  const timer = globalPerfTimer || createPerfTimer();
-  globalPerfTimer = timer;
-  return timer;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/util.js
-function isDefined(a) {
-  return a !== void 0;
-}
-function cleanCopy(t) {
-  const r = { ...t };
-  return clean(r);
-}
-function clean(t) {
-  for (const prop in t) {
-    if (t[prop] === void 0) {
-      delete t[prop];
-    }
-  }
-  return t;
-}
-function unique(a) {
-  return [...new Set(a)];
-}
-function regexQuote(text) {
-  return text.replaceAll(/([[\]\-+(){},|*.\\])/g, "\\$1");
-}
-function replaceAllFactory(match2, replaceWithText) {
-  const r = RegExp(regexQuote(match2), "g");
-  return (text) => text.replace(r, replaceWithText);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/suggestions/suggestCollector.js
-var defaultMaxNumberSuggestions = 10;
-var BASE_COST = 100;
-var MAX_NUM_CHANGES = 5;
-var MAX_COST_SCALE = 0.5;
-var MAX_ALLOWED_COST_SCALE = 1.03 * MAX_COST_SCALE;
-var collator = new Intl.Collator();
-var regexSeparator = new RegExp(`[${regexQuote(WORD_SEPARATOR)}]`, "g");
-var wordLengthCost = [0, 50, 25, 5, 0];
-var EXTRA_WORD_COST = 5;
-var DEFAULT_COLLECTOR_TIMEOUT = 1e3;
-var symStopProcessing = Symbol("Collector Stop Processing");
-function compSuggestionResults(a, b) {
-  const aPref = a.isPreferred && -1 || 0;
-  const bPref = b.isPreferred && -1 || 0;
-  return aPref - bPref || a.cost - b.cost || a.word.length - b.word.length || collator.compare(a.word, b.word);
-}
-var defaultSuggestionCollectorOptions = Object.freeze({
-  numSuggestions: defaultMaxNumberSuggestions,
-  filter: () => true,
-  changeLimit: MAX_NUM_CHANGES,
-  includeTies: false,
-  ignoreCase: true,
-  timeout: DEFAULT_COLLECTOR_TIMEOUT,
-  weightMap: void 0,
-  compoundSeparator: "",
-  compoundMethod: void 0
-});
-function suggestionCollector(wordToMatch, options) {
-  const { filter: filter3 = () => true, changeLimit = MAX_NUM_CHANGES, includeTies = false, ignoreCase: ignoreCase2 = true, timeout = DEFAULT_COLLECTOR_TIMEOUT, weightMap, compoundSeparator = defaultSuggestionCollectorOptions.compoundSeparator } = options;
-  const numSuggestions = Math.max(options.numSuggestions, 0) || 0;
-  const numSugToHold = weightMap ? numSuggestions * 2 : numSuggestions;
-  const sugs = /* @__PURE__ */ new Map();
-  let maxCost = BASE_COST * Math.min(wordToMatch.length * MAX_ALLOWED_COST_SCALE, changeLimit);
-  const useSeparator = compoundSeparator || (weightMap ? DEFAULT_COMPOUNDED_WORD_SEPARATOR : defaultSuggestionCollectorOptions.compoundSeparator);
-  const fnCleanWord = !useSeparator || useSeparator === compoundSeparator ? (w) => w : replaceAllFactory(useSeparator, "");
-  if (useSeparator && weightMap) {
-    addDefToWeightMap(weightMap, { map: useSeparator, insDel: 50 });
-  }
-  const genSuggestionOptions = clean({
-    changeLimit,
-    ignoreCase: ignoreCase2,
-    compoundMethod: options.compoundMethod,
-    compoundSeparator: useSeparator
-  });
-  let timeRemaining = timeout;
-  function dropMax() {
-    if (sugs.size < 2 || !numSuggestions) {
-      sugs.clear();
-      return;
-    }
-    const sorted = [...sugs.values()].sort(compSuggestionResults);
-    let i = numSugToHold - 1;
-    maxCost = sorted[i].cost;
-    for (; i < sorted.length && sorted[i].cost <= maxCost; ++i) {
-    }
-    for (; i < sorted.length; ++i) {
-      sugs.delete(sorted[i].word);
-    }
-  }
-  function adjustCost(sug) {
-    if (sug.isPreferred)
-      return sug;
-    const words = sug.word.split(regexSeparator);
-    const extraCost = words.map((w) => wordLengthCost[w.length] || 0).reduce((a, b) => a + b, 0) + (words.length - 1) * EXTRA_WORD_COST;
-    return { word: sug.word, cost: sug.cost + extraCost };
-  }
-  function collectSuggestion(suggestion) {
-    const { word, cost, isPreferred } = adjustCost(suggestion);
-    if (cost <= maxCost && filter3(suggestion.word, cost)) {
-      const known = sugs.get(word);
-      if (known) {
-        known.cost = Math.min(known.cost, cost);
-        known.isPreferred = known.isPreferred || isPreferred;
-      } else {
-        sugs.set(word, { word, cost, isPreferred });
-        if (cost < maxCost && sugs.size > numSugToHold) {
-          dropMax();
-        }
-      }
-    }
-    return maxCost;
-  }
-  function collect2(src, timeout2, filter4) {
-    let stop = false;
-    timeout2 = timeout2 ?? timeRemaining;
-    timeout2 = Math.min(timeout2, timeRemaining);
-    if (timeout2 < 0)
-      return;
-    const timer = startTimer();
-    let ir;
-    while (!(ir = src.next(stop || maxCost)).done) {
-      if (timer() > timeout2) {
-        stop = symStopProcessing;
-      }
-      const { value } = ir;
-      if (!value)
-        continue;
-      if (isSuggestionResult(value)) {
-        if (!filter4 || filter4(value.word, value.cost)) {
-          collectSuggestion(value);
-        }
-        continue;
-      }
-    }
-    timeRemaining -= timer();
-  }
-  function cleanCompoundResult(sr) {
-    const { word, cost } = sr;
-    const cWord = fnCleanWord(word);
-    if (cWord !== word) {
-      return {
-        word: cWord,
-        cost,
-        compoundWord: word,
-        isPreferred: void 0
-      };
-    }
-    return { ...sr };
-  }
-  function suggestions2() {
-    if (numSuggestions < 1 || !sugs.size)
-      return [];
-    const NF = "NFD";
-    const nWordToMatch = wordToMatch.normalize(NF);
-    const rawValues = [...sugs.values()];
-    const values = weightMap ? rawValues.map(({ word, cost, isPreferred }) => ({
-      word,
-      cost: isPreferred ? cost : editDistanceWeighted(nWordToMatch, word.normalize(NF), weightMap, 110),
-      isPreferred
-    })) : rawValues;
-    const sorted = values.sort(compSuggestionResults).map(cleanCompoundResult);
-    let i = Math.min(sorted.length, numSuggestions) - 1;
-    const limit = includeTies ? sorted.length : Math.min(sorted.length, numSuggestions);
-    const iCost = sorted[i].cost;
-    const maxCost2 = Math.min(iCost, weightMap ? changeLimit * BASE_COST - 1 : iCost);
-    for (i = 1; i < limit && sorted[i].cost <= maxCost2; ++i) {
-    }
-    sorted.length = i;
-    return sorted;
-  }
-  const collector = {
-    collect: collect2,
-    add: function(suggestion) {
-      collectSuggestion(suggestion);
-      return this;
-    },
-    get suggestions() {
-      return suggestions2();
-    },
-    get maxCost() {
-      return maxCost;
-    },
-    get word() {
-      return wordToMatch;
-    },
-    get maxNumSuggestions() {
-      return numSuggestions;
-    },
-    get changeLimit() {
-      return changeLimit;
-    },
-    includesTies: includeTies,
-    ignoreCase: ignoreCase2,
-    symbolStopProcessing: symStopProcessing,
-    genSuggestionOptions
-  };
-  return collector;
-}
-function impersonateCollector(collector, word) {
-  const r = Object.create(collector);
-  Object.defineProperty(r, "word", { value: word, writable: false });
-  return r;
-}
-function isSuggestionResult(s) {
-  const r = s;
-  return !!r && typeof r === "object" && r?.cost !== void 0 && r.word != void 0;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/suggestions/suggestAStar.js
-function comparePath(a, b) {
-  return a.c / (a.i + 1) - b.c / (b.i + 1) + (b.i - a.i);
-}
-function suggestAStar(trie, word, options = {}) {
-  const opts = createSuggestionOptions(options);
-  const collector = suggestionCollector(word, opts);
-  collector.collect(getSuggestionsAStar(trie, word, opts));
-  return collector.suggestions;
-}
-function* getSuggestionsAStar(trie, srcWord, options = {}) {
-  const { compoundMethod, changeLimit, ignoreCase: ignoreCase2, weightMap } = createSuggestionOptions(options);
-  const visMap = visualLetterMaskMap;
-  const root = trie.getRoot();
-  const rootIgnoreCase = ignoreCase2 && root.get(root.info.stripCaseAndAccentsPrefix) || void 0;
-  const pathHeap = new PairingHeap(comparePath);
-  const resultHeap = new PairingHeap(compareSuggestion);
-  const rootPNode = { n: root, i: 0, c: 0, s: "", p: void 0, t: createCostTrie() };
-  const BC = opCosts.baseCost;
-  const VC = opCosts.visuallySimilar;
-  const DL = opCosts.duplicateLetterCost;
-  const wordSeparator = compoundMethod === CompoundWordsMethod.JOIN_WORDS ? JOIN_SEPARATOR : WORD_SEPARATOR;
-  const sc = specialChars(trie.info);
-  const comp = trie.info.compoundCharacter;
-  const compRoot = root.get(comp);
-  const compRootIgnoreCase = rootIgnoreCase && rootIgnoreCase.get(comp);
-  const emitted = /* @__PURE__ */ Object.create(null);
-  const srcLetters = [...srcWord];
-  let limit = BC * Math.min(srcLetters.length * opCosts.wordLengthCostFactor, changeLimit);
-  pathHeap.add(rootPNode);
-  if (rootIgnoreCase) {
-    pathHeap.add({ n: rootIgnoreCase, i: 0, c: 0, s: "", p: void 0, t: createCostTrie() });
-  }
-  let best = pathHeap.dequeue();
-  let maxSize = pathHeap.size;
-  let suggestionsGenerated = 0;
-  let nodesProcessed = 0;
-  let nodesProcessedLimit = 1e3;
-  let minGen = 1;
-  while (best) {
-    if (++nodesProcessed > nodesProcessedLimit) {
-      nodesProcessedLimit += 1e3;
-      if (suggestionsGenerated < minGen) {
-        break;
-      }
-      minGen += suggestionsGenerated;
-    }
-    if (best.c > limit) {
-      best = pathHeap.dequeue();
-      maxSize = Math.max(maxSize, pathHeap.size);
-      continue;
-    }
-    processPath2(best);
-    for (const sug of resultHeap) {
-      ++suggestionsGenerated;
-      if (sug.cost > limit)
-        continue;
-      if (sug.word in emitted && emitted[sug.word] <= sug.cost)
-        continue;
-      const action2 = yield sug;
-      emitted[sug.word] = sug.cost;
-      if (typeof action2 === "number") {
-        limit = Math.min(action2, limit);
-      }
-      if (typeof action2 === "symbol") {
-        return;
-      }
-    }
-    best = pathHeap.dequeue();
-    maxSize = Math.max(maxSize, pathHeap.size);
-  }
-  return;
-  function compareSuggestion(a, b) {
-    const pa = a.isPreferred && 1 || 0;
-    const pb = b.isPreferred && 1 || 0;
-    return pb - pa || a.cost - b.cost || // eslint-disable-next-line unicorn/prefer-code-point
-    Math.abs(a.word.charCodeAt(0) - srcWord.charCodeAt(0)) - // eslint-disable-next-line unicorn/prefer-code-point
-    Math.abs(b.word.charCodeAt(0) - srcWord.charCodeAt(0));
-  }
-  function processPath2(p) {
-    const len = srcLetters.length;
-    if (p.n.eow && p.i === len) {
-      const word = pNodeToWord(p);
-      const result = { word, cost: p.c };
-      resultHeap.add(result);
-    }
-    calcEdges(p);
-  }
-  function calcEdges(p) {
-    const { n, i, t } = p;
-    const s = srcLetters[i];
-    const sg = visMap[s] || 0;
-    const cost0 = p.c;
-    const cost = cost0 + BC + (i ? 0 : opCosts.firstLetterBias);
-    const costVis = cost0 + VC;
-    const costLegacyCompound = cost0 + opCosts.wordBreak;
-    const costCompound = cost0 + opCosts.compound;
-    if (s) {
-      const m = n.get(s);
-      if (m) {
-        storePath(t, m, i + 1, cost0, s, p, "=", s);
-      }
-      if (weightMap) {
-        processWeightMapEdges(p, weightMap);
-      }
-      const ns = srcLetters[i + 1];
-      if (s == ns && m) {
-        storePath(t, m, i + 2, cost0 + DL, s, p, "dd", s);
-      }
-      storePath(t, n, i + 1, cost, "", p, "d", "");
-      for (const [ss, node] of n.entries()) {
-        if (node.id === m?.id || ss in sc)
-          continue;
-        const g = visMap[ss] || 0;
-        const c = sg & g ? costVis : cost;
-        storePath(t, node, i + 1, c, ss, p, "r", ss);
-      }
-      if (n.eow && i && compoundMethod) {
-        storePath(t, root, i, costLegacyCompound, wordSeparator, p, "L", wordSeparator);
-      }
-      if (ns) {
-        const n1 = n.get(ns);
-        const n2 = n1?.get(s);
-        if (n2) {
-          const ss = ns + s;
-          storePath(t, n2, i + 2, cost0 + opCosts.swapCost, ss, p, "s", ss);
-        }
-      }
-    }
-    if (compRoot && costCompound <= limit && n.get(comp)) {
-      if (compRootIgnoreCase) {
-        storePath(t, compRootIgnoreCase, i, costCompound, "", p, "~+", "~+");
-      }
-      storePath(t, compRoot, i, costCompound, "", p, "+", "+");
-    }
-    if (cost <= limit) {
-      for (const [char, node] of n.entries()) {
-        if (char in sc)
-          continue;
-        storePath(t, node, i, cost, char, p, "i", char);
-      }
-    }
-  }
-  function processWeightMapEdges(p, weightMap2) {
-    delLetters(p, weightMap2, srcLetters, storePath);
-    insLetters(p, weightMap2, srcLetters, storePath);
-    repLetters(p, weightMap2, srcLetters, storePath);
-    return;
-  }
-  function storePath(t, n, i, c, s, p, a, ss) {
-    const tt = getCostTrie(t, ss);
-    const curr = tt.c[i];
-    if (curr <= c || c > limit)
-      return void 0;
-    tt.c[i] = c;
-    pathHeap.add({ n, i, c, s, p, t: tt, a });
-  }
-}
-function delLetters(pNode, weightMap, letters, storePath) {
-  const { t, n } = pNode;
-  const trie = weightMap.insDel;
-  let ii = pNode.i;
-  const cost0 = pNode.c - pNode.i;
-  const len = letters.length;
-  for (let nn = trie.n; ii < len && nn; ) {
-    const tt = nn[letters[ii]];
-    if (!tt)
-      return;
-    ++ii;
-    if (tt.c !== void 0) {
-      storePath(t, n, ii, cost0 + tt.c, "", pNode, "d", "");
-    }
-    nn = tt.n;
-  }
-}
-function insLetters(p, weightMap, _letters, storePath) {
-  const { t, i, c, n } = p;
-  const cost0 = c;
-  searchTrieCostNodesMatchingTrie2(weightMap.insDel, n, (s, tc, n2) => {
-    if (tc.c !== void 0) {
-      storePath(t, n2, i, cost0 + tc.c, s, p, "i", s);
-    }
-  });
-}
-function repLetters(pNode, weightMap, letters, storePath) {
-  const node = pNode.n;
-  const pt = pNode.t;
-  const cost0 = pNode.c;
-  const len = letters.length;
-  const trie = weightMap.replace;
-  let i = pNode.i;
-  for (let n = trie.n; i < len && n; ) {
-    const t = n[letters[i]];
-    if (!t)
-      return;
-    ++i;
-    const tInsert = t.t;
-    if (tInsert) {
-      searchTrieCostNodesMatchingTrie2(tInsert, node, (s, tt, n2) => {
-        const c = tt.c;
-        if (c === void 0) {
-          return;
-        }
-        storePath(pt, n2, i, cost0 + c + (tt.p || 0), s, pNode, "r", s);
-      });
-    }
-    n = t.n;
-  }
-}
-function createCostTrie() {
-  return { c: [], t: /* @__PURE__ */ Object.create(null) };
-}
-function getCostTrie(t, s) {
-  if (s.length == 1) {
-    return t.t[s] ??= createCostTrie();
-  }
-  if (!s) {
-    return t;
-  }
-  let tt = t;
-  for (const c of s) {
-    tt = tt.t[c] ??= createCostTrie();
-  }
-  return tt;
-}
-function pNodeToWord(p) {
-  const parts = [];
-  let n = p;
-  while (n) {
-    parts.push(n.s);
-    n = n.p;
-  }
-  parts.reverse();
-  return parts.join("");
-}
-function specialChars(options) {
-  const charSet = /* @__PURE__ */ Object.create(null);
-  for (const c of Object.values(options)) {
-    charSet[c] = true;
-  }
-  return charSet;
-}
-function searchTrieCostNodesMatchingTrie2(trie, node, emit, s = "") {
-  const n = trie.n;
-  if (!n)
-    return;
-  for (const [key, c] of node.entries()) {
-    const t = n[key];
-    if (!t)
-      continue;
-    const pfx = s + key;
-    emit(pfx, t, c);
-    if (t.n) {
-      searchTrieCostNodesMatchingTrie2(t, c, emit, pfx);
-    }
-  }
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/FastTrieBlobBuilder.js
 var import_node_assert2 = __toESM(require("node:assert"), 1);
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/constants.js
-var COMPOUND_FIX = "+";
-var OPTIONAL_COMPOUND_FIX = "*";
-var CASE_INSENSITIVE_PREFIX = "~";
-var FORBID_PREFIX = "!";
-var LINE_COMMENT = "#";
-var IDENTITY_PREFIX = "=";
-var defaultTrieInfo = Object.freeze({
-  compoundCharacter: COMPOUND_FIX,
-  forbiddenWordPrefix: FORBID_PREFIX,
-  stripCaseAndAccentsPrefix: CASE_INSENSITIVE_PREFIX,
-  isCaseAware: true,
-  hasForbiddenWords: false,
-  hasCompoundWords: false,
-  hasNonStrictWords: false
-});
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/mergeDefaults.js
-function mergeDefaults(value, defaultValue) {
-  const result = { ...defaultValue };
-  if (value) {
-    for (const [k, v] of Object.entries(value)) {
-      if (k in result) {
-        result[k] = v ?? result[k];
-      }
-    }
-  }
-  return result;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/mergeOptionalWithDefaults.js
-function mergeOptionalWithDefaults(...options) {
-  return options.reduce((acc, opt) => mergeDefaults(opt, acc), defaultTrieInfo);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/text.js
-function expandCharacterSet(line, rangeChar = "-") {
-  const charSet = /* @__PURE__ */ new Set();
-  let mode = 0;
-  let prev = "";
-  for (const char of line) {
-    if (mode) {
-      expandRange(prev, char).forEach((a) => charSet.add(a));
-      mode = 0;
-    }
-    if (char === rangeChar && prev) {
-      mode = 1;
-      continue;
-    }
-    charSet.add(char);
-    prev = char;
-  }
-  if (mode)
-    charSet.add(rangeChar);
-  return charSet;
-}
-function expandRange(a, b) {
-  const values = [];
-  const end = b.codePointAt(0);
-  const begin = a.codePointAt(0);
-  if (!(begin && end))
-    return values;
-  for (let i = begin; i <= end; ++i) {
-    values.push(String.fromCodePoint(i));
-  }
-  return values;
-}
-function caseForms(letter, locale) {
-  const forms2 = /* @__PURE__ */ new Set([letter]);
-  function tryCases(s) {
-    forms2.add(s.toLocaleLowerCase(locale));
-    forms2.add(s.toLocaleUpperCase(locale));
-  }
-  tryCases(letter);
-  [...forms2].forEach(tryCases);
-  return [...forms2].filter((a) => !!a);
-}
-function accentForms(letter) {
-  const forms2 = /* @__PURE__ */ new Set([letter, letter.normalize("NFC"), letter.normalize("NFD")]);
-  return forms2;
-}
-function stripAccents(characters) {
-  return characters.normalize("NFD").replaceAll(/\p{M}/gu, "");
-}
-function stripNonAccents(characters) {
-  return characters.normalize("NFD").replaceAll(/[^\p{M}]/gu, "");
-}
-function isValidUtf16Character(char) {
-  const len = char.length;
-  const code = char.charCodeAt(0) & 64512;
-  const valid = len === 1 && (code & 63488) !== 55296 || // eslint-disable-next-line unicorn/prefer-code-point
-  len === 2 && (code & 64512) === 55296 && (char.charCodeAt(1) & 64512) === 56320;
-  return valid;
-}
-function assertValidUtf16Character(char) {
-  if (!isValidUtf16Character(char)) {
-    const len = char.length;
-    const codes3 = toCharCodes(char.slice(0, 2)).map((c) => "0x" + ("0000" + c.toString(16)).slice(-4));
-    let message;
-    if (len == 1) {
-      message = `Invalid utf16 character, lone surrogate: ${codes3[0]}`;
-    } else if (len == 2) {
-      message = `Invalid utf16 character, not a valid surrogate pair: [${codes3.join(", ")}]`;
-    } else {
-      message = `Invalid utf16 character, must be a single character, found: ${len}`;
-    }
-    throw new Error(message);
-  }
-}
-function toCharCodes(s) {
-  const values = [];
-  for (let i = 0; i < s.length; ++i) {
-    values.push(s.charCodeAt(i));
-  }
-  return values;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/Utf8.js
-function encodeUtf8N_BE(code) {
-  if (code < 128) {
-    return code;
-  }
-  if (code < 2048) {
-    return 49280 | (code & 1984) << 2 | code & 63;
-  }
-  if (code < 65536) {
-    return 14712960 | (code & 61440) << 4 | (code & 4032) << 2 | code & 63;
-  }
-  return 4034953344 + ((code & 1835008) << 6 | (code & 258048) << 4 | (code & 4032) << 2 | code & 63);
-}
-var Utf8Accumulator = class _Utf8Accumulator {
-  remaining = 0;
-  value = 0;
-  decode(byte) {
-    let remaining = this.remaining;
-    if (byte & ~255)
-      return this.reset();
-    if ((byte & 128) === 0) {
-      if (remaining)
-        return this.reset();
-      return byte;
-    }
-    if (remaining) {
-      if ((byte & 192) !== 128)
-        return this.reset();
-      let value = this.value;
-      value = value << 6 | byte & 63;
-      this.value = value;
-      remaining -= 1;
-      this.remaining = remaining;
-      return remaining ? void 0 : value;
-    }
-    if ((byte & 224) === 192) {
-      this.value = byte & 31;
-      this.remaining = 1;
-      return void 0;
-    }
-    if ((byte & 240) === 224) {
-      this.value = byte & 15;
-      this.remaining = 2;
-      return void 0;
-    }
-    if ((byte & 248) === 240) {
-      this.value = byte & 7;
-      this.remaining = 3;
-      return void 0;
-    }
-    return this.reset();
-  }
-  reset() {
-    this.remaining = 0;
-    this.value = 0;
-    return 65533;
-  }
-  clone(into = new _Utf8Accumulator()) {
-    into.remaining = this.remaining;
-    into.value = this.value;
-    return into;
-  }
-  static isMultiByte(v) {
-    return (v & 128) !== 0;
-  }
-  static isSingleByte(v) {
-    return (v & 128) === 0;
-  }
-  static create() {
-    return new this();
-  }
-};
-function encodeTextToUtf8Into(text, into, offset = 0) {
-  let i = offset;
-  const len = text.length;
-  for (let j = 0; j < len; j++) {
-    let code = text.charCodeAt(j);
-    code = (code & 63488) === 55296 ? text.codePointAt(j++) || 0 : code;
-    if (code < 128) {
-      into[i++] = code;
-      continue;
-    }
-    if (code < 2048) {
-      const u2 = 49280 | (code & 1984) << 2 | code & 63;
-      into[i++] = u2 >>> 8;
-      into[i++] = u2 & 255;
-      continue;
-    }
-    if (code < 65536) {
-      const u2 = 14712960 | (code & 61440) << 4 | (code & 4032) << 2 | code & 63;
-      into[i++] = u2 >>> 16;
-      into[i++] = u2 >>> 8 & 255;
-      into[i++] = u2 & 255;
-      continue;
-    }
-    const u = 4034953344 | ((code & 1835008) << 6 | (code & 258048) << 4 | (code & 4032) << 2 | code & 63);
-    into[i++] = u >>> 24 & 255;
-    into[i++] = u >>> 16 & 255;
-    into[i++] = u >>> 8 & 255;
-    into[i++] = u & 255;
-  }
-  return i - offset;
-}
-function encodeTextToUtf8(text) {
-  const array = new Array(text.length);
-  const len = encodeTextToUtf8Into(text, array);
-  array.length !== len && (array.length = len);
-  return array;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/CharIndex.js
-var emptySeq = [0];
-Object.freeze(emptySeq);
-var CharIndex = class {
-  charIndex;
-  #charToUtf8SeqMap;
-  #lastWord = "";
-  #lastWordSeq = [];
-  #multiByteChars;
-  constructor(charIndex) {
-    this.charIndex = charIndex;
-    this.#charToUtf8SeqMap = buildCharIndexSequenceMap(charIndex);
-    this.#multiByteChars = [...this.#charToUtf8SeqMap.values()].some((c) => c.length > 1);
-  }
-  getCharUtf8Seq(c) {
-    const found = this.#charToUtf8SeqMap.get(c);
-    if (found)
-      return found;
-    const s = encodeTextToUtf8(c);
-    this.#charToUtf8SeqMap.set(c, s);
-    return s;
-  }
-  wordToUtf8Seq(word) {
-    if (this.#lastWord === word)
-      return this.#lastWordSeq;
-    const seq = encodeTextToUtf8(word);
-    this.#lastWord = word;
-    this.#lastWordSeq = seq;
-    return seq;
-  }
-  indexContainsMultiByteChars() {
-    return this.#multiByteChars;
-  }
-  get size() {
-    return this.charIndex.length;
-  }
-  toJSON() {
-    return { charIndex: this.charIndex };
-  }
-};
-function buildCharIndexSequenceMap(charIndex) {
-  const map3 = /* @__PURE__ */ new Map();
-  for (const key of charIndex) {
-    map3.set(key, encodeTextToUtf8(key));
-  }
-  return map3;
-}
-var CharIndexBuilder = class {
-  charIndex = [];
-  charIndexMap = /* @__PURE__ */ new Map();
-  charIndexSeqMap = /* @__PURE__ */ new Map();
-  #mapIdxToSeq = /* @__PURE__ */ new Map();
-  constructor() {
-    this.getUtf8Value("");
-  }
-  getUtf8Value(c) {
-    const found = this.charIndexMap.get(c);
-    if (found !== void 0) {
-      return found;
-    }
-    const nc = c.normalize("NFC");
-    this.charIndex.push(nc);
-    const utf8 = encodeUtf8N_BE(nc.codePointAt(0) || 0);
-    this.charIndexMap.set(c, utf8);
-    this.charIndexMap.set(nc, utf8);
-    this.charIndexMap.set(c.normalize("NFD"), utf8);
-    return utf8;
-  }
-  utf8ValueToUtf8Seq(idx2) {
-    const found = this.#mapIdxToSeq.get(idx2);
-    if (found !== void 0) {
-      return found;
-    }
-    const seq = splitUtf8(idx2);
-    this.#mapIdxToSeq.set(idx2, seq);
-    return seq;
-  }
-  charToUtf8Seq(c) {
-    const idx2 = this.getUtf8Value(c);
-    return this.utf8ValueToUtf8Seq(idx2);
-  }
-  wordToUtf8Seq(word) {
-    const seq = new Array(word.length);
-    let i = 0;
-    for (const c of word) {
-      const idx2 = this.getUtf8Value(c);
-      const cSep = this.utf8ValueToUtf8Seq(idx2);
-      if (typeof cSep === "number") {
-        seq[i++] = cSep;
-        continue;
-      }
-      for (const cIdx of cSep) {
-        seq[i++] = cIdx;
-      }
-    }
-    if (seq.length !== i)
-      seq.length = i;
-    return seq;
-  }
-  get size() {
-    return this.charIndex.length;
-  }
-  build() {
-    return new CharIndex(this.charIndex);
-  }
-};
-function splitUtf8(utf8) {
-  if (utf8 <= 255)
-    return [utf8];
-  if (utf8 <= 65535)
-    return [utf8 >> 8 & 255, utf8 & 255];
-  if (utf8 <= 16777215)
-    return [utf8 >> 16 & 255, utf8 >> 8 & 255, utf8 & 255];
-  return [utf8 >> 24 & 255, utf8 >> 16 & 255, utf8 >> 8 & 255, utf8 & 255].filter((v) => v);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/FastTrieBlobBitMaskInfo.js
-function extractInfo(info5) {
-  const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = info5;
-  return {
-    NodeMaskEOW,
-    NodeMaskChildCharIndex,
-    NodeChildRefShift
-  };
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/FastTrieBlobInternals.js
-var FastTrieBlobInternals = class {
-  nodes;
-  charIndex;
-  NodeMaskEOW;
-  NodeMaskChildCharIndex;
-  NodeChildRefShift;
-  isIndexDecoderNeeded;
-  info;
-  constructor(nodes, charIndex, maskInfo, info5) {
-    this.nodes = nodes;
-    this.charIndex = charIndex;
-    const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = maskInfo;
-    this.NodeMaskEOW = NodeMaskEOW;
-    this.NodeMaskChildCharIndex = NodeMaskChildCharIndex;
-    this.NodeChildRefShift = NodeChildRefShift;
-    this.isIndexDecoderNeeded = charIndex.indexContainsMultiByteChars();
-    this.info = mergeOptionalWithDefaults(info5);
-  }
-};
-var FastTrieBlobInternalsAndMethods = class extends FastTrieBlobInternals {
-  nodeFindNode;
-  nodeFindExact;
-  nodeGetChild;
-  isForbidden;
-  findExact;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(nodes, charIndex, maskInfo, info5, trieMethods) {
-    super(nodes, charIndex, maskInfo, info5);
-    this.nodeFindExact = trieMethods.nodeFindExact;
-    this.nodeGetChild = trieMethods.nodeGetChild;
-    this.isForbidden = trieMethods.isForbidden;
-    this.findExact = trieMethods.findExact;
-    this.nodeFindNode = trieMethods.nodeFindNode;
-    this.hasForbiddenWords = trieMethods.hasForbiddenWords;
-    this.hasCompoundWords = trieMethods.hasCompoundWords;
-    this.hasNonStrictWords = trieMethods.hasNonStrictWords;
-  }
-};
-function sortNodes(nodes, mask) {
-  if (Object.isFrozen(nodes)) {
-    assertSorted(nodes, mask);
-    return nodes;
-  }
-  for (let i = 0; i < nodes.length; ++i) {
-    let node = nodes[i];
-    if (node.length > 2) {
-      const isFrozen = Object.isFrozen(node);
-      node = isFrozen ? Uint32Array.from(node) : node;
-      const nodeInfo = node[0];
-      node[0] = 0;
-      node.sort((a, b) => !a ? -1 : !b ? 1 : (a & mask) - (b & mask));
-      node[0] = nodeInfo;
-      if (isFrozen) {
-        nodes[i] = node;
-        Object.freeze(node);
-      }
-    }
-  }
-  Object.freeze(nodes);
-  return nodes;
-}
-function assertSorted(nodes, mask) {
-  for (let i = 0; i < nodes.length; ++i) {
-    const node = nodes[i];
-    if (node.length > 2) {
-      let last = -1;
-      for (let j = 1; j < node.length; ++j) {
-        const n = node[j] & mask;
-        if (n < last) {
-          throw new Error(`Node ${i} is not sorted. ${last} > ${n}`);
-        }
-        last = n;
-      }
-    }
-  }
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/FastTrieBlobIRoot.js
-var EmptyKeys2 = Object.freeze([]);
-var EmptyNodes = Object.freeze([]);
-var EmptyEntries2 = Object.freeze([]);
-var FastTrieBlobINode = class _FastTrieBlobINode {
-  trie;
-  nodeIdx;
-  id;
-  node;
-  eow;
-  _keys;
-  _count;
-  _size;
-  _chained;
-  _nodesEntries;
-  _entries;
-  _values;
-  charToIdx;
-  constructor(trie, nodeIdx) {
-    this.trie = trie;
-    this.nodeIdx = nodeIdx;
-    const node = trie.nodes[nodeIdx];
-    this.node = node;
-    this.eow = !!(node[0] & trie.NodeMaskEOW);
-    this._count = node.length - 1;
-    this.id = nodeIdx;
-    this.findExact = (word) => trie.nodeFindExact(nodeIdx, word);
-  }
-  /** get keys to children */
-  keys() {
-    if (this._keys)
-      return this._keys;
-    if (!this._count)
-      return EmptyKeys2;
-    this._keys = this.getNodesEntries().map(([key]) => key);
-    return this._keys;
-  }
-  values() {
-    if (!this._count)
-      return EmptyNodes;
-    if (this._values)
-      return this._values;
-    this._values = this.entries().map(([, value]) => value);
-    return this._values;
-  }
-  entries() {
-    if (this._entries)
-      return this._entries;
-    if (!this._count)
-      return EmptyEntries2;
-    const entries = this.getNodesEntries();
-    this._entries = entries.map(([key, value]) => [key, new _FastTrieBlobINode(this.trie, value)]);
-    return this._entries;
-  }
-  /** get child ITrieNode */
-  get(char) {
-    const idx2 = this.trie.nodeGetChild(this.id, char);
-    if (idx2 === void 0)
-      return void 0;
-    return new _FastTrieBlobINode(this.trie, idx2);
-  }
-  getNode(chars) {
-    const idx2 = this.trie.nodeFindNode(this.id, chars);
-    if (idx2 === void 0)
-      return void 0;
-    return new _FastTrieBlobINode(this.trie, idx2);
-  }
-  has(char) {
-    const idx2 = this.trie.nodeGetChild(this.id, char);
-    return idx2 !== void 0;
-  }
-  hasChildren() {
-    return this._count > 0;
-  }
-  child(keyIdx) {
-    if (!this._values && !this.containsChainedIndexes()) {
-      const n = this.node[keyIdx + 1];
-      const nodeIdx = n >>> this.trie.NodeChildRefShift;
-      return new _FastTrieBlobINode(this.trie, nodeIdx);
-    }
-    return this.values()[keyIdx];
-  }
-  getCharToIdxMap() {
-    const m = this.charToIdx;
-    if (m)
-      return m;
-    const map3 = /* @__PURE__ */ Object.create(null);
-    const keys3 = this.keys();
-    for (let i = 0; i < keys3.length; ++i) {
-      map3[keys3[i]] = i;
-    }
-    this.charToIdx = map3;
-    return map3;
-  }
-  findExact(word) {
-    return this.trie.nodeFindExact(this.id, word);
-  }
-  isForbidden(word) {
-    const n = this.trie.nodeGetChild(this.id, this.trie.info.forbiddenWordPrefix);
-    if (n === void 0)
-      return false;
-    return this.trie.nodeFindExact(n, word);
-  }
-  findCaseInsensitive(word) {
-    const n = this.trie.nodeGetChild(this.id, this.trie.info.stripCaseAndAccentsPrefix);
-    if (n === void 0)
-      return false;
-    return this.trie.nodeFindExact(n, word);
-  }
-  containsChainedIndexes() {
-    if (this._chained !== void 0)
-      return this._chained;
-    if (!this._count || !this.trie.isIndexDecoderNeeded) {
-      this._chained = false;
-      return false;
-    }
-    let found = false;
-    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-    const len = this._count;
-    const node = this.node;
-    for (let i = 1; i <= len && !found; ++i) {
-      const entry = node[i];
-      const codePoint = entry & NodeMaskChildCharIndex;
-      found = Utf8Accumulator.isMultiByte(codePoint);
-    }
-    this._chained = !!found;
-    return this._chained;
-  }
-  getNodesEntries() {
-    if (this._nodesEntries)
-      return this._nodesEntries;
-    if (!this.containsChainedIndexes()) {
-      const entries = Array(this._count);
-      const nodes = this.node;
-      const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-      const RefShift = this.trie.NodeChildRefShift;
-      for (let i = 0; i < this._count; ++i) {
-        const entry = nodes[i + 1];
-        const codePoint = entry & NodeMaskChildCharIndex;
-        entries[i] = [String.fromCodePoint(codePoint), entry >>> RefShift];
-      }
-      this._nodesEntries = entries;
-      return entries;
-    }
-    this._nodesEntries = this.walkChainedIndexes();
-    return this._nodesEntries;
-  }
-  walkChainedIndexes() {
-    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.trie.NodeChildRefShift;
-    const nodes = this.trie.nodes;
-    const acc = Utf8Accumulator.create();
-    const stack = [{ n: this.node, c: 1, acc }];
-    let depth = 0;
-    const entries = Array(this._count);
-    let eIdx = 0;
-    while (depth >= 0) {
-      const s = stack[depth];
-      const { n: node, c: off } = s;
-      if (off >= node.length) {
-        --depth;
-        continue;
-      }
-      ++s.c;
-      const entry = node[off];
-      const charIdx = entry & NodeMaskChildCharIndex;
-      const acc2 = s.acc.clone();
-      const codePoint = acc2.decode(charIdx);
-      if (codePoint !== void 0) {
-        const char = String.fromCodePoint(codePoint);
-        const nodeIdx = entry >>> NodeChildRefShift;
-        entries[eIdx++] = [char, nodeIdx];
-        continue;
-      }
-      const idx2 = entry >>> NodeChildRefShift;
-      const ss = stack[++depth];
-      if (ss) {
-        ss.n = nodes[idx2];
-        ss.c = 1;
-        ss.acc = acc2;
-      } else {
-        stack[depth] = { n: nodes[idx2], c: 1, acc: acc2 };
-      }
-    }
-    return entries;
-  }
-  get size() {
-    if (this._size === void 0) {
-      if (!this.containsChainedIndexes()) {
-        this._size = this._count;
-        return this._size;
-      }
-      this._size = this.getNodesEntries().length;
-    }
-    return this._size;
-  }
-};
-var FastTrieBlobIRoot = class extends FastTrieBlobINode {
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(trie, nodeIdx) {
-    super(trie, nodeIdx);
-    this.hasForbiddenWords = trie.hasForbiddenWords;
-    this.hasCompoundWords = trie.hasCompoundWords;
-    this.hasNonStrictWords = trie.hasNonStrictWords;
-  }
-  resolveId(id) {
-    return new FastTrieBlobINode(this.trie, id);
-  }
-  find(word, strict) {
-    let found = this.findExact(word);
-    if (found) {
-      return { found: word, compoundUsed: false, caseMatched: true };
-    }
-    if (strict)
-      return void 0;
-    found = this.findCaseInsensitive(word);
-    return found ? { found: word, compoundUsed: false, caseMatched: false } : void 0;
-  }
-  get info() {
-    return this.trie.info;
-  }
-  get forbidPrefix() {
-    return this.trie.info.forbiddenWordPrefix;
-  }
-  get compoundFix() {
-    return this.trie.info.compoundCharacter;
-  }
-  get caseInsensitivePrefix() {
-    return this.trie.info.stripCaseAndAccentsPrefix;
-  }
-};
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/TrieBlob.js
 var import_node_os = require("node:os");
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/TrieBlobIRoot.js
-var _a;
-var TrieBlobInternals = class {
-  nodes;
-  charIndex;
-  NodeMaskEOW;
-  NodeMaskNumChildren;
-  NodeMaskChildCharIndex;
-  NodeChildRefShift;
-  isIndexDecoderNeeded;
-  nodeFindExact;
-  isForbidden;
-  findExact;
-  nodeGetChild;
-  nodeFindNode;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(nodes, charIndex, maskInfo, methods) {
-    this.nodes = nodes;
-    this.charIndex = charIndex;
-    const { NodeMaskEOW, NodeMaskChildCharIndex, NodeMaskNumChildren, NodeChildRefShift } = maskInfo;
-    this.NodeMaskEOW = NodeMaskEOW;
-    this.NodeMaskNumChildren = NodeMaskNumChildren;
-    this.NodeMaskChildCharIndex = NodeMaskChildCharIndex;
-    this.NodeChildRefShift = NodeChildRefShift;
-    this.isIndexDecoderNeeded = charIndex.indexContainsMultiByteChars();
-    this.nodeFindExact = methods.nodeFindExact;
-    this.isForbidden = methods.isForbidden;
-    this.findExact = methods.findExact;
-    this.nodeGetChild = methods.nodeGetChild;
-    this.nodeFindNode = methods.nodeFindNode;
-    this.hasForbiddenWords = methods.hasForbiddenWords;
-    this.hasCompoundWords = methods.hasCompoundWords;
-    this.hasNonStrictWords = methods.hasNonStrictWords;
-  }
-};
-var EmptyKeys3 = Object.freeze([]);
-var EmptyNodes2 = Object.freeze([]);
-var EmptyEntries3 = Object.freeze([]);
-var TrieBlobINode = class {
-  trie;
-  nodeIdx;
-  id;
-  node;
-  eow;
-  _keys;
-  _count;
-  _size;
-  _chained;
-  _nodesEntries;
-  _entries;
-  _values;
-  charToIdx;
-  constructor(trie, nodeIdx) {
-    this.trie = trie;
-    this.nodeIdx = nodeIdx;
-    const node = trie.nodes[nodeIdx];
-    this.node = node;
-    this.eow = !!(node & trie.NodeMaskEOW);
-    this._count = node & trie.NodeMaskNumChildren;
-    this.id = nodeIdx;
-  }
-  /** get keys to children */
-  keys() {
-    if (this._keys)
-      return this._keys;
-    if (!this._count)
-      return EmptyKeys3;
-    this._keys = this.getNodesEntries().map(([key]) => key);
-    return this._keys;
-  }
-  values() {
-    if (!this._count)
-      return EmptyNodes2;
-    if (this._values)
-      return this._values;
-    this._values = this.entries().map(([, value]) => value);
-    return this._values;
-  }
-  entries() {
-    if (this._entries)
-      return this._entries;
-    if (!this._count)
-      return EmptyEntries3;
-    const entries = this.getNodesEntries();
-    this._entries = entries.map(([key, value]) => [key, new _a(this.trie, value)]);
-    return this._entries;
-  }
-  /** get child ITrieNode */
-  get(char) {
-    return this.#getChildNode(char);
-  }
-  has(char) {
-    return this.trie.nodeGetChild(this.nodeIdx, char) !== void 0;
-  }
-  hasChildren() {
-    return this._count > 0;
-  }
-  child(keyIdx) {
-    if (!this._values && !this.containsChainedIndexes()) {
-      const n = this.trie.nodes[this.nodeIdx + keyIdx + 1];
-      const nodeIdx = n >>> this.trie.NodeChildRefShift;
-      return new _a(this.trie, nodeIdx);
-    }
-    return this.values()[keyIdx];
-  }
-  #getChildNodeIdx(char) {
-    return this.trie.nodeGetChild(this.nodeIdx, char);
-  }
-  #getChildNode(char) {
-    if (this.charToIdx) {
-      const keyIdx = this.charToIdx[char];
-      if (keyIdx === void 0)
-        return void 0;
-      return this.child(keyIdx);
-    }
-    const idx2 = this.#getChildNodeIdx(char);
-    if (idx2 === void 0)
-      return void 0;
-    return new _a(this.trie, idx2);
-  }
-  getCharToIdxMap() {
-    const m = this.charToIdx;
-    if (m)
-      return m;
-    const map3 = /* @__PURE__ */ Object.create(null);
-    const keys3 = this.keys();
-    for (let i = 0; i < keys3.length; ++i) {
-      map3[keys3[i]] = i;
-    }
-    this.charToIdx = map3;
-    return map3;
-  }
-  getNode(word) {
-    const n = this.trie.nodeFindNode(this.nodeIdx, word);
-    return n === void 0 ? void 0 : new _a(this.trie, n);
-  }
-  findExact(word) {
-    return this.trie.nodeFindExact(this.nodeIdx, word);
-  }
-  containsChainedIndexes() {
-    if (this._chained !== void 0)
-      return this._chained;
-    if (!this._count || !this.trie.isIndexDecoderNeeded) {
-      this._chained = false;
-      return false;
-    }
-    let found = false;
-    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-    const offset = this.nodeIdx + 1;
-    const nodes = this.trie.nodes;
-    const len = this._count;
-    for (let i = 0; i < len && !found; ++i) {
-      const entry = nodes[i + offset];
-      const charIdx = entry & NodeMaskChildCharIndex;
-      found = Utf8Accumulator.isMultiByte(charIdx);
-    }
-    this._chained = !!found;
-    return this._chained;
-  }
-  getNodesEntries() {
-    if (this._nodesEntries)
-      return this._nodesEntries;
-    if (!this.containsChainedIndexes()) {
-      const entries = Array(this._count);
-      const nodes = this.trie.nodes;
-      const offset = this.nodeIdx + 1;
-      const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-      const RefShift = this.trie.NodeChildRefShift;
-      for (let i = 0; i < this._count; ++i) {
-        const entry = nodes[offset + i];
-        const codePoint = entry & NodeMaskChildCharIndex;
-        entries[i] = [String.fromCodePoint(codePoint), entry >>> RefShift];
-      }
-      this._nodesEntries = entries;
-      return entries;
-    }
-    this._nodesEntries = this.walkChainedIndexes();
-    return this._nodesEntries;
-  }
-  walkChainedIndexes() {
-    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.trie.NodeChildRefShift;
-    const NodeMaskNumChildren = this.trie.NodeMaskNumChildren;
-    const nodes = this.trie.nodes;
-    const acc = Utf8Accumulator.create();
-    const stack = [{ nodeIdx: this.nodeIdx + 1, lastIdx: this.nodeIdx + this._count, acc }];
-    let depth = 0;
-    const entries = Array(this._count);
-    let eIdx = 0;
-    while (depth >= 0) {
-      const s = stack[depth];
-      const { nodeIdx, lastIdx } = s;
-      if (nodeIdx > lastIdx) {
-        --depth;
-        continue;
-      }
-      ++s.nodeIdx;
-      const entry = nodes[nodeIdx];
-      const charIdx = entry & NodeMaskChildCharIndex;
-      const acc2 = s.acc.clone();
-      const codePoint = acc2.decode(charIdx);
-      if (codePoint !== void 0) {
-        const char = String.fromCodePoint(codePoint);
-        const nodeIdx2 = entry >>> NodeChildRefShift;
-        entries[eIdx++] = [char, nodeIdx2];
-        continue;
-      }
-      const idx2 = entry >>> NodeChildRefShift;
-      const lIdx = idx2 + (nodes[idx2] & NodeMaskNumChildren);
-      const ss = stack[++depth];
-      if (ss) {
-        ss.nodeIdx = idx2 + 1;
-        ss.lastIdx = lIdx;
-        ss.acc = acc2;
-      } else {
-        stack[depth] = { nodeIdx: idx2 + 1, lastIdx: lIdx, acc: acc2 };
-      }
-    }
-    return entries;
-  }
-  get size() {
-    if (this._size === void 0) {
-      if (!this.containsChainedIndexes()) {
-        this._size = this._count;
-        return this._size;
-      }
-      this._size = this.getNodesEntries().length;
-    }
-    return this._size;
-  }
-};
-_a = TrieBlobINode;
-var TrieBlobIRoot = class extends TrieBlobINode {
-  info;
-  find;
-  isForbidden;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(trie, nodeIdx, info5, methods) {
-    super(trie, nodeIdx);
-    this.info = info5;
-    this.find = methods.find;
-    this.isForbidden = trie.isForbidden;
-    this.hasForbiddenWords = trie.hasForbiddenWords;
-    this.hasCompoundWords = trie.hasCompoundWords;
-    this.hasNonStrictWords = trie.hasNonStrictWords;
-  }
-  resolveId(id) {
-    return new TrieBlobINode(this.trie, id);
-  }
-  get forbidPrefix() {
-    return this.info.forbiddenWordPrefix;
-  }
-  get compoundFix() {
-    return this.info.compoundCharacter;
-  }
-  get caseInsensitivePrefix() {
-    return this.info.stripCaseAndAccentsPrefix;
-  }
-};
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/TrieBlob.js
-var _a2;
-var NodeHeaderNumChildrenBits = 8;
-var NodeHeaderNumChildrenShift = 0;
-var HEADER_SIZE_UINT32 = 8;
-var HEADER_SIZE = HEADER_SIZE_UINT32 * 4;
-var HEADER_OFFSET = 0;
-var HEADER_OFFSET_SIG = HEADER_OFFSET;
-var HEADER_OFFSET_ENDIAN = HEADER_OFFSET_SIG + 8;
-var HEADER_OFFSET_VERSION = HEADER_OFFSET_ENDIAN + 4;
-var HEADER_OFFSET_NODES = HEADER_OFFSET_VERSION + 4;
-var HEADER_OFFSET_NODES_LEN = HEADER_OFFSET_NODES + 4;
-var HEADER_OFFSET_CHAR_INDEX = HEADER_OFFSET_NODES_LEN + 4;
-var HEADER_OFFSET_CHAR_INDEX_LEN = HEADER_OFFSET_CHAR_INDEX + 4;
-var HEADER = {
-  header: HEADER_OFFSET,
-  sig: HEADER_OFFSET_SIG,
-  version: HEADER_OFFSET_VERSION,
-  endian: HEADER_OFFSET_ENDIAN,
-  nodes: HEADER_OFFSET_NODES,
-  nodesLen: HEADER_OFFSET_NODES_LEN,
-  charIndex: HEADER_OFFSET_CHAR_INDEX,
-  charIndexLen: HEADER_OFFSET_CHAR_INDEX_LEN
-};
-var headerSig = "TrieBlob";
-var version = "00.01.00";
-var endianSig = 67305985;
-var TrieBlob = class {
-  nodes;
-  charIndex;
-  info;
-  #forbidIdx;
-  #compoundIdx;
-  #nonStrictIdx;
-  #size;
-  #iTrieRoot;
-  /** the nodes data in 8 bits */
-  #nodes8;
-  #beAdj = (0, import_node_os.endianness)() === "BE" ? 3 : 0;
-  wordToCharacters = (word) => [...word];
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(nodes, charIndex, info5) {
-    this.nodes = nodes;
-    this.charIndex = charIndex;
-    trieBlobSort(nodes);
-    this.info = mergeOptionalWithDefaults(info5);
-    this.#nodes8 = new Uint8Array(nodes.buffer, nodes.byteOffset + this.#beAdj);
-    this.#forbidIdx = this._lookupNode(0, this.info.forbiddenWordPrefix);
-    this.#compoundIdx = this._lookupNode(0, this.info.compoundCharacter);
-    this.#nonStrictIdx = this._lookupNode(0, this.info.stripCaseAndAccentsPrefix);
-    this.hasForbiddenWords = !!this.#forbidIdx;
-    this.hasCompoundWords = !!this.#compoundIdx;
-    this.hasNonStrictWords = !!this.#nonStrictIdx;
-  }
-  wordToUtf8Seq(word) {
-    return this.charIndex.wordToUtf8Seq(word);
-  }
-  letterToNodeCharIndexSequence(letter) {
-    return this.charIndex.getCharUtf8Seq(letter);
-  }
-  has(word) {
-    return this.#hasWord(0, word);
-  }
-  isForbiddenWord(word) {
-    return !!this.#forbidIdx && this.#hasWord(this.#forbidIdx, word);
-  }
-  /**
-   * Try to find the word in the trie. The word must be normalized.
-   * If `strict` is `true` the case and accents must match.
-   * Compound words are supported assuming that the compound character is in the trie.
-   *
-   * @param word - the word to find (normalized)
-   * @param strict - if `true` the case and accents must match.
-   */
-  find(word, strict) {
-    if (!this.hasCompoundWords) {
-      const found = this.#hasWord(0, word);
-      if (found)
-        return { found: word, compoundUsed: false, caseMatched: true };
-      if (strict || !this.#nonStrictIdx)
-        return { found: false, compoundUsed: false, caseMatched: false };
-      return { found: this.#hasWord(this.#nonStrictIdx, word) && word, compoundUsed: false, caseMatched: false };
-    }
-    return void 0;
-  }
-  getRoot() {
-    return this.#iTrieRoot ??= this._getRoot();
-  }
-  _getRoot() {
-    const trieData = new TrieBlobInternals(this.nodes, this.charIndex, {
-      NodeMaskEOW: _a2.NodeMaskEOW,
-      NodeMaskNumChildren: _a2.NodeMaskNumChildren,
-      NodeMaskChildCharIndex: _a2.NodeMaskChildCharIndex,
-      NodeChildRefShift: _a2.NodeChildRefShift
-    }, {
-      nodeFindExact: (idx2, word) => this.#hasWord(idx2, word),
-      nodeGetChild: (idx2, letter) => this._lookupNode(idx2, letter),
-      nodeFindNode: (idx2, word) => this.#findNode(idx2, word),
-      isForbidden: (word) => this.isForbiddenWord(word),
-      findExact: (word) => this.has(word),
-      hasCompoundWords: this.hasCompoundWords,
-      hasForbiddenWords: this.hasForbiddenWords,
-      hasNonStrictWords: this.hasNonStrictWords
-    });
-    return new TrieBlobIRoot(trieData, 0, this.info, {
-      find: (word, strict) => this.find(word, strict)
-    });
-  }
-  getNode(prefix) {
-    return findNode(this.getRoot(), prefix);
-  }
-  /**
-   * Check if the word is in the trie starting at the given node index.
-   */
-  #hasWord(nodeIdx, word) {
-    const nodeIdxFound = this.#findNode(nodeIdx, word);
-    if (!nodeIdxFound)
-      return false;
-    const node = this.nodes[nodeIdxFound];
-    const m = _a2.NodeMaskEOW;
-    return (node & m) === m;
-  }
-  #findNode(nodeIdx, word) {
-    const wordIndexes = this.wordToUtf8Seq(word);
-    return this.#lookupNode(nodeIdx, wordIndexes);
-  }
-  /**
-   * Find the node index for the given Utf8 character sequence.
-   * @param nodeIdx - node index to start the search
-   * @param seq - the byte sequence of the character to look for
-   * @returns
-   */
-  #lookupNode(nodeIdx, seq) {
-    const NodeMaskNumChildren = _a2.NodeMaskNumChildren;
-    const NodeChildRefShift = _a2.NodeChildRefShift;
-    const nodes = this.nodes;
-    const nodes8 = this.#nodes8;
-    const wordIndexes = seq;
-    const len = wordIndexes.length;
-    let node = nodes[nodeIdx];
-    for (let p = 0; p < len; ++p, node = nodes[nodeIdx]) {
-      const letterIdx = wordIndexes[p];
-      const count3 = node & NodeMaskNumChildren;
-      const idx4 = nodeIdx << 2;
-      if (count3 > 15) {
-        const pEnd = idx4 + (count3 << 2);
-        let i2 = idx4 + 4;
-        let j = pEnd;
-        while (j - i2 >= 4) {
-          const m = i2 + j >> 1 & ~3;
-          if (nodes8[m] < letterIdx) {
-            i2 = m + 4;
-          } else {
-            j = m;
-          }
-        }
-        if (i2 > pEnd || nodes8[i2] !== letterIdx)
-          return void 0;
-        nodeIdx = nodes[i2 >> 2] >>> NodeChildRefShift;
-        continue;
-      }
-      let i = idx4 + count3 * 4;
-      for (; i > idx4; i -= 4) {
-        if (nodes8[i] === letterIdx) {
-          break;
-        }
-      }
-      if (i <= idx4)
-        return void 0;
-      nodeIdx = nodes[i >> 2] >>> NodeChildRefShift;
-    }
-    return nodeIdx;
-  }
-  /**
-   * Find the node index for the given character.
-   * @param nodeIdx - node index to start the search
-   * @param char - character to look for
-   * @returns
-   */
-  _lookupNode(nodeIdx, char) {
-    const indexSeq = this.letterToNodeCharIndexSequence(char);
-    const currNodeIdx = this.#lookupNode(nodeIdx, indexSeq);
-    return currNodeIdx;
-  }
-  *words() {
-    const NodeMaskNumChildren = _a2.NodeMaskNumChildren;
-    const NodeMaskEOW = _a2.NodeMaskEOW;
-    const NodeMaskChildCharIndex = _a2.NodeMaskChildCharIndex;
-    const NodeChildRefShift = _a2.NodeChildRefShift;
-    const nodes = this.nodes;
-    const stack = [{ nodeIdx: 0, pos: 0, word: "", acc: Utf8Accumulator.create() }];
-    let depth = 0;
-    while (depth >= 0) {
-      const { nodeIdx, pos, word, acc } = stack[depth];
-      const node = nodes[nodeIdx];
-      if (!pos && node & NodeMaskEOW) {
-        yield word;
-      }
-      const len = node & NodeMaskNumChildren;
-      if (pos >= len) {
-        --depth;
-        continue;
-      }
-      const nextPos = ++stack[depth].pos;
-      const entry = nodes[nodeIdx + nextPos];
-      const nAcc = acc.clone();
-      const codePoint = nAcc.decode(entry & NodeMaskChildCharIndex);
-      const letter = codePoint && String.fromCodePoint(codePoint) || "";
-      ++depth;
-      stack[depth] = {
-        nodeIdx: entry >>> NodeChildRefShift,
-        pos: 0,
-        word: word + letter,
-        acc: nAcc
-      };
-    }
-  }
-  get size() {
-    if (this.#size)
-      return this.#size;
-    const NodeMaskNumChildren = _a2.NodeMaskNumChildren;
-    const nodes = this.nodes;
-    let p = 0;
-    let count3 = 0;
-    while (p < nodes.length) {
-      ++count3;
-      p += (nodes[p] & NodeMaskNumChildren) + 1;
-    }
-    this.#size = count3;
-    return count3;
-  }
-  toJSON() {
-    return {
-      options: this.info,
-      nodes: nodesToJson(this.nodes),
-      charIndex: this.charIndex
-    };
-  }
-  encodeBin() {
-    const charIndex = Buffer.from(this.charIndex.charIndex.join("\n"));
-    const charIndexLen = charIndex.byteLength + 3 & ~3;
-    const nodeOffset = HEADER_SIZE + charIndexLen;
-    const size = nodeOffset + this.nodes.length * 4;
-    const useLittle = isLittleEndian();
-    const buffer = Buffer.alloc(size);
-    const header = new DataView(buffer.buffer);
-    const nodeData = new Uint8Array(this.nodes.buffer);
-    buffer.write(headerSig, HEADER.sig, "utf8");
-    buffer.write(version, HEADER.version, "utf8");
-    header.setUint32(HEADER.endian, endianSig, useLittle);
-    header.setUint32(HEADER.nodes, nodeOffset, useLittle);
-    header.setUint32(HEADER.nodesLen, this.nodes.length, useLittle);
-    header.setUint32(HEADER.charIndex, HEADER_SIZE, useLittle);
-    header.setUint32(HEADER.charIndexLen, charIndex.length, useLittle);
-    buffer.set(charIndex, HEADER_SIZE);
-    buffer.set(nodeData, nodeOffset);
-    return buffer;
-  }
-  static decodeBin(blob) {
-    if (!checkSig(blob)) {
-      throw new ErrorDecodeTrieBlob("Invalid TrieBlob Header");
-    }
-    const header = new DataView(blob.buffer);
-    const useLittle = isLittleEndian();
-    if (header.getUint32(HEADER.endian, useLittle) !== endianSig) {
-      throw new ErrorDecodeTrieBlob("Invalid TrieBlob Header");
-    }
-    const offsetNodes = header.getUint32(HEADER.nodes, useLittle);
-    const lenNodes = header.getUint32(HEADER.nodesLen, useLittle);
-    const offsetCharIndex = header.getUint32(HEADER.charIndex, useLittle);
-    const lenCharIndex = header.getUint32(HEADER.charIndexLen, useLittle);
-    const charIndex = Buffer.from(blob.subarray(offsetCharIndex, offsetCharIndex + lenCharIndex)).toString("utf8").split("\n");
-    const nodes = new Uint32Array(blob.buffer, offsetNodes, lenNodes);
-    const trieBlob = new _a2(nodes, new CharIndex(charIndex), defaultTrieInfo);
-    return trieBlob;
-  }
-  // #prepLookup() {
-  //     const NodeMaskNumChildren = TrieBlob.NodeMaskNumChildren;
-  //     const NodeMaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
-  //     const NodeChildRefShift = TrieBlob.NodeChildRefShift;
-  //     const stack: WalkStackItem[] = [];
-  //     const iter = this.#walk(stack)[Symbol.iterator]();
-  //     const nodes = this.nodes;
-  //     let n: IteratorResult<number>;
-  //     let deeper = true;
-  //     while (!(n = iter.next(deeper)).done) {
-  //         const depth = n.value;
-  //         const nodeIdx = stack[depth].nodeIdx;
-  //         const node = nodes[nodeIdx];
-  //         const len = node & NodeMaskNumChildren;
-  //         deeper = len > lookupCount;
-  //         if (deeper) {
-  //             const map = new Map<number, number>();
-  //             this.#nodeIdxLookup.set(nodeIdx, map);
-  //             for (let i = len; i > 0; --i) {
-  //                 const n = nodes[i + nodeIdx];
-  //                 map.set(n & NodeMaskChildCharIndex, n >> NodeChildRefShift);
-  //             }
-  //             // const parent = depth > 0 ? stack[depth - 1].nodeIdx : -1;
-  //             // console.error('Node %d has %d children, parent %d', nodeIdx, len, parent);
-  //         }
-  //     }
-  // }
-  // Keeping this for a bit, until we are sure we don't need it.
-  // *#walk(wStack: WalkStackItem[]): Generator<number, undefined, undefined | boolean> {
-  //     const NodeMaskNumChildren = TrieBlob.NodeMaskNumChildren;
-  //     const NodeChildRefShift = TrieBlob.NodeChildRefShift;
-  //     const nodes = this.nodes;
-  //     const stack = wStack;
-  //     stack[0] = { nodeIdx: 0, pos: 0 };
-  //     let depth = 0;
-  //     while (depth >= 0) {
-  //         const { nodeIdx, pos } = stack[depth];
-  //         const node = nodes[nodeIdx];
-  //         // pos is 0 when first entering a node
-  //         if (!pos) {
-  //             const deeper = yield depth;
-  //             if (deeper === false) {
-  //                 --depth;
-  //                 continue;
-  //             }
-  //         }
-  //         const len = node & NodeMaskNumChildren;
-  //         if (pos >= len) {
-  //             --depth;
-  //             continue;
-  //         }
-  //         const nextPos = ++stack[depth].pos;
-  //         const entry = nodes[nodeIdx + nextPos];
-  //         ++depth;
-  //         stack[depth] = stack[depth] || { nodeIdx: 0, pos: 0 };
-  //         (stack[depth].nodeIdx = entry >>> NodeChildRefShift), (stack[depth].pos = 0);
-  //     }
-  // }
-  static NodeMaskEOW = 256 & 65535;
-  static NodeMaskNumChildren = (1 << NodeHeaderNumChildrenBits) - 1 & 65535;
-  static NodeMaskNumChildrenShift = NodeHeaderNumChildrenShift;
-  static NodeChildRefShift = 8;
-  /**
-   * Only 8 bits are reserved for the character index.
-   * The max index is {@link TrieBlob.SpecialCharIndexMask} - 1.
-   * Node chaining is used to reference higher character indexes.
-   * - @see {@link TrieBlob.SpecialCharIndexMask}
-   * - @see {@link TrieBlob.MaxCharIndex}
-   */
-  static NodeMaskChildCharIndex = 255;
-  static nodesView(trie) {
-    return new Uint32Array(trie.nodes);
-  }
-};
-_a2 = TrieBlob;
-function isLittleEndian() {
-  const buf = new Uint8Array([1, 2, 3, 4]);
-  const view = new DataView(buf.buffer);
-  return view.getUint32(0, true) === 67305985;
-}
-function checkSig(blob) {
-  if (blob.length < HEADER_SIZE) {
-    return false;
-  }
-  const buf = Buffer.from(blob, 0, headerSig.length);
-  if (buf.toString("utf8", 0, headerSig.length) !== headerSig) {
-    return false;
-  }
-  return true;
-}
-var ErrorDecodeTrieBlob = class extends Error {
-  constructor(message) {
-    super(message);
-  }
-};
-function nodesToJson(nodes) {
-  function nodeElement(offset2) {
-    const node = nodes[offset2];
-    const numChildren = node & TrieBlob.NodeMaskNumChildren;
-    const eow = !!(node & TrieBlob.NodeMaskEOW);
-    const children = [];
-    for (let i = 1; i <= numChildren; ++i) {
-      children.push({
-        c: ("00" + (nodes[offset2 + i] & TrieBlob.NodeMaskChildCharIndex).toString(16)).slice(-2),
-        o: nodes[offset2 + i] >>> TrieBlob.NodeChildRefShift
-      });
-    }
-    return { id: offset2, eow, n: offset2 + numChildren + 1, c: children };
-  }
-  const elements = [];
-  let offset = 0;
-  while (offset < nodes.length) {
-    const e = nodeElement(offset);
-    elements.push(e);
-    offset = e.n;
-  }
-  return elements;
-}
-function trieBlobSort(data) {
-  const MaskNumChildren = TrieBlob.NodeMaskNumChildren;
-  const MaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
-  const limit = data.length;
-  let idx2 = 0;
-  let node = data[0];
-  let nc = node & MaskNumChildren;
-  for (; idx2 < limit; idx2 += nc + 1, node = data[idx2], nc = node & MaskNumChildren) {
-    if (!nc)
-      continue;
-    const start = idx2 + 1;
-    const end = start + nc;
-    let last = 0;
-    let i = start;
-    for (; i < end; ++i) {
-      const cIdx = data[i] & MaskChildCharIndex;
-      if (last >= cIdx)
-        break;
-      last = cIdx;
-    }
-    if (i === end)
-      continue;
-    const sorted = data.slice(start, end).sort((a, b) => (a & MaskChildCharIndex) - (b & MaskChildCharIndex));
-    sorted.forEach((v, i2) => data[start + i2] = v);
-  }
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/FastTrieBlob.js
-var checkSorted = false;
-var FastTrieBlob = class _FastTrieBlob {
-  nodes;
-  _charIndex;
-  bitMasksInfo;
-  info;
-  _readonly = false;
-  #forbidIdx;
-  #compoundIdx;
-  #nonStrictIdx;
-  _iTrieRoot;
-  wordToCharacters;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(nodes, _charIndex, bitMasksInfo, info5) {
-    this.nodes = nodes;
-    this._charIndex = _charIndex;
-    this.bitMasksInfo = bitMasksInfo;
-    this.info = info5;
-    this.wordToCharacters = (word) => [...word];
-    this.#forbidIdx = this.#searchNodeForChar(0, this.info.forbiddenWordPrefix) || 0;
-    this.#compoundIdx = this.#searchNodeForChar(0, this.info.compoundCharacter) || 0;
-    this.#nonStrictIdx = this.#searchNodeForChar(0, this.info.stripCaseAndAccentsPrefix) || 0;
-    this.hasForbiddenWords = !!this.#forbidIdx;
-    this.hasCompoundWords = !!this.#compoundIdx;
-    this.hasNonStrictWords = !!this.#nonStrictIdx;
-    if (checkSorted) {
-      assertSorted(this.nodes, bitMasksInfo.NodeMaskChildCharIndex);
-    }
-  }
-  wordToUtf8Seq(word) {
-    return this._charIndex.wordToUtf8Seq(word);
-  }
-  letterToUtf8Seq(letter) {
-    return this._charIndex.getCharUtf8Seq(letter);
-  }
-  has(word) {
-    return this.#has(0, word);
-  }
-  hasCaseInsensitive(word) {
-    if (!this.#nonStrictIdx)
-      return false;
-    return this.#has(this.#nonStrictIdx, word);
-  }
-  #has(nodeIdx, word) {
-    return this.#hasSorted(nodeIdx, word);
-  }
-  #hasSorted(nodeIdx, word) {
-    const charIndexes = this.wordToUtf8Seq(word);
-    const found = this.#lookupNode(nodeIdx, charIndexes);
-    if (found === void 0)
-      return false;
-    const node = this.nodes[found];
-    return !!(node[0] & this.bitMasksInfo.NodeMaskEOW);
-  }
-  /**
-   * Find the node index for the given Utf8 character sequence.
-   * @param nodeIdx - node index to start the search
-   * @param seq - the byte sequence of the character to look for
-   * @returns
-   */
-  #lookupNode(nodeIdx, seq) {
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const nodes = this.nodes;
-    const len = seq.length;
-    let node = nodes[nodeIdx];
-    for (let p = 0; p < len; ++p, node = nodes[nodeIdx]) {
-      const letterIdx = seq[p];
-      const count3 = node.length;
-      if (count3 < 2)
-        return void 0;
-      let i = 1;
-      let j = count3 - 1;
-      let c = -1;
-      while (i < j) {
-        const m = i + j >> 1;
-        c = node[m] & NodeMaskChildCharIndex;
-        if (c < letterIdx) {
-          i = m + 1;
-        } else {
-          j = m;
-        }
-      }
-      if (i >= count3 || (node[i] & NodeMaskChildCharIndex) !== letterIdx)
-        return void 0;
-      nodeIdx = node[i] >>> NodeChildRefShift;
-      if (!nodeIdx)
-        return void 0;
-    }
-    return nodeIdx;
-  }
-  *words() {
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
-    const nodes = this.nodes;
-    const accumulator = Utf8Accumulator.create();
-    const stack = [{ nodeIdx: 0, pos: 0, word: "", accumulator }];
-    let depth = 0;
-    while (depth >= 0) {
-      const { nodeIdx, pos, word, accumulator: accumulator2 } = stack[depth];
-      const node = nodes[nodeIdx];
-      if (!pos && node[0] & NodeMaskEOW) {
-        yield word;
-      }
-      if (pos >= node.length - 1) {
-        --depth;
-        continue;
-      }
-      const nextPos = ++stack[depth].pos;
-      const entry = node[nextPos];
-      const charIdx = entry & NodeMaskChildCharIndex;
-      const acc = accumulator2.clone();
-      const codePoint = acc.decode(charIdx);
-      const letter = codePoint && String.fromCodePoint(codePoint) || "";
-      ++depth;
-      stack[depth] = {
-        nodeIdx: entry >>> NodeChildRefShift,
-        pos: 0,
-        word: word + letter,
-        accumulator: acc
-      };
-    }
-  }
-  toTrieBlob() {
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const nodes = this.nodes;
-    function calcNodeToIndex(nodes2) {
-      let offset2 = 0;
-      const idx2 = Array(nodes2.length + 1);
-      for (let i = 0; i < nodes2.length; ++i) {
-        idx2[i] = offset2;
-        offset2 += nodes2[i].length;
-      }
-      idx2[nodes2.length] = offset2;
-      return idx2;
-    }
-    const nodeToIndex = calcNodeToIndex(nodes);
-    const nodeElementCount = nodeToIndex[nodeToIndex.length - 1];
-    const binNodes = new Uint32Array(nodeElementCount);
-    const lenShift = TrieBlob.NodeMaskNumChildrenShift;
-    const refShift = TrieBlob.NodeChildRefShift;
-    let offset = 0;
-    for (let i = 0; i < nodes.length; ++i) {
-      const node = nodes[i];
-      binNodes[offset++] = node.length - 1 << lenShift | node[0];
-      for (let j = 1; j < node.length; ++j) {
-        const v = node[j];
-        const nodeRef = v >>> NodeChildRefShift;
-        const charIndex = v & NodeMaskChildCharIndex;
-        binNodes[offset++] = nodeToIndex[nodeRef] << refShift | charIndex;
-      }
-    }
-    return new TrieBlob(binNodes, this._charIndex, this.info);
-  }
-  isReadonly() {
-    return this._readonly;
-  }
-  freeze() {
-    this._readonly = true;
-    return this;
-  }
-  toJSON() {
-    return {
-      info: this.info,
-      nodes: nodesToJSON(this.nodes)
-      // charIndex: this._charIndex,
-    };
-  }
-  static create(data) {
-    return new _FastTrieBlob(data.nodes, data.charIndex, extractInfo(data), data.info);
-  }
-  static toITrieNodeRoot(trie) {
-    return new FastTrieBlobIRoot(new FastTrieBlobInternalsAndMethods(trie.nodes, trie._charIndex, trie.bitMasksInfo, trie.info, {
-      nodeFindNode: (idx2, word) => trie.#lookupNode(idx2, trie.wordToUtf8Seq(word)),
-      nodeFindExact: (idx2, word) => trie.#has(idx2, word),
-      nodeGetChild: (idx2, letter) => trie.#searchNodeForChar(idx2, letter),
-      isForbidden: (word) => trie.isForbiddenWord(word),
-      findExact: (word) => trie.has(word),
-      hasForbiddenWords: trie.hasForbiddenWords,
-      hasCompoundWords: trie.hasCompoundWords,
-      hasNonStrictWords: trie.hasNonStrictWords
-    }), 0);
-  }
-  static NodeMaskEOW = TrieBlob.NodeMaskEOW;
-  static NodeChildRefShift = TrieBlob.NodeChildRefShift;
-  static NodeMaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
-  static DefaultBitMaskInfo = {
-    NodeMaskEOW: _FastTrieBlob.NodeMaskEOW,
-    NodeMaskChildCharIndex: _FastTrieBlob.NodeMaskChildCharIndex,
-    NodeChildRefShift: _FastTrieBlob.NodeChildRefShift
-  };
-  get iTrieRoot() {
-    return this._iTrieRoot ??= _FastTrieBlob.toITrieNodeRoot(this);
-  }
-  getRoot() {
-    return this.iTrieRoot;
-  }
-  getNode(prefix) {
-    return findNode(this.getRoot(), prefix);
-  }
-  isForbiddenWord(word) {
-    return !!this.#forbidIdx && this.#has(this.#forbidIdx, word);
-  }
-  nodeInfo(nodeIndex, accumulator) {
-    const acc = accumulator ?? Utf8Accumulator.create();
-    const n = this.nodes[nodeIndex];
-    const eow = !!(n[0] & this.bitMasksInfo.NodeMaskEOW);
-    const children = [];
-    children.length = n.length - 1;
-    for (let p = 1; p < n.length; ++p) {
-      const v = n[p];
-      const cIdx = v & this.bitMasksInfo.NodeMaskChildCharIndex;
-      const a = acc.clone();
-      const codePoint = a.decode(cIdx);
-      const c = codePoint !== void 0 ? String.fromCodePoint(codePoint) : "\u220E";
-      const i = v >>> this.bitMasksInfo.NodeChildRefShift;
-      children[p] = { c, i, cIdx };
-    }
-    return { eow, children };
-  }
-  /** number of nodes */
-  get size() {
-    return this.nodes.length;
-  }
-  /** Search from nodeIdx for the node index representing the character. */
-  #searchNodeForChar(nodeIdx, char) {
-    const charIndexes = this.letterToUtf8Seq(char);
-    return this.#lookupNode(nodeIdx, charIndexes);
-  }
-  get charIndex() {
-    return [...this._charIndex.charIndex];
-  }
-  static fromTrieBlob(trie) {
-    const bitMasksInfo = {
-      NodeMaskEOW: TrieBlob.NodeMaskEOW,
-      NodeMaskChildCharIndex: TrieBlob.NodeMaskChildCharIndex,
-      NodeChildRefShift: TrieBlob.NodeChildRefShift
-    };
-    const trieNodesBin = TrieBlob.nodesView(trie);
-    const nodeOffsets = [];
-    for (let offset = 0; offset < trieNodesBin.length; offset += (trieNodesBin[offset] & TrieBlob.NodeMaskNumChildren) + 1) {
-      nodeOffsets.push(offset);
-    }
-    const offsetToNodeIndex = new Map(nodeOffsets.map((offset, i) => [offset, i]));
-    const nodes = Array.from({ length: nodeOffsets.length });
-    for (let i = 0; i < nodes.length; ++i) {
-      const offset = nodeOffsets[i];
-      const n = trieNodesBin[offset];
-      const eow = n & TrieBlob.NodeMaskEOW;
-      const count3 = n & TrieBlob.NodeMaskNumChildren;
-      const node = new Uint32Array(count3 + 1);
-      node[0] = eow;
-      nodes[i] = node;
-      for (let j = 1; j <= count3; ++j) {
-        const n2 = trieNodesBin[offset + j];
-        const charIndex = n2 & TrieBlob.NodeMaskChildCharIndex;
-        const nodeIndex = n2 >>> TrieBlob.NodeChildRefShift;
-        const idx2 = offsetToNodeIndex.get(nodeIndex);
-        if (idx2 === void 0) {
-          throw new Error(`Invalid node index ${nodeIndex}`);
-        }
-        node[j] = idx2 << TrieBlob.NodeChildRefShift | charIndex;
-      }
-    }
-    return new _FastTrieBlob(sortNodes(nodes, TrieBlob.NodeMaskChildCharIndex), trie.charIndex, bitMasksInfo, trie.info);
-  }
-  static isFastTrieBlob(obj) {
-    return obj instanceof _FastTrieBlob;
-  }
-};
-function nodesToJSON(nodes) {
-  const mapNodeToAcc = /* @__PURE__ */ new Map();
-  function mapNode(node, i) {
-    if (node.length === 1) {
-      return {
-        i,
-        w: !!(node[0] & TrieBlob.NodeMaskEOW) && 1 || 0
-      };
-    }
-    const acc = mapNodeToAcc.get(node) || Utf8Accumulator.create();
-    function mapChild(n) {
-      const index = n >>> TrieBlob.NodeChildRefShift;
-      const seq = n & TrieBlob.NodeMaskChildCharIndex;
-      const cAcc = acc.clone();
-      const codePoint = cAcc.decode(seq);
-      if (codePoint === void 0) {
-        mapNodeToAcc.set(nodes[index], cAcc);
-      }
-      return {
-        i: index,
-        c: codePoint && String.fromCodePoint(codePoint),
-        s: seq.toString(16).padStart(2, "0")
-      };
-    }
-    return {
-      i,
-      w: !!(node[0] & TrieBlob.NodeMaskEOW) && 1 || 0,
-      c: [...node.slice(1)].map(mapChild)
-    };
-  }
-  return nodes.map((n, i) => mapNode(n, i));
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/resolveMap.js
-function resolveMap(map3, key, resolve10) {
-  const r = map3.get(key);
-  if (r !== void 0)
-    return r;
-  const v = resolve10(key);
-  map3.set(key, v);
-  return v;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieBlob/FastTrieBlobBuilder.js
-var FastTrieBlobBuilder = class _FastTrieBlobBuilder {
-  charIndex = new CharIndexBuilder();
-  nodes;
-  _readonly = false;
-  IdxEOW;
-  _cursor;
-  _options;
-  wordToCharacters = (word) => [...word];
-  bitMasksInfo;
-  constructor(options, bitMasksInfo = _FastTrieBlobBuilder.DefaultBitMaskInfo) {
-    this._options = mergeOptionalWithDefaults(options);
-    this.bitMasksInfo = bitMasksInfo;
-    this.nodes = [[0], Object.freeze([_FastTrieBlobBuilder.NodeMaskEOW])];
-    this.IdxEOW = 1;
-  }
-  setOptions(options) {
-    this._options = mergeOptionalWithDefaults(this.options, options);
-    return this.options;
-  }
-  get options() {
-    return this._options;
-  }
-  wordToUtf8Seq(word) {
-    return this.charIndex.wordToUtf8Seq(word);
-  }
-  letterToUtf8Seq(letter) {
-    return this.charIndex.charToUtf8Seq(letter);
-  }
-  insert(word) {
-    this.#assertNotReadonly();
-    if (typeof word === "string") {
-      return this._insert(word);
-    }
-    const words = word;
-    for (const w of words) {
-      this._insert(w);
-    }
-    return this;
-  }
-  getCursor() {
-    this.#assertNotReadonly();
-    this._cursor ??= this.createCursor();
-    return this._cursor;
-  }
-  createCursor() {
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
-    const LetterMask = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const refNodes = [0, 1];
-    function childPos(node, letterIdx) {
-      for (let i = 1; i < node.length; ++i) {
-        if ((node[i] & LetterMask) === letterIdx) {
-          return i;
-        }
-      }
-      return 0;
-    }
-    (0, import_node_assert2.default)(this.nodes.length === 2);
-    const eow = 1;
-    const eowShifted = eow << NodeChildRefShift;
-    const nodes = this.nodes;
-    const stack = [{ nodeIdx: 0, pos: 0, pDepth: -1 }];
-    let nodeIdx = 0;
-    let depth = 0;
-    const insertChar = (char) => {
-      if (!nodes[nodeIdx]) {
-        refNodes.push(nodeIdx);
-      }
-      const pDepth = depth;
-      const utf8Seq = this.letterToUtf8Seq(char);
-      for (let i = 0; i < utf8Seq.length; ++i) {
-        insertCharIndexes(utf8Seq[i], pDepth);
-      }
-    };
-    const insertCharIndexes = (seq, pDepth) => {
-      if (nodes[nodeIdx] && Object.isFrozen(nodes[nodeIdx])) {
-        nodeIdx = nodes.push([...nodes[nodeIdx]]) - 1;
-        const { pos: pos2, nodeIdx: pNodeIdx } = stack[depth];
-        const pNode = nodes[pNodeIdx];
-        pNode[pos2] = pNode[pos2] & LetterMask | nodeIdx << NodeChildRefShift;
-      }
-      const node = nodes[nodeIdx] || [0];
-      nodes[nodeIdx] = node;
-      const hasIdx = childPos(node, seq);
-      const childIdx = hasIdx ? node[hasIdx] >>> NodeChildRefShift : nodes.length;
-      const pos = hasIdx || node.push(childIdx << NodeChildRefShift | seq) - 1;
-      ++depth;
-      const s = stack[depth];
-      if (s) {
-        s.nodeIdx = nodeIdx;
-        s.pos = pos;
-        s.pDepth = pDepth;
-      } else {
-        stack[depth] = { nodeIdx, pos, pDepth };
-      }
-      nodeIdx = childIdx;
-    };
-    const markEOW = () => {
-      if (nodeIdx === eow)
-        return;
-      const node = nodes[nodeIdx];
-      if (!node) {
-        const { pos, nodeIdx: pNodeIdx } = stack[depth];
-        const pNode = nodes[pNodeIdx];
-        pNode[pos] = pNode[pos] & LetterMask | eowShifted;
-      } else {
-        nodes[nodeIdx] = node;
-        node[0] |= NodeMaskEOW;
-      }
-      nodeIdx = eow;
-    };
-    const reference = (refId) => {
-      const refNodeIdx = refNodes[refId];
-      (0, import_node_assert2.default)(refNodeIdx !== void 0);
-      (0, import_node_assert2.default)(nodes[nodeIdx] === void 0);
-      (0, import_node_assert2.default)(nodes[refNodeIdx]);
-      Object.freeze(nodes[refNodeIdx]);
-      const s = stack[depth];
-      nodeIdx = s.nodeIdx;
-      const pos = s.pos;
-      const node = nodes[nodeIdx];
-      node[pos] = refNodeIdx << NodeChildRefShift | node[pos] & LetterMask;
-    };
-    const backStep = (num) => {
-      if (!num)
-        return;
-      (0, import_node_assert2.default)(num <= depth && num > 0);
-      for (let n = num; n > 0; --n) {
-        depth = stack[depth].pDepth;
-      }
-      nodeIdx = stack[depth + 1].nodeIdx;
-    };
-    const c = {
-      insertChar,
-      markEOW,
-      reference,
-      backStep
-    };
-    return c;
-  }
-  _insert(word) {
-    word = word.trim();
-    if (!word)
-      return this;
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
-    const IdxEOW = this.IdxEOW;
-    const nodes = this.nodes;
-    const utf8Seq = this.wordToUtf8Seq(word);
-    const len = utf8Seq.length;
-    let nodeIdx = 0;
-    for (let p = 0; p < len; ++p) {
-      const seq = utf8Seq[p];
-      const node = nodes[nodeIdx];
-      const count3 = node.length;
-      let i = count3 - 1;
-      for (; i > 0; --i) {
-        if ((node[i] & NodeMaskChildCharIndex) === seq) {
-          break;
-        }
-      }
-      if (i > 0) {
-        nodeIdx = node[i] >>> NodeChildRefShift;
-        if (nodeIdx === 1 && p < len - 1) {
-          nodeIdx = this.nodes.push([NodeMaskEOW]) - 1;
-          node[i] = nodeIdx << NodeChildRefShift | seq;
-        }
-        continue;
-      }
-      nodeIdx = p < len - 1 ? this.nodes.push([0]) - 1 : IdxEOW;
-      node.push(nodeIdx << NodeChildRefShift | seq);
-    }
-    if (nodeIdx > 1) {
-      const node = nodes[nodeIdx];
-      node[0] |= NodeMaskEOW;
-    }
-    return this;
-  }
-  has(word) {
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
-    const nodes = this.nodes;
-    const charIndexes = this.wordToUtf8Seq(word);
-    const len = charIndexes.length;
-    let nodeIdx = 0;
-    let node = nodes[nodeIdx];
-    for (let p = 0; p < len; ++p, node = nodes[nodeIdx]) {
-      const letterIdx = charIndexes[p];
-      const count3 = node.length;
-      let i = count3 - 1;
-      for (; i > 0; --i) {
-        if ((node[i] & NodeMaskChildCharIndex) === letterIdx) {
-          break;
-        }
-      }
-      if (i < 1)
-        return false;
-      nodeIdx = node[i] >>> NodeChildRefShift;
-    }
-    return !!(node[0] & NodeMaskEOW);
-  }
-  isReadonly() {
-    return this._readonly;
-  }
-  freeze() {
-    this._readonly = true;
-    return this;
-  }
-  build() {
-    this._cursor = void 0;
-    this._readonly = true;
-    this.freeze();
-    return FastTrieBlob.create(new FastTrieBlobInternals(sortNodes(this.nodes.map((n) => Uint32Array.from(n)), this.bitMasksInfo.NodeMaskChildCharIndex), this.charIndex.build(), this.bitMasksInfo, this.options));
-  }
-  toJSON() {
-    return {
-      options: this.options,
-      nodes: nodesToJSON(this.nodes.map((n) => Uint32Array.from(n)))
-    };
-  }
-  #assertNotReadonly() {
-    (0, import_node_assert2.default)(!this.isReadonly(), "FastTrieBlobBuilder is readonly");
-  }
-  static fromWordList(words, options) {
-    const ft = new _FastTrieBlobBuilder(options);
-    return ft.insert(words).build();
-  }
-  static fromTrieRoot(root) {
-    const bitMasksInfo = _FastTrieBlobBuilder.DefaultBitMaskInfo;
-    const NodeChildRefShift = bitMasksInfo.NodeChildRefShift;
-    const NodeCharIndexMask = bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeMaskEOW = bitMasksInfo.NodeMaskEOW;
-    const tf2 = new _FastTrieBlobBuilder(void 0, bitMasksInfo);
-    const IdxEOW = tf2.IdxEOW;
-    const known = /* @__PURE__ */ new Map([[root, 0]]);
-    function resolveNode(n) {
-      if (n.f && !n.c)
-        return IdxEOW;
-      const node = [n.f ? NodeMaskEOW : 0];
-      return tf2.nodes.push(node) - 1;
-    }
-    function walk3(n) {
-      const found = known.get(n);
-      if (found)
-        return found;
-      const nodeIdx = resolveMap(known, n, resolveNode);
-      const node = tf2.nodes[nodeIdx];
-      if (!n.c)
-        return nodeIdx;
-      const children = Object.entries(n.c);
-      for (let p = 0; p < children.length; ++p) {
-        const [char, childNode] = children[p];
-        addCharToNode(node, char, childNode);
-      }
-      return nodeIdx;
-    }
-    function resolveChild(node, charIndex) {
-      let i = 1;
-      for (i = 1; i < node.length && (node[i] & NodeCharIndexMask) !== charIndex; ++i) {
-      }
-      return i;
-    }
-    function addCharToNode(node, char, n) {
-      const indexSeq = tf2.letterToUtf8Seq(char);
-      assertValidUtf16Character(char);
-      for (const idx2 of indexSeq.slice(0, -1)) {
-        const pos = resolveChild(node, idx2);
-        if (pos < node.length) {
-          node = tf2.nodes[node[pos] >>> NodeChildRefShift];
-        } else {
-          const next = [0];
-          const nodeIdx = tf2.nodes.push(next) - 1;
-          node[pos] = nodeIdx << NodeChildRefShift | idx2;
-          node = next;
-        }
-      }
-      const letterIdx = indexSeq[indexSeq.length - 1];
-      const i = node.push(letterIdx) - 1;
-      node[i] = walk3(n) << NodeChildRefShift | letterIdx;
-    }
-    walk3(root);
-    return tf2.build();
-  }
-  static NodeMaskEOW = TrieBlob.NodeMaskEOW;
-  static NodeChildRefShift = TrieBlob.NodeChildRefShift;
-  static NodeMaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
-  static DefaultBitMaskInfo = {
-    NodeMaskEOW: _FastTrieBlobBuilder.NodeMaskEOW,
-    NodeMaskChildCharIndex: _FastTrieBlobBuilder.NodeMaskChildCharIndex,
-    NodeChildRefShift: _FastTrieBlobBuilder.NodeChildRefShift
-  };
-};
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/clean.js
-function clean2(t) {
-  const copy = { ...t };
-  for (const key of Object.keys(copy)) {
-    if (copy[key] === void 0) {
-      delete copy[key];
-    }
-  }
-  return copy;
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/ITrie.js
-var defaultLegacyMinCompoundLength2 = 3;
-var ITrieImpl = class _ITrieImpl {
-  data;
-  numNodes;
-  _info;
-  root;
-  count;
-  weightMap;
-  #optionsCompound = this.createFindOptions({ compoundMode: "compound" });
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(data, numNodes) {
-    this.data = data;
-    this.numNodes = numNodes;
-    this.root = data.getRoot();
-    this._info = mergeOptionalWithDefaults(data.info);
-    this.hasForbiddenWords = data.hasForbiddenWords;
-    this.hasCompoundWords = data.hasCompoundWords;
-    this.hasNonStrictWords = data.hasNonStrictWords;
-  }
-  /**
-   * Number of words in the Trie, the first call to this method might be expensive.
-   * Use `size` to get the number of nodes.
-   */
-  numWords() {
-    this.count ??= countWords(this.root);
-    return this.count;
-  }
-  isNumWordsKnown() {
-    return this.count !== void 0;
-  }
-  get size() {
-    return this.data.size;
-  }
-  get info() {
-    return this._info;
-  }
-  get isCaseAware() {
-    return this.info.isCaseAware ?? true;
-  }
-  /**
-   * @param text - text to find in the Trie
-   */
-  find(text) {
-    return findWordNode(this.data.getRoot(), text, this.#optionsCompound).node;
-  }
-  has(word, minLegacyCompoundLength) {
-    if (this.hasWord(word, false))
-      return true;
-    if (minLegacyCompoundLength) {
-      const f = this.findWord(word, { useLegacyWordCompounds: minLegacyCompoundLength });
-      return !!f.found;
-    }
-    return false;
-  }
-  /**
-   * Determine if a word is in the dictionary.
-   * @param word - the exact word to search for - must be normalized.
-   * @param caseSensitive - false means also searching a dictionary where the words were normalized to lower case and accents removed.
-   * @returns true if the word was found and is not forbidden.
-   */
-  hasWord(word, caseSensitive) {
-    const f = this.findWord(word, { caseSensitive, checkForbidden: false });
-    return !!f.found;
-  }
-  findWord(word, options) {
-    if (options?.useLegacyWordCompounds) {
-      const len = options.useLegacyWordCompounds !== true ? options.useLegacyWordCompounds : defaultLegacyMinCompoundLength2;
-      const findOptions = this.createFindOptions({
-        legacyMinCompoundLength: len,
-        matchCase: options.caseSensitive || false
-      });
-      return findLegacyCompound(this.root, word, findOptions);
-    }
-    return findWord(this.root, word, {
-      matchCase: options?.caseSensitive,
-      checkForbidden: options?.checkForbidden
-    });
-  }
-  /**
-   * Determine if a word is in the forbidden word list.
-   * @param word the word to lookup.
-   */
-  isForbiddenWord(word) {
-    return this.hasForbiddenWords && isForbiddenWord(this.root, word, this.info.forbiddenWordPrefix);
-  }
-  /**
-   * Provides an ordered sequence of words with the prefix of text.
-   */
-  completeWord(text) {
-    const n = this.find(text);
-    const compoundChar = this.info.compoundCharacter;
-    const subNodes = pipeSync(n ? iteratorTrieWords(n) : [], opFilterSync((w) => w[w.length - 1] !== compoundChar), opMapSync((suffix) => text + suffix));
-    return pipeSync(n && n.eow ? [text] : [], opAppendSync(subNodes));
-  }
-  /**
-   * Suggest spellings for `text`.  The results are sorted by edit distance with changes near the beginning of a word having a greater impact.
-   * @param text - the text to search for
-   * @param maxNumSuggestions - the maximum number of suggestions to return.
-   * @param compoundMethod - Use to control splitting words.
-   * @param numChanges - the maximum number of changes allowed to text. This is an approximate value, since some changes cost less than others.
-   *                      the lower the value, the faster results are returned. Values less than 4 are best.
-   */
-  suggest(text, options) {
-    return this.suggestWithCost(text, options).map((a) => a.word);
-  }
-  /**
-   * Suggest spellings for `text`.  The results are sorted by edit distance with changes near the beginning of a word having a greater impact.
-   * The results include the word and adjusted edit cost.  This is useful for merging results from multiple tries.
-   */
-  suggestWithCost(text, options) {
-    const sep5 = options.compoundSeparator;
-    const weightMap = options.weightMap || this.weightMap;
-    const adjWord = sep5 ? replaceAllFactory(sep5, "") : (a) => a;
-    const optFilter = options.filter;
-    const filter3 = optFilter ? (word, cost) => {
-      const w = adjWord(word);
-      return !this.isForbiddenWord(w) && optFilter(w, cost);
-    } : (word) => !this.isForbiddenWord(adjWord(word));
-    const opts = { ...options, filter: filter3, weightMap };
-    return suggestAStar(this.data, text, opts);
-  }
-  /**
-   * genSuggestions will generate suggestions and send them to `collector`. `collector` is responsible for returning the max acceptable cost.
-   * Costs are measured in weighted changes. A cost of 100 is the same as 1 edit. Some edits are considered cheaper.
-   * Returning a MaxCost < 0 will effectively cause the search for suggestions to stop.
-   */
-  genSuggestions(collector, compoundMethod) {
-    const filter3 = (word) => !this.isForbiddenWord(word);
-    const options = createSuggestionOptions(clean2({ compoundMethod, ...collector.genSuggestionOptions }));
-    const suggestions2 = getSuggestionsAStar(this.data, collector.word, options);
-    collector.collect(suggestions2, void 0, filter3);
-  }
-  /**
-   * Returns an iterator that can be used to get all words in the trie. For some dictionaries, this can result in millions of words.
-   */
-  words() {
-    return iteratorTrieWords(this.root);
-  }
-  /**
-   * Allows iteration over the entire tree.
-   * On the returned Iterator, calling .next(goDeeper: boolean), allows for controlling the depth.
-   */
-  iterate() {
-    return walker(this.root);
-  }
-  static create(words, info5) {
-    const builder = new FastTrieBlobBuilder(info5);
-    builder.insert(words);
-    const root = builder.build();
-    return new _ITrieImpl(root, void 0);
-  }
-  createFindOptions(options) {
-    const findOptions = createFindOptions(options);
-    return findOptions;
-  }
-};
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/buildITrie.js
-function buildITrieFromWords(words, info5 = {}) {
-  const builder = new FastTrieBlobBuilder(info5);
-  builder.insert(words);
-  const ft = builder.build();
-  return new ITrieImpl(ft.size > 1e3 ? ft.toTrieBlob() : ft);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieNode/TrieNode.js
-var FLAG_WORD = 1;
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieNode/trie-util.js
-function insert2(word, root = {}) {
-  const text = [...word];
-  let node = root;
-  for (let i = 0; i < text.length; ++i) {
-    const head = text[i];
-    const c = node.c || /* @__PURE__ */ Object.create(null);
-    node.c = c;
-    node = c[head] || {};
-    c[head] = node;
-  }
-  node.f = (node.f || 0) | FLAG_WORD;
-  return root;
-}
-function iteratorTrieWords2(node) {
-  return walkerWords2(node);
-}
-function createTrieRoot(options) {
-  const fullOptions = mergeOptionalWithDefaults(options);
-  return {
-    ...fullOptions,
-    c: /* @__PURE__ */ Object.create(null)
-  };
-}
-function createTrieRootFromList(words, options) {
-  const root = createTrieRoot(options);
-  for (const word of words) {
-    if (word.length) {
-      insert2(word, root);
-    }
-  }
-  return root;
-}
-function countNodes(root) {
-  const seen = /* @__PURE__ */ new Set();
-  function walk3(n) {
-    if (seen.has(n))
-      return;
-    seen.add(n);
-    if (n.c) {
-      Object.values(n.c).forEach((n2) => walk3(n2));
-    }
-  }
-  walk3(root);
-  return seen.size;
-}
-function checkCircular(root) {
-  const seen = /* @__PURE__ */ new Set();
-  const inStack = /* @__PURE__ */ new Set();
-  function walk3(n) {
-    if (seen.has(n))
-      return { isCircular: false, allSeen: true };
-    if (inStack.has(n)) {
-      const stack = [...inStack, n];
-      const word = trieStackToWord(stack);
-      const pos = stack.indexOf(n);
-      return { isCircular: true, allSeen: false, ref: { stack, word, pos } };
-    }
-    inStack.add(n);
-    let r = { isCircular: false, allSeen: true };
-    if (n.c) {
-      r = Object.values(n.c).reduce((acc, n2) => {
-        if (acc.isCircular)
-          return acc;
-        const r2 = walk3(n2);
-        r2.allSeen = r2.allSeen && acc.allSeen;
-        return r2;
-      }, r);
-    }
-    if (r.allSeen) {
-      seen.add(n);
-    }
-    inStack.delete(n);
-    return r;
-  }
-  return walk3(root);
-}
-function reverseMapTrieNode(node) {
-  return node.c && new Map(Object.entries(node.c).map(([c, n]) => [n, c]));
-}
-function trieStackToWord(stack) {
-  let word = "";
-  let lastMap = reverseMapTrieNode(stack[0]);
-  for (let i = 1; i < stack.length; ++i) {
-    const n = stack[i];
-    const char = lastMap?.get(n);
-    if (char) {
-      word += char;
-    }
-    lastMap = reverseMapTrieNode(n);
-  }
-  return word;
-}
-function isCircular(root) {
-  return checkCircular(root).isCircular;
-}
-function trieNodeToRoot(node, options) {
-  const newOptions = mergeOptionalWithDefaults(options);
-  return {
-    ...newOptions,
-    c: node.c || /* @__PURE__ */ Object.create(null)
-  };
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/consolidate.js
-function consolidate(root) {
-  let count3 = 0;
-  const signatures = /* @__PURE__ */ new Map();
-  const cached = /* @__PURE__ */ new Map();
-  const knownMap = /* @__PURE__ */ new Map();
-  if (isCircular(root)) {
-    throw new Error("Trie is circular.");
-  }
-  function signature(n) {
-    const isWord = n.f ? "*" : "";
-    const ref = n.c ? JSON.stringify(Object.entries(n.c).map(([k, n2]) => [k, cached.get(n2)])) : "";
-    return isWord + ref;
-  }
-  function findEow(n) {
-    if (n.f && !n.c)
-      return n;
-    let r;
-    if (n.c) {
-      for (const c of Object.values(n.c)) {
-        r = findEow(c);
-        if (r)
-          break;
-      }
-    }
-    return r;
-  }
-  function compareMaps(a, b) {
-    for (const e of a) {
-      if (b[e[0]] !== e[1])
-        return false;
-    }
-    return a.length === b.size;
-  }
-  function deepCopy(n) {
-    const k = knownMap.get(n);
-    if (k) {
-      return k;
-    }
-    const orig = n;
-    if (n.c) {
-      const children = Object.entries(n.c).map((c) => [c[0], deepCopy(c[1])]);
-      if (!compareMaps(children, n.c)) {
-        n = { f: n.f, c: Object.fromEntries(children) };
-      }
-    }
-    const sig = signature(n);
-    const ref = signatures.get(sig);
-    if (ref) {
-      knownMap.set(orig, ref);
-      return ref;
-    }
-    Object.freeze(n);
-    signatures.set(sig, n);
-    cached.set(n, count3++);
-    knownMap.set(orig, n);
-    return n;
-  }
-  function process7(n) {
-    if (cached.has(n)) {
-      return n;
-    }
-    if (Object.isFrozen(n)) {
-      return knownMap.get(n) || deepCopy(n);
-    }
-    if (n.c) {
-      const children = Object.entries(n.c).sort((a, b) => a[0] < b[0] ? -1 : 1).map(([k, n2]) => [k, process7(n2)]);
-      n.c = Object.fromEntries(children);
-    }
-    const sig = signature(n);
-    const ref = signatures.get(sig);
-    if (ref) {
-      return ref;
-    }
-    signatures.set(sig, n);
-    cached.set(n, count3++);
-    return n;
-  }
-  const eow = findEow(root) || { f: FLAG_WORD, c: void 0 };
-  signatures.set(signature(eow), eow);
-  cached.set(eow, count3++);
-  return trieNodeToRoot(process7(root), root);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieNode/find.js
-var defaultLegacyMinCompoundLength3 = 3;
-var _defaultFindOptions2 = {
-  matchCase: false,
-  compoundMode: "compound",
-  forbidPrefix: FORBID_PREFIX,
-  compoundFix: COMPOUND_FIX,
-  caseInsensitivePrefix: CASE_INSENSITIVE_PREFIX,
-  legacyMinCompoundLength: defaultLegacyMinCompoundLength3
-};
-var arrayCompoundModes2 = ["none", "compound", "legacy"];
-var knownCompoundModes2 = new Map(arrayCompoundModes2.map((a) => [a, a]));
-function findWordExact2(root, word) {
-  return isEndOfWordNode2(walk2(root, word));
-}
-function isEndOfWordNode2(n) {
-  return n?.f === FLAG_WORD;
-}
-function walk2(root, word) {
-  const w = [...word];
-  let n = root;
-  let i = 0;
-  while (n && i < w.length) {
-    const h = w[i++];
-    n = n.c?.[h];
-  }
-  return n;
-}
-var createFindOptions2 = memorizeLastCall(_createFindOptions2);
-function _createFindOptions2(options) {
-  return mergeDefaults(options, _defaultFindOptions2);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/TrieNode/TrieNodeTrie.js
-var TrieNodeTrie = class _TrieNodeTrie {
-  root;
-  _iTrieRoot;
-  info;
-  _size;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(root) {
-    this.root = root;
-    this.info = mergeOptionalWithDefaults(root);
-    this.hasForbiddenWords = !!root.c[root.forbiddenWordPrefix];
-    this.hasCompoundWords = !!root.c[root.compoundCharacter];
-    this.hasNonStrictWords = !!root.c[root.stripCaseAndAccentsPrefix];
-  }
-  wordToCharacters = (word) => [...word];
-  get iTrieRoot() {
-    return this._iTrieRoot || (this._iTrieRoot = trieRootToITrieRoot(this.root));
-  }
-  getRoot() {
-    return this.iTrieRoot;
-  }
-  getNode(prefix) {
-    return findNode(this.getRoot(), prefix);
-  }
-  words() {
-    return iteratorTrieWords2(this.root);
-  }
-  has(word) {
-    return findWordExact2(this.root, word);
-  }
-  isForbiddenWord(word) {
-    return findWordExact2(this.root.c[this.root.forbiddenWordPrefix], word);
-  }
-  get size() {
-    return this._size ??= countNodes(this.root);
-  }
-  static createFromWords(words, options) {
-    const root = createTrieRootFromList(words, options);
-    return new _TrieNodeTrie(root);
-  }
-  static createFromWordsAndConsolidate(words, options) {
-    const root = createTrieRootFromList(words, options);
-    return new _TrieNodeTrie(consolidate(root));
-  }
-};
 
 // ../node_modules/.pnpm/gensequence@7.0.0/node_modules/gensequence/dist/util/util.js
 function* toIterableIterator(i) {
@@ -47561,7 +43196,3975 @@ function genSequence(i) {
   return new ImplSequence(i);
 }
 
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/io/importExportV1.js
+// ../node_modules/.pnpm/cspell-trie-lib@8.17.2/node_modules/cspell-trie-lib/dist/index.js
+var SymEmpty = Symbol("memorizeLastCall");
+function memorizeLastCall(fn) {
+  let lastP = void 0;
+  let lastR = SymEmpty;
+  function calc(p) {
+    if (lastR !== SymEmpty && lastP === p) return lastR;
+    lastP = p;
+    lastR = fn(p);
+    return lastR;
+  }
+  return calc;
+}
+var defaultLegacyMinCompoundLength = 3;
+var _defaultFindOptions = {
+  matchCase: false,
+  compoundMode: "compound",
+  legacyMinCompoundLength: defaultLegacyMinCompoundLength
+};
+Object.freeze(_defaultFindOptions);
+var arrayCompoundModes = ["none", "compound", "legacy"];
+var knownCompoundModes = new Map(arrayCompoundModes.map((a) => [a, a]));
+var notFound = { found: false, compoundUsed: false, caseMatched: false, forbidden: void 0 };
+Object.freeze(notFound);
+function findWordNode(root, word, options) {
+  return _findWordNode(root, word, options);
+}
+function findWord(root, word, options) {
+  if (root.find) {
+    const found = root.find(word, options?.matchCase || false);
+    if (found) return found;
+    if (!root.hasCompoundWords) {
+      return notFound;
+    }
+  }
+  const v = _findWordNode(root, word, options);
+  return {
+    found: v.found,
+    compoundUsed: v.compoundUsed,
+    caseMatched: v.caseMatched,
+    forbidden: v.forbidden
+  };
+}
+function _findWordNode(root, word, options) {
+  const trieInfo = root.info;
+  const matchCase3 = options?.matchCase || false;
+  const compoundMode = knownCompoundModes.get(options?.compoundMode) || _defaultFindOptions.compoundMode;
+  const compoundPrefix = compoundMode === "compound" ? trieInfo.compoundCharacter ?? root.compoundFix : "";
+  const ignoreCasePrefix = matchCase3 ? "" : trieInfo.stripCaseAndAccentsPrefix ?? root.caseInsensitivePrefix;
+  const checkForbidden = options?.checkForbidden ?? true;
+  function __findCompound() {
+    const f = findCompoundWord(root, word, compoundPrefix, ignoreCasePrefix);
+    const result = { ...f };
+    if (f.found !== false && f.compoundUsed) {
+      const r = !f.caseMatched ? walk(root, root.caseInsensitivePrefix) : root;
+      result.forbidden = checkForbidden ? isForbiddenWord(r, word, root.forbidPrefix) : void 0;
+    }
+    return result;
+  }
+  function __findExact() {
+    const n = root.getNode ? root.getNode(word) : walk(root, word);
+    const isFound = isEndOfWordNode(n);
+    const result = {
+      found: isFound && word,
+      compoundUsed: false,
+      forbidden: checkForbidden ? isForbiddenWord(root, word, root.forbidPrefix) : void 0,
+      node: n,
+      caseMatched: true
+    };
+    return result;
+  }
+  switch (compoundMode) {
+    case "none": {
+      return matchCase3 ? __findExact() : __findCompound();
+    }
+    case "compound": {
+      return __findCompound();
+    }
+    case "legacy": {
+      return findLegacyCompound(root, word, options);
+    }
+  }
+}
+function findLegacyCompound(root, word, options) {
+  const roots = [root];
+  if (!options?.matchCase) {
+    roots.push(walk(root, root.caseInsensitivePrefix));
+  }
+  return findLegacyCompoundNode(roots, word, options?.legacyMinCompoundLength || defaultLegacyMinCompoundLength);
+}
+function findCompoundNode(root, word, compoundCharacter, ignoreCasePrefix) {
+  const stack = [
+    // { n: root, compoundPrefix: '', cr: undefined, caseMatched: true },
+    { n: root, compoundPrefix: ignoreCasePrefix, cr: void 0, caseMatched: true }
+  ];
+  const compoundPrefix = compoundCharacter || ignoreCasePrefix;
+  const possibleCompoundPrefix = ignoreCasePrefix && compoundCharacter ? ignoreCasePrefix + compoundCharacter : "";
+  const nw = word.normalize();
+  const w = [...nw];
+  function determineRoot(s) {
+    const prefix = s.compoundPrefix;
+    let r = root;
+    let i2;
+    for (i2 = 0; i2 < prefix.length && r; ++i2) {
+      r = r.get(prefix[i2]);
+    }
+    const caseMatched2 = s.caseMatched && prefix[0] !== ignoreCasePrefix;
+    return {
+      n: s.n,
+      compoundPrefix: prefix === compoundPrefix ? possibleCompoundPrefix : "",
+      cr: r,
+      caseMatched: caseMatched2
+    };
+  }
+  let compoundUsed = false;
+  let caseMatched = true;
+  let i = 0;
+  let node;
+  while (true) {
+    const s = stack[i];
+    const h = w[i++];
+    const n = s.cr || s.n;
+    const c = h && n?.get(h) || void 0;
+    if (c && i < word.length) {
+      caseMatched = s.caseMatched;
+      stack[i] = { n: c, compoundPrefix, cr: void 0, caseMatched };
+    } else if (!c || !c.eow) {
+      node = node || c;
+      while (--i > 0) {
+        const s2 = stack[i];
+        if (!s2.compoundPrefix || !s2.n?.hasChildren()) continue;
+        if (s2.n.get(compoundCharacter)) break;
+      }
+      if (i >= 0 && stack[i].compoundPrefix) {
+        compoundUsed = i > 0;
+        const r = determineRoot(stack[i]);
+        stack[i] = r;
+        if (!r.cr) {
+          break;
+        }
+        if (!i && !r.caseMatched && nw !== nw.toLowerCase()) {
+          break;
+        }
+      } else {
+        break;
+      }
+    } else {
+      node = c;
+      caseMatched = s.caseMatched;
+      break;
+    }
+  }
+  const found = i === word.length && word || false;
+  const result = { found, compoundUsed, node, forbidden: void 0, caseMatched };
+  return result;
+}
+function findCompoundWord(root, word, compoundCharacter, ignoreCasePrefix) {
+  const { found, compoundUsed, node, caseMatched } = findCompoundNode(
+    root,
+    word,
+    compoundCharacter,
+    ignoreCasePrefix
+  );
+  if (!node || !node.eow) {
+    return { found: false, compoundUsed, node, forbidden: void 0, caseMatched };
+  }
+  return { found, compoundUsed, node, forbidden: void 0, caseMatched };
+}
+function findWordExact(root, word) {
+  const r = root;
+  if (r?.findExact) return r.findExact(word);
+  return isEndOfWordNode(walk(root, word));
+}
+function isEndOfWordNode(n) {
+  return !!n?.eow;
+}
+function walk(root, word) {
+  const w = [...word];
+  let n = root;
+  let i = 0;
+  while (n && i < w.length) {
+    const h = w[i++];
+    n = n.get(h);
+  }
+  return n;
+}
+function findLegacyCompoundNode(roots, word, minCompoundLength) {
+  const root = roots[0];
+  const numRoots = roots.length;
+  const stack = [
+    { n: root, usedRoots: 1, subLength: 0, isCompound: false, cr: void 0, caseMatched: true }
+  ];
+  const w = word;
+  const wLen = w.length;
+  let compoundUsed = false;
+  let caseMatched = true;
+  let i = 0;
+  let node;
+  while (true) {
+    const s = stack[i];
+    const h = w[i++];
+    const n = s.cr || s.n;
+    const c = n?.get(h);
+    if (c && i < wLen) {
+      stack[i] = {
+        n: c,
+        usedRoots: 0,
+        subLength: s.subLength + 1,
+        isCompound: s.isCompound,
+        cr: void 0,
+        caseMatched: s.caseMatched
+      };
+    } else if (!c || !c.eow || c.eow && s.subLength < minCompoundLength - 1) {
+      while (--i > 0) {
+        const s2 = stack[i];
+        if (s2.usedRoots < numRoots && s2.n?.eow && (s2.subLength >= minCompoundLength || !s2.subLength) && wLen - i >= minCompoundLength) {
+          break;
+        }
+      }
+      if (i > 0 || stack[i].usedRoots < numRoots) {
+        compoundUsed = i > 0;
+        const s2 = stack[i];
+        s2.cr = roots[s2.usedRoots++];
+        s2.subLength = 0;
+        s2.isCompound = compoundUsed;
+        s2.caseMatched = s2.caseMatched && s2.usedRoots <= 1;
+      } else {
+        break;
+      }
+    } else {
+      node = c;
+      caseMatched = s.caseMatched;
+      break;
+    }
+  }
+  function extractWord() {
+    if (!word || i < word.length) return false;
+    const letters = [];
+    let subLen = 0;
+    for (let j = 0; j < i; ++j) {
+      const { subLength } = stack[j];
+      if (subLength < subLen) {
+        letters.push("+");
+      }
+      letters.push(word[j]);
+      subLen = subLength;
+    }
+    return letters.join("");
+  }
+  const found = extractWord();
+  const result = { found, compoundUsed, node, forbidden: void 0, caseMatched };
+  return result;
+}
+function isForbiddenWord(root, word, forbiddenPrefix) {
+  const r = root;
+  if (r?.isForbidden) return r.isForbidden(word);
+  return findWordExact(root?.get(forbiddenPrefix), word);
+}
+var createFindOptions = memorizeLastCall(_createFindOptions);
+function _createFindOptions(options) {
+  if (!options) return _defaultFindOptions;
+  const d = _defaultFindOptions;
+  return {
+    matchCase: options.matchCase ?? d.matchCase,
+    compoundMode: options.compoundMode ?? d.compoundMode,
+    legacyMinCompoundLength: options.legacyMinCompoundLength ?? d.legacyMinCompoundLength,
+    checkForbidden: options.checkForbidden ?? d.checkForbidden
+  };
+}
+var JOIN_SEPARATOR = "+";
+var WORD_SEPARATOR = " ";
+var CompoundWordsMethod = /* @__PURE__ */ ((CompoundWordsMethod2) => {
+  CompoundWordsMethod2[CompoundWordsMethod2["NONE"] = 0] = "NONE";
+  CompoundWordsMethod2[CompoundWordsMethod2["SEPARATE_WORDS"] = 1] = "SEPARATE_WORDS";
+  CompoundWordsMethod2[CompoundWordsMethod2["JOIN_WORDS"] = 2] = "JOIN_WORDS";
+  return CompoundWordsMethod2;
+})(CompoundWordsMethod || {});
+function* compoundWalker(root, compoundingMethod) {
+  const empty = Object.freeze([]);
+  const roots = {
+    [
+      0
+      /* NONE */
+    ]: empty,
+    [
+      2
+      /* JOIN_WORDS */
+    ]: [[JOIN_SEPARATOR, root]],
+    [
+      1
+      /* SEPARATE_WORDS */
+    ]: [[WORD_SEPARATOR, root]]
+  };
+  const rc = roots[compoundingMethod].length ? roots[compoundingMethod] : void 0;
+  function children(n) {
+    if (n.hasChildren()) {
+      const entries = n.entries();
+      const c = Array.isArray(entries) ? entries : [...entries];
+      return n.eow && rc ? [...c, ...rc] : c;
+    }
+    if (n.eow) {
+      return roots[compoundingMethod];
+    }
+    return empty;
+  }
+  let depth = 0;
+  const stack = [];
+  stack[depth] = { t: "", c: children(root), ci: 0 };
+  while (depth >= 0) {
+    let s = stack[depth];
+    let baseText = s.t;
+    while (s.ci < s.c.length) {
+      const [char, node] = s.c[s.ci++];
+      const text = baseText + char;
+      const goDeeper = yield { text, node, depth };
+      if (goDeeper ?? true) {
+        depth++;
+        baseText = text;
+        stack[depth] = { t: text, c: children(node), ci: 0 };
+      }
+      s = stack[depth];
+    }
+    depth -= 1;
+  }
+}
+function* nodeWalker(root) {
+  let depth = 0;
+  const stack = [];
+  const entries = root.entries();
+  stack[depth] = { t: "", n: root, c: Array.isArray(entries) ? entries : [...entries], ci: 0 };
+  while (depth >= 0) {
+    let s = stack[depth];
+    let baseText = s.t;
+    while (s.ci < s.c.length && s.n) {
+      const idx2 = s.ci++;
+      const [char, node] = s.c[idx2];
+      const text = baseText + char;
+      const goDeeper = yield { text, node, depth };
+      if (goDeeper !== false) {
+        depth++;
+        baseText = text;
+        const s2 = stack[depth];
+        const entries2 = node.entries();
+        const c = Array.isArray(entries2) ? entries2 : [...entries2];
+        if (s2) {
+          s2.t = text;
+          s2.n = node;
+          s2.c = c;
+          s2.ci = 0;
+        } else {
+          stack[depth] = { t: text, n: node, c, ci: 0 };
+        }
+      }
+      s = stack[depth];
+    }
+    depth -= 1;
+  }
+}
+function walker(root, compoundingMethod = 0) {
+  return compoundingMethod === 0 ? nodeWalker(root) : compoundWalker(root, compoundingMethod);
+}
+function walkerWords(root) {
+  return walkerWordsITrie(root);
+}
+function* walkerWordsITrie(root) {
+  let depth = 0;
+  const stack = [];
+  const entries = root.entries();
+  const c = Array.isArray(entries) ? entries : [...entries];
+  stack[depth] = { t: "", n: root, c, ci: 0 };
+  while (depth >= 0) {
+    let s = stack[depth];
+    let baseText = s.t;
+    while (s.ci < s.c.length && s.n) {
+      const [char, node] = s.c[s.ci++];
+      if (!node) continue;
+      const text = baseText + char;
+      if (node.eow) yield text;
+      depth++;
+      baseText = text;
+      const entries2 = node.entries();
+      const c2 = Array.isArray(entries2) ? entries2 : [...entries2];
+      if (stack[depth]) {
+        s = stack[depth];
+        s.t = text;
+        s.n = node;
+        s.c = c2;
+        s.ci = 0;
+      } else {
+        stack[depth] = { t: text, n: node, c: c2, ci: 0 };
+      }
+      s = stack[depth];
+    }
+    depth -= 1;
+  }
+}
+function iteratorTrieWords(node) {
+  return walkerWords(node);
+}
+function findNode(node, word) {
+  for (let i = 0; i < word.length; ++i) {
+    const n = node.get(word[i]);
+    if (!n) return void 0;
+    node = n;
+  }
+  return node;
+}
+function countWords(root) {
+  const visited = /* @__PURE__ */ new Map();
+  function walk4(n) {
+    const nestedCount = visited.get(n.id);
+    if (nestedCount !== void 0) {
+      return nestedCount;
+    }
+    let cnt = n.eow ? 1 : 0;
+    visited.set(n, cnt);
+    for (const c of n.values()) {
+      cnt += walk4(c);
+    }
+    visited.set(n, cnt);
+    return cnt;
+  }
+  return walk4(root);
+}
+function trieRootToITrieRoot(root) {
+  return ImplITrieRoot.toITrieNode(root);
+}
+function trieNodeToITrieNode(node) {
+  return ImplITrieNode.toITrieNode(node);
+}
+var EmptyKeys = Object.freeze([]);
+var EmptyValues = Object.freeze([]);
+var EmptyEntries = Object.freeze([]);
+var ImplITrieNode = class _ImplITrieNode {
+  constructor(node) {
+    this.node = node;
+    this.id = node;
+  }
+  id;
+  _keys;
+  /** flag End of Word */
+  get eow() {
+    return !!this.node.f;
+  }
+  /** number of children */
+  get size() {
+    if (!this.node.c) return 0;
+    return this.keys().length;
+  }
+  /** get keys to children */
+  keys() {
+    if (this._keys) return this._keys;
+    const keys3 = this.node.c ? Object.keys(this.node.c) : EmptyKeys;
+    this._keys = keys3;
+    return keys3;
+  }
+  /** get the child nodes */
+  values() {
+    return !this.node.c ? EmptyValues : Object.values(this.node.c).map((n) => _ImplITrieNode.toITrieNode(n));
+  }
+  entries() {
+    return !this.node.c ? EmptyEntries : Object.entries(this.node.c).map(([k, n]) => [k, _ImplITrieNode.toITrieNode(n)]);
+  }
+  /** get child ITrieNode */
+  get(char) {
+    const n = this.node.c?.[char];
+    if (!n) return void 0;
+    return _ImplITrieNode.toITrieNode(n);
+  }
+  getNode(chars) {
+    return this.findNode(chars);
+  }
+  has(char) {
+    const c = this.node.c;
+    return c && char in c || false;
+  }
+  child(keyIdx) {
+    const char = this.keys()[keyIdx];
+    const n = char && this.get(char);
+    if (!n) throw new Error("Index out of range.");
+    return n;
+  }
+  hasChildren() {
+    return !!this.node.c;
+  }
+  #findTrieNode(word) {
+    let node = this.node;
+    for (const char of word) {
+      if (!node) return void 0;
+      node = node.c?.[char];
+    }
+    return node;
+  }
+  findNode(word) {
+    const node = this.#findTrieNode(word);
+    return node && _ImplITrieNode.toITrieNode(node);
+  }
+  findExact(word) {
+    const node = this.#findTrieNode(word);
+    return !!node && !!node.f;
+  }
+  static toITrieNode(node) {
+    return new this(node);
+  }
+};
+var ImplITrieRoot = class extends ImplITrieNode {
+  constructor(root) {
+    super(root);
+    this.root = root;
+    const { stripCaseAndAccentsPrefix, compoundCharacter, forbiddenWordPrefix, isCaseAware } = root;
+    this.info = { stripCaseAndAccentsPrefix, compoundCharacter, forbiddenWordPrefix, isCaseAware };
+    this.hasForbiddenWords = !!root.c[forbiddenWordPrefix];
+    this.hasCompoundWords = !!root.c[compoundCharacter];
+    this.hasNonStrictWords = !!root.c[stripCaseAndAccentsPrefix];
+  }
+  info;
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+  get eow() {
+    return false;
+  }
+  resolveId(id) {
+    const n = id;
+    return new ImplITrieNode(n);
+  }
+  get forbidPrefix() {
+    return this.root.forbiddenWordPrefix;
+  }
+  get compoundFix() {
+    return this.root.compoundCharacter;
+  }
+  get caseInsensitivePrefix() {
+    return this.root.stripCaseAndAccentsPrefix;
+  }
+  static toITrieNode(node) {
+    return new this(node);
+  }
+};
+var useITrie = false;
+var walkerWords2 = useITrie ? _walkerWords2 : _walkerWords;
+function* _walkerWords(root) {
+  const empty = [];
+  function children(n) {
+    if (n.c) {
+      return Object.keys(n.c);
+    }
+    return empty;
+  }
+  let depth = 0;
+  const stack = [];
+  stack[depth] = { t: "", n: root.c, c: children(root), ci: 0 };
+  while (depth >= 0) {
+    let s = stack[depth];
+    let baseText = s.t;
+    while (s.ci < s.c.length && s.n) {
+      const char = s.c[s.ci++];
+      const node = s.n[char];
+      const text = baseText + char;
+      if (node.f) yield text;
+      depth++;
+      baseText = text;
+      const c = children(node);
+      if (stack[depth]) {
+        s = stack[depth];
+        s.t = text;
+        s.n = node.c;
+        s.c = c;
+        s.ci = 0;
+      } else {
+        stack[depth] = { t: text, n: node.c, c, ci: 0 };
+      }
+      s = stack[depth];
+    }
+    depth -= 1;
+  }
+}
+function _walkerWords2(root) {
+  return walkerWordsITrie2(trieNodeToITrieNode(root));
+}
+function* walkerWordsITrie2(root) {
+  let depth = 0;
+  const stack = [];
+  stack[depth] = { t: "", n: root, c: [...root.entries()], ci: 0 };
+  while (depth >= 0) {
+    let s = stack[depth];
+    let baseText = s.t;
+    while (s.ci < s.c.length && s.n) {
+      const [char, node] = s.c[s.ci++];
+      if (!node) continue;
+      const text = baseText + char;
+      if (node.eow) yield text;
+      depth++;
+      baseText = text;
+      const c = [...node.entries()];
+      if (stack[depth]) {
+        s = stack[depth];
+        s.t = text;
+        s.n = node;
+        s.c = c;
+        s.ci = 0;
+      } else {
+        stack[depth] = { t: text, n: node, c, ci: 0 };
+      }
+      s = stack[depth];
+    }
+    depth -= 1;
+  }
+}
+var defaultGenSuggestionOptions = {
+  compoundMethod: 0,
+  ignoreCase: true,
+  changeLimit: 5
+};
+var defaultSuggestionOptions = {
+  ...defaultGenSuggestionOptions,
+  numSuggestions: 8,
+  includeTies: true,
+  timeout: 5e3
+};
+var keyMapOfGenSuggestionOptionsStrict = {
+  changeLimit: "changeLimit",
+  compoundMethod: "compoundMethod",
+  ignoreCase: "ignoreCase",
+  compoundSeparator: "compoundSeparator"
+};
+var keyMapOfSuggestionOptionsStrict = {
+  ...keyMapOfGenSuggestionOptionsStrict,
+  filter: "filter",
+  includeTies: "includeTies",
+  numSuggestions: "numSuggestions",
+  timeout: "timeout",
+  weightMap: "weightMap"
+};
+function createSuggestionOptions(...opts) {
+  const options = { ...defaultSuggestionOptions };
+  const keys3 = Object.keys(keyMapOfSuggestionOptionsStrict);
+  for (const opt of opts) {
+    for (const key of keys3) {
+      assign(options, opt, key);
+    }
+  }
+  return options;
+}
+function assign(dest, src, k) {
+  dest[k] = src[k] ?? dest[k];
+}
+var PairingHeap = class {
+  constructor(compare42) {
+    this.compare = compare42;
+  }
+  _heap;
+  _size = 0;
+  /** Add an item to the heap. */
+  add(v) {
+    this._heap = insert(this.compare, this._heap, v);
+    ++this._size;
+    return this;
+  }
+  /** take an item from the heap. */
+  dequeue() {
+    const n = this.next();
+    if (n.done) return void 0;
+    return n.value;
+  }
+  /** Add items to the heap */
+  append(i) {
+    for (const v of i) {
+      this.add(v);
+    }
+    return this;
+  }
+  /** get the next value */
+  next() {
+    if (!this._heap) {
+      return { value: void 0, done: true };
+    }
+    const value = this._heap.v;
+    --this._size;
+    this._heap = removeHead(this.compare, this._heap);
+    return { value };
+  }
+  /** peek at the next value without removing it. */
+  peek() {
+    return this._heap?.v;
+  }
+  [Symbol.iterator]() {
+    return this;
+  }
+  /** alias of `size` */
+  get length() {
+    return this._size;
+  }
+  /** number of entries in the heap. */
+  get size() {
+    return this._size;
+  }
+};
+function removeHead(compare42, heap) {
+  if (!heap || !heap.c) return void 0;
+  return mergeSiblings(compare42, heap.c);
+}
+function insert(compare42, heap, v) {
+  const n = {
+    v,
+    s: void 0,
+    c: void 0
+  };
+  if (!heap || compare42(v, heap.v) <= 0) {
+    n.c = heap;
+    return n;
+  }
+  n.s = heap.c;
+  heap.c = n;
+  return heap;
+}
+function merge(compare42, a, b) {
+  if (compare42(a.v, b.v) <= 0) {
+    a.s = void 0;
+    b.s = a.c;
+    a.c = b;
+    return a;
+  }
+  b.s = void 0;
+  a.s = b.c;
+  b.c = a;
+  return b;
+}
+function mergeSiblings(compare42, n) {
+  if (!n.s) return n;
+  const s = n.s;
+  const ss = s.s;
+  const m = merge(compare42, n, s);
+  return ss ? merge(compare42, m, mergeSiblings(compare42, ss)) : m;
+}
+var DEFAULT_COMPOUNDED_WORD_SEPARATOR = "\u2219";
+var opCosts = {
+  baseCost: 100,
+  swapCost: 75,
+  duplicateLetterCost: 80,
+  compound: 1,
+  visuallySimilar: 1,
+  firstLetterBias: 5,
+  wordBreak: 99,
+  wordLengthCostFactor: 0.5
+};
+var intl = new Intl.Collator("en", { sensitivity: "base" });
+var compare = intl.compare;
+var visualLetterGroups = [
+  // cspell:disable
+  forms("\u01CE\xE0\xE5\xC4\xC0A\xE3\xE2\xE1\u01DF\u1EB7\u1EAF\u1EA5\u0100\u0101\u0103\u0105a\xE4\xE6\u0250\u0251\u03B1\u0430\u1FB3") + "\u1FB3",
+  forms("Bb\u1E03\u0432\u044A\u044C"),
+  forms("\u010B\u010C\u010Dc\u0109\xE7C\xC7\u0107\u010A\u0421\u0441\u03C2"),
+  forms("\u1E0E\u1E0B\u1E0F\u1E11\u010F\u0111\u1E0DDd"),
+  forms("\u0113\xEB\xC8\xCA\xCB\u1EC1\xE9\xE8\u1EBF\u1EC7\u0115eE\u0112\u0117\u0119\u011B\xEA\u0259\u025B\u0451\u0401\u0435\u0292"),
+  forms("f\u1E1FF\uFB00"),
+  forms("\u0121\u0120\u011E\u01E7\u011D\u0123Gg\u0263"),
+  forms("\u0127\u0126\u0125\u1E25Hh\u1E24\u021F\u043D"),
+  forms("I\u012F\xEF\u0130\xCE\xCD\u012Bi\xCC\xEC\xED\xEE\u0131\u026A\u0268\u0457\u038A\u0399"),
+  forms("jJ\u0135"),
+  forms("\u0137Kk\u03BA\u043A\u045C"),
+  forms("\u1E37\u0142\u013E\u013CLl\u013A\u1E36\u03AF\u03B9"),
+  forms("M\u1E43\u1E41m"),
+  forms("n\u0146\xD1N\u1E47\u0148\u0147\xF1\u0144\u014B\u045D\u0438\u0439"),
+  forms("\xD2O\xF8\u022D\u014C\u014D\u0151\u1ECFo\xD6\xF2\u0231\u022F\xF3\xF4\xF5\xF6\u01A1\u0254\u03CC\u03B4\u043E"),
+  forms("P\u1E57p\u0440\u0420\u03C1"),
+  forms("Qq"),
+  forms("\u0159R\u1E5Br\u0155\u0157\u0453\u0433\u044F"),
+  forms("\u1E63\u0161\u0218\u1E62sS\u0160\u1E61\u015E\u015D\u015B\u0219\u0283\u03A3"),
+  forms("t\u021B\u021A\u0165T\u1E6D\u1E6C\u1E6B"),
+  forms("\xDC\xFC\xFB\u016A\u01B0\u016F\u016B\u0171\xFA\xDB\u016D\xD9\xF9u\u0173U"),
+  forms("Vv\u03BD"),
+  forms("\u0175wW\u1E83\u1E85\u1E81\u03C9\u0448"),
+  forms("xX\u0445"),
+  forms("\xFF\xFDY\u0177y\xDD\u1EF3\u0423\u045E\u0443"),
+  forms("Z\u1E93\u017E\u017D\u017C\u017B\u017Az")
+  // cspell:enable
+];
+function forms(letters) {
+  const n = letters.normalize("NFC").replaceAll(/\p{M}/gu, "");
+  const na = n.normalize("NFD").replaceAll(/\p{M}/gu, "");
+  const s = new Set(n + n.toLowerCase() + n.toUpperCase() + na + na.toLowerCase() + na.toUpperCase());
+  return [...s].join("");
+}
+var visualLetterMaskMap = calcVisualLetterMasks(visualLetterGroups);
+function calcVisualLetterMasks(groups) {
+  const map3 = /* @__PURE__ */ Object.create(null);
+  for (let i = 0; i < groups.length; ++i) {
+    const m = 1 << i;
+    const g = groups[i];
+    for (const c of g) {
+      map3[c] = (map3[c] || 0) | m;
+    }
+  }
+  return map3;
+}
+var matchPossibleWordSeparators = /[+∙•・●]/g;
+function createWeightMap(...defs) {
+  const map3 = _createWeightMap();
+  addDefsToWeightMap(map3, defs);
+  return map3;
+}
+function addDefToWeightMap(map3, ...defs) {
+  return addDefsToWeightMap(map3, defs);
+}
+function addAdjustment(map3, ...adjustments) {
+  for (const adj of adjustments) {
+    map3.adjustments.set(adj.id, adj);
+  }
+  return map3;
+}
+function addDefsToWeightMap(map3, defs) {
+  function addSet(set, def) {
+    addSetToTrieCost(map3.insDel, set, def.insDel, def.penalty);
+    addSetToTrieTrieCost(map3.replace, set, def.replace, def.penalty);
+    addSetToTrieTrieCost(map3.swap, set, def.swap, def.penalty);
+  }
+  for (const _def of defs) {
+    const def = normalizeDef(_def);
+    const mapSets = splitMap(def);
+    mapSets.forEach((s) => addSet(s, def));
+  }
+  return map3;
+}
+function _createWeightMap() {
+  return {
+    insDel: {},
+    replace: {},
+    swap: {},
+    adjustments: /* @__PURE__ */ new Map()
+  };
+}
+function lowest(a, b) {
+  if (a === void 0) return b;
+  if (b === void 0) return a;
+  return a <= b ? a : b;
+}
+function highest(a, b) {
+  if (a === void 0) return b;
+  if (b === void 0) return a;
+  return a >= b ? a : b;
+}
+function normalize(s) {
+  const f = /* @__PURE__ */ new Set([s]);
+  f.add(s.normalize("NFC"));
+  f.add(s.normalize("NFD"));
+  return f;
+}
+function* splitMapSubstringsIterable(map3) {
+  let seq = "";
+  let mode = 0;
+  for (const char of map3) {
+    if (mode && char === ")") {
+      yield* normalize(seq);
+      mode = 0;
+      continue;
+    }
+    if (mode) {
+      seq += char;
+      continue;
+    }
+    if (char === "(") {
+      mode = 1;
+      seq = "";
+      continue;
+    }
+    yield* normalize(char);
+  }
+}
+function splitMapSubstrings(map3) {
+  return [...splitMapSubstringsIterable(map3)];
+}
+function splitMap(def) {
+  const { map: map3 } = def;
+  const sets = map3.split("|");
+  return sets.map(splitMapSubstrings).filter((s) => s.length > 0);
+}
+function addToTrieCost(trie, str, cost, penalties) {
+  if (!str) return;
+  let t = trie;
+  for (const c of str) {
+    const n = t.n = t.n || /* @__PURE__ */ Object.create(null);
+    t = n[c] = n[c] || /* @__PURE__ */ Object.create(null);
+  }
+  t.c = lowest(t.c, cost);
+  t.p = highest(t.p, penalties);
+}
+function addToTrieTrieCost(trie, left, right, cost, penalties) {
+  let t = trie;
+  for (const c of left) {
+    const n = t.n = t.n || /* @__PURE__ */ Object.create(null);
+    t = n[c] = n[c] || /* @__PURE__ */ Object.create(null);
+  }
+  const trieCost = t.t = t.t || /* @__PURE__ */ Object.create(null);
+  addToTrieCost(trieCost, right, cost, penalties);
+}
+function addSetToTrieCost(trie, set, cost, penalties) {
+  if (cost === void 0) return;
+  for (const str of set) {
+    addToTrieCost(trie, str, cost, penalties);
+  }
+}
+function addSetToTrieTrieCost(trie, set, cost, penalties) {
+  if (cost === void 0) return;
+  for (const left of set) {
+    for (const right of set) {
+      if (left === right) continue;
+      addToTrieTrieCost(trie, left, right, cost, penalties);
+    }
+  }
+}
+function* searchTrieNodes(trie, str, i) {
+  const len = str.length;
+  for (let n = trie.n; i < len && n; ) {
+    const t = n[str[i]];
+    if (!t) return;
+    ++i;
+    yield { i, t };
+    n = t.n;
+  }
+}
+function* findTrieCostPrefixes(trie, str, i) {
+  for (const n of searchTrieNodes(trie, str, i)) {
+    const { c, p } = n.t;
+    if (c !== void 0) {
+      yield { i: n.i, c, p: p || 0 };
+    }
+  }
+}
+function* findTrieTrieCostPrefixes(trie, str, i) {
+  for (const n of searchTrieNodes(trie, str, i)) {
+    const t = n.t.t;
+    if (t !== void 0) {
+      yield { i: n.i, t };
+    }
+  }
+}
+function createWeightCostCalculator(weightMap) {
+  return new _WeightCostCalculator(weightMap);
+}
+var _WeightCostCalculator = class {
+  constructor(weightMap) {
+    this.weightMap = weightMap;
+  }
+  *calcInsDelCosts(pos) {
+    const { a, ai, b, bi, c, p } = pos;
+    for (const del of findTrieCostPrefixes(this.weightMap.insDel, a, ai)) {
+      yield { a, b, ai: del.i, bi, c: c + del.c, p: p + del.p };
+    }
+    for (const ins of findTrieCostPrefixes(this.weightMap.insDel, b, bi)) {
+      yield { a, b, ai, bi: ins.i, c: c + ins.c, p: p + ins.p };
+    }
+  }
+  *calcReplaceCosts(pos) {
+    const { a, ai, b, bi, c, p } = pos;
+    for (const del of findTrieTrieCostPrefixes(this.weightMap.replace, a, ai)) {
+      for (const ins of findTrieCostPrefixes(del.t, b, bi)) {
+        yield { a, b, ai: del.i, bi: ins.i, c: c + ins.c, p: p + ins.p };
+      }
+    }
+  }
+  *calcSwapCosts(pos) {
+    const { a, ai, b, bi, c, p } = pos;
+    const swap = this.weightMap.swap;
+    for (const left of findTrieTrieCostPrefixes(swap, a, ai)) {
+      for (const right of findTrieCostPrefixes(left.t, a, left.i)) {
+        const sw = a.slice(left.i, right.i) + a.slice(ai, left.i);
+        if (b.slice(bi).startsWith(sw)) {
+          const len = sw.length;
+          yield { a, b, ai: ai + len, bi: bi + len, c: c + right.c, p: p + right.p };
+        }
+      }
+    }
+  }
+  calcAdjustment(word) {
+    let penalty = 0;
+    for (const adj of this.weightMap.adjustments.values()) {
+      if (adj.regexp.global) {
+        for (const _m of word.matchAll(adj.regexp)) {
+          penalty += adj.penalty;
+        }
+      } else if (adj.regexp.test(word)) {
+        penalty += adj.penalty;
+      }
+    }
+    return penalty;
+  }
+};
+function normalizeDef(def) {
+  const { map: map3, ...rest } = def;
+  return { ...rest, map: normalizeMap(map3) };
+}
+function normalizeMap(map3) {
+  return map3.replaceAll(matchPossibleWordSeparators, DEFAULT_COMPOUNDED_WORD_SEPARATOR);
+}
+function distanceAStarWeighted(wordA, wordB, map3, cost = 100) {
+  const calc = createWeightCostCalculator(map3);
+  const best = _distanceAStarWeightedEx(wordA, wordB, calc, cost);
+  const penalty = calc.calcAdjustment(wordB);
+  return best.c + best.p + penalty;
+}
+function _distanceAStarWeightedEx(wordA, wordB, map3, cost = 100) {
+  const a = "^" + wordA + "$";
+  const b = "^" + wordB + "$";
+  const aN = a.length;
+  const bN = b.length;
+  const candidates = new CandidatePool(aN, bN);
+  candidates.add({ ai: 0, bi: 0, c: 0, p: 0, f: void 0 });
+  function opSub(n) {
+    const { ai, bi, c, p } = n;
+    if (ai < aN && bi < bN) {
+      const cc = a[ai] === b[bi] ? c : c + cost;
+      candidates.add({ ai: ai + 1, bi: bi + 1, c: cc, p, f: n });
+    }
+  }
+  function opIns(n) {
+    const { ai, bi, c, p } = n;
+    if (bi < bN) {
+      candidates.add({ ai, bi: bi + 1, c: c + cost, p, f: n });
+    }
+  }
+  function opDel(n) {
+    const { ai, bi, c, p } = n;
+    if (ai < aN) {
+      candidates.add({ ai: ai + 1, bi, c: c + cost, p, f: n });
+    }
+  }
+  function opSwap(n) {
+    const { ai, bi, c, p } = n;
+    if (a[ai] === b[bi + 1] && a[ai + 1] === b[bi]) {
+      candidates.add({ ai: ai + 2, bi: bi + 2, c: c + cost, p, f: n });
+    }
+  }
+  function opMap7(n) {
+    const { ai, bi, c, p } = n;
+    const pos = { a, b, ai, bi, c, p };
+    const costCalculations = [map3.calcInsDelCosts(pos), map3.calcSwapCosts(pos), map3.calcReplaceCosts(pos)];
+    costCalculations.forEach((iter) => {
+      for (const nn of iter) {
+        candidates.add({ ...nn, f: n });
+      }
+    });
+  }
+  let best;
+  while (best = candidates.next()) {
+    if (best.ai === aN && best.bi === bN) break;
+    opSwap(best);
+    opIns(best);
+    opDel(best);
+    opMap7(best);
+    opSub(best);
+  }
+  (0, import_node_assert.default)(best);
+  return best;
+}
+var CandidatePool = class {
+  constructor(aN, bN) {
+    this.aN = aN;
+    this.bN = bN;
+  }
+  pool = new PairingHeap(compare2);
+  grid = [];
+  next() {
+    let n;
+    while (n = this.pool.dequeue()) {
+      if (!n.d) return n;
+    }
+    return void 0;
+  }
+  add(n) {
+    const i = idx(n.ai, n.bi, this.bN);
+    const g = this.grid[i];
+    if (!g) {
+      this.grid[i] = n;
+      this.pool.add(n);
+      return;
+    }
+    if (g.c <= n.c) return;
+    g.d = true;
+    this.grid[i] = n;
+    this.pool.add(n);
+  }
+};
+function idx(r, c, cols) {
+  return r * cols + c;
+}
+function compare2(a, b) {
+  return a.c - b.c || b.ai + b.bi - a.ai - a.bi;
+}
+var initialRow = [...".".repeat(50)].map((_, i) => i);
+Object.freeze(initialRow);
+var defaultCost = 100;
+function editDistanceWeighted(wordA, wordB, weights, editCost = defaultCost) {
+  return distanceAStarWeighted(wordA, wordB, weights, editCost);
+}
+function startTimer() {
+  const start = performance.now();
+  return () => performance.now() - start;
+}
+function createPerfTimer() {
+  const timer = startTimer();
+  const active = /* @__PURE__ */ new Map();
+  const events = [{ name: "start", at: 0 }];
+  function updateEvent(event, atTime = timer()) {
+    const elapsed = atTime - event.at;
+    event.elapsed = (event.elapsed || 0) + elapsed;
+    return elapsed;
+  }
+  function start(name2) {
+    const event = createEvent(name2 || "start");
+    events.push(event);
+    name2 && active.set(name2, event);
+    return () => updateEvent(event);
+  }
+  function stop(name2) {
+    const knownEvent = name2 && active.get(name2);
+    if (knownEvent) {
+      return updateEvent(knownEvent);
+    }
+    return mark(name2 || "stop");
+  }
+  function createEvent(name2) {
+    return { name: name2, at: timer() };
+  }
+  function mark(name2) {
+    const event = createEvent(name2);
+    events.push(event);
+    return event.at;
+  }
+  function formatReport() {
+    const lineElements = [
+      { name: "Event Name", at: "Time", elapsed: "Elapsed" },
+      { name: "----------", at: "----", elapsed: "-------" },
+      ...mapEvents()
+    ];
+    function mapEvents() {
+      const stack = [];
+      return events.map((e) => {
+        for (let s = stack.pop(); s; s = stack.pop()) {
+          if (s >= e.at + (e.elapsed || 0)) {
+            stack.push(s);
+            break;
+          }
+        }
+        const d = stack.length;
+        if (e.elapsed) {
+          stack.push(e.at + e.elapsed);
+        }
+        return {
+          name: "| ".repeat(d) + (e.name || "").replaceAll("	", "  "),
+          at: `${t(e.at)}`,
+          elapsed: e.elapsed ? `${t(e.elapsed)}` : "--"
+        };
+      });
+    }
+    function t(ms) {
+      return ms.toFixed(3) + "ms";
+    }
+    function m(v, s) {
+      return Math.max(v, s.length);
+    }
+    const lengths = lineElements.reduce(
+      (a, b) => ({ name: m(a.name, b.name), at: m(a.at, b.at), elapsed: m(a.elapsed, b.elapsed) }),
+      { name: 0, at: 0, elapsed: 0 }
+    );
+    const lines = lineElements.map(
+      (e) => `${e.at.padStart(lengths.at)}  ${e.name.padEnd(lengths.name)}  ${e.elapsed.padStart(lengths.elapsed)}`
+    );
+    return lines.join("\n");
+  }
+  function measureFn(name2, fn) {
+    const s = start(name2);
+    const v = fn();
+    s();
+    return v;
+  }
+  async function measureAsyncFn(name2, fn) {
+    const s = start(name2);
+    const v = await fn();
+    s();
+    return v;
+  }
+  function report(reporter = console.log) {
+    reporter(formatReport());
+  }
+  return {
+    start,
+    stop,
+    mark,
+    elapsed: timer,
+    report,
+    formatReport,
+    measureFn,
+    measureAsyncFn
+  };
+}
+var globalPerfTimer = void 0;
+function getGlobalPerfTimer() {
+  const timer = globalPerfTimer || createPerfTimer();
+  globalPerfTimer = timer;
+  return timer;
+}
+function isDefined2(a) {
+  return a !== void 0;
+}
+function cleanCopy(t) {
+  const r = { ...t };
+  return clean(r);
+}
+function clean(t) {
+  for (const prop in t) {
+    if (t[prop] === void 0) {
+      delete t[prop];
+    }
+  }
+  return t;
+}
+function unique(a) {
+  return [...new Set(a)];
+}
+function regexQuote(text) {
+  return text.replaceAll(/([[\]\-+(){},|*.\\])/g, "\\$1");
+}
+function replaceAllFactory(match2, replaceWithText) {
+  const r = RegExp(regexQuote(match2), "g");
+  return (text) => text.replace(r, replaceWithText);
+}
+var defaultMaxNumberSuggestions = 10;
+var BASE_COST = 100;
+var MAX_NUM_CHANGES = 5;
+var MAX_COST_SCALE = 0.5;
+var MAX_ALLOWED_COST_SCALE = 1.03 * MAX_COST_SCALE;
+var collator = new Intl.Collator();
+var regexSeparator = new RegExp(`[${regexQuote(WORD_SEPARATOR)}]`, "g");
+var wordLengthCost = [0, 50, 25, 5, 0];
+var EXTRA_WORD_COST = 5;
+var DEFAULT_COLLECTOR_TIMEOUT = 1e3;
+var symStopProcessing = Symbol("Collector Stop Processing");
+function compSuggestionResults(a, b) {
+  const aPref = a.isPreferred && -1 || 0;
+  const bPref = b.isPreferred && -1 || 0;
+  return aPref - bPref || a.cost - b.cost || a.word.length - b.word.length || collator.compare(a.word, b.word);
+}
+var defaultSuggestionCollectorOptions = Object.freeze({
+  numSuggestions: defaultMaxNumberSuggestions,
+  filter: () => true,
+  changeLimit: MAX_NUM_CHANGES,
+  includeTies: false,
+  ignoreCase: true,
+  timeout: DEFAULT_COLLECTOR_TIMEOUT,
+  weightMap: void 0,
+  compoundSeparator: "",
+  compoundMethod: void 0
+});
+function suggestionCollector(wordToMatch, options) {
+  const {
+    filter: filter3 = () => true,
+    changeLimit = MAX_NUM_CHANGES,
+    includeTies = false,
+    ignoreCase: ignoreCase2 = true,
+    timeout = DEFAULT_COLLECTOR_TIMEOUT,
+    weightMap,
+    compoundSeparator = defaultSuggestionCollectorOptions.compoundSeparator
+  } = options;
+  const numSuggestions = Math.max(options.numSuggestions, 0) || 0;
+  const numSugToHold = weightMap ? numSuggestions * 2 : numSuggestions;
+  const sugs = /* @__PURE__ */ new Map();
+  let maxCost = BASE_COST * Math.min(wordToMatch.length * MAX_ALLOWED_COST_SCALE, changeLimit);
+  const useSeparator = compoundSeparator || (weightMap ? DEFAULT_COMPOUNDED_WORD_SEPARATOR : defaultSuggestionCollectorOptions.compoundSeparator);
+  const fnCleanWord = !useSeparator || useSeparator === compoundSeparator ? (w) => w : replaceAllFactory(useSeparator, "");
+  if (useSeparator && weightMap) {
+    addDefToWeightMap(weightMap, { map: useSeparator, insDel: 50 });
+  }
+  const genSuggestionOptions = clean({
+    changeLimit,
+    ignoreCase: ignoreCase2,
+    compoundMethod: options.compoundMethod,
+    compoundSeparator: useSeparator
+  });
+  let timeRemaining = timeout;
+  function dropMax() {
+    if (sugs.size < 2 || !numSuggestions) {
+      sugs.clear();
+      return;
+    }
+    const sorted = [...sugs.values()].sort(compSuggestionResults);
+    let i = numSugToHold - 1;
+    maxCost = sorted[i].cost;
+    for (; i < sorted.length && sorted[i].cost <= maxCost; ++i) {
+    }
+    for (; i < sorted.length; ++i) {
+      sugs.delete(sorted[i].word);
+    }
+  }
+  function adjustCost(sug) {
+    if (sug.isPreferred) return sug;
+    const words = sug.word.split(regexSeparator);
+    const extraCost = words.map((w) => wordLengthCost[w.length] || 0).reduce((a, b) => a + b, 0) + (words.length - 1) * EXTRA_WORD_COST;
+    return { word: sug.word, cost: sug.cost + extraCost };
+  }
+  function collectSuggestion(suggestion) {
+    const { word, cost, isPreferred } = adjustCost(suggestion);
+    if (cost <= maxCost && filter3(suggestion.word, cost)) {
+      const known = sugs.get(word);
+      if (known) {
+        known.cost = Math.min(known.cost, cost);
+        known.isPreferred = known.isPreferred || isPreferred;
+      } else {
+        sugs.set(word, { word, cost, isPreferred });
+        if (cost < maxCost && sugs.size > numSugToHold) {
+          dropMax();
+        }
+      }
+    }
+    return maxCost;
+  }
+  function collect2(src, timeout2, filter22) {
+    let stop = false;
+    timeout2 = timeout2 ?? timeRemaining;
+    timeout2 = Math.min(timeout2, timeRemaining);
+    if (timeout2 < 0) return;
+    const timer = startTimer();
+    let ir;
+    while (!(ir = src.next(stop || maxCost)).done) {
+      if (timer() > timeout2) {
+        stop = symStopProcessing;
+      }
+      const { value } = ir;
+      if (!value) continue;
+      if (isSuggestionResult(value)) {
+        if (!filter22 || filter22(value.word, value.cost)) {
+          collectSuggestion(value);
+        }
+        continue;
+      }
+    }
+    timeRemaining -= timer();
+  }
+  function cleanCompoundResult(sr) {
+    const { word, cost } = sr;
+    const cWord = fnCleanWord(word);
+    if (cWord !== word) {
+      return {
+        word: cWord,
+        cost,
+        compoundWord: word,
+        isPreferred: void 0
+      };
+    }
+    return { ...sr };
+  }
+  function suggestions() {
+    if (numSuggestions < 1 || !sugs.size) return [];
+    const NF = "NFD";
+    const nWordToMatch = wordToMatch.normalize(NF);
+    const rawValues = [...sugs.values()];
+    const values = weightMap ? rawValues.map(({ word, cost, isPreferred }) => ({
+      word,
+      cost: isPreferred ? cost : editDistanceWeighted(nWordToMatch, word.normalize(NF), weightMap, 110),
+      isPreferred
+    })) : rawValues;
+    const sorted = values.sort(compSuggestionResults).map(cleanCompoundResult);
+    let i = Math.min(sorted.length, numSuggestions) - 1;
+    const limit = includeTies ? sorted.length : Math.min(sorted.length, numSuggestions);
+    const iCost = sorted[i].cost;
+    const maxCost2 = Math.min(iCost, weightMap ? changeLimit * BASE_COST - 1 : iCost);
+    for (i = 1; i < limit && sorted[i].cost <= maxCost2; ++i) {
+    }
+    sorted.length = i;
+    return sorted;
+  }
+  const collector = {
+    collect: collect2,
+    add: function(suggestion) {
+      collectSuggestion(suggestion);
+      return this;
+    },
+    get suggestions() {
+      return suggestions();
+    },
+    get maxCost() {
+      return maxCost;
+    },
+    get word() {
+      return wordToMatch;
+    },
+    get maxNumSuggestions() {
+      return numSuggestions;
+    },
+    get changeLimit() {
+      return changeLimit;
+    },
+    includesTies: includeTies,
+    ignoreCase: ignoreCase2,
+    symbolStopProcessing: symStopProcessing,
+    genSuggestionOptions
+  };
+  return collector;
+}
+function impersonateCollector(collector, word) {
+  const r = Object.create(collector);
+  Object.defineProperty(r, "word", { value: word, writable: false });
+  return r;
+}
+function isSuggestionResult(s) {
+  const r = s;
+  return !!r && typeof r === "object" && r?.cost !== void 0 && r.word != void 0;
+}
+function comparePath(a, b) {
+  return a.c / (a.i + 1) - b.c / (b.i + 1) + (b.i - a.i);
+}
+function suggestAStar(trie, word, options = {}) {
+  const opts = createSuggestionOptions(options);
+  const collector = suggestionCollector(word, opts);
+  collector.collect(getSuggestionsAStar(trie, word, opts));
+  return collector.suggestions;
+}
+function* getSuggestionsAStar(trie, srcWord, options = {}) {
+  const { compoundMethod, changeLimit, ignoreCase: ignoreCase2, weightMap } = createSuggestionOptions(options);
+  const visMap = visualLetterMaskMap;
+  const root = trie.getRoot();
+  const rootIgnoreCase = ignoreCase2 && root.get(root.info.stripCaseAndAccentsPrefix) || void 0;
+  const pathHeap = new PairingHeap(comparePath);
+  const resultHeap = new PairingHeap(compareSuggestion);
+  const rootPNode = { n: root, i: 0, c: 0, s: "", p: void 0, t: createCostTrie() };
+  const BC = opCosts.baseCost;
+  const VC = opCosts.visuallySimilar;
+  const DL = opCosts.duplicateLetterCost;
+  const wordSeparator = compoundMethod === 2 ? JOIN_SEPARATOR : WORD_SEPARATOR;
+  const sc = specialChars(trie.info);
+  const comp = trie.info.compoundCharacter;
+  const compRoot = root.get(comp);
+  const compRootIgnoreCase = rootIgnoreCase && rootIgnoreCase.get(comp);
+  const emitted = /* @__PURE__ */ Object.create(null);
+  const srcLetters = [...srcWord];
+  let limit = BC * Math.min(srcLetters.length * opCosts.wordLengthCostFactor, changeLimit);
+  pathHeap.add(rootPNode);
+  if (rootIgnoreCase) {
+    pathHeap.add({ n: rootIgnoreCase, i: 0, c: 0, s: "", p: void 0, t: createCostTrie() });
+  }
+  let best = pathHeap.dequeue();
+  let maxSize = pathHeap.size;
+  let suggestionsGenerated = 0;
+  let nodesProcessed = 0;
+  let nodesProcessedLimit = 1e3;
+  let minGen = 1;
+  while (best) {
+    if (++nodesProcessed > nodesProcessedLimit) {
+      nodesProcessedLimit += 1e3;
+      if (suggestionsGenerated < minGen) {
+        break;
+      }
+      minGen += suggestionsGenerated;
+    }
+    if (best.c > limit) {
+      best = pathHeap.dequeue();
+      maxSize = Math.max(maxSize, pathHeap.size);
+      continue;
+    }
+    processPath2(best);
+    for (const sug of resultHeap) {
+      ++suggestionsGenerated;
+      if (sug.cost > limit) continue;
+      if (sug.word in emitted && emitted[sug.word] <= sug.cost) continue;
+      const action2 = yield sug;
+      emitted[sug.word] = sug.cost;
+      if (typeof action2 === "number") {
+        limit = Math.min(action2, limit);
+      }
+      if (typeof action2 === "symbol") {
+        return;
+      }
+    }
+    best = pathHeap.dequeue();
+    maxSize = Math.max(maxSize, pathHeap.size);
+  }
+  return;
+  function compareSuggestion(a, b) {
+    const pa = a.isPreferred && 1 || 0;
+    const pb = b.isPreferred && 1 || 0;
+    return pb - pa || a.cost - b.cost || // eslint-disable-next-line unicorn/prefer-code-point
+    Math.abs(a.word.charCodeAt(0) - srcWord.charCodeAt(0)) - // eslint-disable-next-line unicorn/prefer-code-point
+    Math.abs(b.word.charCodeAt(0) - srcWord.charCodeAt(0));
+  }
+  function processPath2(p) {
+    const len = srcLetters.length;
+    if (p.n.eow && p.i === len) {
+      const word = pNodeToWord(p);
+      const result = { word, cost: p.c };
+      resultHeap.add(result);
+    }
+    calcEdges(p);
+  }
+  function calcEdges(p) {
+    const { n, i, t } = p;
+    const s = srcLetters[i];
+    const sg = visMap[s] || 0;
+    const cost0 = p.c;
+    const cost = cost0 + BC + (i ? 0 : opCosts.firstLetterBias);
+    const costVis = cost0 + VC;
+    const costLegacyCompound = cost0 + opCosts.wordBreak;
+    const costCompound = cost0 + opCosts.compound;
+    if (s) {
+      const m = n.get(s);
+      if (m) {
+        storePath(t, m, i + 1, cost0, s, p, "=", s);
+      }
+      if (weightMap) {
+        processWeightMapEdges(p, weightMap);
+      }
+      const ns = srcLetters[i + 1];
+      if (s == ns && m) {
+        storePath(t, m, i + 2, cost0 + DL, s, p, "dd", s);
+      }
+      storePath(t, n, i + 1, cost, "", p, "d", "");
+      for (const [ss, node] of n.entries()) {
+        if (node.id === m?.id || ss in sc) continue;
+        const g = visMap[ss] || 0;
+        const c = sg & g ? costVis : cost;
+        storePath(t, node, i + 1, c, ss, p, "r", ss);
+      }
+      if (n.eow && i && compoundMethod) {
+        storePath(t, root, i, costLegacyCompound, wordSeparator, p, "L", wordSeparator);
+      }
+      if (ns) {
+        const n1 = n.get(ns);
+        const n2 = n1?.get(s);
+        if (n2) {
+          const ss = ns + s;
+          storePath(t, n2, i + 2, cost0 + opCosts.swapCost, ss, p, "s", ss);
+        }
+      }
+    }
+    if (compRoot && costCompound <= limit && n.get(comp)) {
+      if (compRootIgnoreCase) {
+        storePath(t, compRootIgnoreCase, i, costCompound, "", p, "~+", "~+");
+      }
+      storePath(t, compRoot, i, costCompound, "", p, "+", "+");
+    }
+    if (cost <= limit) {
+      for (const [char, node] of n.entries()) {
+        if (char in sc) continue;
+        storePath(t, node, i, cost, char, p, "i", char);
+      }
+    }
+  }
+  function processWeightMapEdges(p, weightMap2) {
+    delLetters(p, weightMap2, srcLetters, storePath);
+    insLetters(p, weightMap2, srcLetters, storePath);
+    repLetters(p, weightMap2, srcLetters, storePath);
+    return;
+  }
+  function storePath(t, n, i, c, s, p, a, ss) {
+    const tt = getCostTrie(t, ss);
+    const curr = tt.c[i];
+    if (curr <= c || c > limit) return void 0;
+    tt.c[i] = c;
+    pathHeap.add({ n, i, c, s, p, t: tt, a });
+  }
+}
+function delLetters(pNode, weightMap, letters, storePath) {
+  const { t, n } = pNode;
+  const trie = weightMap.insDel;
+  let ii = pNode.i;
+  const cost0 = pNode.c - pNode.i;
+  const len = letters.length;
+  for (let nn = trie.n; ii < len && nn; ) {
+    const tt = nn[letters[ii]];
+    if (!tt) return;
+    ++ii;
+    if (tt.c !== void 0) {
+      storePath(t, n, ii, cost0 + tt.c, "", pNode, "d", "");
+    }
+    nn = tt.n;
+  }
+}
+function insLetters(p, weightMap, _letters, storePath) {
+  const { t, i, c, n } = p;
+  const cost0 = c;
+  searchTrieCostNodesMatchingTrie2(weightMap.insDel, n, (s, tc, n2) => {
+    if (tc.c !== void 0) {
+      storePath(t, n2, i, cost0 + tc.c, s, p, "i", s);
+    }
+  });
+}
+function repLetters(pNode, weightMap, letters, storePath) {
+  const node = pNode.n;
+  const pt = pNode.t;
+  const cost0 = pNode.c;
+  const len = letters.length;
+  const trie = weightMap.replace;
+  let i = pNode.i;
+  for (let n = trie.n; i < len && n; ) {
+    const t = n[letters[i]];
+    if (!t) return;
+    ++i;
+    const tInsert = t.t;
+    if (tInsert) {
+      searchTrieCostNodesMatchingTrie2(tInsert, node, (s, tt, n2) => {
+        const c = tt.c;
+        if (c === void 0) {
+          return;
+        }
+        storePath(pt, n2, i, cost0 + c + (tt.p || 0), s, pNode, "r", s);
+      });
+    }
+    n = t.n;
+  }
+}
+function createCostTrie() {
+  return { c: [], t: /* @__PURE__ */ Object.create(null) };
+}
+function getCostTrie(t, s) {
+  if (s.length == 1) {
+    return t.t[s] ??= createCostTrie();
+  }
+  if (!s) {
+    return t;
+  }
+  let tt = t;
+  for (const c of s) {
+    tt = tt.t[c] ??= createCostTrie();
+  }
+  return tt;
+}
+function pNodeToWord(p) {
+  const parts = [];
+  let n = p;
+  while (n) {
+    parts.push(n.s);
+    n = n.p;
+  }
+  parts.reverse();
+  return parts.join("");
+}
+function specialChars(options) {
+  const charSet = /* @__PURE__ */ Object.create(null);
+  for (const c of Object.values(options)) {
+    charSet[c] = true;
+  }
+  return charSet;
+}
+function searchTrieCostNodesMatchingTrie2(trie, node, emit, s = "") {
+  const n = trie.n;
+  if (!n) return;
+  for (const [key, c] of node.entries()) {
+    const t = n[key];
+    if (!t) continue;
+    const pfx = s + key;
+    emit(pfx, t, c);
+    if (t.n) {
+      searchTrieCostNodesMatchingTrie2(t, c, emit, pfx);
+    }
+  }
+}
+var COMPOUND_FIX = "+";
+var OPTIONAL_COMPOUND_FIX = "*";
+var CASE_INSENSITIVE_PREFIX = "~";
+var FORBID_PREFIX = "!";
+var LINE_COMMENT = "#";
+var IDENTITY_PREFIX = "=";
+var defaultTrieInfo = Object.freeze({
+  compoundCharacter: COMPOUND_FIX,
+  forbiddenWordPrefix: FORBID_PREFIX,
+  stripCaseAndAccentsPrefix: CASE_INSENSITIVE_PREFIX,
+  isCaseAware: true,
+  hasForbiddenWords: false,
+  hasCompoundWords: false,
+  hasNonStrictWords: false
+});
+function mergeDefaults(value, defaultValue) {
+  const result = { ...defaultValue };
+  if (value) {
+    for (const [k, v] of Object.entries(value)) {
+      if (k in result) {
+        result[k] = v ?? result[k];
+      }
+    }
+  }
+  return result;
+}
+function mergeOptionalWithDefaults(...options) {
+  return options.reduce((acc, opt) => mergeDefaults(opt, acc), defaultTrieInfo);
+}
+function expandCharacterSet(line, rangeChar = "-") {
+  const charSet = /* @__PURE__ */ new Set();
+  let mode = 0;
+  let prev = "";
+  for (const char of line) {
+    if (mode) {
+      expandRange(prev, char).forEach((a) => charSet.add(a));
+      mode = 0;
+    }
+    if (char === rangeChar && prev) {
+      mode = 1;
+      continue;
+    }
+    charSet.add(char);
+    prev = char;
+  }
+  if (mode) charSet.add(rangeChar);
+  return charSet;
+}
+function expandRange(a, b) {
+  const values = [];
+  const end = b.codePointAt(0);
+  const begin = a.codePointAt(0);
+  if (!(begin && end)) return values;
+  for (let i = begin; i <= end; ++i) {
+    values.push(String.fromCodePoint(i));
+  }
+  return values;
+}
+function caseForms(letter, locale) {
+  const forms2 = /* @__PURE__ */ new Set([letter]);
+  function tryCases(s) {
+    forms2.add(s.toLocaleLowerCase(locale));
+    forms2.add(s.toLocaleUpperCase(locale));
+  }
+  tryCases(letter);
+  [...forms2].forEach(tryCases);
+  return [...forms2].filter((a) => !!a);
+}
+function accentForms(letter) {
+  const forms2 = /* @__PURE__ */ new Set([letter, letter.normalize("NFC"), letter.normalize("NFD")]);
+  return forms2;
+}
+function stripAccents(characters) {
+  return characters.normalize("NFD").replaceAll(/\p{M}/gu, "");
+}
+function stripNonAccents(characters) {
+  return characters.normalize("NFD").replaceAll(/[^\p{M}]/gu, "");
+}
+function isValidUtf16Character(char) {
+  const len = char.length;
+  const code = char.charCodeAt(0) & 64512;
+  const valid = len === 1 && (code & 63488) !== 55296 || // eslint-disable-next-line unicorn/prefer-code-point
+  len === 2 && (code & 64512) === 55296 && (char.charCodeAt(1) & 64512) === 56320;
+  return valid;
+}
+function assertValidUtf16Character(char) {
+  if (!isValidUtf16Character(char)) {
+    const len = char.length;
+    const codes22 = toCharCodes(char.slice(0, 2)).map((c) => "0x" + ("0000" + c.toString(16)).slice(-4));
+    let message;
+    if (len == 1) {
+      message = `Invalid utf16 character, lone surrogate: ${codes22[0]}`;
+    } else if (len == 2) {
+      message = `Invalid utf16 character, not a valid surrogate pair: [${codes22.join(", ")}]`;
+    } else {
+      message = `Invalid utf16 character, must be a single character, found: ${len}`;
+    }
+    throw new Error(message);
+  }
+}
+function toCharCodes(s) {
+  const values = [];
+  for (let i = 0; i < s.length; ++i) {
+    values.push(s.charCodeAt(i));
+  }
+  return values;
+}
+function encodeUtf8N_BE(code) {
+  if (code < 128) {
+    return code;
+  }
+  if (code < 2048) {
+    return 49280 | (code & 1984) << 2 | code & 63;
+  }
+  if (code < 65536) {
+    return 14712960 | (code & 61440) << 4 | (code & 4032) << 2 | code & 63;
+  }
+  return 4034953344 + ((code & 1835008) << 6 | (code & 258048) << 4 | (code & 4032) << 2 | code & 63);
+}
+var Utf8Accumulator = class _Utf8Accumulator {
+  remaining = 0;
+  value = 0;
+  decode(byte) {
+    let remaining = this.remaining;
+    if (byte & ~255) return this.reset();
+    if ((byte & 128) === 0) {
+      if (remaining) return this.reset();
+      return byte;
+    }
+    if (remaining) {
+      if ((byte & 192) !== 128) return this.reset();
+      let value = this.value;
+      value = value << 6 | byte & 63;
+      this.value = value;
+      remaining -= 1;
+      this.remaining = remaining;
+      return remaining ? void 0 : value;
+    }
+    if ((byte & 224) === 192) {
+      this.value = byte & 31;
+      this.remaining = 1;
+      return void 0;
+    }
+    if ((byte & 240) === 224) {
+      this.value = byte & 15;
+      this.remaining = 2;
+      return void 0;
+    }
+    if ((byte & 248) === 240) {
+      this.value = byte & 7;
+      this.remaining = 3;
+      return void 0;
+    }
+    return this.reset();
+  }
+  reset() {
+    this.remaining = 0;
+    this.value = 0;
+    return 65533;
+  }
+  clone(into = new _Utf8Accumulator()) {
+    into.remaining = this.remaining;
+    into.value = this.value;
+    return into;
+  }
+  static isMultiByte(v) {
+    return (v & 128) !== 0;
+  }
+  static isSingleByte(v) {
+    return (v & 128) === 0;
+  }
+  static create() {
+    return new this();
+  }
+};
+function encodeTextToUtf8Into(text, into, offset = 0) {
+  let i = offset;
+  const len = text.length;
+  for (let j = 0; j < len; j++) {
+    let code = text.charCodeAt(j);
+    code = (code & 63488) === 55296 ? text.codePointAt(j++) || 0 : code;
+    if (code < 128) {
+      into[i++] = code;
+      continue;
+    }
+    if (code < 2048) {
+      const u2 = 49280 | (code & 1984) << 2 | code & 63;
+      into[i++] = u2 >>> 8;
+      into[i++] = u2 & 255;
+      continue;
+    }
+    if (code < 65536) {
+      const u2 = 14712960 | (code & 61440) << 4 | (code & 4032) << 2 | code & 63;
+      into[i++] = u2 >>> 16;
+      into[i++] = u2 >>> 8 & 255;
+      into[i++] = u2 & 255;
+      continue;
+    }
+    const u = 4034953344 | ((code & 1835008) << 6 | (code & 258048) << 4 | (code & 4032) << 2 | code & 63);
+    into[i++] = u >>> 24 & 255;
+    into[i++] = u >>> 16 & 255;
+    into[i++] = u >>> 8 & 255;
+    into[i++] = u & 255;
+  }
+  return i - offset;
+}
+function encodeTextToUtf8(text) {
+  const array = new Array(text.length);
+  const len = encodeTextToUtf8Into(text, array);
+  array.length !== len && (array.length = len);
+  return array;
+}
+var emptySeq = [0];
+Object.freeze(emptySeq);
+var CharIndex = class {
+  constructor(charIndex) {
+    this.charIndex = charIndex;
+    this.#charToUtf8SeqMap = buildCharIndexSequenceMap(charIndex);
+    this.#multiByteChars = [...this.#charToUtf8SeqMap.values()].some((c) => c.length > 1);
+  }
+  #charToUtf8SeqMap;
+  #lastWord = "";
+  #lastWordSeq = [];
+  #multiByteChars;
+  getCharUtf8Seq(c) {
+    const found = this.#charToUtf8SeqMap.get(c);
+    if (found) return found;
+    const s = encodeTextToUtf8(c);
+    this.#charToUtf8SeqMap.set(c, s);
+    return s;
+  }
+  wordToUtf8Seq(word) {
+    if (this.#lastWord === word) return this.#lastWordSeq;
+    const seq = encodeTextToUtf8(word);
+    this.#lastWord = word;
+    this.#lastWordSeq = seq;
+    return seq;
+  }
+  indexContainsMultiByteChars() {
+    return this.#multiByteChars;
+  }
+  get size() {
+    return this.charIndex.length;
+  }
+  toJSON() {
+    return { charIndex: this.charIndex };
+  }
+};
+function buildCharIndexSequenceMap(charIndex) {
+  const map3 = /* @__PURE__ */ new Map();
+  for (const key of charIndex) {
+    map3.set(key, encodeTextToUtf8(key));
+  }
+  return map3;
+}
+var CharIndexBuilder = class {
+  charIndex = [];
+  charIndexMap = /* @__PURE__ */ new Map();
+  charIndexSeqMap = /* @__PURE__ */ new Map();
+  #mapIdxToSeq = /* @__PURE__ */ new Map();
+  constructor() {
+    this.getUtf8Value("");
+  }
+  getUtf8Value(c) {
+    const found = this.charIndexMap.get(c);
+    if (found !== void 0) {
+      return found;
+    }
+    const nc = c.normalize("NFC");
+    this.charIndex.push(nc);
+    const utf8 = encodeUtf8N_BE(nc.codePointAt(0) || 0);
+    this.charIndexMap.set(c, utf8);
+    this.charIndexMap.set(nc, utf8);
+    this.charIndexMap.set(c.normalize("NFD"), utf8);
+    return utf8;
+  }
+  utf8ValueToUtf8Seq(idx2) {
+    const found = this.#mapIdxToSeq.get(idx2);
+    if (found !== void 0) {
+      return found;
+    }
+    const seq = splitUtf8(idx2);
+    this.#mapIdxToSeq.set(idx2, seq);
+    return seq;
+  }
+  charToUtf8Seq(c) {
+    const idx2 = this.getUtf8Value(c);
+    return this.utf8ValueToUtf8Seq(idx2);
+  }
+  wordToUtf8Seq(word) {
+    const seq = new Array(word.length);
+    let i = 0;
+    for (const c of word) {
+      const idx2 = this.getUtf8Value(c);
+      const cSep = this.utf8ValueToUtf8Seq(idx2);
+      if (typeof cSep === "number") {
+        seq[i++] = cSep;
+        continue;
+      }
+      for (const cIdx of cSep) {
+        seq[i++] = cIdx;
+      }
+    }
+    if (seq.length !== i) seq.length = i;
+    return seq;
+  }
+  get size() {
+    return this.charIndex.length;
+  }
+  build() {
+    return new CharIndex(this.charIndex);
+  }
+};
+function splitUtf8(utf8) {
+  if (utf8 <= 255) return [utf8];
+  if (utf8 <= 65535) return [utf8 >> 8 & 255, utf8 & 255];
+  if (utf8 <= 16777215) return [utf8 >> 16 & 255, utf8 >> 8 & 255, utf8 & 255];
+  return [utf8 >> 24 & 255, utf8 >> 16 & 255, utf8 >> 8 & 255, utf8 & 255].filter((v) => v);
+}
+function extractInfo(info5) {
+  const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = info5;
+  return {
+    NodeMaskEOW,
+    NodeMaskChildCharIndex,
+    NodeChildRefShift
+  };
+}
+var FastTrieBlobInternals = class {
+  constructor(nodes, charIndex, maskInfo, info5) {
+    this.nodes = nodes;
+    this.charIndex = charIndex;
+    const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = maskInfo;
+    this.NodeMaskEOW = NodeMaskEOW;
+    this.NodeMaskChildCharIndex = NodeMaskChildCharIndex;
+    this.NodeChildRefShift = NodeChildRefShift;
+    this.isIndexDecoderNeeded = charIndex.indexContainsMultiByteChars();
+    this.info = mergeOptionalWithDefaults(info5);
+  }
+  NodeMaskEOW;
+  NodeMaskChildCharIndex;
+  NodeChildRefShift;
+  isIndexDecoderNeeded;
+  info;
+};
+var FastTrieBlobInternalsAndMethods = class extends FastTrieBlobInternals {
+  nodeFindNode;
+  nodeFindExact;
+  nodeGetChild;
+  isForbidden;
+  findExact;
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+  constructor(nodes, charIndex, maskInfo, info5, trieMethods) {
+    super(nodes, charIndex, maskInfo, info5);
+    this.nodeFindExact = trieMethods.nodeFindExact;
+    this.nodeGetChild = trieMethods.nodeGetChild;
+    this.isForbidden = trieMethods.isForbidden;
+    this.findExact = trieMethods.findExact;
+    this.nodeFindNode = trieMethods.nodeFindNode;
+    this.hasForbiddenWords = trieMethods.hasForbiddenWords;
+    this.hasCompoundWords = trieMethods.hasCompoundWords;
+    this.hasNonStrictWords = trieMethods.hasNonStrictWords;
+  }
+};
+function sortNodes(nodes, mask) {
+  if (Object.isFrozen(nodes)) {
+    assertSorted(nodes, mask);
+    return nodes;
+  }
+  for (let i = 0; i < nodes.length; ++i) {
+    let node = nodes[i];
+    if (node.length > 2) {
+      const isFrozen = Object.isFrozen(node);
+      node = isFrozen ? Uint32Array.from(node) : node;
+      const nodeInfo = node[0];
+      node[0] = 0;
+      node.sort((a, b) => !a ? -1 : !b ? 1 : (a & mask) - (b & mask));
+      node[0] = nodeInfo;
+      if (isFrozen) {
+        nodes[i] = node;
+        Object.freeze(node);
+      }
+    }
+  }
+  Object.freeze(nodes);
+  return nodes;
+}
+function assertSorted(nodes, mask) {
+  for (let i = 0; i < nodes.length; ++i) {
+    const node = nodes[i];
+    if (node.length > 2) {
+      let last = -1;
+      for (let j = 1; j < node.length; ++j) {
+        const n = node[j] & mask;
+        if (n < last) {
+          throw new Error(`Node ${i} is not sorted. ${last} > ${n}`);
+        }
+        last = n;
+      }
+    }
+  }
+}
+var EmptyKeys2 = Object.freeze([]);
+var EmptyNodes = Object.freeze([]);
+var EmptyEntries2 = Object.freeze([]);
+var FastTrieBlobINode = class _FastTrieBlobINode {
+  constructor(trie, nodeIdx) {
+    this.trie = trie;
+    this.nodeIdx = nodeIdx;
+    const node = trie.nodes[nodeIdx];
+    this.node = node;
+    this.eow = !!(node[0] & trie.NodeMaskEOW);
+    this._count = node.length - 1;
+    this.id = nodeIdx;
+    this.findExact = (word) => trie.nodeFindExact(nodeIdx, word);
+  }
+  id;
+  node;
+  eow;
+  _keys;
+  _count;
+  _size;
+  _chained;
+  _nodesEntries;
+  _entries;
+  _values;
+  charToIdx;
+  /** get keys to children */
+  keys() {
+    if (this._keys) return this._keys;
+    if (!this._count) return EmptyKeys2;
+    this._keys = this.getNodesEntries().map(([key]) => key);
+    return this._keys;
+  }
+  values() {
+    if (!this._count) return EmptyNodes;
+    if (this._values) return this._values;
+    this._values = this.entries().map(([, value]) => value);
+    return this._values;
+  }
+  entries() {
+    if (this._entries) return this._entries;
+    if (!this._count) return EmptyEntries2;
+    const entries = this.getNodesEntries();
+    this._entries = entries.map(([key, value]) => [key, new _FastTrieBlobINode(this.trie, value)]);
+    return this._entries;
+  }
+  /** get child ITrieNode */
+  get(char) {
+    const idx2 = this.trie.nodeGetChild(this.id, char);
+    if (idx2 === void 0) return void 0;
+    return new _FastTrieBlobINode(this.trie, idx2);
+  }
+  getNode(chars) {
+    const idx2 = this.trie.nodeFindNode(this.id, chars);
+    if (idx2 === void 0) return void 0;
+    return new _FastTrieBlobINode(this.trie, idx2);
+  }
+  has(char) {
+    const idx2 = this.trie.nodeGetChild(this.id, char);
+    return idx2 !== void 0;
+  }
+  hasChildren() {
+    return this._count > 0;
+  }
+  child(keyIdx) {
+    if (!this._values && !this.containsChainedIndexes()) {
+      const n = this.node[keyIdx + 1];
+      const nodeIdx = n >>> this.trie.NodeChildRefShift;
+      return new _FastTrieBlobINode(this.trie, nodeIdx);
+    }
+    return this.values()[keyIdx];
+  }
+  getCharToIdxMap() {
+    const m = this.charToIdx;
+    if (m) return m;
+    const map3 = /* @__PURE__ */ Object.create(null);
+    const keys3 = this.keys();
+    for (let i = 0; i < keys3.length; ++i) {
+      map3[keys3[i]] = i;
+    }
+    this.charToIdx = map3;
+    return map3;
+  }
+  findExact(word) {
+    return this.trie.nodeFindExact(this.id, word);
+  }
+  isForbidden(word) {
+    const n = this.trie.nodeGetChild(this.id, this.trie.info.forbiddenWordPrefix);
+    if (n === void 0) return false;
+    return this.trie.nodeFindExact(n, word);
+  }
+  findCaseInsensitive(word) {
+    const n = this.trie.nodeGetChild(this.id, this.trie.info.stripCaseAndAccentsPrefix);
+    if (n === void 0) return false;
+    return this.trie.nodeFindExact(n, word);
+  }
+  containsChainedIndexes() {
+    if (this._chained !== void 0) return this._chained;
+    if (!this._count || !this.trie.isIndexDecoderNeeded) {
+      this._chained = false;
+      return false;
+    }
+    let found = false;
+    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
+    const len = this._count;
+    const node = this.node;
+    for (let i = 1; i <= len && !found; ++i) {
+      const entry = node[i];
+      const codePoint = entry & NodeMaskChildCharIndex;
+      found = Utf8Accumulator.isMultiByte(codePoint);
+    }
+    this._chained = !!found;
+    return this._chained;
+  }
+  getNodesEntries() {
+    if (this._nodesEntries) return this._nodesEntries;
+    if (!this.containsChainedIndexes()) {
+      const entries = Array(this._count);
+      const nodes = this.node;
+      const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
+      const RefShift = this.trie.NodeChildRefShift;
+      for (let i = 0; i < this._count; ++i) {
+        const entry = nodes[i + 1];
+        const codePoint = entry & NodeMaskChildCharIndex;
+        entries[i] = [String.fromCodePoint(codePoint), entry >>> RefShift];
+      }
+      this._nodesEntries = entries;
+      return entries;
+    }
+    this._nodesEntries = this.walkChainedIndexes();
+    return this._nodesEntries;
+  }
+  walkChainedIndexes() {
+    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
+    const NodeChildRefShift = this.trie.NodeChildRefShift;
+    const nodes = this.trie.nodes;
+    const acc = Utf8Accumulator.create();
+    const stack = [{ n: this.node, c: 1, acc }];
+    let depth = 0;
+    const entries = Array(this._count);
+    let eIdx = 0;
+    while (depth >= 0) {
+      const s = stack[depth];
+      const { n: node, c: off } = s;
+      if (off >= node.length) {
+        --depth;
+        continue;
+      }
+      ++s.c;
+      const entry = node[off];
+      const charIdx = entry & NodeMaskChildCharIndex;
+      const acc2 = s.acc.clone();
+      const codePoint = acc2.decode(charIdx);
+      if (codePoint !== void 0) {
+        const char = String.fromCodePoint(codePoint);
+        const nodeIdx = entry >>> NodeChildRefShift;
+        entries[eIdx++] = [char, nodeIdx];
+        continue;
+      }
+      const idx2 = entry >>> NodeChildRefShift;
+      const ss = stack[++depth];
+      if (ss) {
+        ss.n = nodes[idx2];
+        ss.c = 1;
+        ss.acc = acc2;
+      } else {
+        stack[depth] = { n: nodes[idx2], c: 1, acc: acc2 };
+      }
+    }
+    return entries;
+  }
+  get size() {
+    if (this._size === void 0) {
+      if (!this.containsChainedIndexes()) {
+        this._size = this._count;
+        return this._size;
+      }
+      this._size = this.getNodesEntries().length;
+    }
+    return this._size;
+  }
+};
+var FastTrieBlobIRoot = class extends FastTrieBlobINode {
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+  constructor(trie, nodeIdx) {
+    super(trie, nodeIdx);
+    this.hasForbiddenWords = trie.hasForbiddenWords;
+    this.hasCompoundWords = trie.hasCompoundWords;
+    this.hasNonStrictWords = trie.hasNonStrictWords;
+  }
+  resolveId(id) {
+    return new FastTrieBlobINode(this.trie, id);
+  }
+  find(word, strict) {
+    let found = this.findExact(word);
+    if (found) {
+      return { found: word, compoundUsed: false, caseMatched: true };
+    }
+    if (strict) return void 0;
+    found = this.findCaseInsensitive(word);
+    return found ? { found: word, compoundUsed: false, caseMatched: false } : void 0;
+  }
+  get info() {
+    return this.trie.info;
+  }
+  get forbidPrefix() {
+    return this.trie.info.forbiddenWordPrefix;
+  }
+  get compoundFix() {
+    return this.trie.info.compoundCharacter;
+  }
+  get caseInsensitivePrefix() {
+    return this.trie.info.stripCaseAndAccentsPrefix;
+  }
+};
+var TrieBlobInternals = class {
+  constructor(nodes, charIndex, maskInfo, methods) {
+    this.nodes = nodes;
+    this.charIndex = charIndex;
+    const { NodeMaskEOW, NodeMaskChildCharIndex, NodeMaskNumChildren, NodeChildRefShift } = maskInfo;
+    this.NodeMaskEOW = NodeMaskEOW;
+    this.NodeMaskNumChildren = NodeMaskNumChildren;
+    this.NodeMaskChildCharIndex = NodeMaskChildCharIndex;
+    this.NodeChildRefShift = NodeChildRefShift;
+    this.isIndexDecoderNeeded = charIndex.indexContainsMultiByteChars();
+    this.nodeFindExact = methods.nodeFindExact;
+    this.isForbidden = methods.isForbidden;
+    this.findExact = methods.findExact;
+    this.nodeGetChild = methods.nodeGetChild;
+    this.nodeFindNode = methods.nodeFindNode;
+    this.hasForbiddenWords = methods.hasForbiddenWords;
+    this.hasCompoundWords = methods.hasCompoundWords;
+    this.hasNonStrictWords = methods.hasNonStrictWords;
+  }
+  NodeMaskEOW;
+  NodeMaskNumChildren;
+  NodeMaskChildCharIndex;
+  NodeChildRefShift;
+  isIndexDecoderNeeded;
+  nodeFindExact;
+  isForbidden;
+  findExact;
+  nodeGetChild;
+  nodeFindNode;
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+};
+var EmptyKeys3 = Object.freeze([]);
+var EmptyNodes2 = Object.freeze([]);
+var EmptyEntries3 = Object.freeze([]);
+var TrieBlobINode = class _TrieBlobINode {
+  constructor(trie, nodeIdx) {
+    this.trie = trie;
+    this.nodeIdx = nodeIdx;
+    const node = trie.nodes[nodeIdx];
+    this.node = node;
+    this.eow = !!(node & trie.NodeMaskEOW);
+    this._count = node & trie.NodeMaskNumChildren;
+    this.id = nodeIdx;
+  }
+  id;
+  node;
+  eow;
+  _keys;
+  _count;
+  _size;
+  _chained;
+  _nodesEntries;
+  _entries;
+  _values;
+  charToIdx;
+  /** get keys to children */
+  keys() {
+    if (this._keys) return this._keys;
+    if (!this._count) return EmptyKeys3;
+    this._keys = this.getNodesEntries().map(([key]) => key);
+    return this._keys;
+  }
+  values() {
+    if (!this._count) return EmptyNodes2;
+    if (this._values) return this._values;
+    this._values = this.entries().map(([, value]) => value);
+    return this._values;
+  }
+  entries() {
+    if (this._entries) return this._entries;
+    if (!this._count) return EmptyEntries3;
+    const entries = this.getNodesEntries();
+    this._entries = entries.map(([key, value]) => [key, new _TrieBlobINode(this.trie, value)]);
+    return this._entries;
+  }
+  /** get child ITrieNode */
+  get(char) {
+    return this.#getChildNode(char);
+  }
+  has(char) {
+    return this.trie.nodeGetChild(this.nodeIdx, char) !== void 0;
+  }
+  hasChildren() {
+    return this._count > 0;
+  }
+  child(keyIdx) {
+    if (!this._values && !this.containsChainedIndexes()) {
+      const n = this.trie.nodes[this.nodeIdx + keyIdx + 1];
+      const nodeIdx = n >>> this.trie.NodeChildRefShift;
+      return new _TrieBlobINode(this.trie, nodeIdx);
+    }
+    return this.values()[keyIdx];
+  }
+  #getChildNodeIdx(char) {
+    return this.trie.nodeGetChild(this.nodeIdx, char);
+  }
+  #getChildNode(char) {
+    if (this.charToIdx) {
+      const keyIdx = this.charToIdx[char];
+      if (keyIdx === void 0) return void 0;
+      return this.child(keyIdx);
+    }
+    const idx2 = this.#getChildNodeIdx(char);
+    if (idx2 === void 0) return void 0;
+    return new _TrieBlobINode(this.trie, idx2);
+  }
+  getCharToIdxMap() {
+    const m = this.charToIdx;
+    if (m) return m;
+    const map3 = /* @__PURE__ */ Object.create(null);
+    const keys3 = this.keys();
+    for (let i = 0; i < keys3.length; ++i) {
+      map3[keys3[i]] = i;
+    }
+    this.charToIdx = map3;
+    return map3;
+  }
+  getNode(word) {
+    const n = this.trie.nodeFindNode(this.nodeIdx, word);
+    return n === void 0 ? void 0 : new _TrieBlobINode(this.trie, n);
+  }
+  findExact(word) {
+    return this.trie.nodeFindExact(this.nodeIdx, word);
+  }
+  containsChainedIndexes() {
+    if (this._chained !== void 0) return this._chained;
+    if (!this._count || !this.trie.isIndexDecoderNeeded) {
+      this._chained = false;
+      return false;
+    }
+    let found = false;
+    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
+    const offset = this.nodeIdx + 1;
+    const nodes = this.trie.nodes;
+    const len = this._count;
+    for (let i = 0; i < len && !found; ++i) {
+      const entry = nodes[i + offset];
+      const charIdx = entry & NodeMaskChildCharIndex;
+      found = Utf8Accumulator.isMultiByte(charIdx);
+    }
+    this._chained = !!found;
+    return this._chained;
+  }
+  getNodesEntries() {
+    if (this._nodesEntries) return this._nodesEntries;
+    if (!this.containsChainedIndexes()) {
+      const entries = Array(this._count);
+      const nodes = this.trie.nodes;
+      const offset = this.nodeIdx + 1;
+      const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
+      const RefShift = this.trie.NodeChildRefShift;
+      for (let i = 0; i < this._count; ++i) {
+        const entry = nodes[offset + i];
+        const codePoint = entry & NodeMaskChildCharIndex;
+        entries[i] = [String.fromCodePoint(codePoint), entry >>> RefShift];
+      }
+      this._nodesEntries = entries;
+      return entries;
+    }
+    this._nodesEntries = this.walkChainedIndexes();
+    return this._nodesEntries;
+  }
+  walkChainedIndexes() {
+    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
+    const NodeChildRefShift = this.trie.NodeChildRefShift;
+    const NodeMaskNumChildren = this.trie.NodeMaskNumChildren;
+    const nodes = this.trie.nodes;
+    const acc = Utf8Accumulator.create();
+    const stack = [{ nodeIdx: this.nodeIdx + 1, lastIdx: this.nodeIdx + this._count, acc }];
+    let depth = 0;
+    const entries = Array(this._count);
+    let eIdx = 0;
+    while (depth >= 0) {
+      const s = stack[depth];
+      const { nodeIdx, lastIdx } = s;
+      if (nodeIdx > lastIdx) {
+        --depth;
+        continue;
+      }
+      ++s.nodeIdx;
+      const entry = nodes[nodeIdx];
+      const charIdx = entry & NodeMaskChildCharIndex;
+      const acc2 = s.acc.clone();
+      const codePoint = acc2.decode(charIdx);
+      if (codePoint !== void 0) {
+        const char = String.fromCodePoint(codePoint);
+        const nodeIdx2 = entry >>> NodeChildRefShift;
+        entries[eIdx++] = [char, nodeIdx2];
+        continue;
+      }
+      const idx2 = entry >>> NodeChildRefShift;
+      const lIdx = idx2 + (nodes[idx2] & NodeMaskNumChildren);
+      const ss = stack[++depth];
+      if (ss) {
+        ss.nodeIdx = idx2 + 1;
+        ss.lastIdx = lIdx;
+        ss.acc = acc2;
+      } else {
+        stack[depth] = { nodeIdx: idx2 + 1, lastIdx: lIdx, acc: acc2 };
+      }
+    }
+    return entries;
+  }
+  get size() {
+    if (this._size === void 0) {
+      if (!this.containsChainedIndexes()) {
+        this._size = this._count;
+        return this._size;
+      }
+      this._size = this.getNodesEntries().length;
+    }
+    return this._size;
+  }
+};
+var TrieBlobIRoot = class extends TrieBlobINode {
+  constructor(trie, nodeIdx, info5, methods) {
+    super(trie, nodeIdx);
+    this.info = info5;
+    this.find = methods.find;
+    this.isForbidden = trie.isForbidden;
+    this.hasForbiddenWords = trie.hasForbiddenWords;
+    this.hasCompoundWords = trie.hasCompoundWords;
+    this.hasNonStrictWords = trie.hasNonStrictWords;
+  }
+  find;
+  isForbidden;
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+  resolveId(id) {
+    return new TrieBlobINode(this.trie, id);
+  }
+  get forbidPrefix() {
+    return this.info.forbiddenWordPrefix;
+  }
+  get compoundFix() {
+    return this.info.compoundCharacter;
+  }
+  get caseInsensitivePrefix() {
+    return this.info.stripCaseAndAccentsPrefix;
+  }
+};
+var NodeHeaderNumChildrenBits = 8;
+var NodeHeaderNumChildrenShift = 0;
+var HEADER_SIZE_UINT32 = 8;
+var HEADER_SIZE = HEADER_SIZE_UINT32 * 4;
+var HEADER_OFFSET = 0;
+var HEADER_OFFSET_SIG = HEADER_OFFSET;
+var HEADER_OFFSET_ENDIAN = HEADER_OFFSET_SIG + 8;
+var HEADER_OFFSET_VERSION = HEADER_OFFSET_ENDIAN + 4;
+var HEADER_OFFSET_NODES = HEADER_OFFSET_VERSION + 4;
+var HEADER_OFFSET_NODES_LEN = HEADER_OFFSET_NODES + 4;
+var HEADER_OFFSET_CHAR_INDEX = HEADER_OFFSET_NODES_LEN + 4;
+var HEADER_OFFSET_CHAR_INDEX_LEN = HEADER_OFFSET_CHAR_INDEX + 4;
+var HEADER = {
+  header: HEADER_OFFSET,
+  sig: HEADER_OFFSET_SIG,
+  version: HEADER_OFFSET_VERSION,
+  endian: HEADER_OFFSET_ENDIAN,
+  nodes: HEADER_OFFSET_NODES,
+  nodesLen: HEADER_OFFSET_NODES_LEN,
+  charIndex: HEADER_OFFSET_CHAR_INDEX,
+  charIndexLen: HEADER_OFFSET_CHAR_INDEX_LEN
+};
+var headerSig = "TrieBlob";
+var version = "00.01.00";
+var endianSig = 67305985;
+var TrieBlob = class _TrieBlob {
+  constructor(nodes, charIndex, info5) {
+    this.nodes = nodes;
+    this.charIndex = charIndex;
+    trieBlobSort(nodes);
+    this.info = mergeOptionalWithDefaults(info5);
+    this.#nodes8 = new Uint8Array(nodes.buffer, nodes.byteOffset + this.#beAdj);
+    this.#forbidIdx = this._lookupNode(0, this.info.forbiddenWordPrefix);
+    this.#compoundIdx = this._lookupNode(0, this.info.compoundCharacter);
+    this.#nonStrictIdx = this._lookupNode(0, this.info.stripCaseAndAccentsPrefix);
+    this.hasForbiddenWords = !!this.#forbidIdx;
+    this.hasCompoundWords = !!this.#compoundIdx;
+    this.hasNonStrictWords = !!this.#nonStrictIdx;
+  }
+  info;
+  #forbidIdx;
+  #compoundIdx;
+  #nonStrictIdx;
+  #size;
+  #iTrieRoot;
+  /** the nodes data in 8 bits */
+  #nodes8;
+  #beAdj = (0, import_node_os.endianness)() === "BE" ? 3 : 0;
+  wordToCharacters = (word) => [...word];
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+  wordToUtf8Seq(word) {
+    return this.charIndex.wordToUtf8Seq(word);
+  }
+  letterToNodeCharIndexSequence(letter) {
+    return this.charIndex.getCharUtf8Seq(letter);
+  }
+  has(word) {
+    return this.#hasWord(0, word);
+  }
+  isForbiddenWord(word) {
+    return !!this.#forbidIdx && this.#hasWord(this.#forbidIdx, word);
+  }
+  /**
+   * Try to find the word in the trie. The word must be normalized.
+   * If `strict` is `true` the case and accents must match.
+   * Compound words are supported assuming that the compound character is in the trie.
+   *
+   * @param word - the word to find (normalized)
+   * @param strict - if `true` the case and accents must match.
+   */
+  find(word, strict) {
+    if (!this.hasCompoundWords) {
+      const found = this.#hasWord(0, word);
+      if (found) return { found: word, compoundUsed: false, caseMatched: true };
+      if (strict || !this.#nonStrictIdx) return { found: false, compoundUsed: false, caseMatched: false };
+      return { found: this.#hasWord(this.#nonStrictIdx, word) && word, compoundUsed: false, caseMatched: false };
+    }
+    return void 0;
+  }
+  getRoot() {
+    return this.#iTrieRoot ??= this._getRoot();
+  }
+  _getRoot() {
+    const trieData = new TrieBlobInternals(
+      this.nodes,
+      this.charIndex,
+      {
+        NodeMaskEOW: _TrieBlob.NodeMaskEOW,
+        NodeMaskNumChildren: _TrieBlob.NodeMaskNumChildren,
+        NodeMaskChildCharIndex: _TrieBlob.NodeMaskChildCharIndex,
+        NodeChildRefShift: _TrieBlob.NodeChildRefShift
+      },
+      {
+        nodeFindExact: (idx2, word) => this.#hasWord(idx2, word),
+        nodeGetChild: (idx2, letter) => this._lookupNode(idx2, letter),
+        nodeFindNode: (idx2, word) => this.#findNode(idx2, word),
+        isForbidden: (word) => this.isForbiddenWord(word),
+        findExact: (word) => this.has(word),
+        hasCompoundWords: this.hasCompoundWords,
+        hasForbiddenWords: this.hasForbiddenWords,
+        hasNonStrictWords: this.hasNonStrictWords
+      }
+    );
+    return new TrieBlobIRoot(trieData, 0, this.info, {
+      find: (word, strict) => this.find(word, strict)
+    });
+  }
+  getNode(prefix) {
+    return findNode(this.getRoot(), prefix);
+  }
+  /**
+   * Check if the word is in the trie starting at the given node index.
+   */
+  #hasWord(nodeIdx, word) {
+    const nodeIdxFound = this.#findNode(nodeIdx, word);
+    if (!nodeIdxFound) return false;
+    const node = this.nodes[nodeIdxFound];
+    const m = _TrieBlob.NodeMaskEOW;
+    return (node & m) === m;
+  }
+  #findNode(nodeIdx, word) {
+    const wordIndexes = this.wordToUtf8Seq(word);
+    return this.#lookupNode(nodeIdx, wordIndexes);
+  }
+  /**
+   * Find the node index for the given Utf8 character sequence.
+   * @param nodeIdx - node index to start the search
+   * @param seq - the byte sequence of the character to look for
+   * @returns
+   */
+  #lookupNode(nodeIdx, seq) {
+    const NodeMaskNumChildren = _TrieBlob.NodeMaskNumChildren;
+    const NodeChildRefShift = _TrieBlob.NodeChildRefShift;
+    const nodes = this.nodes;
+    const nodes8 = this.#nodes8;
+    const wordIndexes = seq;
+    const len = wordIndexes.length;
+    let node = nodes[nodeIdx];
+    for (let p = 0; p < len; ++p, node = nodes[nodeIdx]) {
+      const letterIdx = wordIndexes[p];
+      const count3 = node & NodeMaskNumChildren;
+      const idx4 = nodeIdx << 2;
+      if (count3 > 15) {
+        const pEnd = idx4 + (count3 << 2);
+        let i2 = idx4 + 4;
+        let j = pEnd;
+        while (j - i2 >= 4) {
+          const m = i2 + j >> 1 & ~3;
+          if (nodes8[m] < letterIdx) {
+            i2 = m + 4;
+          } else {
+            j = m;
+          }
+        }
+        if (i2 > pEnd || nodes8[i2] !== letterIdx) return void 0;
+        nodeIdx = nodes[i2 >> 2] >>> NodeChildRefShift;
+        continue;
+      }
+      let i = idx4 + count3 * 4;
+      for (; i > idx4; i -= 4) {
+        if (nodes8[i] === letterIdx) {
+          break;
+        }
+      }
+      if (i <= idx4) return void 0;
+      nodeIdx = nodes[i >> 2] >>> NodeChildRefShift;
+    }
+    return nodeIdx;
+  }
+  /**
+   * Find the node index for the given character.
+   * @param nodeIdx - node index to start the search
+   * @param char - character to look for
+   * @returns
+   */
+  _lookupNode(nodeIdx, char) {
+    const indexSeq = this.letterToNodeCharIndexSequence(char);
+    const currNodeIdx = this.#lookupNode(nodeIdx, indexSeq);
+    return currNodeIdx;
+  }
+  *words() {
+    const NodeMaskNumChildren = _TrieBlob.NodeMaskNumChildren;
+    const NodeMaskEOW = _TrieBlob.NodeMaskEOW;
+    const NodeMaskChildCharIndex = _TrieBlob.NodeMaskChildCharIndex;
+    const NodeChildRefShift = _TrieBlob.NodeChildRefShift;
+    const nodes = this.nodes;
+    const stack = [{ nodeIdx: 0, pos: 0, word: "", acc: Utf8Accumulator.create() }];
+    let depth = 0;
+    while (depth >= 0) {
+      const { nodeIdx, pos, word, acc } = stack[depth];
+      const node = nodes[nodeIdx];
+      if (!pos && node & NodeMaskEOW) {
+        yield word;
+      }
+      const len = node & NodeMaskNumChildren;
+      if (pos >= len) {
+        --depth;
+        continue;
+      }
+      const nextPos = ++stack[depth].pos;
+      const entry = nodes[nodeIdx + nextPos];
+      const nAcc = acc.clone();
+      const codePoint = nAcc.decode(entry & NodeMaskChildCharIndex);
+      const letter = codePoint && String.fromCodePoint(codePoint) || "";
+      ++depth;
+      stack[depth] = {
+        nodeIdx: entry >>> NodeChildRefShift,
+        pos: 0,
+        word: word + letter,
+        acc: nAcc
+      };
+    }
+  }
+  get size() {
+    if (this.#size) return this.#size;
+    const NodeMaskNumChildren = _TrieBlob.NodeMaskNumChildren;
+    const nodes = this.nodes;
+    let p = 0;
+    let count3 = 0;
+    while (p < nodes.length) {
+      ++count3;
+      p += (nodes[p] & NodeMaskNumChildren) + 1;
+    }
+    this.#size = count3;
+    return count3;
+  }
+  toJSON() {
+    return {
+      options: this.info,
+      nodes: nodesToJson(this.nodes),
+      charIndex: this.charIndex
+    };
+  }
+  encodeBin() {
+    const charIndex = Buffer.from(this.charIndex.charIndex.join("\n"));
+    const charIndexLen = charIndex.byteLength + 3 & ~3;
+    const nodeOffset = HEADER_SIZE + charIndexLen;
+    const size = nodeOffset + this.nodes.length * 4;
+    const useLittle = isLittleEndian();
+    const buffer2 = Buffer.alloc(size);
+    const header = new DataView(buffer2.buffer);
+    const nodeData = new Uint8Array(this.nodes.buffer);
+    buffer2.write(headerSig, HEADER.sig, "utf8");
+    buffer2.write(version, HEADER.version, "utf8");
+    header.setUint32(HEADER.endian, endianSig, useLittle);
+    header.setUint32(HEADER.nodes, nodeOffset, useLittle);
+    header.setUint32(HEADER.nodesLen, this.nodes.length, useLittle);
+    header.setUint32(HEADER.charIndex, HEADER_SIZE, useLittle);
+    header.setUint32(HEADER.charIndexLen, charIndex.length, useLittle);
+    buffer2.set(charIndex, HEADER_SIZE);
+    buffer2.set(nodeData, nodeOffset);
+    return buffer2;
+  }
+  static decodeBin(blob) {
+    if (!checkSig(blob)) {
+      throw new ErrorDecodeTrieBlob("Invalid TrieBlob Header");
+    }
+    const header = new DataView(blob.buffer);
+    const useLittle = isLittleEndian();
+    if (header.getUint32(HEADER.endian, useLittle) !== endianSig) {
+      throw new ErrorDecodeTrieBlob("Invalid TrieBlob Header");
+    }
+    const offsetNodes = header.getUint32(HEADER.nodes, useLittle);
+    const lenNodes = header.getUint32(HEADER.nodesLen, useLittle);
+    const offsetCharIndex = header.getUint32(HEADER.charIndex, useLittle);
+    const lenCharIndex = header.getUint32(HEADER.charIndexLen, useLittle);
+    const charIndex = Buffer.from(blob.subarray(offsetCharIndex, offsetCharIndex + lenCharIndex)).toString("utf8").split("\n");
+    const nodes = new Uint32Array(blob.buffer, offsetNodes, lenNodes);
+    const trieBlob = new _TrieBlob(nodes, new CharIndex(charIndex), defaultTrieInfo);
+    return trieBlob;
+  }
+  // #prepLookup() {
+  //     const NodeMaskNumChildren = TrieBlob.NodeMaskNumChildren;
+  //     const NodeMaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
+  //     const NodeChildRefShift = TrieBlob.NodeChildRefShift;
+  //     const stack: WalkStackItem[] = [];
+  //     const iter = this.#walk(stack)[Symbol.iterator]();
+  //     const nodes = this.nodes;
+  //     let n: IteratorResult<number>;
+  //     let deeper = true;
+  //     while (!(n = iter.next(deeper)).done) {
+  //         const depth = n.value;
+  //         const nodeIdx = stack[depth].nodeIdx;
+  //         const node = nodes[nodeIdx];
+  //         const len = node & NodeMaskNumChildren;
+  //         deeper = len > lookupCount;
+  //         if (deeper) {
+  //             const map = new Map<number, number>();
+  //             this.#nodeIdxLookup.set(nodeIdx, map);
+  //             for (let i = len; i > 0; --i) {
+  //                 const n = nodes[i + nodeIdx];
+  //                 map.set(n & NodeMaskChildCharIndex, n >> NodeChildRefShift);
+  //             }
+  //             // const parent = depth > 0 ? stack[depth - 1].nodeIdx : -1;
+  //             // console.error('Node %d has %d children, parent %d', nodeIdx, len, parent);
+  //         }
+  //     }
+  // }
+  // Keeping this for a bit, until we are sure we don't need it.
+  // *#walk(wStack: WalkStackItem[]): Generator<number, undefined, undefined | boolean> {
+  //     const NodeMaskNumChildren = TrieBlob.NodeMaskNumChildren;
+  //     const NodeChildRefShift = TrieBlob.NodeChildRefShift;
+  //     const nodes = this.nodes;
+  //     const stack = wStack;
+  //     stack[0] = { nodeIdx: 0, pos: 0 };
+  //     let depth = 0;
+  //     while (depth >= 0) {
+  //         const { nodeIdx, pos } = stack[depth];
+  //         const node = nodes[nodeIdx];
+  //         // pos is 0 when first entering a node
+  //         if (!pos) {
+  //             const deeper = yield depth;
+  //             if (deeper === false) {
+  //                 --depth;
+  //                 continue;
+  //             }
+  //         }
+  //         const len = node & NodeMaskNumChildren;
+  //         if (pos >= len) {
+  //             --depth;
+  //             continue;
+  //         }
+  //         const nextPos = ++stack[depth].pos;
+  //         const entry = nodes[nodeIdx + nextPos];
+  //         ++depth;
+  //         stack[depth] = stack[depth] || { nodeIdx: 0, pos: 0 };
+  //         (stack[depth].nodeIdx = entry >>> NodeChildRefShift), (stack[depth].pos = 0);
+  //     }
+  // }
+  static NodeMaskEOW = 256 & 65535;
+  static NodeMaskNumChildren = (1 << NodeHeaderNumChildrenBits) - 1 & 65535;
+  static NodeMaskNumChildrenShift = NodeHeaderNumChildrenShift;
+  static NodeChildRefShift = 8;
+  /**
+   * Only 8 bits are reserved for the character index.
+   * The max index is {@link TrieBlob.SpecialCharIndexMask} - 1.
+   * Node chaining is used to reference higher character indexes.
+   * - @see {@link TrieBlob.SpecialCharIndexMask}
+   * - @see {@link TrieBlob.MaxCharIndex}
+   */
+  static NodeMaskChildCharIndex = 255;
+  static nodesView(trie) {
+    return new Uint32Array(trie.nodes);
+  }
+};
+function isLittleEndian() {
+  const buf = new Uint8Array([1, 2, 3, 4]);
+  const view = new DataView(buf.buffer);
+  return view.getUint32(0, true) === 67305985;
+}
+function checkSig(blob) {
+  if (blob.length < HEADER_SIZE) {
+    return false;
+  }
+  const buf = Buffer.from(blob, 0, headerSig.length);
+  if (buf.toString("utf8", 0, headerSig.length) !== headerSig) {
+    return false;
+  }
+  return true;
+}
+var ErrorDecodeTrieBlob = class extends Error {
+  constructor(message) {
+    super(message);
+  }
+};
+function nodesToJson(nodes) {
+  function nodeElement(offset2) {
+    const node = nodes[offset2];
+    const numChildren = node & TrieBlob.NodeMaskNumChildren;
+    const eow = !!(node & TrieBlob.NodeMaskEOW);
+    const children = [];
+    for (let i = 1; i <= numChildren; ++i) {
+      children.push({
+        c: ("00" + (nodes[offset2 + i] & TrieBlob.NodeMaskChildCharIndex).toString(16)).slice(-2),
+        o: nodes[offset2 + i] >>> TrieBlob.NodeChildRefShift
+      });
+    }
+    return { id: offset2, eow, n: offset2 + numChildren + 1, c: children };
+  }
+  const elements = [];
+  let offset = 0;
+  while (offset < nodes.length) {
+    const e = nodeElement(offset);
+    elements.push(e);
+    offset = e.n;
+  }
+  return elements;
+}
+function trieBlobSort(data) {
+  const MaskNumChildren = TrieBlob.NodeMaskNumChildren;
+  const MaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
+  const limit = data.length;
+  let idx2 = 0;
+  let node = data[0];
+  let nc = node & MaskNumChildren;
+  for (; idx2 < limit; idx2 += nc + 1, node = data[idx2], nc = node & MaskNumChildren) {
+    if (!nc) continue;
+    const start = idx2 + 1;
+    const end = start + nc;
+    let last = 0;
+    let i = start;
+    for (; i < end; ++i) {
+      const cIdx = data[i] & MaskChildCharIndex;
+      if (last >= cIdx) break;
+      last = cIdx;
+    }
+    if (i === end) continue;
+    const sorted = data.slice(start, end).sort((a, b) => (a & MaskChildCharIndex) - (b & MaskChildCharIndex));
+    sorted.forEach((v, i2) => data[start + i2] = v);
+  }
+}
+var checkSorted = false;
+var FastTrieBlob = class _FastTrieBlob {
+  constructor(nodes, _charIndex, bitMasksInfo, info5) {
+    this.nodes = nodes;
+    this._charIndex = _charIndex;
+    this.bitMasksInfo = bitMasksInfo;
+    this.info = info5;
+    this.wordToCharacters = (word) => [...word];
+    this.#forbidIdx = this.#searchNodeForChar(0, this.info.forbiddenWordPrefix) || 0;
+    this.#compoundIdx = this.#searchNodeForChar(0, this.info.compoundCharacter) || 0;
+    this.#nonStrictIdx = this.#searchNodeForChar(0, this.info.stripCaseAndAccentsPrefix) || 0;
+    this.hasForbiddenWords = !!this.#forbidIdx;
+    this.hasCompoundWords = !!this.#compoundIdx;
+    this.hasNonStrictWords = !!this.#nonStrictIdx;
+    if (checkSorted) {
+      assertSorted(this.nodes, bitMasksInfo.NodeMaskChildCharIndex);
+    }
+  }
+  _readonly = false;
+  #forbidIdx;
+  #compoundIdx;
+  #nonStrictIdx;
+  _iTrieRoot;
+  wordToCharacters;
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+  wordToUtf8Seq(word) {
+    return this._charIndex.wordToUtf8Seq(word);
+  }
+  letterToUtf8Seq(letter) {
+    return this._charIndex.getCharUtf8Seq(letter);
+  }
+  has(word) {
+    return this.#has(0, word);
+  }
+  hasCaseInsensitive(word) {
+    if (!this.#nonStrictIdx) return false;
+    return this.#has(this.#nonStrictIdx, word);
+  }
+  #has(nodeIdx, word) {
+    return this.#hasSorted(nodeIdx, word);
+  }
+  #hasSorted(nodeIdx, word) {
+    const charIndexes = this.wordToUtf8Seq(word);
+    const found = this.#lookupNode(nodeIdx, charIndexes);
+    if (found === void 0) return false;
+    const node = this.nodes[found];
+    return !!(node[0] & this.bitMasksInfo.NodeMaskEOW);
+  }
+  /**
+   * Find the node index for the given Utf8 character sequence.
+   * @param nodeIdx - node index to start the search
+   * @param seq - the byte sequence of the character to look for
+   * @returns
+   */
+  #lookupNode(nodeIdx, seq) {
+    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
+    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
+    const nodes = this.nodes;
+    const len = seq.length;
+    let node = nodes[nodeIdx];
+    for (let p = 0; p < len; ++p, node = nodes[nodeIdx]) {
+      const letterIdx = seq[p];
+      const count3 = node.length;
+      if (count3 < 2) return void 0;
+      let i = 1;
+      let j = count3 - 1;
+      let c = -1;
+      while (i < j) {
+        const m = i + j >> 1;
+        c = node[m] & NodeMaskChildCharIndex;
+        if (c < letterIdx) {
+          i = m + 1;
+        } else {
+          j = m;
+        }
+      }
+      if (i >= count3 || (node[i] & NodeMaskChildCharIndex) !== letterIdx) return void 0;
+      nodeIdx = node[i] >>> NodeChildRefShift;
+      if (!nodeIdx) return void 0;
+    }
+    return nodeIdx;
+  }
+  *words() {
+    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
+    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
+    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
+    const nodes = this.nodes;
+    const accumulator = Utf8Accumulator.create();
+    const stack = [{ nodeIdx: 0, pos: 0, word: "", accumulator }];
+    let depth = 0;
+    while (depth >= 0) {
+      const { nodeIdx, pos, word, accumulator: accumulator2 } = stack[depth];
+      const node = nodes[nodeIdx];
+      if (!pos && node[0] & NodeMaskEOW) {
+        yield word;
+      }
+      if (pos >= node.length - 1) {
+        --depth;
+        continue;
+      }
+      const nextPos = ++stack[depth].pos;
+      const entry = node[nextPos];
+      const charIdx = entry & NodeMaskChildCharIndex;
+      const acc = accumulator2.clone();
+      const codePoint = acc.decode(charIdx);
+      const letter = codePoint && String.fromCodePoint(codePoint) || "";
+      ++depth;
+      stack[depth] = {
+        nodeIdx: entry >>> NodeChildRefShift,
+        pos: 0,
+        word: word + letter,
+        accumulator: acc
+      };
+    }
+  }
+  toTrieBlob() {
+    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
+    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
+    const nodes = this.nodes;
+    function calcNodeToIndex(nodes2) {
+      let offset2 = 0;
+      const idx2 = Array(nodes2.length + 1);
+      for (let i = 0; i < nodes2.length; ++i) {
+        idx2[i] = offset2;
+        offset2 += nodes2[i].length;
+      }
+      idx2[nodes2.length] = offset2;
+      return idx2;
+    }
+    const nodeToIndex = calcNodeToIndex(nodes);
+    const nodeElementCount = nodeToIndex[nodeToIndex.length - 1];
+    const binNodes = new Uint32Array(nodeElementCount);
+    const lenShift = TrieBlob.NodeMaskNumChildrenShift;
+    const refShift = TrieBlob.NodeChildRefShift;
+    let offset = 0;
+    for (let i = 0; i < nodes.length; ++i) {
+      const node = nodes[i];
+      binNodes[offset++] = node.length - 1 << lenShift | node[0];
+      for (let j = 1; j < node.length; ++j) {
+        const v = node[j];
+        const nodeRef = v >>> NodeChildRefShift;
+        const charIndex = v & NodeMaskChildCharIndex;
+        binNodes[offset++] = nodeToIndex[nodeRef] << refShift | charIndex;
+      }
+    }
+    return new TrieBlob(binNodes, this._charIndex, this.info);
+  }
+  isReadonly() {
+    return this._readonly;
+  }
+  freeze() {
+    this._readonly = true;
+    return this;
+  }
+  toJSON() {
+    return {
+      info: this.info,
+      nodes: nodesToJSON(this.nodes)
+      // charIndex: this._charIndex,
+    };
+  }
+  static create(data) {
+    return new _FastTrieBlob(data.nodes, data.charIndex, extractInfo(data), data.info);
+  }
+  static toITrieNodeRoot(trie) {
+    return new FastTrieBlobIRoot(
+      new FastTrieBlobInternalsAndMethods(trie.nodes, trie._charIndex, trie.bitMasksInfo, trie.info, {
+        nodeFindNode: (idx2, word) => trie.#lookupNode(idx2, trie.wordToUtf8Seq(word)),
+        nodeFindExact: (idx2, word) => trie.#has(idx2, word),
+        nodeGetChild: (idx2, letter) => trie.#searchNodeForChar(idx2, letter),
+        isForbidden: (word) => trie.isForbiddenWord(word),
+        findExact: (word) => trie.has(word),
+        hasForbiddenWords: trie.hasForbiddenWords,
+        hasCompoundWords: trie.hasCompoundWords,
+        hasNonStrictWords: trie.hasNonStrictWords
+      }),
+      0
+    );
+  }
+  static NodeMaskEOW = TrieBlob.NodeMaskEOW;
+  static NodeChildRefShift = TrieBlob.NodeChildRefShift;
+  static NodeMaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
+  static DefaultBitMaskInfo = {
+    NodeMaskEOW: _FastTrieBlob.NodeMaskEOW,
+    NodeMaskChildCharIndex: _FastTrieBlob.NodeMaskChildCharIndex,
+    NodeChildRefShift: _FastTrieBlob.NodeChildRefShift
+  };
+  get iTrieRoot() {
+    return this._iTrieRoot ??= _FastTrieBlob.toITrieNodeRoot(this);
+  }
+  getRoot() {
+    return this.iTrieRoot;
+  }
+  getNode(prefix) {
+    return findNode(this.getRoot(), prefix);
+  }
+  isForbiddenWord(word) {
+    return !!this.#forbidIdx && this.#has(this.#forbidIdx, word);
+  }
+  nodeInfo(nodeIndex, accumulator) {
+    const acc = accumulator ?? Utf8Accumulator.create();
+    const n = this.nodes[nodeIndex];
+    const eow = !!(n[0] & this.bitMasksInfo.NodeMaskEOW);
+    const children = [];
+    children.length = n.length - 1;
+    for (let p = 1; p < n.length; ++p) {
+      const v = n[p];
+      const cIdx = v & this.bitMasksInfo.NodeMaskChildCharIndex;
+      const a = acc.clone();
+      const codePoint = a.decode(cIdx);
+      const c = codePoint !== void 0 ? String.fromCodePoint(codePoint) : "\u220E";
+      const i = v >>> this.bitMasksInfo.NodeChildRefShift;
+      children[p] = { c, i, cIdx };
+    }
+    return { eow, children };
+  }
+  /** number of nodes */
+  get size() {
+    return this.nodes.length;
+  }
+  /** Search from nodeIdx for the node index representing the character. */
+  #searchNodeForChar(nodeIdx, char) {
+    const charIndexes = this.letterToUtf8Seq(char);
+    return this.#lookupNode(nodeIdx, charIndexes);
+  }
+  get charIndex() {
+    return [...this._charIndex.charIndex];
+  }
+  static fromTrieBlob(trie) {
+    const bitMasksInfo = {
+      NodeMaskEOW: TrieBlob.NodeMaskEOW,
+      NodeMaskChildCharIndex: TrieBlob.NodeMaskChildCharIndex,
+      NodeChildRefShift: TrieBlob.NodeChildRefShift
+    };
+    const trieNodesBin = TrieBlob.nodesView(trie);
+    const nodeOffsets = [];
+    for (let offset = 0; offset < trieNodesBin.length; offset += (trieNodesBin[offset] & TrieBlob.NodeMaskNumChildren) + 1) {
+      nodeOffsets.push(offset);
+    }
+    const offsetToNodeIndex = new Map(nodeOffsets.map((offset, i) => [offset, i]));
+    const nodes = Array.from({ length: nodeOffsets.length });
+    for (let i = 0; i < nodes.length; ++i) {
+      const offset = nodeOffsets[i];
+      const n = trieNodesBin[offset];
+      const eow = n & TrieBlob.NodeMaskEOW;
+      const count3 = n & TrieBlob.NodeMaskNumChildren;
+      const node = new Uint32Array(count3 + 1);
+      node[0] = eow;
+      nodes[i] = node;
+      for (let j = 1; j <= count3; ++j) {
+        const n2 = trieNodesBin[offset + j];
+        const charIndex = n2 & TrieBlob.NodeMaskChildCharIndex;
+        const nodeIndex = n2 >>> TrieBlob.NodeChildRefShift;
+        const idx2 = offsetToNodeIndex.get(nodeIndex);
+        if (idx2 === void 0) {
+          throw new Error(`Invalid node index ${nodeIndex}`);
+        }
+        node[j] = idx2 << TrieBlob.NodeChildRefShift | charIndex;
+      }
+    }
+    return new _FastTrieBlob(
+      sortNodes(nodes, TrieBlob.NodeMaskChildCharIndex),
+      trie.charIndex,
+      bitMasksInfo,
+      trie.info
+    );
+  }
+  static isFastTrieBlob(obj) {
+    return obj instanceof _FastTrieBlob;
+  }
+};
+function nodesToJSON(nodes) {
+  const mapNodeToAcc = /* @__PURE__ */ new Map();
+  function mapNode(node, i) {
+    if (node.length === 1) {
+      return {
+        i,
+        w: !!(node[0] & TrieBlob.NodeMaskEOW) && 1 || 0
+      };
+    }
+    const acc = mapNodeToAcc.get(node) || Utf8Accumulator.create();
+    function mapChild(n) {
+      const index = n >>> TrieBlob.NodeChildRefShift;
+      const seq = n & TrieBlob.NodeMaskChildCharIndex;
+      const cAcc = acc.clone();
+      const codePoint = cAcc.decode(seq);
+      if (codePoint === void 0) {
+        mapNodeToAcc.set(nodes[index], cAcc);
+      }
+      return {
+        i: index,
+        c: codePoint && String.fromCodePoint(codePoint),
+        s: seq.toString(16).padStart(2, "0")
+      };
+    }
+    return {
+      i,
+      w: !!(node[0] & TrieBlob.NodeMaskEOW) && 1 || 0,
+      c: [...node.slice(1)].map(mapChild)
+    };
+  }
+  return nodes.map((n, i) => mapNode(n, i));
+}
+function resolveMap(map3, key, resolve10) {
+  const r = map3.get(key);
+  if (r !== void 0) return r;
+  const v = resolve10(key);
+  map3.set(key, v);
+  return v;
+}
+var FastTrieBlobBuilder = class _FastTrieBlobBuilder {
+  charIndex = new CharIndexBuilder();
+  nodes;
+  _readonly = false;
+  IdxEOW;
+  _cursor;
+  _options;
+  wordToCharacters = (word) => [...word];
+  bitMasksInfo;
+  constructor(options, bitMasksInfo = _FastTrieBlobBuilder.DefaultBitMaskInfo) {
+    this._options = mergeOptionalWithDefaults(options);
+    this.bitMasksInfo = bitMasksInfo;
+    this.nodes = [[0], Object.freeze([_FastTrieBlobBuilder.NodeMaskEOW])];
+    this.IdxEOW = 1;
+  }
+  setOptions(options) {
+    this._options = mergeOptionalWithDefaults(this.options, options);
+    return this.options;
+  }
+  get options() {
+    return this._options;
+  }
+  wordToUtf8Seq(word) {
+    return this.charIndex.wordToUtf8Seq(word);
+  }
+  letterToUtf8Seq(letter) {
+    return this.charIndex.charToUtf8Seq(letter);
+  }
+  insert(word) {
+    this.#assertNotReadonly();
+    if (typeof word === "string") {
+      return this._insert(word);
+    }
+    const words = word;
+    for (const w of words) {
+      this._insert(w);
+    }
+    return this;
+  }
+  getCursor() {
+    this.#assertNotReadonly();
+    this._cursor ??= this.createCursor();
+    return this._cursor;
+  }
+  createCursor() {
+    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
+    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
+    const LetterMask = this.bitMasksInfo.NodeMaskChildCharIndex;
+    const refNodes = [0, 1];
+    function childPos(node, letterIdx) {
+      for (let i = 1; i < node.length; ++i) {
+        if ((node[i] & LetterMask) === letterIdx) {
+          return i;
+        }
+      }
+      return 0;
+    }
+    (0, import_node_assert2.default)(this.nodes.length === 2);
+    const eow = 1;
+    const eowShifted = eow << NodeChildRefShift;
+    const nodes = this.nodes;
+    const stack = [{ nodeIdx: 0, pos: 0, pDepth: -1 }];
+    let nodeIdx = 0;
+    let depth = 0;
+    const insertChar = (char) => {
+      if (!nodes[nodeIdx]) {
+        refNodes.push(nodeIdx);
+      }
+      const pDepth = depth;
+      const utf8Seq = this.letterToUtf8Seq(char);
+      for (let i = 0; i < utf8Seq.length; ++i) {
+        insertCharIndexes(utf8Seq[i], pDepth);
+      }
+    };
+    const insertCharIndexes = (seq, pDepth) => {
+      if (nodes[nodeIdx] && Object.isFrozen(nodes[nodeIdx])) {
+        nodeIdx = nodes.push([...nodes[nodeIdx]]) - 1;
+        const { pos: pos2, nodeIdx: pNodeIdx } = stack[depth];
+        const pNode = nodes[pNodeIdx];
+        pNode[pos2] = pNode[pos2] & LetterMask | nodeIdx << NodeChildRefShift;
+      }
+      const node = nodes[nodeIdx] || [0];
+      nodes[nodeIdx] = node;
+      const hasIdx = childPos(node, seq);
+      const childIdx = hasIdx ? node[hasIdx] >>> NodeChildRefShift : nodes.length;
+      const pos = hasIdx || node.push(childIdx << NodeChildRefShift | seq) - 1;
+      ++depth;
+      const s = stack[depth];
+      if (s) {
+        s.nodeIdx = nodeIdx;
+        s.pos = pos;
+        s.pDepth = pDepth;
+      } else {
+        stack[depth] = { nodeIdx, pos, pDepth };
+      }
+      nodeIdx = childIdx;
+    };
+    const markEOW = () => {
+      if (nodeIdx === eow) return;
+      const node = nodes[nodeIdx];
+      if (!node) {
+        const { pos, nodeIdx: pNodeIdx } = stack[depth];
+        const pNode = nodes[pNodeIdx];
+        pNode[pos] = pNode[pos] & LetterMask | eowShifted;
+      } else {
+        nodes[nodeIdx] = node;
+        node[0] |= NodeMaskEOW;
+      }
+      nodeIdx = eow;
+    };
+    const reference = (refId) => {
+      const refNodeIdx = refNodes[refId];
+      (0, import_node_assert2.default)(refNodeIdx !== void 0);
+      (0, import_node_assert2.default)(nodes[nodeIdx] === void 0);
+      (0, import_node_assert2.default)(nodes[refNodeIdx]);
+      Object.freeze(nodes[refNodeIdx]);
+      const s = stack[depth];
+      nodeIdx = s.nodeIdx;
+      const pos = s.pos;
+      const node = nodes[nodeIdx];
+      node[pos] = refNodeIdx << NodeChildRefShift | node[pos] & LetterMask;
+    };
+    const backStep = (num) => {
+      if (!num) return;
+      (0, import_node_assert2.default)(num <= depth && num > 0);
+      for (let n = num; n > 0; --n) {
+        depth = stack[depth].pDepth;
+      }
+      nodeIdx = stack[depth + 1].nodeIdx;
+    };
+    const c = {
+      insertChar,
+      markEOW,
+      reference,
+      backStep
+    };
+    return c;
+  }
+  _insert(word) {
+    word = word.trim();
+    if (!word) return this;
+    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
+    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
+    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
+    const IdxEOW = this.IdxEOW;
+    const nodes = this.nodes;
+    const utf8Seq = this.wordToUtf8Seq(word);
+    const len = utf8Seq.length;
+    let nodeIdx = 0;
+    for (let p = 0; p < len; ++p) {
+      const seq = utf8Seq[p];
+      const node = nodes[nodeIdx];
+      const count3 = node.length;
+      let i = count3 - 1;
+      for (; i > 0; --i) {
+        if ((node[i] & NodeMaskChildCharIndex) === seq) {
+          break;
+        }
+      }
+      if (i > 0) {
+        nodeIdx = node[i] >>> NodeChildRefShift;
+        if (nodeIdx === 1 && p < len - 1) {
+          nodeIdx = this.nodes.push([NodeMaskEOW]) - 1;
+          node[i] = nodeIdx << NodeChildRefShift | seq;
+        }
+        continue;
+      }
+      nodeIdx = p < len - 1 ? this.nodes.push([0]) - 1 : IdxEOW;
+      node.push(nodeIdx << NodeChildRefShift | seq);
+    }
+    if (nodeIdx > 1) {
+      const node = nodes[nodeIdx];
+      node[0] |= NodeMaskEOW;
+    }
+    return this;
+  }
+  has(word) {
+    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
+    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
+    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
+    const nodes = this.nodes;
+    const charIndexes = this.wordToUtf8Seq(word);
+    const len = charIndexes.length;
+    let nodeIdx = 0;
+    let node = nodes[nodeIdx];
+    for (let p = 0; p < len; ++p, node = nodes[nodeIdx]) {
+      const letterIdx = charIndexes[p];
+      const count3 = node.length;
+      let i = count3 - 1;
+      for (; i > 0; --i) {
+        if ((node[i] & NodeMaskChildCharIndex) === letterIdx) {
+          break;
+        }
+      }
+      if (i < 1) return false;
+      nodeIdx = node[i] >>> NodeChildRefShift;
+    }
+    return !!(node[0] & NodeMaskEOW);
+  }
+  isReadonly() {
+    return this._readonly;
+  }
+  freeze() {
+    this._readonly = true;
+    return this;
+  }
+  build() {
+    this._cursor = void 0;
+    this._readonly = true;
+    this.freeze();
+    return FastTrieBlob.create(
+      new FastTrieBlobInternals(
+        sortNodes(
+          this.nodes.map((n) => Uint32Array.from(n)),
+          this.bitMasksInfo.NodeMaskChildCharIndex
+        ),
+        this.charIndex.build(),
+        this.bitMasksInfo,
+        this.options
+      )
+    );
+  }
+  toJSON() {
+    return {
+      options: this.options,
+      nodes: nodesToJSON(this.nodes.map((n) => Uint32Array.from(n)))
+    };
+  }
+  #assertNotReadonly() {
+    (0, import_node_assert2.default)(!this.isReadonly(), "FastTrieBlobBuilder is readonly");
+  }
+  static fromWordList(words, options) {
+    const ft = new _FastTrieBlobBuilder(options);
+    return ft.insert(words).build();
+  }
+  static fromTrieRoot(root) {
+    const bitMasksInfo = _FastTrieBlobBuilder.DefaultBitMaskInfo;
+    const NodeChildRefShift = bitMasksInfo.NodeChildRefShift;
+    const NodeCharIndexMask = bitMasksInfo.NodeMaskChildCharIndex;
+    const NodeMaskEOW = bitMasksInfo.NodeMaskEOW;
+    const tf2 = new _FastTrieBlobBuilder(void 0, bitMasksInfo);
+    const IdxEOW = tf2.IdxEOW;
+    const known = /* @__PURE__ */ new Map([[root, 0]]);
+    function resolveNode(n) {
+      if (n.f && !n.c) return IdxEOW;
+      const node = [n.f ? NodeMaskEOW : 0];
+      return tf2.nodes.push(node) - 1;
+    }
+    function walk4(n) {
+      const found = known.get(n);
+      if (found) return found;
+      const nodeIdx = resolveMap(known, n, resolveNode);
+      const node = tf2.nodes[nodeIdx];
+      if (!n.c) return nodeIdx;
+      const children = Object.entries(n.c);
+      for (let p = 0; p < children.length; ++p) {
+        const [char, childNode] = children[p];
+        addCharToNode(node, char, childNode);
+      }
+      return nodeIdx;
+    }
+    function resolveChild(node, charIndex) {
+      let i = 1;
+      for (i = 1; i < node.length && (node[i] & NodeCharIndexMask) !== charIndex; ++i) {
+      }
+      return i;
+    }
+    function addCharToNode(node, char, n) {
+      const indexSeq = tf2.letterToUtf8Seq(char);
+      assertValidUtf16Character(char);
+      for (const idx2 of indexSeq.slice(0, -1)) {
+        const pos = resolveChild(node, idx2);
+        if (pos < node.length) {
+          node = tf2.nodes[node[pos] >>> NodeChildRefShift];
+        } else {
+          const next = [0];
+          const nodeIdx = tf2.nodes.push(next) - 1;
+          node[pos] = nodeIdx << NodeChildRefShift | idx2;
+          node = next;
+        }
+      }
+      const letterIdx = indexSeq[indexSeq.length - 1];
+      const i = node.push(letterIdx) - 1;
+      node[i] = walk4(n) << NodeChildRefShift | letterIdx;
+    }
+    walk4(root);
+    return tf2.build();
+  }
+  static NodeMaskEOW = TrieBlob.NodeMaskEOW;
+  static NodeChildRefShift = TrieBlob.NodeChildRefShift;
+  static NodeMaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
+  static DefaultBitMaskInfo = {
+    NodeMaskEOW: _FastTrieBlobBuilder.NodeMaskEOW,
+    NodeMaskChildCharIndex: _FastTrieBlobBuilder.NodeMaskChildCharIndex,
+    NodeChildRefShift: _FastTrieBlobBuilder.NodeChildRefShift
+  };
+};
+function clean2(t) {
+  const copy = { ...t };
+  for (const key of Object.keys(copy)) {
+    if (copy[key] === void 0) {
+      delete copy[key];
+    }
+  }
+  return copy;
+}
+var defaultLegacyMinCompoundLength2 = 3;
+var ITrieImpl = class _ITrieImpl {
+  constructor(data, numNodes) {
+    this.data = data;
+    this.numNodes = numNodes;
+    this.root = data.getRoot();
+    this._info = mergeOptionalWithDefaults(data.info);
+    this.hasForbiddenWords = data.hasForbiddenWords;
+    this.hasCompoundWords = data.hasCompoundWords;
+    this.hasNonStrictWords = data.hasNonStrictWords;
+  }
+  _info;
+  root;
+  count;
+  weightMap;
+  #optionsCompound = this.createFindOptions({ compoundMode: "compound" });
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+  /**
+   * Number of words in the Trie, the first call to this method might be expensive.
+   * Use `size` to get the number of nodes.
+   */
+  numWords() {
+    this.count ??= countWords(this.root);
+    return this.count;
+  }
+  isNumWordsKnown() {
+    return this.count !== void 0;
+  }
+  get size() {
+    return this.data.size;
+  }
+  get info() {
+    return this._info;
+  }
+  get isCaseAware() {
+    return this.info.isCaseAware ?? true;
+  }
+  /**
+   * @param text - text to find in the Trie
+   */
+  find(text) {
+    return findWordNode(this.data.getRoot(), text, this.#optionsCompound).node;
+  }
+  has(word, minLegacyCompoundLength) {
+    if (this.hasWord(word, false)) return true;
+    if (minLegacyCompoundLength) {
+      const f = this.findWord(word, { useLegacyWordCompounds: minLegacyCompoundLength });
+      return !!f.found;
+    }
+    return false;
+  }
+  /**
+   * Determine if a word is in the dictionary.
+   * @param word - the exact word to search for - must be normalized.
+   * @param caseSensitive - false means also searching a dictionary where the words were normalized to lower case and accents removed.
+   * @returns true if the word was found and is not forbidden.
+   */
+  hasWord(word, caseSensitive) {
+    const f = this.findWord(word, { caseSensitive, checkForbidden: false });
+    return !!f.found;
+  }
+  findWord(word, options) {
+    if (options?.useLegacyWordCompounds) {
+      const len = options.useLegacyWordCompounds !== true ? options.useLegacyWordCompounds : defaultLegacyMinCompoundLength2;
+      const findOptions = this.createFindOptions({
+        legacyMinCompoundLength: len,
+        matchCase: options.caseSensitive || false
+      });
+      return findLegacyCompound(this.root, word, findOptions);
+    }
+    return findWord(this.root, word, {
+      matchCase: options?.caseSensitive,
+      checkForbidden: options?.checkForbidden
+    });
+  }
+  /**
+   * Determine if a word is in the forbidden word list.
+   * @param word the word to lookup.
+   */
+  isForbiddenWord(word) {
+    return this.hasForbiddenWords && isForbiddenWord(this.root, word, this.info.forbiddenWordPrefix);
+  }
+  /**
+   * Provides an ordered sequence of words with the prefix of text.
+   */
+  completeWord(text) {
+    const n = this.find(text);
+    const compoundChar = this.info.compoundCharacter;
+    const subNodes = pipeSync(
+      n ? iteratorTrieWords(n) : [],
+      opFilterSync((w) => w[w.length - 1] !== compoundChar),
+      opMapSync((suffix) => text + suffix)
+    );
+    return pipeSync(n && n.eow ? [text] : [], opAppendSync(subNodes));
+  }
+  /**
+   * Suggest spellings for `text`.  The results are sorted by edit distance with changes near the beginning of a word having a greater impact.
+   * @param text - the text to search for
+   * @param maxNumSuggestions - the maximum number of suggestions to return.
+   * @param compoundMethod - Use to control splitting words.
+   * @param numChanges - the maximum number of changes allowed to text. This is an approximate value, since some changes cost less than others.
+   *                      the lower the value, the faster results are returned. Values less than 4 are best.
+   */
+  suggest(text, options) {
+    return this.suggestWithCost(text, options).map((a) => a.word);
+  }
+  /**
+   * Suggest spellings for `text`.  The results are sorted by edit distance with changes near the beginning of a word having a greater impact.
+   * The results include the word and adjusted edit cost.  This is useful for merging results from multiple tries.
+   */
+  suggestWithCost(text, options) {
+    const sep4 = options.compoundSeparator;
+    const weightMap = options.weightMap || this.weightMap;
+    const adjWord = sep4 ? replaceAllFactory(sep4, "") : (a) => a;
+    const optFilter = options.filter;
+    const filter3 = optFilter ? (word, cost) => {
+      const w = adjWord(word);
+      return !this.isForbiddenWord(w) && optFilter(w, cost);
+    } : (word) => !this.isForbiddenWord(adjWord(word));
+    const opts = { ...options, filter: filter3, weightMap };
+    return suggestAStar(this.data, text, opts);
+  }
+  /**
+   * genSuggestions will generate suggestions and send them to `collector`. `collector` is responsible for returning the max acceptable cost.
+   * Costs are measured in weighted changes. A cost of 100 is the same as 1 edit. Some edits are considered cheaper.
+   * Returning a MaxCost < 0 will effectively cause the search for suggestions to stop.
+   */
+  genSuggestions(collector, compoundMethod) {
+    const filter3 = (word) => !this.isForbiddenWord(word);
+    const options = createSuggestionOptions(clean2({ compoundMethod, ...collector.genSuggestionOptions }));
+    const suggestions = getSuggestionsAStar(this.data, collector.word, options);
+    collector.collect(suggestions, void 0, filter3);
+  }
+  /**
+   * Returns an iterator that can be used to get all words in the trie. For some dictionaries, this can result in millions of words.
+   */
+  words() {
+    return iteratorTrieWords(this.root);
+  }
+  /**
+   * Allows iteration over the entire tree.
+   * On the returned Iterator, calling .next(goDeeper: boolean), allows for controlling the depth.
+   */
+  iterate() {
+    return walker(this.root);
+  }
+  static create(words, info5) {
+    const builder = new FastTrieBlobBuilder(info5);
+    builder.insert(words);
+    const root = builder.build();
+    return new _ITrieImpl(root, void 0);
+  }
+  createFindOptions(options) {
+    const findOptions = createFindOptions(options);
+    return findOptions;
+  }
+};
+function buildITrieFromWords(words, info5 = {}) {
+  const builder = new FastTrieBlobBuilder(info5);
+  builder.insert(words);
+  const ft = builder.build();
+  return new ITrieImpl(ft.size > 1e3 ? ft.toTrieBlob() : ft);
+}
+var FLAG_WORD = 1;
+function insert2(word, root = {}) {
+  const text = [...word];
+  let node = root;
+  for (let i = 0; i < text.length; ++i) {
+    const head = text[i];
+    const c = node.c || /* @__PURE__ */ Object.create(null);
+    node.c = c;
+    node = c[head] || {};
+    c[head] = node;
+  }
+  node.f = (node.f || 0) | FLAG_WORD;
+  return root;
+}
+function iteratorTrieWords2(node) {
+  return walkerWords2(node);
+}
+function createTrieRoot(options) {
+  const fullOptions = mergeOptionalWithDefaults(options);
+  return {
+    ...fullOptions,
+    c: /* @__PURE__ */ Object.create(null)
+  };
+}
+function createTrieRootFromList(words, options) {
+  const root = createTrieRoot(options);
+  for (const word of words) {
+    if (word.length) {
+      insert2(word, root);
+    }
+  }
+  return root;
+}
+function countNodes(root) {
+  const seen = /* @__PURE__ */ new Set();
+  function walk4(n) {
+    if (seen.has(n)) return;
+    seen.add(n);
+    if (n.c) {
+      Object.values(n.c).forEach((n2) => walk4(n2));
+    }
+  }
+  walk4(root);
+  return seen.size;
+}
+function checkCircular(root) {
+  const seen = /* @__PURE__ */ new Set();
+  const inStack = /* @__PURE__ */ new Set();
+  function walk4(n) {
+    if (seen.has(n)) return { isCircular: false, allSeen: true };
+    if (inStack.has(n)) {
+      const stack = [...inStack, n];
+      const word = trieStackToWord(stack);
+      const pos = stack.indexOf(n);
+      return { isCircular: true, allSeen: false, ref: { stack, word, pos } };
+    }
+    inStack.add(n);
+    let r = { isCircular: false, allSeen: true };
+    if (n.c) {
+      r = Object.values(n.c).reduce((acc, n2) => {
+        if (acc.isCircular) return acc;
+        const r2 = walk4(n2);
+        r2.allSeen = r2.allSeen && acc.allSeen;
+        return r2;
+      }, r);
+    }
+    if (r.allSeen) {
+      seen.add(n);
+    }
+    inStack.delete(n);
+    return r;
+  }
+  return walk4(root);
+}
+function reverseMapTrieNode(node) {
+  return node.c && new Map(Object.entries(node.c).map(([c, n]) => [n, c]));
+}
+function trieStackToWord(stack) {
+  let word = "";
+  let lastMap = reverseMapTrieNode(stack[0]);
+  for (let i = 1; i < stack.length; ++i) {
+    const n = stack[i];
+    const char = lastMap?.get(n);
+    if (char) {
+      word += char;
+    }
+    lastMap = reverseMapTrieNode(n);
+  }
+  return word;
+}
+function isCircular(root) {
+  return checkCircular(root).isCircular;
+}
+function trieNodeToRoot(node, options) {
+  const newOptions = mergeOptionalWithDefaults(options);
+  return {
+    ...newOptions,
+    c: node.c || /* @__PURE__ */ Object.create(null)
+  };
+}
+function consolidate(root) {
+  let count3 = 0;
+  const signatures = /* @__PURE__ */ new Map();
+  const cached = /* @__PURE__ */ new Map();
+  const knownMap = /* @__PURE__ */ new Map();
+  if (isCircular(root)) {
+    throw new Error("Trie is circular.");
+  }
+  function signature2(n) {
+    const isWord = n.f ? "*" : "";
+    const ref = n.c ? JSON.stringify(Object.entries(n.c).map(([k, n2]) => [k, cached.get(n2)])) : "";
+    return isWord + ref;
+  }
+  function findEow(n) {
+    if (n.f && !n.c) return n;
+    let r;
+    if (n.c) {
+      for (const c of Object.values(n.c)) {
+        r = findEow(c);
+        if (r) break;
+      }
+    }
+    return r;
+  }
+  function compareMaps(a, b) {
+    for (const e of a) {
+      if (b[e[0]] !== e[1]) return false;
+    }
+    return a.length === b.size;
+  }
+  function deepCopy(n) {
+    const k = knownMap.get(n);
+    if (k) {
+      return k;
+    }
+    const orig = n;
+    if (n.c) {
+      const children = Object.entries(n.c).map((c) => [c[0], deepCopy(c[1])]);
+      if (!compareMaps(children, n.c)) {
+        n = { f: n.f, c: Object.fromEntries(children) };
+      }
+    }
+    const sig = signature2(n);
+    const ref = signatures.get(sig);
+    if (ref) {
+      knownMap.set(orig, ref);
+      return ref;
+    }
+    Object.freeze(n);
+    signatures.set(sig, n);
+    cached.set(n, count3++);
+    knownMap.set(orig, n);
+    return n;
+  }
+  function process7(n) {
+    if (cached.has(n)) {
+      return n;
+    }
+    if (Object.isFrozen(n)) {
+      return knownMap.get(n) || deepCopy(n);
+    }
+    if (n.c) {
+      const children = Object.entries(n.c).sort((a, b) => a[0] < b[0] ? -1 : 1).map(([k, n2]) => [k, process7(n2)]);
+      n.c = Object.fromEntries(children);
+    }
+    const sig = signature2(n);
+    const ref = signatures.get(sig);
+    if (ref) {
+      return ref;
+    }
+    signatures.set(sig, n);
+    cached.set(n, count3++);
+    return n;
+  }
+  const eow = findEow(root) || { f: FLAG_WORD, c: void 0 };
+  signatures.set(signature2(eow), eow);
+  cached.set(eow, count3++);
+  return trieNodeToRoot(process7(root), root);
+}
+var defaultLegacyMinCompoundLength3 = 3;
+var _defaultFindOptions2 = {
+  matchCase: false,
+  compoundMode: "compound",
+  forbidPrefix: FORBID_PREFIX,
+  compoundFix: COMPOUND_FIX,
+  caseInsensitivePrefix: CASE_INSENSITIVE_PREFIX,
+  legacyMinCompoundLength: defaultLegacyMinCompoundLength3
+};
+var arrayCompoundModes2 = ["none", "compound", "legacy"];
+var knownCompoundModes2 = new Map(arrayCompoundModes2.map((a) => [a, a]));
+function findWordExact2(root, word) {
+  return isEndOfWordNode2(walk3(root, word));
+}
+function isEndOfWordNode2(n) {
+  return n?.f === FLAG_WORD;
+}
+function walk3(root, word) {
+  const w = [...word];
+  let n = root;
+  let i = 0;
+  while (n && i < w.length) {
+    const h = w[i++];
+    n = n.c?.[h];
+  }
+  return n;
+}
+var createFindOptions2 = memorizeLastCall(_createFindOptions2);
+function _createFindOptions2(options) {
+  return mergeDefaults(options, _defaultFindOptions2);
+}
+var TrieNodeTrie = class _TrieNodeTrie {
+  constructor(root) {
+    this.root = root;
+    this.info = mergeOptionalWithDefaults(root);
+    this.hasForbiddenWords = !!root.c[root.forbiddenWordPrefix];
+    this.hasCompoundWords = !!root.c[root.compoundCharacter];
+    this.hasNonStrictWords = !!root.c[root.stripCaseAndAccentsPrefix];
+  }
+  _iTrieRoot;
+  info;
+  _size;
+  hasForbiddenWords;
+  hasCompoundWords;
+  hasNonStrictWords;
+  wordToCharacters = (word) => [...word];
+  get iTrieRoot() {
+    return this._iTrieRoot || (this._iTrieRoot = trieRootToITrieRoot(this.root));
+  }
+  getRoot() {
+    return this.iTrieRoot;
+  }
+  getNode(prefix) {
+    return findNode(this.getRoot(), prefix);
+  }
+  words() {
+    return iteratorTrieWords2(this.root);
+  }
+  has(word) {
+    return findWordExact2(this.root, word);
+  }
+  isForbiddenWord(word) {
+    return findWordExact2(this.root.c[this.root.forbiddenWordPrefix], word);
+  }
+  get size() {
+    return this._size ??= countNodes(this.root);
+  }
+  static createFromWords(words, options) {
+    const root = createTrieRootFromList(words, options);
+    return new _TrieNodeTrie(root);
+  }
+  static createFromWordsAndConsolidate(words, options) {
+    const root = createTrieRootFromList(words, options);
+    return new _TrieNodeTrie(consolidate(root));
+  }
+};
 var EOW = "*";
 var DATA = EOW;
 function* toIterableIterator2(iter) {
@@ -47573,10 +47176,9 @@ function importTrie(linesX) {
   const iter = toIterableIterator2(linesX);
   function parseHeaderRows(headerRows) {
     const header = headerRows.slice(0, 2).join("\n");
-    const headerReg2 = /^TrieXv1\nbase=(\d+)$/;
-    if (!headerReg2.test(header))
-      throw new Error("Unknown file format");
-    radix = Number.parseInt(header.replace(headerReg2, "$1"), 10);
+    const headerReg3 = /^TrieXv1\nbase=(\d+)$/;
+    if (!headerReg3.test(header)) throw new Error("Unknown file format");
+    radix = Number.parseInt(header.replace(headerReg3, "$1"), 10);
   }
   function readHeader(iter2) {
     const headerRows = [];
@@ -47613,31 +47215,31 @@ function importTrie(linesX) {
     return { ...cNode, ...flags };
   }
   readHeader(iter);
-  const n = genSequence([DATA]).concat(iter).map((a) => a.replace(/\r?\n/, "")).filter((a) => !!a).reduce((acc, line) => {
-    const { lines, nodes } = acc;
-    const root = decodeLine2(line, nodes);
-    nodes[lines] = root;
-    return { lines: lines + 1, root, nodes };
-  }, { lines: 0, nodes: [], root: {} });
+  const n = genSequence([DATA]).concat(iter).map((a) => a.replace(/\r?\n/, "")).filter((a) => !!a).reduce(
+    (acc, line) => {
+      const { lines, nodes } = acc;
+      const root = decodeLine2(line, nodes);
+      nodes[lines] = root;
+      return { lines: lines + 1, root, nodes };
+    },
+    { lines: 0, nodes: [], root: {} }
+  );
   return trieNodeToRoot(n.root, { isCaseAware: false });
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/io/importExportV2.js
 var EOW2 = "*";
 var DATA2 = "__DATA__";
-function* toIterableIterator3(iter) {
+function* toIterableIterator22(iter) {
   yield* iter;
 }
 function importTrie2(linesX) {
   let radix = 16;
   const comment = /^\s*#/;
-  const iter = toIterableIterator3(linesX);
+  const iter = toIterableIterator22(linesX);
   function parseHeaderRows(headerRows) {
     const header = headerRows.slice(0, 2).join("\n");
-    const headerReg2 = /^TrieXv2\nbase=(\d+)$/;
-    if (!headerReg2.test(header))
-      throw new Error("Unknown file format");
-    radix = Number.parseInt(header.replace(headerReg2, "$1"), 10);
+    const headerReg3 = /^TrieXv2\nbase=(\d+)$/;
+    if (!headerReg3.test(header)) throw new Error("Unknown file format");
+    radix = Number.parseInt(header.replace(headerReg3, "$1"), 10);
   }
   function readHeader(iter2) {
     const headerRows = [];
@@ -47676,16 +47278,17 @@ function importTrie2(linesX) {
     return { s: letter, ...cNode, ...flags };
   }
   readHeader(iter);
-  const n = genSequence(iter).map((a) => a.replace(/\r?\n/, "")).filter((a) => !!a).reduce((acc, line) => {
-    const { nodes } = acc;
-    const root = decodeLine2(line, nodes);
-    nodes.push(root);
-    return { root, nodes };
-  }, { nodes: [], root: { s: "", c: /* @__PURE__ */ Object.create(null) } });
+  const n = genSequence(iter).map((a) => a.replace(/\r?\n/, "")).filter((a) => !!a).reduce(
+    (acc, line) => {
+      const { nodes } = acc;
+      const root = decodeLine2(line, nodes);
+      nodes.push(root);
+      return { root, nodes };
+    },
+    { nodes: [], root: { s: "", c: /* @__PURE__ */ Object.create(null) } }
+  );
   return trieNodeToRoot(n.root, { isCaseAware: false });
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/io/constants.js
 var EOW3 = "$";
 var BACK = "<";
 var EOL = "\n";
@@ -47694,26 +47297,26 @@ var REF = "#";
 var REF_REL = "@";
 var EOR = ";";
 var ESCAPE = "\\";
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/io/importExportV4.js
 var REF_INDEX_BEGIN = "[";
 var REF_INDEX_END = "]";
 var INLINE_DATA_COMMENT_LINE = "/";
-var specialCharacters = stringToCharSet([
-  EOW3,
-  BACK,
-  EOL,
-  REF,
-  REF_REL,
-  EOR,
-  ESCAPE,
-  LF,
-  REF_INDEX_BEGIN,
-  REF_INDEX_END,
-  INLINE_DATA_COMMENT_LINE,
-  ..."0123456789",
-  ..."`~!@#$%^&*()_-+=[]{};:'\"<>,./?\\|"
-].join(""));
+var specialCharacters = stringToCharSet(
+  [
+    EOW3,
+    BACK,
+    EOL,
+    REF,
+    REF_REL,
+    EOR,
+    ESCAPE,
+    LF,
+    REF_INDEX_BEGIN,
+    REF_INDEX_END,
+    INLINE_DATA_COMMENT_LINE,
+    ..."0123456789",
+    ..."`~!@#$%^&*()_-+=[]{};:'\"<>,./?\\|"
+  ].join("")
+);
 var SPECIAL_CHARACTERS_MAP = [
   ["\n", "\\n"],
   ["\r", "\\r"],
@@ -47727,22 +47330,24 @@ function importTrie3(linesX) {
   linesX = typeof linesX === "string" ? linesX.split(/^/m) : linesX;
   let radix = 10;
   const comment = /^\s*#/;
-  const iter = tapIterable(pipeSync(linesX, opConcatMapSync((a) => a.split(/^/m))));
+  const iter = tapIterable(
+    pipeSync(
+      linesX,
+      opConcatMapSync((a) => a.split(/^/m))
+    )
+  );
   function parseHeaderRows(headerRows) {
     const header = headerRows.slice(0, 2).join("\n");
-    const headerReg2 = /^TrieXv[34]\nbase=(\d+)$/;
-    if (!headerReg2.test(header))
-      throw new Error("Unknown file format");
-    radix = Number.parseInt(header.replace(headerReg2, "$1"), 10);
+    const headerReg3 = /^TrieXv[34]\nbase=(\d+)$/;
+    if (!headerReg3.test(header)) throw new Error("Unknown file format");
+    radix = Number.parseInt(header.replace(headerReg3, "$1"), 10);
   }
   function readHeader(iter2) {
     const headerRows = [];
     for (const value of iter2) {
       const line = value.trim();
-      if (!line || comment.test(line))
-        continue;
-      if (line === DATA3)
-        break;
+      if (!line || comment.test(line)) continue;
+      if (line === DATA3) break;
       headerRows.push(line);
     }
     parseHeaderRows(headerRows);
@@ -47891,12 +47496,19 @@ function parseStream(radix, iter) {
     }
     return parserStart({ ...acc, parser: parserStart }, s);
   }
-  reduceSync(pipeSync(iter, opConcatMapSync((a) => [...a])), parserMain, {
-    nodes: [root],
-    root,
-    stack: [{ node: root, s: "" }],
-    parser: parseReferenceIndex
-  });
+  reduceSync(
+    pipeSync(
+      iter,
+      opConcatMapSync((a) => [...a])
+    ),
+    parserMain,
+    {
+      nodes: [root],
+      root,
+      stack: [{ node: root, s: "" }],
+      parser: parseReferenceIndex
+    }
+  );
   return root;
 }
 function stringToCharSet(values) {
@@ -47939,8 +47551,8 @@ function tapIterable(iterable) {
     [Symbol.iterator]: iterableFn
   };
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/io/importV3.js
+var EOW4 = Object.freeze({ f: 1, k: true });
+var compare3 = new Intl.Collator().compare;
 var specialCharacterMap2 = /* @__PURE__ */ new Map([
   ["\n", "\\n"],
   ["\r", "\\r"],
@@ -47956,10 +47568,9 @@ function importTrieV3WithBuilder(builder, srcLines) {
   const comment = /^\s*#/;
   function parseHeaderRows(headerRows) {
     const header = headerRows.slice(0, 2).join("\n");
-    const headerReg2 = /^TrieXv3\nbase=(\d+)$/;
-    if (!headerReg2.test(header))
-      throw new Error("Unknown file format");
-    radix = Number.parseInt(header.replace(headerReg2, "$1"), 10);
+    const headerReg3 = /^TrieXv3\nbase=(\d+)$/;
+    if (!headerReg3.test(header)) throw new Error("Unknown file format");
+    radix = Number.parseInt(header.replace(headerReg3, "$1"), 10);
   }
   function findStartOfData(data) {
     for (let i = 0; i < data.length; ++i) {
@@ -48088,13 +47699,9 @@ function stringToCharSet2(values) {
   }
   return set;
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/io/importV3FastBlob.js
 function importTrieV3AsFastTrieBlob(srcLines) {
   return importTrieV3WithBuilder(new FastTrieBlobBuilder(), srcLines);
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/io/decode.js
 function decodeTrieData(raw) {
   return decodeStringFormat(typeof raw === "string" ? raw : raw.toString("utf8"));
 }
@@ -48132,21 +47739,29 @@ function importTrie4(input) {
     return headerRows;
   }
   const headerLines = readHeader(lines);
-  const version4 = parseHeaderRows(headerLines);
-  const method = deserializers[version4];
+  const version22 = parseHeaderRows(headerLines);
+  const method = deserializers[version22];
   if (!method) {
-    throw new Error(`Unsupported version: ${version4}`);
+    throw new Error(`Unsupported version: ${version22}`);
   }
   return method(lines);
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/decodeTrie.js
 function decodeTrie(raw) {
   const data = decodeTrieData(raw);
   return new ITrieImpl(data);
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/models/locale/knownLocales.js
+var specialCharacters2 = stringToCharSet3(
+  [EOW3, BACK, EOL, REF, EOR, ESCAPE, LF, "0123456789", "`~!@#$%^&*()_-+=[]{};:'\"<>,./?\\|"].join("")
+);
+var specialPrefix2 = stringToCharSet3("~!");
+function stringToCharSet3(values) {
+  const set = /* @__PURE__ */ Object.create(null);
+  const len = values.length;
+  for (let i = 0; i < len; ++i) {
+    set[values[i]] = true;
+  }
+  return set;
+}
 var codes = [
   // ['code', 'language'[', ''locale']],
   ["af", "Afrikaans"],
@@ -48711,8 +48326,6 @@ var codes = [
   ["zu", "Zulu"],
   ["zu-ZA", "Zulu", "South Africa"]
 ];
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/models/locale/locale.js
 var codesByLocale;
 var Locale = class {
   _raw;
@@ -48742,11 +48355,9 @@ var regExLocaleWithCountry = /^([a-z]{2})[_-]?([a-z]{2,3})$/i;
 var regExValidLocale = /^([a-z]{2})(?:-([A-Z]{2,3}))?$/;
 function normalizeLocale(locale) {
   locale = locale.trim();
-  if (regExTwoLetter.test(locale))
-    return locale.toLowerCase();
+  if (regExTwoLetter.test(locale)) return locale.toLowerCase();
   const m = locale.match(regExLocaleWithCountry);
-  if (!m)
-    return locale;
+  if (!m) return locale;
   const lang = m[1].toLowerCase();
   const variant = m[2].toUpperCase();
   return `${lang}-${variant}`;
@@ -48769,8 +48380,6 @@ function parseLocale(locales) {
   locales = typeof locales === "string" ? locales.split(",") : locales;
   return locales.map(createLocale);
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/mappers/mapCosts.js
 var defaultEditCosts = {
   accentCosts: 1,
   baseCost: 100,
@@ -48792,23 +48401,30 @@ function mapHunspellCosts(costs = {}) {
 function mapEditCosts(costs = {}) {
   return { ...defaultEditCosts, ...cleanCopy(costs) };
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/mappers/joinLetters.js
 function joinLetters(letters) {
   const v = [...letters];
   return v.map((a) => a.length > 1 || !a.length ? `(${a})` : a).join("");
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/mappers/mapToSuggestionCostDef.js
 function parseAlphabet(cs, locale, editCost) {
   const { cost, penalty } = cs;
   const characters = expandCharacterSet(cs.characters);
   const charForms = [
-    ...pipeSync(characters, opMapSync((c) => caseForms(c, locale).sort()))
+    ...pipeSync(
+      characters,
+      opMapSync((c) => caseForms(c, locale).sort())
+    )
   ];
-  const alphabet = joinLetters([
-    ...pipeSync(charForms, opFlattenSync(), opMapSync((letter) => accentForms(letter)), opFlattenSync(), opUniqueSync())
-  ].sort());
+  const alphabet = joinLetters(
+    [
+      ...pipeSync(
+        charForms,
+        opFlattenSync(),
+        opMapSync((letter) => accentForms(letter)),
+        opFlattenSync(),
+        opUniqueSync()
+      )
+    ].sort()
+  );
   const sugAlpha = clean({
     map: alphabet,
     replace: cost,
@@ -48825,7 +48441,10 @@ function parseAlphabet(cs, locale, editCost) {
 function parseAlphabetCaps(alphabet, locale, editCost) {
   const characters = expandCharacterSet(alphabet);
   const charForms = [
-    ...pipeSync(characters, opMapSync((c) => caseForms(c, locale).sort()))
+    ...pipeSync(
+      characters,
+      opMapSync((c) => caseForms(c, locale).sort())
+    )
   ];
   const caps = charForms.map((a) => joinLetters(a)).join("|");
   const sugCaps = {
@@ -48839,7 +48458,11 @@ function calcFirstCharacterReplaceDefs(alphabets, editCost) {
 }
 function calcFirstCharacterReplace(cs, editCost) {
   const mapOfFirstLetters = [
-    ...pipeSync(expandCharacterSet(cs.characters), opUniqueSync(), opMapSync((letter) => `(^${letter})`))
+    ...pipeSync(
+      expandCharacterSet(cs.characters),
+      opUniqueSync(),
+      opMapSync((letter) => `(^${letter})`)
+    )
   ].sort().join("") + "(^)";
   const penalty = editCost.firstLetterPenalty;
   const cost = cs.cost - penalty;
@@ -48852,10 +48475,12 @@ function calcFirstCharacterReplace(cs, editCost) {
 function parseAccents(cs, _editCost) {
   const { cost, penalty } = cs;
   const accents = joinLetters([
-    ...pipeSync(expandCharacterSet(cs.characters), opMapSync((char) => stripNonAccents(char)))
+    ...pipeSync(
+      expandCharacterSet(cs.characters),
+      opMapSync((char) => stripNonAccents(char))
+    )
   ]);
-  if (!accents)
-    return void 0;
+  if (!accents) return void 0;
   return clean({
     map: accents,
     replace: cost,
@@ -48865,9 +48490,22 @@ function parseAccents(cs, _editCost) {
 }
 function calcCostsForAccentedLetters(simpleMap, locale, costs) {
   const charactersWithAccents = [
-    ...pipeSync(splitMap2(simpleMap), opMapSync((char) => caseForms(char, locale)), opFlattenSync(), opMapSync((char) => [...accentForms(char)]), opFilterSync((forms2) => forms2.length > 1))
+    ...pipeSync(
+      splitMap2(simpleMap),
+      opMapSync((char) => caseForms(char, locale)),
+      opFlattenSync(),
+      opMapSync((char) => [...accentForms(char)]),
+      opFilterSync((forms2) => forms2.length > 1)
+    )
   ];
-  const characters = pipeSync(charactersWithAccents, opMapSync((forms2) => /* @__PURE__ */ new Set([...forms2, ...forms2.map((char) => stripAccents(char))])), opMapSync((forms2) => [...forms2].sort()), opFilterSync((forms2) => forms2.length > 1), opMapSync(joinLetters), opUniqueSync());
+  const characters = pipeSync(
+    charactersWithAccents,
+    opMapSync((forms2) => /* @__PURE__ */ new Set([...forms2, ...forms2.map((char) => stripAccents(char))])),
+    opMapSync((forms2) => [...forms2].sort()),
+    opFilterSync((forms2) => forms2.length > 1),
+    opMapSync(joinLetters),
+    opUniqueSync()
+  );
   const replaceAccentMap = [...characters].join("|");
   const cost = costs.accentCosts;
   const costToReplaceAccent = !replaceAccentMap ? [] : [{ map: replaceAccentMap, replace: cost }];
@@ -48896,8 +48534,6 @@ function* splitMap2(map3) {
     yield char;
   }
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/mappers/mapHunspellInformation.js
 function hunspellInformationToSuggestionCostDef(hunInfo, locales) {
   const costs = calcCosts(hunInfo.costs, locales);
   const operations = [
@@ -48916,7 +48552,19 @@ function hunspellInformationToSuggestionCostDef(hunInfo, locales) {
     const regSupportedAff = /^(?:MAP|KEY|TRY|NO-TRY|ICONV|OCONV|REP)\s/;
     const rejectAff = /^(?:MAP|KEY|TRY|ICONV|OCONV|REP)\s+\d+$/;
     const lines = aff.split("\n").map((a) => a.replace(/#.*/, "")).map((a) => a.trim()).filter((a) => regSupportedAff.test(a)).filter((a) => !rejectAff.test(a));
-    const defs = pipeSync(lines, opMapSync((line) => pipeSync(operations, opMapSync((fn) => fn(line, costs2)), opMapSync(asArrayOf), opFlattenSync())), opFlattenSync(), opFilterSync(isDefined));
+    const defs = pipeSync(
+      lines,
+      opMapSync(
+        (line) => pipeSync(
+          operations,
+          opMapSync((fn) => fn(line, costs2)),
+          opMapSync(asArrayOf),
+          opFlattenSync()
+        )
+      ),
+      opFlattenSync(),
+      opFilterSync(isDefined2)
+    );
     return [...defs];
   }
   return parseAff(hunInfo.aff, costs);
@@ -48933,8 +48581,7 @@ function calcCosts(costs = {}, locale) {
 var regExpMap = /^(?:MAP)\s+(\S+)$/;
 function affMap(line, costs) {
   const m = line.match(regExpMap);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   const map3 = m[1];
   const cost = costs.mapCost;
   return {
@@ -48946,32 +48593,36 @@ function affMap(line, costs) {
 var regExpTry = /^(?:TRY)\s+(\S+)$/;
 function affTry(line, costs) {
   const m = line.match(regExpTry);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   const cost = costs.tryCharCost;
   const tryChars = m[1];
   const characters = tryChars;
-  return parseAlphabet({
-    characters,
-    cost
-  }, costs.locale, costs);
+  return parseAlphabet(
+    {
+      characters,
+      cost
+    },
+    costs.locale,
+    costs
+  );
 }
 function affTryFirstCharacterReplace(line, costs) {
   const m = line.match(regExpTry);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   const characters = m[1];
   const cost = costs.tryCharCost;
-  return calcFirstCharacterReplace({
-    characters,
-    cost
-  }, costs);
+  return calcFirstCharacterReplace(
+    {
+      characters,
+      cost
+    },
+    costs
+  );
 }
 var regExpNoTry = /^NO-TRY\s+(\S+)$/;
 function affNoTry(line, costs) {
   const m = line.match(regExpNoTry);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   const map3 = m[1];
   return {
     map: map3,
@@ -48982,8 +48633,7 @@ function affNoTry(line, costs) {
 var regExpRepConv = /^(?:REP|(?:I|O)CONV)\s+(\S+)\s+(\S+)$/;
 function affRepConv(line, costs) {
   const m = line.match(regExpRepConv);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   const cost = line.startsWith("REP") ? costs.replaceCosts : costs.ioConvertCost;
   const from = m[1];
   let into = m[2];
@@ -49002,8 +48652,7 @@ function affRepConv(line, costs) {
 var regExpKey = /^(?:KEY)\s+(\S+)$/;
 function affKey(line, costs) {
   const m = line.match(regExpKey);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   const kbd = m[1];
   const pairs = [...splitMap2(kbd)].map(reducer((p, v) => ({ a: p.b, b: v }), { a: "|", b: "|" })).filter((ab) => ab.a !== "|" && ab.b !== "|").map(({ a, b }) => joinLetters([a, b]));
   const pairsUpper = pairs.map((p) => p.toLocaleUpperCase(costs.locale));
@@ -49017,26 +48666,22 @@ function affKey(line, costs) {
 }
 function affKeyCaps(line, costs) {
   const m = line.match(regExpKey);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   return parseCaps(m[1], costs);
 }
 function affMapCaps(line, costs) {
   const m = line.match(regExpMap);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   return parseCaps(m[1], costs);
 }
 function affTryAccents(line, costs) {
   const m = line.match(regExpTry);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   return calcCostsForAccentedLetters(m[1], costs.locale, costs);
 }
 function affMapAccents(line, costs) {
   const m = line.match(regExpMap);
-  if (!m)
-    return void 0;
+  if (!m) return void 0;
   return calcCostsForAccentedLetters(m[1], costs.locale, costs);
 }
 function parseCaps(value, costs) {
@@ -49045,8 +48690,7 @@ function parseCaps(value, costs) {
   const withCases = letters.map((s) => caseForms(s, locale)).filter((forms2) => forms2.length > 1).map(joinLetters);
   const map3 = unique(withCases).join("|");
   const cost = costs.capsCosts;
-  if (!map3)
-    return void 0;
+  if (!map3) return void 0;
   return {
     map: map3,
     replace: cost
@@ -49059,8 +48703,6 @@ function reducer(fn, initialVal) {
 function asArrayOf(v) {
   return Array.isArray(v) ? v : [v];
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/mappers/mapDictionaryInfo.js
 function mapDictionaryInformation(dictInfo) {
   const _locale = dictInfo.locale;
   const locale = _locale ? parseLocale(_locale).filter((loc) => loc.isValid()) : void 0;
@@ -49078,14 +48720,17 @@ function mapDictionaryInformation(dictInfo) {
 function processAlphabet(alphabet, locale, editCost) {
   const csAlphabet = toCharSets(alphabet, "a-zA-Z", editCost.baseCost);
   return [
-    ...pipeSync(csAlphabet, opMapSync((cs) => parseAlphabet(cs, locale, editCost)), opFlattenSync()),
+    ...pipeSync(
+      csAlphabet,
+      opMapSync((cs) => parseAlphabet(cs, locale, editCost)),
+      opFlattenSync()
+    ),
     ...calcFirstCharacterReplaceDefs(csAlphabet, editCost)
   ];
 }
 function toCharSets(cs, defaultValue, cost, penalty) {
   cs = cs ?? defaultValue;
-  if (!cs)
-    return [];
+  if (!cs) return [];
   if (typeof cs === "string") {
     cs = [
       {
@@ -49101,11 +48746,10 @@ function toCharSets(cs, defaultValue, cost, penalty) {
 }
 function processAccents(accents, editCost) {
   const cs = toCharSets(accents, "\u0300-\u0341", editCost.accentCosts);
-  return cs.map((cs2) => parseAccents(cs2, editCost)).filter(isDefined);
+  return cs.map((cs2) => parseAccents(cs2, editCost)).filter(isDefined2);
 }
 function mapDictionaryInformationToAdjustment(dictInfo) {
-  if (!dictInfo.adjustments)
-    return [];
+  if (!dictInfo.adjustments) return [];
   return dictInfo.adjustments.map(mapAdjustment);
 }
 function mapAdjustment(adj) {
@@ -49116,8 +48760,6 @@ function mapAdjustment(adj) {
     penalty
   };
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/mappers/mapDictionaryInfoToWeightMap.js
 var defaultDefs = [
   {
     map: "1234567890-.",
@@ -49149,15 +48791,17 @@ function mapDictionaryInformationToWeightMap(dictInfo) {
   addAdjustment(map3, ...defaultAdjustments, ...adjustments);
   return map3;
 }
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/utils/normalizeWord.js
+var baseCost = opCosts.baseCost;
+var swapCost = opCosts.swapCost;
+var postSwapCost = swapCost - baseCost;
+var mapSubCost = opCosts.visuallySimilar;
+var maxCostScale = opCosts.wordLengthCostFactor;
+var SymbolFrozenNode = Symbol();
 var normalizeWord = (text) => text.normalize();
 var normalizeWordForCaseInsensitive = (text) => {
   const t = text.toLowerCase();
   return [t, t.normalize("NFD").replaceAll(/\p{M}/gu, "")];
 };
-
-// ../node_modules/.pnpm/cspell-trie-lib@8.17.1/node_modules/cspell-trie-lib/dist/lib/SimpleDictionaryParser.js
 var RegExpSplit = /[\s,;]/g;
 var _defaultOptions = {
   commentCharacter: LINE_COMMENT,
@@ -49178,9 +48822,21 @@ var defaultParseDictionaryOptions = Object.freeze(_defaultOptions);
 var cSpellToolDirective = "cspell-dictionary:";
 function createDictionaryLineParserMapper(options) {
   const _options = options || _defaultOptions;
-  const { commentCharacter = _defaultOptions.commentCharacter, optionalCompoundCharacter: optionalCompound = _defaultOptions.optionalCompoundCharacter, compoundCharacter: compound = _defaultOptions.compoundCharacter, caseInsensitivePrefix: ignoreCase2 = _defaultOptions.caseInsensitivePrefix, forbiddenPrefix: forbidden = _defaultOptions.forbiddenPrefix, keepExactPrefix: keepCase = _defaultOptions.keepExactPrefix, splitSeparator = _defaultOptions.splitSeparator, splitKeepBoth = _defaultOptions.splitKeepBoth, stripCaseAndAccentsKeepDuplicate = _defaultOptions.stripCaseAndAccentsKeepDuplicate, stripCaseAndAccentsOnForbidden = _defaultOptions.stripCaseAndAccentsOnForbidden, keepOptionalCompoundCharacter = _defaultOptions.keepOptionalCompoundCharacter } = _options;
+  const {
+    commentCharacter = _defaultOptions.commentCharacter,
+    optionalCompoundCharacter: optionalCompound = _defaultOptions.optionalCompoundCharacter,
+    compoundCharacter: compound = _defaultOptions.compoundCharacter,
+    caseInsensitivePrefix: ignoreCase2 = _defaultOptions.caseInsensitivePrefix,
+    forbiddenPrefix: forbidden = _defaultOptions.forbiddenPrefix,
+    keepExactPrefix: keepCase = _defaultOptions.keepExactPrefix,
+    splitSeparator = _defaultOptions.splitSeparator,
+    splitKeepBoth = _defaultOptions.splitKeepBoth,
+    stripCaseAndAccentsKeepDuplicate = _defaultOptions.stripCaseAndAccentsKeepDuplicate,
+    stripCaseAndAccentsOnForbidden = _defaultOptions.stripCaseAndAccentsOnForbidden,
+    keepOptionalCompoundCharacter = _defaultOptions.keepOptionalCompoundCharacter
+  } = _options;
   let { stripCaseAndAccents = _defaultOptions.stripCaseAndAccents, split: split2 = _defaultOptions.split } = _options;
-  function isString3(line) {
+  function isString2(line) {
     return typeof line === "string";
   }
   function trim(line) {
@@ -49188,8 +48844,7 @@ function createDictionaryLineParserMapper(options) {
   }
   function removeComments(line) {
     const idx2 = line.indexOf(commentCharacter);
-    if (idx2 < 0)
-      return line;
+    if (idx2 < 0) return line;
     const idxDirective = line.indexOf(cSpellToolDirective, idx2);
     if (idxDirective >= 0) {
       const flags = line.slice(idxDirective).split(/[\s,;]/g).map((s) => s.trim()).filter((a) => !!a);
@@ -49269,8 +48924,7 @@ function createDictionaryLineParserMapper(options) {
         const lineEscaped = line.includes('"') ? line.replaceAll(/".*?"/g, (quoted) => " " + quoted.replaceAll(/(\s)/g, "\\$1") + " ") : line;
         const words = splitLine(lineEscaped, splitSeparator);
         yield* words.map((escaped) => escaped.replaceAll("\\", ""));
-        if (!splitKeepBoth)
-          continue;
+        if (!splitKeepBoth) continue;
       }
       yield line;
     }
@@ -49281,7 +48935,17 @@ function createDictionaryLineParserMapper(options) {
     }
   }
   const mapCompounds = keepOptionalCompoundCharacter ? [] : [opConcatMapSync(mapOptionalPrefix), opConcatMapSync(mapOptionalSuffix)];
-  const processLines = opCombineSync(opFilterSync(isString3), splitLines, opMapSync(removeComments), splitWords2, opMapSync(trim), opFilterSync(filterEmptyLines), ...mapCompounds, opConcatMapSync(mapNormalize), opMapSync(removeDoublePrefix));
+  const processLines = opCombineSync(
+    opFilterSync(isString2),
+    splitLines,
+    opMapSync(removeComments),
+    splitWords2,
+    opMapSync(trim),
+    opFilterSync(filterEmptyLines),
+    ...mapCompounds,
+    opConcatMapSync(mapNormalize),
+    opMapSync(removeDoublePrefix)
+  );
   return processLines;
 }
 function parseDictionaryLines(lines, options) {
@@ -49299,7 +48963,7 @@ function splitLine(line, regExp) {
   return encodeLine(line).split(regExp).map((line2) => decodeLine(line2));
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/text.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/text.js
 var regExAllUpper = /^(?:\p{Lu}\p{M}?)+$/u;
 var regExAccents = /\p{M}/gu;
 function isUpperCase(word) {
@@ -49315,7 +48979,7 @@ function removeUnboundAccents(text) {
   return text.replaceAll(regExAccents, "");
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
 var defaultNumSuggestions = 10;
 function wordSearchForms(word, isDictionaryCaseSensitive, ignoreCase2) {
   const forms2 = /* @__PURE__ */ new Set();
@@ -49380,7 +49044,7 @@ function createWeightMapFromDictionaryInformation(di) {
   return di ? mapDictionaryInformationToWeightMap(di) : void 0;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
 var dictionaryCounter = 0;
 var DefaultAutoCacheSize = 1e3;
 var logRequests = false;
@@ -49439,7 +49103,7 @@ function getLog() {
   return log;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/AutoResolve.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/AutoResolve.js
 function autoResolveWeak(map3, key, resolve10) {
   const found = map3.get(key);
   if (found !== void 0 || map3.has(key))
@@ -49465,12 +49129,12 @@ function createAutoResolveWeakCache() {
   return new AutoResolveWeakCache();
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/util.js
-function isDefined2(v) {
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/util.js
+function isDefined(v) {
   return v !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 var import_node_url = require("node:url");
 
 // ../node_modules/.pnpm/fast-equals@5.2.2/node_modules/fast-equals/dist/esm/index.mjs
@@ -49692,8 +49356,8 @@ var isArray = Array.isArray;
 var isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView ? ArrayBuffer.isView : null;
 var assign2 = Object.assign;
 var getTag = Object.prototype.toString.call.bind(Object.prototype.toString);
-function createEqualityComparator(_a3) {
-  var areArraysEqual2 = _a3.areArraysEqual, areDatesEqual2 = _a3.areDatesEqual, areErrorsEqual2 = _a3.areErrorsEqual, areFunctionsEqual2 = _a3.areFunctionsEqual, areMapsEqual2 = _a3.areMapsEqual, areNumbersEqual2 = _a3.areNumbersEqual, areObjectsEqual2 = _a3.areObjectsEqual, arePrimitiveWrappersEqual2 = _a3.arePrimitiveWrappersEqual, areRegExpsEqual2 = _a3.areRegExpsEqual, areSetsEqual2 = _a3.areSetsEqual, areTypedArraysEqual2 = _a3.areTypedArraysEqual, areUrlsEqual2 = _a3.areUrlsEqual;
+function createEqualityComparator(_a) {
+  var areArraysEqual2 = _a.areArraysEqual, areDatesEqual2 = _a.areDatesEqual, areErrorsEqual2 = _a.areErrorsEqual, areFunctionsEqual2 = _a.areFunctionsEqual, areMapsEqual2 = _a.areMapsEqual, areNumbersEqual2 = _a.areNumbersEqual, areObjectsEqual2 = _a.areObjectsEqual, arePrimitiveWrappersEqual2 = _a.arePrimitiveWrappersEqual, areRegExpsEqual2 = _a.areRegExpsEqual, areSetsEqual2 = _a.areSetsEqual, areTypedArraysEqual2 = _a.areTypedArraysEqual, areUrlsEqual2 = _a.areUrlsEqual;
   return function comparator(a, b, state) {
     if (a === b) {
       return true;
@@ -49770,8 +49434,8 @@ function createEqualityComparator(_a3) {
     return false;
   };
 }
-function createEqualityComparatorConfig(_a3) {
-  var circular = _a3.circular, createCustomConfig = _a3.createCustomConfig, strict = _a3.strict;
+function createEqualityComparatorConfig(_a) {
+  var circular = _a.circular, createCustomConfig = _a.createCustomConfig, strict = _a.strict;
   var config = {
     areArraysEqual: strict ? areObjectsEqualStrict : areArraysEqual,
     areDatesEqual,
@@ -49803,16 +49467,16 @@ function createEqualityComparatorConfig(_a3) {
   }
   return config;
 }
-function createInternalEqualityComparator(compare4) {
+function createInternalEqualityComparator(compare5) {
   return function(a, b, _indexOrKeyA, _indexOrKeyB, _parentA, _parentB, state) {
-    return compare4(a, b, state);
+    return compare5(a, b, state);
   };
 }
-function createIsEqual(_a3) {
-  var circular = _a3.circular, comparator = _a3.comparator, createState = _a3.createState, equals = _a3.equals, strict = _a3.strict;
+function createIsEqual(_a) {
+  var circular = _a.circular, comparator = _a.comparator, createState = _a.createState, equals = _a.equals, strict = _a.strict;
   if (createState) {
     return function isEqual(a, b) {
-      var _a4 = createState(), _b = _a4.cache, cache5 = _b === void 0 ? circular ? /* @__PURE__ */ new WeakMap() : void 0 : _b, meta = _a4.meta;
+      var _a2 = createState(), _b = _a2.cache, cache5 = _b === void 0 ? circular ? /* @__PURE__ */ new WeakMap() : void 0 : _b, meta = _a2.meta;
       return comparator(a, b, {
         cache: cache5,
         equals,
@@ -49876,14 +49540,14 @@ function createCustomEqual(options) {
   if (options === void 0) {
     options = {};
   }
-  var _a3 = options.circular, circular = _a3 === void 0 ? false : _a3, createCustomInternalComparator = options.createInternalComparator, createState = options.createState, _b = options.strict, strict = _b === void 0 ? false : _b;
+  var _a = options.circular, circular = _a === void 0 ? false : _a, createCustomInternalComparator = options.createInternalComparator, createState = options.createState, _b = options.strict, strict = _b === void 0 ? false : _b;
   var config = createEqualityComparatorConfig(options);
   var comparator = createEqualityComparator(config);
   var equals = createCustomInternalComparator ? createCustomInternalComparator(comparator) : createInternalEqualityComparator(comparator);
   return createIsEqual({ circular, comparator, createState, equals, strict });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/simpleCache.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/simpleCache.js
 var SimpleWeakCache = class {
   size;
   L0 = /* @__PURE__ */ new WeakMap();
@@ -50001,12 +49665,12 @@ var SimpleCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
 var defaultOptions = Object.freeze({
   weightMap: void 0
 });
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/clean.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/clean.js
 function clean3(src) {
   const r = src;
   for (const key of Object.keys(r)) {
@@ -50017,12 +49681,12 @@ function clean3(src) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/regexHelper.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/regexHelper.js
 function escapeRegEx(s) {
   return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/repMap.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/repMap.js
 function createMapper(repMap, ignoreCharset) {
   if (!repMap && !ignoreCharset)
     return (a) => a;
@@ -50113,7 +49777,7 @@ function applyEdits(word, edits) {
 }
 function calcAllEdits(root, word) {
   const edits = [];
-  function walk3(node, b, e) {
+  function walk2(node, b, e) {
     if (node.rep) {
       node.rep.forEach((r) => edits.push({ b, e, r }));
     }
@@ -50122,15 +49786,15 @@ function calcAllEdits(root, word) {
     const n = node.children[word[e]];
     if (!n)
       return;
-    walk3(n, b, e + 1);
+    walk2(n, b, e + 1);
   }
   for (let i = 0; i < word.length; ++i) {
-    walk3(root, i, i);
+    walk2(root, i, i);
   }
   return edits;
 }
 function createTrie(repMap, ignoreCharset) {
-  const combined = [repMap, charsetToRepMap(ignoreCharset)].filter(isDefined2).flat();
+  const combined = [repMap, charsetToRepMap(ignoreCharset)].filter(isDefined).flat();
   const expanded = expandReplaceMap(combined);
   const trieRoot = /* @__PURE__ */ Object.create(null);
   expanded.forEach(([match2, replaceWith]) => addToTrie(trieRoot, match2, replaceWith));
@@ -50149,11 +49813,11 @@ function addToTrie(node, match2, replaceWith) {
   node.rep = [...s];
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/defaults.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/defaults.js
 var ignoreCase = true;
 var isForbiddenIgnoreCaseAndAccents = false;
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
 var findWordOptionsCaseSensitive = Object.freeze({ caseSensitive: true });
 var findWordOptionsNotCaseSensitive = Object.freeze({ caseSensitive: false });
 var SpellingDictionaryFromTrie = class {
@@ -50315,7 +49979,7 @@ function* outerWordForms(word, mapWord) {
   return;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 var cachedDictionaries = new AutoWeakCache(_createSpellingDictionary, 64);
 var maxSetSize = 3;
 var cachedParamsByWordList = new SimpleCache(64);
@@ -50372,7 +50036,7 @@ function createFailedToLoadDictionary(name2, sourceUrl, error4, options) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/util/textMappers.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/util/textMappers.js
 function* mapperRemoveCaseAndAccents(words) {
   for (const word of words) {
     const lc = word.toLowerCase();
@@ -50383,10 +50047,10 @@ function* mapperRemoveCaseAndAccents(words) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 var import_node_assert3 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
 function normalizeTyposDefValue(value) {
   if (!value)
     return false;
@@ -50466,7 +50130,7 @@ function hasSuggestions(v) {
   return isString(v) || isArray2(v);
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 function assertString(v) {
   (0, import_node_assert3.default)(typeof v === "string", "A string was expected.");
   return true;
@@ -50555,7 +50219,7 @@ function isIterable3(v) {
   return Symbol.iterator in v;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
 var TyposDictionaryImpl = class {
   name;
   source;
@@ -50690,7 +50354,7 @@ function createTyposDictionary(entries, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
 var FlagWordsDictionaryTrie = class extends SpellingDictionaryFromTrie {
   name;
   source;
@@ -50816,7 +50480,7 @@ function bisect(values, predicate) {
   return { t, f };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
 var NormalizeForm = "NFC";
 var IgnoreWordsDictionary = class {
   name;
@@ -50905,7 +50569,7 @@ function createIgnoreWordsDictionary(wordList, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
 function identityString(w) {
   return w;
 }
@@ -50966,7 +50630,7 @@ var SpellingDictionaryCollectionImpl = class {
     return this.dictionaries.reduce((a, b) => a + b.size, 0);
   }
   getPreferredSuggestions(word) {
-    const sugs = this.dictionaries.flatMap((dict) => dict.getPreferredSuggestions?.(word)).filter(isDefined2);
+    const sugs = this.dictionaries.flatMap((dict) => dict.getPreferredSuggestions?.(word)).filter(isDefined);
     if (sugs.length <= 1)
       return sugs;
     const unique2 = /* @__PURE__ */ new Set();
@@ -51002,7 +50666,7 @@ function isWordInAnyDictionary(dicts, word, options) {
   return dicts.find((dict) => dict.has(word, options));
 }
 function findInAnyDictionary(dicts, word, options) {
-  const found = dicts.map((dict) => dict.find(word, options)).filter(isDefined2);
+  const found = dicts.map((dict) => dict.find(word, options)).filter(isDefined);
   if (!found.length)
     return void 0;
   return found.reduce((a, b) => ({
@@ -51018,7 +50682,7 @@ function isWordForbiddenInAnyDictionary(dicts, word, ignoreCase2) {
   return dicts.find((dict) => dict.isForbidden(word, ignoreCase2));
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
 var SuggestDictionaryImpl = class {
   name;
   source;
@@ -51118,7 +50782,7 @@ function createSuggestDictionary(entries, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
 var cache = createAutoResolveWeakCache();
 function createInlineSpellingDictionary(inlineDict, source) {
   return cache.get(inlineDict, () => {
@@ -51128,21 +50792,21 @@ function createInlineSpellingDictionary(inlineDict, source) {
       flagWords && createFlagWordsDictionary(flagWords, name2 + "-flag-words", source),
       ignoreWords && createIgnoreWordsDictionary(ignoreWords, name2 + "-ignore-words", source),
       suggestWords && createSuggestDictionary(suggestWords, name2 + "-suggest", source)
-    ].filter(isDefined2);
+    ].filter(isDefined);
     return createCollection(dictSources, name2, source);
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@8.17.1/node_modules/cspell-dictionary/dist/index.js
+// ../node_modules/.pnpm/cspell-dictionary@8.17.2/node_modules/cspell-dictionary/dist/index.js
 var _debug = {
   cacheDictionaryEnableLogging: enableLogging,
   cacheDictionaryGetLog: getLog
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
 var path6 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/util.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/util.js
 var uniqueFn = uniqueFilterFnGenerator;
 function uniqueFilterFnGenerator(extractFn) {
   const values = /* @__PURE__ */ new Set();
@@ -51179,13 +50843,6 @@ function scanMap(accFn, init) {
 function isDefined4(v) {
   return v !== void 0;
 }
-async function asyncIterableToArray(iter) {
-  const acc = [];
-  for await (const t of iter) {
-    acc.push(t);
-  }
-  return acc;
-}
 function isArrayEqual(a, b) {
   if (a === b)
     return true;
@@ -51196,17 +50853,17 @@ function isArrayEqual(a, b) {
   return isMatch;
 }
 function doSetsIntersect(a, b) {
-  function compare4(a2, b2) {
+  function compare5(a2, b2) {
     for (const item of a2) {
       if (b2.has(item))
         return true;
     }
     return false;
   }
-  return a.size <= b.size ? compare4(a, b) : compare4(b, a);
+  return a.size <= b.size ? compare5(a, b) : compare5(b, a);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
 var SymbolCSpellSettingsInternal = Symbol("CSpellSettingsInternal");
 function cleanCSpellSettingsInternal(parts) {
   return parts ? Object.assign(clean4(parts), { [SymbolCSpellSettingsInternal]: true }) : { [SymbolCSpellSettingsInternal]: true };
@@ -51224,7 +50881,7 @@ function isDictionaryDefinitionInlineInternal(def) {
   return !!(defInline.words || defInline.flagWords || defInline.ignoreWords || defInline.suggestWords);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
 function autoResolve(map3, key, resolve10) {
   const found = map3.get(key);
   if (found !== void 0 || map3.has(key))
@@ -51397,7 +51054,7 @@ function createAutoResolveWeakWeakCache() {
   return new AutoResolveWeakWeakCache();
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var import_node_module2 = require("node:module");
 var os2 = __toESM(require("node:os"), 1);
 var path5 = __toESM(require("node:path"), 1);
@@ -51495,18 +51152,22 @@ globalDirectory.yarn.packages = import_node_path.default.join(yarnPrefix, getYar
 globalDirectory.yarn.binaries = import_node_path.default.join(globalDirectory.yarn.packages, ".bin");
 var global_directory_default = globalDirectory;
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@8.17.1/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
+// ../node_modules/.pnpm/@cspell+cspell-resolver@8.17.2/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 var import_requireResolve = __toESM(require_requireResolve(), 1);
 function resolveGlobal(modulesName) {
   const paths = [global_directory_default.npm.packages, global_directory_default.yarn.packages];
   return (0, import_requireResolve.requireResolve)(modulesName, paths);
 }
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@8.17.1/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@8.17.2/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 var import_node_fs4 = require("node:fs");
 var import_node_path5 = require("node:path");
 
-// ../node_modules/.pnpm/@cspell+url@8.17.1/node_modules/@cspell/url/dist/url.mjs
+// ../node_modules/.pnpm/@cspell+url@8.17.2/node_modules/@cspell/url/dist/index.js
+var import_node_assert4 = __toESM(require("node:assert"), 1);
+var import_node_path2 = __toESM(require("node:path"), 1);
+var import_node_url2 = require("node:url");
+var import_node_url3 = require("node:url");
 var isURLRegEx = /^(\w[\w-]{1,63}:\/|data:|stdin:)/i;
 function toURL(url2, relativeTo) {
   return normalizeWindowsUrl(url2 instanceof URL ? url2 : new URL(url2, relativeTo));
@@ -51538,8 +51199,7 @@ function hasProtocol(url2, protocol) {
   return typeof url2 === "string" ? url2.startsWith(protocol) : url2.protocol === protocol;
 }
 function addTrailingSlash(url2) {
-  if (url2.pathname.endsWith("/"))
-    return url2;
+  if (url2.pathname.endsWith("/")) return url2;
   const urlWithSlash = new URL(url2.href);
   urlWithSlash.pathname += "/";
   return urlWithSlash;
@@ -51550,11 +51210,9 @@ function urlRelative(urlFrom, urlTo) {
 function urlToUrlRelative(urlFrom, urlTo) {
   let pFrom = urlFrom.pathname;
   const pTo = urlTo.pathname;
-  if (pFrom === pTo)
-    return "";
+  if (pFrom === pTo) return "";
   pFrom = pFrom.endsWith("/") ? pFrom : new URL("./", urlFrom).pathname;
-  if (pTo.startsWith(pFrom))
-    return decodeURIComponent(pTo.slice(pFrom.length));
+  if (pTo.startsWith(pFrom)) return decodeURIComponent(pTo.slice(pFrom.length));
   const p0 = pFrom;
   const p1 = pTo;
   if (p1.startsWith(p0)) {
@@ -51592,14 +51250,11 @@ function fixUncUrl(url2) {
   }
   return url2;
 }
-
-// ../node_modules/.pnpm/@cspell+url@8.17.1/node_modules/@cspell/url/dist/dataUrl.mjs
 var regMatchFilename = /filename=([^;,]*)/;
 function urlBasename(url2) {
   function guessDataUrlName(header) {
     const filenameMatch = header.match(regMatchFilename);
-    if (filenameMatch)
-      return filenameMatch[1];
+    if (filenameMatch) return filenameMatch[1];
     const mime = header.split(";", 1)[0];
     return mime.replaceAll(/\W/g, ".");
   }
@@ -51612,14 +51267,6 @@ function urlBasename(url2) {
 function isDataURL(url2) {
   return hasProtocol(url2, "data:");
 }
-
-// ../node_modules/.pnpm/@cspell+url@8.17.1/node_modules/@cspell/url/dist/FileUrlBuilder.mjs
-var import_node_assert4 = __toESM(require("node:assert"), 1);
-var import_node_path2 = __toESM(require("node:path"), 1);
-var import_node_url3 = require("node:url");
-
-// ../node_modules/.pnpm/@cspell+url@8.17.1/node_modules/@cspell/url/dist/fileUrl.mjs
-var import_node_url2 = require("node:url");
 var isWindows2 = process.platform === "win32";
 var windowsUrlPathRegExp = /^\/[a-zA-Z]:\//;
 function isWindowsPathnameWithDriveLatter(pathname) {
@@ -51636,16 +51283,16 @@ function toFilePath(url2) {
     if (isWindows2) {
       const u = new URL(url2);
       if (!isWindowsPathnameWithDriveLatter(u.pathname)) {
-        const cwdUrl = (0, import_node_url2.pathToFileURL)(process.cwd());
+        const cwdUrl = (0, import_node_url3.pathToFileURL)(process.cwd());
         if (cwdUrl.hostname) {
-          return (0, import_node_url2.fileURLToPath)(new URL(u.pathname, cwdUrl));
+          return (0, import_node_url3.fileURLToPath)(new URL(u.pathname, cwdUrl));
         }
         const drive = cwdUrl.pathname.split("/")[1];
         u.pathname = `/${drive}${u.pathname}`;
-        return (0, import_node_url2.fileURLToPath)(u);
+        return (0, import_node_url3.fileURLToPath)(u);
       }
     }
-    return pathWindowsDriveLetterToUpper((0, import_node_url2.fileURLToPath)(url2));
+    return pathWindowsDriveLetterToUpper((0, import_node_url3.fileURLToPath)(url2));
   } catch {
     return url2.toString();
   }
@@ -51658,8 +51305,6 @@ var regExpWindowsFileUrl = /^file:\/\/\/[a-zA-Z]:\//;
 function isWindowsFileUrl(url2) {
   return regExpWindowsFileUrl.test(url2.toString());
 }
-
-// ../node_modules/.pnpm/@cspell+url@8.17.1/node_modules/@cspell/url/dist/FileUrlBuilder.mjs
 var isWindowsPathRegEx = regExpWindowsPathDriveLetter;
 var isWindowsPathname = regExpWindowsPath;
 var percentRegEx = /%/g;
@@ -51675,22 +51320,25 @@ var FileUrlBuilder = class {
   path;
   cwd;
   constructor(options = {}) {
-    const sep5 = options.path?.sep;
-    this.windows = options.windows ?? (sep5 ? sep5 === "\\" : void 0) ?? isWindows2;
+    const sep4 = options.path?.sep;
+    this.windows = options.windows ?? (sep4 ? sep4 === "\\" : void 0) ?? isWindows2;
     this.path = options.path ?? (this.windows ? import_node_path2.default.win32 : import_node_path2.default.posix);
     this.cwd = options.cwd ?? this.pathToFileURL(this.path.resolve() + "/", this.rootFileURL());
-    (0, import_node_assert4.default)(this.path.sep === (this.windows ? "\\" : "/"), `Path separator should match OS type Windows: ${this.windows === true ? "true" : (this.windows ?? "undefined") || "false"}, sep: ${this.path.sep}, options: ` + JSON.stringify({
-      isWindows: isWindows2,
-      sep: `${sep5}`,
-      windows: options.windows,
-      pathSep: options.path?.sep,
-      n: options.path?.normalize("path/file.txt"),
-      cwd: options.cwd?.href,
-      win32: this.path === import_node_path2.default.win32,
-      posix: this.path === import_node_path2.default.posix,
-      "win32.normalize": this.path.normalize === import_node_path2.default.win32.normalize,
-      "posix.normalize": this.path.normalize === import_node_path2.default.posix.normalize
-    }));
+    (0, import_node_assert4.default)(
+      this.path.sep === (this.windows ? "\\" : "/"),
+      `Path separator should match OS type Windows: ${this.windows === true ? "true" : (this.windows ?? "undefined") || "false"}, sep: ${this.path.sep}, options: ` + JSON.stringify({
+        isWindows: isWindows2,
+        sep: `${sep4}`,
+        windows: options.windows,
+        pathSep: options.path?.sep,
+        n: options.path?.normalize("path/file.txt"),
+        cwd: options.cwd?.href,
+        win32: this.path === import_node_path2.default.win32,
+        posix: this.path === import_node_path2.default.posix,
+        "win32.normalize": this.path.normalize === import_node_path2.default.win32.normalize,
+        "posix.normalize": this.path.normalize === import_node_path2.default.posix.normalize
+      })
+    );
   }
   /**
    * Encode special characters in a file path to use in a URL.
@@ -51741,10 +51389,8 @@ var FileUrlBuilder = class {
    * @returns a URL
    */
   #toFileURL(filenameOrUrl, relativeTo) {
-    if (typeof filenameOrUrl !== "string")
-      return filenameOrUrl;
-    if (isUrlLike(filenameOrUrl))
-      return normalizeWindowsUrl(new URL(filenameOrUrl));
+    if (typeof filenameOrUrl !== "string") return filenameOrUrl;
+    if (isUrlLike(filenameOrUrl)) return normalizeWindowsUrl(new URL(filenameOrUrl));
     relativeTo ??= this.cwd;
     isWindows2 && (filenameOrUrl = filenameOrUrl.replaceAll("\\", "/"));
     if (this.isAbsolute(filenameOrUrl) && isFileURL(relativeTo)) {
@@ -51778,8 +51424,7 @@ var FileUrlBuilder = class {
     return this.#urlToFilePathOrHref(url2);
   }
   #urlToFilePathOrHref(url2) {
-    if (url2.protocol !== ProtocolFile || url2.hostname)
-      return url2.href;
+    if (url2.protocol !== ProtocolFile || url2.hostname) return url2.href;
     const p = this.path === import_node_path2.default ? toFilePathOrHref(url2) : decodeURIComponent(url2.pathname.split("/").join(this.path.sep));
     return pathWindowsDriveLetterToUpper(p.replace(isWindowsPathname, "$1"));
   }
@@ -51793,19 +51438,16 @@ var FileUrlBuilder = class {
    */
   relative(urlFrom, urlTo) {
     if (urlFrom.protocol === urlTo.protocol && urlFrom.protocol === ProtocolFile) {
-      if (urlFrom.href === urlTo.href)
-        return "";
+      if (urlFrom.href === urlTo.href) return "";
       urlFrom = urlFrom.pathname.endsWith("/") ? urlFrom : new URL("./", urlFrom);
       const fromPath = urlFrom.pathname;
       const toPath2 = urlTo.pathname;
-      if (toPath2.startsWith(fromPath))
-        return decodeURIComponent(toPath2.slice(fromPath.length));
+      if (toPath2.startsWith(fromPath)) return decodeURIComponent(toPath2.slice(fromPath.length));
       const pFrom = this.#urlToFilePathOrHref(urlFrom);
       const pTo = this.#urlToFilePathOrHref(urlTo);
       const toIsDir = urlTo.pathname.endsWith("/");
       let pathname = this.normalizeFilePathForUrl(this.path.relative(pFrom, pTo));
-      if (toIsDir && !pathname.endsWith("/"))
-        pathname += "/";
+      if (toIsDir && !pathname.endsWith("/")) pathname += "/";
       return decodeURIComponent(pathname);
     }
     return decodeURIComponent(urlToUrlRelative(urlFrom, urlTo));
@@ -51826,8 +51468,7 @@ var FileUrlBuilder = class {
     return new URL(this.normalizeFilePathForUrl(p.root), this.#getFsRootURL());
   }
   #getFsRootURL() {
-    if (this.path === import_node_path2.default)
-      return (0, import_node_url3.pathToFileURL)("/");
+    if (this.path === import_node_path2.default) return (0, import_node_url2.pathToFileURL)("/");
     const p = this.path.resolve("/");
     return new URL(this.normalizeFilePathForUrl(p), "file:///");
   }
@@ -51844,8 +51485,6 @@ var FileUrlBuilder = class {
     return isUrlLike(url2);
   }
 };
-
-// ../node_modules/.pnpm/@cspell+url@8.17.1/node_modules/@cspell/url/dist/defaultFileUrlBuilder.mjs
 var fileUrlBuilder = new FileUrlBuilder();
 function toFileURL(filenameOrUrl, relativeTo) {
   return fileUrlBuilder.toFileURL(filenameOrUrl, relativeTo);
@@ -53145,7 +52784,7 @@ function checkIfDisallowedImport(specifier, parsed, parsedParentURL) {
     }
   }
 }
-function isURL2(self) {
+function isURL(self) {
   return Boolean(
     self && typeof self === "object" && "href" in self && typeof self.href === "string" && "protocol" in self && typeof self.protocol === "string" && self.href && self.protocol
   );
@@ -53154,7 +52793,7 @@ function throwIfInvalidParentURL(parentURL) {
   if (parentURL === void 0) {
     return;
   }
-  if (typeof parentURL !== "string" && !isURL2(parentURL)) {
+  if (typeof parentURL !== "string" && !isURL(parentURL)) {
     throw new codes2.ERR_INVALID_ARG_TYPE(
       "parentURL",
       ["string", "URL"],
@@ -53227,7 +52866,7 @@ function resolve(specifier, parent) {
   }
 }
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@8.17.1/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@8.17.2/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 var isWindowsPath = /^[a-z]:\\/i;
 async function dynamicImportFrom(moduleName, paths) {
   paths = Array.isArray(paths) ? paths : paths ? [paths] : void 0;
@@ -53282,44 +52921,181 @@ function dirToUrl(dir) {
   return toFileDirURL(abs);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var import_resolve_from = __toESM(require_resolve_from(), 1);
 
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/async/asyncIterable.js
-async function toArray2(asyncIterable) {
-  const data = [];
-  for await (const item of asyncIterable) {
-    data.push(item);
+// ../node_modules/.pnpm/cspell-io@8.17.2/node_modules/cspell-io/dist/index.js
+var import_node_zlib = require("node:zlib");
+
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.2/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
+var ErrorUnhandledRequest = class extends Error {
+  request;
+  constructor(request) {
+    super(`Unhandled Request: ${request.type}`);
+    this.request = request;
   }
-  return data;
+};
+var ErrorServiceRequestDepthExceeded = class extends Error {
+  request;
+  depth;
+  constructor(request, depth) {
+    super(`Service Request Depth ${depth} Exceeded: ${request.type}`);
+    this.request = request;
+    this.depth = depth;
+  }
+};
+var UnhandledHandlerError = class extends Error {
+  handlerName;
+  handlerDescription;
+  cause;
+  constructor(handlerName, handlerDescription, cause) {
+    super(`Unhandled Error in Handler: ${handlerName}`);
+    this.handlerName = handlerName;
+    this.handlerDescription = handlerDescription;
+    this.cause = cause;
+  }
+};
+
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.2/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
+var BaseServiceRequest = class {
+  type;
+  params;
+  __r;
+  constructor(type, params) {
+    this.type = type;
+    this.params = params;
+  }
+};
+var ServiceRequestCls = class extends BaseServiceRequest {
+  constructor(type, params) {
+    super(type, params);
+  }
+};
+function createResponse(value, _req) {
+  return { value };
+}
+function createResponseFail(_request, error4) {
+  return { error: error4 };
+}
+function isServiceResponseSuccess(res) {
+  return "value" in res && res.error === void 0;
 }
 
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/common/CFileReference.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.2/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
+var MAX_DEPTH = 10;
+var ServiceBus = class {
+  handlers = [];
+  constructor(handlers = []) {
+    handlers.forEach((h) => this.addHandler(h));
+  }
+  addHandler(handler, name2 = "anonymous", description) {
+    const h = typeof handler === "function" ? { fn: handler, name: name2, description } : handler;
+    const { fn, name: _name, description: _description } = h;
+    this.handlers.push({ fn, name: _name, description: _description });
+    return this;
+  }
+  dispatch(request) {
+    let depth = 0;
+    const dispatcher = { dispatch };
+    const handler = this.reduceHandlers(this.handlers, request, dispatcher, this.defaultHandler);
+    function dispatch(request2) {
+      ++depth;
+      if (depth >= MAX_DEPTH) {
+        return createResponseFail(request2, new ErrorServiceRequestDepthExceeded(request2, depth));
+      }
+      const response = handler(request2);
+      --depth;
+      return response;
+    }
+    return dispatch(request);
+  }
+  defaultHandler(request) {
+    return createResponseFail(request, new ErrorUnhandledRequest(request));
+  }
+  reduceHandlers(handlers, request, dispatcher, defaultHandler) {
+    const _handlers = handlers.map((m) => ({ ...m, fn: m.fn(dispatcher) }));
+    const handler = _handlers.reduce((next, h) => {
+      const fn = h.fn(next);
+      return (req) => {
+        try {
+          return fn(req);
+        } catch (e) {
+          return createResponseFail(request, new UnhandledHandlerError(h.name, h.description, e));
+        }
+      };
+    }, defaultHandler);
+    return handler;
+  }
+};
+
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.2/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
+function createRequestHandler(requestDef, fn, name2, description) {
+  return createIsRequestHandler(requestDef.is, fn, name2 ?? requestDef.type, description);
+}
+function createIsRequestHandlerFn(isA, fn) {
+  return (dispatcher) => (next) => (request) => isA(request) ? fn(request, next, dispatcher) : next(request);
+}
+function createIsRequestHandler(isA, fn, name2, description) {
+  return {
+    fn: createIsRequestHandlerFn(isA, fn),
+    name: name2,
+    description
+  };
+}
+
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.2/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
+function requestFactory(requestType) {
+  class RequestClass extends ServiceRequestCls {
+    static type = requestType;
+    constructor(params) {
+      super(requestType, params);
+    }
+    static is(req) {
+      return req instanceof RequestClass && req.type === requestType;
+    }
+    static create(params) {
+      return new RequestClass(params);
+    }
+    static createRequestHandler(fn, name2, description) {
+      return createRequestHandler(RequestClass, fn, name2, description);
+    }
+    static __request;
+  }
+  return RequestClass;
+}
+
+// ../node_modules/.pnpm/cspell-io@8.17.2/node_modules/cspell-io/dist/index.js
+var import_node_fs5 = require("node:fs");
+var import_node_url7 = require("node:url");
+var import_node_util4 = require("node:util");
+var import_node_zlib2 = require("node:zlib");
+var Stream = __toESM(require("node:stream"), 1);
+var import_node_util5 = require("node:util");
 var CFileReference = class _CFileReference {
-  url;
-  encoding;
-  baseFilename;
-  /**
-   * Use to ensure the nominal type separation between CFileReference and FileReference
-   * See: https://github.com/microsoft/TypeScript/wiki/FAQ#when-and-why-are-classes-nominal
-   */
-  _;
-  gz;
   constructor(url2, encoding, baseFilename, gz) {
     this.url = url2;
     this.encoding = encoding;
     this.baseFilename = baseFilename;
     this.gz = gz ?? (baseFilename?.endsWith(".gz") || void 0) ?? (url2.pathname.endsWith(".gz") || void 0);
   }
+  /**
+   * Use to ensure the nominal type separation between CFileReference and FileReference
+   * See: https://github.com/microsoft/TypeScript/wiki/FAQ#when-and-why-are-classes-nominal
+   */
+  _;
+  gz;
   static isCFileReference(obj) {
     return obj instanceof _CFileReference;
   }
   static from(fileReference, encoding, baseFilename, gz) {
-    if (_CFileReference.isCFileReference(fileReference))
-      return fileReference;
-    if (fileReference instanceof URL)
-      return new _CFileReference(fileReference, encoding, baseFilename, gz);
-    return new _CFileReference(fileReference.url, fileReference.encoding, fileReference.baseFilename, fileReference.gz);
+    if (_CFileReference.isCFileReference(fileReference)) return fileReference;
+    if (fileReference instanceof URL) return new _CFileReference(fileReference, encoding, baseFilename, gz);
+    return new _CFileReference(
+      fileReference.url,
+      fileReference.encoding,
+      fileReference.baseFilename,
+      fileReference.gz
+    );
   }
   toJson() {
     return {
@@ -53332,8 +53108,7 @@ var CFileReference = class _CFileReference {
 };
 function toFileReference(file, encoding, baseFilename, gz) {
   const fileReference = typeof file === "string" ? toFileURL(file) : file;
-  if (fileReference instanceof URL)
-    return new CFileReference(fileReference, encoding, baseFilename, gz);
+  if (fileReference instanceof URL) return new CFileReference(fileReference, encoding, baseFilename, gz);
   return CFileReference.from(fileReference);
 }
 function isFileReference(ref) {
@@ -53341,38 +53116,26 @@ function isFileReference(ref) {
 }
 function toFileResourceRequest(file, encoding, signal) {
   const fileReference = typeof file === "string" ? toFileURL(file) : file;
-  if (fileReference instanceof URL)
-    return { url: fileReference, encoding, signal };
+  if (fileReference instanceof URL) return { url: fileReference, encoding, signal };
   return { url: fileReference.url, encoding: encoding ?? fileReference.encoding, signal };
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/errors/errors.js
 var ErrorNotImplemented = class extends Error {
-  method;
   constructor(method, options) {
     super(`Method ${method} is not supported.`, options);
     this.method = method;
   }
 };
 var AssertionError = class extends Error {
-  message;
   constructor(message, options) {
     super(message, options);
     this.message = message;
   }
 };
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/errors/assert.js
 function assert7(value, message) {
   if (!value) {
     throw new AssertionError(message ?? "Assertion failed");
   }
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/common/encode-decode.js
-var import_node_zlib = require("node:zlib");
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/common/arrayBuffers.js
 function asUint8Array(data) {
   return new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
 }
@@ -53406,8 +53169,6 @@ function swapBytes(data) {
   const buf = copyArrayBufferView(data);
   return swap16(buf);
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/common/encode-decode.js
 var BOM_BE = 65279;
 var BOM_LE = 65534;
 var decoderUTF8 = new TextDecoder("utf8");
@@ -53430,12 +53191,9 @@ function decodeToString(data, encoding) {
   }
   const buf = asUint8Array(data);
   const bom = buf[0] << 8 | buf[1];
-  if (bom === BOM_BE || buf[0] === 0 && buf[1] !== 0)
-    return decodeUtf16BE(buf);
-  if (bom === BOM_LE || buf[0] !== 0 && buf[1] === 0)
-    return decodeUtf16LE(buf);
-  if (!encoding)
-    return decoderUTF8.decode(buf);
+  if (bom === BOM_BE || buf[0] === 0 && buf[1] !== 0) return decodeUtf16BE(buf);
+  if (bom === BOM_LE || buf[0] !== 0 && buf[1] === 0) return decodeUtf16LE(buf);
+  if (!encoding) return decoderUTF8.decode(buf);
   switch (encoding) {
     case "utf-16be":
     case "utf16be": {
@@ -53513,26 +53271,16 @@ var UnsupportedEncodingError = class extends Error {
   }
 };
 function isGZipped(data) {
-  if (typeof data === "string")
-    return false;
+  if (typeof data === "string") return false;
   const buf = asUint8Array(data);
   return buf[0] === 31 && buf[1] === 139;
 }
 function decompressBuffer(data) {
-  if (!isGZipped(data))
-    return data;
+  if (!isGZipped(data)) return data;
   const buf = arrayBufferViewToBuffer(data);
   return (0, import_node_zlib.gunzipSync)(buf);
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/common/CFileResource.js
 var CFileResource = class _CFileResource {
-  url;
-  content;
-  encoding;
-  _text;
-  baseFilename;
-  _gz;
   constructor(url2, content, encoding, baseFilename, gz) {
     this.url = url2;
     this.content = content;
@@ -53540,18 +53288,17 @@ var CFileResource = class _CFileResource {
     this.baseFilename = baseFilename ?? (url2.protocol !== "data:" && url2.pathname.split("/").pop() || void 0);
     this._gz = gz;
   }
+  _text;
+  baseFilename;
+  _gz;
   get gz() {
-    if (this._gz !== void 0)
-      return this._gz;
-    if (this.url.pathname.endsWith(".gz"))
-      return true;
-    if (typeof this.content === "string")
-      return false;
+    if (this._gz !== void 0) return this._gz;
+    if (this.url.pathname.endsWith(".gz")) return true;
+    if (typeof this.content === "string") return false;
     return isGZipped(this.content);
   }
   getText(encoding) {
-    if (this._text !== void 0)
-      return this._text;
+    if (this._text !== void 0) return this._text;
     const text = typeof this.content === "string" ? this.content : decode(this.content, encoding ?? this.encoding);
     this._text = text;
     return text;
@@ -53590,204 +53337,43 @@ var CFileResource = class _CFileResource {
     }
     assert7("content" in urlOrFileResource && urlOrFileResource.content !== void 0);
     const fileResource = urlOrFileResource;
-    return new _CFileResource(fileResource.url, fileResource.content, fileResource.encoding, fileResource.baseFilename, fileResource.gz);
+    return new _CFileResource(
+      fileResource.url,
+      fileResource.content,
+      fileResource.encoding,
+      fileResource.baseFilename,
+      fileResource.gz
+    );
   }
 };
 function fromFileResource(fileResource, encoding) {
   return CFileResource.from(encoding ? { ...fileResource, encoding } : fileResource);
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/common/stat.js
 function compareStats(left, right) {
-  if (left === right)
-    return 0;
-  if (left.eTag || right.eTag)
-    return left.eTag === right.eTag ? 0 : (left.eTag || "") < (right.eTag || "") ? -1 : 1;
+  if (left === right) return 0;
+  if (left.eTag || right.eTag) return left.eTag === right.eTag ? 0 : (left.eTag || "") < (right.eTag || "") ? -1 : 1;
   const diff = left.size - right.size || left.mtimeMs - right.mtimeMs;
   return diff < 0 ? -1 : diff > 0 ? 1 : 0;
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/common/urlOrReferenceToUrl.js
 function urlOrReferenceToUrl(urlOrReference) {
   return urlOrReference instanceof URL ? urlOrReference : urlOrReference.url;
 }
-
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.1/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
-var ErrorUnhandledRequest = class extends Error {
-  request;
-  constructor(request) {
-    super(`Unhandled Request: ${request.type}`);
-    this.request = request;
-  }
-};
-var ErrorServiceRequestDepthExceeded = class extends Error {
-  request;
-  depth;
-  constructor(request, depth) {
-    super(`Service Request Depth ${depth} Exceeded: ${request.type}`);
-    this.request = request;
-    this.depth = depth;
-  }
-};
-var UnhandledHandlerError = class extends Error {
-  handlerName;
-  handlerDescription;
-  cause;
-  constructor(handlerName, handlerDescription, cause) {
-    super(`Unhandled Error in Handler: ${handlerName}`);
-    this.handlerName = handlerName;
-    this.handlerDescription = handlerDescription;
-    this.cause = cause;
-  }
-};
-
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.1/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
-var BaseServiceRequest = class {
-  type;
-  params;
-  __r;
-  constructor(type, params) {
-    this.type = type;
-    this.params = params;
-  }
-};
-var ServiceRequestCls = class extends BaseServiceRequest {
-  constructor(type, params) {
-    super(type, params);
-  }
-};
-function createResponse(value, _req) {
-  return { value };
-}
-function createResponseFail(_request, error4) {
-  return { error: error4 };
-}
-function isServiceResponseSuccess(res) {
-  return "value" in res && res.error === void 0;
-}
-
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.1/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
-var MAX_DEPTH = 10;
-var ServiceBus = class {
-  handlers = [];
-  constructor(handlers = []) {
-    handlers.forEach((h) => this.addHandler(h));
-  }
-  addHandler(handler, name2 = "anonymous", description) {
-    const h = typeof handler === "function" ? { fn: handler, name: name2, description } : handler;
-    const { fn, name: _name, description: _description } = h;
-    this.handlers.push({ fn, name: _name, description: _description });
-    return this;
-  }
-  dispatch(request) {
-    let depth = 0;
-    const dispatcher = { dispatch };
-    const handler = this.reduceHandlers(this.handlers, request, dispatcher, this.defaultHandler);
-    function dispatch(request2) {
-      ++depth;
-      if (depth >= MAX_DEPTH) {
-        return createResponseFail(request2, new ErrorServiceRequestDepthExceeded(request2, depth));
-      }
-      const response = handler(request2);
-      --depth;
-      return response;
-    }
-    return dispatch(request);
-  }
-  defaultHandler(request) {
-    return createResponseFail(request, new ErrorUnhandledRequest(request));
-  }
-  reduceHandlers(handlers, request, dispatcher, defaultHandler) {
-    const _handlers = handlers.map((m) => ({ ...m, fn: m.fn(dispatcher) }));
-    const handler = _handlers.reduce((next, h) => {
-      const fn = h.fn(next);
-      return (req) => {
-        try {
-          return fn(req);
-        } catch (e) {
-          return createResponseFail(request, new UnhandledHandlerError(h.name, h.description, e));
-        }
-      };
-    }, defaultHandler);
-    return handler;
-  }
-};
-
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.1/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
-function createRequestHandler(requestDef, fn, name2, description) {
-  return createIsRequestHandler(requestDef.is, fn, name2 ?? requestDef.type, description);
-}
-function createIsRequestHandlerFn(isA, fn) {
-  return (dispatcher) => (next) => (request) => isA(request) ? fn(request, next, dispatcher) : next(request);
-}
-function createIsRequestHandler(isA, fn, name2, description) {
-  return {
-    fn: createIsRequestHandlerFn(isA, fn),
-    name: name2,
-    description
-  };
-}
-
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@8.17.1/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
-function requestFactory(requestType) {
-  class RequestClass extends ServiceRequestCls {
-    static type = requestType;
-    constructor(params) {
-      super(requestType, params);
-    }
-    static is(req) {
-      return req instanceof RequestClass && req.type === requestType;
-    }
-    static create(params) {
-      return new RequestClass(params);
-    }
-    static createRequestHandler(fn, name2, description) {
-      return createRequestHandler(RequestClass, fn, name2, description);
-    }
-    static __request;
-  }
-  return RequestClass;
-}
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/CSpellIO.js
 function toReadFileOptions(options) {
-  if (!options)
-    return options;
+  if (!options) return options;
   if (typeof options === "string") {
     return { encoding: options };
   }
   return options;
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/handlers/node/file.js
-var import_node_fs5 = require("node:fs");
-var import_node_url7 = require("node:url");
-var import_node_util4 = require("node:util");
-var import_node_zlib2 = require("node:zlib");
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/errors/error.js
 function toError4(e) {
-  if (e instanceof Error)
-    return e;
+  if (e instanceof Error) return e;
   if (typeof e === "object" && e && "message" in e && typeof e.message === "string") {
     return new Error(e.message, { cause: e });
   }
   return new Error(e && e.toString());
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/models/Stats.js
-var FileType;
-(function(FileType2) {
-  FileType2[FileType2["Unknown"] = 0] = "Unknown";
-  FileType2[FileType2["File"] = 1] = "File";
-  FileType2[FileType2["Directory"] = 2] = "Directory";
-  FileType2[FileType2["SymbolicLink"] = 64] = "SymbolicLink";
-})(FileType || (FileType = {}));
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/node/dataUrl.js
 function encodeDataUrl(data, mediaType, attributes) {
-  if (typeof data === "string")
-    return encodeString2(data, mediaType, attributes);
+  if (typeof data === "string") return encodeString2(data, mediaType, attributes);
   const attribs = encodeAttributes(attributes || []);
   const buf = arrayBufferViewToBuffer(data);
   return `data:${mediaType}${attribs};base64,${buf.toString("base64url")}`;
@@ -53814,11 +53400,9 @@ var dataUrlRegExHead = /^data:(?<mediaType>[^;,]*)(?<attributes>(?:;[^=]+=[^;,]*
 function decodeDataUrl(url2) {
   url2 = url2.toString();
   const [head, encodedData] = url2.split(",", 2);
-  if (!head || encodedData === void 0)
-    throw new Error("Not a data url");
+  if (!head || encodedData === void 0) throw new Error("Not a data url");
   const match2 = head.match(dataUrlRegExHead);
-  if (!match2 || !match2.groups)
-    throw new Error("Not a data url");
+  if (!match2 || !match2.groups) throw new Error("Not a data url");
   const mediaType = match2.groups["mediaType"] || "";
   const rawAttributes = (match2.groups["attributes"] || "").split(";").filter((a) => !!a).map((entry) => entry.split("=", 2)).map(([key, value]) => [key, decodeURIComponent(value)]);
   const attributes = new Map(rawAttributes);
@@ -53828,31 +53412,18 @@ function decodeDataUrl(url2) {
   return { mediaType, data, encoding, attributes };
 }
 function guessMimeType(filename) {
-  if (filename.endsWith(".trie"))
-    return { mimeType: "application/vnd.cspell.dictionary+trie", encoding: "utf-8" };
-  if (filename.endsWith(".trie.gz"))
-    return { mimeType: "application/vnd.cspell.dictionary+trie.gz" };
-  if (filename.endsWith(".txt"))
-    return { mimeType: "text/plain", encoding: "utf-8" };
-  if (filename.endsWith(".txt.gz"))
-    return { mimeType: "application/gzip" };
-  if (filename.endsWith(".gz"))
-    return { mimeType: "application/gzip" };
-  if (filename.endsWith(".json"))
-    return { mimeType: "application/json", encoding: "utf-8" };
+  if (filename.endsWith(".trie")) return { mimeType: "application/vnd.cspell.dictionary+trie", encoding: "utf-8" };
+  if (filename.endsWith(".trie.gz")) return { mimeType: "application/vnd.cspell.dictionary+trie.gz" };
+  if (filename.endsWith(".txt")) return { mimeType: "text/plain", encoding: "utf-8" };
+  if (filename.endsWith(".txt.gz")) return { mimeType: "application/gzip" };
+  if (filename.endsWith(".gz")) return { mimeType: "application/gzip" };
+  if (filename.endsWith(".json")) return { mimeType: "application/json", encoding: "utf-8" };
   if (filename.endsWith(".yaml") || filename.endsWith(".yml"))
     return { mimeType: "application/x-yaml", encoding: "utf-8" };
   return void 0;
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/node/file/_fetch.js
 var _fetch = global.fetch;
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/node/file/FetchError.js
 var FetchUrlError = class _FetchUrlError extends Error {
-  code;
-  status;
-  url;
   constructor(message, code, status, url2) {
     super(message);
     this.code = code;
@@ -53861,8 +53432,7 @@ var FetchUrlError = class _FetchUrlError extends Error {
     this.name = "FetchUrlError";
   }
   static create(url2, status, message) {
-    if (status === 404)
-      return new _FetchUrlError(message || "URL not found.", "ENOENT", status, url2);
+    if (status === 404) return new _FetchUrlError(message || "URL not found.", "ENOENT", status, url2);
     if (status >= 400 && status < 500)
       return new _FetchUrlError(message || "Permission denied.", "EACCES", status, url2);
     return new _FetchUrlError(message || "Fatal Error", "ECONNREFUSED", status, url2);
@@ -53879,10 +53449,8 @@ var FetchUrlError = class _FetchUrlError extends Error {
   }
 };
 function isNodeError(e) {
-  if (e instanceof Error && "code" in e && typeof e.code === "string")
-    return true;
-  if (e && typeof e === "object" && "code" in e && typeof e.code === "string")
-    return true;
+  if (e instanceof Error && "code" in e && typeof e.code === "string") return true;
+  if (e && typeof e === "object" && "code" in e && typeof e.code === "string") return true;
   return false;
 }
 function isError3(e) {
@@ -53895,13 +53463,11 @@ function getCause(e) {
   return isErrorWithOptionalCause(e) ? e.cause : void 0;
 }
 function toFetchUrlError(err, url2) {
-  return err instanceof FetchUrlError ? err : FetchUrlError.fromError(url2, toError5(err));
+  return err instanceof FetchUrlError ? err : FetchUrlError.fromError(url2, toError22(err));
 }
-function toError5(err) {
+function toError22(err) {
   return err instanceof Error ? err : new Error("Unknown Error", { cause: err });
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/node/file/fetch.js
 async function fetchHead(request) {
   const url2 = toURL2(request);
   try {
@@ -53929,8 +53495,6 @@ async function fetchURL(url2, signal) {
 function toURL2(url2) {
   return typeof url2 === "string" ? new URL(url2) : url2;
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/node/file/stat.js
 async function getStatHttp(url2) {
   const headers = await fetchHead(url2);
   const eTag = headers.get("etag") || void 0;
@@ -53941,72 +53505,102 @@ async function getStatHttp(url2) {
     eTag
   };
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/requests/RequestFsReadFile.js
 var RequestType = "fs:readFile";
-var RequestFsReadFile = requestFactory(RequestType);
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/requests/RequestFsReadFileSync.js
+var RequestFsReadFile = requestFactory(
+  RequestType
+);
 var RequestType2 = "fs:readFileSync";
-var RequestFsReadFileTextSync = requestFactory(RequestType2);
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/requests/RequestFsStat.js
+var RequestFsReadFileTextSync = requestFactory(
+  RequestType2
+);
 var RequestTypeStat = "fs:stat";
 var RequestFsStat = requestFactory(RequestTypeStat);
 var RequestTypeStatSync = "fs:statSync";
-var RequestFsStatSync = requestFactory(RequestTypeStatSync);
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/requests/RequestFsWriteFile.js
+var RequestFsStatSync = requestFactory(
+  RequestTypeStatSync
+);
 var RequestType3 = "fs:writeFile";
-var RequestFsWriteFile = requestFactory(RequestType3);
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/requests/RequestZlibInflate.js
+var RequestFsWriteFile = requestFactory(
+  RequestType3
+);
 var RequestType4 = "zlib:inflate";
 var RequestZlibInflate = requestFactory(RequestType4);
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/requests/RequestFsReadDirectory.js
 var RequestType5 = "fs:readDir";
-var RequestFsReadDirectory = requestFactory(RequestType5);
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/handlers/node/file.js
+var RequestFsReadDirectory = requestFactory(
+  RequestType5
+);
 var isGzFileRegExp = /\.gz($|[?#])/;
 function isGzFile(url2) {
   return isGzFileRegExp.test(typeof url2 === "string" ? url2 : url2.pathname);
 }
 var pGzip = (0, import_node_util4.promisify)(import_node_zlib2.gzip);
-var handleRequestFsReadFile = RequestFsReadFile.createRequestHandler(({ params }) => {
-  const baseFilename = urlBasename(params.url);
-  return createResponse(import_node_fs5.promises.readFile((0, import_node_url7.fileURLToPath)(params.url)).then((content) => CFileResource.from(params.url, content, params.encoding, baseFilename)));
-}, void 0, "Node: Read Binary File.");
-var handleRequestFsReadFileSync = RequestFsReadFileTextSync.createRequestHandler(({ params }) => createResponse(CFileResource.from({ ...params, content: (0, import_node_fs5.readFileSync)((0, import_node_url7.fileURLToPath)(params.url)) })), void 0, "Node: Sync Read Binary File.");
-var handleRequestFsReadDirectory = RequestFsReadDirectory.createRequestHandler(({ params }) => {
-  return createResponse(import_node_fs5.promises.readdir((0, import_node_url7.fileURLToPath)(params.url), { withFileTypes: true }).then((entries) => direntToDirEntries(params.url, entries)));
-}, void 0, "Node: Read Directory.");
-var handleRequestZlibInflate = RequestZlibInflate.createRequestHandler(({ params }) => createResponse((0, import_node_zlib2.gunzipSync)(arrayBufferViewToBuffer(params.data))), void 0, "Node: gz deflate.");
+var handleRequestFsReadFile = RequestFsReadFile.createRequestHandler(
+  ({ params }) => {
+    const baseFilename = urlBasename(params.url);
+    return createResponse(
+      import_node_fs5.promises.readFile((0, import_node_url7.fileURLToPath)(params.url)).then((content) => CFileResource.from(params.url, content, params.encoding, baseFilename))
+    );
+  },
+  void 0,
+  "Node: Read Binary File."
+);
+var handleRequestFsReadFileSync = RequestFsReadFileTextSync.createRequestHandler(
+  ({ params }) => createResponse(CFileResource.from({ ...params, content: (0, import_node_fs5.readFileSync)((0, import_node_url7.fileURLToPath)(params.url)) })),
+  void 0,
+  "Node: Sync Read Binary File."
+);
+var handleRequestFsReadDirectory = RequestFsReadDirectory.createRequestHandler(
+  ({ params }) => {
+    return createResponse(
+      import_node_fs5.promises.readdir((0, import_node_url7.fileURLToPath)(params.url), { withFileTypes: true }).then((entries) => direntToDirEntries(params.url, entries))
+    );
+  },
+  void 0,
+  "Node: Read Directory."
+);
+var handleRequestZlibInflate = RequestZlibInflate.createRequestHandler(
+  ({ params }) => createResponse((0, import_node_zlib2.gunzipSync)(arrayBufferViewToBuffer(params.data))),
+  void 0,
+  "Node: gz deflate."
+);
 var supportedFetchProtocols = { "http:": true, "https:": true };
-var handleRequestFsReadFileHttp = RequestFsReadFile.createRequestHandler((req, next) => {
-  const { url: url2, signal, encoding } = req.params;
-  if (!(url2.protocol in supportedFetchProtocols))
-    return next(req);
-  return createResponse(fetchURL(url2, signal).then((content) => CFileResource.from({ url: url2, encoding, content })));
-}, void 0, "Node: Read Http(s) file.");
-var handleRequestFsReadFileSyncData = RequestFsReadFileTextSync.createRequestHandler((req, next) => {
-  const { url: url2, encoding } = req.params;
-  if (url2.protocol !== "data:")
-    return next(req);
-  const data = decodeDataUrl(url2);
-  return createResponse(CFileResource.from({ url: url2, content: data.data, encoding, baseFilename: data.attributes.get("filename") }));
-}, void 0, "Node: Read data: urls.");
-var handleRequestFsReadFileData = RequestFsReadFile.createRequestHandler((req, next, dispatcher) => {
-  const { url: url2 } = req.params;
-  if (url2.protocol !== "data:")
-    return next(req);
-  const res = dispatcher.dispatch(RequestFsReadFileTextSync.create(req.params));
-  if (!isServiceResponseSuccess(res))
-    return res;
-  return createResponse(Promise.resolve(res.value));
-}, void 0, "Node: Read data: urls.");
-var handleRequestFsStat = RequestFsStat.createRequestHandler(({ params }) => createResponse(toPromiseStats(import_node_fs5.promises.stat((0, import_node_url7.fileURLToPath)(params.url)))), void 0, "Node: fs.stat.");
+var handleRequestFsReadFileHttp = RequestFsReadFile.createRequestHandler(
+  (req, next) => {
+    const { url: url2, signal, encoding } = req.params;
+    if (!(url2.protocol in supportedFetchProtocols)) return next(req);
+    return createResponse(fetchURL(url2, signal).then((content) => CFileResource.from({ url: url2, encoding, content })));
+  },
+  void 0,
+  "Node: Read Http(s) file."
+);
+var handleRequestFsReadFileSyncData = RequestFsReadFileTextSync.createRequestHandler(
+  (req, next) => {
+    const { url: url2, encoding } = req.params;
+    if (url2.protocol !== "data:") return next(req);
+    const data = decodeDataUrl(url2);
+    return createResponse(
+      CFileResource.from({ url: url2, content: data.data, encoding, baseFilename: data.attributes.get("filename") })
+    );
+  },
+  void 0,
+  "Node: Read data: urls."
+);
+var handleRequestFsReadFileData = RequestFsReadFile.createRequestHandler(
+  (req, next, dispatcher) => {
+    const { url: url2 } = req.params;
+    if (url2.protocol !== "data:") return next(req);
+    const res = dispatcher.dispatch(RequestFsReadFileTextSync.create(req.params));
+    if (!isServiceResponseSuccess(res)) return res;
+    return createResponse(Promise.resolve(res.value));
+  },
+  void 0,
+  "Node: Read data: urls."
+);
+var handleRequestFsStat = RequestFsStat.createRequestHandler(
+  ({ params }) => createResponse(toPromiseStats(import_node_fs5.promises.stat((0, import_node_url7.fileURLToPath)(params.url)))),
+  void 0,
+  "Node: fs.stat."
+);
 function toStats(stat3) {
   return {
     size: stat3.size,
@@ -54017,21 +53611,32 @@ function toStats(stat3) {
 function toPromiseStats(pStat) {
   return pStat.then(toStats);
 }
-var handleRequestFsStatSync = RequestFsStatSync.createRequestHandler((req) => {
-  const { params } = req;
-  try {
-    return createResponse((0, import_node_fs5.statSync)((0, import_node_url7.fileURLToPath)(params.url)));
-  } catch (e) {
-    return createResponseFail(req, toError4(e));
-  }
-}, void 0, "Node: fs.stat.");
-var handleRequestFsStatHttp = RequestFsStat.createRequestHandler((req, next) => {
-  const { url: url2 } = req.params;
-  if (!(url2.protocol in supportedFetchProtocols))
-    return next(req);
-  return createResponse(getStatHttp(url2));
-}, void 0, "Node: http get stat");
-var handleRequestFsWriteFile = RequestFsWriteFile.createRequestHandler(({ params }) => createResponse(writeFile(params, params.content)), void 0, "Node: fs.writeFile");
+var handleRequestFsStatSync = RequestFsStatSync.createRequestHandler(
+  (req) => {
+    const { params } = req;
+    try {
+      return createResponse((0, import_node_fs5.statSync)((0, import_node_url7.fileURLToPath)(params.url)));
+    } catch (e) {
+      return createResponseFail(req, toError4(e));
+    }
+  },
+  void 0,
+  "Node: fs.stat."
+);
+var handleRequestFsStatHttp = RequestFsStat.createRequestHandler(
+  (req, next) => {
+    const { url: url2 } = req.params;
+    if (!(url2.protocol in supportedFetchProtocols)) return next(req);
+    return createResponse(getStatHttp(url2));
+  },
+  void 0,
+  "Node: http get stat"
+);
+var handleRequestFsWriteFile = RequestFsWriteFile.createRequestHandler(
+  ({ params }) => createResponse(writeFile(params, params.content)),
+  void 0,
+  "Node: fs.writeFile"
+);
 async function writeFile(fileRef, content) {
   const gz = isGZipped(content);
   const { url: url2, encoding, baseFilename } = fileRef;
@@ -54039,28 +53644,35 @@ async function writeFile(fileRef, content) {
   await import_node_fs5.promises.writeFile((0, import_node_url7.fileURLToPath)(fileRef.url), encodeContent(fileRef, content));
   return resultRef;
 }
-var handleRequestFsWriteFileDataUrl = RequestFsWriteFile.createRequestHandler((req, next) => {
-  const fileResource = req.params;
-  const { url: url2 } = req.params;
-  if (url2.protocol !== "data:")
-    return next(req);
-  const gz = isGZipped(fileResource.content);
-  const baseFilename = fileResource.baseFilename || "file.txt" + (gz ? ".gz" : "");
-  const mt = guessMimeType(baseFilename);
-  const mediaType = mt?.mimeType || "text/plain";
-  const dataUrl = toDataUrl(fileResource.content, mediaType, [["filename", baseFilename]]);
-  return createResponse(Promise.resolve({ url: dataUrl, baseFilename, gz, encoding: mt?.encoding }));
-}, void 0, "Node: fs.writeFile DataUrl");
-var handleRequestFsWriteFileGz = RequestFsWriteFile.createRequestHandler((req, next, dispatcher) => {
-  const fileResource = req.params;
-  if (!fileResource.gz && !isGzFile(fileResource.url) && (!fileResource.baseFilename || !isGzFile(fileResource.baseFilename))) {
-    return next(req);
-  }
-  if (typeof fileResource.content !== "string" && isGZipped(fileResource.content)) {
-    return next(req);
-  }
-  return createResponse(compressAndChainWriteRequest(dispatcher, fileResource, fileResource.content));
-}, void 0, "Node: fs.writeFile compressed");
+var handleRequestFsWriteFileDataUrl = RequestFsWriteFile.createRequestHandler(
+  (req, next) => {
+    const fileResource = req.params;
+    const { url: url2 } = req.params;
+    if (url2.protocol !== "data:") return next(req);
+    const gz = isGZipped(fileResource.content);
+    const baseFilename = fileResource.baseFilename || "file.txt" + (gz ? ".gz" : "");
+    const mt = guessMimeType(baseFilename);
+    const mediaType = mt?.mimeType || "text/plain";
+    const dataUrl = toDataUrl(fileResource.content, mediaType, [["filename", baseFilename]]);
+    return createResponse(Promise.resolve({ url: dataUrl, baseFilename, gz, encoding: mt?.encoding }));
+  },
+  void 0,
+  "Node: fs.writeFile DataUrl"
+);
+var handleRequestFsWriteFileGz = RequestFsWriteFile.createRequestHandler(
+  (req, next, dispatcher) => {
+    const fileResource = req.params;
+    if (!fileResource.gz && !isGzFile(fileResource.url) && (!fileResource.baseFilename || !isGzFile(fileResource.baseFilename))) {
+      return next(req);
+    }
+    if (typeof fileResource.content !== "string" && isGZipped(fileResource.content)) {
+      return next(req);
+    }
+    return createResponse(compressAndChainWriteRequest(dispatcher, fileResource, fileResource.content));
+  },
+  void 0,
+  "Node: fs.writeFile compressed"
+);
 async function compressAndChainWriteRequest(dispatcher, fileRef, content) {
   const buf = await pGzip(encodeContent(fileRef, content));
   const res = dispatcher.dispatch(RequestFsWriteFile.create({ ...fileRef, content: buf }));
@@ -54087,8 +53699,7 @@ function registerHandlers(serviceBus) {
 }
 function encodeContent(ref, content) {
   if (typeof content === "string") {
-    if ([void 0, "utf8", "utf-8"].includes(ref.encoding))
-      return content;
+    if ([void 0, "utf8", "utf-8"].includes(ref.encoding)) return content;
     return arrayBufferViewToBuffer(encodeString(content, ref.encoding));
   }
   return arrayBufferViewToBuffer(content);
@@ -54107,14 +53718,11 @@ function direntToDirEntry(dir, dirent) {
   };
 }
 function toFileType(statLike) {
-  const t = statLike.isFile() ? FileType.File : statLike.isDirectory() ? FileType.Directory : FileType.Unknown;
-  return statLike.isSymbolicLink() ? t | FileType.SymbolicLink : t;
+  const t = statLike.isFile() ? 1 : statLike.isDirectory() ? 2 : 0;
+  return statLike.isSymbolicLink() ? t | 64 : t;
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/CSpellIONode.js
 var defaultCSpellIONode = void 0;
 var CSpellIONode = class {
-  serviceBus;
   constructor(serviceBus = new ServiceBus()) {
     this.serviceBus = serviceBus;
     registerHandlers(serviceBus);
@@ -54173,13 +53781,11 @@ var CSpellIONode = class {
     return compareStats(left, right);
   }
   toURL(urlOrFilename, relativeTo) {
-    if (isFileReference(urlOrFilename))
-      return urlOrFilename.url;
+    if (isFileReference(urlOrFilename)) return urlOrFilename.url;
     return toURL(urlOrFilename, relativeTo);
   }
   toFileURL(urlOrFilename, relativeTo) {
-    if (isFileReference(urlOrFilename))
-      return urlOrFilename.url;
+    if (isFileReference(urlOrFilename)) return urlOrFilename.url;
     return toFileURL(urlOrFilename, relativeTo);
   }
   urlBasename(urlOrFilename) {
@@ -54193,58 +53799,46 @@ function genError(err, alt) {
   return err || new ErrorNotImplemented(alt);
 }
 function getDefaultCSpellIO() {
-  if (defaultCSpellIONode)
-    return defaultCSpellIONode;
+  if (defaultCSpellIONode) return defaultCSpellIONode;
   const cspellIO = new CSpellIONode();
   defaultCSpellIONode = cspellIO;
   return cspellIO;
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/VirtualFS.js
 var debug2 = false;
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/VirtualFS/findUpFromUrl.js
 async function findUpFromUrl(name2, from, options) {
-  const { type: entryType = "file", stopAt, fs: fs12 } = options;
+  const { type: entryType = "file", stopAt, fs: fs52 } = options;
   let dir = new URL(".", from);
   const root = new URL("/", dir);
-  const predicate = makePredicate(fs12, name2, entryType);
+  const predicate = makePredicate(fs52, name2, entryType);
   const stopAtDir = stopAt || root;
   let last = "";
   while (dir.href !== last) {
     const found = await predicate(dir);
-    if (found !== void 0)
-      return found;
+    if (found !== void 0) return found;
     last = dir.href;
-    if (dir.href === root.href || dir.href === stopAtDir.href)
-      break;
+    if (dir.href === root.href || dir.href === stopAtDir.href) break;
     dir = new URL("..", dir);
   }
   return void 0;
 }
-function makePredicate(fs12, name2, entryType) {
-  if (typeof name2 === "function")
-    return name2;
+function makePredicate(fs52, name2, entryType) {
+  if (typeof name2 === "function") return name2;
   const checkStat = entryType === "file" || entryType === "!file" ? "isFile" : "isDirectory";
   const checkValue = entryType.startsWith("!") ? false : true;
-  function checkName(dir, name3) {
-    const f = new URL(name3, dir);
-    return fs12.stat(f).then((stats2) => (stats2.isUnknown() || stats2[checkStat]() === checkValue) && f || void 0).catch(() => void 0);
+  function checkName(dir, name22) {
+    const f = new URL(name22, dir);
+    return fs52.stat(f).then((stats2) => (stats2.isUnknown() || stats2[checkStat]() === checkValue) && f || void 0).catch(() => void 0);
   }
-  if (!Array.isArray(name2))
-    return (dir) => checkName(dir, name2);
+  if (!Array.isArray(name2)) return (dir) => checkName(dir, name2);
   return async (dir) => {
     const pending = name2.map((n) => checkName(dir, n));
     for (const p of pending) {
       const found = await p;
-      if (found)
-        return found;
+      if (found) return found;
     }
     return void 0;
   };
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/VirtualFS/CVFileSystem.js
 var CVFileSystem = class {
   #core;
   readFile;
@@ -54271,24 +53865,9 @@ var CVFileSystem = class {
     return findUpFromUrl(name2, from, opts);
   }
 };
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/VFileSystem.js
-var FSCapabilityFlags;
-(function(FSCapabilityFlags2) {
-  FSCapabilityFlags2[FSCapabilityFlags2["None"] = 0] = "None";
-  FSCapabilityFlags2[FSCapabilityFlags2["Stat"] = 1] = "Stat";
-  FSCapabilityFlags2[FSCapabilityFlags2["Read"] = 2] = "Read";
-  FSCapabilityFlags2[FSCapabilityFlags2["Write"] = 4] = "Write";
-  FSCapabilityFlags2[FSCapabilityFlags2["ReadWrite"] = 6] = "ReadWrite";
-  FSCapabilityFlags2[FSCapabilityFlags2["ReadDir"] = 8] = "ReadDir";
-  FSCapabilityFlags2[FSCapabilityFlags2["WriteDir"] = 16] = "WriteDir";
-  FSCapabilityFlags2[FSCapabilityFlags2["ReadWriteDir"] = 24] = "ReadWriteDir";
-})(FSCapabilityFlags || (FSCapabilityFlags = {}));
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/VirtualFS/WrappedProviderFs.js
 function cspellIOToFsProvider(cspellIO) {
-  const capabilities = FSCapabilityFlags.Stat | FSCapabilityFlags.ReadWrite | FSCapabilityFlags.ReadDir;
-  const capabilitiesHttp = capabilities & ~FSCapabilityFlags.Write & ~FSCapabilityFlags.ReadDir;
+  const capabilities = 1 | 6 | 8;
+  const capabilitiesHttp = capabilities & ~4 & ~8;
   const capMap = {
     "file:": capabilities,
     "http:": capabilitiesHttp,
@@ -54296,7 +53875,7 @@ function cspellIOToFsProvider(cspellIO) {
   };
   const name2 = "CSpellIO";
   const supportedProtocols = /* @__PURE__ */ new Set(["file:", "http:", "https:"]);
-  const fs12 = {
+  const fs52 = {
     providerInfo: { name: name2 },
     stat: (url2) => cspellIO.getStat(url2),
     readFile: (url2, options) => cspellIO.readFile(url2, options),
@@ -54305,19 +53884,21 @@ function cspellIOToFsProvider(cspellIO) {
     dispose: () => void 0,
     capabilities,
     getCapabilities(url2) {
-      return fsCapabilities(capMap[url2.protocol] || FSCapabilityFlags.None);
+      return fsCapabilities(
+        capMap[url2.protocol] || 0
+        /* None */
+      );
     }
   };
   return {
     name: name2,
     getFileSystem: (url2, _next) => {
-      return supportedProtocols.has(url2.protocol) ? fs12 : void 0;
+      return supportedProtocols.has(url2.protocol) ? fs52 : void 0;
     }
   };
 }
 function wrapError(e) {
-  if (e instanceof VFSError)
-    return e;
+  if (e instanceof VFSError) return e;
   return e;
 }
 var VFSError = class extends Error {
@@ -54326,61 +53907,55 @@ var VFSError = class extends Error {
   }
 };
 var VFSErrorUnsupportedRequest = class extends VFSError {
-  request;
-  parameters;
-  url;
   constructor(request, url2, parameters) {
     super(`Unsupported request: ${request}`);
     this.request = request;
     this.parameters = parameters;
     this.url = url2?.toString();
   }
+  url;
 };
 var CFsCapabilities = class {
-  flags;
   constructor(flags) {
     this.flags = flags;
   }
   get readFile() {
-    return !!(this.flags & FSCapabilityFlags.Read);
+    return !!(this.flags & 2);
   }
   get writeFile() {
-    return !!(this.flags & FSCapabilityFlags.Write);
+    return !!(this.flags & 4);
   }
   get readDirectory() {
-    return !!(this.flags & FSCapabilityFlags.ReadDir);
+    return !!(this.flags & 8);
   }
   get writeDirectory() {
-    return !!(this.flags & FSCapabilityFlags.WriteDir);
+    return !!(this.flags & 16);
   }
   get stat() {
-    return !!(this.flags & FSCapabilityFlags.Stat);
+    return !!(this.flags & 1);
   }
 };
 function fsCapabilities(flags) {
   return new CFsCapabilities(flags);
 }
 var WrappedProviderFs = class _WrappedProviderFs {
-  fs;
-  eventLogger;
+  constructor(fs52, eventLogger) {
+    this.fs = fs52;
+    this.eventLogger = eventLogger;
+    this.hasProvider = !!fs52;
+    this.capabilities = fs52?.capabilities || 0;
+    this._capabilities = fsCapabilities(this.capabilities);
+    this.providerInfo = fs52?.providerInfo || { name: "unknown" };
+  }
   hasProvider;
   capabilities;
   providerInfo;
   _capabilities;
-  constructor(fs12, eventLogger) {
-    this.fs = fs12;
-    this.eventLogger = eventLogger;
-    this.hasProvider = !!fs12;
-    this.capabilities = fs12?.capabilities || FSCapabilityFlags.None;
-    this._capabilities = fsCapabilities(this.capabilities);
-    this.providerInfo = fs12?.providerInfo || { name: "unknown" };
-  }
   logEvent(method, event, traceID, url2, message) {
     this.eventLogger({ method, event, url: url2, traceID, ts: performance.now(), message });
   }
   getCapabilities(url2) {
-    if (this.fs?.getCapabilities)
-      return this.fs.getCapabilities(url2);
+    if (this.fs?.getCapabilities) return this.fs.getCapabilities(url2);
     return this._capabilities;
   }
   async stat(urlRef) {
@@ -54388,7 +53963,7 @@ var WrappedProviderFs = class _WrappedProviderFs {
     const url2 = urlOrReferenceToUrl(urlRef);
     this.logEvent("stat", "start", traceID, url2);
     try {
-      checkCapabilityOrThrow(this.fs, this.capabilities, FSCapabilityFlags.Stat, "stat", url2);
+      checkCapabilityOrThrow(this.fs, this.capabilities, 1, "stat", url2);
       return new CVfsStat(await this.fs.stat(urlRef));
     } catch (e) {
       this.logEvent("stat", "error", traceID, url2, e instanceof Error ? e.message : "");
@@ -54402,7 +53977,7 @@ var WrappedProviderFs = class _WrappedProviderFs {
     const url2 = urlOrReferenceToUrl(urlRef);
     this.logEvent("readFile", "start", traceID, url2);
     try {
-      checkCapabilityOrThrow(this.fs, this.capabilities, FSCapabilityFlags.Read, "readFile", url2);
+      checkCapabilityOrThrow(this.fs, this.capabilities, 2, "readFile", url2);
       const readOptions = toOptions(optionsOrEncoding);
       return fromFileResource(await this.fs.readFile(urlRef, readOptions), readOptions?.encoding);
     } catch (e) {
@@ -54416,7 +53991,7 @@ var WrappedProviderFs = class _WrappedProviderFs {
     const traceID = performance.now();
     this.logEvent("readDir", "start", traceID, url2);
     try {
-      checkCapabilityOrThrow(this.fs, this.capabilities, FSCapabilityFlags.ReadDir, "readDirectory", url2);
+      checkCapabilityOrThrow(this.fs, this.capabilities, 8, "readDirectory", url2);
       return (await this.fs.readDirectory(url2)).map((e) => new CVfsDirEntry(e));
     } catch (e) {
       this.logEvent("readDir", "error", traceID, url2, e instanceof Error ? e.message : "");
@@ -54430,7 +54005,7 @@ var WrappedProviderFs = class _WrappedProviderFs {
     const url2 = file.url;
     this.logEvent("writeFile", "start", traceID, url2);
     try {
-      checkCapabilityOrThrow(this.fs, this.capabilities, FSCapabilityFlags.Write, "writeFile", file.url);
+      checkCapabilityOrThrow(this.fs, this.capabilities, 4, "writeFile", file.url);
       return await this.fs.writeFile(file);
     } catch (e) {
       this.logEvent("writeFile", "error", traceID, url2, e instanceof Error ? e.message : "");
@@ -54439,37 +54014,38 @@ var WrappedProviderFs = class _WrappedProviderFs {
       this.logEvent("writeFile", "end", traceID, url2);
     }
   }
-  static disposeOf(fs12) {
-    fs12 instanceof _WrappedProviderFs && fs12.fs?.dispose();
+  static disposeOf(fs52) {
+    fs52 instanceof _WrappedProviderFs && fs52.fs?.dispose();
   }
 };
-function checkCapabilityOrThrow(fs12, capabilities, flag, name2, url2) {
+function checkCapabilityOrThrow(fs52, capabilities, flag, name2, url2) {
   if (!(capabilities & flag)) {
     throw new VFSErrorUnsupportedRequest(name2, url2);
   }
 }
 var CFileType = class {
-  fileType;
   constructor(fileType) {
     this.fileType = fileType;
   }
   isFile() {
-    return this.fileType === FileType.File;
+    return this.fileType === 1;
   }
   isDirectory() {
-    return this.fileType === FileType.Directory;
+    return this.fileType === 2;
   }
   isUnknown() {
     return !this.fileType;
   }
   isSymbolicLink() {
-    return !!(this.fileType & FileType.SymbolicLink);
+    return !!(this.fileType & 64);
   }
 };
 var CVfsStat = class extends CFileType {
-  stat;
   constructor(stat3) {
-    super(stat3.fileType || FileType.Unknown);
+    super(
+      stat3.fileType || 0
+      /* Unknown */
+    );
     this.stat = stat3;
   }
   get size() {
@@ -54483,12 +54059,11 @@ var CVfsStat = class extends CFileType {
   }
 };
 var CVfsDirEntry = class extends CFileType {
-  entry;
-  _url;
   constructor(entry) {
     super(entry.fileType);
     this.entry = entry;
   }
+  _url;
   get name() {
     return this.entry.name;
   }
@@ -54496,8 +54071,7 @@ var CVfsDirEntry = class extends CFileType {
     return this.entry.dir;
   }
   get url() {
-    if (this._url)
-      return this._url;
+    if (this._url) return this._url;
     this._url = new URL(this.entry.name, this.entry.dir);
     return this._url;
   }
@@ -54510,8 +54084,7 @@ var CVfsDirEntry = class extends CFileType {
   }
 };
 function chopUrl(url2) {
-  if (!url2)
-    return "";
+  if (!url2) return "";
   const href = url2.href;
   const parts = href.split("/");
   const n = parts.indexOf("node_modules");
@@ -54527,8 +54100,6 @@ function rPad(str, len, ch = " ") {
 function toOptions(val) {
   return typeof val === "string" ? { encoding: val } : val;
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/CVirtualFS.js
 var CVirtualFS = class {
   providers = /* @__PURE__ */ new Set();
   cachedFs = /* @__PURE__ */ new Map();
@@ -54578,20 +54149,20 @@ var CVirtualFS = class {
       return cached;
     }
     const fnNext = (provider, next2) => {
-      return (url3) => {
+      return (url22) => {
         let calledNext = false;
-        const fs13 = provider.getFileSystem(url3, (_url) => {
-          calledNext = calledNext || url3 === _url;
+        const fs62 = provider.getFileSystem(url22, (_url) => {
+          calledNext = calledNext || url22 === _url;
           return next2(_url);
         });
-        if (fs13) {
+        if (fs62) {
           const s = this.revCacheFs.get(provider) || /* @__PURE__ */ new Set();
           s.add(key);
           this.revCacheFs.set(provider, s);
-          return fs13;
+          return fs62;
         }
         if (!calledNext) {
-          return next2(url3);
+          return next2(url22);
         }
         return void 0;
       };
@@ -54600,17 +54171,17 @@ var CVirtualFS = class {
     for (const provider of this.providers) {
       next = fnNext(provider, next);
     }
-    const fs12 = new WrappedProviderFs(next(url2), this.logEvent);
-    this.cachedFs.set(key, fs12);
-    return fs12;
+    const fs52 = new WrappedProviderFs(next(url2), this.logEvent);
+    this.cachedFs.set(key, fs52);
+    return fs52;
   }
   reset() {
     this.disposeOfCachedFs();
   }
   disposeOfCachedFs() {
-    for (const [key, fs12] of [...this.cachedFs].reverse()) {
+    for (const [key, fs52] of [...this.cachedFs].reverse()) {
       try {
-        WrappedProviderFs.disposeOf(fs12);
+        WrappedProviderFs.disposeOf(fs52);
       } catch {
       }
       this.cachedFs.delete(key);
@@ -54629,12 +54200,16 @@ var CVirtualFS = class {
     }
   }
 };
-function fsPassThroughCore(fs12) {
+function fsPassThroughCore(fs52) {
   function gfs(ur, name2) {
     const url2 = urlOrReferenceToUrl(ur);
-    const f = fs12(url2);
+    const f = fs52(url2);
     if (!f.hasProvider)
-      throw new VFSErrorUnsupportedRequest(name2, url2, ur instanceof URL ? void 0 : { url: ur.url.toString(), encoding: ur.encoding });
+      throw new VFSErrorUnsupportedRequest(
+        name2,
+        url2,
+        ur instanceof URL ? void 0 : { url: ur.url.toString(), encoding: ur.encoding }
+      );
     return f;
   }
   return {
@@ -54660,56 +54235,13 @@ function getDefaultVirtualFs() {
   }
   return defaultVirtualFs;
 }
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/node/file/fileWriter.js
-var fs4 = __toESM(require("node:fs"), 1);
-var Stream = __toESM(require("node:stream"), 1);
-var import_node_util5 = require("node:util");
-var zlib = __toESM(require("node:zlib"), 1);
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/common/transformers.js
-function encoderTransformer(iterable, encoding) {
-  return isAsyncIterable2(iterable) ? encoderAsyncIterable(iterable, encoding) : encoderIterable(iterable, encoding);
-}
-function* encoderIterable(iterable, encoding) {
-  let useBom = true;
-  for (const chunk of iterable) {
-    yield encodeString(chunk, encoding, useBom);
-    useBom = false;
-  }
-}
-async function* encoderAsyncIterable(iterable, encoding) {
-  let useBom = true;
-  for await (const chunk of iterable) {
-    yield encodeString(chunk, encoding, useBom);
-    useBom = false;
-  }
-}
-function isAsyncIterable2(v) {
-  return v && typeof v === "object" && !!v[Symbol.asyncIterator];
-}
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/node/file/fileWriter.js
 var pipeline2 = (0, import_node_util5.promisify)(Stream.pipeline);
-function writeToFile(filename, data, encoding) {
-  return writeToFileIterable(filename, typeof data === "string" ? [data] : data, encoding);
-}
-function writeToFileIterable(filename, data, encoding) {
-  const stream = Stream.Readable.from(encoderTransformer(data, encoding));
-  const zip = /\.gz$/.test(filename) ? zlib.createGzip() : new Stream.PassThrough();
-  return pipeline2(stream, zip, fs4.createWriteStream(filename));
-}
-
-// ../node_modules/.pnpm/cspell-io@8.17.1/node_modules/cspell-io/dist/esm/file/file.js
 async function readFileText(filename, encoding) {
   const fr = await getDefaultCSpellIO().readFile(filename, encoding);
   return fr.getText();
 }
-function readFileTextSync(filename, encoding) {
-  return getDefaultCSpellIO().readFileSync(filename, encoding).getText();
-}
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/fileSystem.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/fileSystem.js
 function getVirtualFS() {
   return getDefaultVirtualFs();
 }
@@ -54717,7 +54249,7 @@ function getFileSystem() {
   return getVirtualFS().fs;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/pkg-info.mjs
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/pkg-info.mjs
 var import_node_url8 = require("node:url");
 var import_meta = {};
 var url = import_meta.url;
@@ -54730,7 +54262,7 @@ function calcSrcDirectory() {
 }
 var srcDirectory = calcSrcDirectory();
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/templates.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/templates.js
 function replaceTemplate(template2, replacements) {
   const templateStart = "${";
   const tLen = templateStart.length;
@@ -54766,7 +54298,7 @@ function envToTemplateVars(env4) {
   return vars;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/url.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/url.js
 function getSourceDirectoryUrl() {
   const srcDirectoryURL = toFileDirURL(srcDirectory);
   return srcDirectoryURL;
@@ -54785,14 +54317,14 @@ function windowsDriveLetterToUpper(absoluteFilePath) {
   return absoluteFilePath.replace(regExpWindowsPathDriveLetter2, (s) => s.toUpperCase());
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var regExpStartsWidthNodeModules = /^node_modules[/\\]/;
 var debugMode = false;
 var FileResolver = class {
   fs;
   templateReplacements;
-  constructor(fs12, templateReplacements) {
-    this.fs = fs12;
+  constructor(fs10, templateReplacements) {
+    this.fs = fs10;
     this.templateReplacements = templateReplacements;
   }
   /**
@@ -55051,20 +54583,20 @@ function pathFromRelativeTo(relativeTo) {
   return relativeTo instanceof URL || isUrlLike(relativeTo) ? (0, import_node_url9.fileURLToPath)(new URL("./", relativeTo)) : relativeTo;
 }
 var loaderCache = /* @__PURE__ */ new WeakMap();
-function createFileResolver(fs12, templateVariables = envToTemplateVars(process.env)) {
-  let loader2 = loaderCache.get(fs12);
+function createFileResolver(fs10, templateVariables = envToTemplateVars(process.env)) {
+  let loader2 = loaderCache.get(fs10);
   if (!loader2) {
-    loader2 = new FileResolver(fs12, templateVariables);
-    loaderCache.set(fs12, loader2);
+    loader2 = new FileResolver(fs10, templateVariables);
+    loaderCache.set(fs10, loader2);
   }
   return loader2;
 }
-async function resolveFile(filename, relativeTo, fs12 = getFileSystem()) {
-  const resolver = createFileResolver(fs12);
+async function resolveFile(filename, relativeTo, fs10 = getFileSystem()) {
+  const resolver = createFileResolver(fs10);
   return resolver.resolveFile(filename, relativeTo);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
 function createDictionaryReferenceCollection(dictionaries) {
   return new _DictionaryReferenceCollection(dictionaries);
 }
@@ -55110,7 +54642,7 @@ function mapReference(ref) {
   return { name: name2.trim(), weight };
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
 function filterDictDefsToLoad(dictRefCol, defs) {
   const allActiveDefs = defs.filter(({ name: name2 }) => dictRefCol.isEnabled(name2)).map(fixPath);
   return [...new Map(allActiveDefs.map((d) => [d.name, d])).values()];
@@ -55224,7 +54756,7 @@ var _DictionaryDefinitionInternalWithSource = class {
   }
 };
 
-// ../node_modules/.pnpm/@cspell+strong-weak-map@8.17.1/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
+// ../node_modules/.pnpm/@cspell+strong-weak-map@8.17.2/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
 var StrongWeakMap = class {
   map;
   constructor(init) {
@@ -55349,7 +54881,7 @@ var StrongWeakMap = class {
   [Symbol.toStringTag] = "StrongWeakMap";
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/simpleCache.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/simpleCache.js
 var SimpleCache2 = class {
   size;
   L0 = /* @__PURE__ */ new Map();
@@ -55424,7 +54956,7 @@ var AutoCache = class extends SimpleCache2 {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
 var SpellingDictionaryLoadError = class extends Error {
   uri;
   options;
@@ -55442,7 +54974,7 @@ function isSpellingDictionaryLoadError(e) {
   return e instanceof SpellingDictionaryLoadError;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
 var MAX_AGE = 1e4;
 var loaders = {
   S: loadSimpleWordList,
@@ -55464,9 +54996,9 @@ var DictionaryLoader = class {
   reader;
   /** The keepAliveCache is to hold onto the most recently loaded dictionaries. */
   keepAliveCache;
-  constructor(fs12, keepAliveSize = 10) {
-    this.fs = fs12;
-    this.reader = toReader(fs12);
+  constructor(fs10, keepAliveSize = 10) {
+    this.fs = fs10;
+    this.reader = toReader(fs10);
     this.keepAliveCache = new SimpleCache2(keepAliveSize);
   }
   loadDictionary(def) {
@@ -55578,9 +55110,9 @@ var DictionaryLoader = class {
     return parts.join("|");
   }
 };
-function toReader(fs12) {
+function toReader(fs10) {
   async function readFile4(url2) {
-    return (await fs12.readFile(url2)).getText();
+    return (await fs10.readFile(url2)).getText();
   }
   return {
     read: readFile4,
@@ -55646,7 +55178,7 @@ function toLines(content) {
   return content.split(/\n|\r\n|\r/);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
 var loader;
 function getDictionaryLoader(vfs) {
   if (loader)
@@ -55660,7 +55192,7 @@ async function refreshCacheEntries(maxAge, now) {
   return getDictionaryLoader().refreshCacheEntries(maxAge, now);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
 function loadDictionaryDefs(defsToLoad) {
   return defsToLoad.map(loadDictionary);
 }
@@ -55707,20 +55239,7 @@ function _getDictionaryInternal(settings, spellDictionaries) {
   return createCollection(dictionaries, "dictionary collection");
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/clearCachedFiles.js
-function clearCachedFiles() {
-  return _clearCachedFiles();
-}
-function _clearCachedFiles() {
-  dispatchClearCache();
-  return refreshDictionaryCache(0).then(() => void 0);
-}
-function clearCaches() {
-  clearCachedFiles().catch(() => {
-  });
-}
-
-// ../node_modules/.pnpm/@cspell+filetypes@8.17.1/node_modules/@cspell/filetypes/dist/definitions.js
+// ../node_modules/.pnpm/@cspell+filetypes@8.17.2/node_modules/@cspell/filetypes/dist/definitions.js
 var definitions = [
   { id: "ada", extensions: [".adb", ".ads"] },
   { id: "apiblueprint", extensions: [".apib", ".apiblueprint"] },
@@ -56090,7 +55609,7 @@ var definitions = [
   { id: "wheel", extensions: [".whl"], format: "Binary" }
 ];
 
-// ../node_modules/.pnpm/@cspell+filetypes@8.17.1/node_modules/@cspell/filetypes/dist/filetypes.js
+// ../node_modules/.pnpm/@cspell+filetypes@8.17.2/node_modules/@cspell/filetypes/dist/filetypes.js
 var binaryFormatIds = definitions.filter((d) => d.format === "Binary").map((d) => d.id);
 var binaryLanguages = /* @__PURE__ */ new Set(["binary", "image", "video", "fonts", ...binaryFormatIds]);
 var generatedFiles = /* @__PURE__ */ new Set([
@@ -56134,12 +55653,6 @@ function buildLanguageExtensionMapSet(defs) {
 }
 function buildExtensionToLanguageIdMap(map3) {
   return new Map([...map3].map(([k, s]) => [k, [...s]]));
-}
-function _getLanguagesForExt(ext) {
-  return mapExtensionToLanguageIds.get(ext) || mapExtensionToLanguageIds.get("." + ext);
-}
-function getFileTypesForExt(ext) {
-  return _getLanguagesForExt(ext) || _getLanguagesForExt(ext.toLowerCase()) || [];
 }
 function matchPatternsToFilename(basename5) {
   return idsWithRegExp.filter(({ regexp }) => regexp.test(basename5)).map(({ id }) => id);
@@ -56210,7 +55723,7 @@ function defToRegExp(def) {
   return { regexp, id: def.id };
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/Uri.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/Uri.js
 var import_node_assert7 = __toESM(require("node:assert"), 1);
 var STDIN_PROTOCOL = "stdin:";
 function toUri(uriOrFile) {
@@ -56343,12 +55856,12 @@ function documentUriToURL(uri) {
   return toURL(uri instanceof URL ? uri : typeof uri === "string" ? toFileURL(uri) : new URL(uriFrom(uri).toString()));
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
 function normalizeLanguageIds(languageId) {
   return (Array.isArray(languageId) ? languageId.join(",") : languageId).split(",").map((s) => s.trim());
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
 function isBinaryDoc(document) {
   return isBinaryFile2(toUri(document.uri), document.languageId, document.text);
 }
@@ -56366,10 +55879,10 @@ function isBinaryFile2(filename, languageId, text) {
   return text?.slice(0, 1024).includes("\0") || false;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 var import_promises = require("node:fs/promises");
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 var import_node_assert8 = __toESM(require("node:assert"), 1);
 
 // ../node_modules/.pnpm/vscode-languageserver-textdocument@1.0.12/node_modules/vscode-languageserver-textdocument/lib/esm/main.js
@@ -56536,20 +56049,20 @@ var TextDocument;
   }
   TextDocument2.applyEdits = applyEdits2;
 })(TextDocument || (TextDocument = {}));
-function mergeSort(data, compare4) {
+function mergeSort(data, compare5) {
   if (data.length <= 1) {
     return data;
   }
   const p = data.length / 2 | 0;
   const left = data.slice(0, p);
   const right = data.slice(p);
-  mergeSort(left, compare4);
-  mergeSort(right, compare4);
+  mergeSort(left, compare5);
+  mergeSort(right, compare5);
   let leftIdx = 0;
   let rightIdx = 0;
   let i = 0;
   while (leftIdx < left.length && rightIdx < right.length) {
-    const ret = compare4(left[leftIdx], right[rightIdx]);
+    const ret = compare5(left[leftIdx], right[rightIdx]);
     if (ret <= 0) {
       data[i++] = left[leftIdx++];
     } else {
@@ -56596,7 +56109,7 @@ function getWellformedEdit(textEdit) {
   return textEdit;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 var TextDocumentImpl = class {
   languageId;
   locale;
@@ -56693,9 +56206,8 @@ function updateTextDocument(doc, edits, version4) {
 function isTextDocumentImpl(doc) {
   return doc instanceof TextDocumentImpl;
 }
-var isTextDocument = isTextDocumentImpl;
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 var defaultEncoding = "utf8";
 function fileToDocument(file, text, languageId, locale) {
   return clean4({
@@ -56705,15 +56217,9 @@ function fileToDocument(file, text, languageId, locale) {
     locale
   });
 }
-async function fileToTextDocument(file) {
-  return documentToTextDocument(await resolveDocument(fileToDocument(file)));
-}
 function documentToTextDocument(document) {
   const { uri, text: content, languageId, locale } = document;
   return createTextDocument({ uri, content, languageId, locale });
-}
-async function resolveDocumentToTextDocument(doc) {
-  return documentToTextDocument(await resolveDocument(doc));
 }
 async function readDocument(filename, encoding = defaultEncoding) {
   const text = await (0, import_promises.readFile)(filename, encoding);
@@ -56736,15 +56242,7 @@ function isDocumentWithText(doc) {
   return doc.text !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/exclusionHelper.js
-var exclusionHelper_exports = {};
-__export(exclusionHelper_exports, {
-  extractGlobsFromExcludeFilesGlobMap: () => extractGlobsFromExcludeFilesGlobMap,
-  generateExclusionFunctionForFiles: () => generateExclusionFunctionForFiles,
-  generateExclusionFunctionForUri: () => generateExclusionFunctionForUri
-});
-
-// ../node_modules/.pnpm/cspell-glob@8.17.1/node_modules/cspell-glob/dist/globHelper.js
+// ../node_modules/.pnpm/cspell-glob@8.17.2/node_modules/cspell-glob/dist/globHelper.js
 var Path2 = __toESM(require("node:path"), 1);
 var { posix } = Path2;
 var isGlobalPatternRegExp = /^!*[*]{2}/;
@@ -57079,7 +56577,7 @@ function filePathOrGlobToGlob(filePathOrGlob, root, builder) {
   return { root: builder.urlToFilePathOrHref(url2), glob: glob2, isGlobalPattern };
 }
 
-// ../node_modules/.pnpm/cspell-glob@8.17.1/node_modules/cspell-glob/dist/GlobMatcher.js
+// ../node_modules/.pnpm/cspell-glob@8.17.2/node_modules/cspell-glob/dist/GlobMatcher.js
 var Path3 = __toESM(require("node:path"), 1);
 var import_micromatch = __toESM(require_micromatch(), 1);
 var traceMode = false;
@@ -57214,45 +56712,7 @@ function logMatchTest(id, filename, match2) {
   console.warn("%s;%d;%s", filename, id, JSON.stringify(match2.matched));
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/exclusionHelper.js
-var defaultAllowedSchemes = /* @__PURE__ */ new Set(["file", "untitled"]);
-function extractGlobsFromExcludeFilesGlobMap(globMap) {
-  const globs = Object.getOwnPropertyNames(globMap).filter((glob2) => globMap[glob2]);
-  return globs;
-}
-var leadingGlobPattern = /^\*\*\/([^/*{}]+)$/;
-function adjustGlobPatternForBackwardsCompatibility(g) {
-  return g.replace(leadingGlobPattern, "**/{$1,$1/**}");
-}
-function adjustGlobPatternsForBackwardsCompatibility(globs) {
-  return globs.map((g) => {
-    if (typeof g === "string") {
-      return adjustGlobPatternForBackwardsCompatibility(g);
-    }
-    return { ...g, glob: adjustGlobPatternForBackwardsCompatibility(g.glob) };
-  });
-}
-function generateExclusionFunctionForUri(globs, root, allowedSchemes = defaultAllowedSchemes) {
-  const adjustedGlobs = adjustGlobPatternsForBackwardsCompatibility(globs);
-  const matchFn = generateExclusionFunctionForFiles(adjustedGlobs, root);
-  function testUri(uri) {
-    if (!allowedSchemes.has(uri.scheme)) {
-      return true;
-    }
-    return matchFn(uri.scheme === "file" || uri.scheme === "stdin" ? uriToFilePath(uri) : uri.path);
-  }
-  function testUriPath(uriPath) {
-    const uri = toUri(uriPath);
-    return testUri(uri);
-  }
-  return testUriPath;
-}
-function generateExclusionFunctionForFiles(globs, root) {
-  const matcher = new GlobMatcher(globs, { root, dot: true });
-  return (file) => matcher.match(file);
-}
-
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
 var systemFeatureFlags;
 var FeatureFlags = class {
   flags;
@@ -57322,17 +56782,17 @@ function toBool(value) {
   return boolValues[value.toLowerCase()];
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 var import_node_assert9 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/constants.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/constants.js
 var configSettingsFileVersion0_1 = "0.1";
 var configSettingsFileVersion0_2 = "0.2";
 var currentSettingsFileVersion = configSettingsFileVersion0_2;
 var ENV_CSPELL_GLOB_ROOT = "CSPELL_GLOB_ROOT";
 var defaultConfigFileModuleRef = "@cspell/cspell-bundled-dicts/cspell-default.json";
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
 var CalcLeftRightResultWeakCache = class {
   map = new AutoResolveWeakCache2();
   _toDispose;
@@ -57358,7 +56818,7 @@ var CalcLeftRightResultWeakCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
 var cacheMergeListUnique = new CalcLeftRightResultWeakCache();
 var cacheMergeLists = new CalcLeftRightResultWeakCache();
 function mergeListUnique(left, right) {
@@ -57398,7 +56858,7 @@ function stats() {
   };
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/textRegex.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/textRegex.js
 var regExSplitWords = /(\p{Ll}\p{M}?)(\p{Lu})/gu;
 var regExSplitWords2 = /(\p{Lu}\p{M}?)((\p{Lu}\p{M}?)\p{Ll})/gu;
 var regExpCamelCaseWordBreaksWithEnglishSuffix = /(?<=\p{Ll}\p{M}?)(?=\p{Lu})|(?<=\p{Lu}\p{M}?)(?=\p{Lu}\p{M}?\p{Ll})(?!\p{Lu}\p{M}?(?:s|ing|ies|es|ings|ed|ning)(?!\p{Ll}))/gu;
@@ -57511,7 +56971,7 @@ function removeVerboseFromRegExp(pattern) {
   return result.result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/patterns.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/patterns.js
 var emptyRegExpList = [];
 var emptyPatternDefinitions = [];
 var cache4 = new CalcLeftRightResultWeakCache();
@@ -57547,7 +57007,7 @@ function toRegExp(pattern) {
   return pattern instanceof RegExp ? new RegExp(pattern) : stringToRegExp(pattern, "gim", "g");
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
 var CwdUrlResolver = class {
   #lastPath;
   #lastUrl;
@@ -57575,7 +57035,7 @@ var CwdUrlResolver = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 var emptyWords2 = [];
 Object.freeze(emptyWords2);
 var cachedMerges = new AutoResolveWeakCache2();
@@ -57711,10 +57171,6 @@ function hasAncestor(s, ancestor, side) {
   const src = sources[i];
   return src === ancestor || src && hasAncestor(src, ancestor, side) || false;
 }
-function mergeInDocSettings(left, ...rest) {
-  const merged = mergeSettings(left, ...rest);
-  return clean4(merged);
-}
 function takeRightOtherwiseLeft(left, right) {
   if (right?.length) {
     return right;
@@ -57834,12 +57290,12 @@ function extractParsers(plugins) {
   return parserCache.get(plugins, mapPlugins);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/getDictionary.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/getDictionary.js
 async function getDictionary(settings) {
   return getDictionaryInternal(toInternalSettings(settings));
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/perf/timer.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/perf/timer.js
 function createPerfTimer2(name2, onEnd, timeNowFn) {
   return new SimpleTimer(name2, onEnd, timeNowFn);
 }
@@ -57875,7 +57331,7 @@ var SimpleTimer = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
 var simpleGlobCache = /* @__PURE__ */ new Map();
 var globCache = /* @__PURE__ */ new WeakMap();
 onClearCache(() => {
@@ -57905,13 +57361,13 @@ function getGlobMatcherGlobGlob(glob2) {
   return m;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
 function checkFilenameMatchesExcludeGlob(filename, globs) {
   const m = getGlobMatcherForExcluding(globs);
   return m.match(filename);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
 function calcOverrideSettings(settings, filename) {
   const _settings = toInternalSettings(settings);
   const overrides = _settings.overrides || [];
@@ -57919,15 +57375,15 @@ function calcOverrideSettings(settings, filename) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
 var import_node_assert10 = __toESM(require("node:assert"), 1);
 var import_node_path9 = __toESM(require("node:path"), 1);
 var import_node_url13 = require("node:url");
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 var import_posix = require("node:path/posix");
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
 var CSpellConfigFile = class {
   url;
   constructor(url2) {
@@ -57975,7 +57431,7 @@ function satisfiesCSpellConfigFile(obj) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
 var CSpellConfigFileInMemory = class extends ImplCSpellConfigFile {
   url;
   settings;
@@ -57989,7 +57445,7 @@ var CSpellConfigFileInMemory = class extends ImplCSpellConfigFile {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
 var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
   url;
   settings;
@@ -58006,10 +57462,10 @@ var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 var import_comment_json = __toESM(require_src2(), 1);
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/serializers/util.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/serializers/util.js
 function detectIndent(content) {
   const m = content.match(/^[ \t]+/m);
   return m && m[0] || "  ";
@@ -58019,7 +57475,7 @@ function detectIndentAsNum(content) {
   return indent.length;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 var CSpellConfigFileJson = class _CSpellConfigFileJson extends ImplCSpellConfigFile {
   url;
   settings;
@@ -58064,7 +57520,7 @@ var ParseError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
 var CSpellConfigFilePackageJson = class extends ImplCSpellConfigFile {
   url;
   settings;
@@ -58098,7 +57554,7 @@ function parseCSpellConfigFilePackageJson(file) {
   return new CSpellConfigFilePackageJson(url2, cspell, serialize);
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
 var import_yaml = __toESM(require_dist(), 1);
 var CSpellConfigFileYaml = class extends ImplCSpellConfigFile {
   url;
@@ -58127,7 +57583,7 @@ function parseCSpellConfigFileYaml(file) {
   return new CSpellConfigFileYaml(url2, cspell, serialize);
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/defaultNext.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/defaultNext.js
 var defaultNextDeserializer = (content) => {
   throw new Error(`Unable to parse config file: "${content.url}"`);
 };
@@ -58135,7 +57591,7 @@ var defaultNextSerializer = (file) => {
   throw new Error(`Unable to serialize config file: "${file.url}"`);
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/middlewareHelper.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/middlewareHelper.js
 function getDeserializer(middleware) {
   let next = defaultNextDeserializer;
   for (const des of middleware) {
@@ -58173,12 +57629,12 @@ function getLoader(loaders2) {
   return next;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/util/toURL.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/util/toURL.js
 function toURL3(url2) {
   return typeof url2 === "string" ? new URL(url2) : url2;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 var CSpellConfigFileReaderWriterImpl = class {
   io;
   middleware;
@@ -58262,7 +57718,7 @@ var UntrustedUrlError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/defaultIO.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/defaultIO.js
 var import_node_fs6 = require("node:fs");
 var defaultIO = {
   readFile: readFile2,
@@ -58277,7 +57733,7 @@ async function writeFile2(file) {
   return { url: file.url };
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
 var import_posix2 = require("node:path/posix");
 var _debug2 = false;
 var _log = _debug2 ? console.warn.bind(console) : () => void 0;
@@ -58318,10 +57774,10 @@ var LoaderJavaScript = class {
 };
 var loaderJavaScript = new LoaderJavaScript();
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/loaders/index.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/loaders/index.js
 var defaultLoaders = [loaderJavaScript];
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
 function deserializer(params, next) {
   if (!isJsonFile(params.url.pathname))
     return next(params);
@@ -58338,7 +57794,7 @@ function serializer(settings, next) {
 }
 var serializerCSpellJson = { deserialize: deserializer, serialize: serializer };
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
 function deserializer2(params, next) {
   if (!isYamlFile(params.url.pathname))
     return next(params);
@@ -58355,7 +57811,7 @@ function serializer2(settings, next) {
 }
 var serializerCSpellYaml = { deserialize: deserializer2, serialize: serializer2 };
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/serializers/packageJson.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/serializers/packageJson.js
 var isSupportedFormat = /\bpackage\.json$/i;
 function deserializer3(params, next) {
   if (!isSupportedFormat.test(params.url.pathname))
@@ -58369,19 +57825,19 @@ function serializer3(settings, next) {
 }
 var serializerPackageJson = { deserialize: deserializer3, serialize: serializer3 };
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/serializers/index.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/serializers/index.js
 var defaultDeserializers = [
   serializerCSpellJson,
   serializerCSpellYaml,
   serializerPackageJson
 ];
 
-// ../node_modules/.pnpm/cspell-config-lib@8.17.1/node_modules/cspell-config-lib/dist/createReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@8.17.2/node_modules/cspell-config-lib/dist/createReaderWriter.js
 function createReaderWriter(deserializers2 = [], loaders2 = [], io = defaultIO) {
   return new CSpellConfigFileReaderWriterImpl(io, [...defaultDeserializers, ...deserializers2], [...defaultLoaders, ...loaders2]);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/logger.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/logger.js
 var _logger = console;
 function logError(...args) {
   _logger.error(...args);
@@ -58394,11 +57850,8 @@ function setLogger(logger) {
   _logger = logger;
   return oldLogger;
 }
-function getLogger() {
-  return _logger;
-}
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 var import_promises2 = __toESM(require("node:fs/promises"), 1);
 var import_node_path7 = __toESM(require("node:path"), 1);
 
@@ -58477,7 +57930,7 @@ if (xdgConfig) {
   xdgConfigDirectories.unshift(xdgConfig);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 var packageName = "cspell";
 var legacyLocationDir = xdgConfig ? import_node_path7.default.join(xdgConfig, "configstore") : void 0;
 var cspellGlobalLocationDir = envPaths(packageName, { suffix: "" }).config;
@@ -58532,11 +57985,11 @@ var GlobalConfigStore = class {
   static defaultLocation = import_node_path7.default.join(cspellGlobalLocationDir, defaultConfigFileName);
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 var import_node_os4 = require("node:os");
 var import_node_url10 = require("node:url");
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
 function toGlobDef(g, root, source) {
   if (g === void 0)
     return void 0;
@@ -58556,7 +58009,7 @@ function toGlobDef(g, root, source) {
   return g;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 function normalizeRawConfig(config) {
   if (typeof config.version === "number") {
     config.version = config.version.toString();
@@ -58671,13 +58124,7 @@ function normalizeImport(imports) {
   return [];
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
-function configErrorToRawSettings(error4, url2) {
-  const filename = toFilePathOrHref(url2);
-  const fileRef = { filename, error: error4 };
-  const source = { name: filename, filename };
-  return { __importRef: fileRef, source };
-}
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
 function configToRawSettings(cfgFile) {
   if (!cfgFile)
     return {};
@@ -58708,11 +58155,8 @@ function urlToSimpleId(url2) {
   return url2.pathname.split("/").slice(-2).join("/");
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
 var globalConfig = new GlobalConfigStore();
-async function getRawGlobalSettings() {
-  return configToRawSettings(await getGlobalConfig());
-}
 async function getGlobalConfig() {
   const name2 = "CSpell Configstore";
   const configPath = getGlobalConfigPath();
@@ -58740,12 +58184,6 @@ async function getGlobalConfig() {
   const ConfigFile = hasGlobalConfig ? CSpellConfigFileJson : CSpellConfigFileInMemory;
   return new ConfigFile(urlGlobal, settings);
 }
-async function writeRawGlobalSettings(settings) {
-  const toWrite = {
-    import: settings.import
-  };
-  await globalConfig.writeConfigFile(toWrite);
-}
 function getGlobalConfigPath() {
   try {
     return globalConfig.location || GlobalConfigStore.defaultLocation;
@@ -58754,7 +58192,7 @@ function getGlobalConfigPath() {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
 var ImportError = class extends Error {
   cause;
   constructor(msg, cause) {
@@ -58768,12 +58206,12 @@ var UnsupportedPnpFile = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 var import_node_url12 = require("node:url");
 var import_clear_module = __toESM(require_clear_module(), 1);
 var import_import_fresh = __toESM(require_import_fresh(), 1);
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/findUp.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/findUp.js
 var import_promises3 = require("node:fs/promises");
 var import_node_path8 = __toESM(require("node:path"), 1);
 var import_node_url11 = require("node:url");
@@ -58815,7 +58253,7 @@ function toDirPath(urlOrPath) {
   return urlOrPath instanceof URL ? (0, import_node_url11.fileURLToPath)(new URL(".", urlOrPath)) : urlOrPath;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 var defaultPnpFiles = [".pnp.cjs", ".pnp.js"];
 var supportedSchemas = /* @__PURE__ */ new Set(["file:"]);
 var cachedRequests = /* @__PURE__ */ new Map();
@@ -58914,7 +58352,7 @@ function isSupported(url2) {
   return supportedSchemas.has(url2.protocol);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
 var supportedExtensions = [".json", ".jsonc", ".yaml", ".yml", ".mjs", ".cjs", ".js"];
 var setOfLocations = /* @__PURE__ */ new Set([
   "package.json",
@@ -58964,16 +58402,16 @@ function genCfgLoc(filename, extensions) {
   return extensions.map((ext) => filename + ext);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 var import_posix3 = require("node:path/posix");
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
 async function findUpFromUrl2(name2, from, options = {}) {
-  const fs12 = options.fs ?? getVirtualFS().fs;
-  return fs12.findUp(name2, from, options);
+  const fs10 = options.fs ?? getVirtualFS().fs;
+  return fs10.findUp(name2, from, options);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 var ConfigSearch = class {
   searchPlaces;
   allowedExtensionsByProtocol;
@@ -58986,10 +58424,10 @@ var ConfigSearch = class {
    * @param allowedExtensionsByProtocol - Map of allowed extensions by protocol, '*' is used to match all protocols.
    * @param fs - The file system to use.
    */
-  constructor(searchPlaces2, allowedExtensionsByProtocol, fs12) {
+  constructor(searchPlaces2, allowedExtensionsByProtocol, fs10) {
     this.searchPlaces = searchPlaces2;
     this.allowedExtensionsByProtocol = allowedExtensionsByProtocol;
-    this.fs = fs12;
+    this.fs = fs10;
     this.searchPlacesByProtocol = setupSearchPlacesByProtocol(searchPlaces2, allowedExtensionsByProtocol);
     this.searchPlaces = this.searchPlacesByProtocol.get("*") || searchPlaces2;
   }
@@ -59100,9 +58538,9 @@ function setupSearchPlacesByProtocol(searchPlaces2, allowedExtensionsByProtocol)
   const map3 = new Map([...allowedExtensionsByProtocol.entries()].map(([k, v]) => [k, new Set(v)]).map(([protocol, exts]) => [protocol, searchPlaces2.filter((url2) => exts.has((0, import_posix3.extname)(url2)))]));
   return map3;
 }
-async function checkPackageJson(fs12, filename) {
+async function checkPackageJson(fs10, filename) {
   try {
-    const file = await fs12.readFile(filename);
+    const file = await fs10.readFile(filename);
     const pkg = JSON.parse(file.getText());
     return typeof pkg.cspell === "object";
   } catch {
@@ -59110,14 +58548,14 @@ async function checkPackageJson(fs12, filename) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
 var defaultSettings = createCSpellSettingsInternal({
   id: "default",
   name: "default",
   version: currentSettingsFileVersion
 });
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
 var defaultPnPSettings = Object.freeze({});
 var lastPnP = defaultPnPSettings;
 function normalizePnPSettings(settings) {
@@ -59132,11 +58570,9 @@ function equal(a, b) {
   return a === b || a.usePnP === b.usePnP && (a.pnpFiles === b.pnpFiles || a.pnpFiles?.join("|") === b.pnpFiles?.join("|"));
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
 var supportedCSpellConfigVersions = [configSettingsFileVersion0_2];
 var setOfSupportedConfigVersions = Object.freeze(new Set(supportedCSpellConfigVersions));
-var sectionCSpell = "cSpell";
-var defaultFileName = "cspell.json";
 var defaultConfigLoader = void 0;
 var defaultExtensions = [".json", ".yaml", ".yml", ".jsonc"];
 var defaultJsExtensions = [".js", ".cjs", ".mjs"];
@@ -59155,12 +58591,12 @@ var ConfigLoader = class {
    * Use `createConfigLoader`
    * @param virtualFs - virtual file system to use.
    */
-  constructor(fs12, templateVariables = envToTemplateVars(process.env)) {
-    this.fs = fs12;
+  constructor(fs10, templateVariables = envToTemplateVars(process.env)) {
+    this.fs = fs10;
     this.templateVariables = templateVariables;
-    this.configSearch = new ConfigSearch(searchPlaces, trustedSearch, fs12);
-    this.cspellConfigFileReaderWriter = createReaderWriter(void 0, void 0, createIO(fs12));
-    this.fileResolver = new FileResolver(fs12, this.templateVariables);
+    this.configSearch = new ConfigSearch(searchPlaces, trustedSearch, fs10);
+    this.cspellConfigFileReaderWriter = createReaderWriter(void 0, void 0, createIO(fs10));
+    this.fileResolver = new FileResolver(fs10, this.templateVariables);
     this.onReady = this.init();
     this.subscribeToEvents();
   }
@@ -59514,28 +58950,25 @@ function resolveGlobRoot(settings, urlSettingsFile) {
   const globRoot = rawRoot.startsWith("${cwd}") ? rawRoot : toFileURL(rawRoot, new URL(settingsFileDir));
   return typeof globRoot === "string" ? globRoot : globRoot.protocol === "file:" ? windowsDriveLetterToUpper(import_node_path9.default.resolve((0, import_node_url13.fileURLToPath)(globRoot))) : addTrailingSlash(globRoot).href;
 }
-function createConfigLoaderInternal(fs12) {
-  return new ConfigLoaderInternal(fs12 ?? getVirtualFS().fs);
-}
-function createConfigLoader(fs12) {
-  return createConfigLoaderInternal(fs12);
+function createConfigLoaderInternal(fs10) {
+  return new ConfigLoaderInternal(fs10 ?? getVirtualFS().fs);
 }
 function getDefaultConfigLoaderInternal() {
   if (defaultConfigLoader)
     return defaultConfigLoader;
   return defaultConfigLoader = createConfigLoaderInternal();
 }
-function createIO(fs12) {
-  const readFile4 = (url2) => fs12.readFile(url2).then((file) => ({ url: file.url, content: file.getText() }));
-  const writeFile3 = (file) => fs12.writeFile(file);
+function createIO(fs10) {
+  const readFile4 = (url2) => fs10.readFile(url2).then((file) => ({ url: file.url, content: file.getText() }));
+  const writeFile3 = (file) => fs10.writeFile(file);
   return {
     readFile: readFile4,
     writeFile: writeFile3
   };
 }
-async function isDirectory(fs12, path26) {
+async function isDirectory(fs10, path26) {
   try {
-    return (await fs12.stat(path26)).isDirectory();
+    return (await fs10.stat(path26)).isDirectory();
   } catch {
     return false;
   }
@@ -59583,7 +59016,7 @@ function relativeToCwd(file) {
   return [prefix || ".", ...urlPath.slice(i)].join("/");
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
 var gcl = getDefaultConfigLoaderInternal;
 function searchForConfig(searchFrom, pnpSettings = defaultPnPSettings) {
   return gcl().searchForConfig(searchFrom, pnpSettings);
@@ -59604,31 +59037,14 @@ async function readConfigFile(filename, relativeTo) {
 async function resolveConfigFileImports(configFile) {
   return gcl().mergeConfigFileWithImports(configFile, configFile.settings);
 }
-function getGlobalSettings() {
-  return gcl().getGlobalSettings();
-}
 function getGlobalSettingsAsync() {
   return gcl().getGlobalSettingsAsync();
-}
-function getCachedFileSize() {
-  return cachedFiles().size;
 }
 function getDefaultConfigLoader() {
   return getDefaultConfigLoaderInternal();
 }
-function cachedFiles() {
-  return gcl()._cachedFiles;
-}
-async function readRawSettings(filename, relativeTo) {
-  try {
-    const cfg = await readConfigFile(filename, relativeTo);
-    return configToRawSettings(cfg);
-  } catch (e) {
-    return configErrorToRawSettings(toError2(e), toFileUrl(filename));
-  }
-}
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
 function extractImportErrors(settings) {
   const imports = mergeImportRefs2(settings);
   return !imports ? [] : [...imports.values()].filter(isImportFileRefWithError);
@@ -59651,7 +59067,7 @@ function isImportFileRefWithError(ref) {
   return !!ref.error;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
 async function readSettings(filename, relativeToOrPnP, pnpSettings) {
   const loader2 = getDefaultConfigLoader();
   const relativeTo = typeof relativeToOrPnP === "string" || relativeToOrPnP instanceof URL ? relativeToOrPnP : void 0;
@@ -59659,13 +59075,7 @@ async function readSettings(filename, relativeToOrPnP, pnpSettings) {
   return loader2.readSettingsAsync(filename, relativeTo, pnp);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettingsFiles.js
-async function readSettingsFiles(filenames) {
-  const settings = await Promise.all(filenames.map((filename) => readSettings(filename)));
-  return settings.reduce((a, b) => mergeSettings(a, b), defaultSettings);
-}
-
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
 function isPatternInclude(p) {
   return !!p.include;
 }
@@ -59687,7 +59097,7 @@ function isPatternPatterns(p) {
   return Array.isArray(p.patterns);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/matchResult.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/matchResult.js
 function segmentMatch(mr) {
   const { matches, index, groups, input } = mr;
   const segments = [];
@@ -59724,7 +59134,7 @@ function createSimpleMatchResult(match2, input, index, lineNumber) {
   return { index, input, match: match2, matches: [match2], groups, lineNumber };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/scope.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/scope.js
 var import_node_assert11 = __toESM(require("node:assert"), 1);
 var Scope = class _Scope {
   value;
@@ -59791,7 +59201,7 @@ function isScopeLike(value) {
   return typeof value === "object" && !Array.isArray(value) && value.value !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
 function normalizeGrammar(grammar2) {
   return new ImplNGrammar(grammar2);
 }
@@ -60061,20 +59471,20 @@ var ImplNPatternPatterns = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/grammar.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/grammar.js
 function compileGrammar(grammar2) {
   return normalizeGrammar(grammar2);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 var import_node_assert12 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/util.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/util.js
 function isDefined5(t) {
   return t !== void 0 && t !== null;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
 function applyCaptureToBeginOrMatch(matchRuleResult) {
   const { match: match2, rule } = matchRuleResult;
   const bePattern = rule.pattern;
@@ -60200,7 +59610,7 @@ function applyCaptures(rule, match2, captures) {
   return parsedText;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 function tokenizeLine(line, rule) {
   const text = line.text;
   const lineLen = line.text.length;
@@ -60312,7 +59722,7 @@ function findNearestWithEnd(ctx) {
   return ctx;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/grammars/typescript.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/grammars/typescript.js
 var repository = {
   statements: {
     name: "code.ts",
@@ -60475,7 +59885,7 @@ var grammar = {
   repository
 };
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
 var import_node_assert13 = __toESM(require("node:assert"), 1);
 function appendMappedText(a, b) {
   if (!a.map && !b.map) {
@@ -60513,7 +59923,7 @@ function joinMaps(aMap, bMap) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/mappers/typescript.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/mappers/typescript.js
 var hexChars = {
   "0": 0,
   "1": 1,
@@ -60654,7 +60064,7 @@ function mapRawString(text) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parser/parser.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parser/parser.js
 function mapTokenizedLine(tl) {
   return tl.tokens.map((t) => ({
     text: t.text,
@@ -60673,7 +60083,7 @@ function createParser(grammar2, name2, transform2 = mapTokenizedLines) {
   return { name: name2, parse: parse4 };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
 var tsGrammar = compileGrammar(grammar);
 var pool = new ScopePool();
 var useScope = /* @__PURE__ */ new WeakMap();
@@ -60755,10 +60165,10 @@ function doesScopeMatch(s, match2) {
   return typeof s === "string" ? s.startsWith(match2) : s.value.startsWith(match2);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@8.17.1/node_modules/cspell-grammar/dist/parsers/index.js
+// ../node_modules/.pnpm/cspell-grammar@8.17.2/node_modules/cspell-grammar/dist/parsers/index.js
 var parsers2 = [parser];
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
 var PatternRegExp = class extends RegExp {
   constructor(pattern) {
     super(pattern);
@@ -60768,7 +60178,7 @@ var PatternRegExp = class extends RegExp {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
 var defaultLocale = "en";
 var defaultLanguageSettings = [];
 function getDefaultLanguageSettings() {
@@ -60868,7 +60278,7 @@ function calcSettingsForLanguageId(baseSettings, languageId) {
   return langSettings;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
 var regExMatchUrls = /(?:https?|ftp):\/\/[^\s"]+/gi;
 var regExHRef = /\bhref\s*=\s*".*?"/gi;
 var regExMatchCommonHexFormats = /(?:#[0-9a-f]{3,8})|(?:0x[0-9a-f]+)|(?:\\u[0-9a-f]{4})|(?:\\x\{[0-9a-f]{4}\})/gi;
@@ -60897,7 +60307,7 @@ var regExRepeatedChar = /^(\w)\1{3,}$/i;
 var regExSha = /\bsha\d+-[a-z0-9+/]{25,}={0,3}/gi;
 var regExHashStrings = /(?:\b(?:sha\d+|md5|base64|crypt|bcrypt|scrypt|security-token|assertion)[-,:$=]|#code[/])[-\w/+%.]{25,}={0,3}(?:(['"])\s*\+?\s*\1?[-\w/+%.]+={0,3})*(?![-\w/+=%.])/gi;
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
 var defaultConfigFile = () => resolveConfigModule(defaultConfigFileModuleRef);
 var regExpSpellCheckerDisable = [
   new PatternRegExp(regExSpellingGuardBlock),
@@ -61053,140 +60463,8 @@ var defaultSettingsLoader = new DefaultSettingsLoader();
 function getDefaultSettings(useDefaultDictionaries = true) {
   return defaultSettingsLoader.getDefaultSettingsAsync(useDefaultDictionaries);
 }
-function getDefaultBundledSettingsAsync() {
-  return defaultSettingsLoader.getDefaultSettingsAsync();
-}
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/index.link.js
-var index_link_exports = {};
-__export(index_link_exports, {
-  addPathsToGlobalImports: () => addPathsToGlobalImports,
-  listGlobalImports: () => listGlobalImports,
-  removePathsFromGlobalImports: () => removePathsFromGlobalImports
-});
-
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/link.js
-var fs7 = __toESM(require("node:fs"), 1);
-var Path4 = __toESM(require("node:path"), 1);
-async function listGlobalImports() {
-  const globalSettings = await getRawGlobalSettings();
-  const list = (await resolveImports(globalSettings)).map(({ filename, settings, error: error4 }) => ({
-    filename,
-    error: error4,
-    id: settings.id,
-    name: settings.name,
-    dictionaryDefinitions: settings.dictionaryDefinitions,
-    languageSettings: settings.languageSettings,
-    package: findPackageForCSpellConfig(Path4.dirname(filename))
-  }));
-  return {
-    list,
-    globalSettings
-  };
-}
-function isString2(s) {
-  return s !== void 0;
-}
-async function addPathsToGlobalImports(paths) {
-  const resolvedSettings = await Promise.all(paths.map(resolveSettings));
-  const hasError = resolvedSettings.some((r) => !!r.error);
-  if (hasError) {
-    return {
-      success: false,
-      resolvedSettings,
-      error: "Unable to resolve files."
-    };
-  }
-  const rawGlobalSettings = await getRawGlobalSettings();
-  const resolvedImports = await resolveImports(rawGlobalSettings);
-  const imports = new Set(resolvedImports.map((r) => r.resolvedToFilename || r.filename));
-  resolvedSettings.map((s) => s.resolvedToFilename).filter(isString2).reduce((imports2, s) => imports2.add(s), imports);
-  const globalSettings = {
-    import: [...imports]
-  };
-  let error4;
-  try {
-    await writeRawGlobalSettings(globalSettings);
-  } catch (e) {
-    error4 = toError2(e);
-  }
-  return {
-    success: !error4,
-    error: error4?.message,
-    resolvedSettings
-  };
-}
-async function removePathsFromGlobalImports(paths) {
-  const listResult = await listGlobalImports();
-  const toRemove = /* @__PURE__ */ new Set();
-  function matchPackage(pathToRemove) {
-    return ({ package: pkg, id }) => pathToRemove === pkg?.name || pathToRemove === id;
-  }
-  function compareFilenames(fullPath, partialPath) {
-    if (fullPath === partialPath)
-      return true;
-    if (!fullPath.endsWith(partialPath))
-      return false;
-    const c = fullPath[fullPath.length - partialPath.length - 1];
-    return c === Path4.sep || c === Path4.posix.sep;
-  }
-  function matchFilename(pathToRemove) {
-    return Path4.dirname(pathToRemove) != "." ? ({ filename }) => compareFilenames(filename, pathToRemove) : () => false;
-  }
-  paths.map((a) => a.trim()).filter((a) => !!a).forEach((pathToRemove) => {
-    const excludePackage = matchPackage(pathToRemove);
-    const excludeFilename = matchFilename(pathToRemove);
-    const shouldExclude = (r) => excludePackage(r) || excludeFilename(r);
-    for (const r of listResult.list) {
-      if (shouldExclude(r)) {
-        toRemove.add(r.filename);
-      }
-    }
-  });
-  const toImport = normalizeImports(listResult.globalSettings.import).filter((p) => !toRemove.has(p));
-  const updatedSettings = {
-    import: toImport
-  };
-  const error4 = toRemove.size > 0 ? writeRawGlobalSettings(updatedSettings) : void 0;
-  return {
-    success: true,
-    removed: [...toRemove],
-    error: error4?.toString()
-  };
-}
-async function resolveSettings(filename) {
-  const settings = await readRawSettings(filename);
-  const ref = settings.__importRef;
-  const resolvedToFilename = ref?.filename;
-  const error4 = ref?.error?.message || !resolvedToFilename && "File not Found" || void 0;
-  return clean4({
-    filename,
-    resolvedToFilename,
-    error: error4,
-    settings
-  });
-}
-function normalizeImports(imports) {
-  return typeof imports === "string" ? [imports] : imports || [];
-}
-function resolveImports(s) {
-  const imported = normalizeImports(s.import);
-  return Promise.all(imported.map(resolveSettings));
-}
-function findPackageForCSpellConfig(pathToConfig) {
-  try {
-    const filename = Path4.join(pathToConfig, "package.json");
-    const pkg = JSON.parse(fs7.readFileSync(filename, "utf8"));
-    return {
-      filename,
-      name: pkg["name"]
-    };
-  } catch {
-    return void 0;
-  }
-}
-
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/search.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/search.js
 function binarySearch(arr, item, leftOffset, rightOffset) {
   let left = Math.max(leftOffset ?? 0, 0);
   let right = Math.min(rightOffset ?? arr.length, arr.length);
@@ -61201,7 +60479,7 @@ function binarySearch(arr, item, leftOffset, rightOffset) {
   return left;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/text.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/text.js
 function splitCamelCaseWordWithOffset(wo) {
   return splitCamelCaseWord(wo.text).map(scanMap((last, text) => ({ text, offset: last.offset + last.text.length }), {
     text: "",
@@ -61366,7 +60644,7 @@ function removeAccents2(text) {
   return text.normalize("NFD").replace(regExAccents2, "");
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
 var regExMatchRegEx = /\/.*\/[gimuy]*/;
 var regExCSpellInDocDirective = /\b(?:spell-?checker|c?spell)::?(.*)/gi;
 var regExCSpellDirectiveKey = /(?<=\b(?:spell-?checker|c?spell)::?)(?!:)(.*)/i;
@@ -61504,12 +60782,12 @@ function parseSettingMatchValidation(possibleMatch) {
   const dictSugs = dictInDocSettings.suggest(text, { ignoreCase: false }).map(({ word, isPreferred }) => isPreferred ? { word, isPreferred } : { word }).filter((a) => !noSuggestDirectives.has(a.word));
   const sugs = pipeSync(dictSugs, opAppendSync(allDirectiveSuggestions), filterUniqueSuggestions);
   const suggestionsEx = [...sugs].slice(0, 8);
-  const suggestions2 = suggestionsEx.map((s) => s.word);
+  const suggestions = suggestionsEx.map((s) => s.word);
   const issue = {
     range: [start, end],
     text,
     message: issueMessages.unknownDirective,
-    suggestions: suggestions2,
+    suggestions,
     suggestionsEx
   };
   return issue;
@@ -61621,7 +60899,7 @@ function parseDisable(acc, _match) {
   return acc;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
 function combineTextAndLanguageSettings(settings, text, languageId) {
   if (!text) {
     return toInternalSettings(calcSettingsForLanguageId(settings, languageId));
@@ -61636,7 +60914,7 @@ function extractSettingsFromText(text) {
   return getInDocumentSettings(text);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
 var path12 = __toESM(require("node:path"), 1);
 async function determineTextDocumentSettings(doc, settings) {
   const filename = uriToFilePath(doc.uri);
@@ -61653,20 +60931,29 @@ function getLanguageForFilename(filename) {
   return findMatchingFileTypes(basename5);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/checkText.js
-var import_node_assert18 = __toESM(require("node:assert"), 1);
-
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 var import_node_assert17 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/@cspell+cspell-types@8.17.1/node_modules/@cspell/cspell-types/dist/index.mjs
-var dist_exports = {};
-__reExport(dist_exports, __toESM(require_dist2(), 1));
+// ../node_modules/.pnpm/@cspell+cspell-types@8.17.2/node_modules/@cspell/cspell-types/dist/index.mjs
+var IssueType = /* @__PURE__ */ ((IssueType2) => {
+  IssueType2[IssueType2["spelling"] = 0] = "spelling";
+  IssueType2[IssueType2["directive"] = 1] = "directive";
+  return IssueType2;
+})(IssueType || {});
+var MessageTypes = {
+  Debug: "Debug",
+  Info: "Info",
+  Warning: "Warning"
+};
+var defaultCSpellSettings = {
+  ignoreRandomStrings: true,
+  minRandomLength: 40
+};
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/suggestions.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/suggestions.js
 var import_node_assert14 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/memorizeLastCall.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/memorizeLastCall.js
 function memorizeLastCall2(fn) {
   let last;
   return (...p) => {
@@ -61680,23 +60967,13 @@ function memorizeLastCall2(fn) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/suggestions.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/suggestions.js
 var emptySuggestionOptions = Object.freeze({});
 var emptyCSpellSettings = Object.freeze({});
-async function* suggestionsForWords(words, options, settings) {
-  const cspellSettings = satisfiesCSpellConfigFile(settings) ? await resolveConfigFileImports(settings) : settings;
-  for await (const word of words) {
-    yield await suggestionsForWord(word, options, cspellSettings);
-  }
-}
 var memorizeSuggestions = memorizeLastCall2(cacheSuggestionsForWord);
 function cacheSuggestionsForWord(options, settings) {
   const cache5 = createAutoResolveCache();
   return (word) => cache5.get(word, (word2) => _suggestionsForWord(word2, options, settings));
-}
-async function suggestionsForWord(word, options = emptySuggestionOptions, settings = emptyCSpellSettings) {
-  const cspellSettings = satisfiesCSpellConfigFile(settings) ? await resolveConfigFileImports(settings) : settings;
-  return memorizeSuggestions(options, cspellSettings)(word);
 }
 async function _suggestionsForWord(word, options, settings) {
   const { languageId, locale: language, includeDefaultConfig = true, dictionaries } = options;
@@ -61746,9 +61023,9 @@ async function _suggestionsForWordAsync(word, options, settings, dictionaryColle
     suggestions: limitResults(allSugs, numSuggestions, includeTies)
   };
 }
-function combine3(suggestions2) {
+function combine3(suggestions) {
   const words = /* @__PURE__ */ new Map();
-  for (const sug of suggestions2) {
+  for (const sug of suggestions) {
     const { word, cost, dictName, ...rest } = sug;
     const f = words.get(word) || { word, cost, ...rest, dictionaries: [] };
     f.cost = Math.min(f.cost, cost);
@@ -61784,16 +61061,16 @@ function calcSuggestionAdjustedToToMatchCase(originalWord, sugs, locale, ignoreC
     return sug;
   });
 }
-function limitResults(suggestions2, numSuggestions, includeTies) {
-  let cost = suggestions2[0]?.cost;
+function limitResults(suggestions, numSuggestions, includeTies) {
+  let cost = suggestions[0]?.cost;
   let i = 0;
-  for (; i < suggestions2.length; ++i) {
-    if (i >= numSuggestions && (!includeTies || suggestions2[i].cost > cost)) {
+  for (; i < suggestions.length; ++i) {
+    if (i >= numSuggestions && (!includeTies || suggestions[i].cost > cost)) {
       break;
     }
-    cost = suggestions2[i].cost;
+    cost = suggestions[i].cost;
   }
-  return suggestions2.slice(0, i);
+  return suggestions.slice(0, i);
 }
 function validateDictionaries(settings, dictionaries) {
   if (!dictionaries?.length)
@@ -61853,21 +61130,21 @@ var SuggestionError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/defaultConstants.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/defaultConstants.js
 var defaultMaxNumberOfProblems = 200;
 var defaultMaxDuplicateProblems = 5;
 var defaultMinWordLength = 4;
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 var import_node_assert16 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
 var PairingHeap2 = class {
   compare;
   _heap;
   _size = 0;
-  constructor(compare4) {
-    this.compare = compare4;
+  constructor(compare5) {
+    this.compare = compare5;
   }
   add(v) {
     this._heap = insert3(this.compare, this._heap, v);
@@ -61905,18 +61182,18 @@ var PairingHeap2 = class {
     return this._size;
   }
 };
-function removeHead2(compare4, heap) {
+function removeHead2(compare5, heap) {
   if (!heap || !heap.c)
     return void 0;
-  return mergeSiblings2(compare4, heap.c);
+  return mergeSiblings2(compare5, heap.c);
 }
-function insert3(compare4, heap, v) {
+function insert3(compare5, heap, v) {
   const n = {
     v,
     s: void 0,
     c: void 0
   };
-  if (!heap || compare4(v, heap.v) <= 0) {
+  if (!heap || compare5(v, heap.v) <= 0) {
     n.c = heap;
     return n;
   }
@@ -61924,8 +61201,8 @@ function insert3(compare4, heap, v) {
   heap.c = n;
   return heap;
 }
-function merge3(compare4, a, b) {
-  if (compare4(a.v, b.v) <= 0) {
+function merge3(compare5, a, b) {
+  if (compare5(a.v, b.v) <= 0) {
     a.s = void 0;
     b.s = a.c;
     a.c = b;
@@ -61936,21 +61213,21 @@ function merge3(compare4, a, b) {
   b.c = a;
   return b;
 }
-function mergeSiblings2(compare4, n) {
+function mergeSiblings2(compare5, n) {
   if (!n.s)
     return n;
   const s = n.s;
   const ss = s.s;
-  const m = merge3(compare4, n, s);
-  return ss ? merge3(compare4, m, mergeSiblings2(compare4, ss)) : m;
+  const m = merge3(compare5, n, s);
+  return ss ? merge3(compare5, m, mergeSiblings2(compare5, ss)) : m;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/regexHelper.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/regexHelper.js
 function escapeRegEx3(s) {
   return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
 var ignoreBreak = Object.freeze([]);
 function split(line, offset, isValidWord, options = {}) {
   const relWordToSplit = findNextWordText({ text: line.text, offset: offset - line.offset });
@@ -62173,7 +61450,7 @@ function splitIntoWords(lineSeg, breaks, has) {
       isFound: valid
     };
   }
-  function compare4(a, b) {
+  function compare5(a, b) {
     return a.ec - b.ec || b.i - a.i;
   }
   function pathToWords(node) {
@@ -62206,7 +61483,7 @@ function splitIntoWords(lineSeg, breaks, has) {
     return path26;
   }
   let maxCost = lineSeg.relEnd - lineSeg.relStart;
-  const candidates = new PairingHeap2(compare4);
+  const candidates = new PairingHeap2(compare5);
   const text = lineSeg.line.text;
   candidates.append(makeCandidates(void 0, lineSeg.relStart, 0, 0));
   let attempts = 0;
@@ -62258,7 +61535,7 @@ function mergeSortedBreaks(...maps) {
   return maps.flat().sort((a, b) => a.offset - b.offset);
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
 var maxRadio = 0.5;
 function isRandomString(s, maxNoiseToLengthRatio = maxRadio) {
   return scoreRandomString(s) >= maxNoiseToLengthRatio;
@@ -62284,7 +61561,7 @@ function extractHexSequences(s, minLength = MIN_HEX_SEQUENCE_LENGTH) {
   return [...s.matchAll(hexSequence)].filter((m) => m[0].length >= minLength && (m.index === 0 || !isLetterAt(s, m.index - 1)) && !isLetterAt(s, m.index + m[0].length)).map((m) => ({ text: m[0], offset: m.index }));
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
 function hasWordCheck(dict, word) {
   word = word.includes("\\") ? word.replaceAll("\\", "") : word;
   return dict.has(word);
@@ -62295,7 +61572,7 @@ function isWordValidWithEscapeRetry(dict, wo, line) {
   line.text[wo.offset - line.offset - 1] === "\\" && hasWordCheck(dict, wo.text.slice(1));
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/TextMap.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/TextMap.js
 var import_node_assert15 = __toESM(require("node:assert"), 1);
 function extractTextMapRangeOrigin(textMap, extractRange) {
   const { text: srcTxt, range: srcRange, map: srcMap } = textMap;
@@ -62338,7 +61615,7 @@ function extractTextMapRangeOrigin(textMap, extractRange) {
   return { text, range, map: map3 };
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
 function mapRangeBackToOriginalPos(offRange, map3) {
   if (!map3 || !map3.length)
     return offRange;
@@ -62397,10 +61674,10 @@ function createMappedTextSegmenter(includeRanges) {
   return segmenter;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 var MIN_HEX_SEQUENCE_LENGTH2 = 8;
 function lineValidatorFactory(sDict, options) {
-  const { minWordLength = defaultMinWordLength, flagWords = [], allowCompoundWords = false, ignoreCase: ignoreCase2 = true, ignoreRandomStrings = dist_exports.defaultCSpellSettings.ignoreRandomStrings, minRandomLength = dist_exports.defaultCSpellSettings.minRandomLength } = options;
+  const { minWordLength = defaultMinWordLength, flagWords = [], allowCompoundWords = false, ignoreCase: ignoreCase2 = true, ignoreRandomStrings = defaultCSpellSettings.ignoreRandomStrings, minRandomLength = defaultCSpellSettings.minRandomLength } = options;
   const hasWordOptions = {
     ignoreCase: ignoreCase2,
     useCompounds: allowCompoundWords || void 0
@@ -62724,7 +62001,7 @@ function filterExcludedTextOffsets(issues, excluded) {
   return keep;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
 function settingsToValidateOptions(settings) {
   const opt = {
     ...settings,
@@ -62735,7 +62012,7 @@ function settingsToValidateOptions(settings) {
   return opt;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/TextRange.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/TextRange.js
 function toMatchRangeWithText(m) {
   const index = m.index || 0;
   const _text = m[0];
@@ -62848,21 +62125,7 @@ function flatten(data) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
-function validateText(text, dict, options) {
-  const { maxNumberOfProblems = defaultMaxNumberOfProblems, maxDuplicateProblems = defaultMaxDuplicateProblems } = options;
-  const mapOfProblems = /* @__PURE__ */ new Map();
-  const includeRanges = calcTextInclusionRanges(text, options);
-  const lineValidator = lineValidatorFactory(dict, options);
-  const validator = lineValidator.fn;
-  const iter = pipeSync(extractLinesOfText(text), opConcatMapSync(mapLineToLineSegments(includeRanges)), opConcatMapSync(validator), opFilterSync((wo) => {
-    const word = wo.text;
-    const n = (mapOfProblems.get(word) || 0) + 1;
-    mapOfProblems.set(word, n);
-    return n <= maxDuplicateProblems;
-  }), opTakeSync(maxNumberOfProblems));
-  return iter;
-}
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
 function calcTextInclusionRanges(text, options) {
   const { ignoreRegExpList = [], includeRegExpList = [] } = options;
   const filteredIncludeList = includeRegExpList.filter((a) => !!a);
@@ -62870,55 +62133,8 @@ function calcTextInclusionRanges(text, options) {
   const includeRanges = excludeRanges(findMatchingRangesForPatterns(finalIncludeList, text), findMatchingRangesForPatterns(ignoreRegExpList, text));
   return includeRanges;
 }
-function mapLineToLineSegments(includeRanges) {
-  const mapAgainstRanges = mapLineSegmentAgainstRangesFactory(includeRanges);
-  return (line) => {
-    const segment = { line, segment: line };
-    return mapAgainstRanges(segment);
-  };
-}
-function mapLineSegmentAgainstRangesFactory(includeRanges) {
-  let rangePos = 0;
-  const mapper = (lineSeg) => {
-    if (!includeRanges.length) {
-      return [];
-    }
-    const parts = [];
-    const { segment, line } = lineSeg;
-    const { text, offset, length } = segment;
-    const textEndPos = offset + (length ?? text.length);
-    let textStartPos = offset;
-    while (rangePos && (rangePos >= includeRanges.length || includeRanges[rangePos].startPos > textStartPos)) {
-      rangePos -= 1;
-    }
-    const cur = includeRanges[rangePos];
-    if (textEndPos <= cur.endPos && textStartPos >= cur.startPos) {
-      return [lineSeg];
-    }
-    while (textStartPos < textEndPos) {
-      while (includeRanges[rangePos] && includeRanges[rangePos].endPos <= textStartPos) {
-        rangePos += 1;
-      }
-      if (!includeRanges[rangePos]) {
-        break;
-      }
-      const { startPos, endPos } = includeRanges[rangePos];
-      if (textEndPos < startPos) {
-        break;
-      }
-      const a = Math.max(textStartPos, startPos);
-      const b = Math.min(textEndPos, endPos);
-      if (a !== b) {
-        parts.push({ line, segment: { offset: a, text: text.slice(a - offset, b - offset) } });
-      }
-      textStartPos = b;
-    }
-    return parts;
-  };
-  return mapper;
-}
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
 function traceWord(word, dictCollection, config) {
   const opts = {
     ignoreCase: config.ignoreCase ?? true,
@@ -63004,7 +62220,7 @@ var CTraceResult = class extends Array {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 var ERROR_NOT_PREPARED = "Validator Must be prepared before calling this function.";
 var DocumentValidator = class _DocumentValidator {
   settings;
@@ -63153,8 +62369,8 @@ var DocumentValidator = class _DocumentValidator {
         if (!issue.suggestionsEx)
           return issue;
         const suggestionsEx = this.adjustSuggestions(issue.text, issue.suggestionsEx);
-        const suggestions2 = suggestionsEx.map((s) => s.word);
-        return { ...issue, suggestionsEx, suggestions: suggestions2 };
+        const suggestions = suggestionsEx.map((s) => s.word);
+        return { ...issue, suggestionsEx, suggestions };
       });
     }
     const withSugs = issues.map((t) => {
@@ -63204,13 +62420,13 @@ var DocumentValidator = class _DocumentValidator {
     if (!validateDirectives)
       return [];
     const document = this.document;
-    const issueType = dist_exports.IssueType.directive;
+    const issueType = IssueType.directive;
     function toValidationIssue(dirIssue) {
-      const { text, range, suggestions: suggestions2, suggestionsEx, message } = dirIssue;
+      const { text, range, suggestions, suggestionsEx, message } = dirIssue;
       const offset = range[0];
       const pos = document.positionAt(offset);
       const line = document.getLine(pos.line);
-      const issue = { text, offset, line, suggestions: suggestions2, suggestionsEx, message, issueType };
+      const issue = { text, offset, line, suggestions, suggestionsEx, message, issueType };
       return issue;
     }
     return [...validateInDocumentSettings(this.document.text, this._preparations.config)].map(toValidationIssue);
@@ -63372,141 +62588,7 @@ function timePromise(timings, name2, p) {
   return p.finally(recordPerfTime(timings, name2));
 }
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/validator.js
-async function validateText2(text, settings, options = {}) {
-  const finalSettings = finalizeSettings(settings);
-  const dict = await getDictionaryInternal(finalSettings);
-  const spellingIssues = [...validateText(text, dict, settingsToValidateOptions(finalSettings))];
-  const validationIssues = options.validateDirectives || finalSettings.validateDirectives ? validateInDocumentSettings(text, settings) : [];
-  const issues = [...spellingIssues, ...mapValidationIssues(text, validationIssues)];
-  if (!options.generateSuggestions) {
-    return issues;
-  }
-  const sugOptions = {
-    numSuggestions: options.numSuggestions,
-    compoundMethod: CompoundWordsMethod.NONE,
-    includeTies: false,
-    ignoreCase: !(settings.caseSensitive ?? false),
-    timeout: settings.suggestionsTimeout,
-    numChanges: settings.suggestionNumChanges
-  };
-  const withSugs = issues.map((t) => {
-    const text2 = t.text;
-    const suggestionsEx = dict.suggest(text2, sugOptions).map(({ word, isPreferred }) => isPreferred ? { word, isPreferred } : { word });
-    t.suggestions = suggestionsEx.map((s) => s.word);
-    t.suggestionsEx = suggestionsEx;
-    return t;
-  });
-  return withSugs;
-}
-function mapValidationIssues(text, valIssues) {
-  const issues = [...valIssues];
-  if (!issues.length)
-    return [];
-  const document = createTextDocument({ uri: "", content: text });
-  const issueType = dist_exports.IssueType.directive;
-  function toValidationIssue(dirIssue) {
-    const { text: text2, range, suggestions: suggestions2, suggestionsEx, message } = dirIssue;
-    const offset = range[0];
-    const pos = document.positionAt(offset);
-    const line = document.getLine(pos.line);
-    const issue = { text: text2, offset, line, suggestions: suggestions2, suggestionsEx, message, issueType };
-    return issue;
-  }
-  return issues.map(toValidationIssue);
-}
-
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/textValidation/checkText.js
-async function checkText(text, settings) {
-  const languageId = settings.languageId || "plaintext";
-  const doc = clean4({
-    uri: "",
-    text,
-    languageId: Array.isArray(languageId) ? languageId.join(",") : languageId,
-    locale: settings.language
-  });
-  return checkTextDocument(doc, { noConfigSearch: true }, { loadDefaultConfiguration: false, ...settings });
-}
-var IncludeExcludeFlag;
-(function(IncludeExcludeFlag2) {
-  IncludeExcludeFlag2["INCLUDE"] = "I";
-  IncludeExcludeFlag2["EXCLUDE"] = "E";
-})(IncludeExcludeFlag || (IncludeExcludeFlag = {}));
-async function checkTextDocument(doc, options, settings = {}) {
-  doc = isTextDocument(doc) ? doc : await resolveDocumentToTextDocument(doc);
-  return genCheckText(new DocumentValidator(doc, options, settings));
-}
-async function genCheckText(docValidator) {
-  await docValidator.prepare();
-  const issues = docValidator.checkDocument(true);
-  const preparations = docValidator._getPreparations();
-  (0, import_node_assert18.default)(preparations);
-  return genResult(docValidator.document.text, issues, preparations.includeRanges);
-}
-function genResult(text, issues, includeRanges) {
-  const result = [];
-  let lastPos = 0;
-  for (const { startPos, endPos } of includeRanges) {
-    result.push({
-      text: text.slice(lastPos, startPos),
-      startPos: lastPos,
-      endPos: startPos,
-      flagIE: IncludeExcludeFlag.EXCLUDE
-    }, {
-      text: text.slice(startPos, endPos),
-      startPos,
-      endPos,
-      flagIE: IncludeExcludeFlag.INCLUDE
-    });
-    lastPos = endPos;
-  }
-  result.push({
-    text: text.slice(lastPos),
-    startPos: lastPos,
-    endPos: text.length,
-    flagIE: IncludeExcludeFlag.EXCLUDE
-  });
-  function* merge5() {
-    let i = 0;
-    for (const r of result) {
-      if (i >= issues.length || issues[i].offset >= r.endPos) {
-        yield r;
-        continue;
-      }
-      const span = { ...r };
-      while (i < issues.length && issues[i].offset < span.endPos) {
-        const issue = issues[i];
-        const endPos = issue.offset;
-        const text2 = span.text.slice(0, endPos - span.startPos);
-        const endPosError = issue.offset + issue.text.length;
-        yield { ...span, text: text2, endPos };
-        yield {
-          ...span,
-          isError: true,
-          startPos: issue.offset,
-          endPos: endPosError,
-          text: issue.text
-        };
-        span.text = span.text.slice(endPosError - span.startPos);
-        span.startPos = endPosError;
-        i += 1;
-      }
-      yield span;
-    }
-  }
-  return {
-    text,
-    items: [...merge5()].filter((i) => i.startPos < i.endPos)
-  };
-}
-
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/spellCheckFile.js
-function spellCheckFile(file, options, settingsOrConfigFile) {
-  const doc = {
-    uri: toUri(file).toString()
-  };
-  return spellCheckDocument(doc, options, settingsOrConfigFile);
-}
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/spellCheckFile.js
 async function spellCheckDocument(document, options, settingsOrConfigFile) {
   const settingsUsed = satisfiesCSpellConfigFile(settingsOrConfigFile) ? settingsOrConfigFile.settings : settingsOrConfigFile;
   if (isBinaryDoc(document)) {
@@ -63591,77 +62673,8 @@ async function spellCheckFullDocument(document, options, settingsOrConfigFile) {
   timer.end();
   return result;
 }
-async function determineFinalDocumentSettings(document, settings) {
-  const doc = createTextDocument({
-    uri: document.uri,
-    content: document.text,
-    languageId: document.languageId,
-    locale: document.locale
-  });
-  return {
-    document,
-    settings: await determineTextDocumentSettings(doc, settings)
-  };
-}
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/trace.js
-async function traceWords(words, settings, options) {
-  const results = await asyncIterableToArray(traceWordsAsync(words, settings, options));
-  const s = genSequence(results).concatMap((p) => p).toArray();
-  return s;
-}
-async function* traceWordsAsync(words, settingsOrConfig, options) {
-  const { languageId, locale: language, ignoreCase: ignoreCase2 = true, allowCompoundWords } = options || {};
-  const settings = satisfiesCSpellConfigFile(settingsOrConfig) ? await resolveConfigFileImports(settingsOrConfig) : settingsOrConfig;
-  async function finalize(config2) {
-    const withLocale = mergeSettings(config2, clean4({
-      language: language || config2.language,
-      allowCompoundWords: allowCompoundWords ?? config2.allowCompoundWords
-    }));
-    const withLanguageId = calcSettingsForLanguageId(withLocale, languageId ?? withLocale.languageId ?? "plaintext");
-    const settings2 = finalizeSettings(withLanguageId);
-    const dictionaries = [
-      ...settings2.dictionaries || [],
-      ...(settings2.dictionaryDefinitions || []).map((d) => d.name)
-    ].filter(uniqueFn);
-    const dictSettings = toInternalSettings({ ...settings2, dictionaries });
-    const dictBase = await getDictionaryInternal(settings2);
-    const dicts2 = await getDictionaryInternal(dictSettings);
-    const activeDictionaries2 = dictBase.dictionaries.map((d) => d.name);
-    return {
-      activeDictionaries: activeDictionaries2,
-      config: settings2,
-      dicts: dicts2
-    };
-  }
-  await refreshDictionaryCache();
-  const { config, dicts, activeDictionaries } = await finalize(settings);
-  const setOfActiveDicts = new Set(activeDictionaries);
-  function processWord(word) {
-    const results = traceWord(word, dicts, { ...config, ignoreCase: ignoreCase2 });
-    const r = results.map((r2) => ({
-      ...r2,
-      dictActive: setOfActiveDicts.has(r2.dictName),
-      dictSource: toFilePathOrHref(r2.dictSource),
-      configSource: r2.configSource || config.name || "",
-      splits: results.splits
-    }));
-    const tr = new CTraceResult2(...r);
-    results.splits && tr.splits.push(...results.splits);
-    return tr;
-  }
-  for await (const word of words) {
-    yield processWord(word);
-  }
-}
-var CTraceResult2 = class extends Array {
-  splits = [];
-  constructor(...items) {
-    super(...items);
-  }
-};
-
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/util/textApi.js
+// ../node_modules/.pnpm/cspell-lib@8.17.2/node_modules/cspell-lib/dist/lib/util/textApi.js
 var textApi_exports = {};
 __export(textApi_exports, {
   calculateTextDocumentOffsets: () => calculateTextDocumentOffsets,
@@ -63693,11 +62706,8 @@ __export(textApi_exports, {
   ucFirst: () => ucFirst2
 });
 
-// ../node_modules/.pnpm/cspell-lib@8.17.1/node_modules/cspell-lib/dist/lib/index.js
-__reExport(lib_exports, dist_exports);
-
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/cli-reporter.js
-var import_node_assert19 = __toESM(require("node:assert"), 1);
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/cli-reporter.js
+var import_node_assert18 = __toESM(require("node:assert"), 1);
 var import_node_util8 = require("node:util");
 
 // ../node_modules/.pnpm/chalk@5.4.1/node_modules/chalk/source/vendor/ansi-styles/index.js
@@ -64342,7 +63352,7 @@ var chalk_template_default = makeChalkTemplate(template);
 var templateStderr = makeTemplate(chalkStderr);
 var chalkTemplateStderr = makeChalkTemplate(templateStderr);
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/console.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/console.js
 var import_node_util6 = require("node:util");
 var ImplChannel = class {
   stream;
@@ -64390,7 +63400,7 @@ function getColorLevel(stream) {
   }
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/errors.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/errors.js
 var import_node_util7 = require("node:util");
 var CheckFailed = class extends Error {
   exitCode;
@@ -64421,7 +63431,7 @@ var IOError = class extends ApplicationError {
     return this.cause.code === "ENOENT";
   }
 };
-function toError6(e) {
+function toError5(e) {
   if (isError5(e))
     return e;
   const message = (0, import_node_util7.format)(e);
@@ -64442,11 +63452,11 @@ function isError5(e) {
 function toApplicationError(e, message) {
   if (e instanceof ApplicationError && !message)
     return e;
-  const err = toError6(e);
+  const err = toError5(e);
   return new ApplicationError(message ?? err.message, void 0, err);
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/util.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/util.js
 var uniqueFn2 = uniqueFilterFnGenerator2;
 function uniqueFilterFnGenerator2(extractFn) {
   const values = /* @__PURE__ */ new Set();
@@ -64468,7 +63478,7 @@ function clean5(src) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/cli-reporter.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/cli-reporter.js
 var templateIssue = `{green $filename}:{yellow $row:$col} - $message ({red $text}) $quickFix`;
 var templateIssueNoFix = `{green $filename}:{yellow $row:$col} - $message ({red $text})`;
 var templateIssueWithSuggestions = `{green $filename}:{yellow $row:$col} - $message ({red $text}) Suggestions: {yellow [$suggestions]}`;
@@ -64478,7 +63488,7 @@ var templateIssueWithContextWithSuggestions = `{green $filename}:{yellow $row:$c
 var templateIssueLegacy = `{green $filename}[$row, $col]: $message: {red $text}`;
 var templateIssueWordsOnly = "$text";
 var console3 = void 0;
-(0, import_node_assert19.default)(!console3);
+(0, import_node_assert18.default)(!console3);
 function genIssueEmitter(stdIO, errIO, template2, uniqueIssues, reportedIssuesCollection) {
   const uniqueFilter = uniqueIssues ? uniqueFilterFnGenerator2((issue) => issue.text) : () => true;
   const defaultWidth = 10;
@@ -64616,7 +63626,7 @@ function getReporter(options, config) {
     if (!fileGlobs.length && !result.files) {
       return;
     }
-    const { files, issues: issues2, cachedFiles: cachedFiles2, filesWithIssues, errors } = result;
+    const { files, issues: issues2, cachedFiles, filesWithIssues, errors } = result;
     const numFilesWithIssues = filesWithIssues.size;
     if (stderr.getColorLevel() > 0) {
       stderr.write("\r");
@@ -64629,7 +63639,7 @@ function getReporter(options, config) {
       consoleError("Issues found:");
       issuesCollection.forEach((issue) => consoleError(issue));
     }
-    const cachedFilesText = cachedFiles2 ? ` (${cachedFiles2} from cache)` : "";
+    const cachedFilesText = cachedFiles ? ` (${cachedFiles} from cache)` : "";
     const withErrorsText = errors ? ` with ${errors} error${errors === 1 ? "" : "s"}` : "";
     const numFilesWidthIssuesText = numFilesWithIssues === 1 ? "1 file" : `${numFilesWithIssues} files`;
     const summaryMessage = `CSpell: Files checked: ${files}${cachedFilesText}, Issues found: ${issues2} in ${numFilesWidthIssuesText}${withErrorsText}.`;
@@ -64701,7 +63711,7 @@ function formatIssue(io, templateStr, issue, maxIssueTextWidth) {
   const rowText = row.toString();
   const colText = col.toString();
   const padRowCol = " ".repeat(Math.max(1, 8 - (rowText.length + colText.length)));
-  const suggestions2 = formatSuggestions(io, issue);
+  const suggestions = formatSuggestions(io, issue);
   const msg = issue.message || (issue.isFlagged ? "Forbidden word" : "Unknown word");
   const messageColored = issue.isFlagged ? `{yellow ${msg}}` : msg;
   const substitutions = {
@@ -64713,7 +63723,7 @@ function formatIssue(io, templateStr, issue, maxIssueTextWidth) {
     $padContext: padContext,
     $padRowCol: padRowCol,
     $row: rowText,
-    $suggestions: suggestions2,
+    $suggestions: suggestions,
     $text: text,
     $uri: uri,
     $quickFix: formatQuickFix(io, issue),
@@ -64806,37 +63816,23 @@ function checkTemplate(template2) {
   }
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/featureFlags/featureFlags.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/featureFlags/featureFlags.js
 function getFeatureFlags() {
   return getSystemFeatureFlags();
 }
-function parseFeatureFlags(flags, featureFlags = getFeatureFlags()) {
-  if (!flags)
-    return featureFlags;
-  const flagsKvP = flags.map((f) => f.split(":", 2));
-  for (const flag of flagsKvP) {
-    const [name2, value] = flag;
-    try {
-      featureFlags.setFlag(name2, value);
-    } catch {
-      console2.warn(`Unknown flag: "${name2}"`);
-    }
-  }
-  return featureFlags;
-}
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/lint/lint.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/lint/lint.js
 var path22 = __toESM(require("node:path"), 1);
 var import_node_util9 = require("node:util");
 
-// ../node_modules/.pnpm/cspell-gitignore@8.17.1/node_modules/cspell-gitignore/dist/GitIgnore.js
+// ../node_modules/.pnpm/cspell-gitignore@8.17.2/node_modules/cspell-gitignore/dist/GitIgnore.js
 var path16 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell-gitignore@8.17.1/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
+// ../node_modules/.pnpm/cspell-gitignore@8.17.2/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
 var import_node_fs7 = require("node:fs");
 var path15 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell-gitignore@8.17.1/node_modules/cspell-gitignore/dist/helpers.js
+// ../node_modules/.pnpm/cspell-gitignore@8.17.2/node_modules/cspell-gitignore/dist/helpers.js
 var path14 = __toESM(require("node:path"), 1);
 
 // ../node_modules/.pnpm/find-up-simple@1.0.0/node_modules/find-up-simple/index.js
@@ -64866,7 +63862,7 @@ async function findUp2(name2, {
   }
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@8.17.1/node_modules/cspell-gitignore/dist/helpers.js
+// ../node_modules/.pnpm/cspell-gitignore@8.17.2/node_modules/cspell-gitignore/dist/helpers.js
 function factoryPathHelper(path26) {
   function directoryRoot2(directory) {
     const p = path26.parse(directory);
@@ -64917,7 +63913,7 @@ function isDefined6(v) {
   return v !== void 0 && v !== null;
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@8.17.1/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
+// ../node_modules/.pnpm/cspell-gitignore@8.17.2/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
 var GitIgnoreFile = class _GitIgnoreFile {
   matcher;
   gitignore;
@@ -65024,7 +64020,7 @@ function globToString(glob2, relativeTo) {
   return (base ? base + "/" : "") + glob2.glob;
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@8.17.1/node_modules/cspell-gitignore/dist/GitIgnore.js
+// ../node_modules/.pnpm/cspell-gitignore@8.17.2/node_modules/cspell-gitignore/dist/GitIgnore.js
 var GitIgnore = class {
   resolvedGitIgnoreHierarchies = /* @__PURE__ */ new Map();
   knownGitIgnoreHierarchies = /* @__PURE__ */ new Map();
@@ -65067,7 +64063,7 @@ var GitIgnore = class {
   }
   filterOutIgnored(files) {
     const iter = this.filterOutIgnoredAsync(files);
-    return isAsyncIterable3(files) ? iter : asyncIterableToArray2(iter);
+    return isAsyncIterable2(files) ? iter : asyncIterableToArray(iter);
   }
   async *filterOutIgnoredAsync(files) {
     for await (const file of files) {
@@ -65130,11 +64126,11 @@ function sortRoots(roots) {
   roots.sort((a, b) => a.length - b.length);
   return roots;
 }
-function isAsyncIterable3(i) {
+function isAsyncIterable2(i) {
   const as = i;
   return typeof as[Symbol.asyncIterator] === "function";
 }
-async function asyncIterableToArray2(iter) {
+async function asyncIterableToArray(iter) {
   const r = [];
   for await (const t of iter) {
     r.push(t);
@@ -65142,7 +64138,7 @@ async function asyncIterableToArray2(iter) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/environment.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/environment.js
 function setEnvironmentVariable(key, value) {
   process.env[key] = value;
 }
@@ -65162,7 +64158,7 @@ function truthy(value) {
   return false;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/dirname.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/dirname.js
 var import_node_url15 = require("node:url");
 var import_meta2 = {};
 var _dirname;
@@ -65175,24 +64171,24 @@ try {
 }
 var pkgDir = _dirname;
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/pkgInfo.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/pkgInfo.js
 var name = "cspell";
-var version2 = "8.17.1";
+var version2 = "8.17.2";
 var engines = { node: ">=18" };
 var npmPackage = { name, version: version2, engines };
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/createCache.js
-var import_node_assert22 = __toESM(require("node:assert"), 1);
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/createCache.js
+var import_node_assert21 = __toESM(require("node:assert"), 1);
 var import_promises5 = require("node:fs/promises");
 var import_node_path13 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/DiskCache.js
-var import_node_assert21 = __toESM(require("node:assert"), 1);
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/DiskCache.js
+var import_node_assert20 = __toESM(require("node:assert"), 1);
 var crypto = __toESM(require("node:crypto"), 1);
-var fs10 = __toESM(require("node:fs"), 1);
+var fs8 = __toESM(require("node:fs"), 1);
 var import_node_path12 = require("node:path");
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/fileHelper.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/fileHelper.js
 var import_node_fs9 = require("node:fs");
 var path19 = __toESM(require("node:path"), 1);
 var import_node_url16 = require("node:url");
@@ -65223,24 +64219,24 @@ getStdin.buffer = async () => {
   return Buffer.concat(result, length);
 };
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/async.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/async.js
 var { opMapAsync: asyncMap, opFilterAsync: asyncFilter, opAwaitAsync: asyncAwait, opFlattenAsync: asyncFlatten } = operators;
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/constants.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/constants.js
 var UTF8 = "utf8";
 var STDIN = "stdin";
 var STDINProtocol = "stdin:";
 var STDINUrlPrefix = "stdin://";
 var FileUrlPrefix = "file://";
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/glob.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/glob.js
 var import_node_fs8 = require("node:fs");
 var path18 = __toESM(require("node:path"), 1);
 var import_node_path11 = require("node:path");
 
 // ../node_modules/.pnpm/tinyglobby@0.2.10/node_modules/tinyglobby/dist/index.mjs
 var import_path2 = __toESM(require("path"), 1);
-var import_fdir = __toESM(require_dist3(), 1);
+var import_fdir = __toESM(require_dist2(), 1);
 var import_picomatch = __toESM(require_picomatch4(), 1);
 var import_picomatch2 = __toESM(require_picomatch4(), 1);
 var ESCAPED_WIN32_BACKSLASHES = /\\(?![()[\]{}!+@])/g;
@@ -65264,7 +64260,7 @@ function isDynamicPattern(pattern, options) {
   return scan3.isGlob || scan3.negated;
 }
 function normalizePattern3(pattern, expandDirectories, cwd, properties, isIgnore) {
-  var _a3;
+  var _a;
   let result = pattern;
   if (pattern.endsWith("/")) {
     result = pattern.slice(0, -1);
@@ -65286,7 +64282,7 @@ function normalizePattern3(pattern, expandDirectories, cwd, properties, isIgnore
     }
   } else if (!isIgnore && properties.depthOffset >= 0) {
     const current = result.split("/");
-    (_a3 = properties.commonPath) != null ? _a3 : properties.commonPath = current;
+    (_a = properties.commonPath) != null ? _a : properties.commonPath = current;
     const newCommonPath = [];
     for (let i = 0; i < Math.min(properties.commonPath.length, current.length); i++) {
       const part = current[i];
@@ -65401,7 +64397,7 @@ async function glob(patternsOrOptions, options) {
   return crawl(opts, cwd, false);
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/glob.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/glob.js
 var defaultExcludeGlobs = ["node_modules/**"];
 async function globP(pattern, options) {
   const cwd = options?.root || options?.cwd || process.cwd();
@@ -65418,8 +64414,8 @@ async function globP(pattern, options) {
     followSymbolicLinks: false,
     expandDirectories: false
   });
-  const compare4 = new Intl.Collator("en").compare;
-  const absolutePaths = (await glob(patterns, useOptions)).sort(compare4);
+  const compare5 = new Intl.Collator("en").compare;
+  const absolutePaths = (await glob(patterns, useOptions)).sort(compare5);
   const relativePaths = absolutePaths.map((absFilename) => path18.relative(cwd, absFilename));
   return relativePaths;
 }
@@ -65505,14 +64501,14 @@ async function normalizeFileOrGlobsToRoot(globs, root) {
   return normalizeGlobsToRoot(adjustedGlobs, root, false);
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/stdin.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/stdin.js
 var readline = __toESM(require("node:readline"), 1);
 function readStdin() {
   return readline.createInterface(process.stdin);
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/stdinUrl.js
-var import_node_assert20 = __toESM(require("node:assert"), 1);
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/stdinUrl.js
+var import_node_assert19 = __toESM(require("node:assert"), 1);
 function isStdinUrl(url2) {
   if (url2 instanceof URL) {
     return url2.protocol === STDINProtocol;
@@ -65520,13 +64516,13 @@ function isStdinUrl(url2) {
   return url2.startsWith(STDINProtocol);
 }
 function resolveStdinUrl(url2, cwd) {
-  (0, import_node_assert20.default)(url2.startsWith(STDINProtocol), `Expected url to start with ${STDINProtocol}`);
+  (0, import_node_assert19.default)(url2.startsWith(STDINProtocol), `Expected url to start with ${STDINProtocol}`);
   const path26 = url2.slice(STDINProtocol.length).replace(/^\/\//, "").replace(/^\/([a-z]:)/i, "$1");
   const fileUrl = toFileURL(path26, cwd);
   return fileUrl.toString().replace(/^file:/, STDINProtocol) + (path26 ? "" : "/");
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/fileHelper.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/fileHelper.js
 async function readConfig(configFile, root) {
   if (configFile) {
     const cfgFile = typeof configFile === "string" ? await readConfigHandleError(configFile) : configFile;
@@ -65605,7 +64601,7 @@ function readFileInfo(filename, encoding = UTF8, handleNotFound = false) {
   filename = resolveFilename(filename);
   const pText = filename.startsWith(STDINProtocol) ? getStdin() : readFileText(filename, encoding);
   return pText.then((text) => ({ text, filename }), (e) => {
-    const error4 = toError6(e);
+    const error4 = toError5(e);
     return handleNotFound && error4.code === "EISDIR" ? Promise.resolve({ text: "", filename, errorCode: error4.code }) : handleNotFound && error4.code === "ENOENT" ? Promise.resolve({ text: "", filename, errorCode: error4.code }) : Promise.reject(new IOError(`Error reading file: "${filename}"`, error4));
   });
 }
@@ -65666,18 +64662,18 @@ function isNotDir(filename) {
   return isDir(filename).then((a) => !a);
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/fileEntryCache.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/fileEntryCache.js
 var import_node_fs10 = require("node:fs");
 var path20 = __toESM(require("node:path"), 1);
 var import_node_worker_threads = require("node:worker_threads");
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/file-entry-cache.mjs
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/file-entry-cache.mjs
 var import_file_entry_cache = __toESM(require_cache3(), 1);
 function createFromFile(pathToCache, useChecksum) {
   return import_file_entry_cache.default.createFromFile(pathToCache, useChecksum);
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/fileEntryCache.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/fileEntryCache.js
 function createFromFile2(pathToCache, useCheckSum, useRelative) {
   const absPathToCache = path20.resolve(pathToCache);
   const relDir = path20.dirname(absPathToCache);
@@ -65747,15 +64743,15 @@ function normalizePath2(filePath) {
   return filePath.split(path20.sep).join("/");
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/ObjectCollection.js
-var compare3 = Intl.Collator().compare;
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/ObjectCollection.js
+var compare4 = Intl.Collator().compare;
 var ShallowObjectCollection = class {
   tree = {};
   get(v) {
     if (typeof v !== "object" || v === null) {
       return v;
     }
-    const keys3 = Object.entries(v).filter((entry) => entry[1] !== void 0).sort((a, b) => compare3(a[0], b[0]));
+    const keys3 = Object.entries(v).filter((entry) => entry[1] !== void 0).sort((a, b) => compare4(a[0], b[0]));
     let t = this.tree;
     for (const [key, obj] of keys3) {
       if (!t.c) {
@@ -65780,7 +64776,7 @@ var ShallowObjectCollection = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/DiskCache.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/DiskCache.js
 var cacheDataKeys = {
   v: "v",
   r: "r",
@@ -65898,11 +64894,11 @@ var DiskCache = class {
     return d;
   }
   getFileDep(file) {
-    (0, import_node_assert21.default)((0, import_node_path12.isAbsolute)(file), `Dependency must be absolute "${file}"`);
+    (0, import_node_assert20.default)((0, import_node_path12.isAbsolute)(file), `Dependency must be absolute "${file}"`);
     const f = this.toRelFile(file);
     let h;
     try {
-      const buffer = fs10.readFileSync(file);
+      const buffer = fs8.readFileSync(file);
       h = this.getHash(buffer);
     } catch {
       return { f };
@@ -65966,7 +64962,7 @@ function calcVersion(version4) {
   return version4 + META_DATA_VERSION_SUFFIX;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/DummyCache.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/DummyCache.js
 var DummyCache = class {
   getCachedLintResults() {
     return Promise.resolve(void 0);
@@ -65982,7 +64978,7 @@ var DummyCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/cache/createCache.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/cache/createCache.js
 var DEFAULT_CACHE_LOCATION = ".cspellcache";
 var versionSuffix = "";
 function createCache5(options) {
@@ -66029,14 +65025,14 @@ async function resolveCacheLocation(cacheLocation) {
 }
 function normalizeVersion(version4) {
   const parts = version4.split(".").slice(0, 2);
-  (0, import_node_assert22.default)(parts.length === 2);
+  (0, import_node_assert21.default)(parts.length === 2);
   return parts.join(".") + versionSuffix;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/prefetch.js
-var import_node_assert23 = __toESM(require("node:assert"), 1);
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/prefetch.js
+var import_node_assert22 = __toESM(require("node:assert"), 1);
 function* prefetchIterable(iterable, size) {
-  (0, import_node_assert23.default)(size >= 0);
+  (0, import_node_assert22.default)(size >= 0);
   const buffer = [];
   for (const value of iterable) {
     buffer.push(value);
@@ -66049,7 +65045,7 @@ function* prefetchIterable(iterable, size) {
   yield* buffer;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/reporters.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/reporters.js
 function callAll(methods) {
   return (...p) => {
     for (const method of methods) {
@@ -66088,7 +65084,7 @@ async function loadReporters(reporters, defaultReporter, config) {
       const { getReporter: getReporter2 } = await dynamicImportFrom(moduleName, [process.cwd(), pkgDir]);
       return getReporter2(settings, config);
     } catch (e) {
-      throw new ApplicationError(`Failed to load reporter ${moduleName}: ${toError6(e).message}`);
+      throw new ApplicationError(`Failed to load reporter ${moduleName}: ${toError5(e).message}`);
     }
   }
   reporters = !reporters || !reporters.length ? ["default"] : [...reporters];
@@ -66099,13 +65095,13 @@ function finalizeReporter(reporter) {
   return reporter && mergeReporters(reporter);
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/timer.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/timer.js
 function getTimeMeasurer() {
   const timer = createPerfTimer2("timer");
   return () => timer.elapsed;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/util/writeFile.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/util/writeFile.js
 var import_promises6 = __toESM(require("node:fs/promises"), 1);
 async function writeFileOrStream(filename, data) {
   switch (filename) {
@@ -66135,7 +65131,7 @@ function writeStream(stream, data) {
   });
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/lint/lint.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/lint/lint.js
 var version3 = npmPackage.version;
 var BATCH_SIZE = 8;
 var debugStats = false;
@@ -66202,7 +65198,7 @@ async function runLint(cfg) {
     const fileInfo = prefetch2?.fileInfo || await readFileInfo(filename, void 0, true);
     if (fileInfo.errorCode) {
       if (fileInfo.errorCode !== "EISDIR" && cfg.options.mustFindFiles) {
-        const err = toError6(`File not found: "${filename}"`);
+        const err = toError5(`File not found: "${filename}"`);
         reporter.error("Linter:", err);
         result.errors += 1;
       }
@@ -66212,7 +65208,7 @@ async function runLint(cfg) {
     const { text } = fileInfo;
     result.fileInfo = fileInfo;
     let spellResult = {};
-    reporter.info(`Checking: ${filename}, File type: ${doc.languageId ?? "auto"}, Language: ${doc.locale ?? "default"}`, dist_exports.MessageTypes.Info);
+    reporter.info(`Checking: ${filename}, File type: ${doc.languageId ?? "auto"}, Language: ${doc.locale ?? "default"}`, MessageTypes.Info);
     try {
       const { showSuggestions: generateSuggestions, validateDirectives, skipValidation } = cfg.options;
       const numSuggestions = configInfo.config.numSuggestions ?? 5;
@@ -66228,7 +65224,7 @@ async function runLint(cfg) {
       result.perf = r.perf ? { ...r.perf } : void 0;
       result.issues = textApi_exports.calculateTextDocumentOffsets(doc.uri, text, r.issues).map(mapIssue);
     } catch (e) {
-      reporter.error(`Failed to process "${filename}"`, toError6(e));
+      reporter.error(`Failed to process "${filename}"`, toError5(e));
       result.errors += 1;
     }
     result.elapsedTimeMs = getElapsedTimeMs();
@@ -66236,9 +65232,9 @@ async function runLint(cfg) {
     result.configErrors += await reportConfigurationErrors(config);
     const elapsed2 = result.elapsedTimeMs;
     const dictionaries = config.dictionaries || [];
-    reporter.info(`Checked: ${filename}, File type: ${config.languageId}, Language: ${config.language} ... Issues: ${result.issues.length} ${elapsed2.toFixed(2)}ms`, dist_exports.MessageTypes.Info);
-    reporter.info(`Config file Used: ${spellResult.localConfigFilepath || configInfo.source}`, dist_exports.MessageTypes.Info);
-    reporter.info(`Dictionaries Used: ${dictionaries.join(", ")}`, dist_exports.MessageTypes.Info);
+    reporter.info(`Checked: ${filename}, File type: ${config.languageId}, Language: ${config.language} ... Issues: ${result.issues.length} ${elapsed2.toFixed(2)}ms`, MessageTypes.Info);
+    reporter.info(`Config file Used: ${spellResult.localConfigFilepath || configInfo.source}`, MessageTypes.Info);
+    reporter.info(`Dictionaries Used: ${dictionaries.join(", ")}`, MessageTypes.Info);
     if (cfg.options.debug) {
       const { id: _id, name: _name, __imports, __importRef, ...cfg2 } = config;
       const debugCfg = {
@@ -66407,7 +65403,7 @@ async function runLint(cfg) {
     checkGlobs(fileGlobs, reporter);
     reporter.info(`Config Files Found:
     ${configInfo.source}
-`, dist_exports.MessageTypes.Info);
+`, MessageTypes.Info);
     const configErrors2 = await countConfigErrors(configInfo);
     if (configErrors2 && cfg.options.exitCode !== false)
       return runResult({ errors: configErrors2 });
@@ -66436,7 +65432,7 @@ Options:
     files:     ${formattedFiles}
     wordsOnly: ${yesNo(!!cfg.options.wordsOnly)}
     unique:    ${yesNo(!!cfg.options.unique)}
-`, dist_exports.MessageTypes.Info);
+`, MessageTypes.Info);
   }
 }
 function checkGlobs(globs, reporter) {
@@ -66471,7 +65467,7 @@ async function determineFilesToCheck(configInfo, cfg, reporter, globInfo) {
     if (globsToExclude.length !== globsToExcludeRaw.length) {
       const globs = globsToExcludeRaw.map((g) => globPattern(g)).filter((g) => g.startsWith("!"));
       const msg = `Negative glob exclusions are not supported: ${globs.join(", ")}`;
-      reporter.info(msg, dist_exports.MessageTypes.Warning);
+      reporter.info(msg, MessageTypes.Warning);
     }
     const globMatcher = buildGlobMatcher(globsToExclude, root, true);
     const ignoreGlobs = extractGlobsFromMatcher(globMatcher);
@@ -66503,7 +65499,7 @@ async function determineFilesToCheck(configInfo, cfg, reporter, globInfo) {
     const r = globMatcherExclude.matchEx(absFilename);
     if (r.matched) {
       const { glob: glob2, source } = extractGlobSource(r.pattern);
-      reporter.info(`Excluded File: ${path22.relative(root, absFilename)}; Excluded by ${glob2} from ${source}`, dist_exports.MessageTypes.Info);
+      reporter.info(`Excluded File: ${path22.relative(root, absFilename)}; Excluded by ${glob2} from ${source}`, MessageTypes.Info);
     }
     return r.matched;
   }
@@ -66512,7 +65508,7 @@ async function determineFilesToCheck(configInfo, cfg, reporter, globInfo) {
     const excludeInfo = patterns.map(extractGlobSource).map(({ glob: glob2, source }) => `Glob: ${glob2} from ${source}`).filter(uniqueFn2());
     reporter.info(`Exclusion Globs: 
     ${excludeInfo.join("\n    ")}
-`, dist_exports.MessageTypes.Info);
+`, MessageTypes.Info);
     return (filename) => !isExcluded(filename, globMatcherExclude);
   }
   return _determineFilesToCheck();
@@ -66551,8 +65547,8 @@ function extractGlobSource(g) {
   };
 }
 function runResult(init = {}) {
-  const { files = 0, filesWithIssues = /* @__PURE__ */ new Set(), issues = 0, errors = 0, cachedFiles: cachedFiles2 = 0 } = init;
-  return { files, filesWithIssues, issues, errors, cachedFiles: cachedFiles2 };
+  const { files = 0, filesWithIssues = /* @__PURE__ */ new Set(), issues = 0, errors = 0, cachedFiles = 0 } = init;
+  return { files, filesWithIssues, issues, errors, cachedFiles };
 }
 function yesNo(value) {
   return value ? "Yes" : "No";
@@ -66622,7 +65618,7 @@ function globPattern(g) {
   return typeof g === "string" ? g : g.glob;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/lint/LintRequest.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/lint/LintRequest.js
 var path23 = __toESM(require("node:path"), 1);
 var defaultContextRange = 20;
 var LintRequest = class {
@@ -66667,7 +65663,7 @@ function merge4(a, b) {
   return [...a, ...b];
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/options.js
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/options.js
 function fixLegacy(opts) {
   const { local, ...rest } = opts;
   if (local && !rest.locale) {
@@ -66676,128 +65672,13 @@ function fixLegacy(opts) {
   return rest;
 }
 
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/repl/index.js
-var readline2 = __toESM(require("node:readline"), 1);
-function simpleRepl() {
-  return new SimpleRepl();
-}
-var SimpleRepl = class {
-  prompt;
-  beforeEach;
-  completer;
-  _history;
-  rl;
-  constructor(prompt = "> ") {
-    this.prompt = prompt;
-    this._history = [];
-    this.rl = readline2.createInterface({
-      input: process.stdin,
-      output: process.stdout,
-      prompt,
-      history: this._history,
-      historySize: 100,
-      completer: (line) => this._completer(line)
-    });
-    this.rl.on("history", (h) => (this._history = h, void 0));
-  }
-  question(query) {
-    return new Promise((resolve10) => {
-      this.rl.question(query, resolve10);
-    });
-  }
-  _completer(line) {
-    if (this.completer)
-      return this.completer(line);
-    const hist = this._history.filter((h) => h.startsWith(line));
-    return [hist, line];
-  }
-  get history() {
-    return this._history;
-  }
-  [Symbol.asyncIterator]() {
-    const next = () => {
-      if (this.beforeEach)
-        this.beforeEach();
-      return this.question(this.prompt).then((value) => ({ value })).catch(() => ({ done: true, value: void 0 }));
-    };
-    return { next };
-  }
-};
-
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/application.mjs
+// ../node_modules/.pnpm/cspell@8.17.2/node_modules/cspell/dist/esm/application.mjs
 function lint(fileGlobs, options, reporter) {
   options = fixLegacy(options);
   const reporterOptions = { ...options, console: console2 };
   const cfg = new LintRequest(fileGlobs, options, finalizeReporter(reporter) ?? getReporter({ ...options, fileGlobs }, reporterOptions));
   return runLint(cfg);
 }
-async function* trace(words, options) {
-  options = fixLegacy(options);
-  const iWords = options.stdin ? toAsyncIterable(words, readStdin()) : words;
-  const { languageId, locale, allowCompoundWords, ignoreCase: ignoreCase2 } = options;
-  const configFile = await readConfig(options.config, void 0);
-  const loadDefault = options.defaultConfiguration ?? configFile.config.loadDefaultConfiguration ?? true;
-  const config = mergeSettings(await getDefaultSettings(loadDefault), await getGlobalSettingsAsync(), configFile.config);
-  yield* traceWordsAsync(iWords, config, clean5({ languageId, locale, ignoreCase: ignoreCase2, allowCompoundWords }));
-}
-async function checkText2(filename, options) {
-  options = fixLegacy(options);
-  const fileInfo = await readFileInfo(filename);
-  const { locale, languageId, validateDirectives } = options;
-  const doc = fileInfoToDocument(fileInfo, languageId, locale);
-  const checkOptions = {
-    configFile: options.config,
-    validateDirectives
-  };
-  const settingsFromCommandLine = clean5({
-    languageId,
-    language: locale,
-    loadDefaultConfiguration: options.defaultConfiguration
-  });
-  return checkTextDocument(doc, clean5({ ...checkOptions }), settingsFromCommandLine);
-}
-async function* suggestions(words, options) {
-  options = fixLegacy(options);
-  const configFile = await readConfig(options.config, void 0);
-  let timer;
-  function tapStart() {
-    timer = getTimeMeasurer();
-  }
-  function mapStart(v) {
-    tapStart();
-    return v;
-  }
-  function mapEnd(v) {
-    const elapsedTimeMs = timer?.();
-    return elapsedTimeMs ? { ...v, elapsedTimeMs } : v;
-  }
-  const iWords = options.repl ? pipeAsync(toAsyncIterable(words, simpleRepl()), opTap(tapStart)) : options.useStdin ? pipeAsync(toAsyncIterable(words, readStdin()), opTap(tapStart)) : words.map(mapStart);
-  try {
-    const results = pipeAsync(suggestionsForWords(iWords, clean5({ ...options }), configFile.config), opMap(mapEnd));
-    yield* results;
-  } catch (e) {
-    if (!(e instanceof SuggestionError))
-      throw e;
-    console2.error(e.message);
-    process.exitCode = 1;
-  }
-}
-function createInit() {
-  return Promise.reject();
-}
-function registerApplicationFeatureFlags() {
-  const ff = getFeatureFlags();
-  const flags = [{ name: "timer", description: "Display elapsed time for command." }];
-  flags.forEach((flag) => ff.register(flag));
-  return ff;
-}
-function parseApplicationFeatureFlags(flags) {
-  const ff = registerApplicationFeatureFlags();
-  return parseFeatureFlags(flags, ff);
-}
-
-// ../node_modules/.pnpm/cspell@8.17.1/node_modules/cspell/dist/esm/index.mjs
-__reExport(esm_exports, dist_exports);
 
 // src/spell.ts
 async function lint2(globs, lintOptions, reporter) {

@@ -66,7 +66,9 @@ export class CSpellReporterForGithubAction {
     _issue(issue: Issue) {
         const { issues, issueCounts } = this;
         const uri = issue.uri;
-        uri && issueCounts.set(uri, (issueCounts.get(uri) || 0) + 1);
+        if (uri) {
+            issueCounts.set(uri, (issueCounts.get(uri) || 0) + 1);
+        }
         issues.push(issue);
     }
 
