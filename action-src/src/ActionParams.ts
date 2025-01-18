@@ -9,7 +9,7 @@ type InlineWorkflowCommand = 'error' | 'warning' | 'none';
 
 export type TrueFalse = 'true' | 'false';
 
-export interface ActionParamsInput extends Record<keyof ActionParams, string> {}
+export type ActionParamsInput = Record<keyof ActionParams, string>;
 
 export interface ActionParams {
     /**
