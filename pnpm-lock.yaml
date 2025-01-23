@@ -19,7 +19,7 @@ importers:
         version: 20.1.4
       '@vitest/coverage-istanbul':
         specifier: ^2.1.8
-        version: 2.1.8(vitest@2.1.8(@types/node@20.17.14))
+        version: 2.1.8(vitest@2.1.8(@types/node@20.17.16))
       env-cmd:
         specifier: ^10.1.0
         version: 10.1.0
@@ -46,7 +46,7 @@ importers:
         version: 8.21.0(eslint@9.18.0)(typescript@5.7.3)
       vitest:
         specifier: ^2.1.8
-        version: 2.1.8(@types/node@20.17.14)
+        version: 2.1.8(@types/node@20.17.16)
 
   action-src:
     dependencies:
@@ -66,8 +66,8 @@ importers:
         specifier: ^7.6.1
         version: 7.6.1
       '@types/node':
-        specifier: ^20.17.14
-        version: 20.17.14
+        specifier: ^20.17.16
+        version: 20.17.16
       cspell:
         specifier: ^8.17.2
         version: 8.17.2
@@ -928,8 +928,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@20.17.14':
-    resolution: {integrity: sha512-w6qdYetNL5KRBiSClK/KWai+2IMEJuAj+EujKCumalFOwXtvOXaEan9AuwcRID2IcOIAWSIfR495hBtgKlx2zg==}
+  '@types/node@20.17.16':
+    resolution: {integrity: sha512-vOTpLduLkZXePLxHiHsBLp98mHGnl8RptV4YAO3HfKO5UHjDvySGbxKtpYfy8Sx5+WKcgc45qNreJJRVM3L6mw==}
 
   '@typescript-eslint/eslint-plugin@8.21.0':
     resolution: {integrity: sha512-eTH+UOR4I7WbdQnG4Z48ebIA6Bgi7WO8HvFEneeYBxG8qCOYgTOFPSg6ek9ITIDvGjDQzWHcoWHCDO2biByNzA==}
@@ -1200,8 +1200,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.84:
-    resolution: {integrity: sha512-I+DQ8xgafao9Ha6y0qjHHvpZ9OfyA1qKlkHkjywxzniORU2awxyz7f/iVJcULmrF2yrM3nHQf+iDjJtbbexd/g==}
+  electron-to-chromium@1.5.86:
+    resolution: {integrity: sha512-/D7GAAaCRBQFBBcop6SfAAGH37djtpWkOuYhyAajw0l5vsfeSsUQYxaFPwr1c/mC/flARCDdKFo5gpFqNI+18w==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2717,7 +2717,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@20.17.14':
+  '@types/node@20.17.16':
     dependencies:
       undici-types: 6.19.8
 
@@ -2798,7 +2798,7 @@ snapshots:
       '@typescript-eslint/types': 8.21.0
       eslint-visitor-keys: 4.2.0
 
-  '@vitest/coverage-istanbul@2.1.8(vitest@2.1.8(@types/node@20.17.14))':
+  '@vitest/coverage-istanbul@2.1.8(vitest@2.1.8(@types/node@20.17.16))':
     dependencies:
       '@istanbuljs/schema': 0.1.3
       debug: 4.4.0
@@ -2810,7 +2810,7 @@ snapshots:
       magicast: 0.3.5
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.8(@types/node@20.17.14)
+      vitest: 2.1.8(@types/node@20.17.16)
     transitivePeerDependencies:
       - supports-color
 
@@ -2821,13 +2821,13 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.8(vite@5.4.14(@types/node@20.17.14))':
+  '@vitest/mocker@2.1.8(vite@5.4.14(@types/node@20.17.16))':
     dependencies:
       '@vitest/spy': 2.1.8
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 5.4.14(@types/node@20.17.14)
+      vite: 5.4.14(@types/node@20.17.16)
 
   '@vitest/pretty-format@2.1.8':
     dependencies:
@@ -2903,7 +2903,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001695
-      electron-to-chromium: 1.5.84
+      electron-to-chromium: 1.5.86
       node-releases: 2.0.19
       update-browserslist-db: 1.1.2(browserslist@4.24.4)
 
@@ -3070,7 +3070,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.84: {}
+  electron-to-chromium@1.5.86: {}
 
   emoji-regex@8.0.0: {}
 
@@ -3775,13 +3775,13 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  vite-node@2.1.8(@types/node@20.17.14):
+  vite-node@2.1.8(@types/node@20.17.16):
     dependencies:
       cac: 6.7.14
       debug: 4.4.0
       es-module-lexer: 1.6.0
       pathe: 1.1.2
-      vite: 5.4.14(@types/node@20.17.14)
+      vite: 5.4.14(@types/node@20.17.16)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -3793,19 +3793,19 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.14(@types/node@20.17.14):
+  vite@5.4.14(@types/node@20.17.16):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.5.1
       rollup: 4.31.0
     optionalDependencies:
-      '@types/node': 20.17.14
+      '@types/node': 20.17.16
       fsevents: 2.3.3
 
-  vitest@2.1.8(@types/node@20.17.14):
+  vitest@2.1.8(@types/node@20.17.16):
     dependencies:
       '@vitest/expect': 2.1.8
-      '@vitest/mocker': 2.1.8(vite@5.4.14(@types/node@20.17.14))
+      '@vitest/mocker': 2.1.8(vite@5.4.14(@types/node@20.17.16))
       '@vitest/pretty-format': 2.1.8
       '@vitest/runner': 2.1.8
       '@vitest/snapshot': 2.1.8
@@ -3821,11 +3821,11 @@ snapshots:
       tinyexec: 0.3.2
       tinypool: 1.0.2
       tinyrainbow: 1.2.0
-      vite: 5.4.14(@types/node@20.17.14)
-      vite-node: 2.1.8(@types/node@20.17.14)
+      vite: 5.4.14(@types/node@20.17.16)
+      vite-node: 2.1.8(@types/node@20.17.16)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 20.17.14
+      '@types/node': 20.17.16
     transitivePeerDependencies:
       - less
       - lightningcss
