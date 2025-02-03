@@ -38253,9 +38253,9 @@ var require_parent_module2 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/import-fresh@3.3.0/node_modules/import-fresh/index.js
+// ../node_modules/.pnpm/import-fresh@3.3.1/node_modules/import-fresh/index.js
 var require_import_fresh = __commonJS({
-  "../node_modules/.pnpm/import-fresh@3.3.0/node_modules/import-fresh/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/import-fresh@3.3.1/node_modules/import-fresh/index.js"(exports2, module2) {
     "use strict";
     var path26 = require("path");
     var resolveFrom2 = require_resolve_from2();
@@ -38278,7 +38278,7 @@ var require_import_fresh = __commonJS({
       }
       delete require.cache[filePath];
       const parent = require.cache[parentPath];
-      return parent === void 0 ? require(filePath) : parent.require(filePath);
+      return parent === void 0 || parent.require === void 0 ? require(filePath) : parent.require(filePath);
     };
   }
 });
