@@ -60,8 +60,8 @@ importers:
         specifier: ^8.17.3
         version: 8.17.3
       '@cspell/cspell-types':
-        specifier: ^8.17.2
-        version: 8.17.2
+        specifier: ^8.17.3
+        version: 8.17.3
       '@octokit/webhooks-types':
         specifier: ^7.6.1
         version: 7.6.1
@@ -184,10 +184,6 @@ packages:
 
   '@cspell/cspell-service-bus@8.17.3':
     resolution: {integrity: sha512-CC3nob/Kbuesz5WTW+LjAHnDFXJrA49pW5ckmbufJxNnoAk7EJez/qr7/ELMTf6Fl3A5xZ776Lhq7738Hy/fmQ==}
-    engines: {node: '>=18'}
-
-  '@cspell/cspell-types@8.17.2':
-    resolution: {integrity: sha512-4kMBhX92p0pchEzYTpyLCoe/bUJ29YYvMINTeHTd//hLQh0ZAyMGY1opDm1tqaXX0qpYmWG60KcvN4fCR0i6lw==}
     engines: {node: '>=18'}
 
   '@cspell/cspell-types@8.17.3':
@@ -2215,8 +2211,6 @@ snapshots:
       global-directory: 4.0.1
 
   '@cspell/cspell-service-bus@8.17.3': {}
-
-  '@cspell/cspell-types@8.17.2': {}
 
   '@cspell/cspell-types@8.17.3': {}
 
