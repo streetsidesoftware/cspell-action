@@ -41609,129 +41609,129 @@ var import_core = __toESM(require_core(), 1);
 var import_command = __toESM(require_command(), 1);
 var path = __toESM(require("path"), 1);
 
-// ../node_modules/.pnpm/vscode-uri@3.0.8/node_modules/vscode-uri/lib/esm/index.mjs
+// ../node_modules/.pnpm/vscode-uri@3.1.0/node_modules/vscode-uri/lib/esm/index.mjs
 var LIB;
 (() => {
   "use strict";
-  var t = { 470: (t2) => {
+  var t = { 975: (t2) => {
     function e2(t3) {
       if ("string" != typeof t3) throw new TypeError("Path must be a string. Received " + JSON.stringify(t3));
     }
     function r2(t3, e3) {
-      for (var r3, n3 = "", i = 0, o = -1, s = 0, h = 0; h <= t3.length; ++h) {
-        if (h < t3.length) r3 = t3.charCodeAt(h);
+      for (var r3, n3 = "", i2 = 0, o2 = -1, s2 = 0, h2 = 0; h2 <= t3.length; ++h2) {
+        if (h2 < t3.length) r3 = t3.charCodeAt(h2);
         else {
           if (47 === r3) break;
           r3 = 47;
         }
         if (47 === r3) {
-          if (o === h - 1 || 1 === s) ;
-          else if (o !== h - 1 && 2 === s) {
-            if (n3.length < 2 || 2 !== i || 46 !== n3.charCodeAt(n3.length - 1) || 46 !== n3.charCodeAt(n3.length - 2)) {
+          if (o2 === h2 - 1 || 1 === s2) ;
+          else if (o2 !== h2 - 1 && 2 === s2) {
+            if (n3.length < 2 || 2 !== i2 || 46 !== n3.charCodeAt(n3.length - 1) || 46 !== n3.charCodeAt(n3.length - 2)) {
               if (n3.length > 2) {
-                var a = n3.lastIndexOf("/");
-                if (a !== n3.length - 1) {
-                  -1 === a ? (n3 = "", i = 0) : i = (n3 = n3.slice(0, a)).length - 1 - n3.lastIndexOf("/"), o = h, s = 0;
+                var a2 = n3.lastIndexOf("/");
+                if (a2 !== n3.length - 1) {
+                  -1 === a2 ? (n3 = "", i2 = 0) : i2 = (n3 = n3.slice(0, a2)).length - 1 - n3.lastIndexOf("/"), o2 = h2, s2 = 0;
                   continue;
                 }
               } else if (2 === n3.length || 1 === n3.length) {
-                n3 = "", i = 0, o = h, s = 0;
+                n3 = "", i2 = 0, o2 = h2, s2 = 0;
                 continue;
               }
             }
-            e3 && (n3.length > 0 ? n3 += "/.." : n3 = "..", i = 2);
-          } else n3.length > 0 ? n3 += "/" + t3.slice(o + 1, h) : n3 = t3.slice(o + 1, h), i = h - o - 1;
-          o = h, s = 0;
-        } else 46 === r3 && -1 !== s ? ++s : s = -1;
+            e3 && (n3.length > 0 ? n3 += "/.." : n3 = "..", i2 = 2);
+          } else n3.length > 0 ? n3 += "/" + t3.slice(o2 + 1, h2) : n3 = t3.slice(o2 + 1, h2), i2 = h2 - o2 - 1;
+          o2 = h2, s2 = 0;
+        } else 46 === r3 && -1 !== s2 ? ++s2 : s2 = -1;
       }
       return n3;
     }
     var n2 = { resolve: function() {
-      for (var t3, n3 = "", i = false, o = arguments.length - 1; o >= -1 && !i; o--) {
-        var s;
-        o >= 0 ? s = arguments[o] : (void 0 === t3 && (t3 = process.cwd()), s = t3), e2(s), 0 !== s.length && (n3 = s + "/" + n3, i = 47 === s.charCodeAt(0));
+      for (var t3, n3 = "", i2 = false, o2 = arguments.length - 1; o2 >= -1 && !i2; o2--) {
+        var s2;
+        o2 >= 0 ? s2 = arguments[o2] : (void 0 === t3 && (t3 = process.cwd()), s2 = t3), e2(s2), 0 !== s2.length && (n3 = s2 + "/" + n3, i2 = 47 === s2.charCodeAt(0));
       }
-      return n3 = r2(n3, !i), i ? n3.length > 0 ? "/" + n3 : "/" : n3.length > 0 ? n3 : ".";
+      return n3 = r2(n3, !i2), i2 ? n3.length > 0 ? "/" + n3 : "/" : n3.length > 0 ? n3 : ".";
     }, normalize: function(t3) {
       if (e2(t3), 0 === t3.length) return ".";
-      var n3 = 47 === t3.charCodeAt(0), i = 47 === t3.charCodeAt(t3.length - 1);
-      return 0 !== (t3 = r2(t3, !n3)).length || n3 || (t3 = "."), t3.length > 0 && i && (t3 += "/"), n3 ? "/" + t3 : t3;
+      var n3 = 47 === t3.charCodeAt(0), i2 = 47 === t3.charCodeAt(t3.length - 1);
+      return 0 !== (t3 = r2(t3, !n3)).length || n3 || (t3 = "."), t3.length > 0 && i2 && (t3 += "/"), n3 ? "/" + t3 : t3;
     }, isAbsolute: function(t3) {
       return e2(t3), t3.length > 0 && 47 === t3.charCodeAt(0);
     }, join: function() {
       if (0 === arguments.length) return ".";
       for (var t3, r3 = 0; r3 < arguments.length; ++r3) {
-        var i = arguments[r3];
-        e2(i), i.length > 0 && (void 0 === t3 ? t3 = i : t3 += "/" + i);
+        var i2 = arguments[r3];
+        e2(i2), i2.length > 0 && (void 0 === t3 ? t3 = i2 : t3 += "/" + i2);
       }
       return void 0 === t3 ? "." : n2.normalize(t3);
     }, relative: function(t3, r3) {
       if (e2(t3), e2(r3), t3 === r3) return "";
       if ((t3 = n2.resolve(t3)) === (r3 = n2.resolve(r3))) return "";
-      for (var i = 1; i < t3.length && 47 === t3.charCodeAt(i); ++i) ;
-      for (var o = t3.length, s = o - i, h = 1; h < r3.length && 47 === r3.charCodeAt(h); ++h) ;
-      for (var a = r3.length - h, c = s < a ? s : a, f = -1, u = 0; u <= c; ++u) {
-        if (u === c) {
-          if (a > c) {
-            if (47 === r3.charCodeAt(h + u)) return r3.slice(h + u + 1);
-            if (0 === u) return r3.slice(h + u);
-          } else s > c && (47 === t3.charCodeAt(i + u) ? f = u : 0 === u && (f = 0));
+      for (var i2 = 1; i2 < t3.length && 47 === t3.charCodeAt(i2); ++i2) ;
+      for (var o2 = t3.length, s2 = o2 - i2, h2 = 1; h2 < r3.length && 47 === r3.charCodeAt(h2); ++h2) ;
+      for (var a2 = r3.length - h2, c2 = s2 < a2 ? s2 : a2, f2 = -1, u2 = 0; u2 <= c2; ++u2) {
+        if (u2 === c2) {
+          if (a2 > c2) {
+            if (47 === r3.charCodeAt(h2 + u2)) return r3.slice(h2 + u2 + 1);
+            if (0 === u2) return r3.slice(h2 + u2);
+          } else s2 > c2 && (47 === t3.charCodeAt(i2 + u2) ? f2 = u2 : 0 === u2 && (f2 = 0));
           break;
         }
-        var l = t3.charCodeAt(i + u);
-        if (l !== r3.charCodeAt(h + u)) break;
-        47 === l && (f = u);
+        var l2 = t3.charCodeAt(i2 + u2);
+        if (l2 !== r3.charCodeAt(h2 + u2)) break;
+        47 === l2 && (f2 = u2);
       }
-      var g = "";
-      for (u = i + f + 1; u <= o; ++u) u !== o && 47 !== t3.charCodeAt(u) || (0 === g.length ? g += ".." : g += "/..");
-      return g.length > 0 ? g + r3.slice(h + f) : (h += f, 47 === r3.charCodeAt(h) && ++h, r3.slice(h));
+      var g2 = "";
+      for (u2 = i2 + f2 + 1; u2 <= o2; ++u2) u2 !== o2 && 47 !== t3.charCodeAt(u2) || (0 === g2.length ? g2 += ".." : g2 += "/..");
+      return g2.length > 0 ? g2 + r3.slice(h2 + f2) : (h2 += f2, 47 === r3.charCodeAt(h2) && ++h2, r3.slice(h2));
     }, _makeLong: function(t3) {
       return t3;
     }, dirname: function(t3) {
       if (e2(t3), 0 === t3.length) return ".";
-      for (var r3 = t3.charCodeAt(0), n3 = 47 === r3, i = -1, o = true, s = t3.length - 1; s >= 1; --s) if (47 === (r3 = t3.charCodeAt(s))) {
-        if (!o) {
-          i = s;
+      for (var r3 = t3.charCodeAt(0), n3 = 47 === r3, i2 = -1, o2 = true, s2 = t3.length - 1; s2 >= 1; --s2) if (47 === (r3 = t3.charCodeAt(s2))) {
+        if (!o2) {
+          i2 = s2;
           break;
         }
-      } else o = false;
-      return -1 === i ? n3 ? "/" : "." : n3 && 1 === i ? "//" : t3.slice(0, i);
+      } else o2 = false;
+      return -1 === i2 ? n3 ? "/" : "." : n3 && 1 === i2 ? "//" : t3.slice(0, i2);
     }, basename: function(t3, r3) {
       if (void 0 !== r3 && "string" != typeof r3) throw new TypeError('"ext" argument must be a string');
       e2(t3);
-      var n3, i = 0, o = -1, s = true;
+      var n3, i2 = 0, o2 = -1, s2 = true;
       if (void 0 !== r3 && r3.length > 0 && r3.length <= t3.length) {
         if (r3.length === t3.length && r3 === t3) return "";
-        var h = r3.length - 1, a = -1;
+        var h2 = r3.length - 1, a2 = -1;
         for (n3 = t3.length - 1; n3 >= 0; --n3) {
-          var c = t3.charCodeAt(n3);
-          if (47 === c) {
-            if (!s) {
-              i = n3 + 1;
+          var c2 = t3.charCodeAt(n3);
+          if (47 === c2) {
+            if (!s2) {
+              i2 = n3 + 1;
               break;
             }
-          } else -1 === a && (s = false, a = n3 + 1), h >= 0 && (c === r3.charCodeAt(h) ? -1 == --h && (o = n3) : (h = -1, o = a));
+          } else -1 === a2 && (s2 = false, a2 = n3 + 1), h2 >= 0 && (c2 === r3.charCodeAt(h2) ? -1 == --h2 && (o2 = n3) : (h2 = -1, o2 = a2));
         }
-        return i === o ? o = a : -1 === o && (o = t3.length), t3.slice(i, o);
+        return i2 === o2 ? o2 = a2 : -1 === o2 && (o2 = t3.length), t3.slice(i2, o2);
       }
       for (n3 = t3.length - 1; n3 >= 0; --n3) if (47 === t3.charCodeAt(n3)) {
-        if (!s) {
-          i = n3 + 1;
+        if (!s2) {
+          i2 = n3 + 1;
           break;
         }
-      } else -1 === o && (s = false, o = n3 + 1);
-      return -1 === o ? "" : t3.slice(i, o);
+      } else -1 === o2 && (s2 = false, o2 = n3 + 1);
+      return -1 === o2 ? "" : t3.slice(i2, o2);
     }, extname: function(t3) {
       e2(t3);
-      for (var r3 = -1, n3 = 0, i = -1, o = true, s = 0, h = t3.length - 1; h >= 0; --h) {
-        var a = t3.charCodeAt(h);
-        if (47 !== a) -1 === i && (o = false, i = h + 1), 46 === a ? -1 === r3 ? r3 = h : 1 !== s && (s = 1) : -1 !== r3 && (s = -1);
-        else if (!o) {
-          n3 = h + 1;
+      for (var r3 = -1, n3 = 0, i2 = -1, o2 = true, s2 = 0, h2 = t3.length - 1; h2 >= 0; --h2) {
+        var a2 = t3.charCodeAt(h2);
+        if (47 !== a2) -1 === i2 && (o2 = false, i2 = h2 + 1), 46 === a2 ? -1 === r3 ? r3 = h2 : 1 !== s2 && (s2 = 1) : -1 !== r3 && (s2 = -1);
+        else if (!o2) {
+          n3 = h2 + 1;
           break;
         }
       }
-      return -1 === r3 || -1 === i || 0 === s || 1 === s && r3 === i - 1 && r3 === n3 + 1 ? "" : t3.slice(r3, i);
+      return -1 === r3 || -1 === i2 || 0 === s2 || 1 === s2 && r3 === i2 - 1 && r3 === n3 + 1 ? "" : t3.slice(r3, i2);
     }, format: function(t3) {
       if (null === t3 || "object" != typeof t3) throw new TypeError('The "pathObject" argument must be of type Object. Received type ' + typeof t3);
       return function(t4, e3) {
@@ -41742,22 +41742,22 @@ var LIB;
       e2(t3);
       var r3 = { root: "", dir: "", base: "", ext: "", name: "" };
       if (0 === t3.length) return r3;
-      var n3, i = t3.charCodeAt(0), o = 47 === i;
-      o ? (r3.root = "/", n3 = 1) : n3 = 0;
-      for (var s = -1, h = 0, a = -1, c = true, f = t3.length - 1, u = 0; f >= n3; --f) if (47 !== (i = t3.charCodeAt(f))) -1 === a && (c = false, a = f + 1), 46 === i ? -1 === s ? s = f : 1 !== u && (u = 1) : -1 !== s && (u = -1);
-      else if (!c) {
-        h = f + 1;
+      var n3, i2 = t3.charCodeAt(0), o2 = 47 === i2;
+      o2 ? (r3.root = "/", n3 = 1) : n3 = 0;
+      for (var s2 = -1, h2 = 0, a2 = -1, c2 = true, f2 = t3.length - 1, u2 = 0; f2 >= n3; --f2) if (47 !== (i2 = t3.charCodeAt(f2))) -1 === a2 && (c2 = false, a2 = f2 + 1), 46 === i2 ? -1 === s2 ? s2 = f2 : 1 !== u2 && (u2 = 1) : -1 !== s2 && (u2 = -1);
+      else if (!c2) {
+        h2 = f2 + 1;
         break;
       }
-      return -1 === s || -1 === a || 0 === u || 1 === u && s === a - 1 && s === h + 1 ? -1 !== a && (r3.base = r3.name = 0 === h && o ? t3.slice(1, a) : t3.slice(h, a)) : (0 === h && o ? (r3.name = t3.slice(1, s), r3.base = t3.slice(1, a)) : (r3.name = t3.slice(h, s), r3.base = t3.slice(h, a)), r3.ext = t3.slice(s, a)), h > 0 ? r3.dir = t3.slice(0, h - 1) : o && (r3.dir = "/"), r3;
+      return -1 === s2 || -1 === a2 || 0 === u2 || 1 === u2 && s2 === a2 - 1 && s2 === h2 + 1 ? -1 !== a2 && (r3.base = r3.name = 0 === h2 && o2 ? t3.slice(1, a2) : t3.slice(h2, a2)) : (0 === h2 && o2 ? (r3.name = t3.slice(1, s2), r3.base = t3.slice(1, a2)) : (r3.name = t3.slice(h2, s2), r3.base = t3.slice(h2, a2)), r3.ext = t3.slice(s2, a2)), h2 > 0 ? r3.dir = t3.slice(0, h2 - 1) : o2 && (r3.dir = "/"), r3;
     }, sep: "/", delimiter: ":", win32: null, posix: null };
     n2.posix = n2, t2.exports = n2;
   } }, e = {};
   function r(n2) {
-    var i = e[n2];
-    if (void 0 !== i) return i.exports;
-    var o = e[n2] = { exports: {} };
-    return t[n2](o, o.exports, r), o.exports;
+    var i2 = e[n2];
+    if (void 0 !== i2) return i2.exports;
+    var o2 = e[n2] = { exports: {} };
+    return t[n2](o2, o2.exports, r), o2.exports;
   }
   r.d = (t2, e2) => {
     for (var n2 in e2) r.o(e2, n2) && !r.o(t2, n2) && Object.defineProperty(t2, n2, { enumerable: true, get: e2[n2] });
@@ -41765,184 +41765,182 @@ var LIB;
     "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t2, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t2, "__esModule", { value: true });
   };
   var n = {};
-  (() => {
-    let t2;
-    if (r.r(n), r.d(n, { URI: () => f, Utils: () => P }), "object" == typeof process) t2 = "win32" === process.platform;
-    else if ("object" == typeof navigator) {
-      let e3 = navigator.userAgent;
-      t2 = e3.indexOf("Windows") >= 0;
+  let i;
+  if (r.r(n), r.d(n, { URI: () => l, Utils: () => I }), "object" == typeof process) i = "win32" === process.platform;
+  else if ("object" == typeof navigator) {
+    let t2 = navigator.userAgent;
+    i = t2.indexOf("Windows") >= 0;
+  }
+  const o = /^\w[\w\d+.-]*$/, s = /^\//, h = /^\/\//;
+  function a(t2, e2) {
+    if (!t2.scheme && e2) throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${t2.authority}", path: "${t2.path}", query: "${t2.query}", fragment: "${t2.fragment}"}`);
+    if (t2.scheme && !o.test(t2.scheme)) throw new Error("[UriError]: Scheme contains illegal characters.");
+    if (t2.path) {
+      if (t2.authority) {
+        if (!s.test(t2.path)) throw new Error('[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character');
+      } else if (h.test(t2.path)) throw new Error('[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")');
     }
-    const e2 = /^\w[\w\d+.-]*$/, i = /^\//, o = /^\/\//;
-    function s(t3, r2) {
-      if (!t3.scheme && r2) throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${t3.authority}", path: "${t3.path}", query: "${t3.query}", fragment: "${t3.fragment}"}`);
-      if (t3.scheme && !e2.test(t3.scheme)) throw new Error("[UriError]: Scheme contains illegal characters.");
-      if (t3.path) {
-        if (t3.authority) {
-          if (!i.test(t3.path)) throw new Error('[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character');
-        } else if (o.test(t3.path)) throw new Error('[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")');
-      }
+  }
+  const c = "", f = "/", u = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
+  class l {
+    static isUri(t2) {
+      return t2 instanceof l || !!t2 && "string" == typeof t2.authority && "string" == typeof t2.fragment && "string" == typeof t2.path && "string" == typeof t2.query && "string" == typeof t2.scheme && "string" == typeof t2.fsPath && "function" == typeof t2.with && "function" == typeof t2.toString;
     }
-    const h = "", a = "/", c = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
-    class f {
-      static isUri(t3) {
-        return t3 instanceof f || !!t3 && "string" == typeof t3.authority && "string" == typeof t3.fragment && "string" == typeof t3.path && "string" == typeof t3.query && "string" == typeof t3.scheme && "string" == typeof t3.fsPath && "function" == typeof t3.with && "function" == typeof t3.toString;
-      }
-      scheme;
-      authority;
-      path;
-      query;
-      fragment;
-      constructor(t3, e3, r2, n2, i2, o2 = false) {
-        "object" == typeof t3 ? (this.scheme = t3.scheme || h, this.authority = t3.authority || h, this.path = t3.path || h, this.query = t3.query || h, this.fragment = t3.fragment || h) : (this.scheme = /* @__PURE__ */ function(t4, e4) {
-          return t4 || e4 ? t4 : "file";
-        }(t3, o2), this.authority = e3 || h, this.path = function(t4, e4) {
-          switch (t4) {
-            case "https":
-            case "http":
-            case "file":
-              e4 ? e4[0] !== a && (e4 = a + e4) : e4 = a;
-          }
-          return e4;
-        }(this.scheme, r2 || h), this.query = n2 || h, this.fragment = i2 || h, s(this, o2));
-      }
-      get fsPath() {
-        return m(this, false);
-      }
-      with(t3) {
-        if (!t3) return this;
-        let { scheme: e3, authority: r2, path: n2, query: i2, fragment: o2 } = t3;
-        return void 0 === e3 ? e3 = this.scheme : null === e3 && (e3 = h), void 0 === r2 ? r2 = this.authority : null === r2 && (r2 = h), void 0 === n2 ? n2 = this.path : null === n2 && (n2 = h), void 0 === i2 ? i2 = this.query : null === i2 && (i2 = h), void 0 === o2 ? o2 = this.fragment : null === o2 && (o2 = h), e3 === this.scheme && r2 === this.authority && n2 === this.path && i2 === this.query && o2 === this.fragment ? this : new l(e3, r2, n2, i2, o2);
-      }
-      static parse(t3, e3 = false) {
-        const r2 = c.exec(t3);
-        return r2 ? new l(r2[2] || h, C(r2[4] || h), C(r2[5] || h), C(r2[7] || h), C(r2[9] || h), e3) : new l(h, h, h, h, h);
-      }
-      static file(e3) {
-        let r2 = h;
-        if (t2 && (e3 = e3.replace(/\\/g, a)), e3[0] === a && e3[1] === a) {
-          const t3 = e3.indexOf(a, 2);
-          -1 === t3 ? (r2 = e3.substring(2), e3 = a) : (r2 = e3.substring(2, t3), e3 = e3.substring(t3) || a);
+    scheme;
+    authority;
+    path;
+    query;
+    fragment;
+    constructor(t2, e2, r2, n2, i2, o2 = false) {
+      "object" == typeof t2 ? (this.scheme = t2.scheme || c, this.authority = t2.authority || c, this.path = t2.path || c, this.query = t2.query || c, this.fragment = t2.fragment || c) : (this.scheme = /* @__PURE__ */ function(t3, e3) {
+        return t3 || e3 ? t3 : "file";
+      }(t2, o2), this.authority = e2 || c, this.path = function(t3, e3) {
+        switch (t3) {
+          case "https":
+          case "http":
+          case "file":
+            e3 ? e3[0] !== f && (e3 = f + e3) : e3 = f;
         }
-        return new l("file", r2, e3, h, h);
-      }
-      static from(t3) {
-        const e3 = new l(t3.scheme, t3.authority, t3.path, t3.query, t3.fragment);
-        return s(e3, true), e3;
-      }
-      toString(t3 = false) {
-        return y(this, t3);
-      }
-      toJSON() {
-        return this;
-      }
-      static revive(t3) {
-        if (t3) {
-          if (t3 instanceof f) return t3;
-          {
-            const e3 = new l(t3);
-            return e3._formatted = t3.external, e3._fsPath = t3._sep === u ? t3.fsPath : null, e3;
-          }
-        }
-        return t3;
-      }
+        return e3;
+      }(this.scheme, r2 || c), this.query = n2 || c, this.fragment = i2 || c, a(this, o2));
     }
-    const u = t2 ? 1 : void 0;
-    class l extends f {
-      _formatted = null;
-      _fsPath = null;
-      get fsPath() {
-        return this._fsPath || (this._fsPath = m(this, false)), this._fsPath;
-      }
-      toString(t3 = false) {
-        return t3 ? y(this, true) : (this._formatted || (this._formatted = y(this, false)), this._formatted);
-      }
-      toJSON() {
-        const t3 = { $mid: 1 };
-        return this._fsPath && (t3.fsPath = this._fsPath, t3._sep = u), this._formatted && (t3.external = this._formatted), this.path && (t3.path = this.path), this.scheme && (t3.scheme = this.scheme), this.authority && (t3.authority = this.authority), this.query && (t3.query = this.query), this.fragment && (t3.fragment = this.fragment), t3;
-      }
+    get fsPath() {
+      return v(this, false);
     }
-    const g = { 58: "%3A", 47: "%2F", 63: "%3F", 35: "%23", 91: "%5B", 93: "%5D", 64: "%40", 33: "%21", 36: "%24", 38: "%26", 39: "%27", 40: "%28", 41: "%29", 42: "%2A", 43: "%2B", 44: "%2C", 59: "%3B", 61: "%3D", 32: "%20" };
-    function d(t3, e3, r2) {
-      let n2, i2 = -1;
-      for (let o2 = 0; o2 < t3.length; o2++) {
-        const s2 = t3.charCodeAt(o2);
-        if (s2 >= 97 && s2 <= 122 || s2 >= 65 && s2 <= 90 || s2 >= 48 && s2 <= 57 || 45 === s2 || 46 === s2 || 95 === s2 || 126 === s2 || e3 && 47 === s2 || r2 && 91 === s2 || r2 && 93 === s2 || r2 && 58 === s2) -1 !== i2 && (n2 += encodeURIComponent(t3.substring(i2, o2)), i2 = -1), void 0 !== n2 && (n2 += t3.charAt(o2));
-        else {
-          void 0 === n2 && (n2 = t3.substr(0, o2));
-          const e4 = g[s2];
-          void 0 !== e4 ? (-1 !== i2 && (n2 += encodeURIComponent(t3.substring(i2, o2)), i2 = -1), n2 += e4) : -1 === i2 && (i2 = o2);
+    with(t2) {
+      if (!t2) return this;
+      let { scheme: e2, authority: r2, path: n2, query: i2, fragment: o2 } = t2;
+      return void 0 === e2 ? e2 = this.scheme : null === e2 && (e2 = c), void 0 === r2 ? r2 = this.authority : null === r2 && (r2 = c), void 0 === n2 ? n2 = this.path : null === n2 && (n2 = c), void 0 === i2 ? i2 = this.query : null === i2 && (i2 = c), void 0 === o2 ? o2 = this.fragment : null === o2 && (o2 = c), e2 === this.scheme && r2 === this.authority && n2 === this.path && i2 === this.query && o2 === this.fragment ? this : new d(e2, r2, n2, i2, o2);
+    }
+    static parse(t2, e2 = false) {
+      const r2 = u.exec(t2);
+      return r2 ? new d(r2[2] || c, w(r2[4] || c), w(r2[5] || c), w(r2[7] || c), w(r2[9] || c), e2) : new d(c, c, c, c, c);
+    }
+    static file(t2) {
+      let e2 = c;
+      if (i && (t2 = t2.replace(/\\/g, f)), t2[0] === f && t2[1] === f) {
+        const r2 = t2.indexOf(f, 2);
+        -1 === r2 ? (e2 = t2.substring(2), t2 = f) : (e2 = t2.substring(2, r2), t2 = t2.substring(r2) || f);
+      }
+      return new d("file", e2, t2, c, c);
+    }
+    static from(t2) {
+      const e2 = new d(t2.scheme, t2.authority, t2.path, t2.query, t2.fragment);
+      return a(e2, true), e2;
+    }
+    toString(t2 = false) {
+      return b(this, t2);
+    }
+    toJSON() {
+      return this;
+    }
+    static revive(t2) {
+      if (t2) {
+        if (t2 instanceof l) return t2;
+        {
+          const e2 = new d(t2);
+          return e2._formatted = t2.external, e2._fsPath = t2._sep === g ? t2.fsPath : null, e2;
         }
       }
-      return -1 !== i2 && (n2 += encodeURIComponent(t3.substring(i2))), void 0 !== n2 ? n2 : t3;
+      return t2;
     }
-    function p(t3) {
-      let e3;
-      for (let r2 = 0; r2 < t3.length; r2++) {
-        const n2 = t3.charCodeAt(r2);
-        35 === n2 || 63 === n2 ? (void 0 === e3 && (e3 = t3.substr(0, r2)), e3 += g[n2]) : void 0 !== e3 && (e3 += t3[r2]);
-      }
-      return void 0 !== e3 ? e3 : t3;
+  }
+  const g = i ? 1 : void 0;
+  class d extends l {
+    _formatted = null;
+    _fsPath = null;
+    get fsPath() {
+      return this._fsPath || (this._fsPath = v(this, false)), this._fsPath;
     }
-    function m(e3, r2) {
-      let n2;
-      return n2 = e3.authority && e3.path.length > 1 && "file" === e3.scheme ? `//${e3.authority}${e3.path}` : 47 === e3.path.charCodeAt(0) && (e3.path.charCodeAt(1) >= 65 && e3.path.charCodeAt(1) <= 90 || e3.path.charCodeAt(1) >= 97 && e3.path.charCodeAt(1) <= 122) && 58 === e3.path.charCodeAt(2) ? r2 ? e3.path.substr(1) : e3.path[1].toLowerCase() + e3.path.substr(2) : e3.path, t2 && (n2 = n2.replace(/\//g, "\\")), n2;
+    toString(t2 = false) {
+      return t2 ? b(this, true) : (this._formatted || (this._formatted = b(this, false)), this._formatted);
     }
-    function y(t3, e3) {
-      const r2 = e3 ? p : d;
-      let n2 = "", { scheme: i2, authority: o2, path: s2, query: h2, fragment: c2 } = t3;
-      if (i2 && (n2 += i2, n2 += ":"), (o2 || "file" === i2) && (n2 += a, n2 += a), o2) {
-        let t4 = o2.indexOf("@");
-        if (-1 !== t4) {
-          const e4 = o2.substr(0, t4);
-          o2 = o2.substr(t4 + 1), t4 = e4.lastIndexOf(":"), -1 === t4 ? n2 += r2(e4, false, false) : (n2 += r2(e4.substr(0, t4), false, false), n2 += ":", n2 += r2(e4.substr(t4 + 1), false, true)), n2 += "@";
-        }
-        o2 = o2.toLowerCase(), t4 = o2.lastIndexOf(":"), -1 === t4 ? n2 += r2(o2, false, true) : (n2 += r2(o2.substr(0, t4), false, true), n2 += o2.substr(t4));
-      }
-      if (s2) {
-        if (s2.length >= 3 && 47 === s2.charCodeAt(0) && 58 === s2.charCodeAt(2)) {
-          const t4 = s2.charCodeAt(1);
-          t4 >= 65 && t4 <= 90 && (s2 = `/${String.fromCharCode(t4 + 32)}:${s2.substr(3)}`);
-        } else if (s2.length >= 2 && 58 === s2.charCodeAt(1)) {
-          const t4 = s2.charCodeAt(0);
-          t4 >= 65 && t4 <= 90 && (s2 = `${String.fromCharCode(t4 + 32)}:${s2.substr(2)}`);
-        }
-        n2 += r2(s2, true, false);
-      }
-      return h2 && (n2 += "?", n2 += r2(h2, false, false)), c2 && (n2 += "#", n2 += e3 ? c2 : d(c2, false, false)), n2;
+    toJSON() {
+      const t2 = { $mid: 1 };
+      return this._fsPath && (t2.fsPath = this._fsPath, t2._sep = g), this._formatted && (t2.external = this._formatted), this.path && (t2.path = this.path), this.scheme && (t2.scheme = this.scheme), this.authority && (t2.authority = this.authority), this.query && (t2.query = this.query), this.fragment && (t2.fragment = this.fragment), t2;
     }
-    function v(t3) {
-      try {
-        return decodeURIComponent(t3);
-      } catch {
-        return t3.length > 3 ? t3.substr(0, 3) + v(t3.substr(3)) : t3;
+  }
+  const p = { 58: "%3A", 47: "%2F", 63: "%3F", 35: "%23", 91: "%5B", 93: "%5D", 64: "%40", 33: "%21", 36: "%24", 38: "%26", 39: "%27", 40: "%28", 41: "%29", 42: "%2A", 43: "%2B", 44: "%2C", 59: "%3B", 61: "%3D", 32: "%20" };
+  function m(t2, e2, r2) {
+    let n2, i2 = -1;
+    for (let o2 = 0; o2 < t2.length; o2++) {
+      const s2 = t2.charCodeAt(o2);
+      if (s2 >= 97 && s2 <= 122 || s2 >= 65 && s2 <= 90 || s2 >= 48 && s2 <= 57 || 45 === s2 || 46 === s2 || 95 === s2 || 126 === s2 || e2 && 47 === s2 || r2 && 91 === s2 || r2 && 93 === s2 || r2 && 58 === s2) -1 !== i2 && (n2 += encodeURIComponent(t2.substring(i2, o2)), i2 = -1), void 0 !== n2 && (n2 += t2.charAt(o2));
+      else {
+        void 0 === n2 && (n2 = t2.substr(0, o2));
+        const e3 = p[s2];
+        void 0 !== e3 ? (-1 !== i2 && (n2 += encodeURIComponent(t2.substring(i2, o2)), i2 = -1), n2 += e3) : -1 === i2 && (i2 = o2);
       }
     }
-    const b = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
-    function C(t3) {
-      return t3.match(b) ? t3.replace(b, (t4) => v(t4)) : t3;
+    return -1 !== i2 && (n2 += encodeURIComponent(t2.substring(i2))), void 0 !== n2 ? n2 : t2;
+  }
+  function y(t2) {
+    let e2;
+    for (let r2 = 0; r2 < t2.length; r2++) {
+      const n2 = t2.charCodeAt(r2);
+      35 === n2 || 63 === n2 ? (void 0 === e2 && (e2 = t2.substr(0, r2)), e2 += p[n2]) : void 0 !== e2 && (e2 += t2[r2]);
     }
-    var A = r(470);
-    const w = A.posix || A, x = "/";
-    var P;
-    !function(t3) {
-      t3.joinPath = function(t4, ...e3) {
-        return t4.with({ path: w.join(t4.path, ...e3) });
-      }, t3.resolvePath = function(t4, ...e3) {
-        let r2 = t4.path, n2 = false;
-        r2[0] !== x && (r2 = x + r2, n2 = true);
-        let i2 = w.resolve(r2, ...e3);
-        return n2 && i2[0] === x && !t4.authority && (i2 = i2.substring(1)), t4.with({ path: i2 });
-      }, t3.dirname = function(t4) {
-        if (0 === t4.path.length || t4.path === x) return t4;
-        let e3 = w.dirname(t4.path);
-        return 1 === e3.length && 46 === e3.charCodeAt(0) && (e3 = ""), t4.with({ path: e3 });
-      }, t3.basename = function(t4) {
-        return w.basename(t4.path);
-      }, t3.extname = function(t4) {
-        return w.extname(t4.path);
-      };
-    }(P || (P = {}));
-  })(), LIB = n;
+    return void 0 !== e2 ? e2 : t2;
+  }
+  function v(t2, e2) {
+    let r2;
+    return r2 = t2.authority && t2.path.length > 1 && "file" === t2.scheme ? `//${t2.authority}${t2.path}` : 47 === t2.path.charCodeAt(0) && (t2.path.charCodeAt(1) >= 65 && t2.path.charCodeAt(1) <= 90 || t2.path.charCodeAt(1) >= 97 && t2.path.charCodeAt(1) <= 122) && 58 === t2.path.charCodeAt(2) ? e2 ? t2.path.substr(1) : t2.path[1].toLowerCase() + t2.path.substr(2) : t2.path, i && (r2 = r2.replace(/\//g, "\\")), r2;
+  }
+  function b(t2, e2) {
+    const r2 = e2 ? y : m;
+    let n2 = "", { scheme: i2, authority: o2, path: s2, query: h2, fragment: a2 } = t2;
+    if (i2 && (n2 += i2, n2 += ":"), (o2 || "file" === i2) && (n2 += f, n2 += f), o2) {
+      let t3 = o2.indexOf("@");
+      if (-1 !== t3) {
+        const e3 = o2.substr(0, t3);
+        o2 = o2.substr(t3 + 1), t3 = e3.lastIndexOf(":"), -1 === t3 ? n2 += r2(e3, false, false) : (n2 += r2(e3.substr(0, t3), false, false), n2 += ":", n2 += r2(e3.substr(t3 + 1), false, true)), n2 += "@";
+      }
+      o2 = o2.toLowerCase(), t3 = o2.lastIndexOf(":"), -1 === t3 ? n2 += r2(o2, false, true) : (n2 += r2(o2.substr(0, t3), false, true), n2 += o2.substr(t3));
+    }
+    if (s2) {
+      if (s2.length >= 3 && 47 === s2.charCodeAt(0) && 58 === s2.charCodeAt(2)) {
+        const t3 = s2.charCodeAt(1);
+        t3 >= 65 && t3 <= 90 && (s2 = `/${String.fromCharCode(t3 + 32)}:${s2.substr(3)}`);
+      } else if (s2.length >= 2 && 58 === s2.charCodeAt(1)) {
+        const t3 = s2.charCodeAt(0);
+        t3 >= 65 && t3 <= 90 && (s2 = `${String.fromCharCode(t3 + 32)}:${s2.substr(2)}`);
+      }
+      n2 += r2(s2, true, false);
+    }
+    return h2 && (n2 += "?", n2 += r2(h2, false, false)), a2 && (n2 += "#", n2 += e2 ? a2 : m(a2, false, false)), n2;
+  }
+  function C(t2) {
+    try {
+      return decodeURIComponent(t2);
+    } catch {
+      return t2.length > 3 ? t2.substr(0, 3) + C(t2.substr(3)) : t2;
+    }
+  }
+  const A = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
+  function w(t2) {
+    return t2.match(A) ? t2.replace(A, (t3) => C(t3)) : t2;
+  }
+  var x = r(975);
+  const P = x.posix || x, _ = "/";
+  var I;
+  !function(t2) {
+    t2.joinPath = function(t3, ...e2) {
+      return t3.with({ path: P.join(t3.path, ...e2) });
+    }, t2.resolvePath = function(t3, ...e2) {
+      let r2 = t3.path, n2 = false;
+      r2[0] !== _ && (r2 = _ + r2, n2 = true);
+      let i2 = P.resolve(r2, ...e2);
+      return n2 && i2[0] === _ && !t3.authority && (i2 = i2.substring(1)), t3.with({ path: i2 });
+    }, t2.dirname = function(t3) {
+      if (0 === t3.path.length || t3.path === _) return t3;
+      let e2 = P.dirname(t3.path);
+      return 1 === e2.length && 46 === e2.charCodeAt(0) && (e2 = ""), t3.with({ path: e2 });
+    }, t2.basename = function(t3) {
+      return P.basename(t3.path);
+    }, t2.extname = function(t3) {
+      return P.extname(t3.path);
+    };
+  }(I || (I = {})), LIB = n;
 })();
 var { URI, Utils } = LIB;
 
