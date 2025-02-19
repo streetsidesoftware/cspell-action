@@ -32501,7 +32501,7 @@ var require_merge = __commonJS({
 var require_addPairToJSMap = __commonJS({
   "../node_modules/.pnpm/yaml@2.7.0/node_modules/yaml/dist/nodes/addPairToJSMap.js"(exports2) {
     "use strict";
-    var log2 = require_log();
+    var log3 = require_log();
     var merge5 = require_merge();
     var stringify3 = require_stringify3();
     var identity = require_identity();
@@ -32550,7 +32550,7 @@ var require_addPairToJSMap = __commonJS({
           let jsonStr = JSON.stringify(strKey);
           if (jsonStr.length > 40)
             jsonStr = jsonStr.substring(0, 36) + '..."';
-          log2.warn(ctx.doc.options.logLevel, `Keys with collection values will be stringified due to JS Object restrictions: ${jsonStr}. Set mapAsMap: true to use object keys.`);
+          log3.warn(ctx.doc.options.logLevel, `Keys with collection values will be stringified due to JS Object restrictions: ${jsonStr}. Set mapAsMap: true to use object keys.`);
           ctx.mapKeyWarned = true;
         }
         return strKey;
@@ -37926,7 +37926,7 @@ var require_public_api = __commonJS({
     var composer = require_composer();
     var Document = require_Document();
     var errors = require_errors2();
-    var log2 = require_log();
+    var log3 = require_log();
     var identity = require_identity();
     var lineCounter = require_line_counter();
     var parser2 = require_parser();
@@ -37978,7 +37978,7 @@ var require_public_api = __commonJS({
       const doc = parseDocument(src, options);
       if (!doc)
         return null;
-      doc.warnings.forEach((warning4) => log2.warn(doc.options.logLevel, warning4));
+      doc.warnings.forEach((warning4) => log3.warn(doc.options.logLevel, warning4));
       if (doc.errors.length > 0) {
         if (doc.options.logLevel !== "silent")
           throw doc.errors[0];
@@ -40834,9 +40834,9 @@ var require_src3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/flatted@3.3.2/node_modules/flatted/cjs/index.js
+// ../node_modules/.pnpm/flatted@3.3.3/node_modules/flatted/cjs/index.js
 var require_cjs = __commonJS({
-  "../node_modules/.pnpm/flatted@3.3.2/node_modules/flatted/cjs/index.js"(exports2) {
+  "../node_modules/.pnpm/flatted@3.3.3/node_modules/flatted/cjs/index.js"(exports2) {
     "use strict";
     var { parse: $parse, stringify: $stringify } = JSON;
     var { keys: keys3 } = Object;
@@ -64260,24 +64260,66 @@ var import_node_fs8 = require("node:fs");
 var path18 = __toESM(require("node:path"), 1);
 var import_node_path11 = require("node:path");
 
-// ../node_modules/.pnpm/tinyglobby@0.2.10/node_modules/tinyglobby/dist/index.mjs
+// ../node_modules/.pnpm/tinyglobby@0.2.11/node_modules/tinyglobby/dist/index.mjs
 var import_path2 = __toESM(require("path"), 1);
 var import_fdir = __toESM(require_dist2(), 1);
 var import_picomatch = __toESM(require_picomatch4(), 1);
 var import_picomatch2 = __toESM(require_picomatch4(), 1);
-var ESCAPED_WIN32_BACKSLASHES = /\\(?![()[\]{}!+@])/g;
-function convertPosixPathToPattern(path26) {
-  return escapePosixPath(path26);
+function getPartialMatcher(patterns, options) {
+  const patternsCount = patterns.length;
+  const patternsParts = Array(patternsCount);
+  const regexes = Array(patternsCount);
+  for (let i = 0; i < patternsCount; i++) {
+    const parts = splitPattern(patterns[i]);
+    patternsParts[i] = parts;
+    const partsCount = parts.length;
+    const partRegexes = Array(partsCount);
+    for (let j = 0; j < partsCount; j++) {
+      partRegexes[j] = import_picomatch2.default.makeRe(parts[j], options);
+    }
+    regexes[i] = partRegexes;
+  }
+  return (input) => {
+    const inputParts = input.split("/");
+    for (let i = 0; i < patterns.length; i++) {
+      const patternParts = patternsParts[i];
+      const regex = regexes[i];
+      const inputPatternCount = inputParts.length;
+      const minParts = Math.min(inputPatternCount, patternParts.length);
+      let j = 0;
+      while (j < minParts) {
+        const part = patternParts[j];
+        if (part.includes("/")) {
+          return true;
+        }
+        const match2 = regex[j].test(inputParts[j]);
+        if (!match2) {
+          break;
+        }
+        if (part === "**") {
+          return true;
+        }
+        j++;
+      }
+      if (j === inputPatternCount) {
+        return true;
+      }
+    }
+    return false;
+  };
 }
-function convertWin32PathToPattern(path26) {
-  return escapeWin32Path(path26).replace(ESCAPED_WIN32_BACKSLASHES, "/");
+var splitPatternOptions = { parts: true };
+function splitPattern(path26) {
+  var _a;
+  const result = import_picomatch2.default.scan(path26, splitPatternOptions);
+  return ((_a = result.parts) == null ? void 0 : _a.length) ? result.parts : [path26];
 }
-var convertPathToPattern = process.platform === "win32" ? convertWin32PathToPattern : convertPosixPathToPattern;
+var isWin = process.platform === "win32";
 var POSIX_UNESCAPED_GLOB_SYMBOLS = /(?<!\\)([()[\]{}*?|]|^!|[!+@](?=\()|\\(?![()[\]{}!*+?@|]))/g;
 var WIN32_UNESCAPED_GLOB_SYMBOLS = /(?<!\\)([()[\]{}]|^!|[!+@](?=\())/g;
 var escapePosixPath = (path26) => path26.replace(POSIX_UNESCAPED_GLOB_SYMBOLS, "\\$&");
 var escapeWin32Path = (path26) => path26.replace(WIN32_UNESCAPED_GLOB_SYMBOLS, "\\$&");
-var escapePath = process.platform === "win32" ? escapeWin32Path : escapePosixPath;
+var escapePath = isWin ? escapeWin32Path : escapePosixPath;
 function isDynamicPattern(pattern, options) {
   if ((options == null ? void 0 : options.caseSensitiveMatch) === false) {
     return true;
@@ -64285,7 +64327,13 @@ function isDynamicPattern(pattern, options) {
   const scan3 = import_picomatch2.default.scan(pattern);
   return scan3.isGlob || scan3.negated;
 }
-function normalizePattern3(pattern, expandDirectories, cwd, properties, isIgnore) {
+function log2(...tasks) {
+  console.log(`[tinyglobby ${(/* @__PURE__ */ new Date()).toLocaleTimeString("es")}]`, ...tasks);
+}
+var PARENT_DIRECTORY = /^(\/?\.\.)+/;
+var ESCAPING_BACKSLASHES = /\\(?=[()[\]{}!*+?@|])/g;
+var BACKSLASHES = /\\/g;
+function normalizePattern3(pattern, expandDirectories, cwd, props, isIgnore) {
   var _a;
   let result = pattern;
   if (pattern.endsWith("/")) {
@@ -64294,40 +64342,41 @@ function normalizePattern3(pattern, expandDirectories, cwd, properties, isIgnore
   if (!result.endsWith("*") && expandDirectories) {
     result += "/**";
   }
-  if (import_path2.default.isAbsolute(result.replace(/\\(?=[()[\]{}!*+?@|])/g, ""))) {
-    result = import_path2.posix.relative(cwd, result);
+  if (import_path2.default.isAbsolute(result.replace(ESCAPING_BACKSLASHES, ""))) {
+    result = import_path2.posix.relative(escapePath(cwd), result);
   } else {
     result = import_path2.posix.normalize(result);
   }
-  const parentDirectoryMatch = /^(\/?\.\.)+/.exec(result);
+  const parentDirectoryMatch = PARENT_DIRECTORY.exec(result);
   if (parentDirectoryMatch == null ? void 0 : parentDirectoryMatch[0]) {
     const potentialRoot = import_path2.posix.join(cwd, parentDirectoryMatch[0]);
-    if (properties.root.length > potentialRoot.length) {
-      properties.root = potentialRoot;
-      properties.depthOffset = -(parentDirectoryMatch[0].length + 1) / 3;
+    if (props.root.length > potentialRoot.length) {
+      props.root = potentialRoot;
+      props.depthOffset = -(parentDirectoryMatch[0].length + 1) / 3;
     }
-  } else if (!isIgnore && properties.depthOffset >= 0) {
-    const current = result.split("/");
-    (_a = properties.commonPath) != null ? _a : properties.commonPath = current;
+  } else if (!isIgnore && props.depthOffset >= 0) {
+    const parts = splitPattern(result);
+    (_a = props.commonPath) != null ? _a : props.commonPath = parts;
     const newCommonPath = [];
-    for (let i = 0; i < Math.min(properties.commonPath.length, current.length); i++) {
-      const part = current[i];
-      if (part === "**" && !current[i + 1]) {
+    const length = Math.min(props.commonPath.length, parts.length);
+    for (let i = 0; i < length; i++) {
+      const part = parts[i];
+      if (part === "**" && !parts[i + 1]) {
         newCommonPath.pop();
         break;
       }
-      if (part !== properties.commonPath[i] || isDynamicPattern(part) || i === current.length - 1) {
+      if (part !== props.commonPath[i] || isDynamicPattern(part) || i === parts.length - 1) {
         break;
       }
       newCommonPath.push(part);
     }
-    properties.depthOffset = newCommonPath.length;
-    properties.commonPath = newCommonPath;
-    properties.root = newCommonPath.length > 0 ? `${cwd}/${newCommonPath.join("/")}` : cwd;
+    props.depthOffset = newCommonPath.length;
+    props.commonPath = newCommonPath;
+    props.root = newCommonPath.length > 0 ? `${cwd}/${newCommonPath.join("/")}` : cwd;
   }
   return result;
 }
-function processPatterns({ patterns, ignore = [], expandDirectories = true }, cwd, properties) {
+function processPatterns({ patterns, ignore = [], expandDirectories = true }, cwd, props) {
   if (typeof patterns === "string") {
     patterns = [patterns];
   } else if (!patterns) {
@@ -64339,24 +64388,27 @@ function processPatterns({ patterns, ignore = [], expandDirectories = true }, cw
   const matchPatterns = [];
   const ignorePatterns = [];
   for (const pattern of ignore) {
-    if (!pattern.startsWith("!") || pattern[1] === "(") {
-      const newPattern = normalizePattern3(pattern, expandDirectories, cwd, properties, true);
-      ignorePatterns.push(newPattern);
+    if (!pattern) {
+      continue;
+    }
+    if (pattern[0] !== "!" || pattern[1] === "(") {
+      ignorePatterns.push(normalizePattern3(pattern, expandDirectories, cwd, props, true));
     }
   }
   for (const pattern of patterns) {
-    if (!pattern.startsWith("!") || pattern[1] === "(") {
-      const newPattern = normalizePattern3(pattern, expandDirectories, cwd, properties, false);
-      matchPatterns.push(newPattern);
+    if (!pattern) {
+      continue;
+    }
+    if (pattern[0] !== "!" || pattern[1] === "(") {
+      matchPatterns.push(normalizePattern3(pattern, expandDirectories, cwd, props, false));
     } else if (pattern[1] !== "!" || pattern[2] === "(") {
-      const newPattern = normalizePattern3(pattern.slice(1), expandDirectories, cwd, properties, true);
-      ignorePatterns.push(newPattern);
+      ignorePatterns.push(normalizePattern3(pattern.slice(1), expandDirectories, cwd, props, true));
     }
   }
   return { match: matchPatterns, ignore: ignorePatterns };
 }
 function getRelativePath(path26, cwd, root) {
-  return import_path2.posix.relative(cwd, `${root}/${path26}`);
+  return import_path2.posix.relative(cwd, `${root}/${path26}`) || ".";
 }
 function processPath(path26, cwd, root, isDirectory2, absolute) {
   const relativePath2 = absolute ? path26.slice(root.length + 1) || "." : path26;
@@ -64365,32 +64417,75 @@ function processPath(path26, cwd, root, isDirectory2, absolute) {
   }
   return getRelativePath(relativePath2, cwd, root);
 }
+function formatPaths(paths, cwd, root) {
+  for (let i = paths.length - 1; i >= 0; i--) {
+    const path26 = paths[i];
+    paths[i] = getRelativePath(path26, cwd, root) + (!path26 || path26.endsWith("/") ? "/" : "");
+  }
+  return paths;
+}
 function crawl(options, cwd, sync) {
-  const properties = {
+  if (process.env.TINYGLOBBY_DEBUG) {
+    options.debug = true;
+  }
+  if (options.debug) {
+    log2("globbing with options:", options, "cwd:", cwd);
+  }
+  if (Array.isArray(options.patterns) && options.patterns.length === 0) {
+    return sync ? [] : Promise.resolve([]);
+  }
+  const props = {
     root: cwd,
     commonPath: null,
     depthOffset: 0
   };
-  const processed = processPatterns(options, cwd, properties);
+  const processed = processPatterns(options, cwd, props);
+  const nocase = options.caseSensitiveMatch === false;
+  if (options.debug) {
+    log2("internal processing patterns:", processed);
+  }
   const matcher = (0, import_picomatch.default)(processed.match, {
     dot: options.dot,
-    nocase: options.caseSensitiveMatch === false,
+    nocase,
     ignore: processed.ignore
   });
-  const exclude = (0, import_picomatch.default)(processed.ignore, {
+  const ignore = (0, import_picomatch.default)(processed.ignore, {
     dot: options.dot,
-    nocase: options.caseSensitiveMatch === false
+    nocase
+  });
+  const partialMatcher = getPartialMatcher(processed.match, {
+    dot: options.dot,
+    nocase
   });
   const fdirOptions = {
     // use relative paths in the matcher
-    filters: [(p, isDirectory2) => matcher(processPath(p, cwd, properties.root, isDirectory2, options.absolute))],
-    exclude: (_, p) => exclude(processPath(p, cwd, properties.root, true, true)),
+    filters: [
+      options.debug ? (p, isDirectory2) => {
+        const path26 = processPath(p, cwd, props.root, isDirectory2, options.absolute);
+        const matches = matcher(path26);
+        if (matches) {
+          log2(`matched ${path26}`);
+        }
+        return matches;
+      } : (p, isDirectory2) => matcher(processPath(p, cwd, props.root, isDirectory2, options.absolute))
+    ],
+    exclude: options.debug ? (_, p) => {
+      const relativePath2 = processPath(p, cwd, props.root, true, true);
+      const skipped = relativePath2 !== "." && !partialMatcher(relativePath2) || ignore(relativePath2);
+      if (!skipped) {
+        log2(`crawling ${p}`);
+      }
+      return skipped;
+    } : (_, p) => {
+      const relativePath2 = processPath(p, cwd, props.root, true, true);
+      return relativePath2 !== "." && !partialMatcher(relativePath2) || ignore(relativePath2);
+    },
     pathSeparator: "/",
     relativePaths: true,
     resolveSymlinks: true
   };
   if (options.deep) {
-    fdirOptions.maxDepth = Math.round(options.deep - properties.depthOffset);
+    fdirOptions.maxDepth = Math.round(options.deep - props.depthOffset);
   }
   if (options.absolute) {
     fdirOptions.relativePaths = false;
@@ -64407,19 +64502,23 @@ function crawl(options, cwd, sync) {
   } else if (options.onlyFiles === false) {
     fdirOptions.includeDirs = true;
   }
-  properties.root = properties.root.replace(/\\/g, "");
-  const api = new import_fdir.fdir(fdirOptions).crawl(properties.root);
-  if (cwd === properties.root || options.absolute) {
+  props.root = props.root.replace(BACKSLASHES, "");
+  const root = props.root;
+  if (options.debug) {
+    log2("internal properties:", props);
+  }
+  const api = new import_fdir.fdir(fdirOptions).crawl(root);
+  if (cwd === root || options.absolute) {
     return sync ? api.sync() : api.withPromise();
   }
-  return sync ? api.sync().map((p) => getRelativePath(p, cwd, properties.root) + (!p || p.endsWith("/") ? "/" : "")) : api.withPromise().then((paths) => paths.map((p) => getRelativePath(p, cwd, properties.root) + (!p || p.endsWith("/") ? "/" : "")));
+  return sync ? formatPaths(api.sync(), cwd, root) : api.withPromise().then((paths) => formatPaths(paths, cwd, root));
 }
 async function glob(patternsOrOptions, options) {
   if (patternsOrOptions && (options == null ? void 0 : options.patterns)) {
     throw new Error("Cannot pass patterns as both an argument and an option");
   }
   const opts = Array.isArray(patternsOrOptions) || typeof patternsOrOptions === "string" ? { ...options, patterns: patternsOrOptions } : patternsOrOptions;
-  const cwd = opts.cwd ? import_path2.default.resolve(opts.cwd).replace(/\\/g, "/") : process.cwd().replace(/\\/g, "/");
+  const cwd = opts.cwd ? import_path2.default.resolve(opts.cwd).replace(BACKSLASHES, "/") : process.cwd().replace(BACKSLASHES, "/");
   return crawl(opts, cwd, false);
 }
 
@@ -65580,7 +65679,7 @@ function yesNo(value) {
   return value ? "Yes" : "No";
 }
 function getLoggerFromReporter(reporter) {
-  const log2 = (...params) => {
+  const log3 = (...params) => {
     const msg = (0, import_node_util9.format)(...params);
     reporter.info(msg, "Info");
   };
@@ -65594,7 +65693,7 @@ function getLoggerFromReporter(reporter) {
     reporter.info(msg, "Warning");
   };
   return {
-    log: log2,
+    log: log3,
     warn,
     error: error4
   };
