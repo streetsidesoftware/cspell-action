@@ -64260,11 +64260,12 @@ var import_node_fs8 = require("node:fs");
 var path18 = __toESM(require("node:path"), 1);
 var import_node_path11 = require("node:path");
 
-// ../node_modules/.pnpm/tinyglobby@0.2.11/node_modules/tinyglobby/dist/index.mjs
+// ../node_modules/.pnpm/tinyglobby@0.2.12/node_modules/tinyglobby/dist/index.mjs
 var import_path2 = __toESM(require("path"), 1);
 var import_fdir = __toESM(require_dist2(), 1);
 var import_picomatch = __toESM(require_picomatch4(), 1);
 var import_picomatch2 = __toESM(require_picomatch4(), 1);
+var ONLY_PARENT_DIRECTORIES = /^(\/?\.\.)+$/;
 function getPartialMatcher(patterns, options) {
   const patternsCount = patterns.length;
   const patternsParts = Array(patternsCount);
@@ -64281,6 +64282,9 @@ function getPartialMatcher(patterns, options) {
   }
   return (input) => {
     const inputParts = input.split("/");
+    if (inputParts[0] === ".." && ONLY_PARENT_DIRECTORIES.test(input)) {
+      return true;
+    }
     for (let i = 0; i < patterns.length; i++) {
       const patternParts = patternsParts[i];
       const regex = regexes[i];
@@ -64472,7 +64476,9 @@ function crawl(options, cwd, sync) {
     exclude: options.debug ? (_, p) => {
       const relativePath2 = processPath(p, cwd, props.root, true, true);
       const skipped = relativePath2 !== "." && !partialMatcher(relativePath2) || ignore(relativePath2);
-      if (!skipped) {
+      if (skipped) {
+        log2(`skipped ${p}`);
+      } else {
         log2(`crawling ${p}`);
       }
       return skipped;
