@@ -63861,7 +63861,7 @@ var path15 = __toESM(require("node:path"), 1);
 // ../node_modules/.pnpm/cspell-gitignore@8.17.5/node_modules/cspell-gitignore/dist/helpers.js
 var path14 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/find-up-simple@1.0.0/node_modules/find-up-simple/index.js
+// ../node_modules/.pnpm/find-up-simple@1.0.1/node_modules/find-up-simple/index.js
 var import_node_process5 = __toESM(require("node:process"), 1);
 var import_promises4 = __toESM(require("node:fs/promises"), 1);
 var import_node_url14 = require("node:url");
@@ -63875,14 +63875,18 @@ async function findUp2(name2, {
   let directory = import_node_path10.default.resolve(toPath(cwd) ?? "");
   const { root } = import_node_path10.default.parse(directory);
   stopAt = import_node_path10.default.resolve(directory, toPath(stopAt ?? root));
-  while (directory && directory !== stopAt && directory !== root) {
-    const filePath = import_node_path10.default.isAbsolute(name2) ? name2 : import_node_path10.default.join(directory, name2);
+  const isAbsoluteName = import_node_path10.default.isAbsolute(name2);
+  while (directory) {
+    const filePath = isAbsoluteName ? name2 : import_node_path10.default.join(directory, name2);
     try {
       const stats2 = await import_promises4.default.stat(filePath);
       if (type === "file" && stats2.isFile() || type === "directory" && stats2.isDirectory()) {
         return filePath;
       }
     } catch {
+    }
+    if (directory === stopAt || directory === root) {
+      break;
     }
     directory = import_node_path10.default.dirname(directory);
   }
