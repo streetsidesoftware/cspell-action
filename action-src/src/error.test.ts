@@ -15,14 +15,16 @@ describe('error', () => {
         expect(isError(value)).toBe(expected);
     });
 
+    const unknownErrorObj = {};
+
     test.each`
         value                        | expected
-        ${Error('hello')}            | ${Error('hello')}
-        ${new AppError('app error')} | ${Error('app error')}
-        ${toError('hello')}          | ${Error('hello')}
-        ${'hello'}                   | ${Error('hello')}
-        ${{}}                        | ${Error('Unknown error')}
-        ${null}                      | ${Error('Unknown error')}
+        ${Error('hello')}            | ${new Error('hello')}
+        ${new AppError('app error')} | ${new AppError('app error')}
+        ${toError('hello')}          | ${new Error('hello')}
+        ${'hello'}                   | ${new Error('hello')}
+        ${unknownErrorObj}           | ${err('Unknown error', unknownErrorObj)}
+        ${null}                      | ${err('Unknown error', null)}
     `('toError $value', ({ value, expected }) => {
         expect(toError(value)).toEqual(expected);
     });
@@ -41,3 +43,9 @@ describe('error', () => {
         expect(isAppError('app error')).toBe(false);
     });
 });
+
+function err(message: string, cause: unknown = undefined) {
+    const e = new Error(message);
+    e.cause = cause;
+    return e;
+}
