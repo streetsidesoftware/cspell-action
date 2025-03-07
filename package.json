@@ -43,7 +43,7 @@
     "@tsconfig/node20": "^20.1.4",
     "@vitest/coverage-istanbul": "^3.0.7",
     "env-cmd": "^10.1.0",
-    "eslint": "^9.21.0",
+    "eslint": "^9.22.0",
     "eslint-plugin-n": "^17.16.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "prettier": "^3.5.3",
