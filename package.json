@@ -44,12 +44,12 @@
     "@vitest/coverage-istanbul": "^3.0.9",
     "env-cmd": "^10.1.0",
     "eslint": "^9.23.0",
-    "eslint-plugin-n": "^17.16.2",
+    "eslint-plugin-n": "^17.17.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "prettier": "^3.5.3",
     "shx": "^0.4.0",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.27.0",
+    "typescript-eslint": "^8.28.0",
     "vitest": "^3.0.9"
   },
   "pnpm": {
