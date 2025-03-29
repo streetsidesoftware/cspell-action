@@ -30,7 +30,7 @@
     "@cspell/cspell-types": "^8.17.5",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^20.17.27",
-    "cspell": "^8.18.0",
+    "cspell": "^8.18.1",
     "cspell-glob": "^8.18.0",
     "vscode-uri": "^3.1.0"
   },
