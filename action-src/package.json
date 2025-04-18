@@ -26,7 +26,7 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
-    "@cspell/cspell-bundled-dicts": "^8.19.0",
+    "@cspell/cspell-bundled-dicts": "^8.19.1",
     "@cspell/cspell-types": "^8.19.0",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^20.17.30",
