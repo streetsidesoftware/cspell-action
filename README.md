@@ -17,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: streetsidesoftware/cspell-action@v6
+      - uses: streetsidesoftware/cspell-action@v7
 ```
 
 ## Usage
 
 ```yaml
-- uses: streetsidesoftware/cspell-action@v6
+- uses: streetsidesoftware/cspell-action@v7
   with:
     # Define glob patterns to filter the files to be checked. Use a new line between patterns to define multiple patterns.
     # The default is to check ALL files that were changed in in the pull_request or push.
