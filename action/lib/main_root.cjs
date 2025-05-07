@@ -19812,9 +19812,9 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
   }
 });
 
-// ../node_modules/.pnpm/@actions+github@6.0.0/node_modules/@actions/github/lib/context.js
+// ../node_modules/.pnpm/@actions+github@6.0.1/node_modules/@actions/github/lib/context.js
 var require_context = __commonJS({
-  "../node_modules/.pnpm/@actions+github@6.0.0/node_modules/@actions/github/lib/context.js"(exports2) {
+  "../node_modules/.pnpm/@actions+github@6.0.1/node_modules/@actions/github/lib/context.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.Context = void 0;
@@ -19842,6 +19842,7 @@ var require_context = __commonJS({
         this.action = process.env.GITHUB_ACTION;
         this.actor = process.env.GITHUB_ACTOR;
         this.job = process.env.GITHUB_JOB;
+        this.runAttempt = parseInt(process.env.GITHUB_RUN_ATTEMPT, 10);
         this.runNumber = parseInt(process.env.GITHUB_RUN_NUMBER, 10);
         this.runId = parseInt(process.env.GITHUB_RUN_ID, 10);
         this.apiUrl = (_a = process.env.GITHUB_API_URL) !== null && _a !== void 0 ? _a : `https://api.github.com`;
