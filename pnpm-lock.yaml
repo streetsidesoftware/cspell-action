@@ -72,8 +72,8 @@ importers:
         specifier: ^8.19.4
         version: 8.19.4
       cspell-glob:
-        specifier: ^8.19.4
-        version: 8.19.4
+        specifier: ^9.0.0
+        version: 9.0.0
       vscode-uri:
         specifier: ^3.1.0
         version: 3.1.0
@@ -384,6 +384,10 @@ packages:
   '@cspell/url@8.19.4':
     resolution: {integrity: sha512-Pa474iBxS+lxsAL4XkETPGIq3EgMLCEb9agj3hAd2VGMTCApaiUvamR4b+uGXIPybN70piFxvzrfoxsG2uIP6A==}
     engines: {node: '>=18.0'}
+
+  '@cspell/url@9.0.0':
+    resolution: {integrity: sha512-l30nTnD35w6wzABJry38tYuwMNaR9VweZb2go78F3vh8V15kGOpi1gWd7s6K2M8An7kqDS4L3Bgp019s7CJQQQ==}
+    engines: {node: '>=20'}
 
   '@esbuild/aix-ppc64@0.25.4':
     resolution: {integrity: sha512-1VCICWypeQKhVbE9oW/sJaAmjLxhVqacdkvPLEjwlttjfwENRSClS8EjBz0KzRyFSCPDIkuXW34Je/vk7zdB7Q==}
@@ -1074,6 +1078,10 @@ packages:
   cspell-glob@8.19.4:
     resolution: {integrity: sha512-042uDU+RjAz882w+DXKuYxI2rrgVPfRQDYvIQvUrY1hexH4sHbne78+OMlFjjzOCEAgyjnm1ktWUCCmh08pQUw==}
     engines: {node: '>=18'}
+
+  cspell-glob@9.0.0:
+    resolution: {integrity: sha512-9xBcpFy7oHxELFLqvMs5WPT/ThU/NyrKYfuNcLUkBtxz/qGbqykWIcmdLl130fLwpcIGdq31rVSni6NsMGSriw==}
+    engines: {node: '>=20'}
 
   cspell-grammar@8.19.4:
     resolution: {integrity: sha512-lzWgZYTu/L7DNOHjxuKf8H7DCXvraHMKxtFObf8bAzgT+aBmey5fW2LviXUkZ2Lb2R0qQY+TJ5VIGoEjNf55ow==}
@@ -2533,6 +2541,8 @@ snapshots:
 
   '@cspell/url@8.19.4': {}
 
+  '@cspell/url@9.0.0': {}
+
   '@esbuild/aix-ppc64@0.25.4':
     optional: true
 
@@ -3179,6 +3189,11 @@ snapshots:
   cspell-glob@8.19.4:
     dependencies:
       '@cspell/url': 8.19.4
+      picomatch: 4.0.2
+
+  cspell-glob@9.0.0:
+    dependencies:
+      '@cspell/url': 9.0.0
       picomatch: 4.0.2
 
   cspell-grammar@8.19.4:
