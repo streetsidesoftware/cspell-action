@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/streetsidesoftware/cspell-action/compare/v6.11.1...v7.0.0) (2025-05-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update CSpell version (9.0.0) ([#2278](https://github.com/streetsidesoftware/cspell-action/issues/2278))
+
+### Documentation
+
+* Update README ([#2288](https://github.com/streetsidesoftware/cspell-action/issues/2288)) ([874818f](https://github.com/streetsidesoftware/cspell-action/commit/874818fc043f81ef068810cc6c3d5d5bd7a94aef))
+
+
+### Features
+
+* Update CSpell version (9.0.0) ([#2278](https://github.com/streetsidesoftware/cspell-action/issues/2278)) ([8a41d2d](https://github.com/streetsidesoftware/cspell-action/commit/8a41d2d43de001a26ce606d82c8a0cce4d90de48))
+
+
+### Updates and Bug Fixes
+
+* Update CSpell version (9.0.1) ([#2297](https://github.com/streetsidesoftware/cspell-action/issues/2297)) ([2fc8537](https://github.com/streetsidesoftware/cspell-action/commit/2fc853798181f6133fda13a62324b40e1d324b6d))
+* Update Dictionaries and Dependencies ([#2289](https://github.com/streetsidesoftware/cspell-action/issues/2289)) ([3d94181](https://github.com/streetsidesoftware/cspell-action/commit/3d9418150143826bdd0a80467557d15e9e0e9d6d))
+* Update Dictionaries and Dependencies ([#2290](https://github.com/streetsidesoftware/cspell-action/issues/2290)) ([01d5d65](https://github.com/streetsidesoftware/cspell-action/commit/01d5d652329040e6f79c0ca92a1239d40ad2ec6e))
+* Update Dictionaries and Dependencies ([#2296](https://github.com/streetsidesoftware/cspell-action/issues/2296)) ([e04f0dd](https://github.com/streetsidesoftware/cspell-action/commit/e04f0ddf5a3f40ed0ec18bf8fbe4e99bda55654d))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2291](https://github.com/streetsidesoftware/cspell-action/issues/2291)) ([4e70dd3](https://github.com/streetsidesoftware/cspell-action/commit/4e70dd32dbf67853058af45bfdaba3baefda8dbc))
+
 ## [6.11.1](https://github.com/streetsidesoftware/cspell-action/compare/v6.11.0...v6.11.1) (2025-05-05)
 
 
