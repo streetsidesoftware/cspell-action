@@ -21,7 +21,7 @@
     "@cspell/cspell-bundled-dicts"
   ],
   "devDependencies": {
-    "esbuild": "^0.25.4"
+    "esbuild": "^0.25.5"
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
