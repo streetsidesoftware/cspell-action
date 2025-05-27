@@ -21513,9 +21513,9 @@ var require_picomatch = __commonJS({
     var utils = require_utils3();
     var constants = require_constants6();
     var isObject = (val) => val && typeof val === "object" && !Array.isArray(val);
-    var picomatch3 = (glob3, options, returnState = false) => {
+    var picomatch2 = (glob3, options, returnState = false) => {
       if (Array.isArray(glob3)) {
-        const fns = glob3.map((input) => picomatch3(input, options, returnState));
+        const fns = glob3.map((input) => picomatch2(input, options, returnState));
         const arrayMatcher = (str) => {
           for (const isMatch of fns) {
             const state2 = isMatch(str);
@@ -21531,16 +21531,16 @@ var require_picomatch = __commonJS({
       }
       const opts = options || {};
       const posix4 = opts.windows;
-      const regex = isState ? picomatch3.compileRe(glob3, options) : picomatch3.makeRe(glob3, options, false, true);
+      const regex = isState ? picomatch2.compileRe(glob3, options) : picomatch2.makeRe(glob3, options, false, true);
       const state = regex.state;
       delete regex.state;
       let isIgnored = () => false;
       if (opts.ignore) {
         const ignoreOpts = { ...options, ignore: null, onMatch: null, onResult: null };
-        isIgnored = picomatch3(opts.ignore, ignoreOpts, returnState);
+        isIgnored = picomatch2(opts.ignore, ignoreOpts, returnState);
       }
       const matcher = (input, returnObject = false) => {
-        const { isMatch, match: match2, output } = picomatch3.test(input, regex, options, { glob: glob3, posix: posix4 });
+        const { isMatch, match: match2, output } = picomatch2.test(input, regex, options, { glob: glob3, posix: posix4 });
         const result = { glob: glob3, state, regex, posix: posix4, input, output, match: match2, isMatch };
         if (typeof opts.onResult === "function") {
           opts.onResult(result);
@@ -21566,7 +21566,7 @@ var require_picomatch = __commonJS({
       }
       return matcher;
     };
-    picomatch3.test = (input, regex, options, { glob: glob3, posix: posix4 } = {}) => {
+    picomatch2.test = (input, regex, options, { glob: glob3, posix: posix4 } = {}) => {
       if (typeof input !== "string") {
         throw new TypeError("Expected input to be a string");
       }
@@ -21583,24 +21583,24 @@ var require_picomatch = __commonJS({
       }
       if (match2 === false || opts.capture === true) {
         if (opts.matchBase === true || opts.basename === true) {
-          match2 = picomatch3.matchBase(input, regex, options, posix4);
+          match2 = picomatch2.matchBase(input, regex, options, posix4);
         } else {
           match2 = regex.exec(output);
         }
       }
       return { isMatch: Boolean(match2), match: match2, output };
     };
-    picomatch3.matchBase = (input, glob3, options) => {
-      const regex = glob3 instanceof RegExp ? glob3 : picomatch3.makeRe(glob3, options);
+    picomatch2.matchBase = (input, glob3, options) => {
+      const regex = glob3 instanceof RegExp ? glob3 : picomatch2.makeRe(glob3, options);
       return regex.test(utils.basename(input));
     };
-    picomatch3.isMatch = (str, patterns, options) => picomatch3(patterns, options)(str);
-    picomatch3.parse = (pattern, options) => {
-      if (Array.isArray(pattern)) return pattern.map((p) => picomatch3.parse(p, options));
+    picomatch2.isMatch = (str, patterns, options) => picomatch2(patterns, options)(str);
+    picomatch2.parse = (pattern, options) => {
+      if (Array.isArray(pattern)) return pattern.map((p) => picomatch2.parse(p, options));
       return parse2(pattern, { ...options, fastpaths: false });
     };
-    picomatch3.scan = (input, options) => scan3(input, options);
-    picomatch3.compileRe = (state, options, returnOutput = false, returnState = false) => {
+    picomatch2.scan = (input, options) => scan3(input, options);
+    picomatch2.compileRe = (state, options, returnOutput = false, returnState = false) => {
       if (returnOutput === true) {
         return state.output;
       }
@@ -21611,13 +21611,13 @@ var require_picomatch = __commonJS({
       if (state && state.negated === true) {
         source = `^(?!${source}).*$`;
       }
-      const regex = picomatch3.toRegex(source, options);
+      const regex = picomatch2.toRegex(source, options);
       if (returnState === true) {
         regex.state = state;
       }
       return regex;
     };
-    picomatch3.makeRe = (input, options = {}, returnOutput = false, returnState = false) => {
+    picomatch2.makeRe = (input, options = {}, returnOutput = false, returnState = false) => {
       if (!input || typeof input !== "string") {
         throw new TypeError("Expected a non-empty string");
       }
@@ -21628,9 +21628,9 @@ var require_picomatch = __commonJS({
       if (!parsed.output) {
         parsed = parse2(input, options);
       }
-      return picomatch3.compileRe(parsed, options, returnOutput, returnState);
+      return picomatch2.compileRe(parsed, options, returnOutput, returnState);
     };
-    picomatch3.toRegex = (source, options) => {
+    picomatch2.toRegex = (source, options) => {
       try {
         const opts = options || {};
         return new RegExp(source, opts.flags || (opts.nocase ? "i" : ""));
@@ -21639,8 +21639,8 @@ var require_picomatch = __commonJS({
         return /$^/;
       }
     };
-    picomatch3.constants = constants;
-    module2.exports = picomatch3;
+    picomatch2.constants = constants;
+    module2.exports = picomatch2;
   }
 });
 
@@ -21650,14 +21650,14 @@ var require_picomatch2 = __commonJS({
     "use strict";
     var pico = require_picomatch();
     var utils = require_utils3();
-    function picomatch3(glob3, options, returnState = false) {
+    function picomatch2(glob3, options, returnState = false) {
       if (options && (options.windows === null || options.windows === void 0)) {
         options = { ...options, windows: utils.isWindows() };
       }
       return pico(glob3, options, returnState);
     }
-    Object.assign(picomatch3, pico);
-    module2.exports = picomatch3;
+    Object.assign(picomatch2, pico);
+    module2.exports = picomatch2;
   }
 });
 
@@ -61606,11 +61606,10 @@ var import_node_fs6 = require("node:fs");
 var path14 = __toESM(require("node:path"), 1);
 var import_node_path9 = require("node:path");
 
-// ../node_modules/.pnpm/tinyglobby@0.2.13/node_modules/tinyglobby/dist/index.mjs
+// ../node_modules/.pnpm/tinyglobby@0.2.14/node_modules/tinyglobby/dist/index.mjs
 var import_path3 = __toESM(require("path"), 1);
 var import_fdir = __toESM(require_dist2(), 1);
 var import_picomatch2 = __toESM(require_picomatch2(), 1);
-var import_picomatch3 = __toESM(require_picomatch2(), 1);
 var ONLY_PARENT_DIRECTORIES = /^(\/?\.\.)+$/;
 function getPartialMatcher(patterns, options) {
   const patternsCount = patterns.length;
@@ -61621,16 +61620,12 @@ function getPartialMatcher(patterns, options) {
     patternsParts[i] = parts;
     const partsCount = parts.length;
     const partRegexes = Array(partsCount);
-    for (let j = 0; j < partsCount; j++) {
-      partRegexes[j] = import_picomatch3.default.makeRe(parts[j], options);
-    }
+    for (let j = 0; j < partsCount; j++) partRegexes[j] = import_picomatch2.default.makeRe(parts[j], options);
     regexes[i] = partRegexes;
   }
   return (input) => {
     const inputParts = input.split("/");
-    if (inputParts[0] === ".." && ONLY_PARENT_DIRECTORIES.test(input)) {
-      return true;
-    }
+    if (inputParts[0] === ".." && ONLY_PARENT_DIRECTORIES.test(input)) return true;
     for (let i = 0; i < patterns.length; i++) {
       const patternParts = patternsParts[i];
       const regex = regexes[i];
@@ -61639,42 +61634,32 @@ function getPartialMatcher(patterns, options) {
       let j = 0;
       while (j < minParts) {
         const part = patternParts[j];
-        if (part.includes("/")) {
-          return true;
-        }
+        if (part.includes("/")) return true;
         const match2 = regex[j].test(inputParts[j]);
-        if (!match2) {
-          break;
-        }
-        if (part === "**") {
-          return true;
-        }
+        if (!match2) break;
+        if (part === "**") return true;
         j++;
       }
-      if (j === inputPatternCount) {
-        return true;
-      }
+      if (j === inputPatternCount) return true;
     }
     return false;
   };
 }
 var splitPatternOptions = { parts: true };
-function splitPattern(path22) {
-  var _a;
-  const result = import_picomatch3.default.scan(path22, splitPatternOptions);
-  return ((_a = result.parts) == null ? void 0 : _a.length) ? result.parts : [path22];
+function splitPattern(path$1) {
+  var _result$parts;
+  const result = import_picomatch2.default.scan(path$1, splitPatternOptions);
+  return ((_result$parts = result.parts) === null || _result$parts === void 0 ? void 0 : _result$parts.length) ? result.parts : [path$1];
 }
 var isWin = process.platform === "win32";
 var POSIX_UNESCAPED_GLOB_SYMBOLS = /(?<!\\)([()[\]{}*?|]|^!|[!+@](?=\()|\\(?![()[\]{}!*+?@|]))/g;
 var WIN32_UNESCAPED_GLOB_SYMBOLS = /(?<!\\)([()[\]{}]|^!|[!+@](?=\())/g;
-var escapePosixPath = (path22) => path22.replace(POSIX_UNESCAPED_GLOB_SYMBOLS, "\\$&");
-var escapeWin32Path = (path22) => path22.replace(WIN32_UNESCAPED_GLOB_SYMBOLS, "\\$&");
+var escapePosixPath = (path$1) => path$1.replace(POSIX_UNESCAPED_GLOB_SYMBOLS, "\\$&");
+var escapeWin32Path = (path$1) => path$1.replace(WIN32_UNESCAPED_GLOB_SYMBOLS, "\\$&");
 var escapePath = isWin ? escapeWin32Path : escapePosixPath;
 function isDynamicPattern(pattern, options) {
-  if ((options == null ? void 0 : options.caseSensitiveMatch) === false) {
-    return true;
-  }
-  const scan3 = import_picomatch3.default.scan(pattern);
+  if ((options === null || options === void 0 ? void 0 : options.caseSensitiveMatch) === false) return true;
+  const scan3 = import_picomatch2.default.scan(pattern);
   return scan3.isGlob || scan3.negated;
 }
 function log2(...tasks) {
@@ -61684,29 +61669,31 @@ var PARENT_DIRECTORY = /^(\/?\.\.)+/;
 var ESCAPING_BACKSLASHES = /\\(?=[()[\]{}!*+?@|])/g;
 var BACKSLASHES = /\\/g;
 function normalizePattern3(pattern, expandDirectories, cwd, props, isIgnore) {
-  var _a;
   let result = pattern;
-  if (pattern.endsWith("/")) {
-    result = pattern.slice(0, -1);
-  }
-  if (!result.endsWith("*") && expandDirectories) {
-    result += "/**";
-  }
-  if (import_path3.default.isAbsolute(result.replace(ESCAPING_BACKSLASHES, ""))) {
-    result = import_path3.posix.relative(escapePath(cwd), result);
-  } else {
-    result = import_path3.posix.normalize(result);
-  }
+  if (pattern.endsWith("/")) result = pattern.slice(0, -1);
+  if (!result.endsWith("*") && expandDirectories) result += "/**";
+  const escapedCwd = escapePath(cwd);
+  if (import_path3.default.isAbsolute(result.replace(ESCAPING_BACKSLASHES, ""))) result = import_path3.posix.relative(escapedCwd, result);
+  else result = import_path3.posix.normalize(result);
   const parentDirectoryMatch = PARENT_DIRECTORY.exec(result);
-  if (parentDirectoryMatch == null ? void 0 : parentDirectoryMatch[0]) {
-    const potentialRoot = import_path3.posix.join(cwd, parentDirectoryMatch[0]);
-    if (props.root.length > potentialRoot.length) {
-      props.root = potentialRoot;
-      props.depthOffset = -(parentDirectoryMatch[0].length + 1) / 3;
+  const parts = splitPattern(result);
+  if (parentDirectoryMatch === null || parentDirectoryMatch === void 0 ? void 0 : parentDirectoryMatch[0]) {
+    const n = (parentDirectoryMatch[0].length + 1) / 3;
+    let i = 0;
+    const cwdParts = escapedCwd.split("/");
+    while (i < n && parts[i + n] === cwdParts[cwdParts.length + i - n]) {
+      result = result.slice(0, (n - i - 1) * 3) + result.slice((n - i) * 3 + parts[i + n].length + 1) || ".";
+      i++;
     }
-  } else if (!isIgnore && props.depthOffset >= 0) {
-    const parts = splitPattern(result);
-    (_a = props.commonPath) != null ? _a : props.commonPath = parts;
+    const potentialRoot = import_path3.posix.join(cwd, parentDirectoryMatch[0].slice(i * 3));
+    if (!potentialRoot.startsWith(".") && props.root.length > potentialRoot.length) {
+      props.root = potentialRoot;
+      props.depthOffset = -n + i;
+    }
+  }
+  if (!isIgnore && props.depthOffset >= 0) {
+    var _props$commonPath;
+    (_props$commonPath = props.commonPath) !== null && _props$commonPath !== void 0 || (props.commonPath = parts);
     const newCommonPath = [];
     const length = Math.min(props.commonPath.length, parts.length);
     for (let i = 0; i < length; i++) {
@@ -61715,9 +61702,7 @@ function normalizePattern3(pattern, expandDirectories, cwd, props, isIgnore) {
         newCommonPath.pop();
         break;
       }
-      if (part !== props.commonPath[i] || isDynamicPattern(part) || i === parts.length - 1) {
-        break;
-      }
+      if (part !== props.commonPath[i] || isDynamicPattern(part) || i === parts.length - 1) break;
       newCommonPath.push(part);
     }
     props.depthOffset = newCommonPath.length;
@@ -61727,63 +61712,44 @@ function normalizePattern3(pattern, expandDirectories, cwd, props, isIgnore) {
   return result;
 }
 function processPatterns({ patterns, ignore = [], expandDirectories = true }, cwd, props) {
-  if (typeof patterns === "string") {
-    patterns = [patterns];
-  } else if (!patterns) {
-    patterns = ["**/*"];
-  }
-  if (typeof ignore === "string") {
-    ignore = [ignore];
-  }
+  if (typeof patterns === "string") patterns = [patterns];
+  else if (!patterns) patterns = ["**/*"];
+  if (typeof ignore === "string") ignore = [ignore];
   const matchPatterns = [];
   const ignorePatterns = [];
   for (const pattern of ignore) {
-    if (!pattern) {
-      continue;
-    }
-    if (pattern[0] !== "!" || pattern[1] === "(") {
-      ignorePatterns.push(normalizePattern3(pattern, expandDirectories, cwd, props, true));
-    }
+    if (!pattern) continue;
+    if (pattern[0] !== "!" || pattern[1] === "(") ignorePatterns.push(normalizePattern3(pattern, expandDirectories, cwd, props, true));
   }
   for (const pattern of patterns) {
-    if (!pattern) {
-      continue;
-    }
-    if (pattern[0] !== "!" || pattern[1] === "(") {
-      matchPatterns.push(normalizePattern3(pattern, expandDirectories, cwd, props, false));
-    } else if (pattern[1] !== "!" || pattern[2] === "(") {
-      ignorePatterns.push(normalizePattern3(pattern.slice(1), expandDirectories, cwd, props, true));
-    }
+    if (!pattern) continue;
+    if (pattern[0] !== "!" || pattern[1] === "(") matchPatterns.push(normalizePattern3(pattern, expandDirectories, cwd, props, false));
+    else if (pattern[1] !== "!" || pattern[2] === "(") ignorePatterns.push(normalizePattern3(pattern.slice(1), expandDirectories, cwd, props, true));
   }
-  return { match: matchPatterns, ignore: ignorePatterns };
+  return {
+    match: matchPatterns,
+    ignore: ignorePatterns
+  };
 }
-function getRelativePath(path22, cwd, root) {
-  return import_path3.posix.relative(cwd, `${root}/${path22}`) || ".";
+function getRelativePath(path$1, cwd, root) {
+  return import_path3.posix.relative(cwd, `${root}/${path$1}`) || ".";
 }
-function processPath(path22, cwd, root, isDirectory2, absolute) {
-  const relativePath2 = absolute ? path22.slice(root === "/" ? 1 : root.length + 1) || "." : path22;
-  if (root === cwd) {
-    return isDirectory2 && relativePath2 !== "." ? relativePath2.slice(0, -1) : relativePath2;
-  }
+function processPath(path$1, cwd, root, isDirectory2, absolute) {
+  const relativePath2 = absolute ? path$1.slice(root === "/" ? 1 : root.length + 1) || "." : path$1;
+  if (root === cwd) return isDirectory2 && relativePath2 !== "." ? relativePath2.slice(0, -1) : relativePath2;
   return getRelativePath(relativePath2, cwd, root);
 }
 function formatPaths(paths, cwd, root) {
   for (let i = paths.length - 1; i >= 0; i--) {
-    const path22 = paths[i];
-    paths[i] = getRelativePath(path22, cwd, root) + (!path22 || path22.endsWith("/") ? "/" : "");
+    const path$1 = paths[i];
+    paths[i] = getRelativePath(path$1, cwd, root) + (!path$1 || path$1.endsWith("/") ? "/" : "");
   }
   return paths;
 }
 function crawl(options, cwd, sync) {
-  if (process.env.TINYGLOBBY_DEBUG) {
-    options.debug = true;
-  }
-  if (options.debug) {
-    log2("globbing with options:", options, "cwd:", cwd);
-  }
-  if (Array.isArray(options.patterns) && options.patterns.length === 0) {
-    return sync ? [] : Promise.resolve([]);
-  }
+  if (process.env.TINYGLOBBY_DEBUG) options.debug = true;
+  if (options.debug) log2("globbing with options:", options, "cwd:", cwd);
+  if (Array.isArray(options.patterns) && options.patterns.length === 0) return sync ? [] : Promise.resolve([]);
   const props = {
     root: cwd,
     commonPath: null,
@@ -61791,9 +61757,7 @@ function crawl(options, cwd, sync) {
   };
   const processed = processPatterns(options, cwd, props);
   const nocase = options.caseSensitiveMatch === false;
-  if (options.debug) {
-    log2("internal processing patterns:", processed);
-  }
+  if (options.debug) log2("internal processing patterns:", processed);
   const matcher = (0, import_picomatch2.default)(processed.match, {
     dot: options.dot,
     nocase,
@@ -61808,25 +61772,17 @@ function crawl(options, cwd, sync) {
     nocase
   });
   const fdirOptions = {
-    // use relative paths in the matcher
-    filters: [
-      options.debug ? (p, isDirectory2) => {
-        const path22 = processPath(p, cwd, props.root, isDirectory2, options.absolute);
-        const matches = matcher(path22);
-        if (matches) {
-          log2(`matched ${path22}`);
-        }
-        return matches;
-      } : (p, isDirectory2) => matcher(processPath(p, cwd, props.root, isDirectory2, options.absolute))
-    ],
+    filters: [options.debug ? (p, isDirectory2) => {
+      const path$1 = processPath(p, cwd, props.root, isDirectory2, options.absolute);
+      const matches = matcher(path$1);
+      if (matches) log2(`matched ${path$1}`);
+      return matches;
+    } : (p, isDirectory2) => matcher(processPath(p, cwd, props.root, isDirectory2, options.absolute))],
     exclude: options.debug ? (_, p) => {
       const relativePath2 = processPath(p, cwd, props.root, true, true);
       const skipped = relativePath2 !== "." && !partialMatcher(relativePath2) || ignore(relativePath2);
-      if (skipped) {
-        log2(`skipped ${p}`);
-      } else {
-        log2(`crawling ${p}`);
-      }
+      if (skipped) log2(`skipped ${p}`);
+      else log2(`crawling ${p}`);
       return skipped;
     } : (_, p) => {
       const relativePath2 = processPath(p, cwd, props.root, true, true);
@@ -61836,9 +61792,7 @@ function crawl(options, cwd, sync) {
     relativePaths: true,
     resolveSymlinks: true
   };
-  if (options.deep) {
-    fdirOptions.maxDepth = Math.round(options.deep - props.depthOffset);
-  }
+  if (options.deep !== void 0) fdirOptions.maxDepth = Math.round(options.deep - props.depthOffset);
   if (options.absolute) {
     fdirOptions.relativePaths = false;
     fdirOptions.resolvePaths = true;
@@ -61851,25 +61805,20 @@ function crawl(options, cwd, sync) {
   if (options.onlyDirectories) {
     fdirOptions.excludeFiles = true;
     fdirOptions.includeDirs = true;
-  } else if (options.onlyFiles === false) {
-    fdirOptions.includeDirs = true;
-  }
+  } else if (options.onlyFiles === false) fdirOptions.includeDirs = true;
   props.root = props.root.replace(BACKSLASHES, "");
   const root = props.root;
-  if (options.debug) {
-    log2("internal properties:", props);
-  }
+  if (options.debug) log2("internal properties:", props);
   const api = new import_fdir.fdir(fdirOptions).crawl(root);
-  if (cwd === root || options.absolute) {
-    return sync ? api.sync() : api.withPromise();
-  }
+  if (cwd === root || options.absolute) return sync ? api.sync() : api.withPromise();
   return sync ? formatPaths(api.sync(), cwd, root) : api.withPromise().then((paths) => formatPaths(paths, cwd, root));
 }
 async function glob(patternsOrOptions, options) {
-  if (patternsOrOptions && (options == null ? void 0 : options.patterns)) {
-    throw new Error("Cannot pass patterns as both an argument and an option");
-  }
-  const opts = Array.isArray(patternsOrOptions) || typeof patternsOrOptions === "string" ? { ...options, patterns: patternsOrOptions } : patternsOrOptions;
+  if (patternsOrOptions && (options === null || options === void 0 ? void 0 : options.patterns)) throw new Error("Cannot pass patterns as both an argument and an option");
+  const opts = Array.isArray(patternsOrOptions) || typeof patternsOrOptions === "string" ? {
+    ...options,
+    patterns: patternsOrOptions
+  } : patternsOrOptions;
   const cwd = opts.cwd ? import_path3.default.resolve(opts.cwd).replace(BACKSLASHES, "/") : process.cwd().replace(BACKSLASHES, "/");
   return crawl(opts, cwd, false);
 }
