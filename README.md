@@ -124,6 +124,9 @@ outputs:
   number_of_files_with_issues:
     description: |
       The number of files that had issues.
+  errors:
+    description: |
+      The number of errors found. This is the number issues found or configuration errors.
   files_with_issues:
     description: |
       List of files with issues. Use `fromJSON()` to decode.
