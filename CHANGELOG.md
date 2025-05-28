@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.1](https://github.com/streetsidesoftware/cspell-action/compare/v7.0.0...v7.0.1) (2025-05-28)
+
+
+### Updates and Bug Fixes
+
+* Update CSpell version (9.0.2) ([#2314](https://github.com/streetsidesoftware/cspell-action/issues/2314)) ([d51b087](https://github.com/streetsidesoftware/cspell-action/commit/d51b0875e0a39d684e34d7a1479c59835efd51a1))
+* Update Dictionaries and Dependencies ([#2308](https://github.com/streetsidesoftware/cspell-action/issues/2308)) ([dc9cd08](https://github.com/streetsidesoftware/cspell-action/commit/dc9cd08ea27609025cda2a0e0999ffa940ff1b94))
+* Update Dictionaries and Dependencies ([#2312](https://github.com/streetsidesoftware/cspell-action/issues/2312)) ([f65dd69](https://github.com/streetsidesoftware/cspell-action/commit/f65dd6967b2a277400b41b2112ab666f696641bb))
+* update output to include "errors" ([#2327](https://github.com/streetsidesoftware/cspell-action/issues/2327)) ([7e8e40b](https://github.com/streetsidesoftware/cspell-action/commit/7e8e40b09c5b7ddfca9b4e4f285b3c1222f54ea4))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2303](https://github.com/streetsidesoftware/cspell-action/issues/2303)) ([1158e1f](https://github.com/streetsidesoftware/cspell-action/commit/1158e1fa6a21a0c6f5983a146b0cf08176720cf7))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2320](https://github.com/streetsidesoftware/cspell-action/issues/2320)) ([337260e](https://github.com/streetsidesoftware/cspell-action/commit/337260e33baea41d66488a2a64500dda590e40b2))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2321](https://github.com/streetsidesoftware/cspell-action/issues/2321)) ([6387b34](https://github.com/streetsidesoftware/cspell-action/commit/6387b344b9f82a846f7d9a0e4fce9baad9c112a5))
+
 ## [7.0.0](https://github.com/streetsidesoftware/cspell-action/compare/v6.11.1...v7.0.0) (2025-05-08)
 
 
