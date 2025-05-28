@@ -34,7 +34,6 @@ jobs:
             ${{ toJSON(github.event.commits.*.id  || 'undefined') }}
             ```
 
-
   test-example:
     runs-on: ubuntu-latest
     steps:
