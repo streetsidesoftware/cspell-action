@@ -37063,12 +37063,15 @@ var require_import_fresh = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/utils.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/utils.js
 var require_utils4 = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/utils.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/utils.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.normalizePath = exports2.isRootDirectory = exports2.convertSlashes = exports2.cleanPath = void 0;
+    exports2.cleanPath = cleanPath;
+    exports2.convertSlashes = convertSlashes;
+    exports2.isRootDirectory = isRootDirectory;
+    exports2.normalizePath = normalizePath2;
     var path_1 = require("path");
     function cleanPath(path22) {
       let normalized = (0, path_1.normalize)(path22);
@@ -37076,16 +37079,14 @@ var require_utils4 = __commonJS({
         normalized = normalized.substring(0, normalized.length - 1);
       return normalized;
     }
-    exports2.cleanPath = cleanPath;
     var SLASHES_REGEX = /[\\/]/g;
     function convertSlashes(path22, separator) {
       return path22.replace(SLASHES_REGEX, separator);
     }
-    exports2.convertSlashes = convertSlashes;
+    var WINDOWS_ROOT_DIR_REGEX = /^[a-z]:[\\/]$/i;
     function isRootDirectory(path22) {
-      return path22 === "/" || /^[a-z]:\\$/i.test(path22);
+      return path22 === "/" || WINDOWS_ROOT_DIR_REGEX.test(path22);
     }
-    exports2.isRootDirectory = isRootDirectory;
     function normalizePath2(path22, options) {
       const { resolvePaths, normalizePath: normalizePath3, pathSeparator } = options;
       const pathNeedsCleaning = process.platform === "win32" && path22.includes("/") || path22.startsWith(".");
@@ -37098,22 +37099,22 @@ var require_utils4 = __commonJS({
       const needsSeperator = path22[path22.length - 1] !== pathSeparator;
       return convertSlashes(needsSeperator ? path22 + pathSeparator : path22, pathSeparator);
     }
-    exports2.normalizePath = normalizePath2;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/join-path.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/join-path.js
 var require_join_path = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/join-path.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/join-path.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.build = exports2.joinDirectoryPath = exports2.joinPathWithBasePath = void 0;
+    exports2.joinPathWithBasePath = joinPathWithBasePath;
+    exports2.joinDirectoryPath = joinDirectoryPath;
+    exports2.build = build;
     var path_1 = require("path");
     var utils_1 = require_utils4();
     function joinPathWithBasePath(filename, directoryPath) {
       return directoryPath + filename;
     }
-    exports2.joinPathWithBasePath = joinPathWithBasePath;
     function joinPathWithRelativePath(root, options) {
       return function(filename, directoryPath) {
         const sameRoot = directoryPath.startsWith(root);
@@ -37129,21 +37130,19 @@ var require_join_path = __commonJS({
     function joinDirectoryPath(filename, directoryPath, separator) {
       return directoryPath + filename + separator;
     }
-    exports2.joinDirectoryPath = joinDirectoryPath;
     function build(root, options) {
       const { relativePaths, includeBasePath } = options;
       return relativePaths && root ? joinPathWithRelativePath(root, options) : includeBasePath ? joinPathWithBasePath : joinPath;
     }
-    exports2.build = build;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/push-directory.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/push-directory.js
 var require_push_directory = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/push-directory.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/push-directory.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.build = void 0;
+    exports2.build = build;
     function pushDirectoryWithRelativePath(root) {
       return function(directoryPath, paths) {
         paths.push(directoryPath.substring(root.length) || ".");
@@ -37176,16 +37175,15 @@ var require_push_directory = __commonJS({
         return filters && filters.length ? pushDirectoryFilterWithRelativePath(root) : pushDirectoryWithRelativePath(root);
       return filters && filters.length ? pushDirectoryFilter : pushDirectory;
     }
-    exports2.build = build;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/push-file.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/push-file.js
 var require_push_file = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/push-file.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/push-file.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.build = void 0;
+    exports2.build = build;
     var pushFileFilterAndCount = (filename, _paths, counts, filters) => {
       if (filters.every((filter3) => filter3(filename, false)))
         counts.files++;
@@ -37214,16 +37212,15 @@ var require_push_file = __commonJS({
         return pushFile;
       }
     }
-    exports2.build = build;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/get-array.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/get-array.js
 var require_get_array = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/get-array.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/get-array.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.build = void 0;
+    exports2.build = build;
     var getArray = (paths) => {
       return paths;
     };
@@ -37233,16 +37230,15 @@ var require_get_array = __commonJS({
     function build(options) {
       return options.group ? getArrayGroup : getArray;
     }
-    exports2.build = build;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/group-files.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/group-files.js
 var require_group_files = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/group-files.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/group-files.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.build = void 0;
+    exports2.build = build;
     var groupFiles = (groups, directory, files) => {
       groups.push({ directory, files, dir: directory });
     };
@@ -37251,19 +37247,18 @@ var require_group_files = __commonJS({
     function build(options) {
       return options.group ? groupFiles : empty;
     }
-    exports2.build = build;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/resolve-symlink.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/resolve-symlink.js
 var require_resolve_symlink = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/resolve-symlink.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/resolve-symlink.js"(exports2) {
     "use strict";
     var __importDefault = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
     };
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.build = void 0;
+    exports2.build = build;
     var fs_1 = __importDefault(require("fs"));
     var path_1 = require("path");
     var resolveSymlinksAsync = function(path22, state, callback) {
@@ -37301,7 +37296,6 @@ var require_resolve_symlink = __commonJS({
         return null;
       return isSynchronous ? resolveSymlinks : resolveSymlinksAsync;
     }
-    exports2.build = build;
     function isRecursive(path22, resolved, state) {
       if (state.options.useRealPaths)
         return isRecursiveUsingRealPaths(resolved, state);
@@ -37324,12 +37318,12 @@ var require_resolve_symlink = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/invoke-callback.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/invoke-callback.js
 var require_invoke_callback = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/invoke-callback.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/invoke-callback.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.build = void 0;
+    exports2.build = build;
     var onlyCountsSync = (state) => {
       return state.counts;
     };
@@ -37375,34 +37369,33 @@ var require_invoke_callback = __commonJS({
       else
         return isSynchronous ? defaultSync : defaultAsync;
     }
-    exports2.build = build;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/walk-directory.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/walk-directory.js
 var require_walk_directory = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/functions/walk-directory.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/functions/walk-directory.js"(exports2) {
     "use strict";
     var __importDefault = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
     };
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.build = void 0;
+    exports2.build = build;
     var fs_1 = __importDefault(require("fs"));
     var readdirOpts = { withFileTypes: true };
     var walkAsync = (state, crawlPath, directoryPath, currentDepth, callback) => {
-      if (currentDepth < 0)
+      state.queue.enqueue();
+      if (currentDepth <= 0)
         return state.queue.dequeue(null, state);
       state.visited.push(crawlPath);
       state.counts.directories++;
-      state.queue.enqueue();
       fs_1.default.readdir(crawlPath || ".", readdirOpts, (error4, entries = []) => {
         callback(entries, directoryPath, currentDepth);
         state.queue.dequeue(state.options.suppressErrors ? null : error4, state);
       });
     };
     var walkSync = (state, crawlPath, directoryPath, currentDepth, callback) => {
-      if (currentDepth < 0)
+      if (currentDepth <= 0)
         return;
       state.visited.push(crawlPath);
       state.counts.directories++;
@@ -37418,13 +37411,12 @@ var require_walk_directory = __commonJS({
     function build(isSynchronous) {
       return isSynchronous ? walkSync : walkAsync;
     }
-    exports2.build = build;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/queue.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/queue.js
 var require_queue = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/queue.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/queue.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.Queue = void 0;
@@ -37436,19 +37428,25 @@ var require_queue = __commonJS({
       }
       enqueue() {
         this.count++;
+        return this.count;
       }
       dequeue(error4, output) {
-        if (--this.count <= 0 || error4)
+        if (this.onQueueEmpty && (--this.count <= 0 || error4)) {
           this.onQueueEmpty(error4, output);
+          if (error4) {
+            output.controller.abort();
+            this.onQueueEmpty = void 0;
+          }
+        }
       }
     };
     exports2.Queue = Queue;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/counter.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/counter.js
 var require_counter = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/counter.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/counter.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.Counter = void 0;
@@ -37479,9 +37477,9 @@ var require_counter = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/walker.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/walker.js
 var require_walker = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/walker.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/walker.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
@@ -37501,15 +37499,25 @@ var require_walker = __commonJS({
     } : function(o, v) {
       o["default"] = v;
     });
-    var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule) return mod;
-      var result = {};
-      if (mod != null) {
-        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-      }
-      __setModuleDefault(result, mod);
-      return result;
-    };
+    var __importStar = exports2 && exports2.__importStar || /* @__PURE__ */ function() {
+      var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function(o2) {
+          var ar = [];
+          for (var k in o2) if (Object.prototype.hasOwnProperty.call(o2, k)) ar[ar.length] = k;
+          return ar;
+        };
+        return ownKeys(o);
+      };
+      return function(mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) {
+          for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        }
+        __setModuleDefault(result, mod);
+        return result;
+      };
+    }();
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.Walker = void 0;
     var path_1 = require("path");
@@ -37549,7 +37557,8 @@ var require_walker = __commonJS({
           options,
           queue: new queue_1.Queue((error4, state) => this.callbackInvoker(state, error4, callback)),
           symlinks: /* @__PURE__ */ new Map(),
-          visited: [""].slice(0, 0)
+          visited: [""].slice(0, 0),
+          controller: new AbortController()
         };
         this.joinPath = joinPath.build(this.root, options);
         this.pushDirectory = pushDirectory.build(this.root, options);
@@ -37560,14 +37569,14 @@ var require_walker = __commonJS({
         this.walkDirectory = walkDirectory.build(this.isSynchronous);
       }
       start() {
+        this.pushDirectory(this.root, this.state.paths, this.state.options.filters);
         this.walkDirectory(this.state, this.root, this.root, this.state.options.maxDepth, this.walk);
         return this.isSynchronous ? this.callbackInvoker(this.state, null) : null;
       }
       walk = (entries, directoryPath, depth) => {
-        const { paths, options: { filters, resolveSymlinks, excludeSymlinks, exclude, maxFiles, signal, useRealPaths, pathSeparator } } = this.state;
-        if (signal && signal.aborted || maxFiles && paths.length > maxFiles)
+        const { paths, options: { filters, resolveSymlinks, excludeSymlinks, exclude, maxFiles, signal, useRealPaths, pathSeparator }, controller } = this.state;
+        if (controller.signal.aborted || signal && signal.aborted || maxFiles && paths.length > maxFiles)
           return;
-        this.pushDirectory(directoryPath, paths, filters);
         const files = this.getArray(this.state.paths);
         for (let i = 0; i < entries.length; ++i) {
           const entry = entries[i];
@@ -37578,8 +37587,9 @@ var require_walker = __commonJS({
             let path22 = joinPath.joinDirectoryPath(entry.name, directoryPath, this.state.options.pathSeparator);
             if (exclude && exclude(entry.name, path22))
               continue;
+            this.pushDirectory(path22, paths, filters);
             this.walkDirectory(this.state, path22, path22, depth - 1, this.walk);
-          } else if (entry.isSymbolicLink() && this.resolveSymlink) {
+          } else if (this.resolveSymlink && entry.isSymbolicLink()) {
             let path22 = joinPath.joinPathWithBasePath(entry.name, directoryPath);
             this.resolveSymlink(path22, this.state, (stat3, resolvedPath) => {
               if (stat3.isDirectory()) {
@@ -37604,12 +37614,13 @@ var require_walker = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/async.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/async.js
 var require_async = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/async.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/async.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.callback = exports2.promise = void 0;
+    exports2.promise = promise;
+    exports2.callback = callback;
     var walker_1 = require_walker();
     function promise(root, options) {
       return new Promise((resolve8, reject) => {
@@ -37620,33 +37631,30 @@ var require_async = __commonJS({
         });
       });
     }
-    exports2.promise = promise;
     function callback(root, options, callback2) {
       let walker2 = new walker_1.Walker(root, options, callback2);
       walker2.start();
     }
-    exports2.callback = callback;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/sync.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/sync.js
 var require_sync = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/api/sync.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/api/sync.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.sync = void 0;
+    exports2.sync = sync;
     var walker_1 = require_walker();
     function sync(root, options) {
       const walker2 = new walker_1.Walker(root, options);
       return walker2.start();
     }
-    exports2.sync = sync;
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/builder/api-builder.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/builder/api-builder.js
 var require_api_builder = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/builder/api-builder.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/builder/api-builder.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.APIBuilder = void 0;
@@ -37673,9 +37681,9 @@ var require_api_builder = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/builder/index.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/builder/index.js
 var require_builder = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/builder/index.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/builder/index.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.Builder = void 0;
@@ -37810,17 +37818,17 @@ var require_builder = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/types.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/types.js
 var require_types = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/types.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/types.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
   }
 });
 
-// ../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/index.js
+// ../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/index.js
 var require_dist2 = __commonJS({
-  "../node_modules/.pnpm/fdir@6.4.4_picomatch@4.0.2/node_modules/fdir/dist/index.js"(exports2) {
+  "../node_modules/.pnpm/fdir@6.4.5_picomatch@4.0.2/node_modules/fdir/dist/index.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
