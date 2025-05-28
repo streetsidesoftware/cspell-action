@@ -14,10 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: ./
         id: cspell-action
         env:
           TEST: true
+
       - name: Show Results
         uses: streetsidesoftware/actions/public/summary@v1
         with:
