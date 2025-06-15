@@ -39241,7 +39241,7 @@ var CSpellReporterForGithubAction = class {
   };
   finished = false;
   verbose;
-  _issue(issue) {
+  _issue(issue, _options) {
     const { issues, issueCounts } = this;
     const uri = issue.uri;
     if (uri) {
