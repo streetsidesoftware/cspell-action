@@ -10,7 +10,6 @@ import type {
     RunResult,
 } from '@cspell/cspell-types';
 import * as path from 'path';
-import { _ } from 'vitest/dist/chunks/reporters.d.C1ogPriE.js';
 import { URI } from 'vscode-uri';
 
 const core = { debug, info, warning, error };
