@@ -6,9 +6,11 @@ import type {
     MessageType,
     ProgressFileComplete,
     ProgressItem,
+    ReportIssueOptions,
     RunResult,
 } from '@cspell/cspell-types';
 import * as path from 'path';
+import { _ } from 'vitest/dist/chunks/reporters.d.C1ogPriE.js';
 import { URI } from 'vscode-uri';
 
 const core = { debug, info, warning, error };
@@ -63,7 +65,7 @@ export class CSpellReporterForGithubAction {
         this.verbose = options.verbose;
     }
 
-    _issue(issue: Issue) {
+    _issue(issue: Issue, _options?: ReportIssueOptions) {
         const { issues, issueCounts } = this;
         const uri = issue.uri;
         if (uri) {
