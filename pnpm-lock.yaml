@@ -973,8 +973,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001724:
-    resolution: {integrity: sha512-WqJo7p0TbHDOythNTqYujmaJTvtYRZrjpP8TCvH6Vb9CYJerJNKamKzIWOM4BkQatWj9H2lYulpdAQNBe7QhNA==}
+  caniuse-lite@1.0.30001725:
+    resolution: {integrity: sha512-OllFBaEDJx2nwkQSHdScjdRGCCLb9cb4fq50W3A/njtnJFRaRDQfGIl+J8vqAvwwKtbWB4Ptf4YdPXEculKdwg==}
 
   chai@5.2.0:
     resolution: {integrity: sha512-mCuXncKXk5iCLhfhwTc0izo0gtEmpz5CtG2y8GiOINBlMVS6v8TMRc5TaLWKS6692m9+dVVfzgeVxR5UxWHTYw==}
@@ -2817,7 +2817,7 @@ snapshots:
 
   browserslist@4.25.0:
     dependencies:
-      caniuse-lite: 1.0.30001724
+      caniuse-lite: 1.0.30001725
       electron-to-chromium: 1.5.173
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.0)
@@ -2826,7 +2826,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  caniuse-lite@1.0.30001724: {}
+  caniuse-lite@1.0.30001725: {}
 
   chai@5.2.0:
     dependencies:
