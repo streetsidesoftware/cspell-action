@@ -16,6 +16,7 @@ export function getActionParams(): ActionParamsInput {
         check_dot_files: tf(getInput('check_dot_files')),
         use_cspell_files: tf(getInput('use_cspell_files')),
         suggestions: tf(getInput('suggestions')),
+        report: getInput('report').toLowerCase(),
     };
     return applyDefaults(params);
 }

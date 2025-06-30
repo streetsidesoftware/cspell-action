@@ -65358,7 +65358,8 @@ function getActionParams() {
     verbose: tf((0, import_core3.getInput)("verbose")),
     check_dot_files: tf((0, import_core3.getInput)("check_dot_files")),
     use_cspell_files: tf((0, import_core3.getInput)("use_cspell_files")),
-    suggestions: tf((0, import_core3.getInput)("suggestions"))
+    suggestions: tf((0, import_core3.getInput)("suggestions")),
+    report: (0, import_core3.getInput)("report").toLowerCase()
   };
   return applyDefaults(params);
 }
