@@ -75,6 +75,11 @@ jobs:
 
     # Use the `files` setting found in the CSpell configuration instead of `input.files`.
     use_cspell_files: false
+
+    # Set how unknown words are reported.
+    # Allowed values are: all, simple, typos, flagged
+    # Default: all
+    report: all
 ```
 
 ## Yarn 2 - PlugNPlay

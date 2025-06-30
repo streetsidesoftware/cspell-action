@@ -38749,7 +38749,8 @@ var defaultActionParams = {
   verbose: "false",
   check_dot_files: "explicit",
   use_cspell_files: "false",
-  suggestions: "false"
+  suggestions: "false",
+  report: "all"
 };
 function applyDefaults(params) {
   const results = { ...defaultActionParams, ...params };
@@ -38790,7 +38791,8 @@ function validateActionParams(params, logError2) {
     validateTrueFalse("verbose"),
     validateTrueFalse("use_cspell_files"),
     validateTrueFalse("suggestions"),
-    validateOptions("check_dot_files", ["true", "false", "explicit"])
+    validateOptions("check_dot_files", ["true", "false", "explicit"]),
+    validateOptions("report", ["all", "simple", "typos", "flagged"])
   ];
   const success = validations.map((fn) => fn(params)).map((msg) => !msg || (logError2(msg), false)).reduce((a, b) => a && b, true);
   if (!success) {
@@ -65262,7 +65264,7 @@ function lint(fileGlobs, options, reporter) {
 
 // src/spell.ts
 async function lint2(globs, lintOptions, reporter) {
-  const { root, config, checkDotFiles, files, showSuggestions } = lintOptions;
+  const { root, config, checkDotFiles, files, showSuggestions, report } = lintOptions;
   const mustFindFiles = !files;
   const options = {
     root,
@@ -65270,7 +65272,8 @@ async function lint2(globs, lintOptions, reporter) {
     files,
     // filterFiles: files ? false : undefined,
     mustFindFiles,
-    showSuggestions
+    showSuggestions,
+    report
   };
   if (checkDotFiles) {
     options.dot = true;
@@ -65328,7 +65331,8 @@ async function checkSpelling(params, globs, files) {
     config: params.config || void 0,
     checkDotFiles: checkDotMap[params.check_dot_files],
     files,
-    showSuggestions: params.suggestions === "true"
+    showSuggestions: params.suggestions === "true",
+    report: params.report
   };
   const reporterOptions = {
     verbose: params.verbose === "true",

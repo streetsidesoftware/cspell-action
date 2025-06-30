@@ -1,6 +1,7 @@
 import type { CSpellReporter } from 'cspell';
 import { type CSpellApplicationOptions, lint as cspellAppLint } from 'cspell';
 
+export type ReportChoices = 'all' | 'simple' | 'typos' | 'flagged';
 export interface LintOptions {
     root: string;
     config?: string;
@@ -13,6 +14,7 @@ export interface LintOptions {
     checkDotFiles: boolean | undefined;
     files?: string[] | undefined;
     showSuggestions?: boolean;
+    report?: ReportChoices | undefined;
 }
 
 /**
@@ -22,7 +24,7 @@ export interface LintOptions {
  * @param reporter - reporter to use.
  */
 export async function lint(globs: string[], lintOptions: LintOptions, reporter: CSpellReporter): Promise<void> {
-    const { root, config, checkDotFiles, files, showSuggestions } = lintOptions;
+    const { root, config, checkDotFiles, files, showSuggestions, report } = lintOptions;
     // It is expected that `files` in the configuration will be used to filter the files.
     const mustFindFiles = !files;
     const options: CSpellApplicationOptions = {
@@ -32,6 +34,7 @@ export async function lint(globs: string[], lintOptions: LintOptions, reporter: 
         // filterFiles: files ? false : undefined,
         mustFindFiles,
         showSuggestions,
+        report,
     };
 
     if (checkDotFiles) {

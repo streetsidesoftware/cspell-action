@@ -92,6 +92,7 @@ async function checkSpelling(
         checkDotFiles: checkDotMap[params.check_dot_files],
         files,
         showSuggestions: params.suggestions === 'true',
+        report: params.report,
     };
 
     const reporterOptions = {
