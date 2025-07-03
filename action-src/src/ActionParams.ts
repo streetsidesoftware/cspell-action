@@ -1,6 +1,7 @@
 import { existsSync } from 'fs';
 
 import { AppError } from './error.js';
+import { ReportChoices } from './spell.js';
 
 /**
  * [Workflow commands for GitHub Actions - GitHub Docs](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter)
@@ -62,6 +63,16 @@ export interface ActionParams {
      * @default 'false'
      */
     use_cspell_files: TrueFalse;
+
+    /**
+     * Set how unknown words are reported.
+     * 'all' - all issues are reported.
+     * 'simple' - only unknown words are reported.
+     * 'typos' - only typos are reported.
+     * 'flagged' - only flagged words are reported.
+     * @default 'all'
+     */
+    report: ReportChoices;
 }
 
 const defaultActionParams: ActionParams = {
@@ -76,6 +87,7 @@ const defaultActionParams: ActionParams = {
     check_dot_files: 'explicit',
     use_cspell_files: 'false',
     suggestions: 'false',
+    report: 'all',
 };
 
 type ValidationFunction = (params: ActionParamsInput) => string | undefined;
@@ -134,6 +146,7 @@ export function validateActionParams(
         validateTrueFalse('use_cspell_files'),
         validateTrueFalse('suggestions'),
         validateOptions('check_dot_files', ['true', 'false', 'explicit']),
+        validateOptions('report', ['all', 'simple', 'typos', 'flagged']),
     ];
     const success = validations
         .map((fn) => fn(params))
