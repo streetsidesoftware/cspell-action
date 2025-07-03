@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/streetsidesoftware/cspell-action/compare/v7.0.1...v7.1.0) (2025-07-03)
+
+
+### Features
+
+* expose the `report` argument via the action inputs ([#2373](https://github.com/streetsidesoftware/cspell-action/issues/2373)) ([e874b8c](https://github.com/streetsidesoftware/cspell-action/commit/e874b8c631e636f80da2bb9a6482b1f9aadc25e3))
+* Update CSpell version (9.1.1) ([#2349](https://github.com/streetsidesoftware/cspell-action/issues/2349)) ([dafdece](https://github.com/streetsidesoftware/cspell-action/commit/dafdecea11fc19e66214f84274d37fe4cb2a4eaf))
+
+
+### Updates and Bug Fixes
+
+* Update CSpell version (9.1.2) ([#2358](https://github.com/streetsidesoftware/cspell-action/issues/2358)) ([4082801](https://github.com/streetsidesoftware/cspell-action/commit/4082801fef050a36832116fc91253dc99581fc67))
+* Update Dictionaries and Dependencies ([#2341](https://github.com/streetsidesoftware/cspell-action/issues/2341)) ([366bfc1](https://github.com/streetsidesoftware/cspell-action/commit/366bfc1caa7b4630d15720d5eca25e3999557e5e))
+* Update Dictionaries and Dependencies ([#2345](https://github.com/streetsidesoftware/cspell-action/issues/2345)) ([0c9416c](https://github.com/streetsidesoftware/cspell-action/commit/0c9416cecf6c064a91a379dec294680ee50a0477))
+* Update Dictionaries and Dependencies ([#2348](https://github.com/streetsidesoftware/cspell-action/issues/2348)) ([acadf5d](https://github.com/streetsidesoftware/cspell-action/commit/acadf5d06be20fb20edbf721ee9413f07a396704))
+* Update Dictionaries and Dependencies ([#2355](https://github.com/streetsidesoftware/cspell-action/issues/2355)) ([1493194](https://github.com/streetsidesoftware/cspell-action/commit/1493194a86d1cabc4f5b030fc383a0fcb4710542))
+* Update Dictionaries and Dependencies ([#2363](https://github.com/streetsidesoftware/cspell-action/issues/2363)) ([806cff9](https://github.com/streetsidesoftware/cspell-action/commit/806cff988bb291083f108acdbda7a8ef6e2bf3a2))
+* Update Dictionaries and Dependencies ([#2372](https://github.com/streetsidesoftware/cspell-action/issues/2372)) ([b343c10](https://github.com/streetsidesoftware/cspell-action/commit/b343c1031a2167562f1eda3cb757678589e4999d))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2335](https://github.com/streetsidesoftware/cspell-action/issues/2335)) ([1d972ad](https://github.com/streetsidesoftware/cspell-action/commit/1d972adc57b4cfe67aeeba47dd836897afbe8926))
+
 ## [7.0.1](https://github.com/streetsidesoftware/cspell-action/compare/v7.0.0...v7.0.1) (2025-05-28)
 
 
