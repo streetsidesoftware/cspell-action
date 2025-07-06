@@ -942,7 +942,7 @@ var require_util = __commonJS({
     var { InvalidArgumentError } = require_errors();
     var { Blob: Blob2 } = require("buffer");
     var nodeUtil = require("util");
-    var { stringify: stringify3 } = require("querystring");
+    var { stringify: stringify4 } = require("querystring");
     var { headerNameLowerCasedRecord } = require_constants();
     var [nodeMajor, nodeMinor] = process.versions.node.split(".").map((v) => Number(v));
     function nop() {
@@ -957,7 +957,7 @@ var require_util = __commonJS({
       if (url2.includes("?") || url2.includes("#")) {
         throw new Error('Query params cannot be passed when url already contains "?" or "#".');
       }
-      const stringified = stringify3(queryParams);
+      const stringified = stringify4(queryParams);
       if (stringified) {
         url2 += "?" + stringified;
       }
@@ -4815,7 +4815,7 @@ var require_dataURL = __commonJS({
       }
       return bytes;
     }
-    function collectAnHTTPQuotedString(input, position, extractValue) {
+    function collectAnHTTPQuotedString(input, position, extractValue2) {
       const positionStart = position.position;
       let value = "";
       assert24(input[position.position] === '"');
@@ -4843,7 +4843,7 @@ var require_dataURL = __commonJS({
           break;
         }
       }
-      if (extractValue) {
+      if (extractValue2) {
         return value;
       }
       return input.slice(positionStart, position.position);
@@ -15582,7 +15582,7 @@ var require_util6 = __commonJS({
         throw new Error("Invalid cookie max-age");
       }
     }
-    function stringify3(cookie) {
+    function stringify4(cookie) {
       if (cookie.name.length === 0) {
         return null;
       }
@@ -15636,7 +15636,7 @@ var require_util6 = __commonJS({
       validateCookiePath,
       validateCookieValue,
       toIMFDate,
-      stringify: stringify3
+      stringify: stringify4
     };
   }
 });
@@ -15786,7 +15786,7 @@ var require_cookies = __commonJS({
   "../node_modules/.pnpm/undici@5.29.0/node_modules/undici/lib/cookies/index.js"(exports2, module2) {
     "use strict";
     var { parseSetCookie } = require_parse();
-    var { stringify: stringify3 } = require_util6();
+    var { stringify: stringify4 } = require_util6();
     var { webidl } = require_webidl();
     var { Headers } = require_headers();
     function getCookies(headers) {
@@ -15828,9 +15828,9 @@ var require_cookies = __commonJS({
       webidl.argumentLengthCheck(arguments, 2, { header: "setCookie" });
       webidl.brandCheck(headers, Headers, { strict: false });
       cookie = webidl.converters.Cookie(cookie);
-      const str = stringify3(cookie);
+      const str = stringify4(cookie);
       if (str) {
-        headers.append("Set-Cookie", stringify3(cookie));
+        headers.append("Set-Cookie", stringify4(cookie));
       }
     }
     webidl.converters.DeleteCookieAttributes = webidl.dictionaryConverter([
@@ -19871,9 +19871,9 @@ var require_context = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.1.2/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.1.3/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
 var require_requireResolve = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-resolver@9.1.2/node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports2) {
+  "../node_modules/.pnpm/@cspell+cspell-resolver@9.1.3/node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.requireResolve = requireResolve2;
@@ -20765,7 +20765,7 @@ var require_parse2 = __commonJS({
     var syntaxError = (type, char) => {
       return `Missing ${type}: "${char}" - use "\\\\${char}" to match literal characters`;
     };
-    var parse2 = (input, options) => {
+    var parse3 = (input, options) => {
       if (typeof input !== "string") {
         throw new TypeError("Expected a string");
       }
@@ -20913,7 +20913,7 @@ var require_parse2 = __commonJS({
             output = token.close = `)$))${extglobStar}`;
           }
           if (token.inner.includes("*") && (rest = remaining()) && /^\.[^\\/.]+$/.test(rest)) {
-            const expression = parse2(rest, { ...options, fastpaths: false }).output;
+            const expression = parse3(rest, { ...options, fastpaths: false }).output;
             output = token.close = `)${expression})${extglobStar})`;
           }
           if (token.prev.type === "bos") {
@@ -21435,7 +21435,7 @@ var require_parse2 = __commonJS({
       }
       return state;
     };
-    parse2.fastpaths = (input, options) => {
+    parse3.fastpaths = (input, options) => {
       const opts = { ...options };
       const max4 = typeof opts.maxLength === "number" ? Math.min(MAX_LENGTH, opts.maxLength) : MAX_LENGTH;
       const len = input.length;
@@ -21500,7 +21500,7 @@ var require_parse2 = __commonJS({
       }
       return source;
     };
-    module2.exports = parse2;
+    module2.exports = parse3;
   }
 });
 
@@ -21509,7 +21509,7 @@ var require_picomatch = __commonJS({
   "../node_modules/.pnpm/picomatch@4.0.2/node_modules/picomatch/lib/picomatch.js"(exports2, module2) {
     "use strict";
     var scan3 = require_scan();
-    var parse2 = require_parse2();
+    var parse3 = require_parse2();
     var utils = require_utils3();
     var constants = require_constants6();
     var isObject = (val) => val && typeof val === "object" && !Array.isArray(val);
@@ -21597,7 +21597,7 @@ var require_picomatch = __commonJS({
     picomatch2.isMatch = (str, patterns, options) => picomatch2(patterns, options)(str);
     picomatch2.parse = (pattern, options) => {
       if (Array.isArray(pattern)) return pattern.map((p) => picomatch2.parse(p, options));
-      return parse2(pattern, { ...options, fastpaths: false });
+      return parse3(pattern, { ...options, fastpaths: false });
     };
     picomatch2.scan = (input, options) => scan3(input, options);
     picomatch2.compileRe = (state, options, returnOutput = false, returnState = false) => {
@@ -21623,10 +21623,10 @@ var require_picomatch = __commonJS({
       }
       let parsed = { negated: false, fastpaths: true };
       if (options.fastpaths !== false && (input[0] === "." || input[0] === "*")) {
-        parsed.output = parse2.fastpaths(input, options);
+        parsed.output = parse3.fastpaths(input, options);
       }
       if (!parsed.output) {
-        parsed = parse2(input, options);
+        parsed = parse3(input, options);
       }
       return picomatch2.compileRe(parsed, options, returnOutput, returnState);
     };
@@ -21708,7 +21708,7 @@ var require_esprima = __commonJS({
             var jsx_parser_1 = __webpack_require__(3);
             var parser_1 = __webpack_require__(8);
             var tokenizer_1 = __webpack_require__(15);
-            function parse2(code, options, delegate) {
+            function parse3(code, options, delegate) {
               var commentHandler = null;
               var proxyDelegate = function(node, metadata) {
                 if (delegate) {
@@ -21753,17 +21753,17 @@ var require_esprima = __commonJS({
               }
               return ast;
             }
-            exports3.parse = parse2;
+            exports3.parse = parse3;
             function parseModule(code, options, delegate) {
               var parsingOptions = options || {};
               parsingOptions.sourceType = "module";
-              return parse2(code, parsingOptions, delegate);
+              return parse3(code, parsingOptions, delegate);
             }
             exports3.parseModule = parseModule;
             function parseScript(code, options, delegate) {
               var parsingOptions = options || {};
               parsingOptions.sourceType = "script";
-              return parse2(code, parsingOptions, delegate);
+              return parse3(code, parsingOptions, delegate);
             }
             exports3.parseScript = parseScript;
             function tokenize(code, options, delegate) {
@@ -29271,7 +29271,7 @@ var require_parse3 = __commonJS({
       }
     }
     var isObject = (subject) => Object(subject) === subject;
-    var parse2 = (code, rev, no_comments) => {
+    var parse3 = (code, rev, no_comments) => {
       clean5();
       tokens = tokenize(code);
       reviver = rev;
@@ -29300,7 +29300,7 @@ var require_parse3 = __commonJS({
       return result;
     };
     module2.exports = {
-      parse: parse2,
+      parse: parse3,
       tokenize
     };
   }
@@ -29441,7 +29441,7 @@ var require_stringify = __commonJS({
           deeper_gap
         );
         inside += before || LF2 + deeper_gap;
-        inside += stringify3(i, value, deeper_gap) || STR_NULL;
+        inside += stringify4(i, value, deeper_gap) || STR_NULL;
         inside += process_comments(value, AFTER_VALUE(i), deeper_gap);
         after_comma = process_comments(value, AFTER(i), deeper_gap);
       }
@@ -29462,7 +29462,7 @@ var require_stringify = __commonJS({
       let first3 = true;
       const keys3 = isArray3(replacer) ? replacer : Object.keys(value);
       const iteratee = (key) => {
-        const sv = stringify3(key, value, deeper_gap);
+        const sv = stringify4(key, value, deeper_gap);
         if (sv === UNDEFINED) {
           return;
         }
@@ -29487,7 +29487,7 @@ var require_stringify = __commonJS({
       );
       return CURLY_BRACKET_OPEN + join_content(inside, value, gap) + CURLY_BRACKET_CLOSE;
     };
-    function stringify3(key, holder, gap) {
+    function stringify4(key, holder, gap) {
       let value = holder[key];
       if (isObject(value) && isFunction(value.toJSON)) {
         value = value.toJSON(key);
@@ -29535,7 +29535,7 @@ var require_stringify = __commonJS({
       }
       replacer = replacer_;
       indent = indent_;
-      const str = is_primitive_object(value) ? JSON.stringify(value) : stringify3("", { "": value }, EMPTY);
+      const str = is_primitive_object(value) ? JSON.stringify(value) : stringify4("", { "": value }, EMPTY);
       clean5();
       return isObject(value) ? process_comments(value, PREFIX_BEFORE_ALL, EMPTY).trimLeft() + str + process_comments(value, PREFIX_AFTER_ALL, EMPTY).trimRight() : str;
     };
@@ -29545,13 +29545,13 @@ var require_stringify = __commonJS({
 // ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/index.js
 var require_src2 = __commonJS({
   "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/index.js"(exports2, module2) {
-    var { parse: parse2, tokenize } = require_parse3();
-    var stringify3 = require_stringify();
+    var { parse: parse3, tokenize } = require_parse3();
+    var stringify4 = require_stringify();
     var { CommentArray } = require_array();
     var { assign: assign3 } = require_common();
     module2.exports = {
-      parse: parse2,
-      stringify: stringify3,
+      parse: parse3,
+      stringify: stringify4,
       tokenize,
       CommentArray,
       assign: assign3
@@ -31024,7 +31024,7 @@ var require_stringify2 = __commonJS({
         props.push(doc.directives.tagString(tag));
       return props.join(" ");
     }
-    function stringify3(item, ctx, onComment, onChompKeep) {
+    function stringify4(item, ctx, onComment, onChompKeep) {
       if (identity.isPair(item))
         return item.toString(ctx, onComment, onChompKeep);
       if (identity.isAlias(item)) {
@@ -31053,7 +31053,7 @@ var require_stringify2 = __commonJS({
 ${ctx.indent}${str}`;
     }
     exports2.createStringifyContext = createStringifyContext;
-    exports2.stringify = stringify3;
+    exports2.stringify = stringify4;
   }
 });
 
@@ -31063,7 +31063,7 @@ var require_stringifyPair = __commonJS({
     "use strict";
     var identity = require_identity();
     var Scalar2 = require_Scalar();
-    var stringify3 = require_stringify2();
+    var stringify4 = require_stringify2();
     var stringifyComment = require_stringifyComment();
     function stringifyPair({ key, value }, ctx, onComment, onChompKeep) {
       const { allNullValues, doc, indent, indentStep, options: { commentString, indentSeq, simpleKeys } } = ctx;
@@ -31085,7 +31085,7 @@ var require_stringifyPair = __commonJS({
       });
       let keyCommentDone = false;
       let chompKeep = false;
-      let str = stringify3.stringify(key, ctx, () => keyCommentDone = true, () => chompKeep = true);
+      let str = stringify4.stringify(key, ctx, () => keyCommentDone = true, () => chompKeep = true);
       if (!explicitKey && !ctx.inFlow && str.length > 1024) {
         if (simpleKeys)
           throw new Error("With simple keys, single line scalar must not span more than 1024 characters");
@@ -31137,7 +31137,7 @@ ${indent}:`;
         ctx.indent = ctx.indent.substring(2);
       }
       let valueCommentDone = false;
-      const valueStr = stringify3.stringify(value, ctx, () => valueCommentDone = true, () => chompKeep = true);
+      const valueStr = stringify4.stringify(value, ctx, () => valueCommentDone = true, () => chompKeep = true);
       let ws = " ";
       if (keyComment || vsb || vcb) {
         ws = vsb ? "\n" : "";
@@ -31275,7 +31275,7 @@ var require_addPairToJSMap = __commonJS({
     "use strict";
     var log3 = require_log();
     var merge5 = require_merge();
-    var stringify3 = require_stringify2();
+    var stringify4 = require_stringify2();
     var identity = require_identity();
     var toJS = require_toJS();
     function addPairToJSMap(ctx, map3, { key, value }) {
@@ -31311,7 +31311,7 @@ var require_addPairToJSMap = __commonJS({
       if (typeof jsKey !== "object")
         return String(jsKey);
       if (identity.isNode(key) && ctx?.doc) {
-        const strCtx = stringify3.createStringifyContext(ctx.doc, {});
+        const strCtx = stringify4.createStringifyContext(ctx.doc, {});
         strCtx.anchors = /* @__PURE__ */ new Set();
         for (const node of ctx.anchors.keys())
           strCtx.anchors.add(node.anchor);
@@ -31378,12 +31378,12 @@ var require_stringifyCollection = __commonJS({
   "../node_modules/.pnpm/yaml@2.8.0/node_modules/yaml/dist/stringify/stringifyCollection.js"(exports2) {
     "use strict";
     var identity = require_identity();
-    var stringify3 = require_stringify2();
+    var stringify4 = require_stringify2();
     var stringifyComment = require_stringifyComment();
     function stringifyCollection(collection, ctx, options) {
       const flow = ctx.inFlow ?? collection.flow;
-      const stringify4 = flow ? stringifyFlowCollection : stringifyBlockCollection;
-      return stringify4(collection, ctx, options);
+      const stringify5 = flow ? stringifyFlowCollection : stringifyBlockCollection;
+      return stringify5(collection, ctx, options);
     }
     function stringifyBlockCollection({ comment, items }, ctx, { blockItemPrefix, flowChars, itemIndent, onChompKeep, onComment }) {
       const { indent, options: { commentString } } = ctx;
@@ -31408,7 +31408,7 @@ var require_stringifyCollection = __commonJS({
           }
         }
         chompKeep = false;
-        let str2 = stringify3.stringify(item, itemCtx, () => comment2 = null, () => chompKeep = true);
+        let str2 = stringify4.stringify(item, itemCtx, () => comment2 = null, () => chompKeep = true);
         if (comment2)
           str2 += stringifyComment.lineComment(str2, itemIndent, commentString(comment2));
         if (chompKeep && comment2)
@@ -31475,7 +31475,7 @@ ${indent}${line}` : "\n";
         }
         if (comment)
           reqNewline = true;
-        let str = stringify3.stringify(item, itemCtx, () => comment = null);
+        let str = stringify4.stringify(item, itemCtx, () => comment = null);
         if (i < items.length - 1)
           str += ",";
         if (comment)
@@ -32829,7 +32829,7 @@ var require_stringifyDocument = __commonJS({
   "../node_modules/.pnpm/yaml@2.8.0/node_modules/yaml/dist/stringify/stringifyDocument.js"(exports2) {
     "use strict";
     var identity = require_identity();
-    var stringify3 = require_stringify2();
+    var stringify4 = require_stringify2();
     var stringifyComment = require_stringifyComment();
     function stringifyDocument(doc, options) {
       const lines = [];
@@ -32844,7 +32844,7 @@ var require_stringifyDocument = __commonJS({
       }
       if (hasDirectives)
         lines.push("---");
-      const ctx = stringify3.createStringifyContext(doc, options);
+      const ctx = stringify4.createStringifyContext(doc, options);
       const { commentString } = ctx.options;
       if (doc.commentBefore) {
         if (lines.length !== 1)
@@ -32866,7 +32866,7 @@ var require_stringifyDocument = __commonJS({
           contentComment = doc.contents.comment;
         }
         const onChompKeep = contentComment ? void 0 : () => chompKeep = true;
-        let body = stringify3.stringify(doc.contents, ctx, () => contentComment = null, onChompKeep);
+        let body = stringify4.stringify(doc.contents, ctx, () => contentComment = null, onChompKeep);
         if (contentComment)
           body += stringifyComment.lineComment(body, "", commentString(contentComment));
         if ((body[0] === "|" || body[0] === ">") && lines[lines.length - 1] === "---") {
@@ -32874,7 +32874,7 @@ var require_stringifyDocument = __commonJS({
         } else
           lines.push(body);
       } else {
-        lines.push(stringify3.stringify(doc.contents, ctx));
+        lines.push(stringify4.stringify(doc.contents, ctx));
       }
       if (doc.directives?.docEnd) {
         if (doc.comment) {
@@ -35001,7 +35001,7 @@ var require_cst_scalar = __commonJS({
 var require_cst_stringify = __commonJS({
   "../node_modules/.pnpm/yaml@2.8.0/node_modules/yaml/dist/parse/cst-stringify.js"(exports2) {
     "use strict";
-    var stringify3 = (cst) => "type" in cst ? stringifyToken(cst) : stringifyItem(cst);
+    var stringify4 = (cst) => "type" in cst ? stringifyToken(cst) : stringifyItem(cst);
     function stringifyToken(token) {
       switch (token.type) {
         case "block-scalar": {
@@ -35054,7 +35054,7 @@ var require_cst_stringify = __commonJS({
         res += stringifyToken(value);
       return res;
     }
-    exports2.stringify = stringify3;
+    exports2.stringify = stringify4;
   }
 });
 
@@ -36748,7 +36748,7 @@ var require_public_api = __commonJS({
       }
       return doc;
     }
-    function parse2(src, reviver, options) {
+    function parse3(src, reviver, options) {
       let _reviver = void 0;
       if (typeof reviver === "function") {
         _reviver = reviver;
@@ -36767,7 +36767,7 @@ var require_public_api = __commonJS({
       }
       return doc.toJS(Object.assign({ reviver: _reviver }, options));
     }
-    function stringify3(value, replacer, options) {
+    function stringify4(value, replacer, options) {
       let _replacer = null;
       if (typeof replacer === "function" || Array.isArray(replacer)) {
         _replacer = replacer;
@@ -36789,10 +36789,10 @@ var require_public_api = __commonJS({
         return value.toString(options);
       return new Document.Document(value, _replacer, options).toString(options);
     }
-    exports2.parse = parse2;
+    exports2.parse = parse3;
     exports2.parseAllDocuments = parseAllDocuments;
     exports2.parseDocument = parseDocument2;
-    exports2.stringify = stringify3;
+    exports2.stringify = stringify4;
   }
 });
 
@@ -37860,7 +37860,7 @@ var require_dist2 = __commonJS({
 // ../node_modules/.pnpm/json-buffer@3.0.1/node_modules/json-buffer/index.js
 var require_json_buffer = __commonJS({
   "../node_modules/.pnpm/json-buffer@3.0.1/node_modules/json-buffer/index.js"(exports2) {
-    exports2.stringify = function stringify3(o) {
+    exports2.stringify = function stringify4(o) {
       if ("undefined" == typeof o) return o;
       if (o && Buffer.isBuffer(o))
         return JSON.stringify(":base64:" + o.toString("base64"));
@@ -37881,9 +37881,9 @@ var require_json_buffer = __commonJS({
               if (o[k] == void 0)
                 s += "null";
               else
-                s += stringify3(o[k]);
+                s += stringify4(o[k]);
             } else if (o[k] !== void 0) {
-              s += stringify3(k) + ":" + stringify3(o[k]);
+              s += stringify4(k) + ":" + stringify4(o[k]);
             }
           }
         }
@@ -38150,15 +38150,15 @@ var require_cjs = __commonJS({
       known.set(value, index);
       return index;
     };
-    var parse2 = (text, reviver) => {
+    var parse3 = (text, reviver) => {
       const input = $parse(text, Primitives).map(primitives);
       const value = input[0];
       const $ = reviver || noop;
       const tmp = typeof value === object && value ? revive(input, /* @__PURE__ */ new Set(), value, $) : value;
       return $.call({ "": tmp }, "", tmp);
     };
-    exports2.parse = parse2;
-    var stringify3 = (value, replacer, space) => {
+    exports2.parse = parse3;
+    var stringify4 = (value, replacer, space) => {
       const $ = replacer && typeof replacer === object ? (k, v) => k === "" || -1 < replacer.indexOf(k) ? v : void 0 : replacer || noop;
       const known = /* @__PURE__ */ new Map();
       const input = [];
@@ -38185,10 +38185,10 @@ var require_cjs = __commonJS({
         return after;
       }
     };
-    exports2.stringify = stringify3;
-    var toJSON = (value) => $parse(stringify3(value));
+    exports2.stringify = stringify4;
+    var toJSON = (value) => $parse(stringify4(value));
     exports2.toJSON = toJSON;
-    var fromJSON = (value) => parse2($stringify(value));
+    var fromJSON = (value) => parse3($stringify(value));
     exports2.fromJSON = fromJSON;
   }
 });
@@ -39325,7 +39325,7 @@ function relative2(cwd, fileUri) {
   return path.relative(cwd, fsPath);
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
 function* iteratorToIterable(iterator) {
   try {
     let n;
@@ -39357,7 +39357,7 @@ async function* asyncIteratorToAsyncIterable(iterator) {
   }
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
 function toPipeFn(syncFn, asyncFn) {
   function _(i) {
     return isAsyncIterable(i) ? asyncFn(i) : syncFn(i);
@@ -39368,7 +39368,7 @@ function isAsyncIterable(i) {
   return typeof i[Symbol.asyncIterator] === "function";
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
 function toArray(i) {
   return isAsyncIterable(i) ? toArrayAsync(i) : toArraySync(i);
 }
@@ -39383,7 +39383,7 @@ async function toArrayAsync(iter) {
   return collection;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
 async function* mergeAsyncIterables(iter, ...rest) {
   for await (const i of [iter, ...rest]) {
     yield* i;
@@ -39391,7 +39391,7 @@ async function* mergeAsyncIterables(iter, ...rest) {
 }
 var toAsyncIterable = mergeAsyncIterables;
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/index.js
 var operators_exports = {};
 __export(operators_exports, {
   opAppend: () => opAppend,
@@ -39440,7 +39440,7 @@ __export(operators_exports, {
   opUniqueSync: () => opUniqueSync
 });
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/append.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/append.js
 function opAppendAsync(...iterablesToAppend) {
   async function* fnAppend(iter) {
     yield* iter;
@@ -39466,7 +39466,7 @@ function opAppend(...iterablesToAppend) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/await.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/await.js
 async function* _asyncAwait(iter) {
   for await (const v of iter) {
     yield v;
@@ -39476,7 +39476,7 @@ function opAwaitAsync() {
   return _asyncAwait;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
 function opBufferAsync(size) {
   async function* fnBuffer(iter) {
     let buffer = [];
@@ -39518,7 +39518,7 @@ function opBuffer(size) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
 function opCombineAsync(...fns) {
   function combine4(iter) {
     for (const fn of fns) {
@@ -39538,7 +39538,7 @@ function opCombineSync(...fns) {
   return combine4;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
 function opConcatMapAsync(mapFn) {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -39580,7 +39580,7 @@ function opConcatMapSync(mapFn) {
 }
 var opConcatMap = (fn) => toPipeFn(opConcatMapSync(fn), opConcatMapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
 function opFilterAsync(filterFn) {
   async function* genFilter(iter) {
     for await (const v of iter) {
@@ -39623,7 +39623,7 @@ function opFilter(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/first.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/first.js
 function opFirstAsync(firstFn) {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -39656,7 +39656,7 @@ function opFirst(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
 function opFlattenAsync() {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -39675,7 +39675,7 @@ function opFlattenSync() {
 }
 var opFlatten = () => toPipeFn(opFlattenSync(), opFlattenAsync());
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
 function opJoinStringsAsync(joinCharacter = ",") {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -39696,7 +39696,7 @@ function opJoinStringsSync(joinCharacter = ",") {
 }
 var opJoinStrings = (joinCharacter) => toPipeFn(opJoinStringsSync(joinCharacter), opJoinStringsAsync(joinCharacter));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/last.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/last.js
 var symNotFound = Symbol("LastNotFound");
 function opLastAsync(lastFn) {
   async function* fn(iter) {
@@ -39734,7 +39734,7 @@ function opLast(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/map.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/map.js
 function opMapAsync(mapFn) {
   async function* genMap(iter) {
     for await (const v of iter) {
@@ -39765,7 +39765,7 @@ function opMapSync(mapFn) {
 }
 var opMap = (fn) => toPipeFn(opMapSync(fn), opMapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
 function opReduceAsync(reduceFn, initialValue) {
   async function* reduce3(head, tail) {
     for await (const v of tail) {
@@ -39814,7 +39814,7 @@ function isIterable(i) {
   return typeof i[Symbol.iterator] === "function";
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
 function opSkipAsync(count3) {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -39841,7 +39841,7 @@ function opSkipSync(count3) {
 }
 var opSkip = (count3) => toPipeFn(opSkipSync(count3), opSkipAsync(count3));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/take.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/take.js
 function opTakeAsync(count3) {
   async function* fn(iter) {
     if (count3 <= 0)
@@ -39868,7 +39868,7 @@ function opTakeSync(count3) {
 }
 var opTake = (count3) => toPipeFn(opTakeSync(count3), opTakeAsync(count3));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
 function opTapAsync(tapFn) {
   async function* fn(iter) {
     for await (const v of iter) {
@@ -39889,7 +39889,7 @@ function opTapSync(tapFn) {
 }
 var opTap = (fn) => toPipeFn(opTapSync(fn), opTapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
 function opUniqueAsync(k) {
   function fnK(k2) {
     async function* fn2(iter) {
@@ -39942,7 +39942,7 @@ function opUniqueSync(k) {
 }
 var opUnique = (getKey) => toPipeFn(opUniqueSync(getKey), opUniqueAsync(getKey));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/pipe.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/pipe.js
 function pipeAsync(i, ...fns) {
   const iter = toAsyncIterable(i);
   return opCombineAsync(...fns)(iter);
@@ -39951,16 +39951,16 @@ function pipeSync(i, ...fns) {
   return opCombineSync(...fns)(i);
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/reduce.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/reduce.js
 function reduceSync(iter, reduceFn, initialValue) {
   const i = initialValue === void 0 ? pipeSync(iter, opReduceSync(reduceFn)) : pipeSync(iter, opReduceSync(reduceFn, initialValue));
   return [...i][0];
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.2/node_modules/@cspell/cspell-pipe/dist/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.1.3/node_modules/@cspell/cspell-pipe/dist/index.js
 var operators = operators_exports;
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/errors.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/errors.js
 var import_node_util2 = require("node:util");
 var allowStringOrUndefined = {
   string: true,
@@ -39999,7 +39999,7 @@ async function _catchPromiseError(p, handler) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/events/events.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/events/events.js
 var EventEmitter = class {
   name;
   #listeners = /* @__PURE__ */ new Set();
@@ -40053,7 +40053,7 @@ function onClearCache(listener) {
   return clearCacheEvent.on(listener);
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/AutoCache.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/AutoCache.js
 var CACHE_SIZE = 100;
 var Cache01 = class {
   maxSize;
@@ -40131,7 +40131,7 @@ function extractStats(ac) {
   return { hits, misses, swaps };
 }
 
-// ../node_modules/.pnpm/cspell-trie-lib@9.1.2/node_modules/cspell-trie-lib/dist/index.js
+// ../node_modules/.pnpm/cspell-trie-lib@9.1.3/node_modules/cspell-trie-lib/dist/index.js
 var import_node_assert = __toESM(require("node:assert"), 1);
 var import_node_os = require("node:os");
 
@@ -40471,7 +40471,7 @@ function genSequence(i) {
   return new ImplSequence(i);
 }
 
-// ../node_modules/.pnpm/cspell-trie-lib@9.1.2/node_modules/cspell-trie-lib/dist/index.js
+// ../node_modules/.pnpm/cspell-trie-lib@9.1.3/node_modules/cspell-trie-lib/dist/index.js
 var SymEmpty = Symbol("memorizeLastCall");
 function memorizeLastCall(fn) {
   let lastP = void 0;
@@ -40867,9 +40867,9 @@ function walker$1(root, compoundingMethod = CompoundWordsMethod.NONE) {
   return compoundingMethod === CompoundWordsMethod.NONE ? nodeWalker$1(root) : compoundWalker$1(root, compoundingMethod);
 }
 function walkerWords$1(root) {
-  return walkerWordsITrie$1(root);
+  return walkerWordsITrie(root);
 }
-function* walkerWordsITrie$1(root) {
+function* walkerWordsITrie(root) {
   let depth = 0;
   const stack = [];
   const entries = root.entries();
@@ -40935,9 +40935,6 @@ function countWords$1(root) {
 }
 function trieRootToITrieRoot(root) {
   return ImplITrieRoot.toITrieNode(root);
-}
-function trieNodeToITrieNode(node) {
-  return ImplITrieNode.toITrieNode(node);
 }
 var EmptyKeys$2 = Object.freeze([]);
 var EmptyValues = Object.freeze([]);
@@ -41053,8 +41050,7 @@ var ImplITrieRoot = class extends ImplITrieNode {
     return new this(node);
   }
 };
-var useITrie = false;
-var walkerWords = useITrie ? _walkerWords2 : _walkerWords;
+var walkerWords = _walkerWords;
 function* _walkerWords(root) {
   const empty = [];
   function children(n) {
@@ -41089,46 +41085,6 @@ function* _walkerWords(root) {
       } else stack[depth] = {
         t: text,
         n: node.c,
-        c,
-        ci: 0
-      };
-      s = stack[depth];
-    }
-    depth -= 1;
-  }
-}
-function _walkerWords2(root) {
-  return walkerWordsITrie(trieNodeToITrieNode(root));
-}
-function* walkerWordsITrie(root) {
-  let depth = 0;
-  const stack = [];
-  stack[depth] = {
-    t: "",
-    n: root,
-    c: [...root.entries()],
-    ci: 0
-  };
-  while (depth >= 0) {
-    let s = stack[depth];
-    let baseText = s.t;
-    while (s.ci < s.c.length && s.n) {
-      const [char, node] = s.c[s.ci++];
-      if (!node) continue;
-      const text = baseText + char;
-      if (node.eow) yield text;
-      depth++;
-      baseText = text;
-      const c = [...node.entries()];
-      if (stack[depth]) {
-        s = stack[depth];
-        s.t = text;
-        s.n = node;
-        s.c = c;
-        s.ci = 0;
-      } else stack[depth] = {
-        t: text,
-        n: node,
         c,
         ci: 0
       };
@@ -43373,8 +43329,8 @@ function isLittleEndian() {
 }
 function checkSig(blob) {
   if (blob.length < HEADER_SIZE) return false;
-  const buf = Buffer.from(blob, 0, headerSig.length);
-  if (buf.toString("utf8", 0, headerSig.length) !== headerSig) return false;
+  const buf = Buffer.from(blob, 0, 8);
+  if (buf.toString("utf8", 0, 8) !== headerSig) return false;
   return true;
 }
 var ErrorDecodeTrieBlob = class extends Error {
@@ -43431,7 +43387,6 @@ function trieBlobSort(data) {
     sorted.forEach((v, i$1) => data[start + i$1] = v);
   }
 }
-var checkSorted = false;
 var FastTrieBlob = class FastTrieBlob2 {
   _readonly = false;
   #forbidIdx;
@@ -43454,7 +43409,6 @@ var FastTrieBlob = class FastTrieBlob2 {
     this.hasForbiddenWords = !!this.#forbidIdx;
     this.hasCompoundWords = !!this.#compoundIdx;
     this.hasNonStrictWords = !!this.#nonStrictIdx;
-    if (checkSorted) assertSorted(this.nodes, bitMasksInfo.NodeMaskChildCharIndex);
   }
   wordToUtf8Seq(word) {
     return this._charIndex.wordToUtf8Seq(word);
@@ -47690,7 +47644,7 @@ function splitLine(line, regExp) {
   return encodeLine(line).split(regExp).map((line$1) => decodeLine(line$1));
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/text.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/text.js
 var regExAllUpper = /^(?:\p{Lu}\p{M}?)+$/u;
 var regExAccents = /\p{M}/gu;
 function isUpperCase(word) {
@@ -47706,7 +47660,7 @@ function removeUnboundAccents(text) {
   return text.replaceAll(regExAccents, "");
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
 var defaultNumSuggestions = 10;
 function wordSearchForms(word, isDictionaryCaseSensitive, ignoreCase2) {
   const forms2 = /* @__PURE__ */ new Set();
@@ -47768,7 +47722,7 @@ function createWeightMapFromDictionaryInformation(di) {
   return di ? mapDictionaryInformationToWeightMap(di) : void 0;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
 var dictionaryCounter = 0;
 var DefaultAutoCacheSize = 1e3;
 var logRequests = false;
@@ -47828,7 +47782,7 @@ function getLog() {
   return log;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/AutoResolve.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/AutoResolve.js
 function autoResolveWeak(map3, key, resolve8) {
   const found = map3.get(key);
   if (found !== void 0 || map3.has(key))
@@ -47854,12 +47808,12 @@ function createAutoResolveWeakCache() {
   return new AutoResolveWeakCache();
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/util.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/util.js
 function isDefined(v) {
   return v !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 var import_node_url = require("node:url");
 
 // ../node_modules/.pnpm/fast-equals@5.2.2/node_modules/fast-equals/dist/esm/index.mjs
@@ -48272,7 +48226,7 @@ function createCustomEqual(options) {
   return createIsEqual({ circular, comparator, createState, equals, strict });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/simpleCache.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/simpleCache.js
 var SimpleWeakCache = class {
   size;
   L0 = /* @__PURE__ */ new WeakMap();
@@ -48390,12 +48344,12 @@ var SimpleCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
 var defaultOptions = Object.freeze({
   weightMap: void 0
 });
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/clean.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/clean.js
 function clean2(src) {
   const r = src;
   for (const key of Object.keys(r)) {
@@ -48406,12 +48360,12 @@ function clean2(src) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/regexHelper.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/regexHelper.js
 function escapeRegEx(s) {
   return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/repMap.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/repMap.js
 function createMapper(repMap, ignoreCharset) {
   if (!repMap && !ignoreCharset)
     return (a) => a;
@@ -48538,11 +48492,11 @@ function addToTrie(node, match2, replaceWith) {
   node.rep = [...s];
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/defaults.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/defaults.js
 var ignoreCase = true;
 var isForbiddenIgnoreCaseAndAccents = false;
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
 var SpellingDictionaryFromTrie = class {
   trie;
   name;
@@ -48718,7 +48672,7 @@ function* outerWordForms(word, mapWord) {
   return;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 var cachedDictionaries = new AutoWeakCache(_createSpellingDictionary, 64);
 var maxSetSize = 3;
 var cachedParamsByWordList = new SimpleCache(64);
@@ -48775,7 +48729,7 @@ function createFailedToLoadDictionary(name2, sourceUrl, error4, options) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/util/textMappers.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/util/textMappers.js
 function* mapperRemoveCaseAndAccents(words) {
   for (const word of words) {
     const lc = word.toLowerCase();
@@ -48786,10 +48740,10 @@ function* mapperRemoveCaseAndAccents(words) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 var import_node_assert2 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
 function normalizeTyposDefValue(value) {
   if (!value)
     return false;
@@ -48869,7 +48823,7 @@ function hasSuggestions(v) {
   return isString(v) || isArray2(v);
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 function assertString(v) {
   (0, import_node_assert2.default)(typeof v === "string", "A string was expected.");
   return true;
@@ -48958,7 +48912,7 @@ function isIterable3(v) {
   return Symbol.iterator in v;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
 var TyposDictionaryImpl = class {
   name;
   source;
@@ -49093,7 +49047,7 @@ function createTyposDictionary(entries, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
 var FlagWordsDictionaryTrie = class extends SpellingDictionaryFromTrie {
   name;
   source;
@@ -49219,7 +49173,7 @@ function bisect(values, predicate) {
   return { t, f };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
 var NormalizeForm = "NFC";
 var IgnoreWordsDictionary = class {
   name;
@@ -49309,7 +49263,7 @@ function createIgnoreWordsDictionary(wordList, name2, source, options) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
 function identityString(w) {
   return w;
 }
@@ -49422,7 +49376,7 @@ function isWordForbiddenInAnyDictionary(dicts, word, ignoreCase2) {
   return dicts.find((dict) => dict.isForbidden(word, ignoreCase2));
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
 var SuggestDictionaryImpl = class {
   name;
   source;
@@ -49524,7 +49478,7 @@ function createSuggestDictionary(entries, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
 var cache = createAutoResolveWeakCache();
 function createInlineSpellingDictionary(inlineDict, source) {
   return cache.get(inlineDict, () => {
@@ -49540,16 +49494,16 @@ function createInlineSpellingDictionary(inlineDict, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.1.2/node_modules/cspell-dictionary/dist/index.js
+// ../node_modules/.pnpm/cspell-dictionary@9.1.3/node_modules/cspell-dictionary/dist/index.js
 var _debug = {
   cacheDictionaryEnableLogging: enableLogging,
   cacheDictionaryGetLog: getLog
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
 var path6 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/util.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/util.js
 var uniqueFn = uniqueFilterFnGenerator;
 function uniqueFilterFnGenerator(extractFn) {
   const values = /* @__PURE__ */ new Set();
@@ -49606,7 +49560,7 @@ function doSetsIntersect(a, b) {
   return a.size <= b.size ? compare3(a, b) : compare3(b, a);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
 var SymbolCSpellSettingsInternal = Symbol("CSpellSettingsInternal");
 function cleanCSpellSettingsInternal(parts) {
   return parts ? Object.assign(clean3(parts), { [SymbolCSpellSettingsInternal]: true }) : { [SymbolCSpellSettingsInternal]: true };
@@ -49627,7 +49581,7 @@ function isDictionaryFileDefinitionInternal(def) {
   return !!(def.path || def.file);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
 function autoResolve(map3, key, resolve8) {
   const found = map3.get(key);
   if (found !== void 0 || map3.has(key))
@@ -49800,7 +49754,7 @@ function createAutoResolveWeakWeakCache() {
   return new AutoResolveWeakWeakCache();
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var import_node_module2 = require("node:module");
 var os2 = __toESM(require("node:os"), 1);
 var path5 = __toESM(require("node:path"), 1);
@@ -49898,18 +49852,18 @@ globalDirectory.yarn.packages = import_node_path.default.join(yarnPrefix, getYar
 globalDirectory.yarn.binaries = import_node_path.default.join(globalDirectory.yarn.packages, ".bin");
 var global_directory_default = globalDirectory;
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.1.2/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.1.3/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 var import_requireResolve = __toESM(require_requireResolve(), 1);
 function resolveGlobal(modulesName) {
   const paths = [global_directory_default.npm.packages, global_directory_default.yarn.packages];
   return (0, import_requireResolve.requireResolve)(modulesName, paths);
 }
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@9.1.2/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@9.1.3/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 var import_node_fs4 = require("node:fs");
 var import_node_path5 = require("node:path");
 
-// ../node_modules/.pnpm/@cspell+url@9.1.2/node_modules/@cspell/url/dist/index.js
+// ../node_modules/.pnpm/@cspell+url@9.1.3/node_modules/@cspell/url/dist/index.js
 var import_node_assert3 = __toESM(require("node:assert"), 1);
 var import_node_path2 = __toESM(require("node:path"), 1);
 var import_node_url2 = require("node:url");
@@ -51594,7 +51548,7 @@ function resolve(specifier, parent) {
   }
 }
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@9.1.2/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@9.1.3/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 var isWindowsPath = /^[a-z]:\\/i;
 async function dynamicImportFrom(moduleName, paths) {
   paths = Array.isArray(paths) ? paths : paths ? [paths] : void 0;
@@ -51649,13 +51603,13 @@ function dirToUrl(dir) {
   return toFileDirURL(abs);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var import_resolve_from = __toESM(require_resolve_from(), 1);
 
-// ../node_modules/.pnpm/cspell-io@9.1.2/node_modules/cspell-io/dist/index.js
+// ../node_modules/.pnpm/cspell-io@9.1.3/node_modules/cspell-io/dist/index.js
 var import_node_zlib = require("node:zlib");
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.2/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.3/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
 var ErrorUnhandledRequest = class extends Error {
   request;
   constructor(request) {
@@ -51684,7 +51638,7 @@ var UnhandledHandlerError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.2/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.3/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
 var BaseServiceRequest = class {
   type;
   params;
@@ -51709,7 +51663,7 @@ function isServiceResponseSuccess(res) {
   return "value" in res && res.error === void 0;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.2/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.3/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
 var MAX_DEPTH = 10;
 var ServiceBus = class {
   handlers = [];
@@ -51756,7 +51710,7 @@ var ServiceBus = class {
   }
 };
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.2/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.3/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
 function createRequestHandler(requestDef, fn, name2, description) {
   return createIsRequestHandler(requestDef.is, fn, name2 ?? requestDef.type, description);
 }
@@ -51771,7 +51725,7 @@ function createIsRequestHandler(isA, fn, name2, description) {
   };
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.2/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.1.3/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
 function requestFactory(requestType) {
   class RequestClass extends ServiceRequestCls {
     static type = requestType;
@@ -51792,7 +51746,7 @@ function requestFactory(requestType) {
   return RequestClass;
 }
 
-// ../node_modules/.pnpm/cspell-io@9.1.2/node_modules/cspell-io/dist/index.js
+// ../node_modules/.pnpm/cspell-io@9.1.3/node_modules/cspell-io/dist/index.js
 var import_node_fs5 = require("node:fs");
 var import_node_url6 = require("node:url");
 var import_node_util4 = require("node:util");
@@ -52907,7 +52861,7 @@ async function readFileText(filename, encoding) {
   return fr.getText();
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/fileSystem.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/fileSystem.js
 function getVirtualFS() {
   return getDefaultVirtualFs();
 }
@@ -52915,7 +52869,7 @@ function getFileSystem() {
   return getVirtualFS().fs;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/pkg-info.mjs
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/pkg-info.mjs
 var import_node_url7 = require("node:url");
 var import_meta = {};
 var url = import_meta.url;
@@ -52928,7 +52882,7 @@ function calcSrcDirectory() {
 }
 var srcDirectory = calcSrcDirectory();
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/templates.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/templates.js
 function replaceTemplate(template2, replacements) {
   const templateStart = "${";
   const tLen = templateStart.length;
@@ -52964,7 +52918,7 @@ function envToTemplateVars(env4) {
   return vars;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/url.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/url.js
 function getSourceDirectoryUrl() {
   const srcDirectoryURL = toFileDirURL(srcDirectory);
   return srcDirectoryURL;
@@ -52983,7 +52937,7 @@ function windowsDriveLetterToUpper(absoluteFilePath) {
   return absoluteFilePath.replace(regExpWindowsPathDriveLetter2, (s) => s.toUpperCase());
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var regExpStartsWidthNodeModules = /^node_modules[/\\]/;
 var debugMode = false;
 var FileResolver = class {
@@ -53262,7 +53216,7 @@ async function resolveFile(filename, relativeTo, fs8 = getFileSystem()) {
   return resolver.resolveFile(filename, relativeTo);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
 function createDictionaryReferenceCollection(dictionaries) {
   return new _DictionaryReferenceCollection(dictionaries);
 }
@@ -53308,7 +53262,7 @@ function mapReference(ref) {
   return { name: name2.trim(), weight };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
 function filterDictDefsToLoad(dictRefCol, defs) {
   const allActiveDefs = defs.filter(({ name: name2 }) => dictRefCol.isEnabled(name2)).map(fixPath);
   return [...new Map(allActiveDefs.map((d) => [d.name, d])).values()];
@@ -53425,7 +53379,7 @@ var _DictionaryDefinitionInternalWithSource = class {
   }
 };
 
-// ../node_modules/.pnpm/@cspell+strong-weak-map@9.1.2/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
+// ../node_modules/.pnpm/@cspell+strong-weak-map@9.1.3/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
 var StrongWeakMap = class {
   map;
   constructor(init) {
@@ -53550,7 +53504,7 @@ var StrongWeakMap = class {
   [Symbol.toStringTag] = "StrongWeakMap";
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/simpleCache.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/simpleCache.js
 var SimpleCache2 = class {
   size;
   L0 = /* @__PURE__ */ new Map();
@@ -53625,7 +53579,7 @@ var AutoCache = class extends SimpleCache2 {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
 var SpellingDictionaryLoadError = class extends Error {
   uri;
   options;
@@ -53643,7 +53597,7 @@ function isSpellingDictionaryLoadError(e) {
   return e instanceof SpellingDictionaryLoadError;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
 var MAX_AGE = 1e4;
 var loaders = {
   S: loadSimpleWordList,
@@ -53853,7 +53807,7 @@ function toLines(content) {
   return content.split(/\n|\r\n|\r/);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
 var loader;
 function getDictionaryLoader(vfs) {
   if (loader)
@@ -53867,7 +53821,7 @@ async function refreshCacheEntries(maxAge, now) {
   return getDictionaryLoader().refreshCacheEntries(maxAge, now);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
 function loadDictionaryDefs(defsToLoad) {
   return defsToLoad.map(loadDictionary);
 }
@@ -53914,7 +53868,7 @@ function _getDictionaryInternal(settings, spellDictionaries) {
   return createCollection(dictionaries, "dictionary collection");
 }
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.1.2/node_modules/@cspell/filetypes/dist/definitions.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.1.3/node_modules/@cspell/filetypes/dist/definitions.js
 var definitions = [
   { id: "ada", extensions: [".adb", ".ads"] },
   { id: "apiblueprint", extensions: [".apib", ".apiblueprint"] },
@@ -54284,7 +54238,7 @@ var definitions = [
   { id: "wheel", extensions: [".whl"], format: "Binary" }
 ];
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.1.2/node_modules/@cspell/filetypes/dist/filetypes.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.1.3/node_modules/@cspell/filetypes/dist/filetypes.js
 var binaryFormatIds = definitions.filter((d) => d.format === "Binary").map((d) => d.id);
 var binaryLanguages = /* @__PURE__ */ new Set(["binary", "image", "video", "fonts", ...binaryFormatIds]);
 var generatedFiles = /* @__PURE__ */ new Set([
@@ -54398,7 +54352,7 @@ function defToRegExp(def) {
   return { regexp, id: def.id };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/Uri.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/Uri.js
 var import_node_assert6 = __toESM(require("node:assert"), 1);
 var STDIN_PROTOCOL = "stdin:";
 function toUri(uriOrFile) {
@@ -54531,12 +54485,12 @@ function documentUriToURL(uri) {
   return toURL(uri instanceof URL ? uri : typeof uri === "string" ? toFileURL(uri) : new URL(uriFrom(uri).toString()));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
 function normalizeLanguageIds(languageId) {
   return (Array.isArray(languageId) ? languageId.join(",") : languageId).split(",").map((s) => s.trim());
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
 function isBinaryDoc(document) {
   return isBinaryFile2(toUri(document.uri), document.languageId, document.text);
 }
@@ -54554,10 +54508,10 @@ function isBinaryFile2(filename, languageId, text) {
   return text?.slice(0, 1024).includes("\0") || false;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 var import_promises = require("node:fs/promises");
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 var import_node_assert7 = __toESM(require("node:assert"), 1);
 
 // ../node_modules/.pnpm/vscode-languageserver-textdocument@1.0.12/node_modules/vscode-languageserver-textdocument/lib/esm/main.js
@@ -54784,7 +54738,7 @@ function getWellformedEdit(textEdit) {
   return textEdit;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 var TextDocumentImpl = class {
   languageId;
   locale;
@@ -54882,7 +54836,7 @@ function isTextDocumentImpl(doc) {
   return doc instanceof TextDocumentImpl;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 var defaultEncoding = "utf8";
 function fileToDocument(file, text, languageId, locale) {
   return clean3({
@@ -54917,7 +54871,7 @@ function isDocumentWithText(doc) {
   return doc.text !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-glob@9.1.2/node_modules/cspell-glob/dist/globHelper.js
+// ../node_modules/.pnpm/cspell-glob@9.1.3/node_modules/cspell-glob/dist/globHelper.js
 var Path2 = __toESM(require("node:path"), 1);
 var { posix } = Path2;
 var isGlobalPatternRegExp = /^!*[*]{2}/;
@@ -55256,7 +55210,7 @@ function workaroundPicomatchBug(glob3) {
   return glob3.split("/").map((s) => obj[s] ? `{${s},${s}}` : s).join("/");
 }
 
-// ../node_modules/.pnpm/cspell-glob@9.1.2/node_modules/cspell-glob/dist/GlobMatcher.js
+// ../node_modules/.pnpm/cspell-glob@9.1.3/node_modules/cspell-glob/dist/GlobMatcher.js
 var Path3 = __toESM(require("node:path"), 1);
 var import_picomatch = __toESM(require_picomatch2(), 1);
 var traceMode = false;
@@ -55391,7 +55345,7 @@ function logMatchTest(id, filename, match2) {
   console.warn("%s;%d;%s", filename, id, JSON.stringify(match2.matched));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
 var systemFeatureFlags;
 var FeatureFlags = class {
   flags;
@@ -55461,17 +55415,17 @@ function toBool(value) {
   return boolValues[value.toLowerCase()];
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 var import_node_assert8 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/constants.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/constants.js
 var configSettingsFileVersion0_1 = "0.1";
 var configSettingsFileVersion0_2 = "0.2";
 var currentSettingsFileVersion = configSettingsFileVersion0_2;
 var ENV_CSPELL_GLOB_ROOT = "CSPELL_GLOB_ROOT";
 var defaultConfigFileModuleRef = "@cspell/cspell-bundled-dicts/cspell-default.json";
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
 var CalcLeftRightResultWeakCache = class {
   map = new AutoResolveWeakCache2();
   _toDispose;
@@ -55497,7 +55451,7 @@ var CalcLeftRightResultWeakCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
 var cacheMergeListUnique = new CalcLeftRightResultWeakCache();
 var cacheMergeLists = new CalcLeftRightResultWeakCache();
 function mergeListUnique(left, right) {
@@ -55537,7 +55491,7 @@ function stats() {
   };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/textRegex.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/textRegex.js
 var regExSplitWords = /(\p{Ll}\p{M}?)(\p{Lu})/gu;
 var regExSplitWords2 = /(\p{Lu}\p{M}?)((\p{Lu}\p{M}?)\p{Ll})/gu;
 var regExpCamelCaseWordBreaksWithEnglishSuffix = /(?<=\p{Ll}\p{M}?)(?=\p{Lu})|(?<=\p{Lu}\p{M}?)(?=\p{Lu}\p{M}?\p{Ll})(?!\p{Lu}\p{M}?(?:s|ing|ies|es|ings|ed|ning)(?!\p{Ll}))/gu;
@@ -55650,7 +55604,7 @@ function removeVerboseFromRegExp(pattern) {
   return result.result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/patterns.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/patterns.js
 var emptyRegExpList = [];
 var emptyPatternDefinitions = [];
 var cache4 = new CalcLeftRightResultWeakCache();
@@ -55686,7 +55640,7 @@ function toRegExp(pattern) {
   return pattern instanceof RegExp ? new RegExp(pattern) : stringToRegExp(pattern, "gim", "g");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
 var CwdUrlResolver = class {
   #lastPath;
   #lastUrl;
@@ -55714,7 +55668,7 @@ var CwdUrlResolver = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 var emptyWords2 = [];
 Object.freeze(emptyWords2);
 var cachedMerges = new AutoResolveWeakCache2();
@@ -55969,12 +55923,12 @@ function extractParsers(plugins) {
   return parserCache.get(plugins, mapPlugins);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/getDictionary.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/getDictionary.js
 async function getDictionary(settings) {
   return getDictionaryInternal(toInternalSettings(settings));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/perf/timer.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/perf/timer.js
 function createPerfTimer2(name2, onEnd, timeNowFn) {
   return new SimpleTimer(name2, onEnd, timeNowFn);
 }
@@ -56010,7 +55964,7 @@ var SimpleTimer = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
 var simpleGlobCache = /* @__PURE__ */ new Map();
 var globCache = /* @__PURE__ */ new WeakMap();
 onClearCache(() => {
@@ -56040,13 +55994,13 @@ function getGlobMatcherGlobGlob(glob3) {
   return m;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
 function checkFilenameMatchesExcludeGlob(filename, globs) {
   const m = getGlobMatcherForExcluding(globs);
   return m.match(filename);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
 function calcOverrideSettings(settings, filename) {
   const _settings = toInternalSettings(settings);
   const overrides = _settings.overrides || [];
@@ -56054,15 +56008,15 @@ function calcOverrideSettings(settings, filename) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
 var import_node_assert10 = __toESM(require("node:assert"), 1);
 var import_node_path9 = __toESM(require("node:path"), 1);
 var import_node_url12 = require("node:url");
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 var import_posix = require("node:path/posix");
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
 var CSpellConfigFile = class {
   url;
   constructor(url2) {
@@ -56132,7 +56086,7 @@ function satisfiesCSpellConfigFile(obj) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
 var CSpellConfigFileInMemory = class extends ImplCSpellConfigFile {
   url;
   settings;
@@ -56150,7 +56104,7 @@ var CSpellConfigFileInMemory = class extends ImplCSpellConfigFile {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
 var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
   url;
   settings;
@@ -56167,10 +56121,10 @@ var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 var import_comment_json = __toESM(require_src2(), 1);
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/serializers/util.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/serializers/util.js
 function detectIndent(content) {
   const m = content.match(/^[ \t]+/m);
   return m && m[0] || "  ";
@@ -56180,7 +56134,7 @@ function detectIndentAsNum(content) {
   return indent.length;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/Errors.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/Errors.js
 var ParseError = class extends Error {
   url;
   constructor(url2, message, options) {
@@ -56189,7 +56143,7 @@ var ParseError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 var CSpellConfigFileJson = class _CSpellConfigFileJson extends ImplCSpellConfigFile {
   url;
   indent = 2;
@@ -56255,16 +56209,16 @@ function isCSpellSettings(cfg) {
   return !(!cfg || typeof cfg !== "object" || Array.isArray(cfg));
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
 var CSpellConfigFilePackageJson = class extends ImplCSpellConfigFile {
   url;
   settings;
   serializer;
-  constructor(url2, settings, serializer4) {
+  constructor(url2, settings, serializer5) {
     super(url2, settings);
     this.url = url2;
     this.settings = settings;
-    this.serializer = serializer4;
+    this.serializer = serializer5;
   }
   serialize() {
     return this.serializer(this.settings);
@@ -56289,11 +56243,11 @@ function parseCSpellConfigFilePackageJson(file) {
   return new CSpellConfigFilePackageJson(url2, cspell, serialize);
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
 var import_node_assert9 = __toESM(require("node:assert"), 1);
 var import_yaml = __toESM(require_dist(), 1);
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/UpdateConfig/CfgTree.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/UpdateConfig/CfgTree.js
 var nodeValueSymbol = Symbol.for("cspell.config.nodeValue");
 function isNodeValue(value) {
   if (!(typeof value === "object" && value !== null))
@@ -56303,7 +56257,7 @@ function isNodeValue(value) {
   return "value" in value && "comment" in value && "commentBefore" in value && Object.keys(value).length === 3;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
 var CSpellConfigFileYaml = class extends MutableCSpellConfigFile {
   url;
   yamlDoc;
@@ -56838,7 +56792,7 @@ function removeSchemaComment(node) {
   node.commentBefore = node.commentBefore?.replace(/^ yaml-language-server: \$schema=.*\n?/gm, "") ?? null;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/defaultNext.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/defaultNext.js
 var defaultNextDeserializer = (content) => {
   throw new Error(`Unable to parse config file: "${content.url}"`);
 };
@@ -56846,7 +56800,7 @@ var defaultNextSerializer = (file) => {
   throw new Error(`Unable to serialize config file: "${file.url}"`);
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/middlewareHelper.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/middlewareHelper.js
 function getDeserializer(middleware) {
   let next = defaultNextDeserializer;
   for (const des of middleware) {
@@ -56884,12 +56838,12 @@ function getLoader(loaders2) {
   return next;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/util/toURL.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/util/toURL.js
 function toURL2(url2) {
   return typeof url2 === "string" ? new URL(url2) : url2;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 var CSpellConfigFileReaderWriterImpl = class {
   io;
   middleware;
@@ -56934,12 +56888,12 @@ var CSpellConfigFileReaderWriterImpl = class {
     return getDeserializer(this.middleware);
   }
   parse(textFile) {
-    const deserializer4 = this.getDeserializer();
-    return deserializer4(textFile);
+    const deserializer5 = this.getDeserializer();
+    return deserializer5(textFile);
   }
   serialize(configFile) {
-    const serializer4 = getSerializer(this.middleware);
-    return serializer4(configFile);
+    const serializer5 = getSerializer(this.middleware);
+    return serializer5(configFile);
   }
   async writeConfig(configFile) {
     if (configFile.readonly)
@@ -56977,7 +56931,7 @@ var UntrustedUrlError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/defaultIO.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/defaultIO.js
 var import_node_fs6 = require("node:fs");
 var defaultIO = {
   readFile: readFile2,
@@ -56992,7 +56946,7 @@ async function writeFile2(file) {
   return { url: file.url };
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
 var import_posix2 = require("node:path/posix");
 var _debug2 = false;
 var _log = _debug2 ? console.warn.bind(console) : () => void 0;
@@ -57033,10 +56987,10 @@ var LoaderJavaScript = class {
 };
 var loaderJavaScript = new LoaderJavaScript();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/loaders/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/loaders/index.js
 var defaultLoaders = [loaderJavaScript];
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
 function deserializer(params, next) {
   if (!isJsonFile(params.url.pathname))
     return next(params);
@@ -57053,8 +57007,902 @@ function serializer(settings, next) {
 }
 var serializerCSpellJson = { deserialize: deserializer, serialize: serializer };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
+// ../node_modules/.pnpm/smol-toml@1.4.1/node_modules/smol-toml/dist/error.js
+function getLineColFromPtr(string, ptr) {
+  let lines = string.slice(0, ptr).split(/\r\n|\n|\r/g);
+  return [lines.length, lines.pop().length + 1];
+}
+function makeCodeBlock(string, line, column) {
+  let lines = string.split(/\r\n|\n|\r/g);
+  let codeblock = "";
+  let numberLen = (Math.log10(line + 1) | 0) + 1;
+  for (let i = line - 1; i <= line + 1; i++) {
+    let l = lines[i - 1];
+    if (!l)
+      continue;
+    codeblock += i.toString().padEnd(numberLen, " ");
+    codeblock += ":  ";
+    codeblock += l;
+    codeblock += "\n";
+    if (i === line) {
+      codeblock += " ".repeat(numberLen + column + 2);
+      codeblock += "^\n";
+    }
+  }
+  return codeblock;
+}
+var TomlError = class extends Error {
+  line;
+  column;
+  codeblock;
+  constructor(message, options) {
+    const [line, column] = getLineColFromPtr(options.toml, options.ptr);
+    const codeblock = makeCodeBlock(options.toml, line, column);
+    super(`Invalid TOML document: ${message}
+
+${codeblock}`, options);
+    this.line = line;
+    this.column = column;
+    this.codeblock = codeblock;
+  }
+};
+
+// ../node_modules/.pnpm/smol-toml@1.4.1/node_modules/smol-toml/dist/util.js
+function indexOfNewline(str, start = 0, end = str.length) {
+  let idx2 = str.indexOf("\n", start);
+  if (str[idx2 - 1] === "\r")
+    idx2--;
+  return idx2 <= end ? idx2 : -1;
+}
+function skipComment(str, ptr) {
+  for (let i = ptr; i < str.length; i++) {
+    let c = str[i];
+    if (c === "\n")
+      return i;
+    if (c === "\r" && str[i + 1] === "\n")
+      return i + 1;
+    if (c < " " && c !== "	" || c === "\x7F") {
+      throw new TomlError("control characters are not allowed in comments", {
+        toml: str,
+        ptr
+      });
+    }
+  }
+  return str.length;
+}
+function skipVoid(str, ptr, banNewLines, banComments) {
+  let c;
+  while ((c = str[ptr]) === " " || c === "	" || !banNewLines && (c === "\n" || c === "\r" && str[ptr + 1] === "\n"))
+    ptr++;
+  return banComments || c !== "#" ? ptr : skipVoid(str, skipComment(str, ptr), banNewLines);
+}
+function skipUntil(str, ptr, sep4, end, banNewLines = false) {
+  if (!end) {
+    ptr = indexOfNewline(str, ptr);
+    return ptr < 0 ? str.length : ptr;
+  }
+  for (let i = ptr; i < str.length; i++) {
+    let c = str[i];
+    if (c === "#") {
+      i = indexOfNewline(str, i);
+    } else if (c === sep4) {
+      return i + 1;
+    } else if (c === end || banNewLines && (c === "\n" || c === "\r" && str[i + 1] === "\n")) {
+      return i;
+    }
+  }
+  throw new TomlError("cannot find end of structure", {
+    toml: str,
+    ptr
+  });
+}
+function getStringEnd(str, seek) {
+  let first3 = str[seek];
+  let target = first3 === str[seek + 1] && str[seek + 1] === str[seek + 2] ? str.slice(seek, seek + 3) : first3;
+  seek += target.length - 1;
+  do
+    seek = str.indexOf(target, ++seek);
+  while (seek > -1 && first3 !== "'" && str[seek - 1] === "\\" && (str[seek - 2] !== "\\" || str[seek - 3] === "\\"));
+  if (seek > -1) {
+    seek += target.length;
+    if (target.length > 1) {
+      if (str[seek] === first3)
+        seek++;
+      if (str[seek] === first3)
+        seek++;
+    }
+  }
+  return seek;
+}
+
+// ../node_modules/.pnpm/smol-toml@1.4.1/node_modules/smol-toml/dist/date.js
+var DATE_TIME_RE = /^(\d{4}-\d{2}-\d{2})?[T ]?(?:(\d{2}):\d{2}:\d{2}(?:\.\d+)?)?(Z|[-+]\d{2}:\d{2})?$/i;
+var TomlDate = class _TomlDate extends Date {
+  #hasDate = false;
+  #hasTime = false;
+  #offset = null;
+  constructor(date) {
+    let hasDate = true;
+    let hasTime = true;
+    let offset = "Z";
+    if (typeof date === "string") {
+      let match2 = date.match(DATE_TIME_RE);
+      if (match2) {
+        if (!match2[1]) {
+          hasDate = false;
+          date = `0000-01-01T${date}`;
+        }
+        hasTime = !!match2[2];
+        hasTime && date[10] === " " && (date = date.replace(" ", "T"));
+        if (match2[2] && +match2[2] > 23) {
+          date = "";
+        } else {
+          offset = match2[3] || null;
+          date = date.toUpperCase();
+          if (!offset && hasTime)
+            date += "Z";
+        }
+      } else {
+        date = "";
+      }
+    }
+    super(date);
+    if (!isNaN(this.getTime())) {
+      this.#hasDate = hasDate;
+      this.#hasTime = hasTime;
+      this.#offset = offset;
+    }
+  }
+  isDateTime() {
+    return this.#hasDate && this.#hasTime;
+  }
+  isLocal() {
+    return !this.#hasDate || !this.#hasTime || !this.#offset;
+  }
+  isDate() {
+    return this.#hasDate && !this.#hasTime;
+  }
+  isTime() {
+    return this.#hasTime && !this.#hasDate;
+  }
+  isValid() {
+    return this.#hasDate || this.#hasTime;
+  }
+  toISOString() {
+    let iso = super.toISOString();
+    if (this.isDate())
+      return iso.slice(0, 10);
+    if (this.isTime())
+      return iso.slice(11, 23);
+    if (this.#offset === null)
+      return iso.slice(0, -1);
+    if (this.#offset === "Z")
+      return iso;
+    let offset = +this.#offset.slice(1, 3) * 60 + +this.#offset.slice(4, 6);
+    offset = this.#offset[0] === "-" ? offset : -offset;
+    let offsetDate = new Date(this.getTime() - offset * 6e4);
+    return offsetDate.toISOString().slice(0, -1) + this.#offset;
+  }
+  static wrapAsOffsetDateTime(jsDate, offset = "Z") {
+    let date = new _TomlDate(jsDate);
+    date.#offset = offset;
+    return date;
+  }
+  static wrapAsLocalDateTime(jsDate) {
+    let date = new _TomlDate(jsDate);
+    date.#offset = null;
+    return date;
+  }
+  static wrapAsLocalDate(jsDate) {
+    let date = new _TomlDate(jsDate);
+    date.#hasTime = false;
+    date.#offset = null;
+    return date;
+  }
+  static wrapAsLocalTime(jsDate) {
+    let date = new _TomlDate(jsDate);
+    date.#hasDate = false;
+    date.#offset = null;
+    return date;
+  }
+};
+
+// ../node_modules/.pnpm/smol-toml@1.4.1/node_modules/smol-toml/dist/primitive.js
+var INT_REGEX = /^((0x[0-9a-fA-F](_?[0-9a-fA-F])*)|(([+-]|0[ob])?\d(_?\d)*))$/;
+var FLOAT_REGEX = /^[+-]?\d(_?\d)*(\.\d(_?\d)*)?([eE][+-]?\d(_?\d)*)?$/;
+var LEADING_ZERO = /^[+-]?0[0-9_]/;
+var ESCAPE_REGEX = /^[0-9a-f]{4,8}$/i;
+var ESC_MAP = {
+  b: "\b",
+  t: "	",
+  n: "\n",
+  f: "\f",
+  r: "\r",
+  '"': '"',
+  "\\": "\\"
+};
+function parseString(str, ptr = 0, endPtr = str.length) {
+  let isLiteral = str[ptr] === "'";
+  let isMultiline = str[ptr++] === str[ptr] && str[ptr] === str[ptr + 1];
+  if (isMultiline) {
+    endPtr -= 2;
+    if (str[ptr += 2] === "\r")
+      ptr++;
+    if (str[ptr] === "\n")
+      ptr++;
+  }
+  let tmp = 0;
+  let isEscape;
+  let parsed = "";
+  let sliceStart = ptr;
+  while (ptr < endPtr - 1) {
+    let c = str[ptr++];
+    if (c === "\n" || c === "\r" && str[ptr] === "\n") {
+      if (!isMultiline) {
+        throw new TomlError("newlines are not allowed in strings", {
+          toml: str,
+          ptr: ptr - 1
+        });
+      }
+    } else if (c < " " && c !== "	" || c === "\x7F") {
+      throw new TomlError("control characters are not allowed in strings", {
+        toml: str,
+        ptr: ptr - 1
+      });
+    }
+    if (isEscape) {
+      isEscape = false;
+      if (c === "u" || c === "U") {
+        let code = str.slice(ptr, ptr += c === "u" ? 4 : 8);
+        if (!ESCAPE_REGEX.test(code)) {
+          throw new TomlError("invalid unicode escape", {
+            toml: str,
+            ptr: tmp
+          });
+        }
+        try {
+          parsed += String.fromCodePoint(parseInt(code, 16));
+        } catch {
+          throw new TomlError("invalid unicode escape", {
+            toml: str,
+            ptr: tmp
+          });
+        }
+      } else if (isMultiline && (c === "\n" || c === " " || c === "	" || c === "\r")) {
+        ptr = skipVoid(str, ptr - 1, true);
+        if (str[ptr] !== "\n" && str[ptr] !== "\r") {
+          throw new TomlError("invalid escape: only line-ending whitespace may be escaped", {
+            toml: str,
+            ptr: tmp
+          });
+        }
+        ptr = skipVoid(str, ptr);
+      } else if (c in ESC_MAP) {
+        parsed += ESC_MAP[c];
+      } else {
+        throw new TomlError("unrecognized escape sequence", {
+          toml: str,
+          ptr: tmp
+        });
+      }
+      sliceStart = ptr;
+    } else if (!isLiteral && c === "\\") {
+      tmp = ptr - 1;
+      isEscape = true;
+      parsed += str.slice(sliceStart, tmp);
+    }
+  }
+  return parsed + str.slice(sliceStart, endPtr - 1);
+}
+function parseValue(value, toml, ptr, integersAsBigInt) {
+  if (value === "true")
+    return true;
+  if (value === "false")
+    return false;
+  if (value === "-inf")
+    return -Infinity;
+  if (value === "inf" || value === "+inf")
+    return Infinity;
+  if (value === "nan" || value === "+nan" || value === "-nan")
+    return NaN;
+  if (value === "-0")
+    return integersAsBigInt ? 0n : 0;
+  let isInt = INT_REGEX.test(value);
+  if (isInt || FLOAT_REGEX.test(value)) {
+    if (LEADING_ZERO.test(value)) {
+      throw new TomlError("leading zeroes are not allowed", {
+        toml,
+        ptr
+      });
+    }
+    value = value.replace(/_/g, "");
+    let numeric = +value;
+    if (isNaN(numeric)) {
+      throw new TomlError("invalid number", {
+        toml,
+        ptr
+      });
+    }
+    if (isInt) {
+      if ((isInt = !Number.isSafeInteger(numeric)) && !integersAsBigInt) {
+        throw new TomlError("integer value cannot be represented losslessly", {
+          toml,
+          ptr
+        });
+      }
+      if (isInt || integersAsBigInt === true)
+        numeric = BigInt(value);
+    }
+    return numeric;
+  }
+  const date = new TomlDate(value);
+  if (!date.isValid()) {
+    throw new TomlError("invalid value", {
+      toml,
+      ptr
+    });
+  }
+  return date;
+}
+
+// ../node_modules/.pnpm/smol-toml@1.4.1/node_modules/smol-toml/dist/extract.js
+function sliceAndTrimEndOf(str, startPtr, endPtr, allowNewLines) {
+  let value = str.slice(startPtr, endPtr);
+  let commentIdx = value.indexOf("#");
+  if (commentIdx > -1) {
+    skipComment(str, commentIdx);
+    value = value.slice(0, commentIdx);
+  }
+  let trimmed = value.trimEnd();
+  if (!allowNewLines) {
+    let newlineIdx = value.indexOf("\n", trimmed.length);
+    if (newlineIdx > -1) {
+      throw new TomlError("newlines are not allowed in inline tables", {
+        toml: str,
+        ptr: startPtr + newlineIdx
+      });
+    }
+  }
+  return [trimmed, commentIdx];
+}
+function extractValue(str, ptr, end, depth, integersAsBigInt) {
+  if (depth === 0) {
+    throw new TomlError("document contains excessively nested structures. aborting.", {
+      toml: str,
+      ptr
+    });
+  }
+  let c = str[ptr];
+  if (c === "[" || c === "{") {
+    let [value, endPtr2] = c === "[" ? parseArray(str, ptr, depth, integersAsBigInt) : parseInlineTable(str, ptr, depth, integersAsBigInt);
+    let newPtr = end ? skipUntil(str, endPtr2, ",", end) : endPtr2;
+    if (endPtr2 - newPtr && end === "}") {
+      let nextNewLine = indexOfNewline(str, endPtr2, newPtr);
+      if (nextNewLine > -1) {
+        throw new TomlError("newlines are not allowed in inline tables", {
+          toml: str,
+          ptr: nextNewLine
+        });
+      }
+    }
+    return [value, newPtr];
+  }
+  let endPtr;
+  if (c === '"' || c === "'") {
+    endPtr = getStringEnd(str, ptr);
+    let parsed = parseString(str, ptr, endPtr);
+    if (end) {
+      endPtr = skipVoid(str, endPtr, end !== "]");
+      if (str[endPtr] && str[endPtr] !== "," && str[endPtr] !== end && str[endPtr] !== "\n" && str[endPtr] !== "\r") {
+        throw new TomlError("unexpected character encountered", {
+          toml: str,
+          ptr: endPtr
+        });
+      }
+      endPtr += +(str[endPtr] === ",");
+    }
+    return [parsed, endPtr];
+  }
+  endPtr = skipUntil(str, ptr, ",", end);
+  let slice = sliceAndTrimEndOf(str, ptr, endPtr - +(str[endPtr - 1] === ","), end === "]");
+  if (!slice[0]) {
+    throw new TomlError("incomplete key-value declaration: no value specified", {
+      toml: str,
+      ptr
+    });
+  }
+  if (end && slice[1] > -1) {
+    endPtr = skipVoid(str, ptr + slice[1]);
+    endPtr += +(str[endPtr] === ",");
+  }
+  return [
+    parseValue(slice[0], str, ptr, integersAsBigInt),
+    endPtr
+  ];
+}
+
+// ../node_modules/.pnpm/smol-toml@1.4.1/node_modules/smol-toml/dist/struct.js
+var KEY_PART_RE = /^[a-zA-Z0-9-_]+[ \t]*$/;
+function parseKey(str, ptr, end = "=") {
+  let dot = ptr - 1;
+  let parsed = [];
+  let endPtr = str.indexOf(end, ptr);
+  if (endPtr < 0) {
+    throw new TomlError("incomplete key-value: cannot find end of key", {
+      toml: str,
+      ptr
+    });
+  }
+  do {
+    let c = str[ptr = ++dot];
+    if (c !== " " && c !== "	") {
+      if (c === '"' || c === "'") {
+        if (c === str[ptr + 1] && c === str[ptr + 2]) {
+          throw new TomlError("multiline strings are not allowed in keys", {
+            toml: str,
+            ptr
+          });
+        }
+        let eos = getStringEnd(str, ptr);
+        if (eos < 0) {
+          throw new TomlError("unfinished string encountered", {
+            toml: str,
+            ptr
+          });
+        }
+        dot = str.indexOf(".", eos);
+        let strEnd = str.slice(eos, dot < 0 || dot > endPtr ? endPtr : dot);
+        let newLine = indexOfNewline(strEnd);
+        if (newLine > -1) {
+          throw new TomlError("newlines are not allowed in keys", {
+            toml: str,
+            ptr: ptr + dot + newLine
+          });
+        }
+        if (strEnd.trimStart()) {
+          throw new TomlError("found extra tokens after the string part", {
+            toml: str,
+            ptr: eos
+          });
+        }
+        if (endPtr < eos) {
+          endPtr = str.indexOf(end, eos);
+          if (endPtr < 0) {
+            throw new TomlError("incomplete key-value: cannot find end of key", {
+              toml: str,
+              ptr
+            });
+          }
+        }
+        parsed.push(parseString(str, ptr, eos));
+      } else {
+        dot = str.indexOf(".", ptr);
+        let part = str.slice(ptr, dot < 0 || dot > endPtr ? endPtr : dot);
+        if (!KEY_PART_RE.test(part)) {
+          throw new TomlError("only letter, numbers, dashes and underscores are allowed in keys", {
+            toml: str,
+            ptr
+          });
+        }
+        parsed.push(part.trimEnd());
+      }
+    }
+  } while (dot + 1 && dot < endPtr);
+  return [parsed, skipVoid(str, endPtr + 1, true, true)];
+}
+function parseInlineTable(str, ptr, depth, integersAsBigInt) {
+  let res = {};
+  let seen = /* @__PURE__ */ new Set();
+  let c;
+  let comma = 0;
+  ptr++;
+  while ((c = str[ptr++]) !== "}" && c) {
+    let err = { toml: str, ptr: ptr - 1 };
+    if (c === "\n") {
+      throw new TomlError("newlines are not allowed in inline tables", err);
+    } else if (c === "#") {
+      throw new TomlError("inline tables cannot contain comments", err);
+    } else if (c === ",") {
+      throw new TomlError("expected key-value, found comma", err);
+    } else if (c !== " " && c !== "	") {
+      let k;
+      let t = res;
+      let hasOwn2 = false;
+      let [key, keyEndPtr] = parseKey(str, ptr - 1);
+      for (let i = 0; i < key.length; i++) {
+        if (i)
+          t = hasOwn2 ? t[k] : t[k] = {};
+        k = key[i];
+        if ((hasOwn2 = Object.hasOwn(t, k)) && (typeof t[k] !== "object" || seen.has(t[k]))) {
+          throw new TomlError("trying to redefine an already defined value", {
+            toml: str,
+            ptr
+          });
+        }
+        if (!hasOwn2 && k === "__proto__") {
+          Object.defineProperty(t, k, { enumerable: true, configurable: true, writable: true });
+        }
+      }
+      if (hasOwn2) {
+        throw new TomlError("trying to redefine an already defined value", {
+          toml: str,
+          ptr
+        });
+      }
+      let [value, valueEndPtr] = extractValue(str, keyEndPtr, "}", depth - 1, integersAsBigInt);
+      seen.add(value);
+      t[k] = value;
+      ptr = valueEndPtr;
+      comma = str[ptr - 1] === "," ? ptr - 1 : 0;
+    }
+  }
+  if (comma) {
+    throw new TomlError("trailing commas are not allowed in inline tables", {
+      toml: str,
+      ptr: comma
+    });
+  }
+  if (!c) {
+    throw new TomlError("unfinished table encountered", {
+      toml: str,
+      ptr
+    });
+  }
+  return [res, ptr];
+}
+function parseArray(str, ptr, depth, integersAsBigInt) {
+  let res = [];
+  let c;
+  ptr++;
+  while ((c = str[ptr++]) !== "]" && c) {
+    if (c === ",") {
+      throw new TomlError("expected value, found comma", {
+        toml: str,
+        ptr: ptr - 1
+      });
+    } else if (c === "#")
+      ptr = skipComment(str, ptr);
+    else if (c !== " " && c !== "	" && c !== "\n" && c !== "\r") {
+      let e = extractValue(str, ptr - 1, "]", depth - 1, integersAsBigInt);
+      res.push(e[0]);
+      ptr = e[1];
+    }
+  }
+  if (!c) {
+    throw new TomlError("unfinished array encountered", {
+      toml: str,
+      ptr
+    });
+  }
+  return [res, ptr];
+}
+
+// ../node_modules/.pnpm/smol-toml@1.4.1/node_modules/smol-toml/dist/parse.js
+function peekTable(key, table, meta, type) {
+  let t = table;
+  let m = meta;
+  let k;
+  let hasOwn2 = false;
+  let state;
+  for (let i = 0; i < key.length; i++) {
+    if (i) {
+      t = hasOwn2 ? t[k] : t[k] = {};
+      m = (state = m[k]).c;
+      if (type === 0 && (state.t === 1 || state.t === 2)) {
+        return null;
+      }
+      if (state.t === 2) {
+        let l = t.length - 1;
+        t = t[l];
+        m = m[l].c;
+      }
+    }
+    k = key[i];
+    if ((hasOwn2 = Object.hasOwn(t, k)) && m[k]?.t === 0 && m[k]?.d) {
+      return null;
+    }
+    if (!hasOwn2) {
+      if (k === "__proto__") {
+        Object.defineProperty(t, k, { enumerable: true, configurable: true, writable: true });
+        Object.defineProperty(m, k, { enumerable: true, configurable: true, writable: true });
+      }
+      m[k] = {
+        t: i < key.length - 1 && type === 2 ? 3 : type,
+        d: false,
+        i: 0,
+        c: {}
+      };
+    }
+  }
+  state = m[k];
+  if (state.t !== type && !(type === 1 && state.t === 3)) {
+    return null;
+  }
+  if (type === 2) {
+    if (!state.d) {
+      state.d = true;
+      t[k] = [];
+    }
+    t[k].push(t = {});
+    state.c[state.i++] = state = { t: 1, d: false, i: 0, c: {} };
+  }
+  if (state.d) {
+    return null;
+  }
+  state.d = true;
+  if (type === 1) {
+    t = hasOwn2 ? t[k] : t[k] = {};
+  } else if (type === 0 && hasOwn2) {
+    return null;
+  }
+  return [k, t, state.c];
+}
+function parse2(toml, { maxDepth = 1e3, integersAsBigInt } = {}) {
+  let res = {};
+  let meta = {};
+  let tbl = res;
+  let m = meta;
+  for (let ptr = skipVoid(toml, 0); ptr < toml.length; ) {
+    if (toml[ptr] === "[") {
+      let isTableArray = toml[++ptr] === "[";
+      let k = parseKey(toml, ptr += +isTableArray, "]");
+      if (isTableArray) {
+        if (toml[k[1] - 1] !== "]") {
+          throw new TomlError("expected end of table declaration", {
+            toml,
+            ptr: k[1] - 1
+          });
+        }
+        k[1]++;
+      }
+      let p = peekTable(
+        k[0],
+        res,
+        meta,
+        isTableArray ? 2 : 1
+        /* Type.EXPLICIT */
+      );
+      if (!p) {
+        throw new TomlError("trying to redefine an already defined table or value", {
+          toml,
+          ptr
+        });
+      }
+      m = p[2];
+      tbl = p[1];
+      ptr = k[1];
+    } else {
+      let k = parseKey(toml, ptr);
+      let p = peekTable(
+        k[0],
+        tbl,
+        m,
+        0
+        /* Type.DOTTED */
+      );
+      if (!p) {
+        throw new TomlError("trying to redefine an already defined table or value", {
+          toml,
+          ptr
+        });
+      }
+      let v = extractValue(toml, k[1], void 0, maxDepth, integersAsBigInt);
+      p[1][p[0]] = v[0];
+      ptr = v[1];
+    }
+    ptr = skipVoid(toml, ptr, true);
+    if (toml[ptr] && toml[ptr] !== "\n" && toml[ptr] !== "\r") {
+      throw new TomlError("each key-value declaration must be followed by an end-of-line", {
+        toml,
+        ptr
+      });
+    }
+    ptr = skipVoid(toml, ptr);
+  }
+  return res;
+}
+
+// ../node_modules/.pnpm/smol-toml@1.4.1/node_modules/smol-toml/dist/stringify.js
+var BARE_KEY = /^[a-z0-9-_]+$/i;
+function extendedTypeOf(obj) {
+  let type = typeof obj;
+  if (type === "object") {
+    if (Array.isArray(obj))
+      return "array";
+    if (obj instanceof Date)
+      return "date";
+  }
+  return type;
+}
+function isArrayOfTables(obj) {
+  for (let i = 0; i < obj.length; i++) {
+    if (extendedTypeOf(obj[i]) !== "object")
+      return false;
+  }
+  return obj.length != 0;
+}
+function formatString(s) {
+  return JSON.stringify(s).replace(/\x7f/g, "\\u007f");
+}
+function stringifyValue(val, type, depth, numberAsFloat) {
+  if (depth === 0) {
+    throw new Error("Could not stringify the object: maximum object depth exceeded");
+  }
+  if (type === "number") {
+    if (isNaN(val))
+      return "nan";
+    if (val === Infinity)
+      return "inf";
+    if (val === -Infinity)
+      return "-inf";
+    if (numberAsFloat && Number.isInteger(val))
+      return val.toFixed(1);
+    return val.toString();
+  }
+  if (type === "bigint" || type === "boolean") {
+    return val.toString();
+  }
+  if (type === "string") {
+    return formatString(val);
+  }
+  if (type === "date") {
+    if (isNaN(val.getTime())) {
+      throw new TypeError("cannot serialize invalid date");
+    }
+    return val.toISOString();
+  }
+  if (type === "object") {
+    return stringifyInlineTable(val, depth, numberAsFloat);
+  }
+  if (type === "array") {
+    return stringifyArray(val, depth, numberAsFloat);
+  }
+}
+function stringifyInlineTable(obj, depth, numberAsFloat) {
+  let keys3 = Object.keys(obj);
+  if (keys3.length === 0)
+    return "{}";
+  let res = "{ ";
+  for (let i = 0; i < keys3.length; i++) {
+    let k = keys3[i];
+    if (i)
+      res += ", ";
+    res += BARE_KEY.test(k) ? k : formatString(k);
+    res += " = ";
+    res += stringifyValue(obj[k], extendedTypeOf(obj[k]), depth - 1, numberAsFloat);
+  }
+  return res + " }";
+}
+function stringifyArray(array, depth, numberAsFloat) {
+  if (array.length === 0)
+    return "[]";
+  let res = "[ ";
+  for (let i = 0; i < array.length; i++) {
+    if (i)
+      res += ", ";
+    if (array[i] === null || array[i] === void 0) {
+      throw new TypeError("arrays cannot contain null or undefined values");
+    }
+    res += stringifyValue(array[i], extendedTypeOf(array[i]), depth - 1, numberAsFloat);
+  }
+  return res + " ]";
+}
+function stringifyArrayTable(array, key, depth, numberAsFloat) {
+  if (depth === 0) {
+    throw new Error("Could not stringify the object: maximum object depth exceeded");
+  }
+  let res = "";
+  for (let i = 0; i < array.length; i++) {
+    res += `[[${key}]]
+`;
+    res += stringifyTable(array[i], key, depth, numberAsFloat);
+    res += "\n\n";
+  }
+  return res;
+}
+function stringifyTable(obj, prefix, depth, numberAsFloat) {
+  if (depth === 0) {
+    throw new Error("Could not stringify the object: maximum object depth exceeded");
+  }
+  let preamble = "";
+  let tables = "";
+  let keys3 = Object.keys(obj);
+  for (let i = 0; i < keys3.length; i++) {
+    let k = keys3[i];
+    if (obj[k] !== null && obj[k] !== void 0) {
+      let type = extendedTypeOf(obj[k]);
+      if (type === "symbol" || type === "function") {
+        throw new TypeError(`cannot serialize values of type '${type}'`);
+      }
+      let key = BARE_KEY.test(k) ? k : formatString(k);
+      if (type === "array" && isArrayOfTables(obj[k])) {
+        tables += stringifyArrayTable(obj[k], prefix ? `${prefix}.${key}` : key, depth - 1, numberAsFloat);
+      } else if (type === "object") {
+        let tblKey = prefix ? `${prefix}.${key}` : key;
+        tables += `[${tblKey}]
+`;
+        tables += stringifyTable(obj[k], tblKey, depth - 1, numberAsFloat);
+        tables += "\n\n";
+      } else {
+        preamble += key;
+        preamble += " = ";
+        preamble += stringifyValue(obj[k], type, depth, numberAsFloat);
+        preamble += "\n";
+      }
+    }
+  }
+  return `${preamble}
+${tables}`.trim();
+}
+function stringify3(obj, { maxDepth = 1e3, numbersAsFloat = false } = {}) {
+  if (extendedTypeOf(obj) !== "object") {
+    throw new TypeError("stringify can only be called with an object");
+  }
+  return stringifyTable(obj, "", maxDepth, numbersAsFloat);
+}
+
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
+var CSpellConfigFileToml = class _CSpellConfigFileToml extends ImplCSpellConfigFile {
+  url;
+  constructor(url2, settings) {
+    super(url2, settings);
+    this.url = url2;
+  }
+  serialize() {
+    return stringify3(this.settings) + "\n";
+  }
+  removeAllComments() {
+    return this;
+  }
+  setSchema(schema) {
+    this.settings.$schema = schema;
+    return this;
+  }
+  setComment(_field, _comment, _inline) {
+    return this;
+  }
+  static parse(file) {
+    try {
+      const cspell = parse2(file.content);
+      if (!isCSpellSettings2(cspell)) {
+        throw new ParseError(file.url);
+      }
+      const cfg = new _CSpellConfigFileToml(file.url, cspell);
+      return cfg;
+    } catch (cause) {
+      if (cause instanceof ParseError) {
+        throw cause;
+      }
+      throw new ParseError(file.url, void 0, { cause });
+    }
+  }
+};
+function parseCSpellConfigFileToml(file) {
+  return CSpellConfigFileToml.parse(file);
+}
+function isCSpellSettings2(cfg) {
+  return !(!cfg || typeof cfg !== "object" || Array.isArray(cfg));
+}
+
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/serializers/cspellToml.js
 function deserializer2(params, next) {
+  if (!isTomlFile(params.url.pathname))
+    return next(params);
+  return parseCSpellConfigFileToml(params);
+}
+function isTomlFile(pathname) {
+  pathname = pathname.toLowerCase();
+  return pathname.endsWith(".toml");
+}
+function serializer2(settings, next) {
+  if (!(settings instanceof CSpellConfigFileToml))
+    return next(settings);
+  return settings.serialize();
+}
+var serializerCSpellToml = { deserialize: deserializer2, serialize: serializer2 };
+
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
+function deserializer3(params, next) {
   if (!isYamlFile(params.url.pathname))
     return next(params);
   return parseCSpellConfigFileYaml(params);
@@ -57063,40 +57911,41 @@ function isYamlFile(pathname) {
   pathname = pathname.toLowerCase();
   return pathname.endsWith(".yml") || pathname.endsWith(".yaml");
 }
-function serializer2(settings, next) {
+function serializer3(settings, next) {
   if (!(settings instanceof CSpellConfigFileYaml))
     return next(settings);
   return settings.serialize();
 }
-var serializerCSpellYaml = { deserialize: deserializer2, serialize: serializer2 };
+var serializerCSpellYaml = { deserialize: deserializer3, serialize: serializer3 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/serializers/packageJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/serializers/packageJson.js
 var isSupportedFormat = /\bpackage\.json$/i;
-function deserializer3(params, next) {
+function deserializer4(params, next) {
   if (!isSupportedFormat.test(params.url.pathname))
     return next(params);
   return parseCSpellConfigFilePackageJson(params);
 }
-function serializer3(settings, next) {
+function serializer4(settings, next) {
   if (!(settings instanceof CSpellConfigFilePackageJson))
     return next(settings);
   return settings.serialize();
 }
-var serializerPackageJson = { deserialize: deserializer3, serialize: serializer3 };
+var serializerPackageJson = { deserialize: deserializer4, serialize: serializer4 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/serializers/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/serializers/index.js
 var defaultDeserializers = [
   serializerCSpellJson,
   serializerCSpellYaml,
-  serializerPackageJson
+  serializerPackageJson,
+  serializerCSpellToml
 ];
 
-// ../node_modules/.pnpm/cspell-config-lib@9.1.2/node_modules/cspell-config-lib/dist/createReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.1.3/node_modules/cspell-config-lib/dist/createReaderWriter.js
 function createReaderWriter(deserializers = [], loaders2 = [], io = defaultIO) {
   return new CSpellConfigFileReaderWriterImpl(io, [...defaultDeserializers, ...deserializers], [...defaultLoaders, ...loaders2]);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/logger.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/logger.js
 var _logger = console;
 function logError(...args) {
   _logger.error(...args);
@@ -57110,7 +57959,7 @@ function setLogger(logger) {
   return oldLogger;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 var import_promises2 = __toESM(require("node:fs/promises"), 1);
 var import_node_path7 = __toESM(require("node:path"), 1);
 
@@ -57189,7 +58038,7 @@ if (xdgConfig) {
   xdgConfigDirectories.unshift(xdgConfig);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 var packageName = "cspell";
 var legacyLocationDir = xdgConfig ? import_node_path7.default.join(xdgConfig, "configstore") : void 0;
 var cspellGlobalLocationDir = envPaths(packageName, { suffix: "" }).config;
@@ -57244,11 +58093,11 @@ var GlobalConfigStore = class {
   static defaultLocation = import_node_path7.default.join(cspellGlobalLocationDir, defaultConfigFileName);
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 var import_node_os4 = require("node:os");
 var import_node_url9 = require("node:url");
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
 function toGlobDef(g, root, source) {
   if (g === void 0)
     return void 0;
@@ -57268,7 +58117,7 @@ function toGlobDef(g, root, source) {
   return g;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 function normalizeRawConfig(config) {
   if (typeof config.version === "number") {
     config.version = config.version.toString();
@@ -57383,7 +58232,7 @@ function normalizeImport(imports) {
   return [];
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
 function configToRawSettings(cfgFile) {
   if (!cfgFile)
     return {};
@@ -57414,7 +58263,7 @@ function urlToSimpleId(url2) {
   return url2.pathname.split("/").slice(-2).join("/");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
 var globalConfig = new GlobalConfigStore();
 async function getGlobalConfig() {
   const name2 = "CSpell Configstore";
@@ -57451,7 +58300,7 @@ function getGlobalConfigPath() {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
 var ImportError = class extends Error {
   cause;
   constructor(msg, cause) {
@@ -57465,12 +58314,12 @@ var UnsupportedPnpFile = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 var import_node_url11 = require("node:url");
 var import_clear_module = __toESM(require_clear_module(), 1);
 var import_import_fresh = __toESM(require_import_fresh(), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/findUp.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/findUp.js
 var import_promises3 = require("node:fs/promises");
 var import_node_path8 = __toESM(require("node:path"), 1);
 var import_node_url10 = require("node:url");
@@ -57512,7 +58361,7 @@ function toDirPath(urlOrPath) {
   return urlOrPath instanceof URL ? (0, import_node_url10.fileURLToPath)(new URL(".", urlOrPath)) : urlOrPath;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 var defaultPnpFiles = [".pnp.cjs", ".pnp.js"];
 var supportedSchemas = /* @__PURE__ */ new Set(["file:"]);
 var cachedRequests = /* @__PURE__ */ new Map();
@@ -57611,8 +58460,8 @@ function isSupported(url2) {
   return supportedSchemas.has(url2.protocol);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
-var supportedExtensions = [".json", ".jsonc", ".yaml", ".yml", ".mjs", ".cjs", ".js"];
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
+var supportedExtensions = [".json", ".jsonc", ".yaml", ".yml", ".mjs", ".cjs", ".js", ".toml"];
 var setOfLocations = /* @__PURE__ */ new Set([
   "package.json",
   // Original locations
@@ -57661,16 +58510,16 @@ function genCfgLoc(filename, extensions) {
   return extensions.map((ext) => filename + ext);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 var import_posix3 = require("node:path/posix");
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
 async function findUpFromUrl2(name2, from, options = {}) {
   const fs8 = options.fs ?? getVirtualFS().fs;
   return fs8.findUp(name2, from, options);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 var ConfigSearch = class {
   /**
    * Cache of search results.
@@ -57831,14 +58680,14 @@ async function checkPackageJson(fs8, filename) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
 var defaultSettings = createCSpellSettingsInternal({
   id: "default",
   name: "default",
   version: currentSettingsFileVersion
 });
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
 var defaultPnPSettings = Object.freeze({});
 var lastPnP = defaultPnPSettings;
 function normalizePnPSettings(settings) {
@@ -57853,7 +58702,7 @@ function equal(a, b) {
   return a === b || a.usePnP === b.usePnP && (a.pnpFiles === b.pnpFiles || a.pnpFiles?.join("|") === b.pnpFiles?.join("|"));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
 var supportedCSpellConfigVersions = [configSettingsFileVersion0_2];
 var setOfSupportedConfigVersions = Object.freeze(new Set(supportedCSpellConfigVersions));
 var defaultConfigLoader = void 0;
@@ -58321,7 +59170,7 @@ function relativeToCwd(file) {
   return [prefix || ".", ...urlPath.slice(i)].join("/");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
 var gcl = getDefaultConfigLoaderInternal;
 function searchForConfig(searchFrom, options) {
   return gcl().searchForConfig(searchFrom, options);
@@ -58349,7 +59198,7 @@ function getDefaultConfigLoader() {
   return getDefaultConfigLoaderInternal();
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
 function extractImportErrors(settings) {
   const imports = mergeImportRefs2(settings);
   return !imports ? [] : [...imports.values()].filter(isImportFileRefWithError);
@@ -58372,7 +59221,7 @@ function isImportFileRefWithError(ref) {
   return !!ref.error;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
 async function readSettings(filename, relativeToOrPnP, pnpSettings) {
   const loader2 = getDefaultConfigLoader();
   const relativeTo = typeof relativeToOrPnP === "string" || relativeToOrPnP instanceof URL ? relativeToOrPnP : void 0;
@@ -58380,7 +59229,7 @@ async function readSettings(filename, relativeToOrPnP, pnpSettings) {
   return loader2.readSettingsAsync(filename, relativeTo, pnp);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
 function isPatternInclude(p) {
   return !!p.include;
 }
@@ -58402,7 +59251,7 @@ function isPatternPatterns(p) {
   return Array.isArray(p.patterns);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/matchResult.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/matchResult.js
 function segmentMatch(mr) {
   const { matches, index, groups, input } = mr;
   const segments = [];
@@ -58439,7 +59288,7 @@ function createSimpleMatchResult(match2, input, index, lineNumber) {
   return { index, input, match: match2, matches: [match2], groups, lineNumber };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/scope.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/scope.js
 var import_node_assert11 = __toESM(require("node:assert"), 1);
 var Scope = class _Scope {
   value;
@@ -58506,7 +59355,7 @@ function isScopeLike(value) {
   return typeof value === "object" && !Array.isArray(value) && value.value !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
 function normalizeGrammar(grammar2) {
   return new ImplNGrammar(grammar2);
 }
@@ -58776,20 +59625,20 @@ var ImplNPatternPatterns = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/grammar.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/grammar.js
 function compileGrammar(grammar2) {
   return normalizeGrammar(grammar2);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 var import_node_assert12 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/util.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/util.js
 function isDefined4(t) {
   return t !== void 0 && t !== null;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
 function applyCaptureToBeginOrMatch(matchRuleResult) {
   const { match: match2, rule } = matchRuleResult;
   const bePattern = rule.pattern;
@@ -58915,7 +59764,7 @@ function applyCaptures(rule, match2, captures) {
   return parsedText;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 function tokenizeLine(line, rule) {
   const text = line.text;
   const lineLen = line.text.length;
@@ -59027,7 +59876,7 @@ function findNearestWithEnd(ctx) {
   return ctx;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/grammars/typescript.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/grammars/typescript.js
 var repository = {
   statements: {
     name: "code.ts",
@@ -59190,7 +60039,7 @@ var grammar = {
   repository
 };
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
 var import_node_assert13 = __toESM(require("node:assert"), 1);
 function appendMappedText(a, b) {
   if (!a.map && !b.map) {
@@ -59228,7 +60077,7 @@ function joinMaps(aMap, bMap) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/mappers/typescript.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/mappers/typescript.js
 var hexChars = {
   "0": 0,
   "1": 1,
@@ -59369,7 +60218,7 @@ function mapRawString(text) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parser/parser.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parser/parser.js
 function mapTokenizedLine(tl) {
   return tl.tokens.map((t) => ({
     text: t.text,
@@ -59381,14 +60230,14 @@ function mapTokenizedLines(itl) {
   return pipeSync(itl, opMapSync(mapTokenizedLine), opFlattenSync());
 }
 function createParser(grammar2, name2, transform2 = mapTokenizedLines) {
-  function parse2(content, filename) {
+  function parse3(content, filename) {
     const parsedTexts = pipeSync(tokenizeTextIterable(content, grammar2), transform2);
     return { content, filename, parsedTexts };
   }
-  return { name: name2, parse: parse2 };
+  return { name: name2, parse: parse3 };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
 var tsGrammar = compileGrammar(grammar);
 var pool = new ScopePool();
 var useScope = /* @__PURE__ */ new WeakMap();
@@ -59470,10 +60319,10 @@ function doesScopeMatch(s, match2) {
   return typeof s === "string" ? s.startsWith(match2) : s.value.startsWith(match2);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.1.2/node_modules/cspell-grammar/dist/parsers/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.1.3/node_modules/cspell-grammar/dist/parsers/index.js
 var parsers2 = [parser];
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
 var PatternRegExp = class extends RegExp {
   constructor(pattern) {
     super(pattern);
@@ -59483,7 +60332,7 @@ var PatternRegExp = class extends RegExp {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
 var defaultLocale = "en";
 var defaultLanguageSettings = [];
 function getDefaultLanguageSettings() {
@@ -59583,7 +60432,7 @@ function calcSettingsForLanguageId(baseSettings, languageId) {
   return langSettings;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
 var regExMatchUrls = /(?:https?|ftp):\/\/[^\s"]+/gi;
 var regExHRef = /\bhref\s*=\s*".*?"/gi;
 var regExMatchCommonHexFormats = /(?:#[0-9a-f]{3,8})|(?:0x[0-9a-f]+)|(?:\\u[0-9a-f]{4})|(?:\\x\{[0-9a-f]{4}\})/gi;
@@ -59612,7 +60461,7 @@ var regExRepeatedChar = /^(\w)\1{3,}$/i;
 var regExSha = /\bsha\d+-[a-z0-9+/]{25,}={0,3}/gi;
 var regExHashStrings = /(?:\b(?:sha\d+|md5|base64|crypt|bcrypt|scrypt|security-token|assertion)[-,:$=]|#code[/])[-\w/+%.]{25,}={0,3}(?:(['"])\s*\+?\s*\1?[-\w/+%.]+={0,3})*(?![-\w/+=%.])/gi;
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
 var defaultConfigFile = () => resolveConfigModule(defaultConfigFileModuleRef);
 var regExpSpellCheckerDisable = [
   new PatternRegExp(regExSpellingGuardBlock),
@@ -59744,7 +60593,7 @@ function getDefaultSettings(useDefaultDictionaries = true) {
   return defaultSettingsLoader.getDefaultSettingsAsync(useDefaultDictionaries);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/search.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/search.js
 function binarySearch(arr, item, leftOffset, rightOffset) {
   let left = Math.max(leftOffset ?? 0, 0);
   let right = Math.min(rightOffset ?? arr.length, arr.length);
@@ -59759,7 +60608,7 @@ function binarySearch(arr, item, leftOffset, rightOffset) {
   return left;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/text.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/text.js
 function splitCamelCaseWordWithOffset(wo) {
   return splitCamelCaseWord(wo.text).map(scanMap((last, text) => ({ text, offset: last.offset + last.text.length }), {
     text: "",
@@ -59924,7 +60773,7 @@ function removeAccents2(text) {
   return text.normalize("NFD").replace(regExAccents2, "");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
 var regExMatchRegEx = /\/.*\/[gimuy]*/;
 var regExCSpellInDocDirective = /\b(?:spell-?checker|c?spell)::?(.*)/gi;
 var regExCSpellDirectiveKey = /(?<=\b(?:spell-?checker|c?spell)::?)(?!:)(.*)/i;
@@ -60179,7 +61028,7 @@ function parseDisable(acc, _match) {
   return acc;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
 function combineTextAndLanguageSettings(settings, text, languageId) {
   if (!text) {
     return toInternalSettings(calcSettingsForLanguageId(settings, languageId));
@@ -60194,7 +61043,7 @@ function extractSettingsFromText(text) {
   return getInDocumentSettings(text);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
 var path12 = __toESM(require("node:path"), 1);
 async function determineTextDocumentSettings(doc, settings) {
   const filename = uriToFilePath(doc.uri);
@@ -60211,10 +61060,10 @@ function getLanguageForFilename(filename) {
   return findMatchingFileTypes(basename5);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 var import_node_assert17 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/@cspell+cspell-types@9.1.2/node_modules/@cspell/cspell-types/dist/index.mjs
+// ../node_modules/.pnpm/@cspell+cspell-types@9.1.3/node_modules/@cspell/cspell-types/dist/index.mjs
 var IssueType = /* @__PURE__ */ function(IssueType$1) {
   IssueType$1[IssueType$1["spelling"] = 0] = "spelling";
   IssueType$1[IssueType$1["directive"] = 1] = "directive";
@@ -60236,10 +61085,10 @@ var defaultCSpellSettings = {
   minRandomLength: 40
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/suggestions.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/suggestions.js
 var import_node_assert14 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/memorizeLastCall.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/memorizeLastCall.js
 function memorizeLastCall2(fn) {
   let last;
   return (...p) => {
@@ -60253,7 +61102,7 @@ function memorizeLastCall2(fn) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/suggestions.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/suggestions.js
 var emptySuggestionOptions = Object.freeze({});
 var emptyCSpellSettings = Object.freeze({});
 var memorizeSuggestions = memorizeLastCall2(cacheSuggestionsForWord);
@@ -60416,15 +61265,15 @@ var SuggestionError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/defaultConstants.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/defaultConstants.js
 var defaultMaxNumberOfProblems = 200;
 var defaultMaxDuplicateProblems = 5;
 var defaultMinWordLength = 4;
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 var import_node_assert16 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
 var PairingHeap2 = class {
   compare;
   _heap;
@@ -60508,12 +61357,12 @@ function mergeSiblings2(compare3, n) {
   return ss ? merge3(compare3, m, mergeSiblings2(compare3, ss)) : m;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/regexHelper.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/regexHelper.js
 function escapeRegEx3(s) {
   return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
 var ignoreBreak = Object.freeze([]);
 function split(line, offset, isValidWord, options = {}) {
   const relWordToSplit = findNextWordText({ text: line.text, offset: offset - line.offset });
@@ -60821,7 +61670,7 @@ function mergeSortedBreaks(...maps) {
   return maps.flat().sort((a, b) => a.offset - b.offset);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
 var maxRadio = 0.5;
 function isRandomString(s, maxNoiseToLengthRatio = maxRadio) {
   return scoreRandomString(s) >= maxNoiseToLengthRatio;
@@ -60847,7 +61696,7 @@ function extractHexSequences(s, minLength = MIN_HEX_SEQUENCE_LENGTH) {
   return [...s.matchAll(hexSequence)].filter((m) => m[0].length >= minLength && (m.index === 0 || !isLetterAt(s, m.index - 1)) && !isLetterAt(s, m.index + m[0].length)).map((m) => ({ text: m[0], offset: m.index }));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
 function hasWordCheck(dict, word) {
   word = word.includes("\\") ? word.replaceAll("\\", "") : word;
   return dict.has(word);
@@ -60858,7 +61707,7 @@ function isWordValidWithEscapeRetry(dict, wo, line) {
   line.text[wo.offset - line.offset - 1] === "\\" && hasWordCheck(dict, wo.text.slice(1));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/TextMap.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/TextMap.js
 var import_node_assert15 = __toESM(require("node:assert"), 1);
 function extractTextMapRangeOrigin(textMap, extractRange) {
   const { text: srcTxt, range: srcRange, map: srcMap } = textMap;
@@ -60901,7 +61750,7 @@ function extractTextMapRangeOrigin(textMap, extractRange) {
   return { text, range, map: map3 };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
 function mapRangeBackToOriginalPos(offRange, map3) {
   if (!map3 || !map3.length)
     return offRange;
@@ -60960,7 +61809,7 @@ function createMappedTextSegmenter(includeRanges) {
   return segmenter;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 var MIN_HEX_SEQUENCE_LENGTH2 = 8;
 function lineValidatorFactory(sDict, options) {
   const { minWordLength = defaultMinWordLength, flagWords = [], allowCompoundWords = false, ignoreCase: ignoreCase2 = true, ignoreRandomStrings = defaultCSpellSettings.ignoreRandomStrings, minRandomLength = defaultCSpellSettings.minRandomLength, unknownWords = unknownWordsChoices.ReportAll } = options;
@@ -61310,7 +62159,7 @@ function filterExcludedTextOffsets(issues, excluded) {
   return keep;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
 function settingsToValidateOptions(settings) {
   const opt = {
     ...settings,
@@ -61322,7 +62171,7 @@ function settingsToValidateOptions(settings) {
   return opt;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/TextRange.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/TextRange.js
 function toMatchRangeWithText(m) {
   const index = m.index || 0;
   const _text = m[0];
@@ -61435,7 +62284,7 @@ function flatten(data) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
 function calcTextInclusionRanges(text, options) {
   const { ignoreRegExpList = [], includeRegExpList = [] } = options;
   const filteredIncludeList = includeRegExpList.filter((a) => !!a);
@@ -61444,7 +62293,7 @@ function calcTextInclusionRanges(text, options) {
   return includeRanges;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
 function traceWord(word, dictCollection, config) {
   const opts = {
     ignoreCase: config.ignoreCase ?? true,
@@ -61530,7 +62379,7 @@ var CTraceResult = class extends Array {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 var ERROR_NOT_PREPARED = "Validator Must be prepared before calling this function.";
 var DocumentValidator = class _DocumentValidator {
   settings;
@@ -61916,7 +62765,7 @@ function timePromise(timings, name2, p) {
   return p.finally(recordPerfTime(timings, name2));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/spellCheckFile.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/spellCheckFile.js
 async function spellCheckDocument(document, options, settingsOrConfigFile) {
   const settingsUsed = satisfiesCSpellConfigFile(settingsOrConfigFile) ? settingsOrConfigFile.settings : settingsOrConfigFile;
   if (isBinaryDoc(document)) {
@@ -62002,7 +62851,7 @@ async function spellCheckFullDocument(document, options, settingsOrConfigFile) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.1.2/node_modules/cspell-lib/dist/lib/util/textApi.js
+// ../node_modules/.pnpm/cspell-lib@9.1.3/node_modules/cspell-lib/dist/lib/util/textApi.js
 var textApi_exports = {};
 __export(textApi_exports, {
   calculateTextDocumentOffsets: () => calculateTextDocumentOffsets,
@@ -62034,7 +62883,7 @@ __export(textApi_exports, {
   ucFirst: () => ucFirst2
 });
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/cli-reporter.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/cli-reporter.js
 var import_node_assert18 = __toESM(require("node:assert"), 1);
 var import_node_util7 = require("node:util");
 
@@ -62536,7 +63385,7 @@ var source_default = chalk;
 var TEMPLATE_REGEX = /(?:\\(u(?:[a-f\d]{4}|{[a-f\d]{1,6}})|x[a-f\d]{2}|.))|(?:{(~)?(#?[\w:]+(?:\([^)]*\))?(?:\.#?[\w:]+(?:\([^)]*\))?)*)(?:[ \t]|(?=\r?\n)))|(})|((?:.|[\r\n\f])+?)/gi;
 var STYLE_REGEX = /(?:^|\.)(?:(?:(\w+)(?:\(([^)]*)\))?)|(?:#(?=[:a-fA-F\d]{2,})([a-fA-F\d]{6})?(?::([a-fA-F\d]{6}))?))/g;
 var STRING_REGEX = /^(['"])((?:\\.|(?!\1)[^\\])*)\1$/;
-var ESCAPE_REGEX = /\\(u(?:[a-f\d]{4}|{[a-f\d]{1,6}})|x[a-f\d]{2}|.)|([^\\])/gi;
+var ESCAPE_REGEX2 = /\\(u(?:[a-f\d]{4}|{[a-f\d]{1,6}})|x[a-f\d]{2}|.)|([^\\])/gi;
 var ESCAPES = /* @__PURE__ */ new Map([
   ["n", "\n"],
   ["r", "\r"],
@@ -62569,7 +63418,7 @@ function parseArguments(name2, arguments_) {
     if (!Number.isNaN(number)) {
       results.push(number);
     } else if (matches = chunk.match(STRING_REGEX)) {
-      results.push(matches[2].replace(ESCAPE_REGEX, (_, escape, character) => escape ? unescape(escape) : character));
+      results.push(matches[2].replace(ESCAPE_REGEX2, (_, escape, character) => escape ? unescape(escape) : character));
     } else {
       throw new Error(`Invalid Chalk template style argument: ${chunk} (in style '${name2}')`);
     }
@@ -62680,7 +63529,7 @@ var chalk_template_default = makeChalkTemplate(template);
 var templateStderr = makeTemplate(chalkStderr);
 var chalkTemplateStderr = makeChalkTemplate(templateStderr);
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/console.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/console.js
 var import_node_util5 = require("node:util");
 var ImplChannel = class {
   stream;
@@ -62728,7 +63577,7 @@ function getColorLevel(stream) {
   }
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/errors.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/errors.js
 var import_node_util6 = require("node:util");
 var CheckFailed = class extends Error {
   exitCode;
@@ -62789,7 +63638,7 @@ function toApplicationError(e, message) {
   return new ApplicationError(message ?? err.message, void 0, err);
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/util.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/util.js
 var uniqueFn2 = uniqueFilterFnGenerator2;
 function uniqueFilterFnGenerator2(extractFn) {
   const values = /* @__PURE__ */ new Set();
@@ -62811,7 +63660,7 @@ function clean4(src) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/cli-reporter.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/cli-reporter.js
 var templateIssue = `{green $filename}:{yellow $row:$col} - $message ({red $text}) $quickFix`;
 var templateIssueNoFix = `{green $filename}:{yellow $row:$col} - $message ({red $text})`;
 var templateIssueWithSuggestions = `{green $filename}:{yellow $row:$col} - $message ({red $text}) Suggestions: {yellow [$suggestions]}`;
@@ -63150,16 +63999,16 @@ function checkTemplate(template2) {
   }
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/featureFlags/featureFlags.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/featureFlags/featureFlags.js
 function getFeatureFlags() {
   return getSystemFeatureFlags();
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/lint/lint.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/lint/lint.js
 var path18 = __toESM(require("node:path"), 1);
 var import_node_util8 = require("node:util");
 
-// ../node_modules/.pnpm/cspell-gitignore@9.1.2/node_modules/cspell-gitignore/dist/findRepoRoot.js
+// ../node_modules/.pnpm/cspell-gitignore@9.1.3/node_modules/cspell-gitignore/dist/findRepoRoot.js
 async function findRepoRoot(directory, vfs) {
   directory = toFileDirURL(directory);
   vfs = vfs || getDefaultVirtualFs().getFS(directory);
@@ -63171,7 +64020,7 @@ async function findRepoRoot(directory, vfs) {
   return toFilePathOrHref(new URL(".", found));
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.1.2/node_modules/cspell-gitignore/dist/utils.js
+// ../node_modules/.pnpm/cspell-gitignore@9.1.3/node_modules/cspell-gitignore/dist/utils.js
 function isDefined5(v) {
   return v !== void 0 && v !== null;
 }
@@ -63188,7 +64037,7 @@ function makeRelativeTo(child, parent) {
   return rel;
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.1.2/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
+// ../node_modules/.pnpm/cspell-gitignore@9.1.3/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
 var GitIgnoreFile = class _GitIgnoreFile {
   matcher;
   gitignore;
@@ -63303,7 +64152,7 @@ function globToString(glob3, relativeToDir) {
   return (base ? base + "/" : "") + glob3.glob;
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.1.2/node_modules/cspell-gitignore/dist/GitIgnore.js
+// ../node_modules/.pnpm/cspell-gitignore@9.1.3/node_modules/cspell-gitignore/dist/GitIgnore.js
 var GitIgnore = class {
   resolvedGitIgnoreHierarchies = /* @__PURE__ */ new Map();
   knownGitIgnoreHierarchies = /* @__PURE__ */ new Map();
@@ -63433,7 +64282,7 @@ async function asyncIterableToArray(iter) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/environment.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/environment.js
 var environmentKeys = {
   CSPELL_ENABLE_DICTIONARY_LOGGING: "CSPELL_ENABLE_DICTIONARY_LOGGING",
   CSPELL_ENABLE_DICTIONARY_LOG_FILE: "CSPELL_ENABLE_DICTIONARY_LOG_FILE",
@@ -63461,7 +64310,7 @@ function truthy(value) {
   return false;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/dirname.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/dirname.js
 var import_node_url13 = require("node:url");
 var import_meta2 = {};
 var _dirname;
@@ -63474,40 +64323,40 @@ try {
 }
 var pkgDir = _dirname;
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/pkgInfo.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/pkgInfo.js
 var name = "cspell";
-var version2 = "9.1.2";
+var version2 = "9.1.3";
 var engines = { node: ">=20" };
 var npmPackage = { name, version: version2, engines };
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/createCache.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/createCache.js
 var import_node_assert21 = __toESM(require("node:assert"), 1);
 var import_promises4 = require("node:fs/promises");
 var import_node_path12 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/DiskCache.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/DiskCache.js
 var import_node_assert20 = __toESM(require("node:assert"), 1);
 var crypto = __toESM(require("node:crypto"), 1);
 var fs6 = __toESM(require("node:fs"), 1);
 var import_node_path11 = require("node:path");
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/fileHelper.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/fileHelper.js
 var import_node_fs8 = require("node:fs");
 var path15 = __toESM(require("node:path"), 1);
 var import_consumers = __toESM(require("node:stream/consumers"), 1);
 var import_node_url14 = require("node:url");
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/async.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/async.js
 var { opMapAsync: asyncMap, opFilterAsync: asyncFilter, opAwaitAsync: asyncAwait, opFlattenAsync: asyncFlatten } = operators;
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/constants.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/constants.js
 var UTF8 = "utf8";
 var STDIN = "stdin";
 var STDINProtocol = "stdin:";
 var STDINUrlPrefix = "stdin://";
 var FileUrlPrefix = "file://";
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/glob.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/glob.js
 var import_node_fs7 = require("node:fs");
 var path14 = __toESM(require("node:path"), 1);
 var import_node_path10 = require("node:path");
@@ -63729,7 +64578,7 @@ async function glob(patternsOrOptions, options) {
   return crawl(opts, cwd, false);
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/glob.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/glob.js
 var defaultExcludeGlobs = ["node_modules/**"];
 async function globP(pattern, options) {
   const cwd = options?.root || options?.cwd || process.cwd();
@@ -63839,13 +64688,13 @@ function glob2(patterns, options) {
   return glob(patterns, options);
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/stdin.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/stdin.js
 var readline = __toESM(require("node:readline"), 1);
 function readStdin() {
   return readline.createInterface(process.stdin);
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/stdinUrl.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/stdinUrl.js
 var import_node_assert19 = __toESM(require("node:assert"), 1);
 function isStdinUrl(url2) {
   if (url2 instanceof URL) {
@@ -63860,7 +64709,7 @@ function resolveStdinUrl(url2, cwd) {
   return fileUrl.toString().replace(/^file:/, STDINProtocol) + (path22 ? "" : "/");
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/fileHelper.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/fileHelper.js
 function fileInfoToDocument(fileInfo, languageId, locale) {
   const { filename, text } = fileInfo;
   languageId = languageId || void 0;
@@ -63982,18 +64831,18 @@ function relativeToCwd2(filename, cwd = process.cwd()) {
   return rel;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/fileEntryCache.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/fileEntryCache.js
 var import_node_fs9 = require("node:fs");
 var path16 = __toESM(require("node:path"), 1);
 var import_node_worker_threads = require("node:worker_threads");
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/file-entry-cache.mjs
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/file-entry-cache.mjs
 var import_file_entry_cache = __toESM(require_cache3(), 1);
 function createFromFile(pathToCache, useChecksum) {
   return import_file_entry_cache.default.createFromFile(pathToCache, useChecksum);
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/fileEntryCache.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/fileEntryCache.js
 function createFromFile2(pathToCache, useCheckSum, useRelative) {
   const absPathToCache = path16.resolve(pathToCache);
   const relDir = path16.dirname(absPathToCache);
@@ -64063,7 +64912,7 @@ function normalizePath(filePath) {
   return filePath.split(path16.sep).join("/");
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/ObjectCollection.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/ObjectCollection.js
 var compare2 = Intl.Collator().compare;
 var ShallowObjectCollection = class {
   tree = {};
@@ -64096,7 +64945,7 @@ var ShallowObjectCollection = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/DiskCache.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/DiskCache.js
 var cacheDataKeys = {
   v: "v",
   r: "r",
@@ -64282,7 +65131,7 @@ function calcVersion(version4) {
   return version4 + META_DATA_VERSION_SUFFIX;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/DummyCache.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/DummyCache.js
 var DummyCache = class {
   getCachedLintResults() {
     return Promise.resolve(void 0);
@@ -64298,7 +65147,7 @@ var DummyCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/cache/createCache.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/cache/createCache.js
 var DEFAULT_CACHE_LOCATION = ".cspellcache";
 var versionSuffix = "";
 function createCache5(options) {
@@ -64349,7 +65198,7 @@ function normalizeVersion(version4) {
   return parts.join(".") + versionSuffix;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/configFileHelper.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/configFileHelper.js
 async function readConfig(configFile, root, stopConfigSearchAt) {
   configFile ??= getEnvironmentVariable(environmentKeys.CSPELL_CONFIG_PATH);
   if (configFile) {
@@ -64388,7 +65237,7 @@ async function readConfigHandleError(filename) {
   }
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/extractContext.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/extractContext.js
 function prefCharIndex(text, offset, count3 = 1) {
   if (offset - count3 < 0)
     return 0;
@@ -64458,7 +65307,7 @@ function extractContext(tdo, contextRange) {
   return context;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/prefetch.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/prefetch.js
 var import_node_assert22 = __toESM(require("node:assert"), 1);
 function* prefetchIterable(iterable, size) {
   (0, import_node_assert22.default)(size >= 0);
@@ -64474,7 +65323,7 @@ function* prefetchIterable(iterable, size) {
   yield* buffer;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/reporters.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/reporters.js
 var import_node_assert23 = __toESM(require("node:assert"), 1);
 function filterFeatureIssues(features, issue, reportOptions) {
   if (issue.issueType === IssueType.directive) {
@@ -64662,13 +65511,13 @@ var LintReporter = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/timer.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/timer.js
 function getTimeMeasurer() {
   const timer = createPerfTimer2("timer");
   return () => timer.elapsed;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/util/writeFile.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/util/writeFile.js
 var import_promises5 = __toESM(require("node:fs/promises"), 1);
 async function writeFileOrStream(filename, data) {
   switch (filename) {
@@ -64698,7 +65547,7 @@ function writeStream(stream, data) {
   });
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/lint/lint.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/lint/lint.js
 var version3 = npmPackage.version;
 var BATCH_SIZE = 8;
 var debugStats = false;
@@ -65159,7 +66008,7 @@ var LinterError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/lint/LintRequest.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/lint/LintRequest.js
 var path19 = __toESM(require("node:path"), 1);
 var defaultContextRange = 20;
 var LintRequest = class {
@@ -65243,7 +66092,7 @@ function extractUnknownWordsConfig(options) {
   return config;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/options.js
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/options.js
 function fixLegacy(opts) {
   const { local, ...rest } = opts;
   if (local && !rest.locale) {
@@ -65252,7 +66101,7 @@ function fixLegacy(opts) {
   return rest;
 }
 
-// ../node_modules/.pnpm/cspell@9.1.2/node_modules/cspell/dist/esm/application.mjs
+// ../node_modules/.pnpm/cspell@9.1.3/node_modules/cspell/dist/esm/application.mjs
 function lint(fileGlobs, options, reporter) {
   options = fixLegacy(options);
   const unknownWordsConfig = extractUnknownWordsConfig(options);
@@ -65490,5 +66339,42 @@ repeat-string/index.js:
    *
    * Copyright (c) 2014-2015, Jon Schlinkert.
    * Licensed under the MIT License.
+   *)
+
+smol-toml/dist/error.js:
+smol-toml/dist/util.js:
+smol-toml/dist/date.js:
+smol-toml/dist/primitive.js:
+smol-toml/dist/extract.js:
+smol-toml/dist/struct.js:
+smol-toml/dist/parse.js:
+smol-toml/dist/stringify.js:
+smol-toml/dist/index.js:
+  (*!
+   * Copyright (c) Squirrel Chat et al., All rights reserved.
+   * SPDX-License-Identifier: BSD-3-Clause
+   *
+   * Redistribution and use in source and binary forms, with or without
+   * modification, are permitted provided that the following conditions are met:
+   *
+   * 1. Redistributions of source code must retain the above copyright notice, this
+   *    list of conditions and the following disclaimer.
+   * 2. Redistributions in binary form must reproduce the above copyright notice,
+   *    this list of conditions and the following disclaimer in the
+   *    documentation and/or other materials provided with the distribution.
+   * 3. Neither the name of the copyright holder nor the names of its contributors
+   *    may be used to endorse or promote products derived from this software without
+   *    specific prior written permission.
+   *
+   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+   * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+   * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    *)
 */
