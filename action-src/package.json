@@ -26,12 +26,12 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.1",
-    "@cspell/cspell-bundled-dicts": "^9.1.3",
-    "@cspell/cspell-types": "^9.1.3",
+    "@cspell/cspell-bundled-dicts": "^9.1.5",
+    "@cspell/cspell-types": "^9.1.5",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^20.19.4",
-    "cspell": "^9.1.3",
-    "cspell-glob": "^9.1.3",
+    "cspell": "^9.1.5",
+    "cspell-glob": "^9.1.5",
     "vscode-uri": "^3.1.0"
   },
   "files": [
