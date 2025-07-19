@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.2](https://github.com/streetsidesoftware/cspell-action/compare/v7.1.1...v7.1.2) (2025-07-13)
+
+
+### Updates and Bug Fixes
+
+* Update CSpell version (9.1.5) ([#2389](https://github.com/streetsidesoftware/cspell-action/issues/2389)) ([47fec0d](https://github.com/streetsidesoftware/cspell-action/commit/47fec0d74e8005471f57aeaa4b86ae2bc5197de1))
+* Update Dictionaries and Dependencies ([#2385](https://github.com/streetsidesoftware/cspell-action/issues/2385)) ([b8baba1](https://github.com/streetsidesoftware/cspell-action/commit/b8baba18fc56d1bd8b64f0b96cab31978c2e802c))
+
 ## [7.1.1](https://github.com/streetsidesoftware/cspell-action/compare/v7.1.0...v7.1.1) (2025-07-08)
 
 
