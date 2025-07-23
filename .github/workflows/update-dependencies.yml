@@ -1,4 +1,4 @@
-name: " 🔗 Update Dependencies Main"
+name: ' 🔗 Update Dependencies Main'
 
 on:
   workflow_dispatch:
@@ -6,12 +6,12 @@ on:
       base:
         description: The Base Ref to apply the diff
         required: false
-        default: "main"
+        default: 'main'
   push:
     branches:
       - main
   schedule:
-    - cron: "0 12 * * *"
+    - cron: '0 12 * * *'
 
 permissions:
   contents: read
@@ -75,10 +75,10 @@ jobs:
       - name: PR
         uses: streetsidesoftware/actions/.github/actions/pr@v1
         with:
-          commit-message: "${{ env.PR_TYPE }}: Workflow Bot -- Update ALL Dependencies"
+          commit-message: '${{ env.PR_TYPE }}: Workflow Bot -- Update ALL Dependencies'
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
-          title: "${{ env.PR_TYPE }}: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})"
+          title: '${{ env.PR_TYPE }}: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})'
           body: ${{ steps.body.outputs.body }}
           app_id: ${{ secrets.AUTOMATION_APP_ID }}
           app_private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}

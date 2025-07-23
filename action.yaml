@@ -1,6 +1,6 @@
-name: "cspell-action"
-description: "Spell Checker for Code"
-author: "Street Side Software <info@streetsidesoftware.nl>"
+name: 'cspell-action'
+description: 'Spell Checker for Code'
+author: 'Street Side Software <info@streetsidesoftware.nl>'
 inputs:
   files:
     description: |
@@ -11,7 +11,7 @@ inputs:
   incremental_files_only:
     description: >
       Limit the files checked to the ones in the pull request or push.
-    default: "true"
+    default: 'true'
     required: false
   config:
     description: >
@@ -32,23 +32,23 @@ inputs:
     description: >
       Treat flagged / forbidden words as errors.
       Allowed values are: true, false
-    default: "false"
+    default: 'false'
   strict:
     description: |
       Determines if the action should be failed if any spelling issues are found.
       Allowed values are: true, false
-    default: "true"
+    default: 'true'
     required: false
   suggestions:
     description: >
       Generate Spelling suggestions.
-    default: "false"
+    default: 'false'
     required: false
   verbose:
     description: |
       Increase the log output to include progress.
       Allowed values are: true, false
-    default: "false"
+    default: 'false'
     required: false
   check_dot_files:
     description: |
@@ -56,14 +56,14 @@ inputs:
       - "true" - glob searches will match against `.dot` files.
       - "false" - `.dot` files will NOT be checked.
       - "explicit" - glob patterns can match explicit `.dot` patterns.
-    default: "explicit"
+    default: 'explicit'
     required: false
   use_cspell_files:
     description: |
       Use the `files` setting from the CSpell configuration file.
       - "true" - Overrides the `input.files` setting.
       - "false" - Use the `input.files` setting.
-    default: "false"
+    default: 'false'
     required: false
   report:
     description: |
@@ -72,7 +72,7 @@ inputs:
       - "simple" - only unknown words are reported.
       - "typos" - only typos are reported.
       - "flagged" - only flagged words are reported.
-    default: "all"
+    default: 'all'
     required: false
 
 outputs:
@@ -100,8 +100,8 @@ outputs:
       The JSON encoded results.
 
 runs:
-  using: "node20"
-  main: "./action/lib/main_root.cjs"
+  using: 'node20'
+  main: './action/lib/main_root.cjs'
 branding:
-  icon: "code"
-  color: "green"
+  icon: 'code'
+  color: 'green'

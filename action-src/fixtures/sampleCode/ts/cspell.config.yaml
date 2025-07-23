@@ -1,4 +1,4 @@
 import:
-  - "../../cspell.json"
+  - '../../cspell.json'
 files:
-  - "*.ts"
+  - '*.ts'
