@@ -13,7 +13,7 @@ jobs:
   test-action: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./
         id: cspell-action
         env:
@@ -35,7 +35,7 @@ jobs:
   test-action-with-file: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
@@ -58,7 +58,7 @@ jobs:
   test-action-no-increment: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
@@ -81,7 +81,7 @@ jobs:
   test-action-no-increment-verbose: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
@@ -104,7 +104,7 @@ jobs:
   test-action-files-with-issues: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
@@ -128,7 +128,7 @@ jobs:
   test-bad-config: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
