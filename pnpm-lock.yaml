@@ -18,8 +18,8 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(vitest@3.2.4(@types/node@20.19.10)(jiti@2.4.2)(yaml@2.8.1))
       env-cmd:
-        specifier: ^10.1.0
-        version: 10.1.0
+        specifier: ^11.0.0
+        version: 11.0.0
       eslint:
         specifier: ^9.33.0
         version: 9.33.0(jiti@2.4.2)
@@ -166,6 +166,11 @@ packages:
   '@babel/types@7.28.2':
     resolution: {integrity: sha512-ruv7Ae4J5dUYULmeXw1gmb7rYRz57OWCPM57pHojnLq/3Z1CK2lNSLTCVjxVk1F/TZHwOZZrOWi0ur95BbLxNQ==}
     engines: {node: '>=6.9.0'}
+
+  '@commander-js/extra-typings@13.1.0':
+    resolution: {integrity: sha512-q5P52BYb1hwVWE6dtID7VvuJWrlfbCv4klj7BjUUOqMz4jbSZD4C9fJ9lRjL2jnBGTg+gDDlaXN51rkWcLk4fg==}
+    peerDependencies:
+      commander: ~13.1.0
 
   '@cspell/cspell-bundled-dicts@9.2.0':
     resolution: {integrity: sha512-e4qb78SQWqHkRw47W8qFJ3RPijhSLkADF+T0oH8xl3r/golq1RGp2/KrWOqGRRofUSTiIKYqaMX7mbAyFnOxyA==}
@@ -1005,13 +1010,13 @@ packages:
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
+  commander@13.1.0:
+    resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
+    engines: {node: '>=18'}
+
   commander@14.0.0:
     resolution: {integrity: sha512-2uM9rYjPvyq39NwLRqaiLtWHyDC1FvryJDa2ATTVims5YAS4PupsEQsDvP14FqhFr0P49CYDugi59xaxJlTXRA==}
     engines: {node: '>=20'}
-
-  commander@4.1.1:
-    resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
-    engines: {node: '>= 6'}
 
   comment-json@4.2.5:
     resolution: {integrity: sha512-bKw/r35jR3HGt5PEPm1ljsQQGyCrR8sFGNiN5L+ykDHdpO8Smxkrkla9Yi6NkQyUrb8V54PGhfMs6NrIwtxtdw==}
@@ -1111,9 +1116,9 @@ packages:
     resolution: {integrity: sha512-d4lC8xfavMeBjzGr2vECC3fsGXziXZQyJxD868h2M/mBI3PwAuODxAkLkq5HYuvrPYcUtiLzsTo8U3PgX3Ocww==}
     engines: {node: '>=10.13.0'}
 
-  env-cmd@10.1.0:
-    resolution: {integrity: sha512-mMdWTT9XKN7yNth/6N6g2GuKuJTsKMDHlQFUDacb/heQRRWOTIZ42t1rMHnQu4jYxU1ajdTeJM+9eEETlqToMA==}
-    engines: {node: '>=8.0.0'}
+  env-cmd@11.0.0:
+    resolution: {integrity: sha512-gnG7H1PlwPqsGhFJNTv68lsDGyQdK+U9DwLVitcj1+wGq7LeOBgUzZd2puZ710bHcH9NfNeGWe2sbw7pdvAqDw==}
+    engines: {node: '>=20.10.0'}
     hasBin: true
 
   env-paths@3.0.0:
@@ -2090,6 +2095,10 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
+  '@commander-js/extra-typings@13.1.0(commander@13.1.0)':
+    dependencies:
+      commander: 13.1.0
+
   '@cspell/cspell-bundled-dicts@9.2.0':
     dependencies:
       '@cspell/dict-ada': 4.1.1
@@ -2856,9 +2865,9 @@ snapshots:
 
   color-name@1.1.4: {}
 
-  commander@14.0.0: {}
+  commander@13.1.0: {}
 
-  commander@4.1.1: {}
+  commander@14.0.0: {}
 
   comment-json@4.2.5:
     dependencies:
@@ -3004,9 +3013,10 @@ snapshots:
       graceful-fs: 4.2.11
       tapable: 2.2.2
 
-  env-cmd@10.1.0:
+  env-cmd@11.0.0:
     dependencies:
-      commander: 4.1.1
+      '@commander-js/extra-typings': 13.1.0(commander@13.1.0)
+      commander: 13.1.0
       cross-spawn: 7.0.6
 
   env-paths@3.0.0: {}
