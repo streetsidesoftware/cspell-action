@@ -65,7 +65,7 @@ var require_utils = __commonJS({
 var require_command = __commonJS({
   "../node_modules/.pnpm/@actions+core@1.11.1/node_modules/@actions/core/lib/command.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -74,13 +74,13 @@ var require_command = __commonJS({
         } };
       }
       Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -151,7 +151,7 @@ var require_command = __commonJS({
 var require_file_command = __commonJS({
   "../node_modules/.pnpm/@actions+core@1.11.1/node_modules/@actions/core/lib/file-command.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -160,13 +160,13 @@ var require_file_command = __commonJS({
         } };
       }
       Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -13732,7 +13732,7 @@ var require_fetch = __commonJS({
             fetchParams.controller.terminate(e);
           }
         };
-        requestBody = async function* () {
+        requestBody = (async function* () {
           try {
             for await (const bytes of request.body.stream) {
               yield* processBodyChunk(bytes);
@@ -13741,7 +13741,7 @@ var require_fetch = __commonJS({
           } catch (err) {
             processBodyError(err);
           }
-        }();
+        })();
       }
       try {
         const { body, status, statusText, headersList, socket } = await dispatch({ body: requestBody });
@@ -17292,7 +17292,7 @@ var require_undici = __commonJS({
 var require_lib = __commonJS({
   "../node_modules/.pnpm/@actions+http-client@2.2.3/node_modules/@actions/http-client/lib/index.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -17301,13 +17301,13 @@ var require_lib = __commonJS({
         } };
       }
       Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -18407,7 +18407,7 @@ var require_summary = __commonJS({
 var require_path_utils = __commonJS({
   "../node_modules/.pnpm/@actions+core@1.11.1/node_modules/@actions/core/lib/path-utils.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -18416,13 +18416,13 @@ var require_path_utils = __commonJS({
         } };
       }
       Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -18456,18 +18456,18 @@ var require_path_utils = __commonJS({
 var require_io_util = __commonJS({
   "../node_modules/.pnpm/@actions+io@1.1.3/node_modules/@actions/io/lib/io-util.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       Object.defineProperty(o, k2, { enumerable: true, get: function() {
         return m[k];
       } });
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -18629,18 +18629,18 @@ var require_io_util = __commonJS({
 var require_io = __commonJS({
   "../node_modules/.pnpm/@actions+io@1.1.3/node_modules/@actions/io/lib/io.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       Object.defineProperty(o, k2, { enumerable: true, get: function() {
         return m[k];
       } });
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -18877,18 +18877,18 @@ var require_io = __commonJS({
 var require_toolrunner = __commonJS({
   "../node_modules/.pnpm/@actions+exec@1.1.1/node_modules/@actions/exec/lib/toolrunner.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       Object.defineProperty(o, k2, { enumerable: true, get: function() {
         return m[k];
       } });
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -19361,18 +19361,18 @@ var require_toolrunner = __commonJS({
 var require_exec = __commonJS({
   "../node_modules/.pnpm/@actions+exec@1.1.1/node_modules/@actions/exec/lib/exec.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       Object.defineProperty(o, k2, { enumerable: true, get: function() {
         return m[k];
       } });
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -19468,7 +19468,7 @@ var require_exec = __commonJS({
 var require_platform = __commonJS({
   "../node_modules/.pnpm/@actions+core@1.11.1/node_modules/@actions/core/lib/platform.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -19477,13 +19477,13 @@ var require_platform = __commonJS({
         } };
       }
       Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -19587,7 +19587,7 @@ var require_platform = __commonJS({
 var require_core = __commonJS({
   "../node_modules/.pnpm/@actions+core@1.11.1/node_modules/@actions/core/lib/core.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -19596,13 +19596,13 @@ var require_core = __commonJS({
         } };
       }
       Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -21677,7 +21677,7 @@ var require_esprima = __commonJS({
     })(exports2, function() {
       return (
         /******/
-        function(modules) {
+        (function(modules) {
           var installedModules = {};
           function __webpack_require__(moduleId) {
             if (installedModules[moduleId])
@@ -21699,7 +21699,7 @@ var require_esprima = __commonJS({
           __webpack_require__.c = installedModules;
           __webpack_require__.p = "";
           return __webpack_require__(0);
-        }([
+        })([
           /* 0 */
           /***/
           function(module3, exports3, __webpack_require__) {
@@ -21801,7 +21801,7 @@ var require_esprima = __commonJS({
             "use strict";
             Object.defineProperty(exports3, "__esModule", { value: true });
             var syntax_1 = __webpack_require__(2);
-            var CommentHandler = function() {
+            var CommentHandler = (function() {
               function CommentHandler2() {
                 this.attach = false;
                 this.comments = [];
@@ -21940,7 +21940,7 @@ var require_esprima = __commonJS({
                 }
               };
               return CommentHandler2;
-            }();
+            })();
             exports3.CommentHandler = CommentHandler;
           },
           /* 2 */
@@ -22021,7 +22021,7 @@ var require_esprima = __commonJS({
           /***/
           function(module3, exports3, __webpack_require__) {
             "use strict";
-            var __extends = this && this.__extends || function() {
+            var __extends = this && this.__extends || (function() {
               var extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d, b) {
                 d.__proto__ = b;
               } || function(d, b) {
@@ -22034,7 +22034,7 @@ var require_esprima = __commonJS({
                 }
                 d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
               };
-            }();
+            })();
             Object.defineProperty(exports3, "__esModule", { value: true });
             var character_1 = __webpack_require__(4);
             var JSXNode = __webpack_require__(5);
@@ -22072,7 +22072,7 @@ var require_esprima = __commonJS({
               }
               return qualifiedName;
             }
-            var JSXParser = function(_super) {
+            var JSXParser = (function(_super) {
               __extends(JSXParser2, _super);
               function JSXParser2(code, options, delegate) {
                 return _super.call(this, code, options, delegate) || this;
@@ -22530,7 +22530,7 @@ var require_esprima = __commonJS({
                 return _super.prototype.isStartOfExpression.call(this) || this.match("<");
               };
               return JSXParser2;
-            }(parser_1.Parser);
+            })(parser_1.Parser);
             exports3.JSXParser = JSXParser;
           },
           /* 4 */
@@ -22582,15 +22582,15 @@ var require_esprima = __commonJS({
             "use strict";
             Object.defineProperty(exports3, "__esModule", { value: true });
             var jsx_syntax_1 = __webpack_require__(6);
-            var JSXClosingElement = /* @__PURE__ */ function() {
+            var JSXClosingElement = /* @__PURE__ */ (function() {
               function JSXClosingElement2(name2) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXClosingElement;
                 this.name = name2;
               }
               return JSXClosingElement2;
-            }();
+            })();
             exports3.JSXClosingElement = JSXClosingElement;
-            var JSXElement = /* @__PURE__ */ function() {
+            var JSXElement = /* @__PURE__ */ (function() {
               function JSXElement2(openingElement, children, closingElement) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXElement;
                 this.openingElement = openingElement;
@@ -22598,59 +22598,59 @@ var require_esprima = __commonJS({
                 this.closingElement = closingElement;
               }
               return JSXElement2;
-            }();
+            })();
             exports3.JSXElement = JSXElement;
-            var JSXEmptyExpression = /* @__PURE__ */ function() {
+            var JSXEmptyExpression = /* @__PURE__ */ (function() {
               function JSXEmptyExpression2() {
                 this.type = jsx_syntax_1.JSXSyntax.JSXEmptyExpression;
               }
               return JSXEmptyExpression2;
-            }();
+            })();
             exports3.JSXEmptyExpression = JSXEmptyExpression;
-            var JSXExpressionContainer = /* @__PURE__ */ function() {
+            var JSXExpressionContainer = /* @__PURE__ */ (function() {
               function JSXExpressionContainer2(expression) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXExpressionContainer;
                 this.expression = expression;
               }
               return JSXExpressionContainer2;
-            }();
+            })();
             exports3.JSXExpressionContainer = JSXExpressionContainer;
-            var JSXIdentifier = /* @__PURE__ */ function() {
+            var JSXIdentifier = /* @__PURE__ */ (function() {
               function JSXIdentifier2(name2) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXIdentifier;
                 this.name = name2;
               }
               return JSXIdentifier2;
-            }();
+            })();
             exports3.JSXIdentifier = JSXIdentifier;
-            var JSXMemberExpression = /* @__PURE__ */ function() {
+            var JSXMemberExpression = /* @__PURE__ */ (function() {
               function JSXMemberExpression2(object2, property) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXMemberExpression;
                 this.object = object2;
                 this.property = property;
               }
               return JSXMemberExpression2;
-            }();
+            })();
             exports3.JSXMemberExpression = JSXMemberExpression;
-            var JSXAttribute = /* @__PURE__ */ function() {
+            var JSXAttribute = /* @__PURE__ */ (function() {
               function JSXAttribute2(name2, value) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXAttribute;
                 this.name = name2;
                 this.value = value;
               }
               return JSXAttribute2;
-            }();
+            })();
             exports3.JSXAttribute = JSXAttribute;
-            var JSXNamespacedName = /* @__PURE__ */ function() {
+            var JSXNamespacedName = /* @__PURE__ */ (function() {
               function JSXNamespacedName2(namespace, name2) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXNamespacedName;
                 this.namespace = namespace;
                 this.name = name2;
               }
               return JSXNamespacedName2;
-            }();
+            })();
             exports3.JSXNamespacedName = JSXNamespacedName;
-            var JSXOpeningElement = /* @__PURE__ */ function() {
+            var JSXOpeningElement = /* @__PURE__ */ (function() {
               function JSXOpeningElement2(name2, selfClosing, attributes) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXOpeningElement;
                 this.name = name2;
@@ -22658,24 +22658,24 @@ var require_esprima = __commonJS({
                 this.attributes = attributes;
               }
               return JSXOpeningElement2;
-            }();
+            })();
             exports3.JSXOpeningElement = JSXOpeningElement;
-            var JSXSpreadAttribute = /* @__PURE__ */ function() {
+            var JSXSpreadAttribute = /* @__PURE__ */ (function() {
               function JSXSpreadAttribute2(argument) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXSpreadAttribute;
                 this.argument = argument;
               }
               return JSXSpreadAttribute2;
-            }();
+            })();
             exports3.JSXSpreadAttribute = JSXSpreadAttribute;
-            var JSXText = /* @__PURE__ */ function() {
+            var JSXText = /* @__PURE__ */ (function() {
               function JSXText2(value, raw) {
                 this.type = jsx_syntax_1.JSXSyntax.JSXText;
                 this.value = value;
                 this.raw = raw;
               }
               return JSXText2;
-            }();
+            })();
             exports3.JSXText = JSXText;
           },
           /* 6 */
@@ -22703,23 +22703,23 @@ var require_esprima = __commonJS({
             "use strict";
             Object.defineProperty(exports3, "__esModule", { value: true });
             var syntax_1 = __webpack_require__(2);
-            var ArrayExpression = /* @__PURE__ */ function() {
+            var ArrayExpression = /* @__PURE__ */ (function() {
               function ArrayExpression2(elements) {
                 this.type = syntax_1.Syntax.ArrayExpression;
                 this.elements = elements;
               }
               return ArrayExpression2;
-            }();
+            })();
             exports3.ArrayExpression = ArrayExpression;
-            var ArrayPattern = /* @__PURE__ */ function() {
+            var ArrayPattern = /* @__PURE__ */ (function() {
               function ArrayPattern2(elements) {
                 this.type = syntax_1.Syntax.ArrayPattern;
                 this.elements = elements;
               }
               return ArrayPattern2;
-            }();
+            })();
             exports3.ArrayPattern = ArrayPattern;
-            var ArrowFunctionExpression = /* @__PURE__ */ function() {
+            var ArrowFunctionExpression = /* @__PURE__ */ (function() {
               function ArrowFunctionExpression2(params, body, expression) {
                 this.type = syntax_1.Syntax.ArrowFunctionExpression;
                 this.id = null;
@@ -22730,9 +22730,9 @@ var require_esprima = __commonJS({
                 this.async = false;
               }
               return ArrowFunctionExpression2;
-            }();
+            })();
             exports3.ArrowFunctionExpression = ArrowFunctionExpression;
-            var AssignmentExpression = /* @__PURE__ */ function() {
+            var AssignmentExpression = /* @__PURE__ */ (function() {
               function AssignmentExpression2(operator, left, right) {
                 this.type = syntax_1.Syntax.AssignmentExpression;
                 this.operator = operator;
@@ -22740,18 +22740,18 @@ var require_esprima = __commonJS({
                 this.right = right;
               }
               return AssignmentExpression2;
-            }();
+            })();
             exports3.AssignmentExpression = AssignmentExpression;
-            var AssignmentPattern = /* @__PURE__ */ function() {
+            var AssignmentPattern = /* @__PURE__ */ (function() {
               function AssignmentPattern2(left, right) {
                 this.type = syntax_1.Syntax.AssignmentPattern;
                 this.left = left;
                 this.right = right;
               }
               return AssignmentPattern2;
-            }();
+            })();
             exports3.AssignmentPattern = AssignmentPattern;
-            var AsyncArrowFunctionExpression = /* @__PURE__ */ function() {
+            var AsyncArrowFunctionExpression = /* @__PURE__ */ (function() {
               function AsyncArrowFunctionExpression2(params, body, expression) {
                 this.type = syntax_1.Syntax.ArrowFunctionExpression;
                 this.id = null;
@@ -22762,9 +22762,9 @@ var require_esprima = __commonJS({
                 this.async = true;
               }
               return AsyncArrowFunctionExpression2;
-            }();
+            })();
             exports3.AsyncArrowFunctionExpression = AsyncArrowFunctionExpression;
-            var AsyncFunctionDeclaration = /* @__PURE__ */ function() {
+            var AsyncFunctionDeclaration = /* @__PURE__ */ (function() {
               function AsyncFunctionDeclaration2(id, params, body) {
                 this.type = syntax_1.Syntax.FunctionDeclaration;
                 this.id = id;
@@ -22775,9 +22775,9 @@ var require_esprima = __commonJS({
                 this.async = true;
               }
               return AsyncFunctionDeclaration2;
-            }();
+            })();
             exports3.AsyncFunctionDeclaration = AsyncFunctionDeclaration;
-            var AsyncFunctionExpression = /* @__PURE__ */ function() {
+            var AsyncFunctionExpression = /* @__PURE__ */ (function() {
               function AsyncFunctionExpression2(id, params, body) {
                 this.type = syntax_1.Syntax.FunctionExpression;
                 this.id = id;
@@ -22788,17 +22788,17 @@ var require_esprima = __commonJS({
                 this.async = true;
               }
               return AsyncFunctionExpression2;
-            }();
+            })();
             exports3.AsyncFunctionExpression = AsyncFunctionExpression;
-            var AwaitExpression = /* @__PURE__ */ function() {
+            var AwaitExpression = /* @__PURE__ */ (function() {
               function AwaitExpression2(argument) {
                 this.type = syntax_1.Syntax.AwaitExpression;
                 this.argument = argument;
               }
               return AwaitExpression2;
-            }();
+            })();
             exports3.AwaitExpression = AwaitExpression;
-            var BinaryExpression = /* @__PURE__ */ function() {
+            var BinaryExpression = /* @__PURE__ */ (function() {
               function BinaryExpression2(operator, left, right) {
                 var logical = operator === "||" || operator === "&&";
                 this.type = logical ? syntax_1.Syntax.LogicalExpression : syntax_1.Syntax.BinaryExpression;
@@ -22807,51 +22807,51 @@ var require_esprima = __commonJS({
                 this.right = right;
               }
               return BinaryExpression2;
-            }();
+            })();
             exports3.BinaryExpression = BinaryExpression;
-            var BlockStatement = /* @__PURE__ */ function() {
+            var BlockStatement = /* @__PURE__ */ (function() {
               function BlockStatement2(body) {
                 this.type = syntax_1.Syntax.BlockStatement;
                 this.body = body;
               }
               return BlockStatement2;
-            }();
+            })();
             exports3.BlockStatement = BlockStatement;
-            var BreakStatement = /* @__PURE__ */ function() {
+            var BreakStatement = /* @__PURE__ */ (function() {
               function BreakStatement2(label) {
                 this.type = syntax_1.Syntax.BreakStatement;
                 this.label = label;
               }
               return BreakStatement2;
-            }();
+            })();
             exports3.BreakStatement = BreakStatement;
-            var CallExpression = /* @__PURE__ */ function() {
+            var CallExpression = /* @__PURE__ */ (function() {
               function CallExpression2(callee, args) {
                 this.type = syntax_1.Syntax.CallExpression;
                 this.callee = callee;
                 this.arguments = args;
               }
               return CallExpression2;
-            }();
+            })();
             exports3.CallExpression = CallExpression;
-            var CatchClause = /* @__PURE__ */ function() {
+            var CatchClause = /* @__PURE__ */ (function() {
               function CatchClause2(param, body) {
                 this.type = syntax_1.Syntax.CatchClause;
                 this.param = param;
                 this.body = body;
               }
               return CatchClause2;
-            }();
+            })();
             exports3.CatchClause = CatchClause;
-            var ClassBody = /* @__PURE__ */ function() {
+            var ClassBody = /* @__PURE__ */ (function() {
               function ClassBody2(body) {
                 this.type = syntax_1.Syntax.ClassBody;
                 this.body = body;
               }
               return ClassBody2;
-            }();
+            })();
             exports3.ClassBody = ClassBody;
-            var ClassDeclaration = /* @__PURE__ */ function() {
+            var ClassDeclaration = /* @__PURE__ */ (function() {
               function ClassDeclaration2(id, superClass, body) {
                 this.type = syntax_1.Syntax.ClassDeclaration;
                 this.id = id;
@@ -22859,9 +22859,9 @@ var require_esprima = __commonJS({
                 this.body = body;
               }
               return ClassDeclaration2;
-            }();
+            })();
             exports3.ClassDeclaration = ClassDeclaration;
-            var ClassExpression = /* @__PURE__ */ function() {
+            var ClassExpression = /* @__PURE__ */ (function() {
               function ClassExpression2(id, superClass, body) {
                 this.type = syntax_1.Syntax.ClassExpression;
                 this.id = id;
@@ -22869,9 +22869,9 @@ var require_esprima = __commonJS({
                 this.body = body;
               }
               return ClassExpression2;
-            }();
+            })();
             exports3.ClassExpression = ClassExpression;
-            var ComputedMemberExpression = /* @__PURE__ */ function() {
+            var ComputedMemberExpression = /* @__PURE__ */ (function() {
               function ComputedMemberExpression2(object2, property) {
                 this.type = syntax_1.Syntax.MemberExpression;
                 this.computed = true;
@@ -22879,9 +22879,9 @@ var require_esprima = __commonJS({
                 this.property = property;
               }
               return ComputedMemberExpression2;
-            }();
+            })();
             exports3.ComputedMemberExpression = ComputedMemberExpression;
-            var ConditionalExpression = /* @__PURE__ */ function() {
+            var ConditionalExpression = /* @__PURE__ */ (function() {
               function ConditionalExpression2(test, consequent, alternate) {
                 this.type = syntax_1.Syntax.ConditionalExpression;
                 this.test = test;
@@ -22889,65 +22889,65 @@ var require_esprima = __commonJS({
                 this.alternate = alternate;
               }
               return ConditionalExpression2;
-            }();
+            })();
             exports3.ConditionalExpression = ConditionalExpression;
-            var ContinueStatement = /* @__PURE__ */ function() {
+            var ContinueStatement = /* @__PURE__ */ (function() {
               function ContinueStatement2(label) {
                 this.type = syntax_1.Syntax.ContinueStatement;
                 this.label = label;
               }
               return ContinueStatement2;
-            }();
+            })();
             exports3.ContinueStatement = ContinueStatement;
-            var DebuggerStatement = /* @__PURE__ */ function() {
+            var DebuggerStatement = /* @__PURE__ */ (function() {
               function DebuggerStatement2() {
                 this.type = syntax_1.Syntax.DebuggerStatement;
               }
               return DebuggerStatement2;
-            }();
+            })();
             exports3.DebuggerStatement = DebuggerStatement;
-            var Directive = /* @__PURE__ */ function() {
+            var Directive = /* @__PURE__ */ (function() {
               function Directive2(expression, directive) {
                 this.type = syntax_1.Syntax.ExpressionStatement;
                 this.expression = expression;
                 this.directive = directive;
               }
               return Directive2;
-            }();
+            })();
             exports3.Directive = Directive;
-            var DoWhileStatement = /* @__PURE__ */ function() {
+            var DoWhileStatement = /* @__PURE__ */ (function() {
               function DoWhileStatement2(body, test) {
                 this.type = syntax_1.Syntax.DoWhileStatement;
                 this.body = body;
                 this.test = test;
               }
               return DoWhileStatement2;
-            }();
+            })();
             exports3.DoWhileStatement = DoWhileStatement;
-            var EmptyStatement = /* @__PURE__ */ function() {
+            var EmptyStatement = /* @__PURE__ */ (function() {
               function EmptyStatement2() {
                 this.type = syntax_1.Syntax.EmptyStatement;
               }
               return EmptyStatement2;
-            }();
+            })();
             exports3.EmptyStatement = EmptyStatement;
-            var ExportAllDeclaration = /* @__PURE__ */ function() {
+            var ExportAllDeclaration = /* @__PURE__ */ (function() {
               function ExportAllDeclaration2(source) {
                 this.type = syntax_1.Syntax.ExportAllDeclaration;
                 this.source = source;
               }
               return ExportAllDeclaration2;
-            }();
+            })();
             exports3.ExportAllDeclaration = ExportAllDeclaration;
-            var ExportDefaultDeclaration = /* @__PURE__ */ function() {
+            var ExportDefaultDeclaration = /* @__PURE__ */ (function() {
               function ExportDefaultDeclaration2(declaration) {
                 this.type = syntax_1.Syntax.ExportDefaultDeclaration;
                 this.declaration = declaration;
               }
               return ExportDefaultDeclaration2;
-            }();
+            })();
             exports3.ExportDefaultDeclaration = ExportDefaultDeclaration;
-            var ExportNamedDeclaration = /* @__PURE__ */ function() {
+            var ExportNamedDeclaration = /* @__PURE__ */ (function() {
               function ExportNamedDeclaration2(declaration, specifiers, source) {
                 this.type = syntax_1.Syntax.ExportNamedDeclaration;
                 this.declaration = declaration;
@@ -22955,26 +22955,26 @@ var require_esprima = __commonJS({
                 this.source = source;
               }
               return ExportNamedDeclaration2;
-            }();
+            })();
             exports3.ExportNamedDeclaration = ExportNamedDeclaration;
-            var ExportSpecifier = /* @__PURE__ */ function() {
+            var ExportSpecifier = /* @__PURE__ */ (function() {
               function ExportSpecifier2(local, exported) {
                 this.type = syntax_1.Syntax.ExportSpecifier;
                 this.exported = exported;
                 this.local = local;
               }
               return ExportSpecifier2;
-            }();
+            })();
             exports3.ExportSpecifier = ExportSpecifier;
-            var ExpressionStatement = /* @__PURE__ */ function() {
+            var ExpressionStatement = /* @__PURE__ */ (function() {
               function ExpressionStatement2(expression) {
                 this.type = syntax_1.Syntax.ExpressionStatement;
                 this.expression = expression;
               }
               return ExpressionStatement2;
-            }();
+            })();
             exports3.ExpressionStatement = ExpressionStatement;
-            var ForInStatement = /* @__PURE__ */ function() {
+            var ForInStatement = /* @__PURE__ */ (function() {
               function ForInStatement2(left, right, body) {
                 this.type = syntax_1.Syntax.ForInStatement;
                 this.left = left;
@@ -22983,9 +22983,9 @@ var require_esprima = __commonJS({
                 this.each = false;
               }
               return ForInStatement2;
-            }();
+            })();
             exports3.ForInStatement = ForInStatement;
-            var ForOfStatement = /* @__PURE__ */ function() {
+            var ForOfStatement = /* @__PURE__ */ (function() {
               function ForOfStatement2(left, right, body) {
                 this.type = syntax_1.Syntax.ForOfStatement;
                 this.left = left;
@@ -22993,9 +22993,9 @@ var require_esprima = __commonJS({
                 this.body = body;
               }
               return ForOfStatement2;
-            }();
+            })();
             exports3.ForOfStatement = ForOfStatement;
-            var ForStatement = /* @__PURE__ */ function() {
+            var ForStatement = /* @__PURE__ */ (function() {
               function ForStatement2(init, test, update, body) {
                 this.type = syntax_1.Syntax.ForStatement;
                 this.init = init;
@@ -23004,9 +23004,9 @@ var require_esprima = __commonJS({
                 this.body = body;
               }
               return ForStatement2;
-            }();
+            })();
             exports3.ForStatement = ForStatement;
-            var FunctionDeclaration = /* @__PURE__ */ function() {
+            var FunctionDeclaration = /* @__PURE__ */ (function() {
               function FunctionDeclaration2(id, params, body, generator) {
                 this.type = syntax_1.Syntax.FunctionDeclaration;
                 this.id = id;
@@ -23017,9 +23017,9 @@ var require_esprima = __commonJS({
                 this.async = false;
               }
               return FunctionDeclaration2;
-            }();
+            })();
             exports3.FunctionDeclaration = FunctionDeclaration;
-            var FunctionExpression = /* @__PURE__ */ function() {
+            var FunctionExpression = /* @__PURE__ */ (function() {
               function FunctionExpression2(id, params, body, generator) {
                 this.type = syntax_1.Syntax.FunctionExpression;
                 this.id = id;
@@ -23030,17 +23030,17 @@ var require_esprima = __commonJS({
                 this.async = false;
               }
               return FunctionExpression2;
-            }();
+            })();
             exports3.FunctionExpression = FunctionExpression;
-            var Identifier = /* @__PURE__ */ function() {
+            var Identifier = /* @__PURE__ */ (function() {
               function Identifier2(name2) {
                 this.type = syntax_1.Syntax.Identifier;
                 this.name = name2;
               }
               return Identifier2;
-            }();
+            })();
             exports3.Identifier = Identifier;
-            var IfStatement = /* @__PURE__ */ function() {
+            var IfStatement = /* @__PURE__ */ (function() {
               function IfStatement2(test, consequent, alternate) {
                 this.type = syntax_1.Syntax.IfStatement;
                 this.test = test;
@@ -23048,70 +23048,70 @@ var require_esprima = __commonJS({
                 this.alternate = alternate;
               }
               return IfStatement2;
-            }();
+            })();
             exports3.IfStatement = IfStatement;
-            var ImportDeclaration = /* @__PURE__ */ function() {
+            var ImportDeclaration = /* @__PURE__ */ (function() {
               function ImportDeclaration2(specifiers, source) {
                 this.type = syntax_1.Syntax.ImportDeclaration;
                 this.specifiers = specifiers;
                 this.source = source;
               }
               return ImportDeclaration2;
-            }();
+            })();
             exports3.ImportDeclaration = ImportDeclaration;
-            var ImportDefaultSpecifier = /* @__PURE__ */ function() {
+            var ImportDefaultSpecifier = /* @__PURE__ */ (function() {
               function ImportDefaultSpecifier2(local) {
                 this.type = syntax_1.Syntax.ImportDefaultSpecifier;
                 this.local = local;
               }
               return ImportDefaultSpecifier2;
-            }();
+            })();
             exports3.ImportDefaultSpecifier = ImportDefaultSpecifier;
-            var ImportNamespaceSpecifier = /* @__PURE__ */ function() {
+            var ImportNamespaceSpecifier = /* @__PURE__ */ (function() {
               function ImportNamespaceSpecifier2(local) {
                 this.type = syntax_1.Syntax.ImportNamespaceSpecifier;
                 this.local = local;
               }
               return ImportNamespaceSpecifier2;
-            }();
+            })();
             exports3.ImportNamespaceSpecifier = ImportNamespaceSpecifier;
-            var ImportSpecifier = /* @__PURE__ */ function() {
+            var ImportSpecifier = /* @__PURE__ */ (function() {
               function ImportSpecifier2(local, imported) {
                 this.type = syntax_1.Syntax.ImportSpecifier;
                 this.local = local;
                 this.imported = imported;
               }
               return ImportSpecifier2;
-            }();
+            })();
             exports3.ImportSpecifier = ImportSpecifier;
-            var LabeledStatement = /* @__PURE__ */ function() {
+            var LabeledStatement = /* @__PURE__ */ (function() {
               function LabeledStatement2(label, body) {
                 this.type = syntax_1.Syntax.LabeledStatement;
                 this.label = label;
                 this.body = body;
               }
               return LabeledStatement2;
-            }();
+            })();
             exports3.LabeledStatement = LabeledStatement;
-            var Literal = /* @__PURE__ */ function() {
+            var Literal = /* @__PURE__ */ (function() {
               function Literal2(value, raw) {
                 this.type = syntax_1.Syntax.Literal;
                 this.value = value;
                 this.raw = raw;
               }
               return Literal2;
-            }();
+            })();
             exports3.Literal = Literal;
-            var MetaProperty = /* @__PURE__ */ function() {
+            var MetaProperty = /* @__PURE__ */ (function() {
               function MetaProperty2(meta, property) {
                 this.type = syntax_1.Syntax.MetaProperty;
                 this.meta = meta;
                 this.property = property;
               }
               return MetaProperty2;
-            }();
+            })();
             exports3.MetaProperty = MetaProperty;
-            var MethodDefinition = /* @__PURE__ */ function() {
+            var MethodDefinition = /* @__PURE__ */ (function() {
               function MethodDefinition2(key, computed, value, kind, isStatic) {
                 this.type = syntax_1.Syntax.MethodDefinition;
                 this.key = key;
@@ -23121,43 +23121,43 @@ var require_esprima = __commonJS({
                 this.static = isStatic;
               }
               return MethodDefinition2;
-            }();
+            })();
             exports3.MethodDefinition = MethodDefinition;
-            var Module = /* @__PURE__ */ function() {
+            var Module = /* @__PURE__ */ (function() {
               function Module2(body) {
                 this.type = syntax_1.Syntax.Program;
                 this.body = body;
                 this.sourceType = "module";
               }
               return Module2;
-            }();
+            })();
             exports3.Module = Module;
-            var NewExpression = /* @__PURE__ */ function() {
+            var NewExpression = /* @__PURE__ */ (function() {
               function NewExpression2(callee, args) {
                 this.type = syntax_1.Syntax.NewExpression;
                 this.callee = callee;
                 this.arguments = args;
               }
               return NewExpression2;
-            }();
+            })();
             exports3.NewExpression = NewExpression;
-            var ObjectExpression = /* @__PURE__ */ function() {
+            var ObjectExpression = /* @__PURE__ */ (function() {
               function ObjectExpression2(properties) {
                 this.type = syntax_1.Syntax.ObjectExpression;
                 this.properties = properties;
               }
               return ObjectExpression2;
-            }();
+            })();
             exports3.ObjectExpression = ObjectExpression;
-            var ObjectPattern = /* @__PURE__ */ function() {
+            var ObjectPattern = /* @__PURE__ */ (function() {
               function ObjectPattern2(properties) {
                 this.type = syntax_1.Syntax.ObjectPattern;
                 this.properties = properties;
               }
               return ObjectPattern2;
-            }();
+            })();
             exports3.ObjectPattern = ObjectPattern;
-            var Property = /* @__PURE__ */ function() {
+            var Property = /* @__PURE__ */ (function() {
               function Property2(kind, key, computed, value, method, shorthand) {
                 this.type = syntax_1.Syntax.Property;
                 this.key = key;
@@ -23168,9 +23168,9 @@ var require_esprima = __commonJS({
                 this.shorthand = shorthand;
               }
               return Property2;
-            }();
+            })();
             exports3.Property = Property;
-            var RegexLiteral = /* @__PURE__ */ function() {
+            var RegexLiteral = /* @__PURE__ */ (function() {
               function RegexLiteral2(value, raw, pattern, flags) {
                 this.type = syntax_1.Syntax.Literal;
                 this.value = value;
@@ -23178,50 +23178,50 @@ var require_esprima = __commonJS({
                 this.regex = { pattern, flags };
               }
               return RegexLiteral2;
-            }();
+            })();
             exports3.RegexLiteral = RegexLiteral;
-            var RestElement = /* @__PURE__ */ function() {
+            var RestElement = /* @__PURE__ */ (function() {
               function RestElement2(argument) {
                 this.type = syntax_1.Syntax.RestElement;
                 this.argument = argument;
               }
               return RestElement2;
-            }();
+            })();
             exports3.RestElement = RestElement;
-            var ReturnStatement = /* @__PURE__ */ function() {
+            var ReturnStatement = /* @__PURE__ */ (function() {
               function ReturnStatement2(argument) {
                 this.type = syntax_1.Syntax.ReturnStatement;
                 this.argument = argument;
               }
               return ReturnStatement2;
-            }();
+            })();
             exports3.ReturnStatement = ReturnStatement;
-            var Script = /* @__PURE__ */ function() {
+            var Script = /* @__PURE__ */ (function() {
               function Script2(body) {
                 this.type = syntax_1.Syntax.Program;
                 this.body = body;
                 this.sourceType = "script";
               }
               return Script2;
-            }();
+            })();
             exports3.Script = Script;
-            var SequenceExpression = /* @__PURE__ */ function() {
+            var SequenceExpression = /* @__PURE__ */ (function() {
               function SequenceExpression2(expressions) {
                 this.type = syntax_1.Syntax.SequenceExpression;
                 this.expressions = expressions;
               }
               return SequenceExpression2;
-            }();
+            })();
             exports3.SequenceExpression = SequenceExpression;
-            var SpreadElement = /* @__PURE__ */ function() {
+            var SpreadElement = /* @__PURE__ */ (function() {
               function SpreadElement2(argument) {
                 this.type = syntax_1.Syntax.SpreadElement;
                 this.argument = argument;
               }
               return SpreadElement2;
-            }();
+            })();
             exports3.SpreadElement = SpreadElement;
-            var StaticMemberExpression = /* @__PURE__ */ function() {
+            var StaticMemberExpression = /* @__PURE__ */ (function() {
               function StaticMemberExpression2(object2, property) {
                 this.type = syntax_1.Syntax.MemberExpression;
                 this.computed = false;
@@ -23229,76 +23229,76 @@ var require_esprima = __commonJS({
                 this.property = property;
               }
               return StaticMemberExpression2;
-            }();
+            })();
             exports3.StaticMemberExpression = StaticMemberExpression;
-            var Super = /* @__PURE__ */ function() {
+            var Super = /* @__PURE__ */ (function() {
               function Super2() {
                 this.type = syntax_1.Syntax.Super;
               }
               return Super2;
-            }();
+            })();
             exports3.Super = Super;
-            var SwitchCase = /* @__PURE__ */ function() {
+            var SwitchCase = /* @__PURE__ */ (function() {
               function SwitchCase2(test, consequent) {
                 this.type = syntax_1.Syntax.SwitchCase;
                 this.test = test;
                 this.consequent = consequent;
               }
               return SwitchCase2;
-            }();
+            })();
             exports3.SwitchCase = SwitchCase;
-            var SwitchStatement = /* @__PURE__ */ function() {
+            var SwitchStatement = /* @__PURE__ */ (function() {
               function SwitchStatement2(discriminant, cases) {
                 this.type = syntax_1.Syntax.SwitchStatement;
                 this.discriminant = discriminant;
                 this.cases = cases;
               }
               return SwitchStatement2;
-            }();
+            })();
             exports3.SwitchStatement = SwitchStatement;
-            var TaggedTemplateExpression = /* @__PURE__ */ function() {
+            var TaggedTemplateExpression = /* @__PURE__ */ (function() {
               function TaggedTemplateExpression2(tag, quasi) {
                 this.type = syntax_1.Syntax.TaggedTemplateExpression;
                 this.tag = tag;
                 this.quasi = quasi;
               }
               return TaggedTemplateExpression2;
-            }();
+            })();
             exports3.TaggedTemplateExpression = TaggedTemplateExpression;
-            var TemplateElement = /* @__PURE__ */ function() {
+            var TemplateElement = /* @__PURE__ */ (function() {
               function TemplateElement2(value, tail) {
                 this.type = syntax_1.Syntax.TemplateElement;
                 this.value = value;
                 this.tail = tail;
               }
               return TemplateElement2;
-            }();
+            })();
             exports3.TemplateElement = TemplateElement;
-            var TemplateLiteral = /* @__PURE__ */ function() {
+            var TemplateLiteral = /* @__PURE__ */ (function() {
               function TemplateLiteral2(quasis, expressions) {
                 this.type = syntax_1.Syntax.TemplateLiteral;
                 this.quasis = quasis;
                 this.expressions = expressions;
               }
               return TemplateLiteral2;
-            }();
+            })();
             exports3.TemplateLiteral = TemplateLiteral;
-            var ThisExpression = /* @__PURE__ */ function() {
+            var ThisExpression = /* @__PURE__ */ (function() {
               function ThisExpression2() {
                 this.type = syntax_1.Syntax.ThisExpression;
               }
               return ThisExpression2;
-            }();
+            })();
             exports3.ThisExpression = ThisExpression;
-            var ThrowStatement = /* @__PURE__ */ function() {
+            var ThrowStatement = /* @__PURE__ */ (function() {
               function ThrowStatement2(argument) {
                 this.type = syntax_1.Syntax.ThrowStatement;
                 this.argument = argument;
               }
               return ThrowStatement2;
-            }();
+            })();
             exports3.ThrowStatement = ThrowStatement;
-            var TryStatement = /* @__PURE__ */ function() {
+            var TryStatement = /* @__PURE__ */ (function() {
               function TryStatement2(block, handler, finalizer) {
                 this.type = syntax_1.Syntax.TryStatement;
                 this.block = block;
@@ -23306,9 +23306,9 @@ var require_esprima = __commonJS({
                 this.finalizer = finalizer;
               }
               return TryStatement2;
-            }();
+            })();
             exports3.TryStatement = TryStatement;
-            var UnaryExpression = /* @__PURE__ */ function() {
+            var UnaryExpression = /* @__PURE__ */ (function() {
               function UnaryExpression2(operator, argument) {
                 this.type = syntax_1.Syntax.UnaryExpression;
                 this.operator = operator;
@@ -23316,9 +23316,9 @@ var require_esprima = __commonJS({
                 this.prefix = true;
               }
               return UnaryExpression2;
-            }();
+            })();
             exports3.UnaryExpression = UnaryExpression;
-            var UpdateExpression = /* @__PURE__ */ function() {
+            var UpdateExpression = /* @__PURE__ */ (function() {
               function UpdateExpression2(operator, argument, prefix) {
                 this.type = syntax_1.Syntax.UpdateExpression;
                 this.operator = operator;
@@ -23326,52 +23326,52 @@ var require_esprima = __commonJS({
                 this.prefix = prefix;
               }
               return UpdateExpression2;
-            }();
+            })();
             exports3.UpdateExpression = UpdateExpression;
-            var VariableDeclaration = /* @__PURE__ */ function() {
+            var VariableDeclaration = /* @__PURE__ */ (function() {
               function VariableDeclaration2(declarations, kind) {
                 this.type = syntax_1.Syntax.VariableDeclaration;
                 this.declarations = declarations;
                 this.kind = kind;
               }
               return VariableDeclaration2;
-            }();
+            })();
             exports3.VariableDeclaration = VariableDeclaration;
-            var VariableDeclarator = /* @__PURE__ */ function() {
+            var VariableDeclarator = /* @__PURE__ */ (function() {
               function VariableDeclarator2(id, init) {
                 this.type = syntax_1.Syntax.VariableDeclarator;
                 this.id = id;
                 this.init = init;
               }
               return VariableDeclarator2;
-            }();
+            })();
             exports3.VariableDeclarator = VariableDeclarator;
-            var WhileStatement = /* @__PURE__ */ function() {
+            var WhileStatement = /* @__PURE__ */ (function() {
               function WhileStatement2(test, body) {
                 this.type = syntax_1.Syntax.WhileStatement;
                 this.test = test;
                 this.body = body;
               }
               return WhileStatement2;
-            }();
+            })();
             exports3.WhileStatement = WhileStatement;
-            var WithStatement = /* @__PURE__ */ function() {
+            var WithStatement = /* @__PURE__ */ (function() {
               function WithStatement2(object2, body) {
                 this.type = syntax_1.Syntax.WithStatement;
                 this.object = object2;
                 this.body = body;
               }
               return WithStatement2;
-            }();
+            })();
             exports3.WithStatement = WithStatement;
-            var YieldExpression = /* @__PURE__ */ function() {
+            var YieldExpression = /* @__PURE__ */ (function() {
               function YieldExpression2(argument, delegate) {
                 this.type = syntax_1.Syntax.YieldExpression;
                 this.argument = argument;
                 this.delegate = delegate;
               }
               return YieldExpression2;
-            }();
+            })();
             exports3.YieldExpression = YieldExpression;
           },
           /* 8 */
@@ -23387,7 +23387,7 @@ var require_esprima = __commonJS({
             var syntax_1 = __webpack_require__(2);
             var token_1 = __webpack_require__(13);
             var ArrowParameterPlaceHolder = "ArrowParameterPlaceHolder";
-            var Parser = function() {
+            var Parser = (function() {
               function Parser2(code, options, delegate) {
                 if (options === void 0) {
                   options = {};
@@ -26226,7 +26226,7 @@ var require_esprima = __commonJS({
                 return exportDeclaration;
               };
               return Parser2;
-            }();
+            })();
             exports3.Parser = Parser;
           },
           /* 9 */
@@ -26246,7 +26246,7 @@ var require_esprima = __commonJS({
           function(module3, exports3) {
             "use strict";
             Object.defineProperty(exports3, "__esModule", { value: true });
-            var ErrorHandler = function() {
+            var ErrorHandler = (function() {
               function ErrorHandler2() {
                 this.errors = [];
                 this.tolerant = false;
@@ -26293,7 +26293,7 @@ var require_esprima = __commonJS({
                 }
               };
               return ErrorHandler2;
-            }();
+            })();
             exports3.ErrorHandler = ErrorHandler;
           },
           /* 11 */
@@ -26376,7 +26376,7 @@ var require_esprima = __commonJS({
             function octalValue(ch) {
               return "01234567".indexOf(ch);
             }
-            var Scanner = function() {
+            var Scanner = (function() {
               function Scanner2(code, handler) {
                 this.source = code;
                 this.errorHandler = handler;
@@ -27390,7 +27390,7 @@ var require_esprima = __commonJS({
                 return this.scanPunctuator();
               };
               return Scanner2;
-            }();
+            })();
             exports3.Scanner = Scanner;
           },
           /* 13 */
@@ -27708,7 +27708,7 @@ var require_esprima = __commonJS({
             var error_handler_1 = __webpack_require__(10);
             var scanner_1 = __webpack_require__(12);
             var token_1 = __webpack_require__(13);
-            var Reader = function() {
+            var Reader = (function() {
               function Reader2() {
                 this.values = [];
                 this.curly = this.paren = -1;
@@ -27813,8 +27813,8 @@ var require_esprima = __commonJS({
                 }
               };
               return Reader2;
-            }();
-            var Tokenizer = function() {
+            })();
+            var Tokenizer = (function() {
               function Tokenizer2(code, config) {
                 this.errorHandler = new error_handler_1.ErrorHandler();
                 this.errorHandler.tolerant = config ? typeof config.tolerant === "boolean" && config.tolerant : false;
@@ -27887,7 +27887,7 @@ var require_esprima = __commonJS({
                 return this.buffer.shift();
               };
               return Tokenizer2;
-            }();
+            })();
             exports3.Tokenizer = Tokenizer;
           }
           /******/
@@ -37491,7 +37491,7 @@ var require_counter = __commonJS({
 var require_walker = __commonJS({
   "../node_modules/.pnpm/fdir@6.4.6_picomatch@4.0.3/node_modules/fdir/dist/api/walker.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -37500,13 +37500,13 @@ var require_walker = __commonJS({
         } };
       }
       Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
       Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
+    }) : function(o, v) {
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
@@ -37832,7 +37832,7 @@ var require_types = __commonJS({
 var require_dist2 = __commonJS({
   "../node_modules/.pnpm/fdir@6.4.6_picomatch@4.0.3/node_modules/fdir/dist/index.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -37841,10 +37841,10 @@ var require_dist2 = __commonJS({
         } };
       }
       Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+    }) : (function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
       o[k2] = m[k];
-    });
+    }));
     var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
       for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
     };
@@ -38158,10 +38158,10 @@ var LIB;
       return -1 === r3 || -1 === i2 || 0 === s2 || 1 === s2 && r3 === i2 - 1 && r3 === n3 + 1 ? "" : t3.slice(r3, i2);
     }, format: function(t3) {
       if (null === t3 || "object" != typeof t3) throw new TypeError('The "pathObject" argument must be of type Object. Received type ' + typeof t3);
-      return function(t4, e3) {
+      return (function(t4, e3) {
         var r3 = e3.dir || e3.root, n3 = e3.base || (e3.name || "") + (e3.ext || "");
         return r3 ? r3 === e3.root ? r3 + n3 : r3 + "/" + n3 : n3;
-      }(0, t3);
+      })(0, t3);
     }, parse: function(t3) {
       e2(t3);
       var r3 = { root: "", dir: "", base: "", ext: "", name: "" };
@@ -38216,9 +38216,9 @@ var LIB;
     query;
     fragment;
     constructor(t2, e2, r2, n2, i2, o2 = false) {
-      "object" == typeof t2 ? (this.scheme = t2.scheme || c, this.authority = t2.authority || c, this.path = t2.path || c, this.query = t2.query || c, this.fragment = t2.fragment || c) : (this.scheme = /* @__PURE__ */ function(t3, e3) {
+      "object" == typeof t2 ? (this.scheme = t2.scheme || c, this.authority = t2.authority || c, this.path = t2.path || c, this.query = t2.query || c, this.fragment = t2.fragment || c) : (this.scheme = /* @__PURE__ */ (function(t3, e3) {
         return t3 || e3 ? t3 : "file";
-      }(t2, o2), this.authority = e2 || c, this.path = function(t3, e3) {
+      })(t2, o2), this.authority = e2 || c, this.path = (function(t3, e3) {
         switch (t3) {
           case "https":
           case "http":
@@ -38226,7 +38226,7 @@ var LIB;
             e3 ? e3[0] !== f && (e3 = f + e3) : e3 = f;
         }
         return e3;
-      }(this.scheme, r2 || c), this.query = n2 || c, this.fragment = i2 || c, a(this, o2));
+      })(this.scheme, r2 || c), this.query = n2 || c, this.fragment = i2 || c, a(this, o2));
     }
     get fsPath() {
       return v(this, false);
@@ -38342,12 +38342,12 @@ var LIB;
   }
   const A = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
   function w(t2) {
-    return t2.match(A) ? t2.replace(A, (t3) => C(t3)) : t2;
+    return t2.match(A) ? t2.replace(A, ((t3) => C(t3))) : t2;
   }
   var x = r(975);
   const P = x.posix || x, _ = "/";
   var I;
-  !function(t2) {
+  !(function(t2) {
     t2.joinPath = function(t3, ...e2) {
       return t3.with({ path: P.join(t3.path, ...e2) });
     }, t2.resolvePath = function(t3, ...e2) {
@@ -38364,7 +38364,7 @@ var LIB;
     }, t2.extname = function(t3) {
       return P.extname(t3.path);
     };
-  }(I || (I = {})), LIB = n;
+  })(I || (I = {})), LIB = n;
 })();
 var { URI, Utils } = LIB;
 
@@ -40406,12 +40406,12 @@ function _createFindOptions$1(options) {
 }
 var JOIN_SEPARATOR = "+";
 var WORD_SEPARATOR = " ";
-var CompoundWordsMethod = /* @__PURE__ */ function(CompoundWordsMethod$1) {
+var CompoundWordsMethod = /* @__PURE__ */ (function(CompoundWordsMethod$1) {
   CompoundWordsMethod$1[CompoundWordsMethod$1["NONE"] = 0] = "NONE";
   CompoundWordsMethod$1[CompoundWordsMethod$1["SEPARATE_WORDS"] = 1] = "SEPARATE_WORDS";
   CompoundWordsMethod$1[CompoundWordsMethod$1["JOIN_WORDS"] = 2] = "JOIN_WORDS";
   return CompoundWordsMethod$1;
-}({});
+})({});
 function* compoundWalker$1(root, compoundingMethod) {
   const empty = Object.freeze([]);
   const roots = {
@@ -47490,9 +47490,9 @@ function createIsCircular(areItemsEqual) {
 function getStrictProperties(object2) {
   return getOwnPropertyNames(object2).concat(getOwnPropertySymbols(object2));
 }
-var hasOwn = Object.hasOwn || function(object2, property) {
+var hasOwn = Object.hasOwn || (function(object2, property) {
   return hasOwnProperty.call(object2, property);
-};
+});
 function sameValueZeroEqual(a, b) {
   return a === b || !a && !b && a !== a && b !== b;
 }
@@ -51672,13 +51672,13 @@ function toError4(e) {
   if (typeof e === "object" && e && "message" in e && typeof e.message === "string") return new Error(e.message, { cause: e });
   return new Error(e && e.toString());
 }
-var FileType = /* @__PURE__ */ function(FileType$1) {
+var FileType = /* @__PURE__ */ (function(FileType$1) {
   FileType$1[FileType$1["Unknown"] = 0] = "Unknown";
   FileType$1[FileType$1["File"] = 1] = "File";
   FileType$1[FileType$1["Directory"] = 2] = "Directory";
   FileType$1[FileType$1["SymbolicLink"] = 64] = "SymbolicLink";
   return FileType$1;
-}({});
+})({});
 function encodeDataUrl(data, mediaType, attributes) {
   if (typeof data === "string") return encodeString$1(data, mediaType, attributes);
   const attribs = encodeAttributes(attributes || []);
@@ -52130,7 +52130,7 @@ var CVFileSystem = class {
     return findUpFromUrl(name2, from, opts);
   }
 };
-var FSCapabilityFlags = /* @__PURE__ */ function(FSCapabilityFlags$1) {
+var FSCapabilityFlags = /* @__PURE__ */ (function(FSCapabilityFlags$1) {
   FSCapabilityFlags$1[FSCapabilityFlags$1["None"] = 0] = "None";
   FSCapabilityFlags$1[FSCapabilityFlags$1["Stat"] = 1] = "Stat";
   FSCapabilityFlags$1[FSCapabilityFlags$1["Read"] = 2] = "Read";
@@ -52140,7 +52140,7 @@ var FSCapabilityFlags = /* @__PURE__ */ function(FSCapabilityFlags$1) {
   FSCapabilityFlags$1[FSCapabilityFlags$1["WriteDir"] = 16] = "WriteDir";
   FSCapabilityFlags$1[FSCapabilityFlags$1["ReadWriteDir"] = 24] = "ReadWriteDir";
   return FSCapabilityFlags$1;
-}({});
+})({});
 function cspellIOToFsProvider(cspellIO) {
   const capabilities = FSCapabilityFlags.Stat | FSCapabilityFlags.ReadWrite | FSCapabilityFlags.ReadDir;
   const capabilitiesHttp = capabilities & ~FSCapabilityFlags.Write & ~FSCapabilityFlags.ReadDir;
@@ -60728,11 +60728,11 @@ function getLanguageForFilename(filename) {
 var import_node_assert17 = __toESM(require("node:assert"), 1);
 
 // ../node_modules/.pnpm/@cspell+cspell-types@9.2.0/node_modules/@cspell/cspell-types/dist/index.mjs
-var IssueType = /* @__PURE__ */ function(IssueType$1) {
+var IssueType = /* @__PURE__ */ (function(IssueType$1) {
   IssueType$1[IssueType$1["spelling"] = 0] = "spelling";
   IssueType$1[IssueType$1["directive"] = 1] = "directive";
   return IssueType$1;
-}({});
+})({});
 var MessageTypes = {
   Debug: "Debug",
   Info: "Info",
