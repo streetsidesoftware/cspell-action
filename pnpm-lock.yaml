@@ -196,6 +196,10 @@ packages:
     resolution: {integrity: sha512-FQHgQYdTHkcpxT0u1ddLIg5Cc5ePVDcLg9+b5Wgaubmc5I0tLotgYj8c/mvStWuKsuZIs6sUopjJrE91wk6Onw==}
     engines: {node: '>=20'}
 
+  '@cspell/cspell-types@9.2.1':
+    resolution: {integrity: sha512-FQHgQYdTHkcpxT0u1ddLIg5Cc5ePVDcLg9+b5Wgaubmc5I0tLotgYj8c/mvStWuKsuZIs6sUopjJrE91wk6Onw==}
+    engines: {node: '>=20'}
+
   '@cspell/dict-ada@4.1.1':
     resolution: {integrity: sha512-E+0YW9RhZod/9Qy2gxfNZiHJjCYFlCdI69br1eviQQWB8yOTJX0JHXLs79kOYhSW0kINPVUdvddEBe6Lu6CjGQ==}
 
@@ -2171,6 +2175,8 @@ snapshots:
       global-directory: 4.0.1
 
   '@cspell/cspell-service-bus@9.2.1': {}
+
+  '@cspell/cspell-types@9.2.1': {}
 
   '@cspell/cspell-types@9.2.1': {}
 
