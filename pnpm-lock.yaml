@@ -58,8 +58,8 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       '@cspell/cspell-types':
-        specifier: ^9.2.0
-        version: 9.2.0
+        specifier: ^9.2.1
+        version: 9.2.1
       '@octokit/webhooks-types':
         specifier: ^7.6.1
         version: 7.6.1
@@ -194,6 +194,10 @@ packages:
 
   '@cspell/cspell-types@9.2.0':
     resolution: {integrity: sha512-hL4ltFwiARpFxlfXt4GiTWQxIFyZp4wrlp7dozZbitYO6QlYc5fwQ8jBc5zFUqknuH4gx/sCMLNXhAv3enNGZQ==}
+    engines: {node: '>=20'}
+
+  '@cspell/cspell-types@9.2.1':
+    resolution: {integrity: sha512-FQHgQYdTHkcpxT0u1ddLIg5Cc5ePVDcLg9+b5Wgaubmc5I0tLotgYj8c/mvStWuKsuZIs6sUopjJrE91wk6Onw==}
     engines: {node: '>=20'}
 
   '@cspell/dict-ada@4.1.1':
@@ -2173,6 +2177,8 @@ snapshots:
   '@cspell/cspell-service-bus@9.2.0': {}
 
   '@cspell/cspell-types@9.2.0': {}
+
+  '@cspell/cspell-types@9.2.1': {}
 
   '@cspell/dict-ada@4.1.1': {}
 
