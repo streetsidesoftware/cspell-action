@@ -32,10 +32,10 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// src/import-meta-url.cjs
+// src-build/import-meta-url.cjs
 var import_meta_url;
 var init_import_meta_url = __esm({
-  "src/import-meta-url.cjs"() {
+  "src-build/import-meta-url.cjs"() {
     "use strict";
     import_meta_url = require("url").pathToFileURL(__filename);
   }

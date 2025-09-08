@@ -19,7 +19,7 @@ async function buildLib() {
         bundle: true,
         packages: 'bundle',
         platform: 'node',
-        inject: ['src/import-meta-url.cjs'],
+        inject: ['src-build/import-meta-url.cjs'],
         define: {
             'import.meta.url': 'import_meta_url',
         },
