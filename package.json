@@ -3,7 +3,7 @@
   "version": "7.2.0",
   "description": "GitHub Action: Check Spelling",
   "private": true,
-  "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
+  "packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67",
   "type": "module",
   "scripts": {
     "prepare": "pnpm run build",
@@ -39,17 +39,17 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
-    "@eslint/js": "^9.33.0",
+    "@eslint/js": "^9.35.0",
     "@tsconfig/node20": "^20.1.6",
     "@vitest/coverage-istanbul": "^3.2.4",
     "env-cmd": "^11.0.0",
-    "eslint": "^9.33.0",
+    "eslint": "^9.35.0",
     "eslint-plugin-n": "^17.21.3",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "prettier": "^3.6.2",
     "shx": "^0.4.0",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.39.1",
+    "typescript-eslint": "^8.42.0",
     "vitest": "^3.2.4"
   },
   "pnpm": {
