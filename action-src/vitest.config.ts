@@ -16,6 +16,7 @@ export default defineConfig({
                 'bin.js',
                 'bin.cjs',
                 'build.mjs',
+                'src-build/**',
                 'fixtures/**',
                 '.coverage/**',
                 'coverage',
