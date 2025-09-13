@@ -37917,10 +37917,10 @@ init_import_meta_url();
 // ../node_modules/.pnpm/cspell@9.2.1/node_modules/cspell/dist/esm/application-BZlf5spr.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/chalk@5.6.0/node_modules/chalk/source/index.js
+// ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/chalk@5.6.0/node_modules/chalk/source/vendor/ansi-styles/index.js
+// ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/ansi-styles/index.js
 init_import_meta_url();
 var ANSI_BACKGROUND_OFFSET = 10;
 var wrapAnsi16 = (offset = 0) => (code) => `\x1B[${code + offset}m`;
@@ -38107,7 +38107,7 @@ function assembleStyles() {
 var ansiStyles = assembleStyles();
 var ansi_styles_default = ansiStyles;
 
-// ../node_modules/.pnpm/chalk@5.6.0/node_modules/chalk/source/vendor/supports-color/index.js
+// ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/supports-color/index.js
 init_import_meta_url();
 var import_node_process = __toESM(require("node:process"), 1);
 var import_node_os = __toESM(require("node:os"), 1);
@@ -38240,7 +38240,7 @@ var supportsColor = {
 };
 var supports_color_default = supportsColor;
 
-// ../node_modules/.pnpm/chalk@5.6.0/node_modules/chalk/source/utilities.js
+// ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/utilities.js
 init_import_meta_url();
 function stringReplaceAll(string, substring, replacer) {
   let index = string.indexOf(substring);
@@ -38271,7 +38271,7 @@ function stringEncaseCRLFWithFirstIndex(string, prefix, postfix, index) {
   return returnValue;
 }
 
-// ../node_modules/.pnpm/chalk@5.6.0/node_modules/chalk/source/index.js
+// ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/index.js
 var { stdout: stdoutColor, stderr: stderrColor } = supports_color_default;
 var GENERATOR = Symbol("GENERATOR");
 var STYLER = Symbol("STYLER");
@@ -62397,7 +62397,7 @@ init_import_meta_url();
 var import_node_assert18 = __toESM(require("node:assert"), 1);
 var import_node_util5 = require("node:util");
 
-// ../node_modules/.pnpm/chalk-template@1.1.0/node_modules/chalk-template/index.js
+// ../node_modules/.pnpm/chalk-template@1.1.2/node_modules/chalk-template/index.js
 init_import_meta_url();
 var TEMPLATE_REGEX = /(?:\\(u(?:[a-f\d]{4}|{[a-f\d]{1,6}})|x[a-f\d]{2}|.))|(?:{(~)?(#?[\w:]+(?:\([^)]*\))?(?:\.#?[\w:]+(?:\([^)]*\))?)*)(?:[ \t]|(?=\r?\n)))|(})|((?:.|[\r\n\f])+?)/gi;
 var STYLE_REGEX = /(?:^|\.)(?:(?:(\w+)(?:\(([^)]*)\))?)|(?:#(?=[:a-fA-F\d]{2,})([a-fA-F\d]{6})?(?::([a-fA-F\d]{6}))?))/g;
