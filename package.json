@@ -44,7 +44,7 @@
     "@vitest/coverage-istanbul": "^3.2.4",
     "env-cmd": "^11.0.0",
     "eslint": "^9.35.0",
-    "eslint-plugin-n": "^17.21.3",
+    "eslint-plugin-n": "^17.23.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "prettier": "^3.6.2",
     "shx": "^0.4.0",
