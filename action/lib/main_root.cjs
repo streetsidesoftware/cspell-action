@@ -46993,7 +46993,7 @@ function isDefined(v) {
 init_import_meta_url();
 var import_node_url = require("node:url");
 
-// ../node_modules/.pnpm/fast-equals@5.2.2/node_modules/fast-equals/dist/esm/index.mjs
+// ../node_modules/.pnpm/fast-equals@5.3.0/node_modules/fast-equals/dist/esm/index.mjs
 init_import_meta_url();
 var getOwnPropertyNames = Object.getOwnPropertyNames;
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
@@ -47021,6 +47021,9 @@ function createIsCircular(areItemsEqual) {
     cache5.delete(b);
     return result;
   };
+}
+function getShortTag(value) {
+  return value != null ? value[Symbol.toStringTag] : void 0;
 }
 function getStrictProperties(object2) {
   return getOwnPropertyNames(object2).concat(getOwnPropertySymbols(object2));
@@ -47214,7 +47217,7 @@ var isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView ? Arr
 var assign2 = Object.assign;
 var getTag = Object.prototype.toString.call.bind(Object.prototype.toString);
 function createEqualityComparator(_a) {
-  var areArraysEqual2 = _a.areArraysEqual, areDatesEqual2 = _a.areDatesEqual, areErrorsEqual2 = _a.areErrorsEqual, areFunctionsEqual2 = _a.areFunctionsEqual, areMapsEqual2 = _a.areMapsEqual, areNumbersEqual2 = _a.areNumbersEqual, areObjectsEqual2 = _a.areObjectsEqual, arePrimitiveWrappersEqual2 = _a.arePrimitiveWrappersEqual, areRegExpsEqual2 = _a.areRegExpsEqual, areSetsEqual2 = _a.areSetsEqual, areTypedArraysEqual2 = _a.areTypedArraysEqual, areUrlsEqual2 = _a.areUrlsEqual;
+  var areArraysEqual2 = _a.areArraysEqual, areDatesEqual2 = _a.areDatesEqual, areErrorsEqual2 = _a.areErrorsEqual, areFunctionsEqual2 = _a.areFunctionsEqual, areMapsEqual2 = _a.areMapsEqual, areNumbersEqual2 = _a.areNumbersEqual, areObjectsEqual2 = _a.areObjectsEqual, arePrimitiveWrappersEqual2 = _a.arePrimitiveWrappersEqual, areRegExpsEqual2 = _a.areRegExpsEqual, areSetsEqual2 = _a.areSetsEqual, areTypedArraysEqual2 = _a.areTypedArraysEqual, areUrlsEqual2 = _a.areUrlsEqual, unknownTagComparators = _a.unknownTagComparators;
   return function comparator(a, b, state) {
     if (a === b) {
       return true;
@@ -47288,6 +47291,18 @@ function createEqualityComparator(_a) {
     if (tag === BOOLEAN_TAG || tag === NUMBER_TAG || tag === STRING_TAG) {
       return arePrimitiveWrappersEqual2(a, b, state);
     }
+    if (unknownTagComparators) {
+      var unknownTagComparator = unknownTagComparators[tag];
+      if (!unknownTagComparator) {
+        var shortTag = getShortTag(a);
+        if (shortTag) {
+          unknownTagComparator = unknownTagComparators[shortTag];
+        }
+      }
+      if (unknownTagComparator) {
+        return unknownTagComparator(a, b, state);
+      }
+    }
     return false;
   };
 }
@@ -47305,7 +47320,8 @@ function createEqualityComparatorConfig(_a) {
     areRegExpsEqual,
     areSetsEqual: strict ? combineComparators(areSetsEqual, areObjectsEqualStrict) : areSetsEqual,
     areTypedArraysEqual: strict ? areObjectsEqualStrict : areTypedArraysEqual,
-    areUrlsEqual
+    areUrlsEqual,
+    unknownTagComparators: void 0
   };
   if (createCustomConfig) {
     config = assign2({}, config, createCustomConfig(config));
