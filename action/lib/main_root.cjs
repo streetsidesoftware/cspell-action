@@ -46993,7 +46993,7 @@ function isDefined(v) {
 init_import_meta_url();
 var import_node_url = require("node:url");
 
-// ../node_modules/.pnpm/fast-equals@5.3.0/node_modules/fast-equals/dist/esm/index.mjs
+// ../node_modules/.pnpm/fast-equals@5.3.2/node_modules/fast-equals/dist/esm/index.mjs
 init_import_meta_url();
 var getOwnPropertyNames = Object.getOwnPropertyNames;
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
