@@ -28816,21 +28816,10 @@ var require_src = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/has-own-prop@2.0.0/node_modules/has-own-prop/index.js
-var require_has_own_prop = __commonJS({
-  "../node_modules/.pnpm/has-own-prop@2.0.0/node_modules/has-own-prop/index.js"(exports2, module2) {
-    "use strict";
-    init_import_meta_url();
-    var hasOwnProp = Object.prototype.hasOwnProperty;
-    module2.exports = (object2, property) => hasOwnProp.call(object2, property);
-  }
-});
-
-// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/common.js
+// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/common.js
 var require_common = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/common.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/common.js"(exports2, module2) {
     init_import_meta_url();
-    var hasOwnProperty4 = require_has_own_prop();
     var {
       isObject,
       isArray: isArray3,
@@ -28873,7 +28862,7 @@ var require_common = __commonJS({
     });
     var copy_comments_by_kind = (target, source, target_key, source_key, prefix, remove_source) => {
       const source_prop = symbol(prefix, source_key);
-      if (!hasOwnProperty4(source, source_prop)) {
+      if (!Object.hasOwn(source, source_prop)) {
         return;
       }
       const target_prop = target_key === source_key ? source_prop : symbol(prefix, target_key);
@@ -28900,7 +28889,7 @@ var require_common = __commonJS({
       }
       SYMBOL_PREFIXES.forEach((prefix) => {
         const target_prop = symbol(prefix, to);
-        if (!hasOwnProperty4(array, target_prop)) {
+        if (!Object.hasOwn(array, target_prop)) {
           copy_comments_by_kind(array, array, to, from, prefix, true);
           return;
         }
@@ -28923,7 +28912,7 @@ var require_common = __commonJS({
         if (!isString2(key) && !isNumber(key)) {
           return;
         }
-        if (!hasOwnProperty4(source, key)) {
+        if (!Object.hasOwn(source, key)) {
           return;
         }
         target[key] = source[key];
@@ -28975,9 +28964,9 @@ var require_common = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/array.js
+// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/array.js
 var require_array = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/array.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/array.js"(exports2, module2) {
     init_import_meta_url();
     var { isArray: isArray3 } = require_util8();
     var { sort } = require_src();
@@ -29144,9 +29133,9 @@ var require_array = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/parse.js
+// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/parse.js
 var require_parse3 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/parse.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/parse.js"(exports2, module2) {
     init_import_meta_url();
     var esprima = require_esprima();
     var {
@@ -29176,6 +29165,7 @@ var require_parse3 = __commonJS({
       comment: true,
       loc: true
     });
+    var current_code;
     var previous_hosts = [];
     var comments_host = null;
     var unassigned_comments = null;
@@ -29189,6 +29179,7 @@ var require_parse3 = __commonJS({
     var index;
     var reviver = null;
     var clean5 = () => {
+      current_code = UNDEFINED;
       previous_props.length = previous_hosts.length = 0;
       last = null;
       last_prop = UNDEFINED;
@@ -29197,14 +29188,16 @@ var require_parse3 = __commonJS({
       clean5();
       tokens.length = 0;
       unassigned_comments = comments_host = tokens = last = current = reviver = null;
+      current_code = UNDEFINED;
     };
     var symbolFor = (prefix) => Symbol.for(
       last_prop !== UNDEFINED ? prefix + COLON + last_prop : prefix
     );
     var transform2 = (k, v) => reviver ? reviver(k, v) : v;
     var unexpected = () => {
-      const error4 = new SyntaxError(`Unexpected token ${current.value.slice(0, 1)}`);
+      const error4 = new SyntaxError(`Unexpected token '${current.value.slice(0, 1)}', "${current_code}" is not valid JSON`);
       Object.assign(error4, current.loc.start);
+      free();
       throw error4;
     };
     var unexpected_end = () => {
@@ -29213,6 +29206,7 @@ var require_parse3 = __commonJS({
         line: 1,
         column: 0
       });
+      free();
       throw error4;
     };
     var next = () => {
@@ -29412,6 +29406,7 @@ var require_parse3 = __commonJS({
     var isObject = (subject) => Object(subject) === subject;
     var parse4 = (code, rev, no_comments) => {
       clean5();
+      current_code = code;
       tokens = tokenize(code);
       reviver = rev;
       remove_comments = no_comments;
@@ -29445,44 +29440,9 @@ var require_parse3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/repeat-string@1.6.1/node_modules/repeat-string/index.js
-var require_repeat_string = __commonJS({
-  "../node_modules/.pnpm/repeat-string@1.6.1/node_modules/repeat-string/index.js"(exports2, module2) {
-    "use strict";
-    init_import_meta_url();
-    var res = "";
-    var cache5;
-    module2.exports = repeat;
-    function repeat(str, num) {
-      if (typeof str !== "string") {
-        throw new TypeError("expected a string");
-      }
-      if (num === 1) return str;
-      if (num === 2) return str + str;
-      var max4 = str.length * num;
-      if (cache5 !== str || typeof cache5 === "undefined") {
-        cache5 = str;
-        res = "";
-      } else if (res.length >= max4) {
-        return res.substr(0, max4);
-      }
-      while (max4 > res.length && num > 1) {
-        if (num & 1) {
-          res += str;
-        }
-        num >>= 1;
-        str += str;
-      }
-      res += str;
-      res = res.substr(0, max4);
-      return res;
-    }
-  }
-});
-
-// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/stringify.js
+// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/stringify.js
 var require_stringify = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/stringify.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/stringify.js"(exports2, module2) {
     init_import_meta_url();
     var {
       isArray: isArray3,
@@ -29491,7 +29451,6 @@ var require_stringify = __commonJS({
       isNumber,
       isString: isString2
     } = require_util8();
-    var repeat = require_repeat_string();
     var {
       PREFIX_BEFORE_ALL,
       PREFIX_BEFORE,
@@ -29652,7 +29611,7 @@ var require_stringify = __commonJS({
         default:
       }
     }
-    var get_indent = (space) => isString2(space) ? space : isNumber(space) ? repeat(SPACE, space) : EMPTY;
+    var get_indent = (space) => isString2(space) ? space : isNumber(space) ? SPACE.repeat(space) : EMPTY;
     var { toString } = Object.prototype;
     var PRIMITIVE_OBJECT_TYPES = [
       "[object Number]",
@@ -29678,20 +29637,36 @@ var require_stringify = __commonJS({
       indent = indent_;
       const str = is_primitive_object(value) ? JSON.stringify(value) : stringify5("", { "": value }, EMPTY);
       clean5();
-      return isObject(value) ? process_comments(value, PREFIX_BEFORE_ALL, EMPTY).trimLeft() + str + process_comments(value, PREFIX_AFTER_ALL, EMPTY).trimRight() : str;
+      return isObject(value) ? process_comments(value, PREFIX_BEFORE_ALL, EMPTY, true).trimLeft() + str + process_comments(value, PREFIX_AFTER_ALL, EMPTY).trimRight() : str;
     };
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/index.js
+// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/index.js
 var require_src2 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.2.5/node_modules/comment-json/src/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/index.js"(exports2, module2) {
     init_import_meta_url();
     var { parse: parse4, tokenize } = require_parse3();
     var stringify5 = require_stringify();
     var { CommentArray } = require_array();
-    var { assign: assign3 } = require_common();
+    var {
+      PREFIX_BEFORE,
+      PREFIX_AFTER_PROP,
+      PREFIX_AFTER_COLON,
+      PREFIX_AFTER_VALUE,
+      PREFIX_AFTER,
+      PREFIX_BEFORE_ALL,
+      PREFIX_AFTER_ALL,
+      assign: assign3
+    } = require_common();
     module2.exports = {
+      PREFIX_BEFORE,
+      PREFIX_AFTER_PROP,
+      PREFIX_AFTER_COLON,
+      PREFIX_AFTER_VALUE,
+      PREFIX_AFTER,
+      PREFIX_BEFORE_ALL,
+      PREFIX_AFTER_ALL,
       parse: parse4,
       stringify: stringify5,
       tokenize,
@@ -46993,7 +46968,7 @@ function isDefined(v) {
 init_import_meta_url();
 var import_node_url = require("node:url");
 
-// ../node_modules/.pnpm/fast-equals@5.3.0/node_modules/fast-equals/dist/esm/index.mjs
+// ../node_modules/.pnpm/fast-equals@5.3.2/node_modules/fast-equals/dist/esm/index.mjs
 init_import_meta_url();
 var getOwnPropertyNames = Object.getOwnPropertyNames;
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
@@ -65989,14 +65964,6 @@ undici/lib/fetch/body.js:
 
 undici/lib/websocket/frame.js:
   (*! ws. MIT License. Einar Otto Stangvik <einaros@gmail.com> *)
-
-repeat-string/index.js:
-  (*!
-   * repeat-string <https://github.com/jonschlinkert/repeat-string>
-   *
-   * Copyright (c) 2014-2015, Jon Schlinkert.
-   * Licensed under the MIT License.
-   *)
 
 smol-toml/dist/error.js:
 smol-toml/dist/util.js:
