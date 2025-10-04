@@ -28816,15 +28816,16 @@ var require_src = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/common.js
+// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/common.js
 var require_common = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/common.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/common.js"(exports2, module2) {
     init_import_meta_url();
     var {
       isObject,
       isArray: isArray3,
       isString: isString2,
-      isNumber
+      isNumber,
+      isFunction
     } = require_util8();
     var PREFIX_BEFORE = "before";
     var PREFIX_AFTER_PROP = "after-prop";
@@ -28920,6 +28921,7 @@ var require_common = __commonJS({
       });
       return target;
     };
+    var is_raw_json = isFunction(JSON.isRawJSON) ? JSON.isRawJSON : () => false;
     module2.exports = {
       SYMBOL_PREFIXES,
       PREFIX_BEFORE,
@@ -28943,6 +28945,7 @@ var require_common = __commonJS({
       copy_comments,
       swap_comments,
       assign_non_prop_comments,
+      is_raw_json,
       assign(target, source, keys4) {
         if (!isObject(target)) {
           throw new TypeError("Cannot convert undefined or null to object");
@@ -28964,9 +28967,9 @@ var require_common = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/array.js
+// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/array.js
 var require_array = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/array.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/array.js"(exports2, module2) {
     init_import_meta_url();
     var { isArray: isArray3 } = require_util8();
     var { sort } = require_src();
@@ -29133,9 +29136,9 @@ var require_array = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/parse.js
+// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/parse.js
 var require_parse3 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/parse.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/parse.js"(exports2, module2) {
     init_import_meta_url();
     var esprima = require_esprima();
     var {
@@ -29193,7 +29196,7 @@ var require_parse3 = __commonJS({
     var symbolFor = (prefix) => Symbol.for(
       last_prop !== UNDEFINED ? prefix + COLON + last_prop : prefix
     );
-    var transform2 = (k, v) => reviver ? reviver(k, v) : v;
+    var transform2 = (k, { value, context = {} }) => reviver ? reviver(k, value, context) : value;
     var unexpected = () => {
       const error4 = new SyntaxError(`Unexpected token '${current.value.slice(0, 1)}', "${current_code}" is not valid JSON`);
       Object.assign(error4, current.loc.start);
@@ -29379,11 +29382,15 @@ var require_parse3 = __commonJS({
       let tt = type();
       if (tt === CURLY_BRACKET_OPEN) {
         next();
-        return parse_object();
+        return {
+          value: parse_object()
+        };
       }
       if (tt === BRACKET_OPEN) {
         next();
-        return parse_array();
+        return {
+          value: parse_array()
+        };
       }
       let negative = EMPTY;
       if (tt === MINUS) {
@@ -29392,6 +29399,7 @@ var require_parse3 = __commonJS({
         negative = MINUS;
       }
       let v;
+      let source;
       switch (tt) {
         case "String":
         case "Boolean":
@@ -29399,8 +29407,15 @@ var require_parse3 = __commonJS({
         case "Numeric":
           v = current.value;
           next();
-          return JSON.parse(negative + v);
+          source = negative + v;
+          return {
+            value: JSON.parse(source),
+            context: {
+              source
+            }
+          };
         default:
+          return {};
       }
     }
     var isObject = (subject) => Object(subject) === subject;
@@ -29417,11 +29432,12 @@ var require_parse3 = __commonJS({
       next();
       set_comments_host({});
       parse_comments(PREFIX_BEFORE_ALL);
-      let result = walk();
+      const final = walk();
       parse_comments(PREFIX_AFTER_ALL);
       if (current) {
         unexpected();
       }
+      let result = transform2("", final);
       if (!no_comments && result !== null) {
         if (!isObject(result)) {
           result = new Object(result);
@@ -29429,7 +29445,6 @@ var require_parse3 = __commonJS({
         assign_non_prop_comments(result, comments_host);
       }
       restore_comments_host();
-      result = transform2("", result);
       free();
       return result;
     };
@@ -29440,9 +29455,9 @@ var require_parse3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/stringify.js
+// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/stringify.js
 var require_stringify = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/stringify.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/stringify.js"(exports2, module2) {
     init_import_meta_url();
     var {
       isArray: isArray3,
@@ -29466,7 +29481,8 @@ var require_stringify = __commonJS({
       COLON,
       COMMA,
       EMPTY,
-      UNDEFINED
+      UNDEFINED,
+      is_raw_json
     } = require_common();
     var ESCAPABLE = /[\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
     var SPACE = " ";
@@ -29606,6 +29622,9 @@ var require_stringify = __commonJS({
         // If the type is 'object', we might be dealing with an object or an array or
         // null.
         case "object":
+          if (is_raw_json(value)) {
+            return value.rawJSON;
+          }
           return isArray3(value) ? array_stringify(value, gap) : object_stringify(value, gap);
         // undefined
         default:
@@ -29642,9 +29661,9 @@ var require_stringify = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/index.js
+// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/index.js
 var require_src2 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.3.0/node_modules/comment-json/src/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/index.js"(exports2, module2) {
     init_import_meta_url();
     var { parse: parse4, tokenize } = require_parse3();
     var stringify5 = require_stringify();
