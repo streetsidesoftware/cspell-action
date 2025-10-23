@@ -20,7 +20,7 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            return {}; // process.env; // Uncomment to get full env (may be large)
+            return process.env;
 
       - name: View context attributes
         uses: actions/github-script@v8
@@ -57,7 +57,7 @@ jobs:
             Env:
 
             `````json
-            ${{ toJson(fromJson(steps.get-env.outputs.result)) }}
+            {{ toJson(fromJson(steps.get-env.outputs.result)) }}
             `````
 
             GitHub Context:
