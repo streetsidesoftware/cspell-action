@@ -1,0 +1,86 @@
+name: ' 🔗 Update PNPM'
+
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: The Base Ref to apply the diff
+        required: false
+        default: 'main'
+
+  push:
+    branches:
+      - main
+
+  schedule:
+    - cron: '0 12 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  update-cspell:
+    if: github.repository_owner == 'streetsidesoftware'
+    runs-on: ubuntu-latest
+    env:
+      NEW_BRANCH: update-pnpm-${{ inputs.base || 'main' }}
+      REF_BRANCH: ${{ inputs.base || 'main' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ env.REF_BRANCH }}
+
+      - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+
+      - name: Update PNPM
+        run: |
+          corepack enable
+          corepack up
+
+      - name: Install Updates
+        run: |
+          pnpm i
+
+      - name: Clean Build
+        run: |
+          pnpm clean
+          pnpm build
+
+      - name: Git Status
+        id: git-status
+        uses: streetsidesoftware/actions/public/dirty@v1
+
+      - name: Gen PR Body
+        id: body
+        uses: streetsidesoftware/actions/public/pr-body@v1
+        with:
+          title: Update PNPM
+          path: >-
+            package.json
+
+      - name: Show Summary
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: |
+            ${{ steps.body.outputs.body }}
+
+            **Status:** ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
+
+            ## Changes:
+
+            ```
+            ${{ steps.git-status.outputs.status }}
+            ```
+
+      - name: PR
+        if: steps.git-status.outputs.isDirty
+        uses: streetsidesoftware/actions/.github/actions/pr@v1
+        with:
+          commit-message: 'chore: Update PNPM'
+          branch: ${{ env.NEW_BRANCH }}
+          base: ${{ env.REF_BRANCH }}
+          title: 'chore: Update PNPM'
+          body: ${{ steps.body.outputs.body }}
+          app_id: ${{ secrets.AUTOMATION_APP_ID }}
+          app_private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
