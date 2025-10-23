@@ -20,7 +20,7 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            return process.env;
+            return {}; // process.env; // Uncomment to get full env (may be large)
 
       - name: View context attributes
         uses: actions/github-script@v8
@@ -49,20 +49,25 @@ jobs:
             PR Base SHA: `${{ github.event.pull_request.base.sha }}`
 
             Commits Ids:
+
             ```
             ${{ toJSON(github.event.commits.*.id  || 'undefined') }}
             ```
 
             Env:
+
             `````json
             ${{ toJson(fromJson(steps.get-env.outputs.result)) }}
             `````
+
             GitHub Context:
+
             `````json
             ${{ toJson(github) }}
             `````
 
             Event File:
+
             `````json
             ${{ toJson(fromJSON(steps.read-event.outputs.result)) }}
             `````
