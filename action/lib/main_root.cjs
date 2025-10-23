@@ -37461,6 +37461,31 @@ async function runGit(args) {
 init_import_meta_url();
 var import_core = __toESM(require_core(), 1);
 var import_command = __toESM(require_command(), 1);
+
+// ../node_modules/.pnpm/@cspell+cspell-types@9.2.2/node_modules/@cspell/cspell-types/dist/index.mjs
+init_import_meta_url();
+var IssueType = /* @__PURE__ */ (function(IssueType$1) {
+  IssueType$1[IssueType$1["spelling"] = 0] = "spelling";
+  IssueType$1[IssueType$1["directive"] = 1] = "directive";
+  return IssueType$1;
+})({});
+var MessageTypes = {
+  Debug: "Debug",
+  Info: "Info",
+  Warning: "Warning"
+};
+var unknownWordsChoices = {
+  ReportAll: "report-all",
+  ReportSimple: "report-simple",
+  ReportCommonTypos: "report-common-typos",
+  ReportFlagged: "report-flagged"
+};
+var defaultCSpellSettings = {
+  ignoreRandomStrings: true,
+  minRandomLength: 40
+};
+
+// src/reporter.ts
 var path = __toESM(require("path"), 1);
 
 // ../node_modules/.pnpm/vscode-uri@3.1.0/node_modules/vscode-uri/lib/esm/index.mjs
@@ -37821,7 +37846,10 @@ var CSpellReporterForGithubAction = class {
   };
   finished = false;
   verbose;
-  _issue(issue, _options) {
+  _issue(issue, options) {
+    if (!shouldReportIssue(issue, options)) {
+      return;
+    }
     const { issues, issueCounts } = this;
     const uri = issue.uri;
     if (uri) {
@@ -37900,6 +37928,30 @@ function isProgressFileComplete(p) {
 function relative2(cwd, fileUri) {
   const fsPath = URI.parse(fileUri).fsPath;
   return path.relative(cwd, fsPath);
+}
+function shouldReportIssue(issue, options) {
+  if (issue.issueType === IssueType.directive) {
+    return !!options?.validateDirectives;
+  }
+  const reportingChoice = options?.unknownWords || "report-all";
+  let shouldReport = issue.isFlagged === true;
+  switch (reportingChoice) {
+    case "report-simple":
+      shouldReport ||= issue.hasSimpleSuggestions === true;
+      shouldReport ||= issue.hasPreferredSuggestions === true;
+      shouldReport ||= issue.isFlagged === true;
+      break;
+    case "report-common-typos":
+      shouldReport ||= issue.hasPreferredSuggestions === true;
+      shouldReport ||= issue.isFlagged === true;
+      break;
+    case "report-flagged":
+      shouldReport ||= issue.isFlagged === true;
+      break;
+    default:
+      shouldReport = true;
+  }
+  return shouldReport;
 }
 
 // src/spell.ts
@@ -60410,29 +60462,6 @@ init_import_meta_url();
 // ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 init_import_meta_url();
 var import_node_assert17 = __toESM(require("node:assert"), 1);
-
-// ../node_modules/.pnpm/@cspell+cspell-types@9.2.2/node_modules/@cspell/cspell-types/dist/index.mjs
-init_import_meta_url();
-var IssueType = /* @__PURE__ */ (function(IssueType$1) {
-  IssueType$1[IssueType$1["spelling"] = 0] = "spelling";
-  IssueType$1[IssueType$1["directive"] = 1] = "directive";
-  return IssueType$1;
-})({});
-var MessageTypes = {
-  Debug: "Debug",
-  Info: "Info",
-  Warning: "Warning"
-};
-var unknownWordsChoices = {
-  ReportAll: "report-all",
-  ReportSimple: "report-simple",
-  ReportCommonTypos: "report-common-typos",
-  ReportFlagged: "report-flagged"
-};
-var defaultCSpellSettings = {
-  ignoreRandomStrings: true,
-  minRandomLength: 40
-};
 
 // ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/suggestions.js
 init_import_meta_url();
