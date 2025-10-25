@@ -37910,7 +37910,7 @@ ${error4.stack}
         },
         message
       );
-      console.warn(`${relative2(cwd, item.uri || "")}:${item.row}:${item.col} ${message}`);
+      console.warn("%s", `${relative2(cwd, item.uri || "")}:${item.row}:${item.col} ${message}`);
     });
   }
   reporter = {
@@ -37919,7 +37919,8 @@ ${error4.stack}
     info: (...args) => this._info(...args),
     issue: (...args) => this._issue(...args),
     progress: (...args) => this._progress(...args),
-    result: (...args) => this._result(...args)
+    result: (...args) => this._result(...args),
+    features: { unknownWords: true }
   };
 };
 function isProgressFileComplete(p) {
