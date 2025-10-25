@@ -142,7 +142,7 @@ ${error.stack}
                 },
                 message,
             );
-            console.warn(`${relative(cwd, item.uri || '')}:${item.row}:${item.col} ${message}`);
+            console.warn('%s', `${relative(cwd, item.uri || '')}:${item.row}:${item.col} ${message}`);
         });
     }
 
@@ -153,6 +153,7 @@ ${error.stack}
         issue: (...args) => this._issue(...args),
         progress: (...args) => this._progress(...args),
         result: (...args) => this._result(...args),
+        features: { unknownWords: true },
     };
 }
 

@@ -45,7 +45,7 @@ describe('checkSpellingForContext', () => {
             expect.stringContaining('::error::Error: Command failed: git diff-tree'),
         );
         // Since all files are checked, there will be some spelling issues found.
-        expect(spyConsoleWarn).toHaveBeenCalledWith(expect.stringContaining('Unknown word'));
+        expect(spyConsoleWarn).toHaveBeenCalledWith('%s', expect.stringContaining('Unknown word'));
     });
 
     test('gatherFileGlobsFromContext', async () => {
