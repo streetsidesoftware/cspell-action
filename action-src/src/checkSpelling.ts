@@ -1,6 +1,5 @@
 import path from 'node:path';
 
-import { debug, error, info, warning } from '@actions/core';
 import type { PullRequestEvent, PushEvent } from '@octokit/webhooks-types';
 import type { RunResult } from 'cspell';
 
@@ -8,10 +7,9 @@ import { ActionParams } from './ActionParams.js';
 import { checkDotMap } from './checkDotMap.js';
 import { toError } from './error.js';
 import { gitListFiles, gitListFilesForPullRequest, gitListFilesForPush, gitRoot } from './git.js';
+import { getDefaultLogger } from './logger.js';
 import { CSpellReporterForGithubAction } from './reporter.js';
 import { lint, LintOptions } from './spell.js';
-
-const core = { debug, error, info, warning };
 
 export async function checkSpellingForContext(params: ActionParams, context: Context): Promise<RunResult> {
     const files = await gatherGitCommitFilesFromContext(context);
@@ -60,6 +58,7 @@ async function gatherFileGlobsFromContext(context: Context): Promise<string[] | 
  * @param context Context
  */
 async function gatherFiles(context: Context): Promise<Set<string> | undefined> {
+    const logger = getDefaultLogger();
     const eventName = context.githubContext.eventName;
 
     // console.warn('gatherFiles %o', { context: context.githubContext, eventName });
@@ -71,11 +70,11 @@ async function gatherFiles(context: Context): Promise<Set<string> | undefined> {
             case 'pull_request':
                 return new Set(await gitListFilesForPullRequest(context.githubContext.payload as PullRequestEvent));
             default:
-                core.warning(`Unsupported event: ${eventName}. Using files from latest commit.`);
+                logger.warning(`Unsupported event: ${eventName}. Using files from latest commit.`);
                 return new Set(await gitListFiles('HEAD'));
         }
     } catch (e) {
-        core.error(toError(e));
+        logger.error(toError(e));
     }
 
     return undefined;
@@ -100,12 +99,14 @@ async function checkSpelling(
         treatFlaggedWordsAsErrors: params.treat_flagged_words_as_errors === 'true',
     };
 
-    const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core);
+    const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions);
     await lint(globs || [], options, collector.reporter);
 
     return collector.result;
 }
 
-export const __testing__ = {
+export const __testing__: {
+    gatherFileGlobsFromContext: typeof gatherFileGlobsFromContext;
+} = {
     gatherFileGlobsFromContext,
 };

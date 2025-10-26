@@ -67,7 +67,7 @@ describe('Validate Action', () => {
         ${'**/*.md'} | ${true}
     `('check all $files', async ({ files, expected }) => {
         const warnings: string[] = [];
-        spyWarn.mockImplementation((msg: string) => warnings.push(msg));
+        spyWarn.mockImplementation((_: string, msg: string) => warnings.push(msg));
         const context = createContextFromFile('pull_request.json', {
             INPUT_FILES: files,
             INPUT_INCREMENTAL_FILES_ONLY: 'false',
@@ -91,7 +91,7 @@ describe('Validate Action', () => {
         'check files "$files" incremental: $incremental sugs: $suggestions $contextFile, dot: "$dot"',
         async ({ files, incremental, suggestions, contextFile, dot, expected }) => {
             const warnings: string[] = [];
-            spyWarn.mockImplementation((msg: string) => warnings.push(msg));
+            spyWarn.mockImplementation((_: string, msg: string) => warnings.push(msg));
             const params = {
                 INPUT_FILES: files,
                 INPUT_INCREMENTAL_FILES_ONLY: incremental ? 'true' : 'false',
@@ -118,7 +118,7 @@ describe('Validate Action', () => {
         'check files flag errors "$files" sugs: $suggestions $contextFile, "$inline"',
         async ({ files, suggestions, contextFile, inline, expected }) => {
             const warnings: string[] = [];
-            spyWarn.mockImplementation((msg: string) => warnings.push(msg));
+            spyWarn.mockImplementation((_: string, msg: string) => warnings.push(msg));
             const params = {
                 INPUT_FILES: files,
                 INPUT_INCREMENTAL_FILES_ONLY: 'false',

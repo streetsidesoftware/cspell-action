@@ -1,5 +1,5 @@
 import * as process from 'process';
-import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 
 import { AppError } from './error.js';
 import { run } from './main.js';
@@ -7,20 +7,15 @@ import * as helper from './test/helper.js';
 
 const timeout = 20000;
 
-const spyStdout = vi.spyOn(process.stdout, 'write').mockImplementation(function () {
+vi.spyOn(process.stdout, 'write').mockImplementation(function () {
     return true;
 });
 
 const spyConsoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
 describe('Validate Main', () => {
-    beforeEach(() => {
-        spyStdout.mockClear();
-        spyConsoleError.mockClear();
-    });
-
     afterEach(() => {
-        vi.resetAllMocks();
+        vi.clearAllMocks();
     });
 
     test.each`

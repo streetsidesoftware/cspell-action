@@ -2,13 +2,12 @@ import { existsSync } from 'fs';
 
 import { AppError } from './error.js';
 import { ReportChoices } from './spell.js';
+import type { TrueFalse } from './utils.js';
 
 /**
  * [Workflow commands for GitHub Actions - GitHub Docs](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter)
  */
 type InlineWorkflowCommand = 'error' | 'warning' | 'none';
-
-export type TrueFalse = 'true' | 'false';
 
 export type ActionParamsInput = Record<keyof ActionParams, string>;
 
@@ -117,9 +116,12 @@ function validateTrueFalse(key: keyof ActionParamsInput): ValidationFunction {
     return validateOptions(key, ['true', 'false']);
 }
 
-function validateOptions(key: keyof ActionParamsInput, options: string[]): ValidationFunction {
+function validateOptions(key: keyof ActionParamsInput, options: string[], optional?: boolean): ValidationFunction {
     return (params: ActionParamsInput) => {
         const value = params[key];
+        if (optional && !value) {
+            return undefined;
+        }
         const success = options.includes(value);
         return !success ? `Invalid ${key} setting, must be one of (${options.join(', ')})` : undefined;
     };
@@ -157,6 +159,8 @@ export function validateActionParams(
     }
 }
 
-export const __testing__ = {
+export const __testing__: {
+    defaultActionParams: ActionParams;
+} = {
     defaultActionParams,
 };

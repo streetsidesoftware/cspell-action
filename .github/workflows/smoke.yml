@@ -49,20 +49,25 @@ jobs:
             PR Base SHA: `${{ github.event.pull_request.base.sha }}`
 
             Commits Ids:
+
             ```
             ${{ toJSON(github.event.commits.*.id  || 'undefined') }}
             ```
 
             Env:
+
             `````json
-            ${{ toJson(fromJson(steps.get-env.outputs.result)) }}
+            {{ toJson(fromJson(steps.get-env.outputs.result)) }}
             `````
+
             GitHub Context:
+
             `````json
             ${{ toJson(github) }}
             `````
 
             Event File:
+
             `````json
             ${{ toJson(fromJSON(steps.read-event.outputs.result)) }}
             `````

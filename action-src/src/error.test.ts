@@ -45,7 +45,6 @@ describe('error', () => {
 });
 
 function err(message: string, cause: unknown = undefined) {
-    const e = new Error(message);
-    e.cause = cause;
-    return e;
+    if (cause) return new Error(message, { cause });
+    return new Error(message);
 }

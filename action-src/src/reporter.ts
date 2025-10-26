@@ -1,30 +1,20 @@
-import { debug, error, info, warning } from '@actions/core';
-import { issueCommand } from '@actions/core/lib/command.js';
-import type {
-    CSpellReporter,
-    Issue,
-    MessageType,
-    ProgressFileComplete,
-    ProgressItem,
-    ReportIssueOptions,
-    RunResult,
+import {
+    type CSpellReporter,
+    type Issue,
+    type MessageType,
+    type ProgressFileComplete,
+    type ProgressItem,
+    type ReportIssueOptions,
+    type RunResult,
 } from '@cspell/cspell-types';
 import * as path from 'path';
 import { URI } from 'vscode-uri';
 
-const core = { debug, info, warning, error };
+import { getDefaultLogger, type Logger } from './logger.js';
 
 export interface LintResult {
     issues: Issue[];
     result: RunResult;
-}
-
-type LogFn = (message: string) => void;
-export interface Logger {
-    debug: LogFn;
-    info: LogFn;
-    warning: LogFn;
-    error: LogFn;
 }
 
 export interface LintOptions {
@@ -45,7 +35,7 @@ export interface ReporterOptions {
 
 export class CSpellReporterForGithubAction {
     readonly issues: Issue[] = [];
-    readonly issueCounts = new Map<string, number>();
+    readonly issueCounts: Map<string, number> = new Map();
     readonly result: RunResult = {
         files: -1,
         filesWithIssues: new Set(),
@@ -55,34 +45,38 @@ export class CSpellReporterForGithubAction {
     };
     finished: boolean = false;
     verbose: boolean;
+    onIssue?: (issue: Issue, options?: ReportIssueOptions) => void;
 
     constructor(
         readonly reportIssueCommand: ReportIssueCommand,
         readonly options: ReporterOptions,
-        readonly logger: Logger = core,
+        readonly logger: Logger = getDefaultLogger(),
     ) {
         this.verbose = options.verbose;
     }
 
-    _issue(issue: Issue, _options?: ReportIssueOptions) {
+    _issue(issue: Issue, _options?: ReportIssueOptions): void {
         const { issues, issueCounts } = this;
         const uri = issue.uri;
         if (uri) {
             issueCounts.set(uri, (issueCounts.get(uri) || 0) + 1);
         }
         issues.push(issue);
+        if (this.onIssue) {
+            this.onIssue(issue, _options);
+        }
     }
 
-    _info(message: string, _msgType: MessageType) {
+    _info(message: string, _msgType: MessageType): void {
         this._debug(message);
     }
 
-    _debug(message: string) {
+    _debug(message: string): void {
         nullEmitter(message);
         // logger.debug(message);
     }
 
-    _progress(progress: ProgressItem | ProgressFileComplete) {
+    _progress(progress: ProgressItem | ProgressFileComplete): void {
         if (!this.verbose || !isProgressFileComplete(progress)) {
             return;
         }
@@ -95,7 +89,7 @@ export class CSpellReporterForGithubAction {
         logger.info(`${fileNum}/${fileCount} ${filename}${issues} ${timeMsg}`);
     }
 
-    _error(message: string, error: Error) {
+    _error(message: string, error: Error): void {
         const { logger } = this;
         logger.error(`${message}
         name: ${error.name}
@@ -106,7 +100,7 @@ ${error.stack}
         return;
     }
 
-    _result(result: RunResult) {
+    _result(result: RunResult): void {
         Object.assign(this.result, result);
         this.finished = true;
         const command = this.reportIssueCommand;
@@ -128,7 +122,7 @@ ${error.stack}
             }
 
             // format: ::warning file={name},line={line},col={col}::{message}
-            issueCommand(
+            this.logger.issueCommand(
                 cmd,
                 {
                     file: relative(cwd, item.uri || ''),
@@ -137,7 +131,7 @@ ${error.stack}
                 },
                 message,
             );
-            console.warn(`${relative(cwd, item.uri || '')}:${item.row}:${item.col} ${message}`);
+            console.warn('%s', `${relative(cwd, item.uri || '')}:${item.row}:${item.col} ${message}`);
         });
     }
 
@@ -148,6 +142,7 @@ ${error.stack}
         issue: (...args) => this._issue(...args),
         progress: (...args) => this._progress(...args),
         result: (...args) => this._result(...args),
+        features: { unknownWords: false },
     };
 }
 
