@@ -61,7 +61,7 @@ describe('Validate Action', () => {
         await expect(action(context)).resolves.toBe(expected);
     });
 
-    test.only.each`
+    test.each`
         files        | root                    | expected
         ${'**'}      | ${'fixtures'}           | ${false}
         ${'**/*.md'} | ${'fixtures'}           | ${true}
