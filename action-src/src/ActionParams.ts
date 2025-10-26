@@ -116,7 +116,11 @@ function validateTrueFalse(key: keyof ActionParamsInput): ValidationFunction {
     return validateOptions(key, ['true', 'false']);
 }
 
-function validateOptions<K extends keyof ActionParamsInput>(key: K, options: ActionParamsInput[K][], optional?: boolean): ValidationFunction {
+function validateOptions<K extends keyof ActionParamsInput>(
+    key: K,
+    options: ActionParamsInput[K][],
+    optional?: boolean,
+): ValidationFunction {
     return (params: ActionParamsInput) => {
         const value = params[key];
         if (optional && !value) {
