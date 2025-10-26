@@ -1,22 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Validate Action > check all '**' 1`] = `
+exports[`Validate Action > check all '**' 'fixtures' 1`] = `
 [
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
-exports[`Validate Action > check all '**/*.md' 1`] = `[]`;
+exports[`Validate Action > check all '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
+]
+`;
+
+exports[`Validate Action > check all '**/*.md' 'fixtures' 1`] = `[]`;
 
 exports[`Validate Action > check files "''" incremental: false sugs: false 'pull_request_with_files.json', dot: "''" 1`] = `
 [
@@ -1431,5 +1437,47 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["sampleCode/samples_with_errors/withErrors.ts"]",
   "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["sampleCode/samples_with_errors/withErrors.ts"]}",
+]
+`;
+
+exports[`Validate Action > check with report '' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
+]
+`;
+
+exports[`Validate Action > check with report 'all' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
+]
+`;
+
+exports[`Validate Action > check with report 'flagged' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+]
+`;
+
+exports[`Validate Action > check with report 'simple' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
+]
+`;
+
+exports[`Validate Action > check with report 'typos' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
 ]
 `;

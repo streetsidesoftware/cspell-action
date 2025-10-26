@@ -61,16 +61,39 @@ describe('Validate Action', () => {
         await expect(action(context)).resolves.toBe(expected);
     });
 
-    test.each`
-        files        | expected
-        ${'**'}      | ${false}
-        ${'**/*.md'} | ${true}
-    `('check all $files', async ({ files, expected }) => {
+    test.only.each`
+        files        | root                    | expected
+        ${'**'}      | ${'fixtures'}           | ${false}
+        ${'**/*.md'} | ${'fixtures'}           | ${true}
+        ${'**'}      | ${'fixtures/reporting'} | ${false}
+    `('check all $files $root', async ({ files, root, expected }) => {
         const warnings: string[] = [];
         spyWarn.mockImplementation((_: string, msg: string) => warnings.push(msg));
         const context = createContextFromFile('pull_request.json', {
             INPUT_FILES: files,
             INPUT_INCREMENTAL_FILES_ONLY: 'false',
+            INPUT_ROOT: path.resolve(sourceDir, root),
+        });
+        await expect(action(context)).resolves.toBe(expected);
+        expect(warnings).toMatchSnapshot();
+        expect(spyStdout).toHaveBeenCalled();
+    });
+
+    test.only.each`
+        files   | report       | root                    | expected
+        ${'**'} | ${''}        | ${'fixtures/reporting'} | ${false}
+        ${'**'} | ${'all'}     | ${'fixtures/reporting'} | ${false}
+        ${'**'} | ${'simple'}  | ${'fixtures/reporting'} | ${false}
+        ${'**'} | ${'typos'}   | ${'fixtures/reporting'} | ${false}
+        ${'**'} | ${'flagged'} | ${'fixtures/reporting'} | ${false}
+    `('check with report $report $files $root', async ({ files, report, root, expected }) => {
+        const warnings: string[] = [];
+        spyWarn.mockImplementation((_: string, msg: string) => warnings.push(msg));
+        const context = createContextFromFile('pull_request.json', {
+            INPUT_FILES: files,
+            INPUT_INCREMENTAL_FILES_ONLY: 'false',
+            INPUT_ROOT: path.resolve(sourceDir, root),
+            INPUT_REPORT: report,
         });
         await expect(action(context)).resolves.toBe(expected);
         expect(warnings).toMatchSnapshot();

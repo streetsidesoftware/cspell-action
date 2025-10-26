@@ -9,7 +9,7 @@ import type { TrueFalse } from './utils.js';
  */
 type InlineWorkflowCommand = 'error' | 'warning' | 'none';
 
-export type ActionParamsInput = Record<keyof ActionParams, string>;
+export type ActionParamsInput = Record<keyof ActionParams, string | undefined>;
 
 export interface ActionParams {
     /**
@@ -69,7 +69,7 @@ export interface ActionParams {
      * 'simple' - only unknown words are reported.
      * 'typos' - only typos are reported.
      * 'flagged' - only flagged words are reported.
-     * @default 'all'
+     * default: use default reporting.
      */
     report: ReportChoices;
 }
@@ -86,7 +86,7 @@ const defaultActionParams: ActionParams = {
     check_dot_files: 'explicit',
     use_cspell_files: 'false',
     suggestions: 'false',
-    report: 'all',
+    report: undefined,
 };
 
 type ValidationFunction = (params: ActionParamsInput) => string | undefined;
@@ -116,7 +116,7 @@ function validateTrueFalse(key: keyof ActionParamsInput): ValidationFunction {
     return validateOptions(key, ['true', 'false']);
 }
 
-function validateOptions(key: keyof ActionParamsInput, options: string[], optional?: boolean): ValidationFunction {
+function validateOptions<K extends keyof ActionParamsInput>(key: K, options: ActionParamsInput[K][], optional?: boolean): ValidationFunction {
     return (params: ActionParamsInput) => {
         const value = params[key];
         if (optional && !value) {
@@ -148,7 +148,7 @@ export function validateActionParams(
         validateTrueFalse('use_cspell_files'),
         validateTrueFalse('suggestions'),
         validateOptions('check_dot_files', ['true', 'false', 'explicit']),
-        validateOptions('report', ['all', 'simple', 'typos', 'flagged']),
+        validateOptions('report', ['all', 'simple', 'typos', 'flagged'], true),
     ];
     const success = validations
         .map((fn) => fn(params))

@@ -37320,7 +37320,7 @@ var defaultActionParams = {
   check_dot_files: "explicit",
   use_cspell_files: "false",
   suggestions: "false",
-  report: "all"
+  report: void 0
 };
 function applyDefaults(params) {
   const results = { ...defaultActionParams, ...params };
@@ -37365,7 +37365,7 @@ function validateActionParams(params, logError2) {
     validateTrueFalse("use_cspell_files"),
     validateTrueFalse("suggestions"),
     validateOptions("check_dot_files", ["true", "false", "explicit"]),
-    validateOptions("report", ["all", "simple", "typos", "flagged"])
+    validateOptions("report", ["all", "simple", "typos", "flagged"], true)
   ];
   const success = validations.map((fn) => fn(params)).map((msg) => !msg || (logError2(msg), false)).reduce((a, b) => a && b, true);
   if (!success) {
