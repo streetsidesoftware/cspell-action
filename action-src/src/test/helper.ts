@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
-import { vi } from 'vitest'
+import { vi } from 'vitest';
 
 import { IssueCommandFn, Logger } from '../logger.js';
 
@@ -47,7 +47,6 @@ export function resolveFiles(files: string[] | undefined, rootDir?: string): str
 }
 
 type IssueCommandFnParams = Parameters<Logger['issueCommand']>;
-
 
 export function createIssueCommandCollector(): { issueCommand: IssueCommandFn; calls: IssueCommandFnParams[] } {
     const calls: IssueCommandFnParams[] = [];

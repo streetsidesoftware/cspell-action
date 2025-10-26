@@ -18,9 +18,9 @@ vi.mock('./logger.js', async (importActual) => {
 
     return {
         ...(await importActual<typeof import('./logger.js')>()),
-        getDefaultLogger: () => logger
-    }
-})
+        getDefaultLogger: () => logger,
+    };
+});
 
 const spyConsoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 

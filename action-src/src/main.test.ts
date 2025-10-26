@@ -14,7 +14,6 @@ vi.spyOn(process.stdout, 'write').mockImplementation(function () {
 const spyConsoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
 describe('Validate Main', () => {
-
     afterEach(() => {
         vi.clearAllMocks();
     });
