@@ -65631,6 +65631,27 @@ async function checkSpelling(params, globs, files) {
 // src/getActionParams.ts
 init_import_meta_url();
 var import_core2 = __toESM(require_core(), 1);
+
+// src/utils.ts
+init_import_meta_url();
+function tf(value) {
+  let v = value;
+  const mapValues = {
+    true: "true",
+    t: "true",
+    false: "false",
+    f: "false",
+    "0": "false",
+    "1": "true"
+  };
+  v = typeof v === "boolean" || typeof v === "number" ? v ? "true" : "false" : v;
+  v = v.toString();
+  v = v.toLowerCase();
+  v = mapValues[v] || value;
+  return v;
+}
+
+// src/getActionParams.ts
 function getActionParams() {
   const params = {
     // github_token: getInput('github_token', { required: true }),
@@ -65648,21 +65669,6 @@ function getActionParams() {
     report: (0, import_core2.getInput)("report").toLowerCase()
   };
   return applyDefaults(params);
-}
-function tf(v) {
-  const mapValues = {
-    true: "true",
-    t: "true",
-    false: "false",
-    f: "false",
-    "0": "false",
-    "1": "true"
-  };
-  v = typeof v === "boolean" || typeof v === "number" ? v ? "true" : "false" : v;
-  v = v.toString();
-  v = v.toLowerCase();
-  v = mapValues[v] || v;
-  return v;
 }
 
 // src/action.ts
