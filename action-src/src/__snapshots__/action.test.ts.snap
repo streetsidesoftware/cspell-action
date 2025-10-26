@@ -1,22 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Validate Action > check all '**' 1`] = `
+exports[`Validate Action > check all '**' 'fixtures' 1`] = `
 [
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
-  "../fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
 ]
 `;
 
-exports[`Validate Action > check all '**/*.md' 1`] = `[]`;
+exports[`Validate Action > check all '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
+]
+`;
+
+exports[`Validate Action > check all '**/*.md' 'fixtures' 1`] = `[]`;
 
 exports[`Validate Action > check files "''" incremental: false sugs: false 'pull_request_with_files.json', dot: "''" 1`] = `
 [
@@ -24,7 +30,6 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
@@ -57,10 +62,6 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)
-",
-  ],
-  [
     "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)
 ",
   ],
@@ -77,7 +78,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "Files checked: 8, Issues found: 9 in 2 files.
+    "Files checked: 8, Issues found: 8 in 2 files.
 ",
   ],
   [
@@ -109,7 +110,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=number_of_issues::9
+    "::set-output name=number_of_issues::8
 ",
   ],
   [
@@ -133,7 +134,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -146,19 +147,18 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "Files checked: 8, Issues found: 9 in 2 files.",
+  "Files checked: 8, Issues found: 8 in 2 files.",
   "::set-output name=success::false",
   "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::8",
-  "::set-output name=number_of_issues::9",
+  "::set-output name=number_of_issues::8",
   "::set-output name=number_of_files_with_issues::2",
   "::set-output name=files_with_issues::["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -168,7 +168,6 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
@@ -201,10 +200,6 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)
-",
-  ],
-  [
     "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)
 ",
   ],
@@ -221,7 +216,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "Files checked: 8, Issues found: 9 in 2 files.
+    "Files checked: 8, Issues found: 8 in 2 files.
 ",
   ],
   [
@@ -253,7 +248,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=number_of_issues::9
+    "::set-output name=number_of_issues::8
 ",
   ],
   [
@@ -277,7 +272,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -290,19 +285,18 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "Files checked: 8, Issues found: 9 in 2 files.",
+  "Files checked: 8, Issues found: 8 in 2 files.",
   "::set-output name=success::false",
   "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::8",
-  "::set-output name=number_of_issues::9",
+  "::set-output name=number_of_issues::8",
   "::set-output name=number_of_files_with_issues::2",
   "::set-output name=files_with_issues::["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -312,7 +306,6 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
@@ -345,10 +338,6 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)
-",
-  ],
-  [
     "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)
 ",
   ],
@@ -365,7 +354,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "Files checked: 8, Issues found: 9 in 2 files.
+    "Files checked: 8, Issues found: 8 in 2 files.
 ",
   ],
   [
@@ -397,7 +386,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=number_of_issues::9
+    "::set-output name=number_of_issues::8
 ",
   ],
   [
@@ -421,7 +410,7 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
 ]
@@ -434,19 +423,18 @@ exports[`Validate Action > check files "''" incremental: false sugs: false 'pull
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "Files checked: 8, Issues found: 9 in 2 files.",
+  "Files checked: 8, Issues found: 8 in 2 files.",
   "::set-output name=success::false",
   "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::8",
-  "::set-output name=number_of_issues::9",
+  "::set-output name=number_of_issues::8",
   "::set-output name=number_of_files_with_issues::2",
   "::set-output name=files_with_issues::["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
 ]
 `;
 
@@ -456,7 +444,6 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
@@ -493,10 +480,6 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
 ",
   ],
   [
-    "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)
-",
-  ],
-  [
     "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)
 ",
   ],
@@ -513,7 +496,7 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
 ",
   ],
   [
-    "Files checked: 8, Issues found: 9 in 2 files.
+    "Files checked: 8, Issues found: 8 in 2 files.
 ",
   ],
   [
@@ -545,7 +528,7 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
 ",
   ],
   [
-    "::set-output name=number_of_issues::9
+    "::set-output name=number_of_issues::8
 ",
   ],
   [
@@ -569,11 +552,11 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
-    "::error::9 spelling issues found in 2 of the 8 files checked.
+    "::error::8 spelling issues found in 2 of the 8 files checked.
 ",
   ],
 ]
@@ -587,20 +570,19 @@ exports[`Validate Action > check files "''" incremental: true sugs: false 'bad_p
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "Files checked: 8, Issues found: 9 in 2 files.",
+  "Files checked: 8, Issues found: 8 in 2 files.",
   "::set-output name=success::false",
   "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::8",
-  "::set-output name=number_of_issues::9",
+  "::set-output name=number_of_issues::8",
   "::set-output name=number_of_files_with_issues::2",
   "::set-output name=files_with_issues::["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
-  "::error::9 spelling issues found in 2 of the 8 files checked.",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::error::8 spelling issues found in 2 of the 8 files checked.",
 ]
 `;
 
@@ -610,7 +592,6 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
   "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
   "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
-  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
   "fixtures/sampleCode/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
@@ -647,10 +628,6 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
 ",
   ],
   [
-    "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)
-",
-  ],
-  [
     "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)
 ",
   ],
@@ -667,7 +644,7 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
 ",
   ],
   [
-    "Files checked: 8, Issues found: 9 in 2 files.
+    "Files checked: 8, Issues found: 8 in 2 files.
 ",
   ],
   [
@@ -699,7 +676,7 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
 ",
   ],
   [
-    "::set-output name=number_of_issues::9
+    "::set-output name=number_of_issues::8
 ",
   ],
   [
@@ -723,11 +700,11 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
 ",
   ],
   [
-    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
+    "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}
 ",
   ],
   [
-    "::error::9 spelling issues found in 2 of the 8 files checked.
+    "::error::8 spelling issues found in 2 of the 8 files checked.
 ",
   ],
 ]
@@ -741,20 +718,19 @@ exports[`Validate Action > check files "'**'" incremental: true sugs: false 'bad
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "::warning file=fixtures/reporting/samples_with_errors/withErrors.ts,line=11,col=9::Unknown word (errrrorrs)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=19::Misspelled word (Functon) Suggestions: (function*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=5,col=27::Unknown word (countt)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=15::Forbidden word (blacklist) Suggestions: (denylist*)",
   "::warning file=fixtures/sampleCode/samples_with_errors/withErrors.ts,line=9,col=53::Misspelled word (colours) Suggestions: (colors*)",
-  "Files checked: 8, Issues found: 9 in 2 files.",
+  "Files checked: 8, Issues found: 8 in 2 files.",
   "::set-output name=success::false",
   "::set-output name=errors::0",
   "::set-output name=number_of_files_checked::8",
-  "::set-output name=number_of_issues::9",
+  "::set-output name=number_of_issues::8",
   "::set-output name=number_of_files_with_issues::2",
   "::set-output name=files_with_issues::["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]",
-  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":9,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
-  "::error::9 spelling issues found in 2 of the 8 files checked.",
+  "::set-output name=result::{"success":false,"errors":0,"number_of_issues":8,"number_of_files_checked":8,"files_with_issues":["reporting/samples_with_errors/withErrors.ts","sampleCode/samples_with_errors/withErrors.ts"]}",
+  "::error::8 spelling issues found in 2 of the 8 files checked.",
 ]
 `;
 
@@ -1431,5 +1407,47 @@ exports[`Validate Action > check files flag errors "'sampleCode/**'" sugs: true 
   "::set-output name=number_of_files_with_issues::1",
   "::set-output name=files_with_issues::["sampleCode/samples_with_errors/withErrors.ts"]",
   "::set-output name=result::{"success":false,"errors":0,"number_of_issues":4,"number_of_files_checked":4,"files_with_issues":["sampleCode/samples_with_errors/withErrors.ts"]}",
+]
+`;
+
+exports[`Validate Action > check with report '' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
+]
+`;
+
+exports[`Validate Action > check with report 'all' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:11:9 Unknown word (errrrorrs)",
+]
+`;
+
+exports[`Validate Action > check with report 'flagged' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+]
+`;
+
+exports[`Validate Action > check with report 'simple' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:27 Unknown word (countt)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
+]
+`;
+
+exports[`Validate Action > check with report 'typos' '**' 'fixtures/reporting' 1`] = `
+[
+  "fixtures/reporting/samples_with_errors/withErrors.ts:5:19 Misspelled word (Functon) Suggestions: (function*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:15 Forbidden word (blacklist) Suggestions: (denylist*)",
+  "fixtures/reporting/samples_with_errors/withErrors.ts:9:53 Misspelled word (colours) Suggestions: (colors*)",
 ]
 `;

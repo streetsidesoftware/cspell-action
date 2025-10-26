@@ -4,7 +4,7 @@ import { createLogger } from './logger.js';
 import { CSpellReporterForGithubAction } from './reporter.js';
 
 describe('Validate Reporter', () => {
-    test('Reporting Errors', () =>{
+    test('Reporting Errors', () => {
         const logger = createLogger({
             debug: vi.fn(),
             info: vi.fn(),
@@ -12,7 +12,11 @@ describe('Validate Reporter', () => {
             error: vi.fn(),
         });
 
-        const actionReporter = new CSpellReporterForGithubAction('none', { verbose: false, treatFlaggedWordsAsErrors: true }, logger);
+        const actionReporter = new CSpellReporterForGithubAction(
+            'none',
+            { verbose: false, treatFlaggedWordsAsErrors: true },
+            logger,
+        );
         const reporter = actionReporter.reporter;
 
         reporter.error?.('This is an error message', new Error('Test error'));

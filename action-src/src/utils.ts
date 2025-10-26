@@ -1,4 +1,3 @@
-
 export type TrueFalse = 'true' | 'false';
 
 /**

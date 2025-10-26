@@ -1,7 +1,12 @@
 import type { CSpellReporter } from 'cspell';
 import { type CSpellApplicationOptions, lint as cspellAppLint } from 'cspell';
 
-export type ReportChoices = 'all' | 'simple' | 'typos' | 'flagged';
+export type ReportChoices =
+    | 'all' // all issues are reported
+    | 'simple' // only simple misspellings, typos, and flagged words
+    | 'typos' // only typos/misspellings, and flagged words
+    | 'flagged' // only flagged/forbidden words
+    | undefined; // use default reporting;
 export interface LintOptions {
     root: string;
     config?: string;

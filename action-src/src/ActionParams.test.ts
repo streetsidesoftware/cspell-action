@@ -6,6 +6,7 @@ describe('ActionParams', () => {
     test.each`
         params                 | expected
         ${{}}                  | ${__testing__.defaultActionParams}
+        ${{ report: '' }}      | ${__testing__.defaultActionParams}
         ${{ strict: 'false' }} | ${{ ...__testing__.defaultActionParams, strict: 'false' }}
     `('applyDefaults $params', ({ params, expected }) => {
         expect(applyDefaults(params)).toEqual(expected);
