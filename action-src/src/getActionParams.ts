@@ -1,6 +1,7 @@
 import { getInput } from '@actions/core';
 
-import { ActionParamsInput, applyDefaults, TrueFalse } from './ActionParams.js';
+import { ActionParamsInput, applyDefaults } from './ActionParams.js';
+import { tf } from './utils.js';
 
 export function getActionParams(): ActionParamsInput {
     const params: ActionParamsInput = {
@@ -19,20 +20,4 @@ export function getActionParams(): ActionParamsInput {
         report: getInput('report').toLowerCase(),
     };
     return applyDefaults(params);
-}
-
-function tf(v: string | boolean | number): TrueFalse | string {
-    const mapValues: Record<string, TrueFalse> = {
-        true: 'true',
-        t: 'true',
-        false: 'false',
-        f: 'false',
-        '0': 'false',
-        '1': 'true',
-    };
-    v = typeof v === 'boolean' || typeof v === 'number' ? (v ? 'true' : 'false') : v;
-    v = v.toString();
-    v = v.toLowerCase();
-    v = mapValues[v] || v;
-    return v;
 }

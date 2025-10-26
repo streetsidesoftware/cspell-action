@@ -2,13 +2,12 @@ import { existsSync } from 'fs';
 
 import { AppError } from './error.js';
 import { ReportChoices } from './spell.js';
+import type { TrueFalse } from './utils.js';
 
 /**
  * [Workflow commands for GitHub Actions - GitHub Docs](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter)
  */
 type InlineWorkflowCommand = 'error' | 'warning' | 'none';
-
-export type TrueFalse = 'true' | 'false';
 
 export type ActionParamsInput = Record<keyof ActionParams, string>;
 

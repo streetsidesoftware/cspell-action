@@ -25,6 +25,7 @@ export default defineConfig({
                 '.eslint*',
                 'vitest*',
                 '.prettier*',
+                '**/test/**',
                 '**/*.test.*',
             ],
         },
