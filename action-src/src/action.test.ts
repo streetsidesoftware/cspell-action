@@ -79,7 +79,7 @@ describe('Validate Action', () => {
         expect(spyStdout).toHaveBeenCalled();
     });
 
-    test.only.each`
+    test.each`
         files   | report       | root                    | expected
         ${'**'} | ${''}        | ${'fixtures/reporting'} | ${false}
         ${'**'} | ${'all'}     | ${'fixtures/reporting'} | ${false}
