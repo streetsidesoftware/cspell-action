@@ -23,17 +23,3 @@ export function createLogger(logger?: Partial<Logger>): Logger {
 export function getDefaultLogger(): Logger {
     return defaultLogger;
 }
-
-/**
- *
- * @param logger - overrides
- */
-export function overrideDefaultLogger(logger: Partial<Logger>): Logger {
-    if (logger.debug) defaultLogger.debug = logger.debug;
-    if (logger.info) defaultLogger.info = logger.info;
-    if (logger.warning) defaultLogger.warning = logger.warning;
-    if (logger.error) defaultLogger.error = logger.error;
-    if (logger.issueCommand) defaultLogger.issueCommand = logger.issueCommand;
-
-    return defaultLogger;
-}
