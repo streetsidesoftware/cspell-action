@@ -1,27 +1,36 @@
 import path from 'node:path';
 
-import { describe, expect, test, vi } from 'vitest';
+import { Issue } from 'cspell';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 
-import { CSpellReporterForGithubAction, Logger } from './reporter.js';
+import { CSpellReporterForGithubAction } from './reporter.js';
 import * as spell from './spell.js';
-import { resolveFile, resolveFiles, root, sourceDir } from './test/helper.js';
+import {
+    createIssueCommandCollector,
+    fixturesLocation,
+    mockLogger,
+    resolveFile,
+    resolveFiles,
+    root,
+    sourceDir,
+} from './test/helper.js';
 
 const sc: typeof expect.stringContaining = (...s) => expect.stringContaining(...s);
 const rOptions = { verbose: false, treatFlaggedWordsAsErrors: false };
 
+vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+
 describe('Validate Spell Checking', () => {
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     test('Linting some files', async () => {
         const options = {
             root,
             checkDotFiles: undefined,
         };
-        const f = () => {};
-        const logger: Logger = {
-            error: vi.fn(f),
-            debug: vi.fn(f),
-            info: vi.fn(f),
-            warning: vi.fn(f),
-        };
+        const logger = mockLogger();
         const reporter = new CSpellReporterForGithubAction('none', { ...rOptions, verbose: false }, logger);
         await spell.lint(['action-src/src/spell.ts', 'fixtures/sampleCode/ts/**/*.ts'], options, reporter.reporter);
         const r = reporter;
@@ -38,13 +47,7 @@ describe('Validate Spell Checking', () => {
             root,
             checkDotFiles: undefined,
         };
-        const f = () => {};
-        const logger: Logger = {
-            error: vi.fn(f),
-            debug: vi.fn(f),
-            info: vi.fn(f),
-            warning: vi.fn(f),
-        };
+        const logger = mockLogger();
         const reporter = new CSpellReporterForGithubAction(
             'none',
             { verbose: true, treatFlaggedWordsAsErrors: false },
@@ -76,13 +79,7 @@ describe('Validate Spell Checking', () => {
             checkDotFiles,
         };
         const info: string[] = [];
-        const f = () => {};
-        const logger: Logger = {
-            error: vi.fn(f),
-            debug: vi.fn(f),
-            info: vi.fn((msg) => info.push(msg)),
-            warning: vi.fn(f),
-        };
+        const logger = mockLogger({ info: vi.fn((msg) => info.push(msg)) });
         const reporter = new CSpellReporterForGithubAction('none', { ...rOptions, verbose: true }, logger);
         await spell.lint([glob], options, reporter.reporter);
         expect(info.sort()).toEqual(expected);
@@ -100,7 +97,11 @@ describe('Validate Spell Checking', () => {
     const sampleConfigTs = resolveFile('fixtures/sampleCode/ts/cspell.config.yaml', sourceDir);
 
     const sampleCodeTsOptions = {
-        root: path.join(sourceDir, 'fixtures/sampleCode/ts'),
+        root: f('sampleCode/ts'),
+    };
+
+    const samplesWithErrorsOptions = {
+        root: f('reporting/samples_with_errors'),
     };
 
     test.each`
@@ -114,7 +115,7 @@ describe('Validate Spell Checking', () => {
         ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfigTs }} | ${{ files: 0 }}
         ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 0 }}
         ${['**/ts/missing.ts']} | ${undefined}                                     | ${{}}                         | ${{ files: 0 }}
-    `('Linting $globs $files $options', async ({ globs, files, options, expected }) => {
+    `('Linting no errors $globs $files $options', async ({ globs, files, options, expected }) => {
         const opts: spell.LintOptions = {
             root,
             checkDotFiles: undefined,
@@ -122,15 +123,48 @@ describe('Validate Spell Checking', () => {
             ...options,
         };
         const info: string[] = [];
-        const f = () => {};
-        const logger: Logger = {
-            error: vi.fn(f),
-            debug: vi.fn(f),
-            info: vi.fn((msg) => info.push(msg)),
-            warning: vi.fn(f),
-        };
-        const reporter = new CSpellReporterForGithubAction('none', { ...rOptions, verbose: false }, logger);
+        const logger = mockLogger({ info: vi.fn((msg) => info.push(msg)) });
+        const reporter = new CSpellReporterForGithubAction('warning', { ...rOptions, verbose: false }, logger);
         await spell.lint(globs, opts, reporter.reporter);
         expect(reporter.result).toEqual({ ...defaultResult, ...expected });
     });
+
+    // cspell:ignore Functon countt blacklist colours errrrorrs
+    test.each`
+        globs | report       | options                     | expected                                                        | expectedIssues
+        ${[]} | ${undefined} | ${samplesWithErrorsOptions} | ${{ files: 1, filesWithIssues: s('withErrors.ts'), issues: 4 }} | ${['Functon', 'countt', 'blacklist', 'colours']}
+        ${[]} | ${'all'}     | ${samplesWithErrorsOptions} | ${{ files: 1, filesWithIssues: s('withErrors.ts'), issues: 5 }} | ${['Functon', 'countt', 'blacklist', 'colours', 'errrrorrs']}
+        ${[]} | ${'typos'}   | ${samplesWithErrorsOptions} | ${{ files: 1, filesWithIssues: s('withErrors.ts'), issues: 3 }} | ${['Functon', 'blacklist', 'colours']}
+        ${[]} | ${'simple'}  | ${samplesWithErrorsOptions} | ${{ files: 1, filesWithIssues: s('withErrors.ts'), issues: 4 }} | ${['Functon', 'countt', 'blacklist', 'colours']}
+        ${[]} | ${'flagged'} | ${samplesWithErrorsOptions} | ${{ files: 1, filesWithIssues: s('withErrors.ts'), issues: 1 }} | ${['blacklist']}
+    `('Linting report: $report $options', async ({ globs, report, options, expected, expectedIssues }) => {
+        const opts: spell.LintOptions = {
+            root,
+            checkDotFiles: undefined,
+            ...options,
+            report,
+        };
+        const info: string[] = [];
+        const collector = createIssueCommandCollector();
+        const issues: Issue[] = [];
+        const logger = mockLogger({ info: vi.fn((msg) => info.push(msg)), issueCommand: collector.issueCommand });
+        const reporter = new CSpellReporterForGithubAction('warning', { ...rOptions, verbose: false }, logger);
+        reporter.onIssue = (issue) => issues.push(issue);
+        await spell.lint(globs, opts, reporter.reporter);
+        expect(reporter.result).toEqual({ ...defaultResult, ...expected });
+        expect(issues.map((issue) => issue.text)).toEqual(expectedIssues);
+    });
 });
+
+function s<T>(...parts: T[]): Set<T> {
+    return new Set(parts);
+}
+
+/**
+ * resolve fixture path
+ * @param parts
+ * @returns
+ */
+function f(...parts: string[]): string {
+    return path.resolve(fixturesLocation, ...parts);
+}

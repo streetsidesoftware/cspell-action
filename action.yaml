@@ -72,7 +72,6 @@ inputs:
       - "simple" - only unknown words are reported.
       - "typos" - only typos are reported.
       - "flagged" - only flagged words are reported.
-    default: 'all'
     required: false
 
 outputs:

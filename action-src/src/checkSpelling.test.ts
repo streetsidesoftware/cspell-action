@@ -1,29 +1,32 @@
-import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 
 import { toActionParams } from './ActionParams.js';
 import { __testing__, checkSpellingForContext, type Context } from './checkSpelling.js';
+import { getDefaultLogger, type Logger } from './logger.js';
 
 const { gatherFileGlobsFromContext } = __testing__;
 
-const spyStdout = vi.spyOn(process.stdout, 'write').mockImplementation(function () {
-    return true;
-});
+vi.mock('./logger.js', async (importActual) => {
+    const f = () => {};
+    const logger: Logger = {
+        error: vi.fn(f),
+        debug: vi.fn(f),
+        info: vi.fn(f),
+        warning: vi.fn(f),
+        issueCommand: vi.fn(f),
+    };
 
-// const spyStderr = vi.spyOn(process.stderr, 'write').mockImplementation(function () {
-//     return true;
-// });
+    return {
+        ...(await importActual<typeof import('./logger.js')>()),
+        getDefaultLogger: () => logger
+    }
+})
 
 const spyConsoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
 describe('checkSpellingForContext', () => {
-    beforeEach(() => {
-        spyStdout.mockClear();
-        spyConsoleWarn.mockClear();
-        // spyStderr.mockClear();
-    });
-
     afterEach(() => {
-        vi.resetAllMocks();
+        vi.clearAllMocks();
     });
 
     test('checkSpellingForContext unknown event', async () => {
@@ -31,8 +34,8 @@ describe('checkSpellingForContext', () => {
         const context = testContext({ githubContext: { eventName: 'unknown', payload: {} } });
         const result = await checkSpellingForContext(params, context);
         expect(result.errors).toBe(0);
-        expect(spyStdout).toHaveBeenCalledWith(
-            '::warning::Unsupported event: unknown. Using files from latest commit.\n',
+        expect(getDefaultLogger().warning).toHaveBeenCalledWith(
+            'Unsupported event: unknown. Using files from latest commit.',
         );
     });
 
@@ -41,8 +44,8 @@ describe('checkSpellingForContext', () => {
         const context = testContext({ githubContext: { eventName: 'push', payload: { after: 'bad_sha' } } });
         const result = await checkSpellingForContext(params, context);
         expect(result.errors).toBe(0);
-        expect(spyStdout).toHaveBeenCalledWith(
-            expect.stringContaining('::error::Error: Command failed: git diff-tree'),
+        expect(getDefaultLogger().error).toHaveBeenCalledWith(
+            expect.objectContaining({ message: expect.stringContaining('Command failed: git diff-tree') }),
         );
         // Since all files are checked, there will be some spelling issues found.
         expect(spyConsoleWarn).toHaveBeenCalledWith('%s', expect.stringContaining('Unknown word'));

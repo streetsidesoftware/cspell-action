@@ -117,9 +117,12 @@ function validateTrueFalse(key: keyof ActionParamsInput): ValidationFunction {
     return validateOptions(key, ['true', 'false']);
 }
 
-function validateOptions(key: keyof ActionParamsInput, options: string[]): ValidationFunction {
+function validateOptions(key: keyof ActionParamsInput, options: string[], optional?: boolean): ValidationFunction {
     return (params: ActionParamsInput) => {
         const value = params[key];
+        if (optional && !value) {
+            return undefined;
+        }
         const success = options.includes(value);
         return !success ? `Invalid ${key} setting, must be one of (${options.join(', ')})` : undefined;
     };
@@ -157,6 +160,8 @@ export function validateActionParams(
     }
 }
 
-export const __testing__ = {
+export const __testing__: {
+    defaultActionParams: ActionParams;
+} = {
     defaultActionParams,
 };

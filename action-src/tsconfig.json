@@ -3,6 +3,8 @@
     "extends": "@tsconfig/node20/tsconfig.json",
     "compilerOptions": {
         "skipLibCheck": true,
+        "declaration": true,
+        "isolatedDeclarations": true,
         "noUnusedParameters": true,
         "noUnusedLocals": true,
         "types": ["node"],

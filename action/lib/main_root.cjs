@@ -414,7 +414,7 @@ var require_tunnel = __commonJS({
         connectOptions.headers = connectOptions.headers || {};
         connectOptions.headers["Proxy-Authorization"] = "Basic " + new Buffer(connectOptions.proxyAuth).toString("base64");
       }
-      debug5("making CONNECT request");
+      debug4("making CONNECT request");
       var connectReq = self.request(connectOptions);
       connectReq.useChunkedEncodingByDefault = false;
       connectReq.once("response", onResponse);
@@ -434,40 +434,40 @@ var require_tunnel = __commonJS({
         connectReq.removeAllListeners();
         socket.removeAllListeners();
         if (res.statusCode !== 200) {
-          debug5(
+          debug4(
             "tunneling socket could not be established, statusCode=%d",
             res.statusCode
           );
           socket.destroy();
-          var error4 = new Error("tunneling socket could not be established, statusCode=" + res.statusCode);
-          error4.code = "ECONNRESET";
-          options.request.emit("error", error4);
+          var error3 = new Error("tunneling socket could not be established, statusCode=" + res.statusCode);
+          error3.code = "ECONNRESET";
+          options.request.emit("error", error3);
           self.removeSocket(placeholder);
           return;
         }
         if (head.length > 0) {
-          debug5("got illegal response body from proxy");
+          debug4("got illegal response body from proxy");
           socket.destroy();
-          var error4 = new Error("got illegal response body from proxy");
-          error4.code = "ECONNRESET";
-          options.request.emit("error", error4);
+          var error3 = new Error("got illegal response body from proxy");
+          error3.code = "ECONNRESET";
+          options.request.emit("error", error3);
           self.removeSocket(placeholder);
           return;
         }
-        debug5("tunneling connection has established");
+        debug4("tunneling connection has established");
         self.sockets[self.sockets.indexOf(placeholder)] = socket;
         return cb(socket);
       }
       function onError(cause) {
         connectReq.removeAllListeners();
-        debug5(
+        debug4(
           "tunneling socket could not be established, cause=%s\n",
           cause.message,
           cause.stack
         );
-        var error4 = new Error("tunneling socket could not be established, cause=" + cause.message);
-        error4.code = "ECONNRESET";
-        options.request.emit("error", error4);
+        var error3 = new Error("tunneling socket could not be established, cause=" + cause.message);
+        error3.code = "ECONNRESET";
+        options.request.emit("error", error3);
         self.removeSocket(placeholder);
       }
     };
@@ -522,9 +522,9 @@ var require_tunnel = __commonJS({
       }
       return target;
     }
-    var debug5;
+    var debug4;
     if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
-      debug5 = function() {
+      debug4 = function() {
         var args = Array.prototype.slice.call(arguments);
         if (typeof args[0] === "string") {
           args[0] = "TUNNEL: " + args[0];
@@ -534,10 +534,10 @@ var require_tunnel = __commonJS({
         console.error.apply(console, args);
       };
     } else {
-      debug5 = function() {
+      debug4 = function() {
       };
     }
-    exports2.debug = debug5;
+    exports2.debug = debug4;
   }
 });
 
@@ -5622,7 +5622,7 @@ Content-Type: ${value.type || "application/octet-stream"}\r
         throw new TypeError("Body is unusable");
       }
       const promise2 = createDeferredPromise();
-      const errorSteps = (error4) => promise2.reject(error4);
+      const errorSteps = (error3) => promise2.reject(error3);
       const successSteps = (data) => {
         try {
           promise2.resolve(convertBytesToJSValue(data));
@@ -5909,16 +5909,16 @@ var require_request = __commonJS({
           this.onError(err);
         }
       }
-      onError(error4) {
+      onError(error3) {
         this.onFinally();
         if (channels.error.hasSubscribers) {
-          channels.error.publish({ request: this, error: error4 });
+          channels.error.publish({ request: this, error: error3 });
         }
         if (this.aborted) {
           return;
         }
         this.aborted = true;
-        return this[kHandler].onError(error4);
+        return this[kHandler].onError(error3);
       }
       onFinally() {
         if (this.errorHandler) {
@@ -6787,8 +6787,8 @@ var require_RedirectHandler = __commonJS({
       onUpgrade(statusCode, headers, socket) {
         this.handler.onUpgrade(statusCode, headers, socket);
       }
-      onError(error4) {
-        this.handler.onError(error4);
+      onError(error3) {
+        this.handler.onError(error3);
       }
       onHeaders(statusCode, headers, resume, statusText) {
         this.location = this.history.length >= this.maxRedirections || util.isDisturbed(this.opts.body) ? null : parseLocation(statusCode, headers);
@@ -8937,7 +8937,7 @@ var require_pool = __commonJS({
         this[kOptions] = { ...util.deepClone(options), connect, allowH2 };
         this[kOptions].interceptors = options.interceptors ? { ...options.interceptors } : void 0;
         this[kFactory] = factory;
-        this.on("connectionError", (origin2, targets, error4) => {
+        this.on("connectionError", (origin2, targets, error3) => {
           for (const target of targets) {
             const idx2 = this[kClients].indexOf(target);
             if (idx2 !== -1) {
@@ -10561,13 +10561,13 @@ var require_mock_utils = __commonJS({
       if (mockDispatch2.data.callback) {
         mockDispatch2.data = { ...mockDispatch2.data, ...mockDispatch2.data.callback(opts) };
       }
-      const { data: { statusCode, data, headers, trailers, error: error4 }, delay, persist } = mockDispatch2;
+      const { data: { statusCode, data, headers, trailers, error: error3 }, delay, persist } = mockDispatch2;
       const { timesInvoked, times } = mockDispatch2;
       mockDispatch2.consumed = !persist && timesInvoked >= times;
       mockDispatch2.pending = timesInvoked < times;
-      if (error4 !== null) {
+      if (error3 !== null) {
         deleteMockDispatch(this[kDispatches], key);
-        handler.onError(error4);
+        handler.onError(error3);
         return true;
       }
       if (typeof delay === "number" && delay > 0) {
@@ -10605,19 +10605,19 @@ var require_mock_utils = __commonJS({
         if (agent.isMockActive) {
           try {
             mockDispatch.call(this, opts, handler);
-          } catch (error4) {
-            if (error4 instanceof MockNotMatchedError) {
+          } catch (error3) {
+            if (error3 instanceof MockNotMatchedError) {
               const netConnect = agent[kGetNetConnect]();
               if (netConnect === false) {
-                throw new MockNotMatchedError(`${error4.message}: subsequent request to origin ${origin} was not allowed (net.connect disabled)`);
+                throw new MockNotMatchedError(`${error3.message}: subsequent request to origin ${origin} was not allowed (net.connect disabled)`);
               }
               if (checkNetConnect(netConnect, origin)) {
                 originalDispatch.call(this, opts, handler);
               } else {
-                throw new MockNotMatchedError(`${error4.message}: subsequent request to origin ${origin} was not allowed (net.connect is not enabled for this origin)`);
+                throw new MockNotMatchedError(`${error3.message}: subsequent request to origin ${origin} was not allowed (net.connect is not enabled for this origin)`);
               }
             } else {
-              throw error4;
+              throw error3;
             }
           }
         } else {
@@ -10781,11 +10781,11 @@ var require_mock_interceptor = __commonJS({
       /**
        * Mock an undici request with a defined error.
        */
-      replyWithError(error4) {
-        if (typeof error4 === "undefined") {
+      replyWithError(error3) {
+        if (typeof error3 === "undefined") {
           throw new InvalidArgumentError("error must be defined");
         }
-        const newMockDispatch = addMockDispatch(this[kDispatches], this[kDispatchKey], { error: error4 });
+        const newMockDispatch = addMockDispatch(this[kDispatches], this[kDispatchKey], { error: error3 });
         return new MockScope(newMockDispatch);
       }
       /**
@@ -13125,17 +13125,17 @@ var require_fetch = __commonJS({
         this.emit("terminated", reason);
       }
       // https://fetch.spec.whatwg.org/#fetch-controller-abort
-      abort(error4) {
+      abort(error3) {
         if (this.state !== "ongoing") {
           return;
         }
         this.state = "aborted";
-        if (!error4) {
-          error4 = new DOMException2("The operation was aborted.", "AbortError");
+        if (!error3) {
+          error3 = new DOMException2("The operation was aborted.", "AbortError");
         }
-        this.serializedAbortReason = error4;
-        this.connection?.destroy(error4);
-        this.emit("terminated", error4);
+        this.serializedAbortReason = error3;
+        this.connection?.destroy(error3);
+        this.emit("terminated", error3);
       }
     };
     function fetch2(input, init = {}) {
@@ -13239,13 +13239,13 @@ var require_fetch = __commonJS({
         performance.markResourceTiming(timingInfo, originalURL.href, initiatorType, globalThis2, cacheState);
       }
     }
-    function abortFetch(p, request, responseObject, error4) {
-      if (!error4) {
-        error4 = new DOMException2("The operation was aborted.", "AbortError");
+    function abortFetch(p, request, responseObject, error3) {
+      if (!error3) {
+        error3 = new DOMException2("The operation was aborted.", "AbortError");
       }
-      p.reject(error4);
+      p.reject(error3);
       if (request.body != null && isReadable(request.body?.stream)) {
-        request.body.stream.cancel(error4).catch((err) => {
+        request.body.stream.cancel(error3).catch((err) => {
           if (err.code === "ERR_INVALID_STATE") {
             return;
           }
@@ -13257,7 +13257,7 @@ var require_fetch = __commonJS({
       }
       const response = responseObject[kState];
       if (response.body != null && isReadable(response.body?.stream)) {
-        response.body.stream.cancel(error4).catch((err) => {
+        response.body.stream.cancel(error3).catch((err) => {
           if (err.code === "ERR_INVALID_STATE") {
             return;
           }
@@ -14037,13 +14037,13 @@ var require_fetch = __commonJS({
               fetchParams.controller.ended = true;
               this.body.push(null);
             },
-            onError(error4) {
+            onError(error3) {
               if (this.abort) {
                 fetchParams.controller.off("terminated", this.abort);
               }
-              this.body?.destroy(error4);
-              fetchParams.controller.terminate(error4);
-              reject(error4);
+              this.body?.destroy(error3);
+              fetchParams.controller.terminate(error3);
+              reject(error3);
             },
             onUpgrade(status, headersList, socket) {
               if (status !== 101) {
@@ -14513,8 +14513,8 @@ var require_util4 = __commonJS({
                   }
                   fr[kResult] = result;
                   fireAProgressEvent("load", fr);
-                } catch (error4) {
-                  fr[kError] = error4;
+                } catch (error3) {
+                  fr[kError] = error3;
                   fireAProgressEvent("error", fr);
                 }
                 if (fr[kState] !== "loading") {
@@ -14523,13 +14523,13 @@ var require_util4 = __commonJS({
               });
               break;
             }
-          } catch (error4) {
+          } catch (error3) {
             if (fr[kAborted]) {
               return;
             }
             queueMicrotask(() => {
               fr[kState] = "done";
-              fr[kError] = error4;
+              fr[kError] = error3;
               fireAProgressEvent("error", fr);
               if (fr[kState] !== "loading") {
                 fireAProgressEvent("loadend", fr);
@@ -16543,11 +16543,11 @@ var require_connection = __commonJS({
         });
       }
     }
-    function onSocketError(error4) {
+    function onSocketError(error3) {
       const { ws } = this;
       ws[kReadyState] = states.CLOSING;
       if (channels.socketError.hasSubscribers) {
-        channels.socketError.publish(error4);
+        channels.socketError.publish(error3);
       }
       this.destroy();
     }
@@ -17696,12 +17696,12 @@ var require_lib = __commonJS({
             throw new Error("Client has already been disposed.");
           }
           const parsedUrl = new URL(requestUrl);
-          let info5 = this._prepareRequest(verb, parsedUrl, headers);
+          let info4 = this._prepareRequest(verb, parsedUrl, headers);
           const maxTries = this._allowRetries && RetryableHttpVerbs.includes(verb) ? this._maxRetries + 1 : 1;
           let numTries = 0;
           let response;
           do {
-            response = yield this.requestRaw(info5, data);
+            response = yield this.requestRaw(info4, data);
             if (response && response.message && response.message.statusCode === HttpCodes.Unauthorized) {
               let authenticationHandler;
               for (const handler of this.handlers) {
@@ -17711,7 +17711,7 @@ var require_lib = __commonJS({
                 }
               }
               if (authenticationHandler) {
-                return authenticationHandler.handleAuthentication(this, info5, data);
+                return authenticationHandler.handleAuthentication(this, info4, data);
               } else {
                 return response;
               }
@@ -17734,8 +17734,8 @@ var require_lib = __commonJS({
                   }
                 }
               }
-              info5 = this._prepareRequest(verb, parsedRedirectUrl, headers);
-              response = yield this.requestRaw(info5, data);
+              info4 = this._prepareRequest(verb, parsedRedirectUrl, headers);
+              response = yield this.requestRaw(info4, data);
               redirectsRemaining--;
             }
             if (!response.message.statusCode || !HttpResponseRetryCodes.includes(response.message.statusCode)) {
@@ -17764,7 +17764,7 @@ var require_lib = __commonJS({
        * @param info
        * @param data
        */
-      requestRaw(info5, data) {
+      requestRaw(info4, data) {
         return __awaiter(this, void 0, void 0, function* () {
           return new Promise((resolve6, reject) => {
             function callbackForResult(err, res) {
@@ -17776,7 +17776,7 @@ var require_lib = __commonJS({
                 resolve6(res);
               }
             }
-            this.requestRawWithCallback(info5, data, callbackForResult);
+            this.requestRawWithCallback(info4, data, callbackForResult);
           });
         });
       }
@@ -17786,12 +17786,12 @@ var require_lib = __commonJS({
        * @param data
        * @param onResult
        */
-      requestRawWithCallback(info5, data, onResult) {
+      requestRawWithCallback(info4, data, onResult) {
         if (typeof data === "string") {
-          if (!info5.options.headers) {
-            info5.options.headers = {};
+          if (!info4.options.headers) {
+            info4.options.headers = {};
           }
-          info5.options.headers["Content-Length"] = Buffer.byteLength(data, "utf8");
+          info4.options.headers["Content-Length"] = Buffer.byteLength(data, "utf8");
         }
         let callbackCalled = false;
         function handleResult(err, res) {
@@ -17800,7 +17800,7 @@ var require_lib = __commonJS({
             onResult(err, res);
           }
         }
-        const req = info5.httpModule.request(info5.options, (msg) => {
+        const req = info4.httpModule.request(info4.options, (msg) => {
           const res = new HttpClientResponse(msg);
           handleResult(void 0, res);
         });
@@ -17812,7 +17812,7 @@ var require_lib = __commonJS({
           if (socket) {
             socket.end();
           }
-          handleResult(new Error(`Request timeout: ${info5.options.path}`));
+          handleResult(new Error(`Request timeout: ${info4.options.path}`));
         });
         req.on("error", function(err) {
           handleResult(err);
@@ -17848,27 +17848,27 @@ var require_lib = __commonJS({
         return this._getProxyAgentDispatcher(parsedUrl, proxyUrl);
       }
       _prepareRequest(method, requestUrl, headers) {
-        const info5 = {};
-        info5.parsedUrl = requestUrl;
-        const usingSsl = info5.parsedUrl.protocol === "https:";
-        info5.httpModule = usingSsl ? https : http;
+        const info4 = {};
+        info4.parsedUrl = requestUrl;
+        const usingSsl = info4.parsedUrl.protocol === "https:";
+        info4.httpModule = usingSsl ? https : http;
         const defaultPort = usingSsl ? 443 : 80;
-        info5.options = {};
-        info5.options.host = info5.parsedUrl.hostname;
-        info5.options.port = info5.parsedUrl.port ? parseInt(info5.parsedUrl.port) : defaultPort;
-        info5.options.path = (info5.parsedUrl.pathname || "") + (info5.parsedUrl.search || "");
-        info5.options.method = method;
-        info5.options.headers = this._mergeHeaders(headers);
+        info4.options = {};
+        info4.options.host = info4.parsedUrl.hostname;
+        info4.options.port = info4.parsedUrl.port ? parseInt(info4.parsedUrl.port) : defaultPort;
+        info4.options.path = (info4.parsedUrl.pathname || "") + (info4.parsedUrl.search || "");
+        info4.options.method = method;
+        info4.options.headers = this._mergeHeaders(headers);
         if (this.userAgent != null) {
-          info5.options.headers["user-agent"] = this.userAgent;
+          info4.options.headers["user-agent"] = this.userAgent;
         }
-        info5.options.agent = this._getAgent(info5.parsedUrl);
+        info4.options.agent = this._getAgent(info4.parsedUrl);
         if (this.handlers) {
           for (const handler of this.handlers) {
-            handler.prepareRequest(info5.options);
+            handler.prepareRequest(info4.options);
           }
         }
-        return info5;
+        return info4;
       }
       _mergeHeaders(headers) {
         if (this.requestOptions && this.requestOptions.headers) {
@@ -18186,12 +18186,12 @@ var require_oidc_utils = __commonJS({
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
           const httpclient = _OidcClient.createHttpClient();
-          const res = yield httpclient.getJson(id_token_url).catch((error4) => {
+          const res = yield httpclient.getJson(id_token_url).catch((error3) => {
             throw new Error(`Failed to get ID Token. 
  
-        Error Code : ${error4.statusCode}
+        Error Code : ${error3.statusCode}
  
-        Error Message: ${error4.message}`);
+        Error Message: ${error3.message}`);
           });
           const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
           if (!id_token) {
@@ -18212,8 +18212,8 @@ var require_oidc_utils = __commonJS({
             const id_token = yield _OidcClient.getCall(id_token_url);
             (0, core_1.setSecret)(id_token);
             return id_token;
-          } catch (error4) {
-            throw new Error(`Error message: ${error4.message}`);
+          } catch (error3) {
+            throw new Error(`Error message: ${error3.message}`);
           }
         });
       }
@@ -19340,7 +19340,7 @@ var require_toolrunner = __commonJS({
               this._debug(`STDIO streams have closed for tool '${this.toolPath}'`);
               state.CheckComplete();
             });
-            state.on("done", (error4, exitCode) => {
+            state.on("done", (error3, exitCode) => {
               if (stdbuffer.length > 0) {
                 this.emit("stdline", stdbuffer);
               }
@@ -19348,8 +19348,8 @@ var require_toolrunner = __commonJS({
                 this.emit("errline", errbuffer);
               }
               cp.removeAllListeners();
-              if (error4) {
-                reject(error4);
+              if (error3) {
+                reject(error3);
               } else {
                 resolve6(exitCode);
               }
@@ -19444,14 +19444,14 @@ var require_toolrunner = __commonJS({
         this.emit("debug", message);
       }
       _setResult() {
-        let error4;
+        let error3;
         if (this.processExited) {
           if (this.processError) {
-            error4 = new Error(`There was an error when attempting to execute the process '${this.toolPath}'. This may indicate the process failed to start. Error: ${this.processError}`);
+            error3 = new Error(`There was an error when attempting to execute the process '${this.toolPath}'. This may indicate the process failed to start. Error: ${this.processError}`);
           } else if (this.processExitCode !== 0 && !this.options.ignoreReturnCode) {
-            error4 = new Error(`The process '${this.toolPath}' failed with exit code ${this.processExitCode}`);
+            error3 = new Error(`The process '${this.toolPath}' failed with exit code ${this.processExitCode}`);
           } else if (this.processStderr && this.options.failOnStdErr) {
-            error4 = new Error(`The process '${this.toolPath}' failed because one or more lines were written to the STDERR stream`);
+            error3 = new Error(`The process '${this.toolPath}' failed because one or more lines were written to the STDERR stream`);
           }
         }
         if (this.timeout) {
@@ -19459,7 +19459,7 @@ var require_toolrunner = __commonJS({
           this.timeout = null;
         }
         this.done = true;
-        this.emit("done", error4, this.processExitCode);
+        this.emit("done", error3, this.processExitCode);
       }
       static HandleTimeout(state) {
         if (state.done) {
@@ -19845,33 +19845,33 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
     exports2.setCommandEcho = setCommandEcho;
     function setFailed3(message) {
       process.exitCode = ExitCode.Failure;
-      error4(message);
+      error3(message);
     }
     exports2.setFailed = setFailed3;
     function isDebug() {
       return process.env["RUNNER_DEBUG"] === "1";
     }
     exports2.isDebug = isDebug;
-    function debug5(message) {
+    function debug4(message) {
       (0, command_1.issueCommand)("debug", {}, message);
     }
-    exports2.debug = debug5;
-    function error4(message, properties = {}) {
+    exports2.debug = debug4;
+    function error3(message, properties = {}) {
       (0, command_1.issueCommand)("error", (0, utils_1.toCommandProperties)(properties), message instanceof Error ? message.toString() : message);
     }
-    exports2.error = error4;
-    function warning4(message, properties = {}) {
+    exports2.error = error3;
+    function warning3(message, properties = {}) {
       (0, command_1.issueCommand)("warning", (0, utils_1.toCommandProperties)(properties), message instanceof Error ? message.toString() : message);
     }
-    exports2.warning = warning4;
+    exports2.warning = warning3;
     function notice(message, properties = {}) {
       (0, command_1.issueCommand)("notice", (0, utils_1.toCommandProperties)(properties), message instanceof Error ? message.toString() : message);
     }
     exports2.notice = notice;
-    function info5(message) {
+    function info4(message) {
       process.stdout.write(message + os6.EOL);
     }
-    exports2.info = info5;
+    exports2.info = info4;
     function startGroup(name2) {
       (0, command_1.issue)("group", name2);
     }
@@ -20240,13 +20240,13 @@ var require_resolve_from = __commonJS({
       }
       try {
         fromDirectory = fs6.realpathSync(fromDirectory);
-      } catch (error4) {
-        if (error4.code === "ENOENT") {
+      } catch (error3) {
+        if (error3.code === "ENOENT") {
           fromDirectory = path17.resolve(fromDirectory);
         } else if (silent) {
           return;
         } else {
-          throw error4;
+          throw error3;
         }
       }
       const fromFile = path17.join(fromDirectory, "noop.js");
@@ -20258,7 +20258,7 @@ var require_resolve_from = __commonJS({
       if (silent) {
         try {
           return resolveFileName();
-        } catch (error4) {
+        } catch (error3) {
           return;
         }
       }
@@ -26383,45 +26383,45 @@ var require_esprima = __commonJS({
                 this.errors = [];
                 this.tolerant = false;
               }
-              ErrorHandler2.prototype.recordError = function(error4) {
-                this.errors.push(error4);
+              ErrorHandler2.prototype.recordError = function(error3) {
+                this.errors.push(error3);
               };
-              ErrorHandler2.prototype.tolerate = function(error4) {
+              ErrorHandler2.prototype.tolerate = function(error3) {
                 if (this.tolerant) {
-                  this.recordError(error4);
+                  this.recordError(error3);
                 } else {
-                  throw error4;
+                  throw error3;
                 }
               };
               ErrorHandler2.prototype.constructError = function(msg, column) {
-                var error4 = new Error(msg);
+                var error3 = new Error(msg);
                 try {
-                  throw error4;
+                  throw error3;
                 } catch (base) {
                   if (Object.create && Object.defineProperty) {
-                    error4 = Object.create(base);
-                    Object.defineProperty(error4, "column", { value: column });
+                    error3 = Object.create(base);
+                    Object.defineProperty(error3, "column", { value: column });
                   }
                 }
-                return error4;
+                return error3;
               };
               ErrorHandler2.prototype.createError = function(index, line, col, description) {
                 var msg = "Line " + line + ": " + description;
-                var error4 = this.constructError(msg, col);
-                error4.index = index;
-                error4.lineNumber = line;
-                error4.description = description;
-                return error4;
+                var error3 = this.constructError(msg, col);
+                error3.index = index;
+                error3.lineNumber = line;
+                error3.description = description;
+                return error3;
               };
               ErrorHandler2.prototype.throwError = function(index, line, col, description) {
                 throw this.createError(index, line, col, description);
               };
               ErrorHandler2.prototype.tolerateError = function(index, line, col, description) {
-                var error4 = this.createError(index, line, col, description);
+                var error3 = this.createError(index, line, col, description);
                 if (this.tolerant) {
-                  this.recordError(error4);
+                  this.recordError(error3);
                 } else {
-                  throw error4;
+                  throw error3;
                 }
               };
               return ErrorHandler2;
@@ -29198,19 +29198,19 @@ var require_parse3 = __commonJS({
     );
     var transform2 = (k, { value, context = {} }) => reviver ? reviver(k, value, context) : value;
     var unexpected = () => {
-      const error4 = new SyntaxError(`Unexpected token '${current.value.slice(0, 1)}', "${current_code}" is not valid JSON`);
-      Object.assign(error4, current.loc.start);
+      const error3 = new SyntaxError(`Unexpected token '${current.value.slice(0, 1)}', "${current_code}" is not valid JSON`);
+      Object.assign(error3, current.loc.start);
       free();
-      throw error4;
+      throw error3;
     };
     var unexpected_end = () => {
-      const error4 = new SyntaxError("Unexpected end of JSON input");
-      Object.assign(error4, last ? last.loc.end : {
+      const error3 = new SyntaxError("Unexpected end of JSON input");
+      Object.assign(error3, last ? last.loc.end : {
         line: 1,
         column: 0
       });
       free();
-      throw error4;
+      throw error3;
     };
     var next = () => {
       const new_token = tokens[++index];
@@ -30035,8 +30035,8 @@ var require_directives = __commonJS({
         if (prefix) {
           try {
             return prefix + decodeURIComponent(suffix);
-          } catch (error4) {
-            onError(String(error4));
+          } catch (error3) {
+            onError(String(error3));
             return null;
           }
         }
@@ -30139,9 +30139,9 @@ var require_anchors = __commonJS({
             if (typeof ref === "object" && ref.anchor && (identity.isScalar(ref.node) || identity.isCollection(ref.node))) {
               ref.node.anchor = ref.anchor;
             } else {
-              const error4 = new Error("Failed to resolve repeated object (this should not happen)");
-              error4.source = source;
-              throw error4;
+              const error3 = new Error("Failed to resolve repeated object (this should not happen)");
+              error3.source = source;
+              throw error3;
             }
           }
         },
@@ -31348,19 +31348,19 @@ var require_log = __commonJS({
     "use strict";
     init_import_meta_url();
     var node_process = require("process");
-    function debug5(logLevel, ...messages2) {
+    function debug4(logLevel, ...messages2) {
       if (logLevel === "debug")
         console.log(...messages2);
     }
-    function warn(logLevel, warning4) {
+    function warn(logLevel, warning3) {
       if (logLevel === "debug" || logLevel === "warn") {
         if (typeof node_process.emitWarning === "function")
-          node_process.emitWarning(warning4);
+          node_process.emitWarning(warning3);
         else
-          console.warn(warning4);
+          console.warn(warning3);
       }
     }
-    exports2.debug = debug5;
+    exports2.debug = debug4;
     exports2.warn = warn;
   }
 });
@@ -33419,12 +33419,12 @@ var require_errors2 = __commonJS({
         super("YAMLWarning", pos, code, message);
       }
     };
-    var prettifyError = (src, lc) => (error4) => {
-      if (error4.pos[0] === -1)
+    var prettifyError = (src, lc) => (error3) => {
+      if (error3.pos[0] === -1)
         return;
-      error4.linePos = error4.pos.map((pos) => lc.linePos(pos));
-      const { line, col } = error4.linePos[0];
-      error4.message += ` at line ${line}, column ${col}`;
+      error3.linePos = error3.pos.map((pos) => lc.linePos(pos));
+      const { line, col } = error3.linePos[0];
+      error3.message += ` at line ${line}, column ${col}`;
       let ci = col - 1;
       let lineStr = src.substring(lc.lineStarts[line - 1], lc.lineStarts[line]).replace(/[\n\r]+$/, "");
       if (ci >= 60 && lineStr.length > 80) {
@@ -33442,12 +33442,12 @@ var require_errors2 = __commonJS({
       }
       if (/[^ ]/.test(lineStr)) {
         let count3 = 1;
-        const end = error4.linePos[1];
+        const end = error3.linePos[1];
         if (end && end.line === line && end.col > col) {
           count3 = Math.max(1, Math.min(end.col - col, 80 - ci));
         }
         const pointer = " ".repeat(ci) + "^".repeat(count3);
-        error4.message += `:
+        error3.message += `:
 
 ${lineStr}
 ${pointer}
@@ -34260,7 +34260,7 @@ var require_resolve_block_scalar = __commonJS({
       const mode = source[0];
       let indent = 0;
       let chomp = "";
-      let error4 = -1;
+      let error3 = -1;
       for (let i = 1; i < source.length; ++i) {
         const ch = source[i];
         if (!chomp && (ch === "-" || ch === "+"))
@@ -34269,12 +34269,12 @@ var require_resolve_block_scalar = __commonJS({
           const n = Number(ch);
           if (!indent && n)
             indent = n;
-          else if (error4 === -1)
-            error4 = offset + i;
+          else if (error3 === -1)
+            error3 = offset + i;
         }
       }
-      if (error4 !== -1)
-        onError(error4, "UNEXPECTED_TOKEN", `Block scalar header includes extra characters: ${source}`);
+      if (error3 !== -1)
+        onError(error3, "UNEXPECTED_TOKEN", `Block scalar header includes extra characters: ${source}`);
       let hasSpace = false;
       let comment = "";
       let length = source.length;
@@ -34570,8 +34570,8 @@ var require_compose_scalar = __commonJS({
       try {
         const res = tag.resolve(value, (msg) => onError(tagToken ?? token, "TAG_RESOLVE_FAILED", msg), ctx.options);
         scalar = identity.isScalar(res) ? res : new Scalar2.Scalar(res);
-      } catch (error4) {
-        const msg = error4 instanceof Error ? error4.message : String(error4);
+      } catch (error3) {
+        const msg = error3 instanceof Error ? error3.message : String(error3);
         onError(tagToken ?? token, "TAG_RESOLVE_FAILED", msg);
         scalar = new Scalar2.Scalar(value);
       }
@@ -34856,9 +34856,9 @@ var require_composer = __commonJS({
         this.prelude = [];
         this.errors = [];
         this.warnings = [];
-        this.onError = (source, code, message, warning4) => {
+        this.onError = (source, code, message, warning3) => {
           const pos = getErrorPos(source);
-          if (warning4)
+          if (warning3)
             this.warnings.push(new errors.YAMLWarning(pos, code, message));
           else
             this.errors.push(new errors.YAMLParseError(pos, code, message));
@@ -34929,10 +34929,10 @@ ${cb}` : comment;
           console.dir(token, { depth: null });
         switch (token.type) {
           case "directive":
-            this.directives.add(token.source, (offset, message, warning4) => {
+            this.directives.add(token.source, (offset, message, warning3) => {
               const pos = getErrorPos(token);
               pos[0] += offset;
-              this.onError(pos, "BAD_DIRECTIVE", message, warning4);
+              this.onError(pos, "BAD_DIRECTIVE", message, warning3);
             });
             this.prelude.push(token.source);
             this.atDirectives = true;
@@ -34957,11 +34957,11 @@ ${cb}` : comment;
             break;
           case "error": {
             const msg = token.source ? `${token.message}: ${JSON.stringify(token.source)}` : token.message;
-            const error4 = new errors.YAMLParseError(getErrorPos(token), "UNEXPECTED_TOKEN", msg);
+            const error3 = new errors.YAMLParseError(getErrorPos(token), "UNEXPECTED_TOKEN", msg);
             if (this.atDirectives || !this.doc)
-              this.errors.push(error4);
+              this.errors.push(error3);
             else
-              this.doc.errors.push(error4);
+              this.doc.errors.push(error3);
             break;
           }
           case "doc-end": {
@@ -36264,8 +36264,8 @@ var require_parser = __commonJS({
       peek(n) {
         return this.stack[this.stack.length - n];
       }
-      *pop(error4) {
-        const token = error4 ?? this.stack.pop();
+      *pop(error3) {
+        const token = error3 ?? this.stack.pop();
         if (!token) {
           const message = "Tried to pop an empty stack";
           yield { type: "error", offset: this.offset, source: "", message };
@@ -36965,7 +36965,7 @@ var require_public_api = __commonJS({
       const doc = parseDocument2(src, options);
       if (!doc)
         return null;
-      doc.warnings.forEach((warning4) => log3.warn(doc.options.logLevel, warning4));
+      doc.warnings.forEach((warning3) => log3.warn(doc.options.logLevel, warning3));
       if (doc.errors.length > 0) {
         if (doc.options.logLevel !== "silent")
           throw doc.errors[0];
@@ -37282,13 +37282,13 @@ init_import_meta_url();
 
 // src/main.ts
 init_import_meta_url();
-var import_core5 = __toESM(require_core(), 1);
+var import_core4 = __toESM(require_core(), 1);
 var import_context = __toESM(require_context(), 1);
 
 // src/action.ts
 init_import_meta_url();
 var import_node_path12 = __toESM(require("node:path"), 1);
-var import_core4 = __toESM(require_core(), 1);
+var import_core3 = __toESM(require_core(), 1);
 
 // src/ActionParams.ts
 init_import_meta_url();
@@ -37383,7 +37383,6 @@ var checkDotMap = {
 // src/checkSpelling.ts
 init_import_meta_url();
 var import_node_path11 = __toESM(require("node:path"), 1);
-var import_core2 = __toESM(require_core(), 1);
 
 // src/git.ts
 init_import_meta_url();
@@ -37457,10 +37456,20 @@ async function runGit(args) {
   return stdout;
 }
 
-// src/reporter.ts
+// src/logger.ts
 init_import_meta_url();
 var import_core = __toESM(require_core(), 1);
 var import_command = __toESM(require_command(), 1);
+var defaultLogger = createLogger();
+function createLogger(logger) {
+  return { debug: import_core.debug, info: import_core.info, warning: import_core.warning, error: import_core.error, issueCommand: import_command.issueCommand, ...logger };
+}
+function getDefaultLogger() {
+  return defaultLogger;
+}
+
+// src/reporter.ts
+init_import_meta_url();
 
 // ../node_modules/.pnpm/@cspell+cspell-types@9.2.2/node_modules/@cspell/cspell-types/dist/index.mjs
 init_import_meta_url();
@@ -37825,11 +37834,10 @@ var LIB;
 var { URI, Utils } = LIB;
 
 // src/reporter.ts
-var core = { debug: import_core.debug, info: import_core.info, warning: import_core.warning, error: import_core.error };
 function nullEmitter(_msg) {
 }
 var CSpellReporterForGithubAction = class {
-  constructor(reportIssueCommand, options, logger = core) {
+  constructor(reportIssueCommand, options, logger = getDefaultLogger()) {
     this.reportIssueCommand = reportIssueCommand;
     this.options = options;
     this.logger = logger;
@@ -37874,13 +37882,13 @@ var CSpellReporterForGithubAction = class {
     const timeMsg = elapsedTimeMs ? `(${elapsedTimeMs.toFixed(2)}ms)` : "-";
     logger.info(`${fileNum}/${fileCount} ${filename}${issues} ${timeMsg}`);
   }
-  _error(message, error4) {
+  _error(message, error3) {
     const { logger } = this;
     logger.error(`${message}
-        name: ${error4.name}
-        msg: ${error4.message}
+        name: ${error3.name}
+        msg: ${error3.message}
         stack:
-${error4.stack}
+${error3.stack}
         `);
     return;
   }
@@ -37901,7 +37909,7 @@ ${error4.stack}
       if (!["error", "warning"].includes(cmd)) {
         return;
       }
-      (0, import_command.issueCommand)(
+      this.logger.issueCommand(
         cmd,
         {
           file: relative2(cwd, item.uri || ""),
@@ -41651,8 +41659,8 @@ function splitUtf8(utf8) {
     utf8 & 255
   ].filter((v) => v);
 }
-function extractInfo(info5) {
-  const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = info5;
+function extractInfo(info4) {
+  const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = info4;
   return {
     NodeMaskEOW,
     NodeMaskChildCharIndex,
@@ -41665,7 +41673,7 @@ var FastTrieBlobInternals = class {
   NodeChildRefShift;
   isIndexDecoderNeeded;
   info;
-  constructor(nodes, charIndex, maskInfo, info5) {
+  constructor(nodes, charIndex, maskInfo, info4) {
     this.nodes = nodes;
     this.charIndex = charIndex;
     const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = maskInfo;
@@ -41673,7 +41681,7 @@ var FastTrieBlobInternals = class {
     this.NodeMaskChildCharIndex = NodeMaskChildCharIndex;
     this.NodeChildRefShift = NodeChildRefShift;
     this.isIndexDecoderNeeded = charIndex.indexContainsMultiByteChars();
-    this.info = mergeOptionalWithDefaults(info5);
+    this.info = mergeOptionalWithDefaults(info4);
   }
 };
 var FastTrieBlobInternalsAndMethods = class extends FastTrieBlobInternals {
@@ -41685,8 +41693,8 @@ var FastTrieBlobInternalsAndMethods = class extends FastTrieBlobInternals {
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
-  constructor(nodes, charIndex, maskInfo, info5, trieMethods) {
-    super(nodes, charIndex, maskInfo, info5);
+  constructor(nodes, charIndex, maskInfo, info4, trieMethods) {
+    super(nodes, charIndex, maskInfo, info4);
     this.nodeFindExact = trieMethods.nodeFindExact;
     this.nodeGetChild = trieMethods.nodeGetChild;
     this.isForbidden = trieMethods.isForbidden;
@@ -42178,9 +42186,9 @@ var TrieBlobIRoot = class extends TrieBlobINode {
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
-  constructor(trie, nodeIdx, info5, methods) {
+  constructor(trie, nodeIdx, info4, methods) {
     super(trie, nodeIdx);
-    this.info = info5;
+    this.info = info4;
     this.find = methods.find;
     this.isForbidden = trie.isForbidden;
     this.hasForbiddenWords = trie.hasForbiddenWords;
@@ -42237,11 +42245,11 @@ var TrieBlob = class TrieBlob2 {
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
-  constructor(nodes, charIndex, info5) {
+  constructor(nodes, charIndex, info4) {
     this.nodes = nodes;
     this.charIndex = charIndex;
     trieBlobSort(nodes);
-    this.info = mergeOptionalWithDefaults(info5);
+    this.info = mergeOptionalWithDefaults(info4);
     this.#nodes8 = new Uint8Array(nodes.buffer, nodes.byteOffset + this.#beAdj);
     this.#forbidIdx = this._lookupNode(0, this.info.forbiddenWordPrefix);
     this.#compoundIdx = this._lookupNode(0, this.info.compoundCharacter);
@@ -42552,11 +42560,11 @@ var FastTrieBlob = class FastTrieBlob2 {
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
-  constructor(nodes, _charIndex, bitMasksInfo, info5) {
+  constructor(nodes, _charIndex, bitMasksInfo, info4) {
     this.nodes = nodes;
     this._charIndex = _charIndex;
     this.bitMasksInfo = bitMasksInfo;
-    this.info = info5;
+    this.info = info4;
     this.wordToCharacters = (word) => [...word];
     this.#forbidIdx = this.#searchNodeForChar(0, this.info.forbiddenWordPrefix) || 0;
     this.#compoundIdx = this.#searchNodeForChar(0, this.info.compoundCharacter) || 0;
@@ -43253,8 +43261,8 @@ var ITrieImpl = class ITrieImpl2 {
   iterate() {
     return walker$1(this.root);
   }
-  static create(words, info5) {
-    const builder = new FastTrieBlobBuilder(info5);
+  static create(words, info4) {
+    const builder = new FastTrieBlobBuilder(info4);
     builder.insert(words);
     return new ITrieImpl2(builder.build(), void 0);
   }
@@ -43262,8 +43270,8 @@ var ITrieImpl = class ITrieImpl2 {
     return createFindOptions$1(options);
   }
 };
-function buildITrieFromWords(words, info5 = {}) {
-  const builder = new FastTrieBlobBuilder(info5);
+function buildITrieFromWords(words, info4 = {}) {
+  const builder = new FastTrieBlobBuilder(info4);
   builder.insert(words);
   const ft = builder.build();
   return new ITrieImpl(ft.size > 1e3 ? ft.toTrieBlob() : ft);
@@ -46256,12 +46264,12 @@ function lookupLocaleInfo(locale) {
   return codesByLocale.get(locale);
 }
 function buildLocaleLookup() {
-  const info5 = codes.map(([locale, language, country]) => ({
+  const info4 = codes.map(([locale, language, country]) => ({
     locale,
     language,
     country
   }));
-  return new Map(info5.map((i) => [i.locale, i]));
+  return new Map(info4.map((i) => [i.locale, i]));
 }
 function createLocale(locale) {
   return new Locale(locale);
@@ -47828,7 +47836,7 @@ function _createSpellingDictionary(params) {
   }
   return new SpellingDictionaryFromTrie(trie, name2, opts, source);
 }
-function createFailedToLoadDictionary(name2, sourceUrl, error4, options) {
+function createFailedToLoadDictionary(name2, sourceUrl, error3, options) {
   const sourceHref = typeof sourceUrl === "string" ? sourceUrl : sourceUrl.href;
   const source = sourceHref.startsWith("file:") ? (0, import_node_url.fileURLToPath)(sourceUrl) : sourceHref;
   options = options || {};
@@ -47849,7 +47857,7 @@ function createFailedToLoadDictionary(name2, sourceUrl, error4, options) {
     size: 0,
     options,
     isDictionaryCaseSensitive: false,
-    getErrors: () => [error4]
+    getErrors: () => [error3]
   };
 }
 
@@ -49584,10 +49592,10 @@ function makeNodeErrorWithCode(Base, key) {
   function NodeError(...parameters) {
     const limit = Error.stackTraceLimit;
     if (isErrorStackTraceLimitWritable()) Error.stackTraceLimit = 0;
-    const error4 = new Base();
+    const error3 = new Base();
     if (isErrorStackTraceLimitWritable()) Error.stackTraceLimit = limit;
-    const message = getMessage(key, parameters, error4);
-    Object.defineProperties(error4, {
+    const message = getMessage(key, parameters, error3);
+    Object.defineProperties(error3, {
       // Note: no need to implement `kIsNodeError` symbol, would be hard,
       // probably.
       message: {
@@ -49606,9 +49614,9 @@ function makeNodeErrorWithCode(Base, key) {
         configurable: true
       }
     });
-    captureLargerStackTrace(error4);
-    error4.code = key;
-    return error4;
+    captureLargerStackTrace(error3);
+    error3.code = key;
+    return error3;
   }
 }
 function isErrorStackTraceLimitWritable() {
@@ -49635,15 +49643,15 @@ var captureLargerStackTrace = hideStackFrames(
    * @returns {Error}
    */
   // @ts-expect-error: fine
-  function(error4) {
+  function(error3) {
     const stackTraceLimitIsWritable = isErrorStackTraceLimitWritable();
     if (stackTraceLimitIsWritable) {
       userStackTraceLimit = Error.stackTraceLimit;
       Error.stackTraceLimit = Number.POSITIVE_INFINITY;
     }
-    Error.captureStackTrace(error4);
+    Error.captureStackTrace(error3);
     if (stackTraceLimitIsWritable) Error.stackTraceLimit = userStackTraceLimit;
-    return error4;
+    return error3;
   }
 );
 function getMessage(key, parameters, self) {
@@ -49700,10 +49708,10 @@ function read(jsonPath, { base, specifier }) {
   let string;
   try {
     string = import_node_fs2.default.readFileSync(import_node_path3.default.toNamespacedPath(jsonPath), "utf8");
-  } catch (error4) {
+  } catch (error3) {
     const exception = (
       /** @type {ErrnoException} */
-      error4
+      error3
     );
     if (exception.code !== "ENOENT") {
       throw exception;
@@ -49728,13 +49736,13 @@ function read(jsonPath, { base, specifier }) {
         /** @type {ErrnoException} */
         error_
       );
-      const error4 = new ERR_INVALID_PACKAGE_CONFIG(
+      const error3 = new ERR_INVALID_PACKAGE_CONFIG(
         jsonPath,
         (base ? `"${specifier}" from ` : "") + (0, import_node_url3.fileURLToPath)(base || specifier),
         cause.message
       );
-      error4.cause = cause;
-      throw error4;
+      error3.cause = cause;
+      throw error3;
     }
     result.exists = true;
     if (hasOwnProperty2.call(parsed, "name") && typeof parsed.name === "string") {
@@ -50022,10 +50030,10 @@ function finalizeResolution(resolved, base, preserveSymlinks) {
   let filePath;
   try {
     filePath = (0, import_node_url5.fileURLToPath)(resolved);
-  } catch (error4) {
+  } catch (error3) {
     const cause = (
       /** @type {ErrnoException} */
-      error4
+      error3
     );
     Object.defineProperty(cause, "input", { value: String(resolved) });
     Object.defineProperty(cause, "module", { value: String(base) });
@@ -50035,18 +50043,18 @@ function finalizeResolution(resolved, base, preserveSymlinks) {
     filePath.endsWith("/") ? filePath.slice(-1) : filePath
   );
   if (stats2 && stats2.isDirectory()) {
-    const error4 = new ERR_UNSUPPORTED_DIR_IMPORT(filePath, (0, import_node_url5.fileURLToPath)(base));
-    error4.url = String(resolved);
-    throw error4;
+    const error3 = new ERR_UNSUPPORTED_DIR_IMPORT(filePath, (0, import_node_url5.fileURLToPath)(base));
+    error3.url = String(resolved);
+    throw error3;
   }
   if (!stats2 || !stats2.isFile()) {
-    const error4 = new ERR_MODULE_NOT_FOUND(
+    const error3 = new ERR_MODULE_NOT_FOUND(
       filePath || resolved.pathname,
       base && (0, import_node_url5.fileURLToPath)(base),
       true
     );
-    error4.url = String(resolved);
-    throw error4;
+    error3.url = String(resolved);
+    throw error3;
   }
   if (!preserveSymlinks) {
     const real = (0, import_node_fs3.realpathSync)(filePath);
@@ -50213,14 +50221,14 @@ function resolvePackageTarget(packageJsonUrl, target, subpath, packageSubpath, b
           isPathMap,
           conditions
         );
-      } catch (error4) {
+      } catch (error3) {
         const exception = (
           /** @type {ErrnoException} */
-          error4
+          error3
         );
         lastException = exception;
         if (exception.code === "ERR_INVALID_PACKAGE_TARGET") continue;
-        throw error4;
+        throw error3;
       }
       if (resolveResult === void 0) continue;
       if (resolveResult === null) {
@@ -50576,9 +50584,9 @@ function moduleResolve(specifier, base, conditions, preserveSymlinks) {
     try {
       resolved = new URL(specifier, base);
     } catch (error_) {
-      const error4 = new ERR_UNSUPPORTED_RESOLVE_REQUEST(specifier, base);
-      error4.cause = error_;
-      throw error4;
+      const error3 = new ERR_UNSUPPORTED_RESOLVE_REQUEST(specifier, base);
+      error3.cause = error_;
+      throw error3;
     }
   } else if (protocol === "file:" && specifier[0] === "#") {
     resolved = packageImportsResolve(specifier, base, conditions);
@@ -50587,9 +50595,9 @@ function moduleResolve(specifier, base, conditions, preserveSymlinks) {
       resolved = new URL(specifier);
     } catch (error_) {
       if (isRemote && !import_node_module.builtinModules.includes(specifier)) {
-        const error4 = new ERR_UNSUPPORTED_RESOLVE_REQUEST(specifier, base);
-        error4.cause = error_;
-        throw error4;
+        const error3 = new ERR_UNSUPPORTED_RESOLVE_REQUEST(specifier, base);
+        error3.cause = error_;
+        throw error3;
       }
       resolved = packageResolve(specifier, base, conditions);
     }
@@ -50700,15 +50708,15 @@ function resolve(specifier, parent) {
   }
   try {
     return defaultResolve(specifier, { parentURL: parent }).url;
-  } catch (error4) {
+  } catch (error3) {
     const exception = (
       /** @type {ErrnoException} */
-      error4
+      error3
     );
     if ((exception.code === "ERR_UNSUPPORTED_DIR_IMPORT" || exception.code === "ERR_MODULE_NOT_FOUND") && typeof exception.url === "string") {
       return exception.url;
     }
-    throw error4;
+    throw error3;
   }
 }
 
@@ -50741,9 +50749,9 @@ function importResolveModuleName(moduleName, paths) {
           return resolvedURL;
         }
       } catch {
-        const error4 = new Error(`Cannot find module ${moduleName}`);
-        error4.code = "ERR_MODULE_NOT_FOUND";
-        lastError = error4;
+        const error3 = new Error(`Cannot find module ${moduleName}`);
+        error3.code = "ERR_MODULE_NOT_FOUND";
+        lastError = error3;
       }
     } catch (err) {
       lastError = err;
@@ -50832,8 +50840,8 @@ var ServiceRequestCls = class extends BaseServiceRequest {
 function createResponse(value, _req) {
   return { value };
 }
-function createResponseFail(_request, error4) {
-  return { error: error4 };
+function createResponseFail(_request, error3) {
+  return { error: error3 };
 }
 function isServiceResponseSuccess(res) {
   return "value" in res && res.error === void 0;
@@ -51630,8 +51638,8 @@ var CVFileSystem = class {
   stat;
   readDirectory;
   getCapabilities;
-  constructor(core4) {
-    this.#core = core4;
+  constructor(core2) {
+    this.#core = core2;
     this.readFile = this.#core.readFile.bind(this.#core);
     this.writeFile = this.#core.writeFile.bind(this.#core);
     this.stat = this.#core.stat.bind(this.#core);
@@ -52226,9 +52234,9 @@ var FileResolver = class {
       const require2 = (0, import_node_module2.createRequire)(rel);
       const r = require2.resolve(filename);
       return { filename: r, relativeTo: rel.toString(), found: true, method: "tryCreateRequire" };
-    } catch (error4) {
+    } catch (error3) {
       if (debugMode) {
-        console.error("Error in tryCreateRequire: %o", { filename, rel, relativeTo, error: `${error4}` });
+        console.error("Error in tryCreateRequire: %o", { filename, rel, relativeTo, error: `${error3}` });
       }
       return void 0;
     }
@@ -58109,8 +58117,8 @@ var ConfigLoader = class {
         const file = await this.cspellConfigFileReaderWriter.readConfig(href);
         this.cachedConfigFiles.set(href, file);
         return file;
-      } catch (error4) {
-        return new ImportError(`Failed to read config file: "${ref.filename}"`, error4);
+      } catch (error3) {
+        return new ImportError(`Failed to read config file: "${ref.filename}"`, error3);
       } finally {
         setTimeout(() => this.cachedPendingConfigFile.delete(href), 1);
       }
@@ -61229,27 +61237,27 @@ function lineValidatorFactory(sDict, options) {
   };
   const hasDict = {
     has(word) {
-      const info5 = getWordInfo(word);
-      if (info5.isFound !== void 0)
-        return info5.isFound;
-      if (info5.isFlagged)
+      const info4 = getWordInfo(word);
+      if (info4.isFound !== void 0)
+        return info4.isFound;
+      if (info4.isFlagged)
         return true;
-      if (info5.isFlagged)
+      if (info4.isFlagged)
         return false;
-      info5.isFound = dictCol.has(word);
-      return info5.isFound;
+      info4.isFound = dictCol.has(word);
+      return info4.isFound;
     }
   };
-  function calcIgnored(info5) {
-    info5.isIgnored ??= dictCol.isNoSuggestWord(info5.word);
-    return info5.isIgnored;
+  function calcIgnored(info4) {
+    info4.isIgnored ??= dictCol.isNoSuggestWord(info4.word);
+    return info4.isIgnored;
   }
-  function calcFlagged(info5) {
-    if (info5.isFlagged !== void 0)
-      return info5.isFlagged;
-    const word = info5.word;
-    info5.isFlagged = (setOfFlagWords.has(word) || setOfFlagWords.has(word.toLowerCase()) || dictCol.isForbidden(word)) && !calcIgnored(info5);
-    return info5.isFlagged;
+  function calcFlagged(info4) {
+    if (info4.isFlagged !== void 0)
+      return info4.isFlagged;
+    const word = info4.word;
+    info4.isFlagged = (setOfFlagWords.has(word) || setOfFlagWords.has(word.toLowerCase()) || dictCol.isForbidden(word)) && !calcIgnored(info4);
+    return info4.isFlagged;
   }
   function isWordIgnored(word) {
     return calcIgnored(getWordInfo(word));
@@ -61298,21 +61306,21 @@ function lineValidatorFactory(sDict, options) {
   const isFlaggedOrNotFound = rememberFilter((wo) => wo.isFlagged || !wo.isFound);
   const isNotRepeatingChar = rememberFilter((wo) => !regExRepeatedChar.test(wo.text));
   function checkWord(issue) {
-    const info5 = getWordInfo(issue.text);
-    if (info5.fin) {
-      const { isFlagged: isForbidden, isFound, isIgnored: isIgnored2 } = info5;
+    const info4 = getWordInfo(issue.text);
+    if (info4.fin) {
+      const { isFlagged: isForbidden, isFound, isIgnored: isIgnored2 } = info4;
       const isFlagged2 = issue.isFlagged ?? (!isIgnored2 && isForbidden);
       issue.isFlagged = isFlagged2;
       issue.isFound = isFlagged2 ? void 0 : isFound;
       return issue;
     }
-    const isIgnored = calcIgnored(info5);
-    const isFlagged = issue.isFlagged ?? calcFlagged(info5);
-    info5.isFound ??= isFlagged ? false : isIgnored || isWordValidWithEscapeRetry(hasDict, issue, issue.line);
-    info5.isFlagged = !!isFlagged;
-    info5.fin = true;
+    const isIgnored = calcIgnored(info4);
+    const isFlagged = issue.isFlagged ?? calcFlagged(info4);
+    info4.isFound ??= isFlagged ? false : isIgnored || isWordValidWithEscapeRetry(hasDict, issue, issue.line);
+    info4.isFlagged = !!isFlagged;
+    info4.fin = true;
     issue.isFlagged = isFlagged;
-    issue.isFound = isFlagged ? void 0 : info5.isFound;
+    issue.isFound = isFlagged ? void 0 : info4.isFound;
     return issue;
   }
   const regExUpperCaseWithTrailingCommonEnglishSuffix = /^([\p{Lu}\p{M}]{2,})['’]?(?:s|ing|ies|es|ings|ize|ed|ning)$/u;
@@ -61499,9 +61507,9 @@ function lineValidatorFactory(sDict, options) {
     return checkedPossibleWords;
   };
   function getWordInfo(word) {
-    const info5 = knownWords.get(word);
-    if (info5)
-      return info5;
+    const info4 = knownWords.get(word);
+    if (info4)
+      return info4;
     const result = { word, isFound: void 0, isFlagged: void 0, isIgnored: void 0, fin: false };
     knownWords.set(word, result);
     return result;
@@ -62052,10 +62060,10 @@ var DocumentValidator = class _DocumentValidator {
       }
     }
   }
-  addPossibleError(error4) {
-    if (!error4)
+  addPossibleError(error3) {
+    if (!error3)
       return;
-    error4 = this.errors.push(toError2(error4));
+    error3 = this.errors.push(toError2(error3));
   }
   _parse() {
     (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
@@ -62139,10 +62147,10 @@ function mapSug(sug) {
 }
 async function shouldCheckDocument(doc, options, settings) {
   const errors = [];
-  function addPossibleError(error4) {
-    if (!error4)
+  function addPossibleError(error3) {
+    if (!error3)
       return void 0;
-    error4 = errors.push(toError2(error4));
+    error3 = errors.push(toError2(error3));
     return void 0;
   }
   async function shouldCheck() {
@@ -62858,8 +62866,8 @@ function build$3(options) {
 var resolveSymlinksAsync = function(path17, state, callback$1) {
   const { queue, fs: fs6, options: { suppressErrors } } = state;
   queue.enqueue();
-  fs6.realpath(path17, (error4, resolvedPath) => {
-    if (error4) return queue.dequeue(suppressErrors ? null : error4, state);
+  fs6.realpath(path17, (error3, resolvedPath) => {
+    if (error3) return queue.dequeue(suppressErrors ? null : error3, state);
     fs6.stat(resolvedPath, (error$1, stat3) => {
       if (error$1) return queue.dequeue(suppressErrors ? null : error$1, state);
       if (stat3.isDirectory() && isRecursive(path17, resolvedPath, state)) return queue.dequeue(null, state);
@@ -62912,24 +62920,24 @@ var defaultSync = (state) => {
 var limitFilesSync = (state) => {
   return state.paths.slice(0, state.options.maxFiles);
 };
-var onlyCountsAsync = (state, error4, callback$1) => {
-  report(error4, callback$1, state.counts, state.options.suppressErrors);
+var onlyCountsAsync = (state, error3, callback$1) => {
+  report(error3, callback$1, state.counts, state.options.suppressErrors);
   return null;
 };
-var defaultAsync = (state, error4, callback$1) => {
-  report(error4, callback$1, state.paths, state.options.suppressErrors);
+var defaultAsync = (state, error3, callback$1) => {
+  report(error3, callback$1, state.paths, state.options.suppressErrors);
   return null;
 };
-var limitFilesAsync = (state, error4, callback$1) => {
-  report(error4, callback$1, state.paths.slice(0, state.options.maxFiles), state.options.suppressErrors);
+var limitFilesAsync = (state, error3, callback$1) => {
+  report(error3, callback$1, state.paths.slice(0, state.options.maxFiles), state.options.suppressErrors);
   return null;
 };
-var groupsAsync = (state, error4, callback$1) => {
-  report(error4, callback$1, state.groups, state.options.suppressErrors);
+var groupsAsync = (state, error3, callback$1) => {
+  report(error3, callback$1, state.groups, state.options.suppressErrors);
   return null;
 };
-function report(error4, callback$1, output, suppressErrors) {
-  if (error4 && !suppressErrors) callback$1(error4, output);
+function report(error3, callback$1, output, suppressErrors) {
+  if (error3 && !suppressErrors) callback$1(error3, output);
   else callback$1(null, output);
 }
 function build$1(options, isSynchronous) {
@@ -62946,9 +62954,9 @@ var walkAsync = (state, crawlPath, directoryPath, currentDepth, callback$1) => {
   const { fs: fs6 } = state;
   state.visited.push(crawlPath);
   state.counts.directories++;
-  fs6.readdir(crawlPath || ".", readdirOpts, (error4, entries = []) => {
+  fs6.readdir(crawlPath || ".", readdirOpts, (error3, entries = []) => {
     callback$1(entries, directoryPath, currentDepth);
-    state.queue.dequeue(state.options.suppressErrors ? null : error4, state);
+    state.queue.dequeue(state.options.suppressErrors ? null : error3, state);
   });
 };
 var walkSync = (state, crawlPath, directoryPath, currentDepth, callback$1) => {
@@ -62976,10 +62984,10 @@ var Queue = class {
     this.count++;
     return this.count;
   }
-  dequeue(error4, output) {
-    if (this.onQueueEmpty && (--this.count <= 0 || error4)) {
-      this.onQueueEmpty(error4, output);
-      if (error4) {
+  dequeue(error3, output) {
+    if (this.onQueueEmpty && (--this.count <= 0 || error3)) {
+      this.onQueueEmpty(error3, output);
+      if (error3) {
         output.controller.abort();
         this.onQueueEmpty = void 0;
       }
@@ -63037,7 +63045,7 @@ var Walker = class {
       groups: [],
       counts: new Counter(),
       options,
-      queue: new Queue((error4, state) => this.callbackInvoker(state, error4, callback$1)),
+      queue: new Queue((error3, state) => this.callbackInvoker(state, error3, callback$1)),
       symlinks: /* @__PURE__ */ new Map(),
       visited: [""].slice(0, 0),
       controller: new Aborter(),
@@ -63748,11 +63756,11 @@ function reportProgressFileBegin(io, p, cwdURL2) {
 }
 function reportProgressFileComplete(io, p, cwd, options) {
   const { idx: idx2, filename } = determineFilename(io, p, cwd);
-  const { verbose, debug: debug5 } = options;
+  const { verbose, debug: debug4 } = options;
   const time = reportTime(io, p.elapsedTimeMs, !!p.cached);
   const skipped = p.processed === false ? " skipped" : "";
   const hasErrors = p.numErrors ? io.chalk.red` X` : "";
-  const msg = `${idx2} ${filename} ${time}${skipped}${hasErrors}${(skipped && (verbose || debug5) || hasErrors || isSlow(p.elapsedTimeMs) || io.getColorLevel() < 1 ? "\n" : "") || "\r"}`;
+  const msg = `${idx2} ${filename} ${time}${skipped}${hasErrors}${(skipped && (verbose || debug4) || hasErrors || isSlow(p.elapsedTimeMs) || io.getColorLevel() < 1 ? "\n" : "") || "\r"}`;
   io.write(msg);
 }
 function reportTime(io, elapsedTimeMs, cached) {
@@ -63778,7 +63786,7 @@ function getReporter(options, config) {
   const forceColor = options.color === true;
   const uniqueIssues = config?.unique || false;
   const defaultIssueTemplate = options.wordsOnly ? templateIssueWordsOnly : options.legacy ? templateIssueLegacy : options.showContext ? options.showSuggestions ? templateIssueWithContextWithSuggestions : templateIssueWithContext : options.showSuggestions ? templateIssueWithSuggestions : options.showSuggestions === false ? templateIssueNoFix : templateIssue;
-  const { fileGlobs, silent, summary, issues, progress: showProgress, verbose, debug: debug5 } = options;
+  const { fileGlobs, silent, summary, issues, progress: showProgress, verbose, debug: debug4 } = options;
   const issueTemplate = config?.issueTemplate || defaultIssueTemplate;
   assertCheckTemplate(issueTemplate);
   const console$1 = config?.console || console2;
@@ -63796,7 +63804,7 @@ function getReporter(options, config) {
     return (msg) => console$1.info(wrap(msg));
   }
   const emitters = {
-    Debug: !silent && debug5 ? createInfoLog(stdio.chalk.cyan) : nullEmitter2,
+    Debug: !silent && debug4 ? createInfoLog(stdio.chalk.cyan) : nullEmitter2,
     Info: !silent && verbose ? createInfoLog(stdio.chalk.yellow) : nullEmitter2,
     Warning: createInfoLog(stdio.chalk.yellow)
   };
@@ -63818,9 +63826,9 @@ function getReporter(options, config) {
   }
   const issuesCollection = void 0;
   const errorCollection = [];
-  function errorEmitter(message, error4) {
-    if (isSpellingDictionaryLoadError(error4)) error4 = error4.cause;
-    const errorText = (0, import_node_util5.formatWithOptions)({ colors: stderr.stream.hasColors?.() }, stderr.chalk.red(message), debug5 ? error4 : error4.toString());
+  function errorEmitter(message, error3) {
+    if (isSpellingDictionaryLoadError(error3)) error3 = error3.cause;
+    const errorText = (0, import_node_util5.formatWithOptions)({ colors: stderr.stream.hasColors?.() }, stderr.chalk.red(message), debug4 ? error3 : error3.toString());
     errorCollection?.push(errorText);
     consoleError(errorText);
   }
@@ -63843,7 +63851,7 @@ function getReporter(options, config) {
     if (errorCollection?.length && issues$1 > 5) {
       consoleError("-------------------------------------------");
       consoleError("Errors:");
-      errorCollection.forEach((error4) => consoleError(error4));
+      errorCollection.forEach((error3) => consoleError(error3));
     }
     if (options.showPerfSummary) {
       consoleError("-------------------------------------------");
@@ -64071,10 +64079,10 @@ function calcGlobs(commandLineExclude) {
   return commandLineExcludes.globs.length ? commandLineExcludes : defaultExcludes;
 }
 function extractPatterns(globs) {
-  return globs.reduce((info5, g) => {
+  return globs.reduce((info4, g) => {
     const source = g.source;
     const patterns = g.matcher.patternsNormalizedToRoot;
-    return [...info5, ...patterns.map((glob$2) => ({
+    return [...info4, ...patterns.map((glob$2) => ({
       glob: glob$2,
       source
     }))];
@@ -64203,20 +64211,20 @@ function readFileInfo(filename, encoding = UTF8, handleNotFound = false) {
     text,
     filename
   }), (e) => {
-    const error4 = toError5(e);
-    return handleNotFound && error4.code === "EISDIR" ? Promise.resolve({
+    const error3 = toError5(e);
+    return handleNotFound && error3.code === "EISDIR" ? Promise.resolve({
       text: "",
       filename,
-      errorCode: error4.code
-    }) : handleNotFound && error4.code === "ENOENT" ? Promise.resolve({
+      errorCode: error3.code
+    }) : handleNotFound && error3.code === "ENOENT" ? Promise.resolve({
       text: "",
       filename,
-      errorCode: error4.code
-    }) : Promise.reject(new IOError(`Error reading file: "${filename}"`, error4));
+      errorCode: error3.code
+    }) : Promise.reject(new IOError(`Error reading file: "${filename}"`, error3));
   });
 }
 function readFile3(filename, encoding = UTF8) {
-  return readFileInfo(filename, encoding).then((info5) => info5.text);
+  return readFileInfo(filename, encoding).then((info4) => info4.text);
 }
 async function findFiles(globPatterns, options) {
   const stdin = [];
@@ -64294,8 +64302,8 @@ var FlatCache = class {
     try {
       const content = await import_promises4.default.readFile(this.cacheFilename, "utf8");
       this.#cache = new Map(Object.entries(parse3(content)));
-    } catch (error4) {
-      if (!ifFound) throw error4;
+    } catch (error3) {
+      if (!ifFound) throw error3;
     }
     return this;
   }
@@ -64341,8 +64349,8 @@ var ImplFileEntryCache = class {
     for (const fPath of this.cache.keys()) try {
       const filePath = this.resolveKeyToFile(fPath);
       await import_promises4.default.stat(filePath);
-    } catch (error4) {
-      if (isNodeError2(error4) && error4.code === "ENOENT") this.cache.removeKey(fPath);
+    } catch (error3) {
+      if (isNodeError2(error3) && error3.code === "ENOENT") this.cache.removeKey(fPath);
     }
   }
   /**
@@ -64357,12 +64365,12 @@ var ImplFileEntryCache = class {
     let fstat;
     try {
       fstat = await import_promises4.default.stat(file);
-    } catch (error4) {
+    } catch (error3) {
       this.#removeEntry(file);
       return {
         key: file,
         notFound: true,
-        err: toError$12(error4)
+        err: toError$12(error3)
       };
     }
     if (this.useChecksum) return this.#getFileDescriptorUsingChecksum(file);
@@ -64460,8 +64468,8 @@ var ImplFileEntryCache = class {
     for (const [entryKey, cacheEntry] of this.#normalizedEntries.entries()) try {
       const meta = this.useChecksum ? await this.#getMetaForFileUsingCheckSum(cacheEntry) : await this.#getMetaForFileUsingMtimeAndSize(cacheEntry);
       this.cache.set(entryKey, meta);
-    } catch (error4) {
-      if (!isNodeError2(error4) || error4.code !== "ENOENT") throw error4;
+    } catch (error3) {
+      if (!isNodeError2(error3) || error3.code !== "ENOENT") throw error3;
     }
     await this.cache.save();
   }
@@ -64474,13 +64482,13 @@ var ImplFileEntryCache = class {
     return normalizePath$1(file);
   }
 };
-function isNodeError2(error4) {
-  return typeof error4 === "object" && error4 !== null && "code" in error4;
+function isNodeError2(error3) {
+  return typeof error3 === "object" && error3 !== null && "code" in error3;
 }
-function toError$12(error4) {
-  if (error4 instanceof Error) return error4;
-  if (typeof error4 === "string") return new Error(error4);
-  return new Error("Unknown error", { cause: error4 });
+function toError$12(error3) {
+  if (error3 instanceof Error) return error3;
+  if (typeof error3 === "string") return new Error(error3);
+  return new Error("Unknown error", { cause: error3 });
 }
 function normalizePath$1(filePath) {
   if (import_node_path10.default.sep === "/") return filePath;
@@ -65250,12 +65258,12 @@ async function runLint(cfg) {
     (await getDictionary(config)).dictionaries.forEach((dict) => {
       const dictErrors = dict.getErrors?.() || [];
       const msg = `Dictionary Error with (${dict.name})`;
-      dictErrors.forEach((error4) => {
-        const key = msg + error4.toString();
+      dictErrors.forEach((error3) => {
+        const key = msg + error3.toString();
         if (configErrors.has(key)) return;
         configErrors.add(key);
         count3 += 1;
-        reporter.error(msg, error4);
+        reporter.error(msg, error3);
       });
     });
     return count3;
@@ -65413,7 +65421,7 @@ function getLoggerFromReporter(reporter) {
     const msg = (0, import_node_util5.format)(...params);
     reporter.info(msg, "Info");
   };
-  const error4 = (...params) => {
+  const error3 = (...params) => {
     const msg = (0, import_node_util5.format)(...params);
     reporter.error(msg, {
       message: "",
@@ -65428,7 +65436,7 @@ function getLoggerFromReporter(reporter) {
   return {
     log: log3,
     warn,
-    error: error4
+    error: error3
   };
 }
 async function generateGitIgnore(roots) {
@@ -65585,7 +65593,6 @@ async function lint2(globs, lintOptions, reporter) {
 }
 
 // src/checkSpelling.ts
-var core2 = { debug: import_core2.debug, error: import_core2.error, info: import_core2.info, warning: import_core2.warning };
 async function checkSpellingForContext(params, context) {
   const files = await gatherGitCommitFilesFromContext(context);
   const globs = await gatherFileGlobsFromContext(context);
@@ -65610,6 +65617,7 @@ async function gatherFileGlobsFromContext(context) {
   return [...files];
 }
 async function gatherFiles(context) {
+  const logger = getDefaultLogger();
   const eventName = context.githubContext.eventName;
   try {
     switch (eventName) {
@@ -65618,11 +65626,11 @@ async function gatherFiles(context) {
       case "pull_request":
         return new Set(await gitListFilesForPullRequest(context.githubContext.payload));
       default:
-        core2.warning(`Unsupported event: ${eventName}. Using files from latest commit.`);
+        logger.warning(`Unsupported event: ${eventName}. Using files from latest commit.`);
         return new Set(await gitListFiles("HEAD"));
     }
   } catch (e) {
-    core2.error(toError(e));
+    logger.error(toError(e));
   }
   return void 0;
 }
@@ -65639,29 +65647,29 @@ async function checkSpelling(params, globs, files) {
     verbose: params.verbose === "true",
     treatFlaggedWordsAsErrors: params.treat_flagged_words_as_errors === "true"
   };
-  const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions, core2);
+  const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions);
   await lint2(globs || [], options, collector.reporter);
   return collector.result;
 }
 
 // src/getActionParams.ts
 init_import_meta_url();
-var import_core3 = __toESM(require_core(), 1);
+var import_core2 = __toESM(require_core(), 1);
 function getActionParams() {
   const params = {
     // github_token: getInput('github_token', { required: true }),
-    files: (0, import_core3.getInput)("files"),
-    incremental_files_only: tf((0, import_core3.getInput)("incremental_files_only")),
-    config: (0, import_core3.getInput)("config"),
-    root: (0, import_core3.getInput)("root"),
-    inline: (0, import_core3.getInput)("inline").toLowerCase(),
-    treat_flagged_words_as_errors: tf((0, import_core3.getInput)("treat_flagged_words_as_errors")),
-    strict: tf((0, import_core3.getInput)("strict")),
-    verbose: tf((0, import_core3.getInput)("verbose")),
-    check_dot_files: tf((0, import_core3.getInput)("check_dot_files")),
-    use_cspell_files: tf((0, import_core3.getInput)("use_cspell_files")),
-    suggestions: tf((0, import_core3.getInput)("suggestions")),
-    report: (0, import_core3.getInput)("report").toLowerCase()
+    files: (0, import_core2.getInput)("files"),
+    incremental_files_only: tf((0, import_core2.getInput)("incremental_files_only")),
+    config: (0, import_core2.getInput)("config"),
+    root: (0, import_core2.getInput)("root"),
+    inline: (0, import_core2.getInput)("inline").toLowerCase(),
+    treat_flagged_words_as_errors: tf((0, import_core2.getInput)("treat_flagged_words_as_errors")),
+    strict: tf((0, import_core2.getInput)("strict")),
+    verbose: tf((0, import_core2.getInput)("verbose")),
+    check_dot_files: tf((0, import_core2.getInput)("check_dot_files")),
+    use_cspell_files: tf((0, import_core2.getInput)("use_cspell_files")),
+    suggestions: tf((0, import_core2.getInput)("suggestions")),
+    report: (0, import_core2.getInput)("report").toLowerCase()
   };
   return applyDefaults(params);
 }
@@ -65682,7 +65690,7 @@ function tf(v) {
 }
 
 // src/action.ts
-var core3 = { debug: import_core4.debug, error: import_core4.error, info: import_core4.info, warning: import_core4.warning };
+var core = { debug: import_core3.debug, error: import_core3.error, info: import_core3.info, warning: import_core3.warning };
 var defaultGlob = "**";
 var supportedIncrementalEvents = /* @__PURE__ */ new Set(["push", "pull_request"]);
 function friendlyEventName(eventName) {
@@ -65700,11 +65708,11 @@ function isSupportedEvent(eventName) {
 }
 async function action(githubContext) {
   const params = getActionParams();
-  validateActionParams(params, core3.error);
+  validateActionParams(params, core.error);
   const eventName = githubContext.eventName;
   if (params.incremental_files_only === "true" && !isSupportedEvent(eventName)) {
     params.files = params.files || defaultGlob;
-    core3.warning("Unable to determine which files have changed, checking files: " + params.files);
+    core.warning("Unable to determine which files have changed, checking files: " + params.files);
     params.incremental_files_only = "false";
   }
   params.files = params.files || (params.incremental_files_only !== "true" ? defaultGlob : "");
@@ -65716,34 +65724,34 @@ async function action(githubContext) {
     useCSpellFiles: params.use_cspell_files === "true",
     dot
   };
-  core3.info(friendlyEventName(eventName));
+  core.info(friendlyEventName(eventName));
   const result = await checkSpellingForContext(params, context);
   if (!result.files && !context.useEventFiles) {
-    core3.error("No files found to check.");
+    core.error("No files found to check.");
   }
   const message = `Files checked: ${result.files}, Issues found: ${result.issues} in ${result.filesWithIssues.size} files.`;
-  core3.info(message);
+  core.info(message);
   outputResult(result);
   const fnS = (n) => n === 1 ? "" : "s";
   if (params.strict === "true" && result.issues) {
     const filesWithIssues = result.filesWithIssues.size;
     const err = `${result.issues} spelling issue${fnS(result.issues)} found in ${filesWithIssues} of the ${result.files} file${fnS(result.files)} checked.`;
-    (0, import_core4.setFailed)(err);
+    (0, import_core3.setFailed)(err);
   }
   if (result.errors) {
-    (0, import_core4.setFailed)("Errors encountered.");
+    (0, import_core3.setFailed)("Errors encountered.");
   }
   return !(result.issues + result.errors);
 }
 function outputResult(runResult2) {
   const result = normalizeResult(runResult2);
-  (0, import_core4.setOutput)("success", result.success);
-  (0, import_core4.setOutput)("errors", result.errors);
-  (0, import_core4.setOutput)("number_of_files_checked", result.number_of_files_checked);
-  (0, import_core4.setOutput)("number_of_issues", result.number_of_issues);
-  (0, import_core4.setOutput)("number_of_files_with_issues", result.files_with_issues.length);
-  (0, import_core4.setOutput)("files_with_issues", normalizeFiles(result.files_with_issues));
-  (0, import_core4.setOutput)("result", result);
+  (0, import_core3.setOutput)("success", result.success);
+  (0, import_core3.setOutput)("errors", result.errors);
+  (0, import_core3.setOutput)("number_of_files_checked", result.number_of_files_checked);
+  (0, import_core3.setOutput)("number_of_issues", result.number_of_issues);
+  (0, import_core3.setOutput)("number_of_files_with_issues", result.files_with_issues.length);
+  (0, import_core3.setOutput)("files_with_issues", normalizeFiles(result.files_with_issues));
+  (0, import_core3.setOutput)("result", result);
 }
 function normalizeResult(result) {
   const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
@@ -65763,15 +65771,15 @@ function normalizeFiles(files) {
 // src/main.ts
 async function run() {
   try {
-    (0, import_core5.info)("cspell-action");
+    (0, import_core4.info)("cspell-action");
     const githubContext = new import_context.Context();
     await action(githubContext);
-    (0, import_core5.info)("Done.");
+    (0, import_core4.info)("Done.");
     return void 0;
-  } catch (error4) {
-    console.error(error4);
-    const err = toError(error4);
-    (0, import_core5.setFailed)(err.message);
+  } catch (error3) {
+    console.error(error3);
+    const err = toError(error3);
+    (0, import_core4.setFailed)(err.message);
     return err;
   }
 }

@@ -22,7 +22,5 @@ export function isAppError(e: unknown): e is AppError {
 export function toError(e: unknown): Error {
     if (e instanceof Error) return e;
     if (typeof e === 'string') return new Error(e);
-    const err = new Error('Unknown error');
-    err.cause = e;
-    return err;
+    return new Error('Unknown error', { cause: e });
 }

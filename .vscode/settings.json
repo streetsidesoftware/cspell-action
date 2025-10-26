@@ -4,5 +4,6 @@
         "**/.pnp.*": true
     },
     "typescript.enablePromptUseWorkspaceTsdk": true,
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "editor.formatOnSave": false
 }
