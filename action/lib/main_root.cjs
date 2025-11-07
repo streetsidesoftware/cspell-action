@@ -19993,9 +19993,9 @@ var require_context = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.2.2/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.3.0/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
 var require_requireResolve = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-resolver@9.2.2/node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports2) {
+  "../node_modules/.pnpm/@cspell+cspell-resolver@9.3.0/node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports2) {
     "use strict";
     init_import_meta_url();
     Object.defineProperty(exports2, "__esModule", { value: true });
@@ -37919,10 +37919,10 @@ function relative2(cwd, fileUri) {
 // src/spell.ts
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell@9.2.2/node_modules/cspell/dist/esm/index.js
+// ../node_modules/.pnpm/cspell@9.3.0/node_modules/cspell/dist/esm/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell@9.2.2/node_modules/cspell/dist/esm/application-2V_0BiNj.js
+// ../node_modules/.pnpm/cspell@9.3.0/node_modules/cspell/dist/esm/application-NSTNjcwy.js
 init_import_meta_url();
 
 // ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/index.js
@@ -38431,13 +38431,13 @@ var chalk = createChalk();
 var chalkStderr = createChalk({ level: stderrColor ? stderrColor.level : 0 });
 var source_default = chalk;
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/helpers/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/helpers/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
 init_import_meta_url();
 function* iteratorToIterable(iterator) {
   try {
@@ -38470,10 +38470,10 @@ async function* asyncIteratorToAsyncIterable(iterator) {
   }
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
 init_import_meta_url();
 function toPipeFn(syncFn, asyncFn) {
   function _(i) {
@@ -38485,7 +38485,7 @@ function isAsyncIterable(i) {
   return typeof i[Symbol.asyncIterator] === "function";
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
 function toArray(i) {
   return isAsyncIterable(i) ? toArrayAsync(i) : toArraySync(i);
 }
@@ -38500,7 +38500,7 @@ async function toArrayAsync(iter) {
   return collection;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
 init_import_meta_url();
 async function* mergeAsyncIterables(iter, ...rest) {
   for await (const i of [iter, ...rest]) {
@@ -38509,7 +38509,7 @@ async function* mergeAsyncIterables(iter, ...rest) {
 }
 var toAsyncIterable = mergeAsyncIterables;
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/index.js
 var operators_exports = {};
 __export(operators_exports, {
   opAppend: () => opAppend,
@@ -38559,7 +38559,7 @@ __export(operators_exports, {
 });
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/append.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/append.js
 init_import_meta_url();
 function opAppendAsync(...iterablesToAppend) {
   async function* fnAppend(iter) {
@@ -38586,7 +38586,7 @@ function opAppend(...iterablesToAppend) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/await.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/await.js
 init_import_meta_url();
 async function* _asyncAwait(iter) {
   for await (const v of iter) {
@@ -38597,7 +38597,7 @@ function opAwaitAsync() {
   return _asyncAwait;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
 init_import_meta_url();
 function opBufferAsync(size) {
   async function* fnBuffer(iter) {
@@ -38640,7 +38640,7 @@ function opBuffer(size) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
 init_import_meta_url();
 function opCombineAsync(...fns) {
   function combine4(iter) {
@@ -38661,7 +38661,7 @@ function opCombineSync(...fns) {
   return combine4;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
 init_import_meta_url();
 function opConcatMapAsync(mapFn) {
   async function* fn(iter) {
@@ -38704,7 +38704,7 @@ function opConcatMapSync(mapFn) {
 }
 var opConcatMap = (fn) => toPipeFn(opConcatMapSync(fn), opConcatMapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
 init_import_meta_url();
 function opFilterAsync(filterFn) {
   async function* genFilter(iter) {
@@ -38748,7 +38748,7 @@ function opFilter(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/first.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/first.js
 init_import_meta_url();
 function opFirstAsync(firstFn) {
   async function* fn(iter) {
@@ -38782,7 +38782,7 @@ function opFirst(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
 init_import_meta_url();
 function opFlattenAsync() {
   async function* fn(iter) {
@@ -38802,7 +38802,7 @@ function opFlattenSync() {
 }
 var opFlatten = () => toPipeFn(opFlattenSync(), opFlattenAsync());
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
 init_import_meta_url();
 function opJoinStringsAsync(joinCharacter = ",") {
   async function* fn(iter) {
@@ -38824,7 +38824,7 @@ function opJoinStringsSync(joinCharacter = ",") {
 }
 var opJoinStrings = (joinCharacter) => toPipeFn(opJoinStringsSync(joinCharacter), opJoinStringsAsync(joinCharacter));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/last.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/last.js
 init_import_meta_url();
 var symNotFound = Symbol("LastNotFound");
 function opLastAsync(lastFn) {
@@ -38863,7 +38863,7 @@ function opLast(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/map.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/map.js
 init_import_meta_url();
 function opMapAsync(mapFn) {
   async function* genMap(iter) {
@@ -38895,7 +38895,7 @@ function opMapSync(mapFn) {
 }
 var opMap = (fn) => toPipeFn(opMapSync(fn), opMapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
 init_import_meta_url();
 function opReduceAsync(reduceFn, initialValue) {
   async function* reduce3(head, tail) {
@@ -38945,7 +38945,7 @@ function isIterable(i) {
   return typeof i[Symbol.iterator] === "function";
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
 init_import_meta_url();
 function opSkipAsync(count3) {
   async function* fn(iter) {
@@ -38973,7 +38973,7 @@ function opSkipSync(count3) {
 }
 var opSkip = (count3) => toPipeFn(opSkipSync(count3), opSkipAsync(count3));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/take.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/take.js
 init_import_meta_url();
 function opTakeAsync(count3) {
   async function* fn(iter) {
@@ -39001,7 +39001,7 @@ function opTakeSync(count3) {
 }
 var opTake = (count3) => toPipeFn(opTakeSync(count3), opTakeAsync(count3));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
 init_import_meta_url();
 function opTapAsync(tapFn) {
   async function* fn(iter) {
@@ -39023,7 +39023,7 @@ function opTapSync(tapFn) {
 }
 var opTap = (fn) => toPipeFn(opTapSync(fn), opTapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
 init_import_meta_url();
 function opUniqueAsync(k) {
   function fnK(k2) {
@@ -39077,7 +39077,7 @@ function opUniqueSync(k) {
 }
 var opUnique = (getKey) => toPipeFn(opUniqueSync(getKey), opUniqueAsync(getKey));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/pipe.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/pipe.js
 init_import_meta_url();
 function pipeAsync(i, ...fns) {
   const iter = toAsyncIterable(i);
@@ -39087,26 +39087,26 @@ function pipeSync(i, ...fns) {
   return opCombineSync(...fns)(i);
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/reduce.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/reduce.js
 init_import_meta_url();
 function reduceSync(iter, reduceFn, initialValue) {
   const i = initialValue === void 0 ? pipeSync(iter, opReduceSync(reduceFn)) : pipeSync(iter, opReduceSync(reduceFn, initialValue));
   return [...i][0];
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/index.js
 var operators = operators_exports;
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/events/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/events/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/events/events.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/events/events.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/errors.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/errors.js
 init_import_meta_url();
 var import_node_util2 = require("node:util");
 var allowStringOrUndefined = {
@@ -39146,7 +39146,7 @@ async function _catchPromiseError(p, handler) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/events/events.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/events/events.js
 var EventEmitter = class {
   name;
   #listeners = /* @__PURE__ */ new Set();
@@ -39200,16 +39200,16 @@ function onClearCache(listener) {
   return clearCacheEvent.on(listener);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/index.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/AutoCache.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/AutoCache.js
 init_import_meta_url();
 var CACHE_SIZE = 100;
 var Cache01 = class {
@@ -39288,16 +39288,16 @@ function extractStats(ac) {
   return { hits, misses, swaps };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-trie-lib@9.2.2/node_modules/cspell-trie-lib/dist/index.js
+// ../node_modules/.pnpm/cspell-trie-lib@9.3.0/node_modules/cspell-trie-lib/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.2.2/node_modules/@cspell/cspell-pipe/dist/sync/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.3.0/node_modules/@cspell/cspell-pipe/dist/sync/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-trie-lib@9.2.2/node_modules/cspell-trie-lib/dist/index.js
+// ../node_modules/.pnpm/cspell-trie-lib@9.3.0/node_modules/cspell-trie-lib/dist/index.js
 var import_node_assert = __toESM(require("node:assert"), 1);
 var import_node_os2 = require("node:os");
 
@@ -39648,7 +39648,7 @@ function genSequence(i) {
   return new ImplSequence(i);
 }
 
-// ../node_modules/.pnpm/cspell-trie-lib@9.2.2/node_modules/cspell-trie-lib/dist/index.js
+// ../node_modules/.pnpm/cspell-trie-lib@9.3.0/node_modules/cspell-trie-lib/dist/index.js
 var SymEmpty = Symbol("memorizeLastCall");
 function memorizeLastCall(fn) {
   let lastP = void 0;
@@ -46687,7 +46687,7 @@ function splitLine(line, regExp) {
   return encodeLine(line).split(regExp).map((line$1) => decodeLine(line$1));
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/text.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/text.js
 init_import_meta_url();
 var regExAllUpper = /^(?:\p{Lu}\p{M}?)+$/u;
 var regExAccents = /\p{M}/gu;
@@ -46704,7 +46704,7 @@ function removeUnboundAccents(text) {
   return text.replaceAll(regExAccents, "");
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
 var defaultNumSuggestions = 10;
 function wordSearchForms(word, isDictionaryCaseSensitive, ignoreCase2) {
   const forms2 = /* @__PURE__ */ new Set();
@@ -46766,7 +46766,7 @@ function createWeightMapFromDictionaryInformation(di) {
   return di ? mapDictionaryInformationToWeightMap(di) : void 0;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
 var dictionaryCounter = 0;
 var DefaultAutoCacheSize = 1e3;
 var logRequests = false;
@@ -46830,13 +46830,13 @@ function getLog() {
   return log;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/index.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/AutoResolve.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/AutoResolve.js
 init_import_meta_url();
 function autoResolveWeak(map3, key, resolve6) {
   const found = map3.get(key);
@@ -46863,13 +46863,13 @@ function createAutoResolveWeakCache() {
   return new AutoResolveWeakCache();
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/util.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/util.js
 init_import_meta_url();
 function isDefined(v) {
   return v !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 init_import_meta_url();
 var import_node_url = require("node:url");
 
@@ -47300,7 +47300,7 @@ function createCustomEqual(options) {
   return createIsEqual({ circular, comparator, createState, equals, strict });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/simpleCache.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/simpleCache.js
 init_import_meta_url();
 var SimpleWeakCache = class {
   size;
@@ -47419,16 +47419,16 @@ var SimpleCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
 init_import_meta_url();
 var defaultOptions = Object.freeze({
   weightMap: void 0
 });
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/clean.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/clean.js
 init_import_meta_url();
 function clean2(src) {
   const r = src;
@@ -47440,16 +47440,16 @@ function clean2(src) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/repMap.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/repMap.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/regexHelper.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/regexHelper.js
 init_import_meta_url();
 function escapeRegEx(s) {
   return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/repMap.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/repMap.js
 function createMapper(repMap, ignoreCharset) {
   if (!repMap && !ignoreCharset)
     return (a) => a;
@@ -47576,12 +47576,12 @@ function addToTrie(node, match2, replaceWith) {
   node.rep = [...s];
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/defaults.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/defaults.js
 init_import_meta_url();
 var ignoreCase = true;
 var isForbiddenIgnoreCaseAndAccents = false;
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
 var SpellingDictionaryFromTrie = class {
   trie;
   name;
@@ -47757,7 +47757,7 @@ function* outerWordForms(word, mapWord) {
   return;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 var cachedDictionaries = new AutoWeakCache(_createSpellingDictionary, 64);
 var maxSetSize = 3;
 var cachedParamsByWordList = new SimpleCache(64);
@@ -47814,13 +47814,13 @@ function createFailedToLoadDictionary(name2, sourceUrl, error3, options) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/util/textMappers.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/util/textMappers.js
 init_import_meta_url();
 function* mapperRemoveCaseAndAccents(words) {
   for (const word of words) {
@@ -47832,14 +47832,14 @@ function* mapperRemoveCaseAndAccents(words) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/index.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 init_import_meta_url();
 var import_node_assert2 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
 init_import_meta_url();
 function normalizeTyposDefValue(value) {
   if (!value)
@@ -47920,7 +47920,7 @@ function hasSuggestions(v) {
   return isString(v) || isArray2(v);
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 function assertString(v) {
   (0, import_node_assert2.default)(typeof v === "string", "A string was expected.");
   return true;
@@ -48009,7 +48009,7 @@ function isIterable3(v) {
   return Symbol.iterator in v;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
 var TyposDictionaryImpl = class {
   name;
   source;
@@ -48144,7 +48144,7 @@ function createTyposDictionary(entries, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
 var FlagWordsDictionaryTrie = class extends SpellingDictionaryFromTrie {
   name;
   source;
@@ -48270,7 +48270,7 @@ function bisect(values, predicate) {
   return { t, f };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
 init_import_meta_url();
 var NormalizeForm = "NFC";
 var IgnoreWordsDictionary = class {
@@ -48361,7 +48361,7 @@ function createIgnoreWordsDictionary(wordList, name2, source, options) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
 init_import_meta_url();
 function identityString(w) {
   return w;
@@ -48475,7 +48475,7 @@ function isWordForbiddenInAnyDictionary(dicts, word, ignoreCase2) {
   return dicts.find((dict) => dict.isForbidden(word, ignoreCase2));
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
 init_import_meta_url();
 var SuggestDictionaryImpl = class {
   name;
@@ -48578,7 +48578,7 @@ function createSuggestDictionary(entries, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
 var cache = createAutoResolveWeakCache();
 function createInlineSpellingDictionary(inlineDict, source) {
   return cache.get(inlineDict, () => {
@@ -48594,20 +48594,20 @@ function createInlineSpellingDictionary(inlineDict, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.2.2/node_modules/cspell-dictionary/dist/index.js
+// ../node_modules/.pnpm/cspell-dictionary@9.3.0/node_modules/cspell-dictionary/dist/index.js
 var _debug = {
   cacheDictionaryEnableLogging: enableLogging,
   cacheDictionaryGetLog: getLog
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
 init_import_meta_url();
 var path6 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/util.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/util.js
 init_import_meta_url();
 var uniqueFn = uniqueFilterFnGenerator;
 function uniqueFilterFnGenerator(extractFn) {
@@ -48665,7 +48665,7 @@ function doSetsIntersect(a, b) {
   return a.size <= b.size ? compare3(a, b) : compare3(b, a);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
 var SymbolCSpellSettingsInternal = Symbol("CSpellSettingsInternal");
 function cleanCSpellSettingsInternal(parts) {
   return parts ? Object.assign(clean3(parts), { [SymbolCSpellSettingsInternal]: true }) : { [SymbolCSpellSettingsInternal]: true };
@@ -48686,7 +48686,7 @@ function isDictionaryFileDefinitionInternal(def) {
   return !!(def.path || def.file);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
 init_import_meta_url();
 function autoResolve(map3, key, resolve6) {
   const found = map3.get(key);
@@ -48860,17 +48860,17 @@ function createAutoResolveWeakWeakCache() {
   return new AutoResolveWeakWeakCache();
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 init_import_meta_url();
 var import_node_module2 = require("node:module");
 var os3 = __toESM(require("node:os"), 1);
 var path5 = __toESM(require("node:path"), 1);
 var import_node_url8 = require("node:url");
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.2.2/node_modules/@cspell/cspell-resolver/dist/index.mjs
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.3.0/node_modules/@cspell/cspell-resolver/dist/index.mjs
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.2.2/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.3.0/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 init_import_meta_url();
 
 // ../node_modules/.pnpm/global-directory@4.0.1/node_modules/global-directory/index.js
@@ -48966,22 +48966,22 @@ globalDirectory.yarn.packages = import_node_path.default.join(yarnPrefix, getYar
 globalDirectory.yarn.binaries = import_node_path.default.join(globalDirectory.yarn.packages, ".bin");
 var global_directory_default = globalDirectory;
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.2.2/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.3.0/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 var import_requireResolve = __toESM(require_requireResolve(), 1);
 function resolveGlobal(modulesName) {
   const paths = [global_directory_default.npm.packages, global_directory_default.yarn.packages];
   return (0, import_requireResolve.requireResolve)(modulesName, paths);
 }
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@9.2.2/node_modules/@cspell/dynamic-import/dist/esm/index.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@9.3.0/node_modules/@cspell/dynamic-import/dist/esm/index.mjs
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@9.2.2/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@9.3.0/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 init_import_meta_url();
 var import_node_fs4 = require("node:fs");
 var import_node_path5 = require("node:path");
 
-// ../node_modules/.pnpm/@cspell+url@9.2.2/node_modules/@cspell/url/dist/index.js
+// ../node_modules/.pnpm/@cspell+url@9.3.0/node_modules/@cspell/url/dist/index.js
 init_import_meta_url();
 var import_node_assert3 = __toESM(require("node:assert"), 1);
 var import_node_path2 = __toESM(require("node:path"), 1);
@@ -50673,7 +50673,7 @@ function resolve(specifier, parent) {
   }
 }
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@9.2.2/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@9.3.0/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 var isWindowsPath = /^[a-z]:\\/i;
 async function dynamicImportFrom(moduleName, paths) {
   paths = Array.isArray(paths) ? paths : paths ? [paths] : void 0;
@@ -50728,23 +50728,23 @@ function dirToUrl(dir) {
   return toFileDirURL(abs);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var import_resolve_from = __toESM(require_resolve_from(), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/fileSystem.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/fileSystem.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-io@9.2.2/node_modules/cspell-io/dist/index.js
+// ../node_modules/.pnpm/cspell-io@9.3.0/node_modules/cspell-io/dist/index.js
 init_import_meta_url();
 var import_node_zlib = require("node:zlib");
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.2.2/node_modules/@cspell/cspell-service-bus/dist/esm/index.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.3.0/node_modules/@cspell/cspell-service-bus/dist/esm/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.2.2/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.3.0/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.2.2/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.3.0/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
 init_import_meta_url();
 var ErrorUnhandledRequest = class extends Error {
   request;
@@ -50774,7 +50774,7 @@ var UnhandledHandlerError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.2.2/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.3.0/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
 init_import_meta_url();
 var BaseServiceRequest = class {
   type;
@@ -50800,7 +50800,7 @@ function isServiceResponseSuccess(res) {
   return "value" in res && res.error === void 0;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.2.2/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.3.0/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
 var MAX_DEPTH = 10;
 var ServiceBus = class {
   handlers = [];
@@ -50847,7 +50847,7 @@ var ServiceBus = class {
   }
 };
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.2.2/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.3.0/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
 init_import_meta_url();
 function createRequestHandler(requestDef, fn, name2, description) {
   return createIsRequestHandler(requestDef.is, fn, name2 ?? requestDef.type, description);
@@ -50863,7 +50863,7 @@ function createIsRequestHandler(isA, fn, name2, description) {
   };
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.2.2/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.3.0/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
 init_import_meta_url();
 function requestFactory(requestType) {
   class RequestClass extends ServiceRequestCls {
@@ -50885,7 +50885,7 @@ function requestFactory(requestType) {
   return RequestClass;
 }
 
-// ../node_modules/.pnpm/cspell-io@9.2.2/node_modules/cspell-io/dist/index.js
+// ../node_modules/.pnpm/cspell-io@9.3.0/node_modules/cspell-io/dist/index.js
 var import_node_fs5 = require("node:fs");
 var import_node_url6 = require("node:url");
 var import_node_util4 = require("node:util");
@@ -51984,7 +51984,7 @@ async function readFileText(filename, encoding) {
   return (await getDefaultCSpellIO().readFile(filename, encoding)).getText();
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/fileSystem.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/fileSystem.js
 function getVirtualFS() {
   return getDefaultVirtualFs();
 }
@@ -51992,7 +51992,7 @@ function getFileSystem() {
   return getVirtualFS().fs;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/pkg-info.mjs
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/pkg-info.mjs
 init_import_meta_url();
 var import_node_url7 = require("node:url");
 var url = import_meta_url;
@@ -52005,7 +52005,7 @@ function calcSrcDirectory() {
 }
 var srcDirectory = calcSrcDirectory();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/templates.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/templates.js
 init_import_meta_url();
 function replaceTemplate(template2, replacements) {
   const templateStart = "${";
@@ -52042,7 +52042,7 @@ function envToTemplateVars(env4) {
   return vars;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/url.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/url.js
 init_import_meta_url();
 function getSourceDirectoryUrl() {
   const srcDirectoryURL = toFileDirURL(srcDirectory);
@@ -52062,7 +52062,7 @@ function windowsDriveLetterToUpper(absoluteFilePath) {
   return absoluteFilePath.replace(regExpWindowsPathDriveLetter2, (s) => s.toUpperCase());
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var regExpStartsWidthNodeModules = /^node_modules[/\\]/;
 var debugMode = false;
 var FileResolver = class {
@@ -52341,7 +52341,7 @@ async function resolveFile(filename, relativeTo, fs6 = getFileSystem()) {
   return resolver.resolveFile(filename, relativeTo);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
 init_import_meta_url();
 function createDictionaryReferenceCollection(dictionaries) {
   return new _DictionaryReferenceCollection(dictionaries);
@@ -52388,7 +52388,7 @@ function mapReference(ref) {
   return { name: name2.trim(), weight };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
 function filterDictDefsToLoad(dictRefCol, defs) {
   const allActiveDefs = defs.filter(({ name: name2 }) => dictRefCol.isEnabled(name2)).map(fixPath);
   return [...new Map(allActiveDefs.map((d) => [d.name, d])).values()];
@@ -52505,19 +52505,19 @@ var _DictionaryDefinitionInternalWithSource = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+strong-weak-map@9.2.2/node_modules/@cspell/strong-weak-map/dist/esm/index.js
+// ../node_modules/.pnpm/@cspell+strong-weak-map@9.3.0/node_modules/@cspell/strong-weak-map/dist/esm/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+strong-weak-map@9.2.2/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
+// ../node_modules/.pnpm/@cspell+strong-weak-map@9.3.0/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
 init_import_meta_url();
 var StrongWeakMap = class {
   map;
@@ -52643,7 +52643,7 @@ var StrongWeakMap = class {
   [Symbol.toStringTag] = "StrongWeakMap";
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/simpleCache.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/simpleCache.js
 init_import_meta_url();
 var SimpleCache2 = class {
   size;
@@ -52719,7 +52719,7 @@ var AutoCache = class extends SimpleCache2 {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
 init_import_meta_url();
 var SpellingDictionaryLoadError = class extends Error {
   uri;
@@ -52738,7 +52738,7 @@ function isSpellingDictionaryLoadError(e) {
   return e instanceof SpellingDictionaryLoadError;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
 var MAX_AGE = 1e4;
 var loaders = {
   S: loadSimpleWordList,
@@ -52948,7 +52948,7 @@ function toLines(content) {
   return content.split(/\n|\r\n|\r/);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
 var loader;
 function getDictionaryLoader(vfs) {
   if (loader)
@@ -52962,7 +52962,7 @@ async function refreshCacheEntries(maxAge, now) {
   return getDictionaryLoader().refreshCacheEntries(maxAge, now);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
 function loadDictionaryDefs(defsToLoad) {
   return defsToLoad.map(loadDictionary);
 }
@@ -53009,25 +53009,25 @@ function _getDictionaryInternal(settings, spellDictionaries) {
   return createCollection(dictionaries, "dictionary collection");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionary.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Document/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Document/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/fileTypes.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/fileTypes.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.2.2/node_modules/@cspell/filetypes/dist/index.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.3.0/node_modules/@cspell/filetypes/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.2.2/node_modules/@cspell/filetypes/dist/filetypes.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.3.0/node_modules/@cspell/filetypes/dist/filetypes.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.2.2/node_modules/@cspell/filetypes/dist/definitions.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.3.0/node_modules/@cspell/filetypes/dist/definitions.js
 init_import_meta_url();
 var definitions = [
   { id: "ada", extensions: [".adb", ".ads"] },
@@ -53398,7 +53398,7 @@ var definitions = [
   { id: "wheel", extensions: [".whl"], format: "Binary" }
 ];
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.2.2/node_modules/@cspell/filetypes/dist/filetypes.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.3.0/node_modules/@cspell/filetypes/dist/filetypes.js
 var binaryFormatIds = definitions.filter((d) => d.format === "Binary").map((d) => d.id);
 var binaryLanguages = /* @__PURE__ */ new Set(["binary", "image", "video", "fonts", ...binaryFormatIds]);
 var generatedFiles = /* @__PURE__ */ new Set([
@@ -53512,7 +53512,7 @@ function defToRegExp(def) {
   return { regexp, id: def.id };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/Uri.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/Uri.js
 init_import_meta_url();
 var import_node_assert6 = __toESM(require("node:assert"), 1);
 var STDIN_PROTOCOL = "stdin:";
@@ -53646,13 +53646,13 @@ function documentUriToURL(uri) {
   return toURL(uri instanceof URL ? uri : typeof uri === "string" ? toFileURL(uri) : new URL(uriFrom(uri).toString()));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
 init_import_meta_url();
 function normalizeLanguageIds(languageId) {
   return (Array.isArray(languageId) ? languageId.join(",") : languageId).split(",").map((s) => s.trim());
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
 function isBinaryDoc(document) {
   return isBinaryFile2(toUri(document.uri), document.languageId, document.text);
 }
@@ -53670,11 +53670,11 @@ function isBinaryFile2(filename, languageId, text) {
   return text?.slice(0, 1024).includes("\0") || false;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 init_import_meta_url();
 var import_promises = require("node:fs/promises");
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 init_import_meta_url();
 var import_node_assert7 = __toESM(require("node:assert"), 1);
 
@@ -53903,7 +53903,7 @@ function getWellformedEdit(textEdit) {
   return textEdit;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 var TextDocumentImpl = class {
   languageId;
   locale;
@@ -54001,7 +54001,7 @@ function isTextDocumentImpl(doc) {
   return doc instanceof TextDocumentImpl;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 var defaultEncoding = "utf8";
 function fileToDocument(file, text, languageId, locale) {
   return clean3({
@@ -54036,10 +54036,10 @@ function isDocumentWithText(doc) {
   return doc.text !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-glob@9.2.2/node_modules/cspell-glob/dist/index.js
+// ../node_modules/.pnpm/cspell-glob@9.3.0/node_modules/cspell-glob/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-glob@9.2.2/node_modules/cspell-glob/dist/globHelper.js
+// ../node_modules/.pnpm/cspell-glob@9.3.0/node_modules/cspell-glob/dist/globHelper.js
 init_import_meta_url();
 var Path2 = __toESM(require("node:path"), 1);
 var { posix } = Path2;
@@ -54379,7 +54379,7 @@ function workaroundPicomatchBug(glob2) {
   return glob2.split("/").map((s) => obj[s] ? `{${s},${s}}` : s).join("/");
 }
 
-// ../node_modules/.pnpm/cspell-glob@9.2.2/node_modules/cspell-glob/dist/GlobMatcher.js
+// ../node_modules/.pnpm/cspell-glob@9.3.0/node_modules/cspell-glob/dist/GlobMatcher.js
 init_import_meta_url();
 var Path3 = __toESM(require("node:path"), 1);
 var import_picomatch = __toESM(require_picomatch2(), 1);
@@ -54515,10 +54515,10 @@ function logMatchTest(id, filename, match2) {
   console.warn("%s;%d;%s", filename, id, JSON.stringify(match2.matched));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/FeatureFlags/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/FeatureFlags/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
 init_import_meta_url();
 var systemFeatureFlags;
 var FeatureFlags = class {
@@ -54589,14 +54589,14 @@ function toBool(value) {
   return boolValues[value.toLowerCase()];
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/getDictionary.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/getDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 init_import_meta_url();
 var import_node_assert8 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/constants.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/constants.js
 init_import_meta_url();
 var configSettingsFileVersion0_1 = "0.1";
 var configSettingsFileVersion0_2 = "0.2";
@@ -54604,10 +54604,10 @@ var currentSettingsFileVersion = configSettingsFileVersion0_2;
 var ENV_CSPELL_GLOB_ROOT = "CSPELL_GLOB_ROOT";
 var defaultConfigFileModuleRef = "@cspell/cspell-bundled-dicts/cspell-default.json";
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
 init_import_meta_url();
 var CalcLeftRightResultWeakCache = class {
   map = new AutoResolveWeakCache2();
@@ -54634,7 +54634,7 @@ var CalcLeftRightResultWeakCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
 var cacheMergeListUnique = new CalcLeftRightResultWeakCache();
 var cacheMergeLists = new CalcLeftRightResultWeakCache();
 function mergeListUnique(left, right) {
@@ -54674,10 +54674,10 @@ function stats() {
   };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/patterns.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/patterns.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/textRegex.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/textRegex.js
 init_import_meta_url();
 var regExSplitWords = /(\p{Ll}\p{M}?)(\p{Lu})/gu;
 var regExSplitWords2 = /(\p{Lu}\p{M}?)((\p{Lu}\p{M}?)\p{Ll})/gu;
@@ -54791,7 +54791,7 @@ function removeVerboseFromRegExp(pattern) {
   return result.result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/patterns.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/patterns.js
 var emptyRegExpList = [];
 var emptyPatternDefinitions = [];
 var cache4 = new CalcLeftRightResultWeakCache();
@@ -54827,7 +54827,7 @@ function toRegExp(pattern) {
   return pattern instanceof RegExp ? new RegExp(pattern) : stringToRegExp(pattern, "gim", "g");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
 init_import_meta_url();
 var CwdUrlResolver = class {
   #lastPath;
@@ -54856,7 +54856,7 @@ var CwdUrlResolver = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 var emptyWords2 = [];
 Object.freeze(emptyWords2);
 var cachedMerges = new AutoResolveWeakCache2();
@@ -55111,15 +55111,15 @@ function extractParsers(plugins) {
   return parserCache.get(plugins, mapPlugins);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/getDictionary.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/getDictionary.js
 async function getDictionary(settings) {
   return getDictionaryInternal(toInternalSettings(settings));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/perf/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/perf/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/perf/timer.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/perf/timer.js
 init_import_meta_url();
 function createPerfTimer2(name2, onEnd, timeNowFn) {
   return new SimpleTimer(name2, onEnd, timeNowFn);
@@ -55156,16 +55156,16 @@ var SimpleTimer = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
 init_import_meta_url();
 var simpleGlobCache = /* @__PURE__ */ new Map();
 var globCache = /* @__PURE__ */ new WeakMap();
@@ -55196,13 +55196,13 @@ function getGlobMatcherGlobGlob(glob2) {
   return m;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
 function checkFilenameMatchesExcludeGlob(filename, globs) {
   const m = getGlobMatcherForExcluding(globs);
   return m.match(filename);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
 function calcOverrideSettings(settings, filename) {
   const _settings = toInternalSettings(settings);
   const overrides = _settings.overrides || [];
@@ -55210,26 +55210,26 @@ function calcOverrideSettings(settings, filename) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
 init_import_meta_url();
 var import_node_assert10 = __toESM(require("node:assert"), 1);
 var import_node_path9 = __toESM(require("node:path"), 1);
 var import_node_url12 = require("node:url");
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/createReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/createReaderWriter.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 init_import_meta_url();
 var import_posix = require("node:path/posix");
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
 init_import_meta_url();
 var CSpellConfigFile = class {
   url;
@@ -55300,10 +55300,10 @@ function satisfiesCSpellConfigFile(obj) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
 init_import_meta_url();
 var CSpellConfigFileInMemory = class _CSpellConfigFileInMemory extends ImplCSpellConfigFile {
   url;
@@ -55325,7 +55325,7 @@ var CSpellConfigFileInMemory = class _CSpellConfigFileInMemory extends ImplCSpel
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
 init_import_meta_url();
 var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
   url;
@@ -55343,11 +55343,11 @@ var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 init_import_meta_url();
 var import_comment_json = __toESM(require_src2(), 1);
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/serializers/util.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/serializers/util.js
 init_import_meta_url();
 function detectIndent(content) {
   const m = content.match(/^[ \t]+/m);
@@ -55358,7 +55358,7 @@ function detectIndentAsNum(content) {
   return indent.length;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/Errors.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/Errors.js
 init_import_meta_url();
 var ParseError = class extends Error {
   url;
@@ -55368,7 +55368,7 @@ var ParseError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 var CSpellConfigFileJson = class _CSpellConfigFileJson extends ImplCSpellConfigFile {
   url;
   indent = 2;
@@ -55439,7 +55439,7 @@ function isCSpellSettings(cfg) {
   return !(!cfg || typeof cfg !== "object" || Array.isArray(cfg));
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
 init_import_meta_url();
 var CSpellConfigFilePackageJson = class extends ImplCSpellConfigFile {
   url;
@@ -55474,7 +55474,7 @@ function parseCSpellConfigFilePackageJson(file) {
   return new CSpellConfigFilePackageJson(url2, cspell, serialize);
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
 init_import_meta_url();
 
 // ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/index.js
@@ -56336,7 +56336,7 @@ function stringify2(obj, { maxDepth = 1e3, numbersAsFloat = false } = {}) {
   return stringifyTable(obj, "", maxDepth, numbersAsFloat);
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
 var CSpellConfigFileToml = class _CSpellConfigFileToml extends ImplCSpellConfigFile {
   url;
   constructor(url2, settings) {
@@ -56382,12 +56382,12 @@ function isCSpellSettings2(cfg) {
   return !(!cfg || typeof cfg !== "object" || Array.isArray(cfg));
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
 init_import_meta_url();
 var import_node_assert9 = __toESM(require("node:assert"), 1);
 var import_yaml = __toESM(require_dist(), 1);
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/UpdateConfig/CfgTree.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/UpdateConfig/CfgTree.js
 init_import_meta_url();
 var nodeValueSymbol = Symbol.for("cspell.config.nodeValue");
 function isNodeValue(value) {
@@ -56398,7 +56398,7 @@ function isNodeValue(value) {
   return "value" in value && "comment" in value && "commentBefore" in value && Object.keys(value).length === 3;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
 var CSpellConfigFileYaml = class _CSpellConfigFileYaml extends MutableCSpellConfigFile {
   url;
   yamlDoc;
@@ -56937,10 +56937,10 @@ function removeSchemaComment(node) {
   node.commentBefore = node.commentBefore?.replaceAll(/^ yaml-language-server: \$schema=.*\n?/gm, "") ?? null;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/middlewareHelper.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/middlewareHelper.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/defaultNext.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/defaultNext.js
 init_import_meta_url();
 var defaultNextDeserializer = (content) => {
   throw new Error(`Unable to parse config file: "${content.url}"`);
@@ -56949,7 +56949,7 @@ var defaultNextSerializer = (file) => {
   throw new Error(`Unable to serialize config file: "${file.url}"`);
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/middlewareHelper.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/middlewareHelper.js
 function getDeserializer(middleware) {
   let next = defaultNextDeserializer;
   for (const des of middleware) {
@@ -56987,13 +56987,13 @@ function getLoader(loaders2) {
   return next;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/util/toURL.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/util/toURL.js
 init_import_meta_url();
 function toURL2(url2) {
   return typeof url2 === "string" ? new URL(url2) : url2;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 var CSpellConfigFileReaderWriterImpl = class {
   io;
   middleware;
@@ -57081,7 +57081,7 @@ var UntrustedUrlError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/defaultIO.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/defaultIO.js
 init_import_meta_url();
 var import_node_fs6 = require("node:fs");
 var defaultIO = {
@@ -57097,10 +57097,10 @@ async function writeFile2(file) {
   return { url: file.url };
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/loaders/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/loaders/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
 init_import_meta_url();
 var import_posix2 = require("node:path/posix");
 var _debug2 = false;
@@ -57110,8 +57110,10 @@ async function importJavaScript(url2, hashSuffix) {
     const _url = new URL(url2.href);
     _url.hash = `${_url.hash};loaderSuffix=${hashSuffix}`;
     _log("importJavaScript: %o", { url: _url.href });
-    const result = await import(_url.href);
-    const settingsOrFunction = await (result.default ?? result);
+    let result = await import(_url.href);
+    result = result.default ?? result;
+    result = result.default ?? result;
+    const settingsOrFunction = await result;
     const settings = typeof settingsOrFunction === "function" ? await settingsOrFunction() : settingsOrFunction;
     return new CSpellConfigFileJavaScript(url2, settings);
   } catch (e) {
@@ -57129,7 +57131,10 @@ var LoaderJavaScript = class {
     switch (ext) {
       case ".js":
       case ".cjs":
-      case ".mjs": {
+      case ".mjs":
+      case ".ts":
+      case ".cts":
+      case ".mts": {
         return importJavaScript(url2, this.hashSuffix);
       }
     }
@@ -57142,13 +57147,13 @@ var LoaderJavaScript = class {
 };
 var loaderJavaScript = new LoaderJavaScript();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/loaders/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/loaders/index.js
 var defaultLoaders = [loaderJavaScript];
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/serializers/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/serializers/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
 init_import_meta_url();
 function deserializer(params, next) {
   if (!isJsonFile(params.url.pathname))
@@ -57166,7 +57171,7 @@ function serializer(settings, next) {
 }
 var serializerCSpellJson = { deserialize: deserializer, serialize: serializer };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/serializers/cspellToml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/serializers/cspellToml.js
 init_import_meta_url();
 function deserializer2(params, next) {
   if (!isTomlFile(params.url.pathname))
@@ -57184,7 +57189,7 @@ function serializer2(settings, next) {
 }
 var serializerCSpellToml = { deserialize: deserializer2, serialize: serializer2 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
 init_import_meta_url();
 function deserializer3(params, next) {
   if (!isYamlFile(params.url.pathname))
@@ -57202,7 +57207,7 @@ function serializer3(settings, next) {
 }
 var serializerCSpellYaml = { deserialize: deserializer3, serialize: serializer3 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/serializers/packageJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/serializers/packageJson.js
 init_import_meta_url();
 var isSupportedFormat = /\bpackage\.json$/i;
 function deserializer4(params, next) {
@@ -57217,7 +57222,7 @@ function serializer4(settings, next) {
 }
 var serializerPackageJson = { deserialize: deserializer4, serialize: serializer4 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/serializers/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/serializers/index.js
 var defaultDeserializers = [
   serializerCSpellJson,
   serializerCSpellYaml,
@@ -57225,12 +57230,12 @@ var defaultDeserializers = [
   serializerCSpellToml
 ];
 
-// ../node_modules/.pnpm/cspell-config-lib@9.2.2/node_modules/cspell-config-lib/dist/createReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.3.0/node_modules/cspell-config-lib/dist/createReaderWriter.js
 function createReaderWriter(deserializers = [], loaders2 = [], io = defaultIO) {
   return new CSpellConfigFileReaderWriterImpl(io, [...defaultDeserializers, ...deserializers], [...defaultLoaders, ...loaders2]);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/logger.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/logger.js
 init_import_meta_url();
 var _logger = console;
 function logError(...args) {
@@ -57245,10 +57250,10 @@ function setLogger(logger) {
   return oldLogger;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 init_import_meta_url();
 var import_promises2 = __toESM(require("node:fs/promises"), 1);
 var import_node_path7 = __toESM(require("node:path"), 1);
@@ -57330,7 +57335,7 @@ if (xdgConfig) {
   xdgConfigDirectories.unshift(xdgConfig);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 var packageName = "cspell";
 var legacyLocationDir = xdgConfig ? import_node_path7.default.join(xdgConfig, "configstore") : void 0;
 var cspellGlobalLocationDir = envPaths(packageName, { suffix: "" }).config;
@@ -57385,15 +57390,15 @@ var GlobalConfigStore = class {
   static defaultLocation = import_node_path7.default.join(cspellGlobalLocationDir, defaultConfigFileName);
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 init_import_meta_url();
 var import_node_os5 = require("node:os");
 var import_node_url9 = require("node:url");
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
 init_import_meta_url();
 function toGlobDef(g, root, source) {
   if (g === void 0)
@@ -57414,7 +57419,7 @@ function toGlobDef(g, root, source) {
   return g;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 function normalizeRawConfig(config) {
   if (typeof config.version === "number") {
     config.version = config.version.toString();
@@ -57529,7 +57534,7 @@ function normalizeImport(imports) {
   return [];
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
 function configToRawSettings(cfgFile) {
   if (!cfgFile)
     return {};
@@ -57560,7 +57565,7 @@ function urlToSimpleId(url2) {
   return url2.pathname.split("/").slice(-2).join("/");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
 var globalConfig = new GlobalConfigStore();
 async function getGlobalConfig() {
   const name2 = "CSpell Configstore";
@@ -57597,7 +57602,7 @@ function getGlobalConfigPath() {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
 init_import_meta_url();
 var ImportError = class extends Error {
   cause;
@@ -57612,13 +57617,13 @@ var UnsupportedPnpFile = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 init_import_meta_url();
 var import_node_url11 = require("node:url");
 var import_clear_module = __toESM(require_clear_module(), 1);
 var import_import_fresh = __toESM(require_import_fresh(), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/findUp.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/findUp.js
 init_import_meta_url();
 var import_promises3 = require("node:fs/promises");
 var import_node_path8 = __toESM(require("node:path"), 1);
@@ -57661,7 +57666,7 @@ function toDirPath(urlOrPath) {
   return urlOrPath instanceof URL ? (0, import_node_url10.fileURLToPath)(new URL(".", urlOrPath)) : urlOrPath;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 var defaultPnpFiles = [".pnp.cjs", ".pnp.js"];
 var supportedSchemas = /* @__PURE__ */ new Set(["file:"]);
 var cachedRequests = /* @__PURE__ */ new Map();
@@ -57760,9 +57765,9 @@ function isSupported(url2) {
   return supportedSchemas.has(url2.protocol);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
 init_import_meta_url();
-var supportedExtensions = [".json", ".jsonc", ".yaml", ".yml", ".mjs", ".cjs", ".js", ".toml"];
+var supportedExtensions = [".json", ".jsonc", ".yaml", ".yml", ".mjs", ".cjs", ".js", ".toml", ".mts", ".ts"];
 var setOfLocations = /* @__PURE__ */ new Set([
   "package.json",
   // Original locations
@@ -57811,18 +57816,18 @@ function genCfgLoc(filename, extensions) {
   return extensions.map((ext) => filename + ext);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 init_import_meta_url();
 var import_posix3 = require("node:path/posix");
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
 init_import_meta_url();
 async function findUpFromUrl2(name2, from, options = {}) {
   const fs6 = options.fs ?? getVirtualFS().fs;
   return fs6.findUp(name2, from, options);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 var ConfigSearch = class {
   /**
    * Cache of search results.
@@ -57983,7 +57988,7 @@ async function checkPackageJson(fs6, filename) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
 init_import_meta_url();
 var defaultSettings = createCSpellSettingsInternal({
   id: "default",
@@ -57991,7 +57996,7 @@ var defaultSettings = createCSpellSettingsInternal({
   version: currentSettingsFileVersion
 });
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
 init_import_meta_url();
 var defaultPnPSettings = Object.freeze({});
 var lastPnP = defaultPnPSettings;
@@ -58007,7 +58012,7 @@ function equal(a, b) {
   return a === b || a.usePnP === b.usePnP && (a.pnpFiles === b.pnpFiles || a.pnpFiles?.join("|") === b.pnpFiles?.join("|"));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
 var supportedCSpellConfigVersions = [configSettingsFileVersion0_2];
 var setOfSupportedConfigVersions = Object.freeze(new Set(supportedCSpellConfigVersions));
 var defaultConfigLoader = void 0;
@@ -58475,7 +58480,7 @@ function relativeToCwd(file) {
   return [prefix || ".", ...urlPath.slice(i)].join("/");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
 init_import_meta_url();
 var gcl = getDefaultConfigLoaderInternal;
 function searchForConfig(searchFrom, options) {
@@ -58504,7 +58509,7 @@ function getDefaultConfigLoader() {
   return getDefaultConfigLoaderInternal();
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
 init_import_meta_url();
 function extractImportErrors(settings) {
   const imports = mergeImportRefs2(settings);
@@ -58528,7 +58533,7 @@ function isImportFileRefWithError(ref) {
   return !!ref.error;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
 init_import_meta_url();
 async function readSettings(filename, relativeToOrPnP, pnpSettings) {
   const loader2 = getDefaultConfigLoader();
@@ -58537,19 +58542,19 @@ async function readSettings(filename, relativeToOrPnP, pnpSettings) {
   return loader2.readSettingsAsync(filename, relativeTo, pnp);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/grammar.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/grammar.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
 init_import_meta_url();
 function isPatternInclude(p) {
   return !!p.include;
@@ -58572,7 +58577,7 @@ function isPatternPatterns(p) {
   return Array.isArray(p.patterns);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/matchResult.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/matchResult.js
 init_import_meta_url();
 function segmentMatch(mr) {
   const { matches, index, groups, input } = mr;
@@ -58610,7 +58615,7 @@ function createSimpleMatchResult(match2, input, index, lineNumber) {
   return { index, input, match: match2, matches: [match2], groups, lineNumber };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/scope.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/scope.js
 init_import_meta_url();
 var import_node_assert11 = __toESM(require("node:assert"), 1);
 var Scope = class _Scope {
@@ -58678,7 +58683,7 @@ function isScopeLike(value) {
   return typeof value === "object" && !Array.isArray(value) && value.value !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
 function normalizeGrammar(grammar2) {
   return new ImplNGrammar(grammar2);
 }
@@ -58948,25 +58953,25 @@ var ImplNPatternPatterns = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/grammar.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/grammar.js
 function compileGrammar(grammar2) {
   return normalizeGrammar(grammar2);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 init_import_meta_url();
 var import_node_assert12 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/util.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/util.js
 init_import_meta_url();
 function isDefined4(t) {
   return t !== void 0 && t !== null;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
 function applyCaptureToBeginOrMatch(matchRuleResult) {
   const { match: match2, rule } = matchRuleResult;
   const bePattern = rule.pattern;
@@ -59092,7 +59097,7 @@ function applyCaptures(rule, match2, captures) {
   return parsedText;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 function tokenizeLine(line, rule) {
   const text = line.text;
   const lineLen = line.text.length;
@@ -59204,16 +59209,16 @@ function findNearestWithEnd(ctx) {
   return ctx;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parsers/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parsers/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parsers/typescript/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parsers/typescript/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/grammars/typescript.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/grammars/typescript.js
 init_import_meta_url();
 var repository = {
   statements: {
@@ -59377,7 +59382,7 @@ var grammar = {
   repository
 };
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
 init_import_meta_url();
 var import_node_assert13 = __toESM(require("node:assert"), 1);
 function appendMappedText(a, b) {
@@ -59416,7 +59421,7 @@ function joinMaps(aMap, bMap) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/mappers/typescript.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/mappers/typescript.js
 init_import_meta_url();
 var hexChars = {
   "0": 0,
@@ -59558,7 +59563,7 @@ function mapRawString(text) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parser/parser.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parser/parser.js
 init_import_meta_url();
 function mapTokenizedLine(tl) {
   return tl.tokens.map((t) => ({
@@ -59578,7 +59583,7 @@ function createParser(grammar2, name2, transform2 = mapTokenizedLines) {
   return { name: name2, parse: parse4 };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
 var tsGrammar = compileGrammar(grammar);
 var pool = new ScopePool();
 var useScope = /* @__PURE__ */ new WeakMap();
@@ -59660,10 +59665,10 @@ function doesScopeMatch(s, match2) {
   return typeof s === "string" ? s.startsWith(match2) : s.value.startsWith(match2);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.2.2/node_modules/cspell-grammar/dist/parsers/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.3.0/node_modules/cspell-grammar/dist/parsers/index.js
 var parsers2 = [parser];
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
 init_import_meta_url();
 var PatternRegExp = class extends RegExp {
   constructor(pattern) {
@@ -59674,7 +59679,7 @@ var PatternRegExp = class extends RegExp {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
 init_import_meta_url();
 var defaultLocale = "en";
 var defaultLanguageSettings = [];
@@ -59775,7 +59780,7 @@ function calcSettingsForLanguageId(baseSettings, languageId) {
   return langSettings;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
 init_import_meta_url();
 var regExMatchUrls = /(?:https?|ftp):\/\/[^\s"]+/gi;
 var regExHRef = /\bhref\s*=\s*".*?"/gi;
@@ -59805,7 +59810,7 @@ var regExRepeatedChar = /^(\w)\1{3,}$/i;
 var regExSha = /\bsha\d+-[a-z0-9+/]{25,}={0,3}/gi;
 var regExHashStrings = /(?:\b(?:sha\d+|md5|base64|crypt|bcrypt|scrypt|security-token|assertion)[-,:$=]|#code[/])[-\w/+%.]{25,}={0,3}(?:(['"])\s*\+?\s*\1?[-\w/+%.]+={0,3})*(?![-\w/+=%.])/gi;
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
 var defaultConfigFile = () => resolveConfigModule(defaultConfigFileModuleRef);
 var regExpSpellCheckerDisable = [
   new PatternRegExp(regExSpellingGuardBlock),
@@ -59937,16 +59942,16 @@ function getDefaultSettings(useDefaultDictionaries = true) {
   return defaultSettingsLoader.getDefaultSettingsAsync(useDefaultDictionaries);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/text.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/text.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/search.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/search.js
 init_import_meta_url();
 function binarySearch(arr, item, leftOffset, rightOffset) {
   let left = Math.max(leftOffset ?? 0, 0);
@@ -59962,7 +59967,7 @@ function binarySearch(arr, item, leftOffset, rightOffset) {
   return left;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/text.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/text.js
 function splitCamelCaseWordWithOffset(wo) {
   return splitCamelCaseWord(wo.text).map(scanMap((last, text) => ({ text, offset: last.offset + last.text.length }), {
     text: "",
@@ -60127,7 +60132,7 @@ function removeAccents2(text) {
   return text.normalize("NFD").replace(regExAccents2, "");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
 var regExMatchRegEx = /\/.*\/[gimuy]*/;
 var regExCSpellInDocDirective = /\b(?:spell-?checker|c?spell)::?(.*)/gi;
 var regExCSpellDirectiveKey = /(?<=\b(?:spell-?checker|c?spell)::?)(?!:)(.*)/i;
@@ -60382,7 +60387,7 @@ function parseDisable(acc, _match) {
   return acc;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
 function combineTextAndLanguageSettings(settings, text, languageId) {
   if (!text) {
     return toInternalSettings(calcSettingsForLanguageId(settings, languageId));
@@ -60397,10 +60402,10 @@ function extractSettingsFromText(text) {
   return getInDocumentSettings(text);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/spellCheckFile.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/spellCheckFile.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
 init_import_meta_url();
 var path12 = __toESM(require("node:path"), 1);
 async function determineTextDocumentSettings(doc, settings) {
@@ -60418,14 +60423,14 @@ function getLanguageForFilename(filename) {
   return findMatchingFileTypes(basename6);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/index.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 init_import_meta_url();
 var import_node_assert17 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/@cspell+cspell-types@9.2.2/node_modules/@cspell/cspell-types/dist/index.mjs
+// ../node_modules/.pnpm/@cspell+cspell-types@9.3.0/node_modules/@cspell/cspell-types/dist/index.mjs
 init_import_meta_url();
 var IssueType = /* @__PURE__ */ (function(IssueType$1) {
   IssueType$1[IssueType$1["spelling"] = 0] = "spelling";
@@ -60448,11 +60453,11 @@ var defaultCSpellSettings = {
   minRandomLength: 40
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/suggestions.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/suggestions.js
 init_import_meta_url();
 var import_node_assert14 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/memorizeLastCall.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/memorizeLastCall.js
 init_import_meta_url();
 function memorizeLastCall2(fn) {
   let last;
@@ -60467,7 +60472,7 @@ function memorizeLastCall2(fn) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/suggestions.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/suggestions.js
 var emptySuggestionOptions = Object.freeze({});
 var emptyCSpellSettings = Object.freeze({});
 var memorizeSuggestions = memorizeLastCall2(cacheSuggestionsForWord);
@@ -60630,20 +60635,20 @@ var SuggestionError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/defaultConstants.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/defaultConstants.js
 init_import_meta_url();
 var defaultMaxNumberOfProblems = 200;
 var defaultMaxDuplicateProblems = 5;
 var defaultMinWordLength = 4;
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 init_import_meta_url();
 var import_node_assert16 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
 init_import_meta_url();
 var PairingHeap2 = class {
   compare;
@@ -60728,13 +60733,13 @@ function mergeSiblings2(compare3, n) {
   return ss ? merge3(compare3, m, mergeSiblings2(compare3, ss)) : m;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/regexHelper.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/regexHelper.js
 init_import_meta_url();
 function escapeRegEx3(s) {
   return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
 var ignoreBreak = Object.freeze([]);
 function split(line, offset, isValidWord, options = {}) {
   const relWordToSplit = findNextWordText({ text: line.text, offset: offset - line.offset });
@@ -61042,7 +61047,7 @@ function mergeSortedBreaks(...maps) {
   return maps.flat().sort((a, b) => a.offset - b.offset);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
 init_import_meta_url();
 var maxRadio = 0.5;
 function isRandomString(s, maxNoiseToLengthRatio = maxRadio) {
@@ -61069,7 +61074,7 @@ function extractHexSequences(s, minLength = MIN_HEX_SEQUENCE_LENGTH) {
   return [...s.matchAll(hexSequence)].filter((m) => m[0].length >= minLength && (m.index === 0 || !isLetterAt(s, m.index - 1)) && !isLetterAt(s, m.index + m[0].length)).map((m) => ({ text: m[0], offset: m.index }));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
 init_import_meta_url();
 function hasWordCheck(dict, word) {
   word = word.includes("\\") ? word.replaceAll("\\", "") : word;
@@ -61081,10 +61086,10 @@ function isWordValidWithEscapeRetry(dict, wo, line) {
   line.text[wo.offset - line.offset - 1] === "\\" && hasWordCheck(dict, wo.text.slice(1));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/TextMap.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/TextMap.js
 init_import_meta_url();
 var import_node_assert15 = __toESM(require("node:assert"), 1);
 function extractTextMapRangeOrigin(textMap, extractRange) {
@@ -61128,7 +61133,7 @@ function extractTextMapRangeOrigin(textMap, extractRange) {
   return { text, range, map: map3 };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
 function mapRangeBackToOriginalPos(offRange, map3) {
   if (!map3 || !map3.length)
     return offRange;
@@ -61187,7 +61192,7 @@ function createMappedTextSegmenter(includeRanges) {
   return segmenter;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 var MIN_HEX_SEQUENCE_LENGTH2 = 8;
 function lineValidatorFactory(sDict, options) {
   const { minWordLength = defaultMinWordLength, flagWords = [], allowCompoundWords = false, ignoreCase: ignoreCase2 = true, ignoreRandomStrings = defaultCSpellSettings.ignoreRandomStrings, minRandomLength = defaultCSpellSettings.minRandomLength, unknownWords = unknownWordsChoices.ReportAll } = options;
@@ -61537,7 +61542,7 @@ function filterExcludedTextOffsets(issues, excluded) {
   return keep;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
 init_import_meta_url();
 function settingsToValidateOptions(settings) {
   const opt = {
@@ -61550,10 +61555,10 @@ function settingsToValidateOptions(settings) {
   return opt;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/TextRange.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/TextRange.js
 init_import_meta_url();
 function toMatchRangeWithText(m) {
   const index = m.index || 0;
@@ -61667,7 +61672,7 @@ function flatten(data) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
 function calcTextInclusionRanges(text, options) {
   const { ignoreRegExpList = [], includeRegExpList = [] } = options;
   const filteredIncludeList = includeRegExpList.filter((a) => !!a);
@@ -61676,7 +61681,7 @@ function calcTextInclusionRanges(text, options) {
   return includeRanges;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
 init_import_meta_url();
 function traceWord(word, dictCollection, config) {
   const opts = {
@@ -61763,7 +61768,7 @@ var CTraceResult = class extends Array {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 var ERROR_NOT_PREPARED = "Validator Must be prepared before calling this function.";
 var DocumentValidator = class _DocumentValidator {
   settings;
@@ -62149,7 +62154,7 @@ function timePromise(timings, name2, p) {
   return p.finally(recordPerfTime(timings, name2));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/spellCheckFile.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/spellCheckFile.js
 async function spellCheckDocument(document, options, settingsOrConfigFile) {
   const settingsUsed = satisfiesCSpellConfigFile(settingsOrConfigFile) ? settingsOrConfigFile.settings : settingsOrConfigFile;
   if (isBinaryDoc(document)) {
@@ -62235,7 +62240,7 @@ async function spellCheckFullDocument(document, options, settingsOrConfigFile) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.2.2/node_modules/cspell-lib/dist/lib/util/textApi.js
+// ../node_modules/.pnpm/cspell-lib@9.3.0/node_modules/cspell-lib/dist/lib/util/textApi.js
 var textApi_exports = {};
 __export(textApi_exports, {
   calculateTextDocumentOffsets: () => calculateTextDocumentOffsets,
@@ -62268,7 +62273,7 @@ __export(textApi_exports, {
 });
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell@9.2.2/node_modules/cspell/dist/esm/application-2V_0BiNj.js
+// ../node_modules/.pnpm/cspell@9.3.0/node_modules/cspell/dist/esm/application-NSTNjcwy.js
 var import_node_assert18 = __toESM(require("node:assert"), 1);
 var import_node_util5 = require("node:util");
 
@@ -62421,17 +62426,17 @@ var chalk_template_default = makeChalkTemplate(template);
 var templateStderr = makeTemplate(chalkStderr);
 var chalkTemplateStderr = makeChalkTemplate(templateStderr);
 
-// ../node_modules/.pnpm/cspell@9.2.2/node_modules/cspell/dist/esm/application-2V_0BiNj.js
+// ../node_modules/.pnpm/cspell@9.3.0/node_modules/cspell/dist/esm/application-NSTNjcwy.js
 var import_promises4 = __toESM(require("node:fs/promises"), 1);
 var import_node_fs7 = require("node:fs");
 var import_node_url13 = require("node:url");
 var path$1 = __toESM(require("node:path"), 1);
 var import_node_path10 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell-gitignore@9.2.2/node_modules/cspell-gitignore/dist/index.js
+// ../node_modules/.pnpm/cspell-gitignore@9.3.0/node_modules/cspell-gitignore/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-gitignore@9.2.2/node_modules/cspell-gitignore/dist/findRepoRoot.js
+// ../node_modules/.pnpm/cspell-gitignore@9.3.0/node_modules/cspell-gitignore/dist/findRepoRoot.js
 init_import_meta_url();
 async function findRepoRoot(directory, vfs) {
   directory = toFileDirURL(directory);
@@ -62444,13 +62449,13 @@ async function findRepoRoot(directory, vfs) {
   return toFilePathOrHref(new URL(".", found));
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.2.2/node_modules/cspell-gitignore/dist/GitIgnore.js
+// ../node_modules/.pnpm/cspell-gitignore@9.3.0/node_modules/cspell-gitignore/dist/GitIgnore.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-gitignore@9.2.2/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
+// ../node_modules/.pnpm/cspell-gitignore@9.3.0/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-gitignore@9.2.2/node_modules/cspell-gitignore/dist/utils.js
+// ../node_modules/.pnpm/cspell-gitignore@9.3.0/node_modules/cspell-gitignore/dist/utils.js
 init_import_meta_url();
 function isDefined5(v) {
   return v !== void 0 && v !== null;
@@ -62468,7 +62473,7 @@ function makeRelativeTo(child, parent) {
   return rel;
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.2.2/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
+// ../node_modules/.pnpm/cspell-gitignore@9.3.0/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
 var GitIgnoreFile = class _GitIgnoreFile {
   matcher;
   gitignore;
@@ -62583,7 +62588,7 @@ function globToString(glob2, relativeToDir) {
   return (base ? base + "/" : "") + glob2.glob;
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.2.2/node_modules/cspell-gitignore/dist/GitIgnore.js
+// ../node_modules/.pnpm/cspell-gitignore@9.3.0/node_modules/cspell-gitignore/dist/GitIgnore.js
 var GitIgnore = class {
   resolvedGitIgnoreHierarchies = /* @__PURE__ */ new Map();
   knownGitIgnoreHierarchies = /* @__PURE__ */ new Map();
@@ -62713,7 +62718,7 @@ async function asyncIterableToArray(iter) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell@9.2.2/node_modules/cspell/dist/esm/application-2V_0BiNj.js
+// ../node_modules/.pnpm/cspell@9.3.0/node_modules/cspell/dist/esm/application-NSTNjcwy.js
 var import_node_crypto = __toESM(require("node:crypto"), 1);
 var import_consumers = __toESM(require("node:stream/consumers"), 1);
 
@@ -63500,7 +63505,7 @@ async function glob(patternsOrOptions, options) {
   return formatPaths(await crawler.withPromise(), relative6);
 }
 
-// ../node_modules/.pnpm/cspell@9.2.2/node_modules/cspell/dist/esm/application-2V_0BiNj.js
+// ../node_modules/.pnpm/cspell@9.3.0/node_modules/cspell/dist/esm/application-NSTNjcwy.js
 var readline = __toESM(require("node:readline"), 1);
 
 // ../node_modules/.pnpm/flatted@3.3.3/node_modules/flatted/esm/index.js
@@ -63576,7 +63581,7 @@ var stringify4 = (value, replacer, space) => {
   }
 };
 
-// ../node_modules/.pnpm/cspell@9.2.2/node_modules/cspell/dist/esm/application-2V_0BiNj.js
+// ../node_modules/.pnpm/cspell@9.3.0/node_modules/cspell/dist/esm/application-NSTNjcwy.js
 var ImplChannel = class {
   constructor(stream) {
     this.stream = stream;
@@ -64007,7 +64012,7 @@ try {
 }
 var pkgDir = _dirname;
 var name = "cspell";
-var version$1 = "9.2.2";
+var version$1 = "9.3.0";
 var engines = { node: ">=20" };
 var npmPackage = {
   name,
