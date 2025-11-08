@@ -40,7 +40,7 @@
   "homepage": "https://github.com/streetsidesoftware/cspell-action#readme",
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@tsconfig/node20": "^20.1.6",
+    "@tsconfig/node24": "^24.0.1",
     "@vitest/coverage-istanbul": "^4.0.8",
     "env-cmd": "^11.0.0",
     "eslint": "^9.39.1",
@@ -58,6 +58,6 @@
     ]
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }
