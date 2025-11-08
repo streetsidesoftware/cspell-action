@@ -99,7 +99,7 @@ outputs:
       The JSON encoded results.
 
 runs:
-  using: 'node20'
+  using: 'node24'
   main: './action/lib/main_root.cjs'
 branding:
   icon: 'code'
