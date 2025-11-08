@@ -48,6 +48,8 @@ jobs:
           fetch-depth: 0
 
       - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+        with:
+          node-version: 24.x
       - run: pnpm i
 
       - env:

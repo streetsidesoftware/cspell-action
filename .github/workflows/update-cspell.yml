@@ -32,6 +32,8 @@ jobs:
           ref: ${{ env.REF_BRANCH }}
 
       - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+        with:
+          node-version: 24.x
 
       - name: Install
         run: pnpm i
