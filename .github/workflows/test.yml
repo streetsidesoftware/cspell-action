@@ -14,6 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+        with:
+          node-version: 24.x
 
       - run: pnpm i
       - run: git --no-pager diff --compact-summary --exit-code
@@ -23,6 +25,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
+        with:
+          node-version: 24.x
 
       - run: pnpm i
 
