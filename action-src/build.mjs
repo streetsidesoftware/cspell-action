@@ -24,6 +24,7 @@ async function buildLib() {
             'import.meta.url': 'import_meta_url',
         },
         outfile: path.join(targetPackageDir, 'lib/main_root.cjs'),
+        target: 'node24',
     });
 }
 
