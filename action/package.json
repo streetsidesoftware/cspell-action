@@ -5,7 +5,7 @@
   "packageManager": "npm@10.1.0",
   "type": "module",
   "main": "./lib/main_root.cjs",
-  "bundledDependencies": [
+  "bundleDependencies": [
     "@cspell/cspell-bundled-dicts"
   ],
   "dependencies": {
