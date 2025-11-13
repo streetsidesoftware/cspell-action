@@ -17,7 +17,7 @@
   "bin": {
     "build": "./build.mjs"
   },
-  "bundledDependencies": [
+  "bundleDependencies": [
     "@cspell/cspell-bundled-dicts"
   ],
   "devDependencies": {
