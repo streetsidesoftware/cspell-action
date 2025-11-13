@@ -46874,7 +46874,7 @@ function isDefined(v) {
 init_import_meta_url();
 var import_node_url = require("node:url");
 
-// ../node_modules/.pnpm/fast-equals@5.3.2/node_modules/fast-equals/dist/esm/index.mjs
+// ../node_modules/.pnpm/fast-equals@5.3.3/node_modules/fast-equals/dist/esm/index.mjs
 init_import_meta_url();
 var getOwnPropertyNames = Object.getOwnPropertyNames;
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
@@ -46909,9 +46909,12 @@ function getShortTag(value) {
 function getStrictProperties(object2) {
   return getOwnPropertyNames(object2).concat(getOwnPropertySymbols(object2));
 }
-var hasOwn = Object.hasOwn || (function(object2, property) {
-  return hasOwnProperty.call(object2, property);
-});
+var hasOwn = (
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  Object.hasOwn || (function(object2, property) {
+    return hasOwnProperty.call(object2, property);
+  })
+);
 function sameValueZeroEqual(a, b) {
   return a === b || !a && !b && a !== a && b !== b;
 }
@@ -47094,7 +47097,7 @@ var SET_TAG = "[object Set]";
 var STRING_TAG = "[object String]";
 var URL_TAG = "[object URL]";
 var isArray = Array.isArray;
-var isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView ? ArrayBuffer.isView : null;
+var isTypedArray = typeof ArrayBuffer !== "undefined" && typeof ArrayBuffer.isView === "function" ? ArrayBuffer.isView : null;
 var assign2 = Object.assign;
 var getTag = Object.prototype.toString.call.bind(Object.prototype.toString);
 function createEqualityComparator(_a) {
