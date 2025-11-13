@@ -40416,8 +40416,8 @@ var visualLetterGroups = [
   forms("Z\u1E93\u017E\u017D\u017C\u017B\u017Az")
 ];
 function forms(letters) {
-  const n = letters.normalize("NFC").replaceAll(new RegExp("\\p{M}", "gu"), "");
-  const na = n.normalize("NFD").replaceAll(new RegExp("\\p{M}", "gu"), "");
+  const n = letters.normalize("NFC").replaceAll(/\p{M}/gu, "");
+  const na = n.normalize("NFD").replaceAll(/\p{M}/gu, "");
   return [...new Set(n + n.toLowerCase() + n.toUpperCase() + na + na.toLowerCase() + na.toUpperCase())].join("");
 }
 var visualLetterMaskMap = calcVisualLetterMasks(visualLetterGroups);
@@ -41381,7 +41381,7 @@ function accentForms(letter) {
   ]);
 }
 function stripAccents(characters) {
-  return characters.normalize("NFD").replaceAll(new RegExp("\\p{M}", "gu"), "");
+  return characters.normalize("NFD").replaceAll(/\p{M}/gu, "");
 }
 function stripNonAccents(characters) {
   return characters.normalize("NFD").replaceAll(/[^\p{M}]/gu, "");
@@ -46537,7 +46537,7 @@ var defaultDefs = [{
 var defaultAdjustments = [
   {
     id: "compound-case-change",
-    regexp: new RegExp("\\p{Ll}\u2219\\p{Lu}", "gu"),
+    regexp: /\p{Ll}∙\p{Lu}/gu,
     penalty: 1e3
   },
   {
@@ -46565,7 +46565,7 @@ var maxCostScale = opCosts.wordLengthCostFactor;
 var normalizeWord = (text) => text.normalize();
 var normalizeWordForCaseInsensitive = (text) => {
   const t = text.toLowerCase();
-  return [t, t.normalize("NFD").replaceAll(new RegExp("\\p{M}", "gu"), "")];
+  return [t, t.normalize("NFD").replaceAll(/\p{M}/gu, "")];
 };
 var _defaultOptions = {
   commentCharacter: LINE_COMMENT,
@@ -46690,10 +46690,8 @@ function splitLine(line, regExp) {
 
 // ../node_modules/.pnpm/cspell-dictionary@9.3.1/node_modules/cspell-dictionary/dist/util/text.js
 init_import_meta_url();
-var regExFirstUpper = new RegExp("^\\p{Lu}\\p{M}?\\p{Ll}+$", "u");
-var regExAllUpper = new RegExp("^(?:\\p{Lu}\\p{M}?)+$", "u");
-var regExAllLower = new RegExp("^(?:\\p{Ll}\\p{M}?)+$", "u");
-var regExAccents = new RegExp("\\p{M}", "gu");
+var regExAllUpper = /^(?:\p{Lu}\p{M}?)+$/u;
+var regExAccents = /\p{M}/gu;
 function isUpperCase(word) {
   return !!regExAllUpper.test(word);
 }
@@ -54677,24 +54675,21 @@ init_import_meta_url();
 
 // ../node_modules/.pnpm/cspell-lib@9.3.1/node_modules/cspell-lib/dist/lib/util/textRegex.js
 init_import_meta_url();
-var regExUpperSOrIng = new RegExp("([\\p{Lu}\\p{M}]+(?:\\\\?['\u2019])?(?:s|ing|ies|es|ings|ed|ning))(?!\\p{Ll})", "gu");
-var regExSplitWords = new RegExp("(\\p{Ll}\\p{M}?)(\\p{Lu})", "gu");
-var regExSplitWords2 = new RegExp("(\\p{Lu}\\p{M}?)((\\p{Lu}\\p{M}?)\\p{Ll})", "gu");
-var regExpCamelCaseWordBreaksWithEnglishSuffix = new RegExp("(?<=\\p{Ll}\\p{M}?)(?=\\p{Lu})|(?<=\\p{Lu}\\p{M}?)(?=\\p{Lu}\\p{M}?\\p{Ll})(?!\\p{Lu}\\p{M}?(?:s|ing|ies|es|ings|ed|ning)(?!\\p{Ll}))", "gu");
-var regExpCamelCaseWordBreaks = new RegExp("(?<=\\p{Ll}\\p{M}?)(?=\\p{Lu})|(?<=\\p{Lu}\\p{M}?)(?=\\p{Lu}\\p{M}?\\p{Ll})", "gu");
-var regExpAllPossibleWordBreaks = new RegExp("(?<=\\p{Ll}\\p{M}?)(?=\\p{Lu})|(?<=\\p{Lu}\\p{M}?)(?=\\p{Lu}\\p{M}?\\p{Ll})|(?<=\\p{Lu}\\p{M}?\\p{Lu}\\p{M}?)(?=\\p{Ll})|(?<=\\p{L}\\p{M}?)(?=\\P{L})|(?<=\\P{L})(?=\\p{L})", "gu");
-var regExWords = new RegExp("\\p{L}\\p{M}?(?:(?:\\\\?['\u2019])?\\p{L}\\p{M}?)*", "gu");
+var regExSplitWords = /(\p{Ll}\p{M}?)(\p{Lu})/gu;
+var regExSplitWords2 = /(\p{Lu}\p{M}?)((\p{Lu}\p{M}?)\p{Ll})/gu;
+var regExpCamelCaseWordBreaksWithEnglishSuffix = /(?<=\p{Ll}\p{M}?)(?=\p{Lu})|(?<=\p{Lu}\p{M}?)(?=\p{Lu}\p{M}?\p{Ll})(?!\p{Lu}\p{M}?(?:s|ing|ies|es|ings|ed|ning)(?!\p{Ll}))/gu;
+var regExWords = /\p{L}\p{M}?(?:(?:\\?['’])?\p{L}\p{M}?)*/gu;
 var regExWordsAndDigits = /[\p{L}\w'’`.+-](?:(?:\\(?=[']))?[\p{L}\p{M}\w'’`.+-])*/gu;
 var regExIgnoreCharacters = /[\p{sc=Hiragana}\p{sc=Han}\p{sc=Katakana}\u30A0-\u30FF\p{sc=Hangul}]/gu;
-var regExFirstUpper2 = new RegExp("^\\p{Lu}\\p{M}?\\p{Ll}+$", "u");
-var regExAllUpper2 = new RegExp("^(?:\\p{Lu}\\p{M}?)+$", "u");
-var regExAllLower2 = new RegExp("^(?:\\p{Ll}\\p{M}?)+$", "u");
+var regExFirstUpper = /^\p{Lu}\p{M}?\p{Ll}+$/u;
+var regExAllUpper2 = /^(?:\p{Lu}\p{M}?)+$/u;
+var regExAllLower = /^(?:\p{Ll}\p{M}?)+$/u;
 var regExPossibleWordBreaks = /[-+_’'`.\s]/g;
 var regExMatchRegExParts = /^\s*\/([\s\S]*?)\/([gimuxy]*)\s*$/;
-var regExAccents2 = new RegExp("\\p{M}", "gu");
+var regExAccents2 = /\p{M}/gu;
 var regExEscapeCharacters = /(?<=\\)[anrvtbf]/gi;
-var regExDanglingQuote = new RegExp("(?<=(?:^|(?!\\p{M})\\P{L})(?:\\p{L}\\p{M}?)?)[']", "gu");
-var regExTrailingEndings = new RegExp("(?<=(?:\\p{Lu}\\p{M}?){2})['\u2019]?(?:s|d|ings?|ies|e[ds]?|ning|th|nth)(?!\\p{Ll})", "gu");
+var regExDanglingQuote = /(?<=(?:^|(?!\p{M})\P{L})(?:\p{L}\p{M}?)?)[']/gu;
+var regExTrailingEndings = /(?<=(?:\p{Lu}\p{M}?){2})['’]?(?:s|d|ings?|ies|e[ds]?|ning|th|nth)(?!\p{Ll})/gu;
 var regExNumericLiteral = /^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?$/;
 function stringToRegExp(pattern, defaultFlags = "gimu", forceFlags = "g") {
   if (pattern instanceof RegExp) {
@@ -60047,7 +60042,7 @@ function isUpperCase2(word) {
   return regExAllUpper2.test(word);
 }
 function isLowerCase(word) {
-  return regExAllLower2.test(word);
+  return regExAllLower.test(word);
 }
 function isFirstCharacterUpper(word) {
   return isUpperCase2(word.slice(0, 1));
@@ -60068,10 +60063,10 @@ function camelToSnake(word) {
   return splitCamelCaseWord(word).join("_").toLowerCase();
 }
 function matchCase(example, word) {
-  if (regExFirstUpper2.test(example)) {
+  if (regExFirstUpper.test(example)) {
     return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
   }
-  if (regExAllLower2.test(example)) {
+  if (regExAllLower.test(example)) {
     return word.toLowerCase();
   }
   if (regExAllUpper2.test(example)) {
@@ -60607,11 +60602,11 @@ function matchCase2(word, isPreferred, style) {
   if (style.isAllCaps)
     return word.toLocaleUpperCase(locale);
   (0, import_node_assert14.default)(style.isTitleCase);
-  return word.replace(new RegExp("^\\p{L}", "u"), (firstLetter) => firstLetter.toLocaleUpperCase(locale));
+  return word.replace(/^\p{L}/u, (firstLetter) => firstLetter.toLocaleUpperCase(locale));
 }
-var regExpHasCaps = new RegExp("\\p{Lu}", "u");
+var regExpHasCaps = /\p{Lu}/u;
 var regExpIsAllCaps = /^[\P{L}\p{Lu}]+$/u;
-var regExpIsTitleCase = new RegExp("^\\p{Lu}[\\P{L}\\p{Ll}]+$", "u");
+var regExpIsTitleCase = /^\p{Lu}[\P{L}\p{Ll}]+$/u;
 function analyzeCase(word) {
   const hasCaps2 = regExpHasCaps.test(word);
   const isAllCaps2 = hasCaps2 && regExpIsAllCaps.test(word);
@@ -61061,11 +61056,11 @@ function scoreRandomString(s) {
   return n.length / s.length;
 }
 function categorizeString(s) {
-  const n = s.replaceAll(/\d+/g, "0").replaceAll(new RegExp("\\p{Ll}\\p{M}+", "gu"), "a").replaceAll(new RegExp("\\p{Lu}\\p{M}+", "gu"), "A").replaceAll(new RegExp("\\p{Lu}?\\p{Ll}+", "gu"), "1").replaceAll(new RegExp("\\p{Lu}+", "gu"), "2").replaceAll(new RegExp("\\p{M}", "gu"), "4").replaceAll("_", "").replaceAll(/[-_.']+/g, "3");
+  const n = s.replaceAll(/\d+/g, "0").replaceAll(/\p{Ll}\p{M}+/gu, "a").replaceAll(/\p{Lu}\p{M}+/gu, "A").replaceAll(/\p{Lu}?\p{Ll}+/gu, "1").replaceAll(/\p{Lu}+/gu, "2").replaceAll(/\p{M}/gu, "4").replaceAll("_", "").replaceAll(/[-_.']+/g, "3");
   return n;
 }
 var hexSequence = /(?:\b|(?<=[\W_]))[0-9a-fA-F][-0-9a-fA-F]*[0-9a-fA-F](?:\b|(?=[\W_]))/g;
-var isLetter = new RegExp("\\p{L}", "uy");
+var isLetter = /\p{L}/uy;
 function isLetterAt(s, idx2) {
   isLetter.lastIndex = idx2;
   return isLetter.test(s);
@@ -61306,7 +61301,7 @@ function lineValidatorFactory(sDict, options) {
     return issue;
   }
   const regExUpperCaseWithTrailingCommonEnglishSuffix = /^([\p{Lu}\p{M}]{2,})['’]?(?:s|ing|ies|es|ings|ize|ed|ning)$/u;
-  const regExpIsLetter = new RegExp("\\p{L}", "u");
+  const regExpIsLetter = /\p{L}/u;
   const fn = (lineSegment) => {
     const line = lineSegment.line;
     function isWordTooShort(word, ignoreSuffix = false) {
@@ -64807,8 +64802,8 @@ function nextCharIndex(text, offset, count3 = 1) {
 function lineContext(lineText, start, end, contextRange) {
   let left = prefCharIndex(lineText, start, contextRange);
   let right = nextCharIndex(lineText, end, contextRange);
-  const isLetter2 = new RegExp("^\\p{L}$", "u");
-  const isMark = new RegExp("^\\p{M}$", "u");
+  const isLetter2 = /^\p{L}$/u;
+  const isMark = /^\p{M}$/u;
   for (let n = contextRange / 2; n > 0 && left > 0; n--, left--) {
     const c = lineText[left - 1];
     if (isMark.test(c)) {

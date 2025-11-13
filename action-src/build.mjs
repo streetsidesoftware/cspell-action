@@ -25,6 +25,7 @@ async function buildLib() {
         },
         outfile: path.join(targetPackageDir, 'lib/main_root.cjs'),
         target: 'node24',
+        supported: { 'regexp-unicode-property-escapes': true },
     });
 }
 
