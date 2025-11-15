@@ -55476,22 +55476,22 @@ function parseCSpellConfigFilePackageJson(file) {
 // ../node_modules/.pnpm/cspell-config-lib@9.3.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/index.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/parse.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/parse.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/struct.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/struct.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/primitive.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/primitive.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/util.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/util.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/error.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/error.js
 init_import_meta_url();
 function getLineColFromPtr(string, ptr) {
   let lines = string.slice(0, ptr).split(/\r\n|\n|\r/g);
@@ -55532,7 +55532,7 @@ ${codeblock}`, options);
   }
 };
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/util.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/util.js
 function isEscaped(str, ptr) {
   let i = 0;
   while (str[ptr - ++i] === "\\")
@@ -55606,7 +55606,7 @@ function getStringEnd(str, seek) {
   return seek;
 }
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/date.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/date.js
 init_import_meta_url();
 var DATE_TIME_RE = /^(\d{4}-\d{2}-\d{2})?[T ]?(?:(\d{2}):\d{2}:\d{2}(?:\.\d+)?)?(Z|[-+]\d{2}:\d{2})?$/i;
 var TomlDate = class _TomlDate extends Date {
@@ -55699,7 +55699,7 @@ var TomlDate = class _TomlDate extends Date {
   }
 };
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/primitive.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/primitive.js
 var INT_REGEX = /^((0x[0-9a-fA-F](_?[0-9a-fA-F])*)|(([+-]|0[ob])?\d(_?\d)*))$/;
 var FLOAT_REGEX = /^[+-]?\d(_?\d)*(\.\d(_?\d)*)?([eE][+-]?\d(_?\d)*)?$/;
 var LEADING_ZERO = /^[+-]?0[0-9_]/;
@@ -55837,7 +55837,7 @@ function parseValue(value, toml, ptr, integersAsBigInt) {
   return date;
 }
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/extract.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/extract.js
 init_import_meta_url();
 function sliceAndTrimEndOf(str, startPtr, endPtr, allowNewLines) {
   let value = str.slice(startPtr, endPtr);
@@ -55914,7 +55914,7 @@ function extractValue(str, ptr, end, depth, integersAsBigInt) {
   ];
 }
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/struct.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/struct.js
 var KEY_PART_RE = /^[a-zA-Z0-9-_]+[ \t]*$/;
 function parseKey(str, ptr, end = "=") {
   let dot = ptr - 1;
@@ -56070,7 +56070,7 @@ function parseArray(str, ptr, depth, integersAsBigInt) {
   return [res, ptr];
 }
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/parse.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/parse.js
 function peekTable(key, table, meta, type) {
   let t = table;
   let m = meta;
@@ -56195,7 +56195,7 @@ function parse2(toml, { maxDepth = 1e3, integersAsBigInt } = {}) {
   return res;
 }
 
-// ../node_modules/.pnpm/smol-toml@1.4.2/node_modules/smol-toml/dist/stringify.js
+// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/stringify.js
 init_import_meta_url();
 var BARE_KEY = /^[a-z0-9-_]+$/i;
 function extendedTypeOf(obj) {
@@ -56287,14 +56287,13 @@ function stringifyArrayTable(array, key, depth, numberAsFloat) {
   }
   let res = "";
   for (let i = 0; i < array.length; i++) {
-    res += `[[${key}]]
+    res += `${res && "\n"}[[${key}]]
 `;
-    res += stringifyTable(array[i], key, depth, numberAsFloat);
-    res += "\n\n";
+    res += stringifyTable(0, array[i], key, depth, numberAsFloat);
   }
   return res;
 }
-function stringifyTable(obj, prefix, depth, numberAsFloat) {
+function stringifyTable(tableKey, obj, prefix, depth, numberAsFloat) {
   if (depth === 0) {
     throw new Error("Could not stringify the object: maximum object depth exceeded");
   }
@@ -56310,13 +56309,10 @@ function stringifyTable(obj, prefix, depth, numberAsFloat) {
       }
       let key = BARE_KEY.test(k) ? k : formatString(k);
       if (type === "array" && isArrayOfTables(obj[k])) {
-        tables += stringifyArrayTable(obj[k], prefix ? `${prefix}.${key}` : key, depth - 1, numberAsFloat);
+        tables += (tables && "\n") + stringifyArrayTable(obj[k], prefix ? `${prefix}.${key}` : key, depth - 1, numberAsFloat);
       } else if (type === "object") {
         let tblKey = prefix ? `${prefix}.${key}` : key;
-        tables += `[${tblKey}]
-`;
-        tables += stringifyTable(obj[k], tblKey, depth - 1, numberAsFloat);
-        tables += "\n\n";
+        tables += (tables && "\n") + stringifyTable(tblKey, obj[k], tblKey, depth - 1, numberAsFloat);
       } else {
         preamble += key;
         preamble += " = ";
@@ -56325,14 +56321,20 @@ function stringifyTable(obj, prefix, depth, numberAsFloat) {
       }
     }
   }
-  return `${preamble}
-${tables}`.trim();
+  if (tableKey && (preamble || !tables))
+    preamble = preamble ? `[${tableKey}]
+${preamble}` : `[${tableKey}]`;
+  return preamble && tables ? `${preamble}
+${tables}` : preamble || tables;
 }
 function stringify2(obj, { maxDepth = 1e3, numbersAsFloat = false } = {}) {
   if (extendedTypeOf(obj) !== "object") {
     throw new TypeError("stringify can only be called with an object");
   }
-  return stringifyTable(obj, "", maxDepth, numbersAsFloat);
+  let str = stringifyTable(0, obj, "", maxDepth, numbersAsFloat);
+  if (str[str.length - 1] !== "\n")
+    return str + "\n";
+  return str;
 }
 
 // ../node_modules/.pnpm/cspell-config-lib@9.3.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
