@@ -12,7 +12,10 @@ jobs:
   action-is-pristine: # make sure nothing changes in the action.
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          persist-credentials: false
       - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
         with:
           node-version: 24.x
@@ -23,7 +26,10 @@ jobs:
   clean-build: # make sure nothing changes with a clean build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          persist-credentials: false
       - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1
         with:
           node-version: 24.x
@@ -43,8 +49,10 @@ jobs:
   coverage: # run coverage and unit tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
+          persist-credentials: false
           fetch-depth: 0
 
       - uses: streetsidesoftware/actions/public/setup-node-pnpm@v1

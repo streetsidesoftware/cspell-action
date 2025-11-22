@@ -13,7 +13,10 @@ jobs:
   test-action: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          persist-credentials: false
       - uses: ./
         id: cspell-action
         env:
@@ -35,8 +38,10 @@ jobs:
   test-action-with-file: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
+          persist-credentials: false
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
@@ -58,8 +63,10 @@ jobs:
   test-action-no-increment: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
+          persist-credentials: false
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
@@ -81,8 +88,10 @@ jobs:
   test-action-no-increment-verbose: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
+          persist-credentials: false
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
@@ -104,8 +113,10 @@ jobs:
   test-action-files-with-issues: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
+          persist-credentials: false
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
@@ -128,8 +139,10 @@ jobs:
   test-bad-config: # run the action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
+          persist-credentials: false
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - uses: ./
         id: cspell-action
