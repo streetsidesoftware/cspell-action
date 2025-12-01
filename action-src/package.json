@@ -32,7 +32,7 @@
     "vscode-uri": "^3.1.0"
   },
   "dependencies": {
-    "@cspell/cspell-bundled-dicts": "^9.3.2"
+    "@cspell/cspell-bundled-dicts": "^9.4.0"
   },
   "files": [
     "lib",
