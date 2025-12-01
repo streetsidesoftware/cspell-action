@@ -23,7 +23,7 @@
   "devDependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.1",
-    "@cspell/cspell-types": "^9.3.2",
+    "@cspell/cspell-types": "^9.4.0",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^24.10.1",
     "cspell": "^9.3.2",
