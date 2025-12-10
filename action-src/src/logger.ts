@@ -1,4 +1,4 @@
-import { debug, error, info, warning } from '@actions/core';
+import { debug, error, info, summary as coreSummary, warning } from '@actions/core';
 import { issueCommand } from '@actions/core/lib/command.js';
 
 export type IssueCommandFn = typeof issueCommand;
@@ -14,10 +14,15 @@ export interface Logger {
     warning: LogErrorFn;
     error: LogErrorFn;
     issueCommand: IssueCommandFn;
+    summary: LogFn;
+}
+
+function summary(message: string) {
+    coreSummary.addRaw(message);
 }
 
 export function createLogger(logger?: Partial<Logger>): Logger {
-    return { debug, info, warning, error, issueCommand, ...logger };
+    return { debug, info, warning, error, issueCommand, summary, ...logger };
 }
 
 export function getDefaultLogger(): Logger {

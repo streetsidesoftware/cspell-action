@@ -5,7 +5,6 @@ import { tf } from './utils.js';
 
 export function getActionParams(): ActionParamsInput {
     const params: ActionParamsInput = {
-        // github_token: getInput('github_token', { required: true }),
         files: getInput('files'),
         incremental_files_only: tf(getInput('incremental_files_only')),
         config: getInput('config'),
@@ -18,6 +17,7 @@ export function getActionParams(): ActionParamsInput {
         use_cspell_files: tf(getInput('use_cspell_files')),
         suggestions: tf(getInput('suggestions')),
         report: getInput('report').toLowerCase(),
+        summary: tf(getInput('summary') || 'false'),
     };
     return applyDefaults(params);
 }

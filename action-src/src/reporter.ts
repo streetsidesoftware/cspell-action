@@ -31,6 +31,7 @@ export type ReportIssueCommand = 'error' | 'warning' | 'none';
 export interface ReporterOptions {
     verbose: boolean;
     treatFlaggedWordsAsErrors: boolean;
+    summary: boolean;
 }
 
 export class CSpellReporterForGithubAction {
@@ -42,6 +43,7 @@ export class CSpellReporterForGithubAction {
         issues: -1,
         errors: -1,
         cachedFiles: 0,
+        skippedFiles: 0,
     };
     finished: boolean = false;
     verbose: boolean;
@@ -133,6 +135,10 @@ ${error.stack}
             );
             console.warn('%s', `${relative(cwd, item.uri || '')}:${item.row}:${item.col} ${message}`);
         });
+
+        if (this.options.summary) {
+            this.logger.summary(genSummary(this.result));
+        }
     }
 
     readonly reporter: CSpellReporter = {
@@ -153,4 +159,30 @@ function isProgressFileComplete(p: ProgressItem): p is ProgressFileComplete {
 function relative(cwd: string, fileUri: string) {
     const fsPath = URI.parse(fileUri).fsPath;
     return path.relative(cwd, fsPath);
+}
+
+function genSummary(result: RunResult): string {
+    const items = [
+        `- **Files checked:** ${result.files - (result.skippedFiles || 0)}`,
+        `- **Issues found:** ${result.issues}`,
+        `- **Files with issues:** ${result.filesWithIssues.size}`,
+    ];
+
+    if (result.errors) {
+        items.push(`- **Errors encountered:** ${result.errors}`);
+    }
+
+    if (result.skippedFiles) {
+        items.push(`- **Files skipped:** ${result.skippedFiles}`);
+    }
+
+    if (result.cachedFiles) {
+        items.push(`- **Files using cache:** ${result.cachedFiles}`);
+    }
+
+    return `\
+## CSpell Summary
+
+${items.join('\n')}
+`;
 }

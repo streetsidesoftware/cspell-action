@@ -127,6 +127,7 @@ jobs:
           config: ./fixtures/cspell.json
           strict: false
           inline: none
+          summary: true
       - name: Show Results
         uses: streetsidesoftware/actions/public/summary@v1
         with:

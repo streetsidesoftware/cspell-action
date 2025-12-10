@@ -72,6 +72,11 @@ export interface ActionParams {
      * default: use default reporting.
      */
     report: ReportChoices;
+
+    /**
+     * Include a summary of the results in the output.
+     */
+    summary: TrueFalse;
 }
 
 const defaultActionParams: ActionParams = {
@@ -87,6 +92,7 @@ const defaultActionParams: ActionParams = {
     use_cspell_files: 'false',
     suggestions: 'false',
     report: undefined,
+    summary: 'false',
 };
 
 type ValidationFunction = (params: ActionParamsInput) => string | undefined;
@@ -153,6 +159,7 @@ export function validateActionParams(
         validateTrueFalse('suggestions'),
         validateOptions('check_dot_files', ['true', 'false', 'explicit']),
         validateOptions('report', ['all', 'simple', 'typos', 'flagged'], true),
+        validateTrueFalse('summary'),
     ];
     const success = validations
         .map((fn) => fn(params))

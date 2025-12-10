@@ -16,7 +16,7 @@ import {
 } from './test/helper.js';
 
 const sc: typeof expect.stringContaining = (...s) => expect.stringContaining(...s);
-const rOptions = { verbose: false, treatFlaggedWordsAsErrors: false };
+const rOptions = { verbose: false, treatFlaggedWordsAsErrors: false, summary: false };
 
 vi.spyOn(console, 'warn').mockImplementation(() => undefined);
 
@@ -48,11 +48,7 @@ describe('Validate Spell Checking', () => {
             checkDotFiles: undefined,
         };
         const logger = mockLogger();
-        const reporter = new CSpellReporterForGithubAction(
-            'none',
-            { verbose: true, treatFlaggedWordsAsErrors: false },
-            logger,
-        );
+        const reporter = new CSpellReporterForGithubAction('none', { ...rOptions, verbose: true }, logger);
         await spell.lint(['action-src/src/spell.ts', 'fixtures/sampleCode/ts/**/*.ts'], options, reporter.reporter);
         const r = reporter;
         expect(r.result.files).toBe(2);
@@ -91,7 +87,7 @@ describe('Validate Spell Checking', () => {
         files: 0,
         filesWithIssues: new Set(),
         issues: 0,
-        // skippedFiles: 0,
+        skippedFiles: 0,
     };
 
     const sampleConfig = resolveFile('fixtures/cspell.json', sourceDir);
@@ -107,12 +103,12 @@ describe('Validate Spell Checking', () => {
 
     test.each`
         globs                   | files                                            | options                       | expected
-        ${[]}                   | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1, skippedFiles: 0 }}
-        ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1, skippedFiles: 0 }}
+        ${[]}                   | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1 }}
+        ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1 }}
         ${[]}                   | ${['fixtures/sampleCode/ts/missing.ts']}         | ${{}}                         | ${{ files: 0 }}
         ${[]}                   | ${[]}                                            | ${{}}                         | ${{ files: 0 }}
-        ${[]}                   | ${undefined}                                     | ${sampleCodeTsOptions}        | ${{ files: 1, skippedFiles: 0 }}
-        ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 1, skippedFiles: 0 }}
+        ${[]}                   | ${undefined}                                     | ${sampleCodeTsOptions}        | ${{ files: 1 }}
+        ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 1 }}
         ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfigTs }} | ${{ files: 0 }}
         ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 0 }}
         ${['**/ts/missing.ts']} | ${undefined}                                     | ${{}}                         | ${{ files: 0 }}
@@ -152,7 +148,7 @@ describe('Validate Spell Checking', () => {
         const reporter = new CSpellReporterForGithubAction('warning', { ...rOptions, verbose: false }, logger);
         reporter.onIssue = (issue) => issues.push(issue);
         await spell.lint(globs, opts, reporter.reporter);
-        expect(reporter.result).toEqual({ ...defaultResult, skippedFiles: 0, ...expected });
+        expect(reporter.result).toEqual({ ...defaultResult, ...expected });
         expect(issues.map((issue) => issue.text)).toEqual(expectedIssues);
     });
 });

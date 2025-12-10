@@ -61,13 +61,13 @@ export function issueCommandToString(params: IssueCommandFnParams): string {
 }
 
 export function mockLogger(loggerOverrides: Partial<Logger> = {}): Logger {
-    const f = () => {};
     const logger: Logger = {
-        error: vi.fn(f),
-        debug: vi.fn(f),
-        info: vi.fn(f),
-        warning: vi.fn(f),
-        issueCommand: vi.fn(f),
+        error: vi.fn(),
+        debug: vi.fn(),
+        info: vi.fn(),
+        warning: vi.fn(),
+        issueCommand: vi.fn(),
+        summary: vi.fn(),
         ...loggerOverrides,
     };
 
