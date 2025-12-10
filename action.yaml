@@ -93,6 +93,12 @@ outputs:
   number_of_files_with_issues:
     description: |
       The number of files that had issues.
+  number_of_files_skipped:
+    description: |
+      The number of files that were skipped.
+  number_of_files_cached:
+    description: |
+      The number of files where the results were taken from the cache.
   errors:
     description: |
       The number of errors found. This is the number issues found or configuration errors.

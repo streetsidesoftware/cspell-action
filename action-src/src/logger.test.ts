@@ -2,7 +2,6 @@ import { summary as coreSummary } from '@actions/core';
 import { describe, expect, test, vi } from 'vitest';
 
 import { createLogger } from './logger.js';
-import { write } from 'fs';
 
 vi.mock('@actions/core', async (_importActual) => {
     return {

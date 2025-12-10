@@ -65993,16 +65993,20 @@ function outputResult(runResult2) {
   (0, import_core3.setOutput)("number_of_files_checked", result.number_of_files_checked);
   (0, import_core3.setOutput)("number_of_issues", result.number_of_issues);
   (0, import_core3.setOutput)("number_of_files_with_issues", result.files_with_issues.length);
-  (0, import_core3.setOutput)("files_with_issues", normalizeFiles(result.files_with_issues));
+  (0, import_core3.setOutput)("files_with_issues", result.files_with_issues);
+  (0, import_core3.setOutput)("number_of_files_skipped", result.number_of_files_skipped);
+  (0, import_core3.setOutput)("number_of_files_cached", result.number_of_files_cached);
   (0, import_core3.setOutput)("result", result);
 }
 function normalizeResult(result) {
-  const { issues: number_of_issues, files: number_of_files_checked, filesWithIssues } = result;
+  const { issues: number_of_issues, files, filesWithIssues, skippedFiles = 0, cachedFiles = 0 } = result;
   return {
     success: !number_of_issues && !result.errors,
     errors: result.errors,
     number_of_issues,
-    number_of_files_checked,
+    number_of_files_checked: files - skippedFiles,
+    number_of_files_skipped: skippedFiles,
+    number_of_files_cached: cachedFiles,
     files_with_issues: normalizeFiles(filesWithIssues).slice(0, 1e3)
   };
 }
