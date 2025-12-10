@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.1.1](https://github.com/streetsidesoftware/cspell-action/compare/v8.1.0...v8.1.1) (2025-12-10)
+
+
+### Updates and Bug Fixes
+
+* Fix publishing step ([18eb68e](https://github.com/streetsidesoftware/cspell-action/commit/18eb68ecec6022ff335d12e6f77167fe7eaa864d))
+
 ## [8.1.0](https://github.com/streetsidesoftware/cspell-action/compare/v8.0.0...v8.1.0) (2025-12-10)
 
 
