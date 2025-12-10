@@ -73,6 +73,12 @@ inputs:
       - "typos" - only typos are reported.
       - "flagged" - only flagged words are reported.
     required: false
+  summary:
+    description: |
+      Include a summary of the results in the output.
+      Allowed values are: "true", "false"
+    default: 'false'
+    required: false
 
 outputs:
   success:
@@ -87,6 +93,12 @@ outputs:
   number_of_files_with_issues:
     description: |
       The number of files that had issues.
+  number_of_files_skipped:
+    description: |
+      The number of files that were skipped.
+  number_of_files_cached:
+    description: |
+      The number of files where the results were taken from the cache.
   errors:
     description: |
       The number of errors found. This is the number issues found or configuration errors.

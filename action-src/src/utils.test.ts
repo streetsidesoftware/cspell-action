@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, test } from 'vitest';
 
 import { tf, type TrueFalse } from './utils.js';
 
@@ -144,5 +144,20 @@ describe('tf function', () => {
             expect(typeof result).toBe('string');
             expect(result).toBe('unrecognized');
         });
+    });
+
+    test.each`
+        input        | expected
+        ${true}      | ${'true'}
+        ${false}     | ${'false'}
+        ${''}        | ${''}
+        ${'Hello'}   | ${'Hello'}
+        ${undefined} | ${undefined}
+        ${'true'}    | ${'true'}
+        ${'false'}   | ${'false'}
+        ${'TRUE'}    | ${'true'}
+        ${'F'}       | ${'false'}
+    `('tf($input) should return $expected', ({ input, expected }) => {
+        expect(tf(input)).toBe(expected);
     });
 });

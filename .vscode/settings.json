@@ -1,9 +1,10 @@
 {
     "search.exclude": {
+        ".git": true,
         "**/.yarn": true,
         "**/.pnp.*": true
     },
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "git.ignoreLimitWarning": true,
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
 }

@@ -5,7 +5,10 @@ export type TrueFalse = 'true' | 'false';
  * @param v - value to convert
  * @returns
  */
-export function tf(value: string | boolean | number): TrueFalse | string {
+export function tf(value: string | boolean | number): TrueFalse | string;
+export function tf(value: string | boolean | number | undefined): TrueFalse | string | undefined;
+
+export function tf(value: string | boolean | number | undefined): TrueFalse | string | undefined {
     let v = value;
     const mapValues: Record<string, TrueFalse> = {
         true: 'true',
@@ -16,8 +19,8 @@ export function tf(value: string | boolean | number): TrueFalse | string {
         '1': 'true',
     };
     v = typeof v === 'boolean' || typeof v === 'number' ? (v ? 'true' : 'false') : v;
-    v = v.toString();
-    v = v.toLowerCase();
-    v = mapValues[v] || value;
+    v = v?.toString();
+    v = v?.toLowerCase();
+    v = mapValues[v || ''] || value;
     return v;
 }

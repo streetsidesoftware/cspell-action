@@ -1,22 +1,16 @@
-import { describe, expect, test, vi } from 'vitest';
+import type { RunResult } from '@cspell/cspell-types';
+import { describe, expect, test } from 'vitest';
 
-import { createLogger } from './logger.js';
-import { CSpellReporterForGithubAction } from './reporter.js';
+import { CSpellReporterForGithubAction, type ReporterOptions } from './reporter.js';
+import { mockLogger } from './test/helper.js';
 
 describe('Validate Reporter', () => {
-    test('Reporting Errors', () => {
-        const logger = createLogger({
-            debug: vi.fn(),
-            info: vi.fn(),
-            warning: vi.fn(),
-            error: vi.fn(),
-        });
+    const options: ReporterOptions = { verbose: false, treatFlaggedWordsAsErrors: false, summary: false };
 
-        const actionReporter = new CSpellReporterForGithubAction(
-            'none',
-            { verbose: false, treatFlaggedWordsAsErrors: true },
-            logger,
-        );
+    test('Reporting Errors', () => {
+        const logger = mockLogger();
+
+        const actionReporter = new CSpellReporterForGithubAction('none', options, logger);
         const reporter = actionReporter.reporter;
 
         reporter.error?.('This is an error message', new Error('Test error'));
@@ -30,18 +24,9 @@ describe('Validate Reporter', () => {
         ${'Info'}
     `('Info is ignored $msgType', ({ msgType }) => {
         // Currently all "info" messages are ignored.
-        const logger = createLogger({
-            debug: vi.fn(),
-            info: vi.fn(),
-            warning: vi.fn(),
-            error: vi.fn(),
-        });
+        const logger = mockLogger();
 
-        const actionReporter = new CSpellReporterForGithubAction(
-            'none',
-            { verbose: false, treatFlaggedWordsAsErrors: true },
-            logger,
-        );
+        const actionReporter = new CSpellReporterForGithubAction('none', options, logger);
         const reporter = actionReporter.reporter;
 
         reporter.info?.('This is an error message', msgType);
@@ -53,18 +38,9 @@ describe('Validate Reporter', () => {
 
     test('Debug is ignored', () => {
         // Currently all "debug" messages are ignored.
-        const logger = createLogger({
-            debug: vi.fn(),
-            info: vi.fn(),
-            warning: vi.fn(),
-            error: vi.fn(),
-        });
+        const logger = mockLogger();
 
-        const actionReporter = new CSpellReporterForGithubAction(
-            'none',
-            { verbose: false, treatFlaggedWordsAsErrors: true },
-            logger,
-        );
+        const actionReporter = new CSpellReporterForGithubAction('none', options, logger);
         const reporter = actionReporter.reporter;
 
         reporter.debug?.('This is an error message');
@@ -72,5 +48,35 @@ describe('Validate Reporter', () => {
         expect(logger.error).not.toHaveBeenCalled();
         expect(logger.info).not.toHaveBeenCalled();
         expect(logger.warning).not.toHaveBeenCalled();
+    });
+
+    test('Summary', () => {
+        const logger = mockLogger();
+
+        const actionReporter = new CSpellReporterForGithubAction('none', { ...options, summary: true }, logger);
+
+        const result: RunResult = {
+            /** Number of files processed. */
+            files: 22,
+            /** Set of files where issues were found. */
+            filesWithIssues: new Set<string>(),
+            /** Number of issues found. */
+            issues: 5,
+            /** Number of processing errors. */
+            errors: 1,
+            /** Number of files that used results from the cache. */
+            cachedFiles: 1,
+            /** Number of files that were skipped (not processed). */
+            skippedFiles: 2,
+        };
+        result.filesWithIssues.add('file1.ts');
+
+        actionReporter.reporter.result?.(result);
+
+        expect(logger.summary).toHaveBeenCalledWith(
+            expect.stringContaining(
+                '## CSpell Summary\n\n- **Files checked:** 20\n- **Issues found:** 5\n- **Files with issues:** 1\n',
+            ),
+        );
     });
 });
