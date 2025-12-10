@@ -37466,6 +37466,7 @@ var import_command = __toESM(require_command(), 1);
 var defaultLogger = createLogger();
 function summary(message) {
   import_core.summary.addRaw(message);
+  import_core.summary.write();
 }
 function createLogger(logger) {
   return { debug: import_core.debug, info: import_core.info, warning: import_core.warning, error: import_core.error, issueCommand: import_command.issueCommand, summary, ...logger };

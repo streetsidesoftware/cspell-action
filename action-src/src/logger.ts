@@ -19,6 +19,7 @@ export interface Logger {
 
 function summary(message: string) {
     coreSummary.addRaw(message);
+    coreSummary.write();
 }
 
 export function createLogger(logger?: Partial<Logger>): Logger {
