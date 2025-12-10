@@ -91,6 +91,7 @@ describe('Validate Spell Checking', () => {
         files: 0,
         filesWithIssues: new Set(),
         issues: 0,
+        // skippedFiles: 0,
     };
 
     const sampleConfig = resolveFile('fixtures/cspell.json', sourceDir);
@@ -106,12 +107,12 @@ describe('Validate Spell Checking', () => {
 
     test.each`
         globs                   | files                                            | options                       | expected
-        ${[]}                   | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1 }}
-        ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1 }}
+        ${[]}                   | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1, skippedFiles: 0 }}
+        ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/sample.ts']}          | ${{}}                         | ${{ files: 1, skippedFiles: 0 }}
         ${[]}                   | ${['fixtures/sampleCode/ts/missing.ts']}         | ${{}}                         | ${{ files: 0 }}
         ${[]}                   | ${[]}                                            | ${{}}                         | ${{ files: 0 }}
-        ${[]}                   | ${undefined}                                     | ${sampleCodeTsOptions}        | ${{ files: 1 }}
-        ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 1 }}
+        ${[]}                   | ${undefined}                                     | ${sampleCodeTsOptions}        | ${{ files: 1, skippedFiles: 0 }}
+        ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 1, skippedFiles: 0 }}
         ${[]}                   | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfigTs }} | ${{ files: 0 }}
         ${['**/*.ts']}          | ${['fixtures/sampleCode/ts/cspell.config.yaml']} | ${{ config: sampleConfig }}   | ${{ files: 0 }}
         ${['**/ts/missing.ts']} | ${undefined}                                     | ${{}}                         | ${{ files: 0 }}
@@ -151,7 +152,7 @@ describe('Validate Spell Checking', () => {
         const reporter = new CSpellReporterForGithubAction('warning', { ...rOptions, verbose: false }, logger);
         reporter.onIssue = (issue) => issues.push(issue);
         await spell.lint(globs, opts, reporter.reporter);
-        expect(reporter.result).toEqual({ ...defaultResult, ...expected });
+        expect(reporter.result).toEqual({ ...defaultResult, skippedFiles: 0, ...expected });
         expect(issues.map((issue) => issue.text)).toEqual(expectedIssues);
     });
 });
