@@ -73,5 +73,4 @@ describe('Validate Reporter', () => {
         expect(logger.info).not.toHaveBeenCalled();
         expect(logger.warning).not.toHaveBeenCalled();
     });
-
 });
