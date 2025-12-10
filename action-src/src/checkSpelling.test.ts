@@ -7,13 +7,13 @@ import { getDefaultLogger, type Logger } from './logger.js';
 const { gatherFileGlobsFromContext } = __testing__;
 
 vi.mock('./logger.js', async (importActual) => {
-    const f = () => {};
     const logger: Logger = {
-        error: vi.fn(f),
-        debug: vi.fn(f),
-        info: vi.fn(f),
-        warning: vi.fn(f),
-        issueCommand: vi.fn(f),
+        error: vi.fn(),
+        debug: vi.fn(),
+        info: vi.fn(),
+        warning: vi.fn(),
+        issueCommand: vi.fn(),
+        summary: vi.fn(),
     };
 
     return {
