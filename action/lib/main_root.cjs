@@ -37320,7 +37320,8 @@ var defaultActionParams = {
   check_dot_files: "explicit",
   use_cspell_files: "false",
   suggestions: "false",
-  report: void 0
+  report: void 0,
+  summary: "false"
 };
 function applyDefaults(params) {
   const results = { ...defaultActionParams, ...params };
@@ -37365,7 +37366,8 @@ function validateActionParams(params, logError2) {
     validateTrueFalse("use_cspell_files"),
     validateTrueFalse("suggestions"),
     validateOptions("check_dot_files", ["true", "false", "explicit"]),
-    validateOptions("report", ["all", "simple", "typos", "flagged"], true)
+    validateOptions("report", ["all", "simple", "typos", "flagged"], true),
+    validateTrueFalse("summary")
   ];
   const success = validations.map((fn) => fn(params)).map((msg) => !msg || (logError2(msg), false)).reduce((a, b) => a && b, true);
   if (!success) {
@@ -37462,8 +37464,11 @@ init_import_meta_url();
 var import_core = __toESM(require_core(), 1);
 var import_command = __toESM(require_command(), 1);
 var defaultLogger = createLogger();
+function summary(message) {
+  import_core.summary.addRaw(message);
+}
 function createLogger(logger) {
-  return { debug: import_core.debug, info: import_core.info, warning: import_core.warning, error: import_core.error, issueCommand: import_command.issueCommand, ...logger };
+  return { debug: import_core.debug, info: import_core.info, warning: import_core.warning, error: import_core.error, issueCommand: import_command.issueCommand, summary, ...logger };
 }
 function getDefaultLogger() {
   return defaultLogger;
@@ -37826,7 +37831,8 @@ var CSpellReporterForGithubAction = class {
     filesWithIssues: /* @__PURE__ */ new Set(),
     issues: -1,
     errors: -1,
-    cachedFiles: 0
+    cachedFiles: 0,
+    skippedFiles: 0
   };
   finished = false;
   verbose;
@@ -37897,6 +37903,9 @@ ${error3.stack}
       );
       console.warn("%s", `${relative2(cwd, item.uri || "")}:${item.row}:${item.col} ${message}`);
     });
+    if (this.options.summary) {
+      this.logger.summary(genSummary(this.result));
+    }
   }
   reporter = {
     debug: (...args) => this._debug(...args),
@@ -37914,6 +37923,26 @@ function isProgressFileComplete(p) {
 function relative2(cwd, fileUri) {
   const fsPath = URI.parse(fileUri).fsPath;
   return path.relative(cwd, fsPath);
+}
+function genSummary(result) {
+  const items = [
+    `- **Files checked:** ${result.files - (result.skippedFiles || 0)}`,
+    `- **Issues found:** ${result.issues}`,
+    `- **Files with issues:** ${result.filesWithIssues.size}`
+  ];
+  if (result.errors) {
+    items.push(`- **Errors encountered:** ${result.errors}`);
+  }
+  if (result.skippedFiles) {
+    items.push(`- **Files skipped:** ${result.skippedFiles}`);
+  }
+  if (result.cachedFiles) {
+    items.push(`- **Files using cache:** ${result.cachedFiles}`);
+  }
+  return `## CSpell Summary
+
+${items.join("\n")}
+`;
 }
 
 // src/spell.ts
@@ -63807,7 +63836,7 @@ function getReporter(options, config) {
   const forceColor = options.color === true;
   const uniqueIssues = config?.unique || false;
   const defaultIssueTemplate = options.wordsOnly ? templateIssueWordsOnly : options.legacy ? templateIssueLegacy : options.showContext ? options.showSuggestions ? templateIssueWithContextWithSuggestions : templateIssueWithContext : options.showSuggestions ? templateIssueWithSuggestions : options.showSuggestions === false ? templateIssueNoFix : templateIssue;
-  const { fileGlobs, silent, summary, issues, progress: showProgress, verbose, debug: debug4 } = options;
+  const { fileGlobs, silent, summary: summary2, issues, progress: showProgress, verbose, debug: debug4 } = options;
   const issueTemplate = config?.issueTemplate || defaultIssueTemplate;
   assertCheckTemplate(issueTemplate);
   const console$1 = config?.console || console2;
@@ -63912,7 +63941,7 @@ function getReporter(options, config) {
     info: infoEmitter,
     debug: emitters.Debug,
     progress,
-    result: !silent && summary ? resultEmitter : nullEmitter2,
+    result: !silent && summary2 ? resultEmitter : nullEmitter2,
     features: void 0
   };
 }
@@ -65851,7 +65880,8 @@ async function checkSpelling(params, globs, files) {
   };
   const reporterOptions = {
     verbose: params.verbose === "true",
-    treatFlaggedWordsAsErrors: params.treat_flagged_words_as_errors === "true"
+    treatFlaggedWordsAsErrors: params.treat_flagged_words_as_errors === "true",
+    summary: params.summary === "true"
   };
   const collector = new CSpellReporterForGithubAction(params.inline, reporterOptions);
   await lint2(globs || [], options, collector.reporter);
@@ -65875,16 +65905,15 @@ function tf(value) {
     "1": "true"
   };
   v = typeof v === "boolean" || typeof v === "number" ? v ? "true" : "false" : v;
-  v = v.toString();
-  v = v.toLowerCase();
-  v = mapValues[v] || value;
+  v = v?.toString();
+  v = v?.toLowerCase();
+  v = mapValues[v || ""] || value;
   return v;
 }
 
 // src/getActionParams.ts
 function getActionParams() {
   const params = {
-    // github_token: getInput('github_token', { required: true }),
     files: (0, import_core2.getInput)("files"),
     incremental_files_only: tf((0, import_core2.getInput)("incremental_files_only")),
     config: (0, import_core2.getInput)("config"),
@@ -65896,7 +65925,8 @@ function getActionParams() {
     check_dot_files: tf((0, import_core2.getInput)("check_dot_files")),
     use_cspell_files: tf((0, import_core2.getInput)("use_cspell_files")),
     suggestions: tf((0, import_core2.getInput)("suggestions")),
-    report: (0, import_core2.getInput)("report").toLowerCase()
+    report: (0, import_core2.getInput)("report").toLowerCase(),
+    summary: tf((0, import_core2.getInput)("summary") || "false")
   };
   return applyDefaults(params);
 }
