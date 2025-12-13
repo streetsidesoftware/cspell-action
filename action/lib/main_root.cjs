@@ -28816,9 +28816,9 @@ var require_src = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/common.js
+// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/common.js
 var require_common = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/common.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/common.js"(exports2, module2) {
     init_import_meta_url();
     var {
       isObject,
@@ -28841,21 +28841,37 @@ var require_common = __commonJS({
     var COMMA = ",";
     var EMPTY = "";
     var MINUS = "-";
-    var SYMBOL_PREFIXES = [
+    var PROP_SYMBOL_PREFIXES = [
       PREFIX_BEFORE,
       PREFIX_AFTER_PROP,
       PREFIX_AFTER_COLON,
       PREFIX_AFTER_VALUE,
       PREFIX_AFTER
     ];
-    var NON_PROP_SYMBOL_KEYS = [
+    var NON_PROP_SYMBOL_PREFIXES = [
       PREFIX_BEFORE,
+      PREFIX_AFTER,
       PREFIX_BEFORE_ALL,
       PREFIX_AFTER_ALL
-    ].map(Symbol.for);
+    ];
+    var NON_PROP_SYMBOL_KEYS = NON_PROP_SYMBOL_PREFIXES.map(Symbol.for);
     var COLON = ":";
     var UNDEFINED = void 0;
     var symbol = (prefix, key) => /* @__PURE__ */ Symbol.for(prefix + COLON + key);
+    var symbol_checked = (prefix, key) => {
+      if (key) {
+        if (PROP_SYMBOL_PREFIXES.includes(prefix)) {
+          return symbol(prefix, key);
+        }
+        throw new RangeError(
+          `Unsupported comment position ${prefix} with key ${key}`
+        );
+      }
+      if (NON_PROP_SYMBOL_PREFIXES.includes(prefix)) {
+        return Symbol.for(prefix);
+      }
+      throw new RangeError(`Unsupported comment position ${prefix}`);
+    };
     var define2 = (target, key, value) => Object.defineProperty(target, key, {
       value,
       writable: true,
@@ -28873,7 +28889,7 @@ var require_common = __commonJS({
       }
     };
     var copy_comments = (target, source, target_key, source_key, remove_source) => {
-      SYMBOL_PREFIXES.forEach((prefix) => {
+      PROP_SYMBOL_PREFIXES.forEach((prefix) => {
         copy_comments_by_kind(
           target,
           source,
@@ -28888,7 +28904,7 @@ var require_common = __commonJS({
       if (from === to) {
         return;
       }
-      SYMBOL_PREFIXES.forEach((prefix) => {
+      PROP_SYMBOL_PREFIXES.forEach((prefix) => {
         const target_prop = symbol(prefix, to);
         if (!Object.hasOwn(array, target_prop)) {
           copy_comments_by_kind(array, array, to, from, prefix, true);
@@ -28923,7 +28939,7 @@ var require_common = __commonJS({
     };
     var is_raw_json = isFunction(JSON.isRawJSON) ? JSON.isRawJSON : () => false;
     module2.exports = {
-      SYMBOL_PREFIXES,
+      PROP_SYMBOL_PREFIXES,
       PREFIX_BEFORE,
       PREFIX_AFTER_PROP,
       PREFIX_AFTER_COLON,
@@ -28946,6 +28962,34 @@ var require_common = __commonJS({
       swap_comments,
       assign_non_prop_comments,
       is_raw_json,
+      /**
+       * Assign properties and comments from source to target object.
+       *
+       * @param {Object} target The target object to assign properties and comments
+       *   to.
+       * @param {Object} source The source object to copy properties and comments
+       *   from.
+       * @param {Array<string|number>} [keys] Optional array of keys to assign. If
+       *   not provided, all keys and non-property comments are assigned. If empty
+       *   array, only non-property comments are assigned.
+       * @returns {Object} The target object with assigned properties and comments.
+       *
+       * @throws {TypeError} If target cannot be converted to object or keys is not
+       *   array or undefined.
+       *
+       * @example
+       * const source = parse('{"a": 1 // comment a, "b": 2 // comment b}')
+       * const target = {}
+       *
+       * // Copy all properties and comments
+       * assign(target, source)
+       *
+       * // Copy only specific properties and their comments
+       * assign(target, source, ['a'])
+       *
+       * // Copy only non-property comments
+       * assign(target, source, [])
+       */
       assign(target, source, keys4) {
         if (!isObject(target)) {
           throw new TypeError("Cannot convert undefined or null to object");
@@ -28962,19 +29006,125 @@ var require_common = __commonJS({
           assign_non_prop_comments(target, source);
         }
         return assign3(target, source, keys4);
+      },
+      /**
+       * Move comments from one location to another within objects.
+       *
+       * @param {Object} source The source object containing comments to move.
+       * @param {Object} [target] The target object to move comments to. If not
+       *   provided, defaults to source (move within same object).
+       * @param {Object} from The source comment location.
+       * @param {string} from.where The comment position (e.g., 'before',
+       *   'after', 'before-all', etc.).
+       * @param {string} [from.key] The property key for property-specific comments.
+       *   Omit for non-property comments.
+       * @param {Object} to The target comment location.
+       * @param {string} to.where The comment position (e.g., 'before',
+       *   'after', 'before-all', etc.).
+       * @param {string} [to.key] The property key for property-specific comments.
+       *   Omit for non-property comments.
+       * @param {boolean} [override=false] Whether to override existing comments at
+       *   the target location. If false, comments will be appended.
+       *
+       * @throws {TypeError} If source is not an object.
+       * @throws {RangeError} If where parameter is invalid or incompatible with key.
+       *
+       * @example
+       * const obj = parse('{"a": 1 // comment on a}')
+       *
+       * // Move comment from after 'a' to before 'a'
+       * moveComments(obj, obj,
+       *   { where: 'after', key: 'a' },
+       *   { where: 'before', key: 'a' }
+       * )
+       *
+       * @example
+       * // Move non-property comment
+       * moveComments(obj, obj,
+       *   { where: 'before-all' },
+       *   { where: 'after-all' }
+       * )
+       */
+      moveComments(source, target, {
+        where: from_where,
+        key: from_key
+      }, {
+        where: to_where,
+        key: to_key
+      }, override = false) {
+        if (!isObject(source)) {
+          throw new TypeError("source must be an object");
+        }
+        if (!target) {
+          target = source;
+        }
+        if (!isObject(target)) {
+          return;
+        }
+        const from_prop = symbol_checked(from_where, from_key);
+        const to_prop = symbol_checked(to_where, to_key);
+        if (!Object.hasOwn(source, from_prop)) {
+          return;
+        }
+        const source_comments = source[from_prop];
+        delete source[from_prop];
+        if (override || !Object.hasOwn(target, to_prop)) {
+          define2(target, to_prop, source_comments);
+          return;
+        }
+        const target_comments = target[to_prop];
+        if (target_comments) {
+          target_comments.push(...source_comments);
+        }
+      },
+      /**
+       * Remove comments from a specific location within an object.
+       *
+       * @param {Object} target The target object to remove comments from.
+       * @param {Object} location The comment location to remove.
+       * @param {string} location.where The comment position (e.g., 'before',
+       *   'after', 'before-all', etc.).
+       * @param {string} [location.key] The property key for property-specific
+       *   comments. Omit for non-property comments.
+       *
+       * @throws {TypeError} If target is not an object.
+       * @throws {RangeError} If where parameter is invalid or incompatible with key.
+       *
+       * @example
+       * const obj = parse('{"a": 1 // comment on a}')
+       *
+       * // Remove comment after 'a'
+       * removeComments(obj, { where: 'after', key: 'a' })
+       *
+       * @example
+       * // Remove non-property comment
+       * removeComments(obj, { where: 'before-all' })
+       */
+      removeComments(target, {
+        where,
+        key
+      }) {
+        if (!isObject(target)) {
+          throw new TypeError("target must be an object");
+        }
+        const prop = symbol_checked(where, key);
+        if (!Object.hasOwn(target, prop)) {
+          return;
+        }
+        delete target[prop];
       }
     };
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/array.js
+// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/array.js
 var require_array = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/array.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/array.js"(exports2, module2) {
     init_import_meta_url();
     var { isArray: isArray3 } = require_util8();
     var { sort } = require_src();
     var {
-      SYMBOL_PREFIXES,
+      PROP_SYMBOL_PREFIXES,
       UNDEFINED,
       symbol,
       copy_comments,
@@ -29006,7 +29156,7 @@ var require_array = __commonJS({
       }
     };
     var remove_comments = (array, key) => {
-      SYMBOL_PREFIXES.forEach((prefix) => {
+      PROP_SYMBOL_PREFIXES.forEach((prefix) => {
         const prop = symbol(prefix, key);
         delete array[prop];
       });
@@ -29024,6 +29174,14 @@ var require_array = __commonJS({
       // because `splice(0, undefined)` is not equivalent to `splice(0)`,
       // as well as:
       // - slice
+      /**
+       * Changes the contents of an array by removing or replacing existing
+       *   elements and/or adding new elements in place.
+       * Comments are automatically preserved and repositioned during the operation.
+       *
+       * @param {...*} args Arguments passed to Array.prototype.splice
+       * @returns {CommentArray} A new CommentArray containing the deleted elements.
+       */
       splice(...args) {
         const { length } = this;
         const ret = super.splice(...args);
@@ -29045,6 +29203,14 @@ var require_array = __commonJS({
         move_comments(this, this, start, count3, offset, true);
         return ret;
       }
+      /**
+       * Returns a shallow copy of a portion of an array into a new CommentArray object.
+       * Comments are copied to the appropriate positions in the new array.
+       *
+       * @param {...*} args Arguments passed to Array.prototype.slice
+       * @returns {CommentArray} A new CommentArray containing the extracted
+       *   elements with their comments.
+       */
       slice(...args) {
         const { length } = this;
         const array = super.slice(...args);
@@ -29136,9 +29302,9 @@ var require_array = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/parse.js
+// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/parse.js
 var require_parse3 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/parse.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/parse.js"(exports2, module2) {
     init_import_meta_url();
     var esprima = require_esprima();
     var {
@@ -29455,9 +29621,9 @@ var require_parse3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/stringify.js
+// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/stringify.js
 var require_stringify = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/stringify.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/stringify.js"(exports2, module2) {
     init_import_meta_url();
     var {
       isArray: isArray3,
@@ -29661,9 +29827,9 @@ var require_stringify = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/index.js
+// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/index.js
 var require_src2 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.4.1/node_modules/comment-json/src/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/index.js"(exports2, module2) {
     init_import_meta_url();
     var { parse: parse4, tokenize } = require_parse3();
     var stringify5 = require_stringify();
@@ -29676,7 +29842,9 @@ var require_src2 = __commonJS({
       PREFIX_AFTER,
       PREFIX_BEFORE_ALL,
       PREFIX_AFTER_ALL,
-      assign: assign3
+      assign: assign3,
+      moveComments,
+      removeComments
     } = require_common();
     module2.exports = {
       PREFIX_BEFORE,
@@ -29690,7 +29858,9 @@ var require_src2 = __commonJS({
       stringify: stringify5,
       tokenize,
       CommentArray,
-      assign: assign3
+      assign: assign3,
+      moveComments,
+      removeComments
     };
   }
 });
@@ -46398,11 +46568,10 @@ function isDefined(v) {
 init_import_meta_url();
 var import_node_url = require("node:url");
 
-// ../node_modules/.pnpm/fast-equals@5.3.3/node_modules/fast-equals/dist/esm/index.mjs
+// ../node_modules/.pnpm/fast-equals@5.3.4/node_modules/fast-equals/dist/es/index.mjs
 init_import_meta_url();
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+var { getOwnPropertyNames, getOwnPropertySymbols } = Object;
+var { hasOwnProperty } = Object.prototype;
 function combineComparators(comparatorA, comparatorB) {
   return function isEqual(a, b, state) {
     return comparatorA(a, b, state) && comparatorB(a, b, state);
@@ -46413,15 +46582,15 @@ function createIsCircular(areItemsEqual) {
     if (!a || !b || typeof a !== "object" || typeof b !== "object") {
       return areItemsEqual(a, b, state);
     }
-    var cache5 = state.cache;
-    var cachedA = cache5.get(a);
-    var cachedB = cache5.get(b);
+    const { cache: cache5 } = state;
+    const cachedA = cache5.get(a);
+    const cachedB = cache5.get(b);
     if (cachedA && cachedB) {
       return cachedA === b && cachedB === a;
     }
     cache5.set(a, b);
     cache5.set(b, a);
-    var result = areItemsEqual(a, b, state);
+    const result = areItemsEqual(a, b, state);
     cache5.delete(a);
     cache5.delete(b);
     return result;
@@ -46435,9 +46604,7 @@ function getStrictProperties(object2) {
 }
 var hasOwn = (
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  Object.hasOwn || (function(object2, property) {
-    return hasOwnProperty.call(object2, property);
-  })
+  Object.hasOwn || ((object2, property) => hasOwnProperty.call(object2, property))
 );
 function sameValueZeroEqual(a, b) {
   return a === b || !a && !b && a !== a && b !== b;
@@ -46445,10 +46612,9 @@ function sameValueZeroEqual(a, b) {
 var PREACT_VNODE = "__v";
 var PREACT_OWNER = "__o";
 var REACT_OWNER = "_owner";
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var keys = Object.keys;
+var { getOwnPropertyDescriptor, keys } = Object;
 function areArraysEqual(a, b, state) {
-  var index = a.length;
+  let index = a.length;
   if (b.length !== index) {
     return false;
   }
@@ -46469,25 +46635,25 @@ function areFunctionsEqual(a, b) {
   return a === b;
 }
 function areMapsEqual(a, b, state) {
-  var size = a.size;
+  const size = a.size;
   if (size !== b.size) {
     return false;
   }
   if (!size) {
     return true;
   }
-  var matchedIndices = new Array(size);
-  var aIterable = a.entries();
-  var aResult;
-  var bResult;
-  var index = 0;
+  const matchedIndices = new Array(size);
+  const aIterable = a.entries();
+  let aResult;
+  let bResult;
+  let index = 0;
   while (aResult = aIterable.next()) {
     if (aResult.done) {
       break;
     }
-    var bIterable = b.entries();
-    var hasMatch = false;
-    var matchIndex = 0;
+    const bIterable = b.entries();
+    let hasMatch = false;
+    let matchIndex = 0;
     while (bResult = bIterable.next()) {
       if (bResult.done) {
         break;
@@ -46496,8 +46662,8 @@ function areMapsEqual(a, b, state) {
         matchIndex++;
         continue;
       }
-      var aEntry = aResult.value;
-      var bEntry = bResult.value;
+      const aEntry = aResult.value;
+      const bEntry = bResult.value;
       if (state.equals(aEntry[0], bEntry[0], index, matchIndex, a, b, state) && state.equals(aEntry[1], bEntry[1], aEntry[0], bEntry[0], a, b, state)) {
         hasMatch = matchedIndices[matchIndex] = true;
         break;
@@ -46513,8 +46679,8 @@ function areMapsEqual(a, b, state) {
 }
 var areNumbersEqual = sameValueZeroEqual;
 function areObjectsEqual(a, b, state) {
-  var properties = keys(a);
-  var index = properties.length;
+  const properties = keys(a);
+  let index = properties.length;
   if (keys(b).length !== index) {
     return false;
   }
@@ -46526,14 +46692,14 @@ function areObjectsEqual(a, b, state) {
   return true;
 }
 function areObjectsEqualStrict(a, b, state) {
-  var properties = getStrictProperties(a);
-  var index = properties.length;
+  const properties = getStrictProperties(a);
+  let index = properties.length;
   if (getStrictProperties(b).length !== index) {
     return false;
   }
-  var property;
-  var descriptorA;
-  var descriptorB;
+  let property;
+  let descriptorA;
+  let descriptorB;
   while (index-- > 0) {
     property = properties[index];
     if (!isPropertyEqual(a, b, state, property)) {
@@ -46554,24 +46720,24 @@ function areRegExpsEqual(a, b) {
   return a.source === b.source && a.flags === b.flags;
 }
 function areSetsEqual(a, b, state) {
-  var size = a.size;
+  const size = a.size;
   if (size !== b.size) {
     return false;
   }
   if (!size) {
     return true;
   }
-  var matchedIndices = new Array(size);
-  var aIterable = a.values();
-  var aResult;
-  var bResult;
+  const matchedIndices = new Array(size);
+  const aIterable = a.values();
+  let aResult;
+  let bResult;
   while (aResult = aIterable.next()) {
     if (aResult.done) {
       break;
     }
-    var bIterable = b.values();
-    var hasMatch = false;
-    var matchIndex = 0;
+    const bIterable = b.values();
+    let hasMatch = false;
+    let matchIndex = 0;
     while (bResult = bIterable.next()) {
       if (bResult.done) {
         break;
@@ -46589,7 +46755,7 @@ function areSetsEqual(a, b, state) {
   return true;
 }
 function areTypedArraysEqual(a, b) {
-  var index = a.length;
+  let index = a.length;
   if (b.length !== index) {
     return false;
   }
@@ -46620,12 +46786,14 @@ var REG_EXP_TAG = "[object RegExp]";
 var SET_TAG = "[object Set]";
 var STRING_TAG = "[object String]";
 var URL_TAG = "[object URL]";
-var isArray = Array.isArray;
-var isTypedArray = typeof ArrayBuffer !== "undefined" && typeof ArrayBuffer.isView === "function" ? ArrayBuffer.isView : null;
-var assign2 = Object.assign;
+var { isArray } = Array;
+var isTypedArray = (
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  typeof ArrayBuffer !== "undefined" && typeof ArrayBuffer.isView === "function" ? ArrayBuffer.isView : null
+);
+var { assign: assign2 } = Object;
 var getTag = Object.prototype.toString.call.bind(Object.prototype.toString);
-function createEqualityComparator(_a) {
-  var areArraysEqual2 = _a.areArraysEqual, areDatesEqual2 = _a.areDatesEqual, areErrorsEqual2 = _a.areErrorsEqual, areFunctionsEqual2 = _a.areFunctionsEqual, areMapsEqual2 = _a.areMapsEqual, areNumbersEqual2 = _a.areNumbersEqual, areObjectsEqual2 = _a.areObjectsEqual, arePrimitiveWrappersEqual2 = _a.arePrimitiveWrappersEqual, areRegExpsEqual2 = _a.areRegExpsEqual, areSetsEqual2 = _a.areSetsEqual, areTypedArraysEqual2 = _a.areTypedArraysEqual, areUrlsEqual2 = _a.areUrlsEqual, unknownTagComparators = _a.unknownTagComparators;
+function createEqualityComparator({ areArraysEqual: areArraysEqual2, areDatesEqual: areDatesEqual2, areErrorsEqual: areErrorsEqual2, areFunctionsEqual: areFunctionsEqual2, areMapsEqual: areMapsEqual2, areNumbersEqual: areNumbersEqual2, areObjectsEqual: areObjectsEqual2, arePrimitiveWrappersEqual: arePrimitiveWrappersEqual2, areRegExpsEqual: areRegExpsEqual2, areSetsEqual: areSetsEqual2, areTypedArraysEqual: areTypedArraysEqual2, areUrlsEqual: areUrlsEqual2, unknownTagComparators }) {
   return function comparator(a, b, state) {
     if (a === b) {
       return true;
@@ -46633,7 +46801,7 @@ function createEqualityComparator(_a) {
     if (a == null || b == null) {
       return false;
     }
-    var type = typeof a;
+    const type = typeof a;
     if (type !== typeof b) {
       return false;
     }
@@ -46646,7 +46814,7 @@ function createEqualityComparator(_a) {
       }
       return false;
     }
-    var constructor = a.constructor;
+    const constructor = a.constructor;
     if (constructor !== b.constructor) {
       return false;
     }
@@ -46671,7 +46839,7 @@ function createEqualityComparator(_a) {
     if (constructor === Set) {
       return areSetsEqual2(a, b, state);
     }
-    var tag = getTag(a);
+    const tag = getTag(a);
     if (tag === DATE_TAG) {
       return areDatesEqual2(a, b, state);
     }
@@ -46700,9 +46868,9 @@ function createEqualityComparator(_a) {
       return arePrimitiveWrappersEqual2(a, b, state);
     }
     if (unknownTagComparators) {
-      var unknownTagComparator = unknownTagComparators[tag];
+      let unknownTagComparator = unknownTagComparators[tag];
       if (!unknownTagComparator) {
-        var shortTag = getShortTag(a);
+        const shortTag = getShortTag(a);
         if (shortTag) {
           unknownTagComparator = unknownTagComparators[shortTag];
         }
@@ -46714,9 +46882,8 @@ function createEqualityComparator(_a) {
     return false;
   };
 }
-function createEqualityComparatorConfig(_a) {
-  var circular = _a.circular, createCustomConfig = _a.createCustomConfig, strict = _a.strict;
-  var config = {
+function createEqualityComparatorConfig({ circular, createCustomConfig, strict }) {
+  let config = {
     areArraysEqual: strict ? areObjectsEqualStrict : areArraysEqual,
     areDatesEqual,
     areErrorsEqual,
@@ -46735,15 +46902,15 @@ function createEqualityComparatorConfig(_a) {
     config = assign2({}, config, createCustomConfig(config));
   }
   if (circular) {
-    var areArraysEqual$1 = createIsCircular(config.areArraysEqual);
-    var areMapsEqual$1 = createIsCircular(config.areMapsEqual);
-    var areObjectsEqual$1 = createIsCircular(config.areObjectsEqual);
-    var areSetsEqual$1 = createIsCircular(config.areSetsEqual);
+    const areArraysEqual2 = createIsCircular(config.areArraysEqual);
+    const areMapsEqual2 = createIsCircular(config.areMapsEqual);
+    const areObjectsEqual2 = createIsCircular(config.areObjectsEqual);
+    const areSetsEqual2 = createIsCircular(config.areSetsEqual);
     config = assign2({}, config, {
-      areArraysEqual: areArraysEqual$1,
-      areMapsEqual: areMapsEqual$1,
-      areObjectsEqual: areObjectsEqual$1,
-      areSetsEqual: areSetsEqual$1
+      areArraysEqual: areArraysEqual2,
+      areMapsEqual: areMapsEqual2,
+      areObjectsEqual: areObjectsEqual2,
+      areSetsEqual: areSetsEqual2
     });
   }
   return config;
@@ -46753,11 +46920,10 @@ function createInternalEqualityComparator(compare3) {
     return compare3(a, b, state);
   };
 }
-function createIsEqual(_a) {
-  var circular = _a.circular, comparator = _a.comparator, createState = _a.createState, equals = _a.equals, strict = _a.strict;
+function createIsEqual({ circular, comparator, createState, equals, strict }) {
   if (createState) {
     return function isEqual(a, b) {
-      var _a2 = createState(), _b = _a2.cache, cache5 = _b === void 0 ? circular ? /* @__PURE__ */ new WeakMap() : void 0 : _b, meta = _a2.meta;
+      const { cache: cache5 = circular ? /* @__PURE__ */ new WeakMap() : void 0, meta } = createState();
       return comparator(a, b, {
         cache: cache5,
         equals,
@@ -46776,7 +46942,7 @@ function createIsEqual(_a) {
       });
     };
   }
-  var state = {
+  const state = {
     cache: void 0,
     equals,
     meta: void 0,
@@ -46794,37 +46960,26 @@ var strictCircularDeepEqual = createCustomEqual({
   strict: true
 });
 var shallowEqual = createCustomEqual({
-  createInternalComparator: function() {
-    return sameValueZeroEqual;
-  }
+  createInternalComparator: () => sameValueZeroEqual
 });
 var strictShallowEqual = createCustomEqual({
   strict: true,
-  createInternalComparator: function() {
-    return sameValueZeroEqual;
-  }
+  createInternalComparator: () => sameValueZeroEqual
 });
 var circularShallowEqual = createCustomEqual({
   circular: true,
-  createInternalComparator: function() {
-    return sameValueZeroEqual;
-  }
+  createInternalComparator: () => sameValueZeroEqual
 });
 var strictCircularShallowEqual = createCustomEqual({
   circular: true,
-  createInternalComparator: function() {
-    return sameValueZeroEqual;
-  },
+  createInternalComparator: () => sameValueZeroEqual,
   strict: true
 });
-function createCustomEqual(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  var _a = options.circular, circular = _a === void 0 ? false : _a, createCustomInternalComparator = options.createInternalComparator, createState = options.createState, _b = options.strict, strict = _b === void 0 ? false : _b;
-  var config = createEqualityComparatorConfig(options);
-  var comparator = createEqualityComparator(config);
-  var equals = createCustomInternalComparator ? createCustomInternalComparator(comparator) : createInternalEqualityComparator(comparator);
+function createCustomEqual(options = {}) {
+  const { circular = false, createInternalComparator: createCustomInternalComparator, createState, strict = false } = options;
+  const config = createEqualityComparatorConfig(options);
+  const comparator = createEqualityComparator(config);
+  const equals = createCustomInternalComparator ? createCustomInternalComparator(comparator) : createInternalEqualityComparator(comparator);
   return createIsEqual({ circular, comparator, createState, equals, strict });
 }
 
