@@ -70,8 +70,8 @@ importers:
         specifier: ^9.4.0
         version: 9.4.0
       cspell-glob:
-        specifier: ^9.4.0
-        version: 9.4.0
+        specifier: ^9.5.0
+        version: 9.5.0
       esbuild:
         specifier: ^0.27.1
         version: 0.27.1
@@ -391,6 +391,10 @@ packages:
 
   '@cspell/url@9.4.0':
     resolution: {integrity: sha512-nt88P6m20AaVbqMxsyPf8KqyWPaFEW2UANi0ijBxc2xTkD2KiUovxfZUYW6NMU9XBYZlovT5LztkEhst2yBcSA==}
+    engines: {node: '>=20'}
+
+  '@cspell/url@9.5.0':
+    resolution: {integrity: sha512-1Lqohnc1eTC5o5SYmm3VsUH1iIthvDkPkLXswgMQgIjmfWIXn/fRuPPsB0Mo0vZB/+LMbmpcMVuvNeO/n8uJDg==}
     engines: {node: '>=20'}
 
   '@esbuild/aix-ppc64@0.25.12':
@@ -1204,6 +1208,10 @@ packages:
 
   cspell-glob@9.4.0:
     resolution: {integrity: sha512-Q87Suj9oXrhoKck15qWorCizBjMNxG/k3NjnhKIAMrF+PdUa1Mpl0MOD+hqV1Wvwh1UHcIMYCP3bR3XpBbNx+Q==}
+    engines: {node: '>=20'}
+
+  cspell-glob@9.5.0:
+    resolution: {integrity: sha512-l3IrUNSia231/lWJ5MPeL2ecIoN/UR9CvmhHQPlalw5mEzsjsApps6rNFSNSCreLRk5zoHgPc9MUhRM+AKi1tg==}
     engines: {node: '>=20'}
 
   cspell-grammar@9.4.0:
@@ -2368,6 +2376,8 @@ snapshots:
 
   '@cspell/url@9.4.0': {}
 
+  '@cspell/url@9.5.0': {}
+
   '@esbuild/aix-ppc64@0.25.12':
     optional: true
 
@@ -3041,6 +3051,11 @@ snapshots:
   cspell-glob@9.4.0:
     dependencies:
       '@cspell/url': 9.4.0
+      picomatch: 4.0.3
+
+  cspell-glob@9.5.0:
+    dependencies:
+      '@cspell/url': 9.5.0
       picomatch: 4.0.3
 
   cspell-grammar@9.4.0:
