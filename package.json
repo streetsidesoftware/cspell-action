@@ -49,7 +49,7 @@
     "prettier": "^3.7.4",
     "shx": "^0.4.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.49.0",
+    "typescript-eslint": "^8.51.0",
     "vitest": "^4.0.15"
   },
   "pnpm": {
