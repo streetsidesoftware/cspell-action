@@ -28988,9 +28988,9 @@ var require_src = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/common.js
+// ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/common.js
 var require_common = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/common.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/common.js"(exports2, module2) {
     init_import_meta_url();
     var {
       isObject,
@@ -29289,9 +29289,9 @@ var require_common = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/array.js
+// ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/array.js
 var require_array = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/array.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/array.js"(exports2, module2) {
     init_import_meta_url();
     var { isArray: isArray2 } = require_util8();
     var { sort } = require_src();
@@ -29474,9 +29474,9 @@ var require_array = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/parse.js
+// ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/parse.js
 var require_parse3 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/parse.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/parse.js"(exports2, module2) {
     init_import_meta_url();
     var esprima = require_esprima();
     var {
@@ -29793,9 +29793,9 @@ var require_parse3 = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/stringify.js
+// ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/stringify.js
 var require_stringify = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/stringify.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/stringify.js"(exports2, module2) {
     init_import_meta_url();
     var {
       isArray: isArray2,
@@ -29999,9 +29999,9 @@ var require_stringify = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/index.js
+// ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/index.js
 var require_src2 = __commonJS({
-  "../node_modules/.pnpm/comment-json@4.5.0/node_modules/comment-json/src/index.js"(exports2, module2) {
+  "../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/index.js"(exports2, module2) {
     init_import_meta_url();
     var { parse: parse4, tokenize } = require_parse3();
     var stringify5 = require_stringify();
@@ -55360,22 +55360,22 @@ function parseCSpellConfigFilePackageJson(file) {
 // ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/index.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/parse.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/parse.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/struct.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/struct.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/primitive.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/primitive.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/util.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/util.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/error.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/error.js
 init_import_meta_url();
 function getLineColFromPtr(string, ptr) {
   let lines = string.slice(0, ptr).split(/\r\n|\n|\r/g);
@@ -55416,7 +55416,7 @@ ${codeblock}`, options);
   }
 };
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/util.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/util.js
 function isEscaped(str, ptr) {
   let i = 0;
   while (str[ptr - ++i] === "\\")
@@ -55490,9 +55490,9 @@ function getStringEnd(str, seek) {
   return seek;
 }
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/date.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/date.js
 init_import_meta_url();
-var DATE_TIME_RE = /^(\d{4}-\d{2}-\d{2})?[T ]?(?:(\d{2}):\d{2}:\d{2}(?:\.\d+)?)?(Z|[-+]\d{2}:\d{2})?$/i;
+var DATE_TIME_RE = /^(\d{4}-\d{2}-\d{2})?[T ]?(?:(\d{2}):\d{2}(?::\d{2}(?:\.\d+)?)?)?(Z|[-+]\d{2}:\d{2})?$/i;
 var TomlDate = class _TomlDate extends Date {
   #hasDate = false;
   #hasTime = false;
@@ -55583,17 +55583,18 @@ var TomlDate = class _TomlDate extends Date {
   }
 };
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/primitive.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/primitive.js
 var INT_REGEX = /^((0x[0-9a-fA-F](_?[0-9a-fA-F])*)|(([+-]|0[ob])?\d(_?\d)*))$/;
 var FLOAT_REGEX = /^[+-]?\d(_?\d)*(\.\d(_?\d)*)?([eE][+-]?\d(_?\d)*)?$/;
 var LEADING_ZERO = /^[+-]?0[0-9_]/;
-var ESCAPE_REGEX = /^[0-9a-f]{4,8}$/i;
+var ESCAPE_REGEX = /^[0-9a-f]{2,8}$/i;
 var ESC_MAP = {
   b: "\b",
   t: "	",
   n: "\n",
   f: "\f",
   r: "\r",
+  e: "\x1B",
   '"': '"',
   "\\": "\\"
 };
@@ -55628,8 +55629,8 @@ function parseString(str, ptr = 0, endPtr = str.length) {
     }
     if (isEscape) {
       isEscape = false;
-      if (c === "u" || c === "U") {
-        let code = str.slice(ptr, ptr += c === "u" ? 4 : 8);
+      if (c === "x" || c === "u" || c === "U") {
+        let code = str.slice(ptr, ptr += c === "x" ? 2 : c === "u" ? 4 : 8);
         if (!ESCAPE_REGEX.test(code)) {
           throw new TomlError("invalid unicode escape", {
             toml: str,
@@ -55721,26 +55722,16 @@ function parseValue(value, toml, ptr, integersAsBigInt) {
   return date;
 }
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/extract.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/extract.js
 init_import_meta_url();
-function sliceAndTrimEndOf(str, startPtr, endPtr, allowNewLines) {
+function sliceAndTrimEndOf(str, startPtr, endPtr) {
   let value = str.slice(startPtr, endPtr);
   let commentIdx = value.indexOf("#");
   if (commentIdx > -1) {
     skipComment(str, commentIdx);
     value = value.slice(0, commentIdx);
   }
-  let trimmed = value.trimEnd();
-  if (!allowNewLines) {
-    let newlineIdx = value.indexOf("\n", trimmed.length);
-    if (newlineIdx > -1) {
-      throw new TomlError("newlines are not allowed in inline tables", {
-        toml: str,
-        ptr: startPtr + newlineIdx
-      });
-    }
-  }
-  return [trimmed, commentIdx];
+  return [value.trimEnd(), commentIdx];
 }
 function extractValue(str, ptr, end, depth, integersAsBigInt) {
   if (depth === 0) {
@@ -55752,24 +55743,25 @@ function extractValue(str, ptr, end, depth, integersAsBigInt) {
   let c = str[ptr];
   if (c === "[" || c === "{") {
     let [value, endPtr2] = c === "[" ? parseArray(str, ptr, depth, integersAsBigInt) : parseInlineTable(str, ptr, depth, integersAsBigInt);
-    let newPtr = end ? skipUntil(str, endPtr2, ",", end) : endPtr2;
-    if (endPtr2 - newPtr && end === "}") {
-      let nextNewLine = indexOfNewline(str, endPtr2, newPtr);
-      if (nextNewLine > -1) {
-        throw new TomlError("newlines are not allowed in inline tables", {
+    if (end) {
+      endPtr2 = skipVoid(str, endPtr2);
+      if (str[endPtr2] === ",")
+        endPtr2++;
+      else if (str[endPtr2] !== end) {
+        throw new TomlError("expected comma or end of structure", {
           toml: str,
-          ptr: nextNewLine
+          ptr: endPtr2
         });
       }
     }
-    return [value, newPtr];
+    return [value, endPtr2];
   }
   let endPtr;
   if (c === '"' || c === "'") {
     endPtr = getStringEnd(str, ptr);
     let parsed = parseString(str, ptr, endPtr);
     if (end) {
-      endPtr = skipVoid(str, endPtr, end !== "]");
+      endPtr = skipVoid(str, endPtr);
       if (str[endPtr] && str[endPtr] !== "," && str[endPtr] !== end && str[endPtr] !== "\n" && str[endPtr] !== "\r") {
         throw new TomlError("unexpected character encountered", {
           toml: str,
@@ -55781,7 +55773,7 @@ function extractValue(str, ptr, end, depth, integersAsBigInt) {
     return [parsed, endPtr];
   }
   endPtr = skipUntil(str, ptr, ",", end);
-  let slice = sliceAndTrimEndOf(str, ptr, endPtr - +(str[endPtr - 1] === ","), end === "]");
+  let slice = sliceAndTrimEndOf(str, ptr, endPtr - +(str[endPtr - 1] === ","));
   if (!slice[0]) {
     throw new TomlError("incomplete key-value declaration: no value specified", {
       toml: str,
@@ -55798,7 +55790,7 @@ function extractValue(str, ptr, end, depth, integersAsBigInt) {
   ];
 }
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/struct.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/struct.js
 var KEY_PART_RE = /^[a-zA-Z0-9-_]+[ \t]*$/;
 function parseKey(str, ptr, end = "=") {
   let dot = ptr - 1;
@@ -55871,17 +55863,16 @@ function parseInlineTable(str, ptr, depth, integersAsBigInt) {
   let res = {};
   let seen = /* @__PURE__ */ new Set();
   let c;
-  let comma = 0;
   ptr++;
   while ((c = str[ptr++]) !== "}" && c) {
-    let err = { toml: str, ptr: ptr - 1 };
-    if (c === "\n") {
-      throw new TomlError("newlines are not allowed in inline tables", err);
-    } else if (c === "#") {
-      throw new TomlError("inline tables cannot contain comments", err);
-    } else if (c === ",") {
-      throw new TomlError("expected key-value, found comma", err);
-    } else if (c !== " " && c !== "	") {
+    if (c === ",") {
+      throw new TomlError("expected value, found comma", {
+        toml: str,
+        ptr: ptr - 1
+      });
+    } else if (c === "#")
+      ptr = skipComment(str, ptr);
+    else if (c !== " " && c !== "	" && c !== "\n" && c !== "\r") {
       let k;
       let t = res;
       let hasOwn2 = false;
@@ -55910,14 +55901,7 @@ function parseInlineTable(str, ptr, depth, integersAsBigInt) {
       seen.add(value);
       t[k] = value;
       ptr = valueEndPtr;
-      comma = str[ptr - 1] === "," ? ptr - 1 : 0;
     }
-  }
-  if (comma) {
-    throw new TomlError("trailing commas are not allowed in inline tables", {
-      toml: str,
-      ptr: comma
-    });
   }
   if (!c) {
     throw new TomlError("unfinished table encountered", {
@@ -55954,7 +55938,7 @@ function parseArray(str, ptr, depth, integersAsBigInt) {
   return [res, ptr];
 }
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/parse.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/parse.js
 function peekTable(key, table, meta, type) {
   let t = table;
   let m = meta;
@@ -56079,7 +56063,7 @@ function parse2(toml, { maxDepth = 1e3, integersAsBigInt } = {}) {
   return res;
 }
 
-// ../node_modules/.pnpm/smol-toml@1.5.2/node_modules/smol-toml/dist/stringify.js
+// ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/stringify.js
 init_import_meta_url();
 var BARE_KEY = /^[a-z0-9-_]+$/i;
 function extendedTypeOf(obj) {
