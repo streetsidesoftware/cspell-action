@@ -41,9 +41,9 @@ var init_import_meta_url = __esm({
   }
 });
 
-// ../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/utils.js
+// ../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/utils.js
 var require_utils = __commonJS({
-  "../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/utils.js"(exports2) {
+  "../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/utils.js"(exports2) {
     "use strict";
     init_import_meta_url();
     Object.defineProperty(exports2, "__esModule", { value: true });
@@ -73,9 +73,9 @@ var require_utils = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/command.js
+// ../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/command.js
 var require_command = __commonJS({
-  "../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/command.js"(exports2) {
+  "../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/command.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
@@ -169,9 +169,9 @@ var require_command = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/file-command.js
+// ../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/file-command.js
 var require_file_command = __commonJS({
-  "../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/file-command.js"(exports2) {
+  "../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/file-command.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
@@ -244,9 +244,9 @@ var require_file_command = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@3.0.0/node_modules/@actions/http-client/lib/proxy.js
+// ../node_modules/.pnpm/@actions+http-client@3.0.1/node_modules/@actions/http-client/lib/proxy.js
 var require_proxy = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@3.0.0/node_modules/@actions/http-client/lib/proxy.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@3.0.1/node_modules/@actions/http-client/lib/proxy.js"(exports2) {
     "use strict";
     init_import_meta_url();
     Object.defineProperty(exports2, "__esModule", { value: true });
@@ -17414,9 +17414,9 @@ var require_undici = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@3.0.0/node_modules/@actions/http-client/lib/index.js
+// ../node_modules/.pnpm/@actions+http-client@3.0.1/node_modules/@actions/http-client/lib/index.js
 var require_lib = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@3.0.0/node_modules/@actions/http-client/lib/index.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@3.0.1/node_modules/@actions/http-client/lib/index.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
@@ -17605,7 +17605,7 @@ var require_lib = __commonJS({
         this._maxRetries = 1;
         this._keepAlive = false;
         this._disposed = false;
-        this.userAgent = userAgent;
+        this.userAgent = this._getUserAgentWithOrchestrationId(userAgent);
         this.handlers = handlers || [];
         this.requestOptions = requestOptions;
         if (requestOptions) {
@@ -18030,6 +18030,15 @@ var require_lib = __commonJS({
         }
         return proxyAgent;
       }
+      _getUserAgentWithOrchestrationId(userAgent) {
+        const baseUserAgent = userAgent || "actions/http-client";
+        const orchId = process.env["ACTIONS_ORCHESTRATION_ID"];
+        if (orchId) {
+          const sanitizedId = orchId.replace(/[^a-z0-9_.-]/gi, "_");
+          return `${baseUserAgent} actions_orchestration_id/${sanitizedId}`;
+        }
+        return baseUserAgent;
+      }
       _performExponentialBackoff(retryNumber) {
         return __awaiter(this, void 0, void 0, function* () {
           retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
@@ -18097,9 +18106,9 @@ var require_lib = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+http-client@3.0.0/node_modules/@actions/http-client/lib/auth.js
+// ../node_modules/.pnpm/@actions+http-client@3.0.1/node_modules/@actions/http-client/lib/auth.js
 var require_auth = __commonJS({
-  "../node_modules/.pnpm/@actions+http-client@3.0.0/node_modules/@actions/http-client/lib/auth.js"(exports2) {
+  "../node_modules/.pnpm/@actions+http-client@3.0.1/node_modules/@actions/http-client/lib/auth.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
@@ -18202,9 +18211,9 @@ var require_auth = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/oidc-utils.js
+// ../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/oidc-utils.js
 var require_oidc_utils = __commonJS({
-  "../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/oidc-utils.js"(exports2) {
+  "../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/oidc-utils.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
@@ -18301,9 +18310,9 @@ var require_oidc_utils = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/summary.js
+// ../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/summary.js
 var require_summary = __commonJS({
-  "../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/summary.js"(exports2) {
+  "../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/summary.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
@@ -18596,9 +18605,9 @@ var require_summary = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/path-utils.js
+// ../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/path-utils.js
 var require_path_utils = __commonJS({
-  "../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/path-utils.js"(exports2) {
+  "../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/path-utils.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
@@ -19735,9 +19744,9 @@ var require_exec = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/platform.js
+// ../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/platform.js
 var require_platform = __commonJS({
-  "../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/platform.js"(exports2) {
+  "../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/platform.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
@@ -19865,9 +19874,9 @@ var require_platform = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/core.js
+// ../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/core.js
 var require_core = __commonJS({
-  "../node_modules/.pnpm/@actions+core@2.0.1/node_modules/@actions/core/lib/core.js"(exports2) {
+  "../node_modules/.pnpm/@actions+core@2.0.2/node_modules/@actions/core/lib/core.js"(exports2) {
     "use strict";
     init_import_meta_url();
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
