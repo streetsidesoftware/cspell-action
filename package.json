@@ -41,7 +41,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@tsconfig/node24": "^24.0.4",
-    "@vitest/coverage-istanbul": "^4.0.17",
+    "@vitest/coverage-istanbul": "^4.0.18",
     "env-cmd": "^11.0.0",
     "eslint": "^9.39.2",
     "eslint-plugin-n": "^17.23.2",
@@ -50,7 +50,7 @@
     "shx": "^0.4.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.1",
-    "vitest": "^4.0.17"
+    "vitest": "^4.0.18"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
