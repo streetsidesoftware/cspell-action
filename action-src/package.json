@@ -23,16 +23,16 @@
   "devDependencies": {
     "@actions/core": "^2.0.1",
     "@actions/github": "^6.0.1",
-    "@cspell/cspell-types": "^9.5.0",
+    "@cspell/cspell-types": "^9.6.0",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^24.10.4",
-    "cspell": "^9.4.0",
-    "cspell-glob": "^9.5.0",
+    "cspell": "^9.6.0",
+    "cspell-glob": "^9.6.0",
     "esbuild": "^0.27.2",
     "vscode-uri": "^3.1.0"
   },
   "dependencies": {
-    "@cspell/cspell-bundled-dicts": "^9.4.0"
+    "@cspell/cspell-bundled-dicts": "^9.6.0"
   },
   "files": [
     "lib",

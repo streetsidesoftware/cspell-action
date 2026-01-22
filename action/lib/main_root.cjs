@@ -11,9 +11,9 @@ var __esm = (fn, res) => function __init() {
 var __commonJS = (cb, mod) => function __require2() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
-var __export = (target, all3) => {
-  for (var name2 in all3)
-    __defProp(target, name2, { get: all3[name2], enumerable: true });
+var __export = (target, all2) => {
+  for (var name2 in all2)
+    __defProp(target, name2, { get: all2[name2], enumerable: true });
 };
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
@@ -141,13 +141,13 @@ var require_command = __commonJS({
         let cmdStr = CMD_STRING + this.command;
         if (this.properties && Object.keys(this.properties).length > 0) {
           cmdStr += " ";
-          let first3 = true;
+          let first2 = true;
           for (const key in this.properties) {
             if (this.properties.hasOwnProperty(key)) {
               const val = this.properties[key];
               if (val) {
-                if (first3) {
-                  first3 = false;
+                if (first2) {
+                  first2 = false;
                 } else {
                   cmdStr += ",";
                 }
@@ -390,7 +390,7 @@ var require_tunnel = __commonJS({
     util.inherits(TunnelingAgent, events.EventEmitter);
     TunnelingAgent.prototype.addRequest = function addRequest(req, host, port, localAddress) {
       var self = this;
-      var options = mergeOptions({ request: req }, self.options, toOptions2(host, port, localAddress));
+      var options = mergeOptions2({ request: req }, self.options, toOptions2(host, port, localAddress));
       if (self.sockets.length >= this.maxSockets) {
         self.requests.push(options);
         return;
@@ -415,7 +415,7 @@ var require_tunnel = __commonJS({
       var self = this;
       var placeholder = {};
       self.sockets.push(placeholder);
-      var connectOptions = mergeOptions({}, self.proxyOptions, {
+      var connectOptions = mergeOptions2({}, self.proxyOptions, {
         method: "CONNECT",
         path: options.host + ":" + options.port,
         agent: false,
@@ -504,7 +504,7 @@ var require_tunnel = __commonJS({
       var self = this;
       TunnelingAgent.prototype.createSocket.call(self, options, function(socket) {
         var hostHeader = options.request.getHeader("host");
-        var tlsOptions = mergeOptions({}, self.options, {
+        var tlsOptions = mergeOptions2({}, self.options, {
           socket,
           servername: hostHeader ? hostHeader.replace(/:.*$/, "") : options.host
         });
@@ -523,7 +523,7 @@ var require_tunnel = __commonJS({
       }
       return host;
     }
-    function mergeOptions(target) {
+    function mergeOptions2(target) {
       for (var i = 1, len = arguments.length; i < len; ++i) {
         var overrides = arguments[i];
         if (typeof overrides === "object") {
@@ -4342,10 +4342,10 @@ var require_webidl = __commonJS({
         return V?.[Symbol.toStringTag] === I.prototype[Symbol.toStringTag];
       }
     };
-    webidl.argumentLengthCheck = function({ length }, min3, ctx) {
-      if (length < min3) {
+    webidl.argumentLengthCheck = function({ length }, min2, ctx) {
+      if (length < min2) {
         throw webidl.errors.exception({
-          message: `${min3} argument${min3 !== 1 ? "s" : ""} required, but${length ? " only" : ""} ${length} found.`,
+          message: `${min2} argument${min2 !== 1 ? "s" : ""} required, but${length ? " only" : ""} ${length} found.`,
           ...ctx
         });
       }
@@ -5336,9 +5336,9 @@ var require_body = __commonJS({
     var random;
     try {
       const crypto2 = require("node:crypto");
-      random = (max4) => crypto2.randomInt(0, max4);
+      random = (max3) => crypto2.randomInt(0, max3);
     } catch {
-      random = (max4) => Math.floor(Math.random(max4));
+      random = (max3) => Math.floor(Math.random(max3));
     }
     var ReadableStream = globalThis.ReadableStream;
     var File = NativeFile ?? UndiciFile;
@@ -10967,11 +10967,11 @@ var require_pluralizer = __commonJS({
         this.singular = singular;
         this.plural = plural;
       }
-      pluralize(count3) {
-        const one = count3 === 1;
+      pluralize(count2) {
+        const one = count2 === 1;
         const keys4 = one ? singulars : plurals;
         const noun = one ? this.singular : this.plural;
-        return { ...keys4, count: count3, noun };
+        return { ...keys4, count: count2, noun };
       }
     };
   }
@@ -20165,9 +20165,9 @@ var require_context = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.4.0/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.6.0/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
 var require_requireResolve = __commonJS({
-  "../node_modules/.pnpm/@cspell+cspell-resolver@9.4.0/node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports2) {
+  "../node_modules/.pnpm/@cspell+cspell-resolver@9.6.0/node_modules/@cspell/cspell-resolver/dist/requireResolve.js"(exports2) {
     "use strict";
     init_import_meta_url();
     Object.defineProperty(exports2, "__esModule", { value: true });
@@ -20752,7 +20752,7 @@ var require_scan = __commonJS({
         token.depth = token.isGlobstar ? Infinity : 1;
       }
     };
-    var scan3 = (input, options) => {
+    var scan2 = (input, options) => {
       const opts = options || {};
       const length = input.length - 1;
       const scanToEnd = opts.parts === true || opts.scanToEnd === true;
@@ -21033,7 +21033,7 @@ var require_scan = __commonJS({
       }
       return state;
     };
-    module2.exports = scan3;
+    module2.exports = scan2;
   }
 });
 
@@ -21073,10 +21073,10 @@ var require_parse2 = __commonJS({
       }
       input = REPLACEMENTS[input] || input;
       const opts = { ...options };
-      const max4 = typeof opts.maxLength === "number" ? Math.min(MAX_LENGTH, opts.maxLength) : MAX_LENGTH;
+      const max3 = typeof opts.maxLength === "number" ? Math.min(MAX_LENGTH, opts.maxLength) : MAX_LENGTH;
       let len = input.length;
-      if (len > max4) {
-        throw new SyntaxError(`Input length: ${len}, exceeds maximum allowed length: ${max4}`);
+      if (len > max3) {
+        throw new SyntaxError(`Input length: ${len}, exceeds maximum allowed length: ${max3}`);
       }
       const bos = { type: "bos", value: "", output: opts.prepend || "" };
       const tokens = [bos];
@@ -21146,13 +21146,13 @@ var require_parse2 = __commonJS({
         consume(token.value);
       };
       const negate = () => {
-        let count3 = 1;
+        let count2 = 1;
         while (peek() === "!" && (peek(2) !== "(" || peek(3) === "?")) {
           advance();
           state.start++;
-          count3++;
+          count2++;
         }
-        if (count3 % 2 === 0) {
+        if (count2 % 2 === 0) {
           return false;
         }
         state.negated = true;
@@ -21227,26 +21227,26 @@ var require_parse2 = __commonJS({
       };
       if (opts.fastpaths !== false && !/(^[*!]|[/()[\]{}"])/.test(input)) {
         let backslashes = false;
-        let output = input.replace(REGEX_SPECIAL_CHARS_BACKREF, (m, esc, chars, first3, rest, index) => {
-          if (first3 === "\\") {
+        let output = input.replace(REGEX_SPECIAL_CHARS_BACKREF, (m, esc, chars, first2, rest, index) => {
+          if (first2 === "\\") {
             backslashes = true;
             return m;
           }
-          if (first3 === "?") {
+          if (first2 === "?") {
             if (esc) {
-              return esc + first3 + (rest ? QMARK.repeat(rest.length) : "");
+              return esc + first2 + (rest ? QMARK.repeat(rest.length) : "");
             }
             if (index === 0) {
               return qmarkNoDot + (rest ? QMARK.repeat(rest.length) : "");
             }
             return QMARK.repeat(chars.length);
           }
-          if (first3 === ".") {
+          if (first2 === ".") {
             return DOT_LITERAL.repeat(chars.length);
           }
-          if (first3 === "*") {
+          if (first2 === "*") {
             if (esc) {
-              return esc + first3 + (rest ? star : "");
+              return esc + first2 + (rest ? star : "");
             }
             return star;
           }
@@ -21739,10 +21739,10 @@ var require_parse2 = __commonJS({
     };
     parse4.fastpaths = (input, options) => {
       const opts = { ...options };
-      const max4 = typeof opts.maxLength === "number" ? Math.min(MAX_LENGTH, opts.maxLength) : MAX_LENGTH;
+      const max3 = typeof opts.maxLength === "number" ? Math.min(MAX_LENGTH, opts.maxLength) : MAX_LENGTH;
       const len = input.length;
-      if (len > max4) {
-        throw new SyntaxError(`Input length: ${len}, exceeds maximum allowed length: ${max4}`);
+      if (len > max3) {
+        throw new SyntaxError(`Input length: ${len}, exceeds maximum allowed length: ${max3}`);
       }
       input = REPLACEMENTS[input] || input;
       const {
@@ -21811,7 +21811,7 @@ var require_picomatch = __commonJS({
   "../node_modules/.pnpm/picomatch@4.0.3/node_modules/picomatch/lib/picomatch.js"(exports2, module2) {
     "use strict";
     init_import_meta_url();
-    var scan3 = require_scan();
+    var scan2 = require_scan();
     var parse4 = require_parse2();
     var utils = require_utils3();
     var constants = require_constants6();
@@ -21902,7 +21902,7 @@ var require_picomatch = __commonJS({
       if (Array.isArray(pattern)) return pattern.map((p) => picomatch2.parse(p, options));
       return parse4(pattern, { ...options, fastpaths: false });
     };
-    picomatch2.scan = (input, options) => scan3(input, options);
+    picomatch2.scan = (input, options) => scan2(input, options);
     picomatch2.compileRe = (state, options, returnOutput = false, returnState = false) => {
       if (returnOutput === true) {
         return state.output;
@@ -22164,8 +22164,8 @@ var require_esprima = __commonJS({
                   }
                 }
                 if (target) {
-                  var count3 = target.leadingComments ? target.leadingComments.length : 0;
-                  for (var i = count3 - 1; i >= 0; --i) {
+                  var count2 = target.leadingComments ? target.leadingComments.length : 0;
+                  for (var i = count2 - 1; i >= 0; --i) {
                     var comment = target.leadingComments[i];
                     if (comment.range[1] <= metadata.start.offset) {
                       leadingComments.unshift(comment);
@@ -26954,8 +26954,8 @@ var require_esprima = __commonJS({
                 if (cp >= 55296 && cp <= 56319) {
                   var second = this.source.charCodeAt(i + 1);
                   if (second >= 56320 && second <= 57343) {
-                    var first3 = cp;
-                    cp = (first3 - 55296) * 1024 + second - 56320 + 65536;
+                    var first2 = cp;
+                    cp = (first2 - 55296) * 1024 + second - 56320 + 65536;
                   }
                 }
                 return cp;
@@ -28637,7 +28637,7 @@ var require_src = __commonJS({
         let { minGallop } = this;
         while (true) {
           let count1 = 0;
-          let count22 = 0;
+          let count2 = 0;
           let exit = false;
           do {
             if (compare3(array[cursor2], tmp[cursor1]) < 0) {
@@ -28645,7 +28645,7 @@ var require_src = __commonJS({
               results[dest] = results[cursor2];
               dest++;
               cursor2++;
-              count22++;
+              count2++;
               count1 = 0;
               if (--length2 === 0) {
                 exit = true;
@@ -28657,13 +28657,13 @@ var require_src = __commonJS({
               dest++;
               cursor1++;
               count1++;
-              count22 = 0;
+              count2 = 0;
               if (--length1 === 1) {
                 exit = true;
                 break;
               }
             }
-          } while ((count1 | count22) < minGallop);
+          } while ((count1 | count2) < minGallop);
           if (exit) {
             break;
           }
@@ -28690,15 +28690,15 @@ var require_src = __commonJS({
               exit = true;
               break;
             }
-            count22 = gallopLeft(tmp[cursor1], array, cursor2, length2, 0, compare3);
-            if (count22 !== 0) {
-              for (i = 0; i < count22; i++) {
+            count2 = gallopLeft(tmp[cursor1], array, cursor2, length2, 0, compare3);
+            if (count2 !== 0) {
+              for (i = 0; i < count2; i++) {
                 array[dest + i] = array[cursor2 + i];
                 results[dest + i] = results[cursor2 + i];
               }
-              dest += count22;
-              cursor2 += count22;
-              length2 -= count22;
+              dest += count2;
+              cursor2 += count2;
+              length2 -= count2;
               if (length2 === 0) {
                 exit = true;
                 break;
@@ -28713,7 +28713,7 @@ var require_src = __commonJS({
               break;
             }
             minGallop--;
-          } while (count1 >= DEFAULT_MIN_GALLOPING || count22 >= DEFAULT_MIN_GALLOPING);
+          } while (count1 >= DEFAULT_MIN_GALLOPING || count2 >= DEFAULT_MIN_GALLOPING);
           if (exit) {
             break;
           }
@@ -28798,7 +28798,7 @@ var require_src = __commonJS({
         let { minGallop } = this;
         while (true) {
           let count1 = 0;
-          let count22 = 0;
+          let count2 = 0;
           let exit = false;
           do {
             if (compare3(tmp[cursor2], array[cursor1]) < 0) {
@@ -28807,7 +28807,7 @@ var require_src = __commonJS({
               dest--;
               cursor1--;
               count1++;
-              count22 = 0;
+              count2 = 0;
               if (--length1 === 0) {
                 exit = true;
                 break;
@@ -28817,14 +28817,14 @@ var require_src = __commonJS({
               results[dest] = tmpIndex[cursor2];
               dest--;
               cursor2--;
-              count22++;
+              count2++;
               count1 = 0;
               if (--length2 === 1) {
                 exit = true;
                 break;
               }
             }
-          } while ((count1 | count22) < minGallop);
+          } while ((count1 | count2) < minGallop);
           if (exit) {
             break;
           }
@@ -28860,7 +28860,7 @@ var require_src = __commonJS({
               exit = true;
               break;
             }
-            count22 = length2 - gallopLeft(
+            count2 = length2 - gallopLeft(
               array[cursor1],
               tmp,
               0,
@@ -28868,13 +28868,13 @@ var require_src = __commonJS({
               length2 - 1,
               compare3
             );
-            if (count22 !== 0) {
-              dest -= count22;
-              cursor2 -= count22;
-              length2 -= count22;
+            if (count2 !== 0) {
+              dest -= count2;
+              cursor2 -= count2;
+              length2 -= count2;
               customDest = dest + 1;
               customCursor = cursor2 + 1;
-              for (i = 0; i < count22; i++) {
+              for (i = 0; i < count2; i++) {
                 array[customDest + i] = tmp[customCursor + i];
                 results[customDest + i] = tmpIndex[customCursor + i];
               }
@@ -28892,7 +28892,7 @@ var require_src = __commonJS({
               break;
             }
             minGallop--;
-          } while (count1 >= DEFAULT_MIN_GALLOPING || count22 >= DEFAULT_MIN_GALLOPING);
+          } while (count1 >= DEFAULT_MIN_GALLOPING || count2 >= DEFAULT_MIN_GALLOPING);
           if (exit) {
             break;
           }
@@ -29305,24 +29305,24 @@ var require_array = __commonJS({
     var reverse_comments = (array) => {
       const { length } = array;
       let i = 0;
-      const max4 = length / 2;
-      for (; i < max4; i++) {
+      const max3 = length / 2;
+      for (; i < max3; i++) {
         swap_comments(array, i, length - i - 1);
       }
     };
     var move_comment = (target, source, i, offset, remove) => {
       copy_comments(target, source, i + offset, i, remove);
     };
-    var move_comments = (target, source, start, count3, offset, remove) => {
+    var move_comments = (target, source, start, count2, offset, remove) => {
       if (offset > 0) {
-        let i2 = count3;
+        let i2 = count2;
         while (i2-- > 0) {
           move_comment(target, source, start + i2, offset, remove);
         }
         return;
       }
       let i = 0;
-      while (i < count3) {
+      while (i < count2) {
         const ii = i++;
         move_comment(target, source, start + ii, offset, remove);
       }
@@ -29333,10 +29333,10 @@ var require_array = __commonJS({
         delete array[prop];
       });
     };
-    var get_mapped = (map3, key) => {
+    var get_mapped = (map2, key) => {
       let mapped = key;
-      while (mapped in map3) {
-        mapped = map3[mapped];
+      while (mapped in map2) {
+        mapped = map2[mapped];
       }
       return mapped;
     };
@@ -29371,8 +29371,8 @@ var require_array = __commonJS({
         } = items;
         const offset = item_length - deleteCount;
         const start = begin + deleteCount;
-        const count3 = length - start;
-        move_comments(this, this, start, count3, offset, true);
+        const count2 = length - start;
+        move_comments(this, this, start, count2, offset, true);
         return ret;
       }
       /**
@@ -29453,16 +29453,16 @@ var require_array = __commonJS({
           this,
           ...args.slice(0, 1)
         );
-        const map3 = /* @__PURE__ */ Object.create(null);
+        const map2 = /* @__PURE__ */ Object.create(null);
         result.forEach((source_index, index) => {
           if (source_index === index) {
             return;
           }
-          const real_source_index = get_mapped(map3, source_index);
+          const real_source_index = get_mapped(map2, source_index);
           if (real_source_index === index) {
             return;
           }
-          map3[index] = real_source_index;
+          map2[index] = real_source_index;
           swap_comments(this, index, real_source_index);
         });
         return this;
@@ -29913,17 +29913,17 @@ var require_stringify = __commonJS({
       const deeper_gap = gap + indent2;
       let inside = EMPTY;
       let after_comma = EMPTY;
-      let first3 = true;
+      let first2 = true;
       const keys4 = isArray2(replacer) ? replacer : Object.keys(value);
       const iteratee = (key) => {
         const sv = stringify5(key, value, deeper_gap);
         if (sv === UNDEFINED) {
           return;
         }
-        if (!first3) {
+        if (!first2) {
           inside += COMMA;
         }
-        first3 = false;
+        first2 = false;
         const before = join2(
           after_comma,
           process_comments(value, BEFORE(key), deeper_gap),
@@ -30612,8 +30612,8 @@ var require_Node = __commonJS({
         };
         const res = toJS.toJS(this, "", ctx);
         if (typeof onAnchor === "function")
-          for (const { count: count3, res: res2 } of ctx.anchors.values())
-            onAnchor(res2, count3);
+          for (const { count: count2, res: res2 } of ctx.anchors.values())
+            onAnchor(res2, count2);
         return typeof reviver === "function" ? applyReviver.applyReviver(reviver, { "": res }, "", res) : res;
       }
     };
@@ -30718,13 +30718,13 @@ var require_Alias = __commonJS({
         const anchor = anchors2 && source && anchors2.get(source);
         return anchor ? anchor.count * anchor.aliasCount : 0;
       } else if (identity.isCollection(node)) {
-        let count3 = 0;
+        let count2 = 0;
         for (const item of node.items) {
           const c = getAliasCount(doc, item, anchors2);
-          if (c > count3)
-            count3 = c;
+          if (c > count2)
+            count2 = c;
         }
-        return count3;
+        return count2;
       } else if (identity.isPair(node)) {
         const kc = getAliasCount(doc, node.key, anchors2);
         const vc = getAliasCount(doc, node.value, anchors2);
@@ -30792,9 +30792,9 @@ var require_createNode = __commonJS({
       if (identity.isNode(value))
         return value;
       if (identity.isPair(value)) {
-        const map3 = ctx.schema[identity.MAP].createNode?.(ctx.schema, null, ctx);
-        map3.items.push(value);
-        return map3;
+        const map2 = ctx.schema[identity.MAP].createNode?.(ctx.schema, null, ctx);
+        map2.items.push(value);
+        return map2;
       }
       if (value instanceof String || value instanceof Number || value instanceof Boolean || typeof BigInt !== "undefined" && value instanceof BigInt) {
         value = value.valueOf();
@@ -31726,30 +31726,30 @@ var require_merge = __commonJS({
       stringify: () => MERGE_KEY
     };
     var isMergeKey = (ctx, key) => (merge5.identify(key) || identity.isScalar(key) && (!key.type || key.type === Scalar2.Scalar.PLAIN) && merge5.identify(key.value)) && ctx?.doc.schema.tags.some((tag) => tag.tag === merge5.tag && tag.default);
-    function addMergeToJSMap(ctx, map3, value) {
+    function addMergeToJSMap(ctx, map2, value) {
       value = ctx && identity.isAlias(value) ? value.resolve(ctx.doc) : value;
       if (identity.isSeq(value))
         for (const it of value.items)
-          mergeValue(ctx, map3, it);
+          mergeValue(ctx, map2, it);
       else if (Array.isArray(value))
         for (const it of value)
-          mergeValue(ctx, map3, it);
+          mergeValue(ctx, map2, it);
       else
-        mergeValue(ctx, map3, value);
+        mergeValue(ctx, map2, value);
     }
-    function mergeValue(ctx, map3, value) {
+    function mergeValue(ctx, map2, value) {
       const source = ctx && identity.isAlias(value) ? value.resolve(ctx.doc) : value;
       if (!identity.isMap(source))
         throw new Error("Merge sources must be maps or map aliases");
       const srcMap = source.toJSON(null, ctx, Map);
       for (const [key, value2] of srcMap) {
-        if (map3 instanceof Map) {
-          if (!map3.has(key))
-            map3.set(key, value2);
-        } else if (map3 instanceof Set) {
-          map3.add(key);
-        } else if (!Object.prototype.hasOwnProperty.call(map3, key)) {
-          Object.defineProperty(map3, key, {
+        if (map2 instanceof Map) {
+          if (!map2.has(key))
+            map2.set(key, value2);
+        } else if (map2 instanceof Set) {
+          map2.add(key);
+        } else if (!Object.prototype.hasOwnProperty.call(map2, key)) {
+          Object.defineProperty(map2, key, {
             value: value2,
             writable: true,
             enumerable: true,
@@ -31757,7 +31757,7 @@ var require_merge = __commonJS({
           });
         }
       }
-      return map3;
+      return map2;
     }
     exports2.addMergeToJSMap = addMergeToJSMap;
     exports2.isMergeKey = isMergeKey;
@@ -31775,32 +31775,32 @@ var require_addPairToJSMap = __commonJS({
     var stringify5 = require_stringify2();
     var identity = require_identity();
     var toJS = require_toJS();
-    function addPairToJSMap(ctx, map3, { key, value }) {
+    function addPairToJSMap(ctx, map2, { key, value }) {
       if (identity.isNode(key) && key.addToJSMap)
-        key.addToJSMap(ctx, map3, value);
+        key.addToJSMap(ctx, map2, value);
       else if (merge5.isMergeKey(ctx, key))
-        merge5.addMergeToJSMap(ctx, map3, value);
+        merge5.addMergeToJSMap(ctx, map2, value);
       else {
         const jsKey = toJS.toJS(key, "", ctx);
-        if (map3 instanceof Map) {
-          map3.set(jsKey, toJS.toJS(value, jsKey, ctx));
-        } else if (map3 instanceof Set) {
-          map3.add(jsKey);
+        if (map2 instanceof Map) {
+          map2.set(jsKey, toJS.toJS(value, jsKey, ctx));
+        } else if (map2 instanceof Set) {
+          map2.add(jsKey);
         } else {
           const stringKey = stringifyKey(key, jsKey, ctx);
           const jsValue = toJS.toJS(value, stringKey, ctx);
-          if (stringKey in map3)
-            Object.defineProperty(map3, stringKey, {
+          if (stringKey in map2)
+            Object.defineProperty(map2, stringKey, {
               value: jsValue,
               writable: true,
               enumerable: true,
               configurable: true
             });
           else
-            map3[stringKey] = jsValue;
+            map2[stringKey] = jsValue;
         }
       }
-      return map3;
+      return map2;
     }
     function stringifyKey(key, jsKey, ctx) {
       if (jsKey === null)
@@ -32053,14 +32053,14 @@ var require_YAMLMap = __commonJS({
        */
       static from(schema, obj, ctx) {
         const { keepUndefined, replacer } = ctx;
-        const map3 = new this(schema);
+        const map2 = new this(schema);
         const add = (key, value) => {
           if (typeof replacer === "function")
             value = replacer.call(obj, key, value);
           else if (Array.isArray(replacer) && !replacer.includes(key))
             return;
           if (value !== void 0 || keepUndefined)
-            map3.items.push(Pair.createPair(key, value, ctx));
+            map2.items.push(Pair.createPair(key, value, ctx));
         };
         if (obj instanceof Map) {
           for (const [key, value] of obj)
@@ -32070,9 +32070,9 @@ var require_YAMLMap = __commonJS({
             add(key, obj[key]);
         }
         if (typeof schema.sortMapEntries === "function") {
-          map3.items.sort(schema.sortMapEntries);
+          map2.items.sort(schema.sortMapEntries);
         }
-        return map3;
+        return map2;
       }
       /**
        * Adds a value to the collection.
@@ -32131,12 +32131,12 @@ var require_YAMLMap = __commonJS({
        * @returns Instance of Type, Map, or Object
        */
       toJSON(_, ctx, Type) {
-        const map3 = Type ? new Type() : ctx?.mapAsMap ? /* @__PURE__ */ new Map() : {};
+        const map2 = Type ? new Type() : ctx?.mapAsMap ? /* @__PURE__ */ new Map() : {};
         if (ctx?.onCreate)
-          ctx.onCreate(map3);
+          ctx.onCreate(map2);
         for (const item of this.items)
-          addPairToJSMap.addPairToJSMap(ctx, map3, item);
-        return map3;
+          addPairToJSMap.addPairToJSMap(ctx, map2, item);
+        return map2;
       }
       toString(ctx, onComment, onChompKeep) {
         if (!ctx)
@@ -32168,19 +32168,19 @@ var require_map = __commonJS({
     init_import_meta_url();
     var identity = require_identity();
     var YAMLMap2 = require_YAMLMap();
-    var map3 = {
+    var map2 = {
       collection: "map",
       default: true,
       nodeClass: YAMLMap2.YAMLMap,
       tag: "tag:yaml.org,2002:map",
-      resolve(map4, onError) {
-        if (!identity.isMap(map4))
+      resolve(map3, onError) {
+        if (!identity.isMap(map3))
           onError("Expected a mapping for this tag");
-        return map4;
+        return map3;
       },
       createNode: (schema, obj, ctx) => YAMLMap2.YAMLMap.from(schema, obj, ctx)
     };
-    exports2.map = map3;
+    exports2.map = map2;
   }
 });
 
@@ -32514,7 +32514,7 @@ var require_schema = __commonJS({
   "../node_modules/.pnpm/yaml@2.8.2/node_modules/yaml/dist/schema/core/schema.js"(exports2) {
     "use strict";
     init_import_meta_url();
-    var map3 = require_map();
+    var map2 = require_map();
     var _null = require_null();
     var seq = require_seq();
     var string = require_string();
@@ -32522,7 +32522,7 @@ var require_schema = __commonJS({
     var float = require_float();
     var int = require_int();
     var schema = [
-      map3.map,
+      map2.map,
       seq.seq,
       string.string,
       _null.nullTag,
@@ -32544,7 +32544,7 @@ var require_schema2 = __commonJS({
     "use strict";
     init_import_meta_url();
     var Scalar2 = require_Scalar();
-    var map3 = require_map();
+    var map2 = require_map();
     var seq = require_seq();
     function intIdentify(value) {
       return typeof value === "bigint" || Number.isInteger(value);
@@ -32601,7 +32601,7 @@ var require_schema2 = __commonJS({
         return str;
       }
     };
-    var schema = [map3.map, seq.seq].concat(jsonScalars, jsonError);
+    var schema = [map2.map, seq.seq].concat(jsonScalars, jsonError);
     exports2.schema = schema;
   }
 });
@@ -32779,9 +32779,9 @@ var require_omap = __commonJS({
       toJSON(_, ctx) {
         if (!ctx)
           return super.toJSON(_);
-        const map3 = /* @__PURE__ */ new Map();
+        const map2 = /* @__PURE__ */ new Map();
         if (ctx?.onCreate)
-          ctx.onCreate(map3);
+          ctx.onCreate(map2);
         for (const pair of this.items) {
           let key, value;
           if (identity.isPair(pair)) {
@@ -32790,11 +32790,11 @@ var require_omap = __commonJS({
           } else {
             key = toJS.toJS(pair, "", ctx);
           }
-          if (map3.has(key))
+          if (map2.has(key))
             throw new Error("Ordered maps must not include duplicate keys");
-          map3.set(key, value);
+          map2.set(key, value);
         }
-        return map3;
+        return map2;
       }
       static from(schema, iterable, ctx) {
         const pairs$1 = pairs.createPairs(schema, iterable, ctx);
@@ -33068,15 +33068,15 @@ var require_set = __commonJS({
       default: false,
       tag: "tag:yaml.org,2002:set",
       createNode: (schema, iterable, ctx) => YAMLSet.from(schema, iterable, ctx),
-      resolve(map3, onError) {
-        if (identity.isMap(map3)) {
-          if (map3.hasAllNullValues(true))
-            return Object.assign(new YAMLSet(), map3);
+      resolve(map2, onError) {
+        if (identity.isMap(map2)) {
+          if (map2.hasAllNullValues(true))
+            return Object.assign(new YAMLSet(), map2);
           else
             onError("Set items must all have null values");
         } else
           onError("Expected a mapping for this tag");
-        return map3;
+        return map2;
       }
     };
     exports2.YAMLSet = YAMLSet;
@@ -33178,7 +33178,7 @@ var require_schema3 = __commonJS({
   "../node_modules/.pnpm/yaml@2.8.2/node_modules/yaml/dist/schema/yaml-1.1/schema.js"(exports2) {
     "use strict";
     init_import_meta_url();
-    var map3 = require_map();
+    var map2 = require_map();
     var _null = require_null();
     var seq = require_seq();
     var string = require_string();
@@ -33192,7 +33192,7 @@ var require_schema3 = __commonJS({
     var set2 = require_set();
     var timestamp = require_timestamp();
     var schema = [
-      map3.map,
+      map2.map,
       seq.seq,
       string.string,
       _null.nullTag,
@@ -33223,7 +33223,7 @@ var require_tags = __commonJS({
   "../node_modules/.pnpm/yaml@2.8.2/node_modules/yaml/dist/schema/tags.js"(exports2) {
     "use strict";
     init_import_meta_url();
-    var map3 = require_map();
+    var map2 = require_map();
     var _null = require_null();
     var seq = require_seq();
     var string = require_string();
@@ -33241,7 +33241,7 @@ var require_tags = __commonJS({
     var timestamp = require_timestamp();
     var schemas = /* @__PURE__ */ new Map([
       ["core", schema.schema],
-      ["failsafe", [map3.map, seq.seq, string.string]],
+      ["failsafe", [map2.map, seq.seq, string.string]],
       ["json", schema$1.schema],
       ["yaml11", schema$2.schema],
       ["yaml-1.1", schema$2.schema]
@@ -33257,7 +33257,7 @@ var require_tags = __commonJS({
       intHex: int.intHex,
       intOct: int.intOct,
       intTime: timestamp.intTime,
-      map: map3.map,
+      map: map2.map,
       merge: merge5.merge,
       null: _null.nullTag,
       omap: omap.omap,
@@ -33319,7 +33319,7 @@ var require_Schema = __commonJS({
     "use strict";
     init_import_meta_url();
     var identity = require_identity();
-    var map3 = require_map();
+    var map2 = require_map();
     var seq = require_seq();
     var string = require_string();
     var tags = require_tags();
@@ -33331,7 +33331,7 @@ var require_Schema = __commonJS({
         this.knownTags = resolveKnownTags ? tags.coreKnownTags : {};
         this.tags = tags.getTags(customTags, this.name, merge5);
         this.toStringOptions = toStringDefaults ?? null;
-        Object.defineProperty(this, identity.MAP, { value: map3.map });
+        Object.defineProperty(this, identity.MAP, { value: map2.map });
         Object.defineProperty(this, identity.SCALAR, { value: string.string });
         Object.defineProperty(this, identity.SEQ, { value: seq.seq });
         this.sortMapEntries = typeof sortMapEntries === "function" ? sortMapEntries : sortMapEntries === true ? sortMapEntriesByKey : null;
@@ -33704,8 +33704,8 @@ var require_Document = __commonJS({
         };
         const res = toJS.toJS(this.contents, jsonArg ?? "", ctx);
         if (typeof onAnchor === "function")
-          for (const { count: count3, res: res2 } of ctx.anchors.values())
-            onAnchor(res2, count3);
+          for (const { count: count2, res: res2 } of ctx.anchors.values())
+            onAnchor(res2, count2);
         return typeof reviver === "function" ? applyReviver.applyReviver(reviver, { "": res }, "", res) : res;
       }
       /**
@@ -33783,12 +33783,12 @@ var require_errors2 = __commonJS({
         lineStr = prev + lineStr;
       }
       if (/[^ ]/.test(lineStr)) {
-        let count3 = 1;
+        let count2 = 1;
         const end = error3.linePos[1];
         if (end?.line === line && end.col > col) {
-          count3 = Math.max(1, Math.min(end.col - col, 80 - ci));
+          count2 = Math.max(1, Math.min(end.col - col, 80 - ci));
         }
-        const pointer = " ".repeat(ci) + "^".repeat(count3);
+        const pointer = " ".repeat(ci) + "^".repeat(count2);
         error3.message += `:
 
 ${lineStr}
@@ -34031,7 +34031,7 @@ var require_resolve_block_map = __commonJS({
     var startColMsg = "All mapping items must start at the same column";
     function resolveBlockMap({ composeNode, composeEmptyNode }, ctx, bm, onError, tag) {
       const NodeClass = tag?.nodeClass ?? YAMLMap2.YAMLMap;
-      const map3 = new NodeClass(ctx.schema);
+      const map2 = new NodeClass(ctx.schema);
       if (ctx.atRoot)
         ctx.atRoot = false;
       let offset = bm.offset;
@@ -34057,10 +34057,10 @@ var require_resolve_block_map = __commonJS({
           if (!keyProps.anchor && !keyProps.tag && !sep5) {
             commentEnd = keyProps.end;
             if (keyProps.comment) {
-              if (map3.comment)
-                map3.comment += "\n" + keyProps.comment;
+              if (map2.comment)
+                map2.comment += "\n" + keyProps.comment;
               else
-                map3.comment = keyProps.comment;
+                map2.comment = keyProps.comment;
             }
             continue;
           }
@@ -34076,7 +34076,7 @@ var require_resolve_block_map = __commonJS({
         if (ctx.schema.compat)
           utilFlowIndentCheck.flowIndentCheck(bm.indent, key, onError);
         ctx.atKey = false;
-        if (utilMapIncludes.mapIncludes(ctx, map3.items, keyNode))
+        if (utilMapIncludes.mapIncludes(ctx, map2.items, keyNode))
           onError(keyStart, "DUPLICATE_KEY", "Map keys must be unique");
         const valueProps = resolveProps.resolveProps(sep5 ?? [], {
           indicator: "map-value-ind",
@@ -34101,7 +34101,7 @@ var require_resolve_block_map = __commonJS({
           const pair = new Pair.Pair(keyNode, valueNode);
           if (ctx.options.keepSourceTokens)
             pair.srcToken = collItem;
-          map3.items.push(pair);
+          map2.items.push(pair);
         } else {
           if (implicitKey)
             onError(keyNode.range, "MISSING_CHAR", "Implicit map keys need to be followed by map values");
@@ -34114,13 +34114,13 @@ var require_resolve_block_map = __commonJS({
           const pair = new Pair.Pair(keyNode);
           if (ctx.options.keepSourceTokens)
             pair.srcToken = collItem;
-          map3.items.push(pair);
+          map2.items.push(pair);
         }
       }
       if (commentEnd && commentEnd < offset)
         onError(commentEnd, "IMPOSSIBLE", "Map comment with trailing content");
-      map3.range = [bm.offset, offset, commentEnd ?? offset];
-      return map3;
+      map2.range = [bm.offset, offset, commentEnd ?? offset];
+      return map2;
     }
     exports2.resolveBlockMap = resolveBlockMap;
   }
@@ -34372,17 +34372,17 @@ var require_resolve_flow_collection = __commonJS({
           if (ctx.options.keepSourceTokens)
             pair.srcToken = collItem;
           if (isMap2) {
-            const map3 = coll;
-            if (utilMapIncludes.mapIncludes(ctx, map3.items, keyNode))
+            const map2 = coll;
+            if (utilMapIncludes.mapIncludes(ctx, map2.items, keyNode))
               onError(keyStart, "DUPLICATE_KEY", "Map keys must be unique");
-            map3.items.push(pair);
+            map2.items.push(pair);
           } else {
-            const map3 = new YAMLMap2.YAMLMap(ctx.schema);
-            map3.flow = true;
-            map3.items.push(pair);
+            const map2 = new YAMLMap2.YAMLMap(ctx.schema);
+            map2.flow = true;
+            map2.items.push(pair);
             const endRange = (valueNode ?? keyNode).range;
-            map3.range = [keyNode.range[0], endRange[1], endRange[2]];
-            coll.items.push(map3);
+            map2.range = [keyNode.range[0], endRange[1], endRange[2]];
+            coll.items.push(map2);
           }
           offset = valueNode ? valueNode.range[2] : valueProps.end;
         }
@@ -34655,9 +34655,9 @@ var require_resolve_block_scalar = __commonJS({
     }
     function splitLines(source) {
       const split2 = source.split(/\n( *)/);
-      const first3 = split2[0];
-      const m = first3.match(/^( *)/);
-      const line0 = m?.[1] ? [m[1], first3.slice(m[1].length)] : ["", first3];
+      const first2 = split2[0];
+      const m = first2.match(/^( *)/);
+      const line0 = m?.[1] ? [m[1], first2.slice(m[1].length)] : ["", first2];
       const lines = [line0];
       for (let i = 1; i < split2.length; i += 2)
         lines.push([split2[i], split2[i + 1]]);
@@ -34745,20 +34745,20 @@ var require_resolve_flow_scalar = __commonJS({
       return foldLines(source.slice(1, -1)).replace(/''/g, "'");
     }
     function foldLines(source) {
-      let first3, line;
+      let first2, line;
       try {
-        first3 = new RegExp("(.*?)(?<![ 	])[ 	]*\r?\n", "sy");
+        first2 = new RegExp("(.*?)(?<![ 	])[ 	]*\r?\n", "sy");
         line = new RegExp("[ 	]*(.*?)(?:(?<![ 	])[ 	]*)?\r?\n", "sy");
       } catch {
-        first3 = /(.*?)[ \t]*\r?\n/sy;
+        first2 = /(.*?)[ \t]*\r?\n/sy;
         line = /[ \t]*(.*?)[ \t]*\r?\n/sy;
       }
-      let match2 = first3.exec(source);
+      let match2 = first2.exec(source);
       if (!match2)
         return source;
       let res = match2[1];
       let sep5 = " ";
-      let pos = first3.lastIndex;
+      let pos = first2.lastIndex;
       line.lastIndex = pos;
       while (match2 = line.exec(source)) {
         if (match2[1] === "") {
@@ -36753,14 +36753,14 @@ var require_parser = __commonJS({
             delete scalar.end;
           } else
             sep5 = [this.sourceToken];
-          const map3 = {
+          const map2 = {
             type: "block-map",
             offset: scalar.offset,
             indent: scalar.indent,
             items: [{ start, key: scalar, sep: sep5 }]
           };
           this.onKeyLine = true;
-          this.stack[this.stack.length - 1] = map3;
+          this.stack[this.stack.length - 1] = map2;
         } else
           yield* this.lineEnd(scalar);
       }
@@ -36790,8 +36790,8 @@ var require_parser = __commonJS({
             yield* this.step();
         }
       }
-      *blockMap(map3) {
-        const it = map3.items[map3.items.length - 1];
+      *blockMap(map2) {
+        const it = map2.items[map2.items.length - 1];
         switch (this.type) {
           case "newline":
             this.onKeyLine = false;
@@ -36801,7 +36801,7 @@ var require_parser = __commonJS({
               if (last?.type === "comment")
                 end?.push(this.sourceToken);
               else
-                map3.items.push({ start: [this.sourceToken] });
+                map2.items.push({ start: [this.sourceToken] });
             } else if (it.sep) {
               it.sep.push(this.sourceToken);
             } else {
@@ -36811,17 +36811,17 @@ var require_parser = __commonJS({
           case "space":
           case "comment":
             if (it.value) {
-              map3.items.push({ start: [this.sourceToken] });
+              map2.items.push({ start: [this.sourceToken] });
             } else if (it.sep) {
               it.sep.push(this.sourceToken);
             } else {
-              if (this.atIndentedComment(it.start, map3.indent)) {
-                const prev = map3.items[map3.items.length - 2];
+              if (this.atIndentedComment(it.start, map2.indent)) {
+                const prev = map2.items[map2.items.length - 2];
                 const end = prev?.value?.end;
                 if (Array.isArray(end)) {
                   Array.prototype.push.apply(end, it.start);
                   end.push(this.sourceToken);
-                  map3.items.pop();
+                  map2.items.pop();
                   return;
                 }
               }
@@ -36829,8 +36829,8 @@ var require_parser = __commonJS({
             }
             return;
         }
-        if (this.indent >= map3.indent) {
-          const atMapIndent = !this.onKeyLine && this.indent === map3.indent;
+        if (this.indent >= map2.indent) {
+          const atMapIndent = !this.onKeyLine && this.indent === map2.indent;
           const atNextItem = atMapIndent && (it.sep || it.explicitKey) && this.type !== "seq-item-ind";
           let start = [];
           if (atNextItem && it.sep && !it.value) {
@@ -36844,7 +36844,7 @@ var require_parser = __commonJS({
                 case "space":
                   break;
                 case "comment":
-                  if (st.indent > map3.indent)
+                  if (st.indent > map2.indent)
                     nl.length = 0;
                   break;
                 default:
@@ -36859,7 +36859,7 @@ var require_parser = __commonJS({
             case "tag":
               if (atNextItem || it.value) {
                 start.push(this.sourceToken);
-                map3.items.push({ start });
+                map2.items.push({ start });
                 this.onKeyLine = true;
               } else if (it.sep) {
                 it.sep.push(this.sourceToken);
@@ -36873,7 +36873,7 @@ var require_parser = __commonJS({
                 it.explicitKey = true;
               } else if (atNextItem || it.value) {
                 start.push(this.sourceToken);
-                map3.items.push({ start, explicitKey: true });
+                map2.items.push({ start, explicitKey: true });
               } else {
                 this.stack.push({
                   type: "block-map",
@@ -36899,7 +36899,7 @@ var require_parser = __commonJS({
                     });
                   }
                 } else if (it.value) {
-                  map3.items.push({ start: [], key: null, sep: [this.sourceToken] });
+                  map2.items.push({ start: [], key: null, sep: [this.sourceToken] });
                 } else if (includesToken(it.sep, "map-value-ind")) {
                   this.stack.push({
                     type: "block-map",
@@ -36929,7 +36929,7 @@ var require_parser = __commonJS({
                 if (!it.sep) {
                   Object.assign(it, { key: null, sep: [this.sourceToken] });
                 } else if (it.value || atNextItem) {
-                  map3.items.push({ start, key: null, sep: [this.sourceToken] });
+                  map2.items.push({ start, key: null, sep: [this.sourceToken] });
                 } else if (includesToken(it.sep, "map-value-ind")) {
                   this.stack.push({
                     type: "block-map",
@@ -36949,7 +36949,7 @@ var require_parser = __commonJS({
             case "double-quoted-scalar": {
               const fs6 = this.flowScalar(this.type);
               if (atNextItem || it.value) {
-                map3.items.push({ start, key: fs6, sep: [] });
+                map2.items.push({ start, key: fs6, sep: [] });
                 this.onKeyLine = true;
               } else if (it.sep) {
                 this.stack.push(fs6);
@@ -36960,7 +36960,7 @@ var require_parser = __commonJS({
               return;
             }
             default: {
-              const bv = this.startBlockValue(map3);
+              const bv = this.startBlockValue(map2);
               if (bv) {
                 if (bv.type === "block-seq") {
                   if (!it.explicitKey && it.sep && !includesToken(it.sep, "newline")) {
@@ -36973,7 +36973,7 @@ var require_parser = __commonJS({
                     return;
                   }
                 } else if (atMapIndent) {
-                  map3.items.push({ start });
+                  map2.items.push({ start });
                 }
                 this.stack.push(bv);
                 return;
@@ -37114,14 +37114,14 @@ var require_parser = __commonJS({
             fixFlowSeqItems(fc);
             const sep5 = fc.end.splice(1, fc.end.length);
             sep5.push(this.sourceToken);
-            const map3 = {
+            const map2 = {
               type: "block-map",
               offset: fc.offset,
               indent: fc.indent,
               items: [{ start, key: fc, sep: sep5 }]
             };
             this.onKeyLine = true;
-            this.stack[this.stack.length - 1] = map3;
+            this.stack[this.stack.length - 1] = map2;
           } else {
             yield* this.lineEnd(fc);
           }
@@ -37734,13 +37734,13 @@ init_import_meta_url();
 var import_node_child_process = require("node:child_process");
 var import_node_util = require("node:util");
 var execP = (0, import_node_util.promisify)(import_node_child_process.exec);
-async function gitListCommits(count3 = 100, _since) {
-  const args = ["rev-list", "HEAD", `-${count3}`];
+async function gitListCommits(count2 = 100, _since) {
+  const args = ["rev-list", "HEAD", `-${count2}`];
   const cmdResult = await runGit(args);
   return cmdResult.split("\n").map((a) => a.trim()).filter((a) => !!a);
 }
-async function gitDeepen(count3) {
-  const args = ["fetch", `--deepen=${count3}`];
+async function gitDeepen(count2) {
+  const args = ["fetch", `--deepen=${count2}`];
   await runGit(args);
 }
 async function gitListFiles(sha1, sha2) {
@@ -38291,19 +38291,19 @@ ${items.join("\n")}
 // src/spell.ts
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell@9.4.0/node_modules/cspell/dist/esm/index.js
+// ../node_modules/.pnpm/cspell@9.6.0/node_modules/cspell/dist/esm/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell@9.4.0/node_modules/cspell/dist/esm/application-DCyfKhGm.js
+// ../node_modules/.pnpm/cspell@9.6.0/node_modules/cspell/dist/esm/application-BJHh60xM.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/helpers/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/helpers/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
 init_import_meta_url();
 function* iteratorToIterable(iterator) {
   try {
@@ -38336,10 +38336,10 @@ async function* asyncIteratorToAsyncIterable(iterator) {
   }
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
 init_import_meta_url();
 function toPipeFn(syncFn, asyncFn) {
   function _(i) {
@@ -38351,7 +38351,7 @@ function isAsyncIterable(i) {
   return typeof i[Symbol.asyncIterator] === "function";
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
 function toArray(i) {
   return isAsyncIterable(i) ? toArrayAsync(i) : toArraySync(i);
 }
@@ -38366,7 +38366,7 @@ async function toArrayAsync(iter) {
   return collection;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
 init_import_meta_url();
 async function* mergeAsyncIterables(iter, ...rest) {
   for await (const i of [iter, ...rest]) {
@@ -38375,7 +38375,7 @@ async function* mergeAsyncIterables(iter, ...rest) {
 }
 var toAsyncIterable = mergeAsyncIterables;
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/index.js
 var operators_exports = {};
 __export(operators_exports, {
   opAppend: () => opAppend,
@@ -38425,7 +38425,7 @@ __export(operators_exports, {
 });
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/append.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/append.js
 init_import_meta_url();
 function opAppendAsync(...iterablesToAppend) {
   async function* fnAppend(iter) {
@@ -38452,7 +38452,7 @@ function opAppend(...iterablesToAppend) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/await.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/await.js
 init_import_meta_url();
 async function* _asyncAwait(iter) {
   for await (const v of iter) {
@@ -38463,7 +38463,7 @@ function opAwaitAsync() {
   return _asyncAwait;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
 init_import_meta_url();
 function opBufferAsync(size) {
   async function* fnBuffer(iter) {
@@ -38506,28 +38506,28 @@ function opBuffer(size) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
 init_import_meta_url();
 function opCombineAsync(...fns) {
-  function combine4(iter) {
+  function combine3(iter) {
     for (const fn of fns) {
       iter = fn(iter);
     }
     return iter;
   }
-  return combine4;
+  return combine3;
 }
 function opCombineSync(...fns) {
-  function combine4(iter) {
+  function combine3(iter) {
     for (const fn of fns) {
       iter = fn(iter);
     }
     return iter;
   }
-  return combine4;
+  return combine3;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
 init_import_meta_url();
 function opConcatMapAsync(mapFn) {
   async function* fn(iter) {
@@ -38570,7 +38570,7 @@ function opConcatMapSync(mapFn) {
 }
 var opConcatMap = (fn) => toPipeFn(opConcatMapSync(fn), opConcatMapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
 init_import_meta_url();
 function opFilterAsync(filterFn) {
   async function* genFilter(iter) {
@@ -38614,7 +38614,7 @@ function opFilter(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/first.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/first.js
 init_import_meta_url();
 function opFirstAsync(firstFn) {
   async function* fn(iter) {
@@ -38648,7 +38648,7 @@ function opFirst(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
 init_import_meta_url();
 function opFlattenAsync() {
   async function* fn(iter) {
@@ -38668,7 +38668,7 @@ function opFlattenSync() {
 }
 var opFlatten = () => toPipeFn(opFlattenSync(), opFlattenAsync());
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
 init_import_meta_url();
 function opJoinStringsAsync(joinCharacter = ",") {
   async function* fn(iter) {
@@ -38690,7 +38690,7 @@ function opJoinStringsSync(joinCharacter = ",") {
 }
 var opJoinStrings = (joinCharacter) => toPipeFn(opJoinStringsSync(joinCharacter), opJoinStringsAsync(joinCharacter));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/last.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/last.js
 init_import_meta_url();
 var symNotFound = /* @__PURE__ */ Symbol("LastNotFound");
 function opLastAsync(lastFn) {
@@ -38729,7 +38729,7 @@ function opLast(fn) {
   return _;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/map.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/map.js
 init_import_meta_url();
 function opMapAsync(mapFn) {
   async function* genMap(iter) {
@@ -38761,10 +38761,10 @@ function opMapSync(mapFn) {
 }
 var opMap = (fn) => toPipeFn(opMapSync(fn), opMapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
 init_import_meta_url();
 function opReduceAsync(reduceFn, initialValue) {
-  async function* reduce3(head, tail) {
+  async function* reduce2(head, tail) {
     for await (const v of tail) {
       head = reduceFn(head, v);
     }
@@ -38774,12 +38774,12 @@ function opReduceAsync(reduceFn, initialValue) {
     const ht = initialValue === void 0 ? await headTailAsync(iter) : { head: await initialValue, tail: iter };
     if (!ht)
       return;
-    yield* reduce3(ht.head, ht.tail);
+    yield* reduce2(ht.head, ht.tail);
   }
   return fn;
 }
 function opReduceSync(reduceFn, initialValue) {
-  function* reduce3(head, tail) {
+  function* reduce2(head, tail) {
     for (const v of tail) {
       head = reduceFn(head, v);
     }
@@ -38789,35 +38789,35 @@ function opReduceSync(reduceFn, initialValue) {
     const ht = initialValue === void 0 ? headTail(iter) : { head: initialValue, tail: iter };
     if (!ht)
       return;
-    yield* reduce3(ht.head, ht.tail);
+    yield* reduce2(ht.head, ht.tail);
   }
   return fn;
 }
 function headTail(iter) {
   const iterator = iter[Symbol.iterator]();
-  const first3 = iterator.next();
-  if (first3.done)
+  const first2 = iterator.next();
+  if (first2.done)
     return void 0;
-  return { head: first3.value, tail: iteratorToIterable(iterator) };
+  return { head: first2.value, tail: iteratorToIterable(iterator) };
 }
 async function headTailAsync(iter) {
   const iterator = isIterable(iter) ? iter[Symbol.iterator]() : iter[Symbol.asyncIterator]();
-  const first3 = await iterator.next();
-  if (first3.done)
+  const first2 = await iterator.next();
+  if (first2.done)
     return void 0;
-  return { head: first3.value, tail: asyncIteratorToAsyncIterable(iterator) };
+  return { head: first2.value, tail: asyncIteratorToAsyncIterable(iterator) };
 }
 function isIterable(i) {
   return typeof i[Symbol.iterator] === "function";
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
 init_import_meta_url();
-function opSkipAsync(count3) {
+function opSkipAsync(count2) {
   async function* fn(iter) {
     for await (const v of iter) {
-      if (count3 > 0) {
-        --count3;
+      if (count2 > 0) {
+        --count2;
         continue;
       }
       yield v;
@@ -38825,11 +38825,11 @@ function opSkipAsync(count3) {
   }
   return fn;
 }
-function opSkipSync(count3) {
+function opSkipSync(count2) {
   function* fn(iter) {
     for (const v of iter) {
-      if (count3 > 0) {
-        --count3;
+      if (count2 > 0) {
+        --count2;
         continue;
       }
       yield v;
@@ -38837,37 +38837,37 @@ function opSkipSync(count3) {
   }
   return fn;
 }
-var opSkip = (count3) => toPipeFn(opSkipSync(count3), opSkipAsync(count3));
+var opSkip = (count2) => toPipeFn(opSkipSync(count2), opSkipAsync(count2));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/take.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/take.js
 init_import_meta_url();
-function opTakeAsync(count3) {
+function opTakeAsync(count2) {
   async function* fn(iter) {
-    if (count3 <= 0)
+    if (count2 <= 0)
       return;
     for await (const v of iter) {
       yield v;
-      if (--count3 <= 0)
+      if (--count2 <= 0)
         return;
     }
   }
   return fn;
 }
-function opTakeSync(count3) {
+function opTakeSync(count2) {
   function* fn(iter) {
-    if (count3 <= 0)
+    if (count2 <= 0)
       return;
     for (const v of iter) {
       yield v;
-      if (--count3 <= 0)
+      if (--count2 <= 0)
         return;
     }
   }
   return fn;
 }
-var opTake = (count3) => toPipeFn(opTakeSync(count3), opTakeAsync(count3));
+var opTake = (count2) => toPipeFn(opTakeSync(count2), opTakeAsync(count2));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
 init_import_meta_url();
 function opTapAsync(tapFn) {
   async function* fn(iter) {
@@ -38889,7 +38889,7 @@ function opTapSync(tapFn) {
 }
 var opTap = (fn) => toPipeFn(opTapSync(fn), opTapAsync(fn));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
 init_import_meta_url();
 function opUniqueAsync(k) {
   function fnK(k2) {
@@ -38943,7 +38943,7 @@ function opUniqueSync(k) {
 }
 var opUnique = (getKey) => toPipeFn(opUniqueSync(getKey), opUniqueAsync(getKey));
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/pipe.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/pipe.js
 init_import_meta_url();
 function pipeAsync(i, ...fns) {
   const iter = toAsyncIterable(i);
@@ -38953,26 +38953,19 @@ function pipeSync(i, ...fns) {
   return opCombineSync(...fns)(i);
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/reduce.js
-init_import_meta_url();
-function reduceSync(iter, reduceFn, initialValue) {
-  const i = initialValue === void 0 ? pipeSync(iter, opReduceSync(reduceFn)) : pipeSync(iter, opReduceSync(reduceFn, initialValue));
-  return [...i][0];
-}
-
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/index.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/index.js
 var operators = operators_exports;
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/events/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/events/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/events/events.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/events/events.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/errors.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/errors.js
 init_import_meta_url();
 var import_node_util2 = require("node:util");
 var allowStringOrUndefined = {
@@ -38985,7 +38978,7 @@ function isError(e) {
   if (!e || typeof e !== "object")
     return false;
   const ex = e;
-  return typeof ex.name == "string" && typeof ex.message == "string" && typeof ex.stack in allowStringOrUndefined;
+  return typeof ex.name === "string" && typeof ex.message === "string" && typeof ex.stack in allowStringOrUndefined;
 }
 function toError2(e, errorFactory = UnknownError) {
   if (isError(e))
@@ -39012,7 +39005,7 @@ async function _catchPromiseError(p, handler) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/events/events.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/events/events.js
 var EventEmitter = class {
   name;
   #listeners = /* @__PURE__ */ new Set();
@@ -39066,16 +39059,16 @@ function onClearCache(listener) {
   return clearCacheEvent.on(listener);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/index.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/AutoCache.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/AutoCache.js
 init_import_meta_url();
 var CACHE_SIZE = 100;
 var Cache01 = class {
@@ -39154,374 +39147,165 @@ function extractStats(ac) {
   return { hits, misses, swaps };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-trie-lib@9.4.0/node_modules/cspell-trie-lib/dist/index.js
+// ../node_modules/.pnpm/cspell-trie-lib@9.6.0_@cspell+cspell-types@9.6.0/node_modules/cspell-trie-lib/dist/index.js
 init_import_meta_url();
-
-// ../node_modules/.pnpm/@cspell+cspell-pipe@9.4.0/node_modules/@cspell/cspell-pipe/dist/sync/index.js
-init_import_meta_url();
-
-// ../node_modules/.pnpm/cspell-trie-lib@9.4.0/node_modules/cspell-trie-lib/dist/index.js
-var import_node_assert = __toESM(require("node:assert"), 1);
-var import_node_buffer = require("node:buffer");
-var import_node_os = require("node:os");
-
-// ../node_modules/.pnpm/gensequence@8.0.8/node_modules/gensequence/dist/GenSequence.js
-init_import_meta_url();
-
-// ../node_modules/.pnpm/gensequence@8.0.8/node_modules/gensequence/dist/util/util.js
-init_import_meta_url();
-function* toIterableIterator(i) {
-  yield* i;
+function* iteratorToIterable2(iterator) {
+  try {
+    let n;
+    while (!(n = iterator.next()).done) yield n.value;
+  } catch (e) {
+    if (iterator.throw) return iterator.throw(e);
+    throw e;
+  } finally {
+    iterator.return?.();
+  }
 }
-
-// ../node_modules/.pnpm/gensequence@8.0.8/node_modules/gensequence/dist/ImplSequence.js
-init_import_meta_url();
-
-// ../node_modules/.pnpm/gensequence@8.0.8/node_modules/gensequence/dist/operators/operators.js
-init_import_meta_url();
-
-// ../node_modules/.pnpm/gensequence@8.0.8/node_modules/gensequence/dist/operators/operatorsBase.js
-init_import_meta_url();
-function* filter(i, fnFilter) {
-  for (const v of i) {
-    if (fnFilter(v)) {
+function opAppendSync2(...iterablesToAppend) {
+  function* fnAppend(iter) {
+    yield* iter;
+    for (const i of iterablesToAppend) yield* i;
+  }
+  return fnAppend;
+}
+function opCombineSync2(...fns) {
+  function combine$2(iter) {
+    for (const fn of fns) iter = fn(iter);
+    return iter;
+  }
+  return combine$2;
+}
+function opConcatMapSync2(mapFn) {
+  function fnConcatMapSync(iterable) {
+    function opConcatMapIterator() {
+      const iter = iterable[Symbol.iterator]();
+      let resultsIter = void 0;
+      function nextConcatMap() {
+        while (true) {
+          if (resultsIter) {
+            const { done: done$1, value: value$1 } = resultsIter.next();
+            if (!done$1) return { value: value$1 };
+            resultsIter = void 0;
+          }
+          const { done, value } = iter.next();
+          if (done) return {
+            done,
+            value: void 0
+          };
+          resultsIter = mapFn(value)[Symbol.iterator]();
+        }
+      }
+      return { next: nextConcatMap };
+    }
+    return { [Symbol.iterator]: opConcatMapIterator };
+  }
+  return fnConcatMapSync;
+}
+function opFilterSync2(filterFn) {
+  function opFilterIterable(iterable) {
+    function opFilterIterator() {
+      const iter = iterable[Symbol.iterator]();
+      function nextOpFilter() {
+        while (true) {
+          const { done, value } = iter.next();
+          if (done) return {
+            done,
+            value: void 0
+          };
+          if (filterFn(value)) return { value };
+        }
+      }
+      return { next: nextOpFilter };
+    }
+    return { [Symbol.iterator]: opFilterIterator };
+  }
+  return opFilterIterable;
+}
+function opFlattenSync2() {
+  function* fn(iter) {
+    for (const v of iter) yield* v;
+  }
+  return fn;
+}
+function opMapSync2(mapFn) {
+  function opMapIterable(iterable) {
+    function opMapIterator() {
+      const iter = iterable[Symbol.iterator]();
+      function nextOpMap() {
+        const { done, value } = iter.next();
+        if (done) return {
+          done,
+          value: void 0
+        };
+        return { value: mapFn(value) };
+      }
+      return { next: nextOpMap };
+    }
+    return { [Symbol.iterator]: opMapIterator };
+  }
+  return opMapIterable;
+}
+function opReduceSync2(reduceFn, initialValue) {
+  function* reduce$2(head, tail) {
+    for (const v of tail) head = reduceFn(head, v);
+    yield head;
+  }
+  function* fn(iter) {
+    const ht = initialValue === void 0 ? headTail2(iter) : {
+      head: initialValue,
+      tail: iter
+    };
+    if (!ht) return;
+    yield* reduce$2(ht.head, ht.tail);
+  }
+  return fn;
+}
+function headTail2(iter) {
+  const iterator = iter[Symbol.iterator]();
+  const first$2 = iterator.next();
+  if (first$2.done) return void 0;
+  return {
+    head: first$2.value,
+    tail: iteratorToIterable2(iterator)
+  };
+}
+function opUniqueSync2(k) {
+  function fnK(key) {
+    function* fn$1(iter) {
+      const s = /* @__PURE__ */ new Set();
+      for (const v of iter) {
+        const kk = key(v);
+        if (s.has(kk)) continue;
+        s.add(kk);
+        yield v;
+      }
+    }
+    return fn$1;
+  }
+  function* fn(iter) {
+    const s = /* @__PURE__ */ new Set();
+    for (const v of iter) {
+      if (s.has(v)) continue;
+      s.add(v);
       yield v;
     }
   }
+  return k ? fnK(k) : fn;
 }
-function* skip(i, n) {
-  let a = 0;
-  for (const t of i) {
-    if (a >= n) {
-      yield t;
-    }
-    a += 1;
-  }
+function pipeSync2(i, ...fns) {
+  return opCombineSync2(...fns)(i);
 }
-function* take(i, n) {
-  let a = 0;
-  if (n) {
-    for (const t of i) {
-      if (a >= n) {
-        break;
-      }
-      yield t;
-      a += 1;
-    }
-  }
+function reduceSync(iter, reduceFn, initialValue) {
+  return [...initialValue === void 0 ? pipeSync2(iter, opReduceSync2(reduceFn)) : pipeSync2(iter, opReduceSync2(reduceFn, initialValue))][0];
 }
-function* concat(i, j) {
-  yield* i;
-  yield* j;
-}
-function* concatMap(i, fn) {
-  for (const t of i) {
-    yield* fn(t);
-  }
-}
-function* combine(i, j, fnMap) {
-  const jit = j[Symbol.iterator]();
-  for (const r of i) {
-    const s = jit.next().value;
-    yield fnMap(r, s);
-  }
-}
-function map(i, fnMap) {
-  function* fn(i2, fnMap2) {
-    for (const v of i2) {
-      yield fnMap2(v);
-    }
-  }
-  return fn(i, fnMap);
-}
-function* scan(i, fnReduce, initValue) {
-  let index = 0;
-  if (initValue === void 0) {
-    index = 1;
-    const iter = i[Symbol.iterator]();
-    let r = iter.next();
-    if (!r.done)
-      yield r.value;
-    initValue = r.value;
-    i = makeIterable(iter);
-  }
-  let prevValue = initValue;
-  for (const t of i) {
-    const nextValue = fnReduce(prevValue, t, index);
-    yield nextValue;
-    prevValue = nextValue;
-    index += 1;
-  }
-}
-function all(i, fn) {
-  for (const t of i) {
-    if (!fn(t)) {
-      return false;
-    }
-  }
-  return true;
-}
-function any(i, fn) {
-  for (const t of i) {
-    if (fn(t)) {
-      return true;
-    }
-  }
-  return false;
-}
-function count(i) {
-  return reduce(i, (p) => p + 1, 0);
-}
-function first(i, fn, defaultValue) {
-  fn = fn || (() => true);
-  for (const t of i) {
-    if (fn(t)) {
-      return t;
-    }
-  }
-  return defaultValue;
-}
-function forEach(i, fn) {
-  let index = 0;
-  for (const t of i) {
-    fn(t, index);
-    index += 1;
-  }
-}
-function max(i, selector = (t) => t) {
-  return reduce(i, (p, c) => selector(c) > selector(p) ? c : p, void 0);
-}
-function min(i, selector = (t) => t) {
-  return reduce(i, (p, c) => selector(c) < selector(p) ? c : p, void 0);
-}
-function reduce(i, fnReduce, initialValue) {
-  const iter = makeIterable(i[Symbol.iterator]());
-  let index = 0;
-  if (initialValue === void 0) {
-    index = 1;
-    const r = iter.next();
-    initialValue = r.value;
-  }
-  let prevValue = initialValue;
-  for (const t of iter) {
-    const nextValue = fnReduce(prevValue, t, index);
-    prevValue = nextValue;
-    index += 1;
-  }
-  return prevValue;
-}
-async function reduceAsync(i, fnReduce, initialValue) {
-  const iter = makeIterable(i[Symbol.iterator]());
-  let index = 0;
-  if (initialValue === void 0) {
-    index = 1;
-    const r = iter.next();
-    initialValue = r.value;
-  }
-  let previousValue = await initialValue;
-  for (const p of iter) {
-    const t = await p;
-    const nextValue = await fnReduce(previousValue, t, index);
-    previousValue = nextValue;
-    index += 1;
-  }
-  return previousValue;
-}
-function makeIterable(i) {
-  function* fromIterator(i2) {
-    for (let r = i2.next(); !r.done; r = i2.next()) {
-      yield r.value;
-    }
-  }
-  function* fromIterable(i2) {
-    yield* i2;
-  }
-  return isIterable2(i) ? isIterableIterator(i) ? i : fromIterable(i) : fromIterator(i);
-}
-function isIterable2(i) {
-  return !!i[Symbol.iterator];
-}
-function isIterableIterator(i) {
-  return typeof i.next == "function";
-}
-
-// ../node_modules/.pnpm/gensequence@8.0.8/node_modules/gensequence/dist/operators/operators.js
-function filter2(fnFilter) {
-  return (i) => filter(i, fnFilter);
-}
-function skip2(n) {
-  return (i) => skip(i, n);
-}
-function take2(n) {
-  return (i) => take(i, n);
-}
-function concat2(j) {
-  return (i) => concat(i, j);
-}
-function concatMap2(fn) {
-  return (i) => concatMap(i, fn);
-}
-function combine2(fnMap, j) {
-  return (i) => combine(i, j, fnMap);
-}
-function map2(fnMap) {
-  return (i) => map(i, fnMap);
-}
-function scan2(fnReduce, initValue) {
-  return (i) => scan(i, fnReduce, initValue);
-}
-function all2(fn) {
-  return (i) => all(i, fn);
-}
-function any2(fn) {
-  return (i) => any(i, fn);
-}
-function count2() {
-  return (i) => count(i);
-}
-function first2(fn, defaultValue) {
-  return (i) => first(i, fn, defaultValue);
-}
-function forEach2(fn) {
-  return (i) => forEach(i, fn);
-}
-function max2(selector) {
-  return (i) => max(i, selector);
-}
-function min2(selector) {
-  return (i) => min(i, selector);
-}
-function reduce2(fnReduce, initialValue) {
-  return (i) => reduce(i, fnReduce, initialValue);
-}
-function reduceAsync2(fnReduceAsync, initialValue) {
-  return (i) => reduceAsync(i, fnReduceAsync, initialValue);
-}
-function pipe(...fns) {
-  return (i) => {
-    for (const fn of fns) {
-      i = fn ? fn(i) : i;
-    }
-    return i;
-  };
-}
-
-// ../node_modules/.pnpm/gensequence@8.0.8/node_modules/gensequence/dist/ImplSequence.js
-var ImplSequence = class _ImplSequence {
-  i;
-  _iterator;
-  constructor(i) {
-    this.i = i;
-  }
-  get iter() {
-    return typeof this.i === "function" ? this.i() : this.i;
-  }
-  get iterator() {
-    if (!this._iterator) {
-      this._iterator = this.iter[Symbol.iterator]();
-    }
-    return this._iterator;
-  }
-  inject(fn) {
-    const iter = this.i;
-    return () => fn(typeof iter === "function" ? iter() : iter);
-  }
-  chain(fn) {
-    return new _ImplSequence(this.inject(fn));
-  }
-  [Symbol.iterator]() {
-    return this.iter[Symbol.iterator]();
-  }
-  next() {
-    return this.iterator.next();
-  }
-  //// Filters
-  filter(fnFilter) {
-    return this.chain(filter2(fnFilter));
-  }
-  skip(n) {
-    return this.chain(skip2(n));
-  }
-  take(n) {
-    return this.chain(take2(n));
-  }
-  //// Extenders
-  concat(j) {
-    return this.chain(concat2(j));
-  }
-  concatMap(fn) {
-    return this.chain(concatMap2(fn));
-  }
-  //// Mappers
-  combine(fn, j) {
-    return this.chain(combine2(fn, j));
-  }
-  map(fn) {
-    return this.chain(map2(fn));
-  }
-  scan(fnReduce, initValue) {
-    return this.chain(scan2(fnReduce, initValue));
-  }
-  pipe(...fns) {
-    if (!fns.length)
-      return this;
-    return this.chain(pipe.apply(null, fns));
-  }
-  // Reducers
-  all(fnFilter) {
-    return all2(fnFilter)(this.iter);
-  }
-  any(fnFilter) {
-    return any2(fnFilter)(this.iter);
-  }
-  count() {
-    return count2()(this.iter);
-  }
-  first(fnFilter, defaultValue) {
-    return first2(fnFilter, defaultValue)(this.iter);
-  }
-  forEach(fn) {
-    return forEach2(fn)(this.iter);
-  }
-  max(fnSelector) {
-    return max2(fnSelector)(this.iter);
-  }
-  min(fnSelector) {
-    return min2(fnSelector)(this.iter);
-  }
-  reduce(fnReduce, initValue) {
-    return reduce2(fnReduce, initValue)(this.iter);
-  }
-  reduceAsync(fnReduceAsync, initialValue) {
-    return reduceAsync2(fnReduceAsync, initialValue)(this.iter);
-  }
-  reduceToSequence(fnReduce, initialValue) {
-    return this.chain(reduce2(fnReduce, initialValue));
-  }
-  //// Cast
-  toArray() {
-    return [...this.iter];
-  }
-  toIterable() {
-    return toIterableIterator(this.iter);
-  }
-};
-
-// ../node_modules/.pnpm/gensequence@8.0.8/node_modules/gensequence/dist/GenSequence.js
-function genSequence(i) {
-  return new ImplSequence(i);
-}
-
-// ../node_modules/.pnpm/cspell-trie-lib@9.4.0/node_modules/cspell-trie-lib/dist/index.js
 var SymEmpty = /* @__PURE__ */ Symbol("memorizeLastCall");
 function memorizeLastCall(fn) {
   let lastP = void 0;
   let lastR = SymEmpty;
   function calc(p) {
-    if (lastR !== SymEmpty && lastP === p) return lastR;
+    if (lastP === p && lastR !== SymEmpty) return lastR;
     lastP = p;
     lastR = fn(p);
     return lastR;
@@ -39551,7 +39335,7 @@ function findWordNode$1(root, word, options) {
   return _findWordNode$1(root, word, options);
 }
 function findWord$1(root, word, options) {
-  if (root.find) {
+  if (root.find && !options?.compoundSeparator) {
     const found$1 = root.find(word, options?.matchCase || false);
     if (found$1) {
       if (options?.checkForbidden && found$1.forbidden === void 0) found$1.forbidden = isForbiddenWord$1(root, word, root.forbidPrefix);
@@ -39577,8 +39361,9 @@ function _findWordNode$1(root, word, options) {
   const ignoreCasePrefix = matchCase3 ? "" : trieInfo.stripCaseAndAccentsPrefix ?? root.caseInsensitivePrefix;
   const mustCheckForbidden = options?.checkForbidden === true;
   const checkForbidden = options?.checkForbidden ?? true;
+  const compoundSeparator = options?.compoundSeparator || "";
   function __findCompound() {
-    const f = findCompoundWord$1(root, word, compoundPrefix, ignoreCasePrefix);
+    const f = findCompoundWord$1(root, word, compoundPrefix, ignoreCasePrefix, compoundSeparator);
     if (f.found !== false && (mustCheckForbidden || f.compoundUsed && checkForbidden)) f.forbidden = isForbiddenWord$1(!f.caseMatched ? walk$2(root, root.caseInsensitivePrefix) : root, word, root.forbidPrefix);
     return f;
   }
@@ -39604,14 +39389,15 @@ function _findWordNode$1(root, word, options) {
 function findLegacyCompound$1(root, word, options) {
   const roots = [root];
   if (!options?.matchCase) roots.push(walk$2(root, root.caseInsensitivePrefix));
-  return findLegacyCompoundNode$1(roots, word, options?.legacyMinCompoundLength || defaultLegacyMinCompoundLength$2);
+  return findLegacyCompoundNode$1(roots, word, options?.legacyMinCompoundLength || defaultLegacyMinCompoundLength$2, options?.compoundSeparator ?? "+");
 }
-function findCompoundNode$1(root, word, compoundCharacter, ignoreCasePrefix) {
+function findCompoundNode$1(root, word, compoundCharacter, ignoreCasePrefix, compoundSeparator) {
   const stack = [{
     n: root,
     compoundPrefix: ignoreCasePrefix,
     cr: void 0,
-    caseMatched: true
+    caseMatched: true,
+    s: ""
   }];
   const compoundPrefix = compoundCharacter || ignoreCasePrefix;
   const possibleCompoundPrefix = ignoreCasePrefix && compoundCharacter ? ignoreCasePrefix + compoundCharacter : "";
@@ -39627,7 +39413,8 @@ function findCompoundNode$1(root, word, compoundCharacter, ignoreCasePrefix) {
       n: s.n,
       compoundPrefix: prefix === compoundPrefix ? possibleCompoundPrefix : "",
       cr: r,
-      caseMatched: caseMatched$1
+      caseMatched: caseMatched$1,
+      s: prefix.endsWith(compoundCharacter) ? compoundSeparator : ""
     };
   }
   let compoundUsed = false;
@@ -39645,7 +39432,8 @@ function findCompoundNode$1(root, word, compoundCharacter, ignoreCasePrefix) {
         n: c,
         compoundPrefix,
         cr: void 0,
-        caseMatched
+        caseMatched,
+        s: ""
       };
     } else if (!c || !c.eow) {
       node = node || c;
@@ -39667,16 +39455,20 @@ function findCompoundNode$1(root, word, compoundCharacter, ignoreCasePrefix) {
       break;
     }
   }
+  function joinCompoundWord() {
+    return stack.map((s) => s.s).map((c, i$1) => c + w[i$1]).join("");
+  }
+  const f = i === word.length && word || false;
   return {
-    found: i === word.length && word || false,
+    found: f && (compoundSeparator ? joinCompoundWord() : f),
     compoundUsed,
     node,
     forbidden: void 0,
     caseMatched
   };
 }
-function findCompoundWord$1(root, word, compoundCharacter, ignoreCasePrefix) {
-  const { found, compoundUsed, node, caseMatched } = findCompoundNode$1(root, word, compoundCharacter, ignoreCasePrefix);
+function findCompoundWord$1(root, word, compoundCharacter, ignoreCasePrefix, compoundSeparator) {
+  const { found, compoundUsed, node, caseMatched } = findCompoundNode$1(root, word, compoundCharacter, ignoreCasePrefix, compoundSeparator);
   if (!node || !node.eow) return {
     found: false,
     compoundUsed,
@@ -39710,7 +39502,7 @@ function walk$2(root, word) {
   }
   return n;
 }
-function findLegacyCompoundNode$1(roots, word, minCompoundLength) {
+function findLegacyCompoundNode$1(roots, word, minCompoundLength, compoundSeparator) {
   const root = roots[0];
   const numRoots = roots.length;
   const stack = [{
@@ -39764,7 +39556,7 @@ function findLegacyCompoundNode$1(roots, word, minCompoundLength) {
     let subLen = 0;
     for (let j = 0; j < i; ++j) {
       const { subLength } = stack[j];
-      if (subLength < subLen) letters.push("+");
+      if (subLength < subLen) letters.push(compoundSeparator);
       letters.push(word[j]);
       subLen = subLength;
     }
@@ -39791,17 +39583,23 @@ function _createFindOptions$1(options) {
     matchCase: options.matchCase ?? d.matchCase,
     compoundMode: options.compoundMode ?? d.compoundMode,
     legacyMinCompoundLength: options.legacyMinCompoundLength ?? d.legacyMinCompoundLength,
-    checkForbidden: options.checkForbidden ?? d.checkForbidden
+    checkForbidden: options.checkForbidden ?? d.checkForbidden,
+    compoundSeparator: options.compoundSeparator ?? d.compoundSeparator
   };
 }
 var JOIN_SEPARATOR = "+";
 var WORD_SEPARATOR = " ";
-var CompoundWordsMethod = /* @__PURE__ */ (function(CompoundWordsMethod$1) {
-  CompoundWordsMethod$1[CompoundWordsMethod$1["NONE"] = 0] = "NONE";
-  CompoundWordsMethod$1[CompoundWordsMethod$1["SEPARATE_WORDS"] = 1] = "SEPARATE_WORDS";
-  CompoundWordsMethod$1[CompoundWordsMethod$1["JOIN_WORDS"] = 2] = "JOIN_WORDS";
-  return CompoundWordsMethod$1;
-})({});
+var CompoundWordsMethodEnum = {
+  NONE: 0,
+  SEPARATE_WORDS: 1,
+  JOIN_WORDS: 2
+};
+var CompoundWordsMethod = {
+  ...CompoundWordsMethodEnum,
+  0: "NONE",
+  1: "SEPARATE_WORDS",
+  2: "JOIN_WORDS"
+};
 function* compoundWalker$1(root, compoundingMethod) {
   const empty2 = Object.freeze([]);
   const roots = {
@@ -39963,15 +39761,20 @@ function countWords$1(root) {
   }
   return walk$3(root);
 }
+var debuggerIsAttached = false;
+function isDebuggerAttached() {
+  return debuggerIsAttached;
+}
 function trieRootToITrieRoot(root) {
   return ImplITrieRoot.toITrieNode(root);
 }
-var EmptyKeys$2 = Object.freeze([]);
+var EmptyKeys = Object.freeze([]);
 var EmptyValues = Object.freeze([]);
-var EmptyEntries$2 = Object.freeze([]);
+var EmptyEntries = Object.freeze([]);
 var ImplITrieNode = class ImplITrieNode2 {
   id;
   _keys;
+  node;
   constructor(node) {
     this.node = node;
     this.id = node;
@@ -39988,7 +39791,7 @@ var ImplITrieNode = class ImplITrieNode2 {
   /** get keys to children */
   keys() {
     if (this._keys) return this._keys;
-    const keys4 = this.node.c ? Object.keys(this.node.c) : EmptyKeys$2;
+    const keys4 = this.node.c ? Object.keys(this.node.c) : EmptyKeys;
     this._keys = keys4;
     return keys4;
   }
@@ -39997,7 +39800,7 @@ var ImplITrieNode = class ImplITrieNode2 {
     return !this.node.c ? EmptyValues : Object.values(this.node.c).map((n) => ImplITrieNode2.toITrieNode(n));
   }
   entries() {
-    return !this.node.c ? EmptyEntries$2 : Object.entries(this.node.c).map(([k, n]) => [k, ImplITrieNode2.toITrieNode(n)]);
+    return !this.node.c ? EmptyEntries : Object.entries(this.node.c).map(([k, n]) => [k, ImplITrieNode2.toITrieNode(n)]);
   }
   /** get child ITrieNode */
   get(char) {
@@ -40046,15 +39849,16 @@ var ImplITrieRoot = class extends ImplITrieNode {
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
+  root;
   constructor(root) {
     super(root);
     this.root = root;
-    const { stripCaseAndAccentsPrefix, compoundCharacter, forbiddenWordPrefix, isCaseAware } = root;
+    const { stripCaseAndAccentsPrefix, compoundCharacter, forbiddenWordPrefix, suggestionPrefix } = root;
     this.info = {
       stripCaseAndAccentsPrefix,
       compoundCharacter,
       forbiddenWordPrefix,
-      isCaseAware
+      suggestionPrefix
     };
     this.hasForbiddenWords = !!root.c[forbiddenWordPrefix];
     this.hasCompoundWords = !!root.c[compoundCharacter];
@@ -40075,53 +39879,13 @@ var ImplITrieRoot = class extends ImplITrieNode {
   get caseInsensitivePrefix() {
     return this.root.stripCaseAndAccentsPrefix;
   }
+  get suggestionPrefix() {
+    return this.root.suggestionPrefix;
+  }
   static toITrieNode(node) {
     return new this(node);
   }
 };
-var walkerWords = _walkerWords;
-function* _walkerWords(root) {
-  const empty2 = [];
-  function children(n) {
-    if (n.c) return Object.keys(n.c);
-    return empty2;
-  }
-  let depth = 0;
-  const stack = [];
-  stack[depth] = {
-    t: "",
-    n: root.c,
-    c: children(root),
-    ci: 0
-  };
-  while (depth >= 0) {
-    let s = stack[depth];
-    let baseText = s.t;
-    while (s.ci < s.c.length && s.n) {
-      const char = s.c[s.ci++];
-      const node = s.n[char];
-      const text = baseText + char;
-      if (node.f) yield text;
-      depth++;
-      baseText = text;
-      const c = children(node);
-      if (stack[depth]) {
-        s = stack[depth];
-        s.t = text;
-        s.n = node.c;
-        s.c = c;
-        s.ci = 0;
-      } else stack[depth] = {
-        t: text,
-        n: node.c,
-        c,
-        ci: 0
-      };
-      s = stack[depth];
-    }
-    depth -= 1;
-  }
-}
 var defaultGenSuggestionOptions = {
   compoundMethod: CompoundWordsMethod.NONE,
   ignoreCase: true,
@@ -40131,7 +39895,9 @@ var defaultSuggestionOptions = {
   ...defaultGenSuggestionOptions,
   numSuggestions: 8,
   includeTies: true,
-  timeout: 5e3
+  get timeout() {
+    return isDebuggerAttached() ? 1e6 : 1e3;
+  }
 };
 var keyMapOfSuggestionOptionsStrict = {
   changeLimit: "changeLimit",
@@ -40156,6 +39922,7 @@ function assign(dest, src, k) {
 var PairingHeap = class {
   _heap;
   _size = 0;
+  compare;
   constructor(compare$3) {
     this.compare = compare$3;
   }
@@ -40288,38 +40055,42 @@ function forms(letters) {
 }
 var visualLetterMaskMap = calcVisualLetterMasks(visualLetterGroups);
 function calcVisualLetterMasks(groups) {
-  const map3 = /* @__PURE__ */ Object.create(null);
+  const map$2 = /* @__PURE__ */ Object.create(null);
   for (let i = 0; i < groups.length; ++i) {
     const m = 1 << i;
     const g = groups[i];
-    for (const c of g) map3[c] = (map3[c] || 0) | m;
+    for (const c of g) map$2[c] = (map$2[c] || 0) | m;
   }
-  return map3;
+  return map$2;
+}
+function assert(condition, message = "Assert Failed") {
+  if (condition) return;
+  throw new Error(message);
 }
 var matchPossibleWordSeparators = /[+∙•・●]/g;
 function createWeightMap(...defs) {
-  const map3 = _createWeightMap();
-  addDefsToWeightMap(map3, defs);
-  return map3;
+  const map$2 = _createWeightMap();
+  addDefsToWeightMap(map$2, defs);
+  return map$2;
 }
-function addDefToWeightMap(map3, ...defs) {
-  return addDefsToWeightMap(map3, defs);
+function addDefToWeightMap(map$2, ...defs) {
+  return addDefsToWeightMap(map$2, defs);
 }
-function addAdjustment(map3, ...adjustments) {
-  for (const adj of adjustments) map3.adjustments.set(adj.id, adj);
-  return map3;
+function addAdjustment(map$2, ...adjustments) {
+  for (const adj of adjustments) map$2.adjustments.set(adj.id, adj);
+  return map$2;
 }
-function addDefsToWeightMap(map3, defs) {
+function addDefsToWeightMap(map$2, defs) {
   function addSet(set2, def) {
-    addSetToTrieCost(map3.insDel, set2, def.insDel, def.penalty);
-    addSetToTrieTrieCost(map3.replace, set2, def.replace, def.penalty);
-    addSetToTrieTrieCost(map3.swap, set2, def.swap, def.penalty);
+    addSetToTrieCost(map$2.insDel, set2, def.insDel, def.penalty);
+    addSetToTrieTrieCost(map$2.replace, set2, def.replace, def.penalty);
+    addSetToTrieTrieCost(map$2.swap, set2, def.swap, def.penalty);
   }
   for (const _def of defs) {
     const def = normalizeDef(_def);
     splitMap$1(def).forEach((s) => addSet(s, def));
   }
-  return map3;
+  return map$2;
 }
 function _createWeightMap() {
   return {
@@ -40345,10 +40116,10 @@ function normalize(s) {
   f.add(s.normalize("NFD"));
   return f;
 }
-function* splitMapSubstringsIterable(map3) {
+function* splitMapSubstringsIterable(map$2) {
   let seq = "";
   let mode = 0;
-  for (const char of map3) {
+  for (const char of map$2) {
     if (mode && char === ")") {
       yield* normalize(seq);
       mode = 0;
@@ -40366,12 +40137,12 @@ function* splitMapSubstringsIterable(map3) {
     yield* normalize(char);
   }
 }
-function splitMapSubstrings(map3) {
-  return [...splitMapSubstringsIterable(map3)];
+function splitMapSubstrings(map$2) {
+  return [...splitMapSubstringsIterable(map$2)];
 }
 function splitMap$1(def) {
-  const { map: map3 } = def;
-  return map3.split("|").map(splitMapSubstrings).filter((s) => s.length > 0);
+  const { map: map$2 } = def;
+  return map$2.split("|").map(splitMapSubstrings).filter((s) => s.length > 0);
 }
 function addToTrieCost(trie, str, cost, penalties) {
   if (!str) return;
@@ -40438,6 +40209,7 @@ function createWeightCostCalculator(weightMap) {
   return new _WeightCostCalculator(weightMap);
 }
 var _WeightCostCalculator = class {
+  weightMap;
   constructor(weightMap) {
     this.weightMap = weightMap;
   }
@@ -40497,22 +40269,22 @@ var _WeightCostCalculator = class {
   }
 };
 function normalizeDef(def) {
-  const { map: map3, ...rest } = def;
+  const { map: map$2, ...rest } = def;
   return {
     ...rest,
-    map: normalizeMap(map3)
+    map: normalizeMap(map$2)
   };
 }
-function normalizeMap(map3) {
-  return map3.replaceAll(matchPossibleWordSeparators, DEFAULT_COMPOUNDED_WORD_SEPARATOR);
+function normalizeMap(map$2) {
+  return map$2.replaceAll(matchPossibleWordSeparators, DEFAULT_COMPOUNDED_WORD_SEPARATOR);
 }
-function distanceAStarWeighted(wordA, wordB, map3, cost = 100) {
-  const calc = createWeightCostCalculator(map3);
+function distanceAStarWeighted(wordA, wordB, map$2, cost = 100) {
+  const calc = createWeightCostCalculator(map$2);
   const best = _distanceAStarWeightedEx(wordA, wordB, calc, cost);
   const penalty = calc.calcAdjustment(wordB);
   return best.c + best.p + penalty;
 }
-function _distanceAStarWeightedEx(wordA, wordB, map3, cost = 100) {
+function _distanceAStarWeightedEx(wordA, wordB, map$2, cost = 100) {
   const a = "^" + wordA + "$";
   const b = "^" + wordB + "$";
   const aN = a.length;
@@ -40568,7 +40340,7 @@ function _distanceAStarWeightedEx(wordA, wordB, map3, cost = 100) {
       f: n
     });
   }
-  function opMap$1(n) {
+  function opMap2(n) {
     const { ai, bi, c, p } = n;
     const pos = {
       a,
@@ -40579,9 +40351,9 @@ function _distanceAStarWeightedEx(wordA, wordB, map3, cost = 100) {
       p
     };
     [
-      map3.calcInsDelCosts(pos),
-      map3.calcSwapCosts(pos),
-      map3.calcReplaceCosts(pos)
+      map$2.calcInsDelCosts(pos),
+      map$2.calcSwapCosts(pos),
+      map$2.calcReplaceCosts(pos)
     ].forEach((iter) => {
       for (const nn of iter) candidates.add({
         ...nn,
@@ -40595,15 +40367,17 @@ function _distanceAStarWeightedEx(wordA, wordB, map3, cost = 100) {
     opSwap(best);
     opIns(best);
     opDel(best);
-    opMap$1(best);
+    opMap2(best);
     opSub(best);
   }
-  (0, import_node_assert.default)(best);
+  assert(best);
   return best;
 }
 var CandidatePool = class {
   pool = new PairingHeap(compare$1);
   grid = [];
+  aN;
+  bN;
   constructor(aN, bN) {
     this.aN = aN;
     this.bN = bN;
@@ -40641,119 +40415,6 @@ function editDistanceWeighted(wordA, wordB, weights, editCost = defaultCost) {
 function startTimer() {
   const start = performance.now();
   return () => performance.now() - start;
-}
-function createPerfTimer() {
-  const timer = startTimer();
-  const active = /* @__PURE__ */ new Map();
-  const events = [{
-    name: "start",
-    at: 0
-  }];
-  function updateEvent(event, atTime = timer()) {
-    const elapsed = atTime - event.at;
-    event.elapsed = (event.elapsed || 0) + elapsed;
-    return elapsed;
-  }
-  function start(name2) {
-    const event = createEvent(name2 || "start");
-    events.push(event);
-    name2 && active.set(name2, event);
-    return () => updateEvent(event);
-  }
-  function stop(name2) {
-    const knownEvent = name2 && active.get(name2);
-    if (knownEvent) return updateEvent(knownEvent);
-    return mark(name2 || "stop");
-  }
-  function createEvent(name2) {
-    return {
-      name: name2,
-      at: timer()
-    };
-  }
-  function mark(name2) {
-    const event = createEvent(name2);
-    events.push(event);
-    return event.at;
-  }
-  function formatReport() {
-    const lineElements = [
-      {
-        name: "Event Name",
-        at: "Time",
-        elapsed: "Elapsed"
-      },
-      {
-        name: "----------",
-        at: "----",
-        elapsed: "-------"
-      },
-      ...mapEvents()
-    ];
-    function mapEvents() {
-      const stack = [];
-      return events.map((e) => {
-        for (let s = stack.pop(); s; s = stack.pop()) if (s >= e.at + (e.elapsed || 0)) {
-          stack.push(s);
-          break;
-        }
-        const d = stack.length;
-        if (e.elapsed) stack.push(e.at + e.elapsed);
-        return {
-          name: "| ".repeat(d) + (e.name || "").replaceAll("	", "  "),
-          at: `${t(e.at)}`,
-          elapsed: e.elapsed ? `${t(e.elapsed)}` : "--"
-        };
-      });
-    }
-    function t(ms) {
-      return ms.toFixed(3) + "ms";
-    }
-    function m(v, s) {
-      return Math.max(v, s.length);
-    }
-    const lengths = lineElements.reduce((a, b) => ({
-      name: m(a.name, b.name),
-      at: m(a.at, b.at),
-      elapsed: m(a.elapsed, b.elapsed)
-    }), {
-      name: 0,
-      at: 0,
-      elapsed: 0
-    });
-    return lineElements.map((e) => `${e.at.padStart(lengths.at)}  ${e.name.padEnd(lengths.name)}  ${e.elapsed.padStart(lengths.elapsed)}`).join("\n");
-  }
-  function measureFn(name2, fn) {
-    const s = start(name2);
-    const v = fn();
-    s();
-    return v;
-  }
-  async function measureAsyncFn(name2, fn) {
-    const s = start(name2);
-    const v = await fn();
-    s();
-    return v;
-  }
-  function report2(reporter = console.log) {
-    reporter(formatReport());
-  }
-  return {
-    start,
-    stop,
-    mark,
-    elapsed: timer,
-    report: report2,
-    formatReport,
-    measureFn,
-    measureAsyncFn
-  };
-}
-var globalPerfTimer = void 0;
-function getGlobalPerfTimer() {
-  const timer = globalPerfTimer || createPerfTimer();
-  globalPerfTimer = timer;
-  return timer;
 }
 function isDefined$1(a) {
   return a !== void 0;
@@ -40806,7 +40467,7 @@ var defaultSuggestionCollectorOptions = Object.freeze({
   compoundMethod: void 0
 });
 function suggestionCollector(wordToMatch, options) {
-  const { filter: filter3 = () => true, changeLimit = MAX_NUM_CHANGES, includeTies = false, ignoreCase: ignoreCase2 = true, timeout = DEFAULT_COLLECTOR_TIMEOUT, weightMap, compoundSeparator = defaultSuggestionCollectorOptions.compoundSeparator } = options;
+  const { filter: filter$2 = () => true, changeLimit = MAX_NUM_CHANGES, includeTies = false, ignoreCase: ignoreCase2 = true, timeout = DEFAULT_COLLECTOR_TIMEOUT, weightMap, compoundSeparator = defaultSuggestionCollectorOptions.compoundSeparator } = options;
   const numSuggestions = Math.max(options.numSuggestions, 0) || 0;
   const numSugToHold = weightMap ? numSuggestions * 2 : numSuggestions;
   const sugs = /* @__PURE__ */ new Map();
@@ -40846,7 +40507,7 @@ function suggestionCollector(wordToMatch, options) {
   }
   function collectSuggestion(suggestion) {
     const { word, cost, isPreferred } = adjustCost(suggestion);
-    if (cost <= maxCost && filter3(suggestion.word, cost)) {
+    if (cost <= maxCost && filter$2(suggestion.word, cost)) {
       const known = sugs.get(word);
       if (known) {
         known.cost = Math.min(known.cost, cost);
@@ -40862,7 +40523,7 @@ function suggestionCollector(wordToMatch, options) {
     }
     return maxCost;
   }
-  function collect2(src, timeout$1, filter$1) {
+  function collect2(src, timeout$1, filter$3) {
     let stop = false;
     timeout$1 = timeout$1 ?? timeRemaining;
     timeout$1 = Math.min(timeout$1, timeRemaining);
@@ -40874,7 +40535,7 @@ function suggestionCollector(wordToMatch, options) {
       const { value } = ir;
       if (!value) continue;
       if (isSuggestionResult(value)) {
-        if (!filter$1 || filter$1(value.word, value.cost)) collectSuggestion(value);
+        if (!filter$3 || filter$3(value.word, value.cost)) collectSuggestion(value);
         continue;
       }
     }
@@ -40946,7 +40607,7 @@ function impersonateCollector(collector, word) {
 }
 function isSuggestionResult(s) {
   const r = s;
-  return !!r && typeof r === "object" && r?.cost !== void 0 && r.word != void 0;
+  return !!r && typeof r === "object" && r?.cost !== void 0 && r.word !== void 0;
 }
 function comparePath(a, b) {
   return a.c / (a.i + 1) - b.c / (b.i + 1) + (b.i - a.i);
@@ -40981,6 +40642,7 @@ function* getSuggestionsAStar(trie, srcWord, options = {}) {
   const compRoot = root.get(comp);
   const compRootIgnoreCase = rootIgnoreCase && rootIgnoreCase.get(comp);
   const emitted = /* @__PURE__ */ Object.create(null);
+  const debug4 = isDebuggerAttached();
   const srcLetters = [...srcWord];
   let limit = BC * Math.min(srcLetters.length * opCosts.wordLengthCostFactor, changeLimit);
   pathHeap.add(rootPNode);
@@ -41034,6 +40696,10 @@ function* getSuggestionsAStar(trie, srcWord, options = {}) {
         word: pNodeToWord(p),
         cost: p.c
       };
+      if (debug4) console.log("add possible suggestion: %o", {
+        ...result,
+        nodes: pNodeToDbgInfo(p).map(({ id, s, c, a }) => `${a}{${s || "\u2205"}} $${c}-> ${id} `).join("")
+      });
       resultHeap.add(result);
     }
     calcEdges(p);
@@ -41052,10 +40718,10 @@ function* getSuggestionsAStar(trie, srcWord, options = {}) {
       if (m) storePath(t, m, i + 1, cost0, s, p, "=", s);
       if (weightMap) processWeightMapEdges(p, weightMap);
       const ns = srcLetters[i + 1];
-      if (s == ns && m) storePath(t, m, i + 2, cost0 + DL, s, p, "dd", s);
+      if (s === ns && m) storePath(t, m, i + 2, cost0 + DL, s, p, "dd", s);
       storePath(t, n, i + 1, cost, "", p, "d", "");
       for (const [ss, node] of n.entries()) {
-        if (node.id === m?.id || ss in sc) continue;
+        if (ss === s || ss in sc) continue;
         const c = sg & (visMap[ss] || 0) ? costVis : cost;
         storePath(t, node, i + 1, c, ss, p, "r", ss);
       }
@@ -41145,11 +40811,33 @@ function createCostTrie() {
   };
 }
 function getCostTrie(t, s) {
-  if (s.length == 1) return t.t[s] ??= createCostTrie();
+  if (s.length === 1) return t.t[s] ??= createCostTrie();
   if (!s) return t;
   let tt = t;
   for (const c of s) tt = tt.t[c] ??= createCostTrie();
   return tt;
+}
+function pNodeToDbgInfo(p) {
+  const parts = [];
+  let n = p;
+  while (n) {
+    const id = formatNodeId(n.n.id);
+    parts.push({
+      id,
+      s: n.s,
+      c: n.c,
+      a: n.a || ""
+    });
+    n = n.p;
+  }
+  parts.reverse();
+  return parts;
+}
+function formatNodeId(id) {
+  const s = id.toString(16).padStart(16, "0");
+  const upper = s.slice(0, 8).replace(/^0+/, "").padStart(4, "0");
+  const lower = s.slice(8).replace(/^0+/, "");
+  return `${upper}${lower ? "." + lower : ""}`;
 }
 function pNodeToWord(p) {
   const parts = [];
@@ -41177,30 +40865,1060 @@ function searchTrieCostNodesMatchingTrie2(trie, node, emit, s = "") {
     if (t.n) searchTrieCostNodesMatchingTrie2(t, c, emit, pfx);
   }
 }
-var COMPOUND_FIX = "+";
-var OPTIONAL_COMPOUND_FIX = "*";
-var CASE_INSENSITIVE_PREFIX = "~";
-var FORBID_PREFIX = "!";
-var LINE_COMMENT = "#";
-var IDENTITY_PREFIX = "=";
-var defaultTrieInfo = Object.freeze({
-  compoundCharacter: COMPOUND_FIX,
-  forbiddenWordPrefix: FORBID_PREFIX,
-  stripCaseAndAccentsPrefix: CASE_INSENSITIVE_PREFIX,
-  isCaseAware: true,
-  hasForbiddenWords: false,
-  hasCompoundWords: false,
-  hasNonStrictWords: false
-});
-function mergeDefaults(value, defaultValue) {
-  const result = { ...defaultValue };
-  if (value) {
-    for (const [k, v] of Object.entries(value)) if (k in result) result[k] = v ?? result[k];
+var defaultTrieInfoSettings = {
+  forbiddenWordPrefix: "!",
+  stripCaseAndAccentsPrefix: "~",
+  compoundCharacter: "+",
+  suggestionPrefix: ":"
+};
+var revMapDefaultTrieInfoSettings = {
+  "!": "forbiddenWordPrefix",
+  "~": "stripCaseAndAccentsPrefix",
+  "+": "compoundCharacter",
+  ":": "suggestionPrefix"
+};
+var defaultTrieCharacteristics = {
+  hasForbiddenWords: "!",
+  hasNonStrictWords: "~",
+  hasCompoundWords: "+",
+  hasPreferredSuggestions: ":"
+};
+var mapInfoToCharacteristics = {
+  compoundCharacter: "hasCompoundWords",
+  stripCaseAndAccentsPrefix: "hasNonStrictWords",
+  forbiddenWordPrefix: "hasForbiddenWords",
+  suggestionPrefix: "hasPreferredSuggestions"
+};
+var mapCharacteristicToInfo = {
+  hasCompoundWords: "compoundCharacter",
+  hasNonStrictWords: "stripCaseAndAccentsPrefix",
+  hasForbiddenWords: "forbiddenWordPrefix",
+  hasPreferredSuggestions: "suggestionPrefix"
+};
+var keysTrieCharacteristics = Object.keys(defaultTrieCharacteristics);
+var keysTrieInfo = Object.keys(defaultTrieInfoSettings);
+var revMapDefaultTrieCharacteristics = {
+  "!": "hasForbiddenWords",
+  "+": "hasCompoundWords",
+  "~": "hasNonStrictWords",
+  ":": "hasPreferredSuggestions"
+};
+function parseTrieInfoFlags(info4) {
+  const trieInfo = {};
+  for (let i = 0; i < info4.length; i += 2) {
+    const k = info4[i];
+    const c = info4[i + 1];
+    if (!charInRevMapDefaultTrieInfoSettings(k) || !c) continue;
+    const key = revMapDefaultTrieInfoSettings[k];
+    trieInfo[key] = c;
   }
-  return result;
+  return trieInfo;
 }
-function mergeOptionalWithDefaults(...options) {
-  return options.reduce((acc, opt) => mergeDefaults(opt, acc), defaultTrieInfo);
+function normalizeTrieInfo(info4, defaultInfo = defaultTrieInfoSettings) {
+  return {
+    compoundCharacter: info4?.compoundCharacter || defaultInfo.compoundCharacter,
+    stripCaseAndAccentsPrefix: info4?.stripCaseAndAccentsPrefix || defaultInfo.stripCaseAndAccentsPrefix,
+    forbiddenWordPrefix: info4?.forbiddenWordPrefix || defaultInfo.forbiddenWordPrefix,
+    suggestionPrefix: info4?.suggestionPrefix || defaultInfo.suggestionPrefix
+  };
+}
+function extractTrieInfo(info4) {
+  return partialInfoToInfo(info4);
+}
+function cvtTrieInfoToFlags(info4) {
+  let flags = "";
+  for (const k of keysTrieInfo) {
+    const c = info4[k];
+    if (!c) continue;
+    assert(c.length === 1, `Expected single character for trie info ${k}, got '${c}'`);
+    const flagChar = defaultTrieInfoSettings[k];
+    flags += flagChar + c;
+  }
+  return flags;
+}
+function charInRevMapDefaultTrieInfoSettings(c) {
+  return c in revMapDefaultTrieInfoSettings;
+}
+function parseTrieCharacteristics(chars) {
+  const characteristics = {};
+  for (const c of chars) {
+    if (!charInRevMapDefaultTrieCharacteristics(c)) continue;
+    const key = revMapDefaultTrieCharacteristics[c];
+    characteristics[key] = true;
+  }
+  return characteristics;
+}
+function mapTrieCharacteristics(characteristics, info4) {
+  let chars = "";
+  for (const k of keysTrieCharacteristics) if (characteristics[k] === true) {
+    const c = info4[mapCharacteristicToInfo[k]] || "";
+    chars += c;
+  }
+  return chars;
+}
+function cvtTrieCharacteristicsToFlags(characteristics) {
+  return mapTrieCharacteristics(characteristics, defaultTrieInfoSettings);
+}
+function charInRevMapDefaultTrieCharacteristics(c) {
+  return c in revMapDefaultTrieCharacteristics;
+}
+function mapTrieCharacteristicToInfoValues(char, info4) {
+  return keysTrieCharacteristics.map((k) => [k, char[k]]).filter((kvp) => kvp[1] === true).map(([k]) => mapCharacteristicToInfo[k]).map((k) => info4[k]);
+}
+var TrieInfoBuilder = class {
+  #givenInfo;
+  #givenCharacteristics;
+  #srcInfo;
+  #knownChars;
+  #foundChars;
+  constructor(info4, characteristics) {
+    this.#givenInfo = info4;
+    this.#srcInfo = normalizeTrieInfo(info4);
+    this.#knownChars = revTrieInfo(this.#srcInfo);
+    this.#givenCharacteristics = characteristics || {};
+    this.#foundChars = new Set(mapTrieCharacteristicToInfoValues(this.#givenCharacteristics, this.#srcInfo));
+  }
+  setInfo(info4) {
+    this.#givenInfo = info4;
+    this.#srcInfo = normalizeTrieInfo(info4);
+    this.#knownChars = revTrieInfo(this.#srcInfo);
+    this.#foundChars = new Set(mapTrieCharacteristicToInfoValues(this.#givenCharacteristics, this.#srcInfo));
+  }
+  getActiveInfo() {
+    return this.#srcInfo;
+  }
+  addWord(word) {
+    if (word[0] in this.#knownChars) this.#foundChars.add(word[0]);
+  }
+  #getCharacteristics() {
+    const characteristics = {};
+    for (const char of this.#foundChars) {
+      const key = this.#knownChars[char];
+      if (!key) continue;
+      const charToCharacteristic = mapInfoToCharacteristics[key];
+      if (!charToCharacteristic) continue;
+      characteristics[charToCharacteristic] = true;
+    }
+    return characteristics;
+  }
+  #getInfo() {
+    const info4 = partialInfoToInfo(this.#givenInfo);
+    for (const char of this.#foundChars) {
+      const key = this.#knownChars[char];
+      if (!key) continue;
+      info4[key] = this.#srcInfo[key];
+    }
+    return info4;
+  }
+  build() {
+    return {
+      info: this.#getInfo(),
+      characteristics: this.#getCharacteristics()
+    };
+  }
+};
+function partialInfoToInfo(info4) {
+  if (!info4) return {};
+  return Object.fromEntries(keysTrieInfo.map((k) => [k, info4[k]]).filter(([_k, v]) => !!v));
+}
+function revTrieInfo(info4) {
+  const rev = {};
+  for (const k of keysTrieInfo) {
+    const v = info4[k];
+    if (typeof v !== "string") continue;
+    rev[v] = k;
+  }
+  return rev;
+}
+function endianness() {
+  const uint32s = new Uint32Array([168496141]);
+  return new Uint8Array(uint32s.buffer)[0] === 10 ? "BE" : "LE";
+}
+var isLittleEndian = endianness() === "LE";
+var BytesSize = {
+  uint8: 1,
+  uint16: 2,
+  uint32: 4,
+  uint64: 8,
+  string: 1
+};
+var BinaryFormatBuilder = class {
+  #elements = [];
+  #elementsByName = /* @__PURE__ */ new Map();
+  #offset = 0;
+  #textEncoder = new TextEncoder();
+  addUint8(name2, description, value) {
+    const uValue = value === void 0 || typeof value === "number" ? new Uint8Array([value || 0]) : new Uint8Array(value);
+    return this.addData(name2, description, "value", uValue);
+  }
+  addUint16(name2, description, value) {
+    const uValue = value !== void 0 ? rawNumberToUint16Array(value) : rawNumberToUint16Array(0);
+    return this.addData(name2, description, "value", uValue);
+  }
+  addUint32(name2, description, value) {
+    const uValue = value !== void 0 ? rawNumberToUint32Array(value) : rawNumberToUint32Array(0);
+    return this.addData(name2, description, "value", uValue);
+  }
+  /**
+  * A pointer to a uint32 array, it has two parts, the offset and the length.
+  * @param name - name of pointer
+  * @param description - the description of the field
+  * @param overload - optional name of element to overload
+  * @returns this
+  */
+  addUint32ArrayPtr(name2, description, overload) {
+    return this.addPointer(BytesSize.uint32, name2, description, overload);
+  }
+  /**
+  * A pointer to a uint16 array, it has two parts, the offset and the length.
+  * @param name - name of pointer
+  * @param description - the description of the field
+  * @param overload - optional name of element to overload
+  * @returns this
+  */
+  addUint16ArrayPtr(name2, description, overload) {
+    return this.addPointer(BytesSize.uint16, name2, description, overload);
+  }
+  /**
+  * A pointer to a uint8 array, it has two parts, the offset and the length.
+  * @param name - name of pointer
+  * @param description - the description of the field
+  * @param overload - optional name of element to overload
+  * @returns this
+  */
+  addUint8ArrayPtr(name2, description, overload) {
+    return this.addPointer(BytesSize.uint8, name2, description, overload);
+  }
+  /**
+  * A pointer to a string of UTF-8 bytes, it has two parts, the offset and the length.
+  * @param name - name of pointer
+  * @param description - the description of the field
+  * @param overload - optional name of element to overload
+  * @returns this
+  */
+  addStringPtr(name2, description, overload) {
+    return this.addPointer(BytesSize.string, name2, description, overload);
+  }
+  /**
+  * Add a pointer element.
+  * @param byteSize - size of each element pointed to
+  * @param name - name of the pointer
+  * @param description - description of the pointer
+  * @param overload - optional name of element to overload
+  * @returns this
+  */
+  addPointer(byteSize, name2, description, overload) {
+    const alignment = 4;
+    let offset = byteAlign(this.#offset, alignment);
+    if (overload) {
+      const existing = this.#elementsByName.get(overload);
+      assert(existing, `Overload target not found: ${overload}`);
+      offset = byteAlign(existing.offset, alignment);
+      assert(existing.offset === offset, `Overload target offset mismatch: ${overload}`);
+    }
+    const element = {
+      name: name2,
+      description,
+      type: "ptr+size",
+      alignment,
+      offset,
+      size: 8,
+      value: void 0,
+      byteSize,
+      overload
+    };
+    this.#addElement(element);
+    return this;
+  }
+  addString(name2, description, length) {
+    const value = typeof length === "string" ? this.#textEncoder.encode(length) : new Uint8Array(length);
+    this.addData(name2, description, "value", value);
+    return this;
+  }
+  addUint8Array(name2, description, length) {
+    const value = new Uint8Array(length);
+    this.addData(name2, description, "value", value);
+    return this;
+  }
+  addData(name2, description, formatType, data) {
+    const byteSize = data.byteLength / data.length;
+    assert(isByteAlignment(byteSize), `Invalid byte size: ${byteSize} for field: ${name2}`);
+    const alignment = byteSize;
+    const offset = byteAlign(this.#offset, byteSize);
+    const value = new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+    const size = value.byteLength;
+    this.#addElement({
+      name: name2,
+      description,
+      type: formatType,
+      alignment,
+      offset,
+      size,
+      value,
+      byteSize
+    });
+    return this;
+  }
+  #addElement(element) {
+    assert(!this.#elementsByName.has(element.name), `Duplicate element name: ${element.name}`);
+    const expectedOffset = byteAlign(element.offset, element.alignment);
+    assert(element.offset === expectedOffset, `Element alignment mismatch for ${element.name} with alignment ${element.alignment}. Expected: ${expectedOffset}, Found: ${element.offset}`);
+    this.#elementsByName.set(element.name, element);
+    this.#elements.push(element);
+    if (!element.overload) this.#offset = element.offset + element.size;
+  }
+  build() {
+    return new BinaryFormat([...this.#elements]);
+  }
+};
+var BinaryFormat = class {
+  elements;
+  #fieldsByName = /* @__PURE__ */ new Map();
+  #offset;
+  constructor(elements) {
+    this.elements = elements;
+    this.#fieldsByName = new Map(elements.map((el) => [el.name, el]));
+    this.#offset = Math.max(...elements.map((el) => el.offset + el.size), 0);
+  }
+  get size() {
+    return this.#offset;
+  }
+  getField(name2) {
+    return this.#fieldsByName.get(name2);
+  }
+  toJSON() {
+    return this.elements.map(formatElementToJSON);
+  }
+  toString() {
+    const nameWidth = Math.max(4, ...this.elements.map((el) => el.name.length), 4);
+    const offsetWidth = 8;
+    const sizeWidth = 6;
+    const typeWidth = Math.max(4, ...this.elements.map((el) => el.type.length), 4);
+    const lines = [];
+    addHeaderLines();
+    this.elements.forEach(addElement);
+    return lines.join("\n");
+    function addHeaderLines() {
+      const line = formatLine([
+        "name",
+        "offset",
+        "size",
+        "type",
+        "mask",
+        "description",
+        "value"
+      ]);
+      lines.push("Binary Format:");
+      lines.push(line);
+      lines.push("-".repeat(line.length));
+    }
+    function addElement(e) {
+      lines.push(formatLine([
+        e.name,
+        e.offset.toString(),
+        e.size.toString(),
+        e.type,
+        e.byteSize.toString(2).padStart(4, "0"),
+        e.description,
+        e.value ? `${e.value}` : ""
+      ]));
+    }
+    function formatLine([name2, offset, size, type, mask, description, value]) {
+      name2 = name2.padEnd(nameWidth, " ");
+      offset = offset.padStart(offsetWidth, " ");
+      size = size.padStart(sizeWidth, " ");
+      type = type.padEnd(typeWidth, " ");
+      value = value ? `(${value})` : "";
+      return `${name2} ${offset} ${size} ${type} ${mask} ${description} ${value}`.trim();
+    }
+  }
+};
+var BinaryDataBuilder = class {
+  #dataElementMap = /* @__PURE__ */ new Map();
+  #offset = 0;
+  #endian;
+  #useLE;
+  #encoder = new TextEncoder();
+  #dataByOffset = /* @__PURE__ */ new Map();
+  format;
+  constructor(format4, endian = endianness()) {
+    this.format = format4;
+    this.#offset = format4.size;
+    this.#endian = endian;
+    this.#useLE = endian === "LE";
+    this.#dataElementMap = /* @__PURE__ */ new Map();
+    this.#populateDataElementMap();
+  }
+  #populateDataElementMap() {
+    for (const ref of this.format.elements) {
+      const { name: name2, offset, size } = ref;
+      let data = this.#dataByOffset.get(offset);
+      if (!data || data.byteLength < size) {
+        data = new Uint8Array(size);
+        this.#dataByOffset.set(offset, data);
+      }
+      if (ref.value) data.set(ref.value);
+      const de = {
+        name: name2,
+        offset,
+        size,
+        data,
+        ref
+      };
+      this.#dataElementMap.set(de.name, de);
+      this.#offset = Math.max(this.#offset, offset + size);
+    }
+  }
+  setString(name2, value) {
+    const element = this.getDataElement(name2);
+    assert(element, `Field not found: ${name2}`);
+    const formatElement = element.ref;
+    assert(formatElement, `Field Format not found: ${name2}`);
+    assert(formatElement.byteSize === BytesSize.string, `Field is not a string: ${name2}`);
+    assert(this.#encoder.encodeInto(value, element.data).read === value.length, `String too long for field ${name2}: ${value}`);
+    return this;
+  }
+  setUint32(name2, value) {
+    const element = this.getDataElement(name2);
+    assert(element, `Field not found: ${name2}`);
+    const formatElement = element.ref;
+    assert(formatElement, `Field Format not found: ${name2}`);
+    assert(formatElement.byteSize === BytesSize.uint32, `Field is not a uint32: ${name2}`);
+    const view = new DataView(element.data.buffer, element.data.byteOffset, element.data.byteLength);
+    const useLittle = this.#endian === "LE";
+    view.setUint32(0, value, useLittle);
+    return this;
+  }
+  setUint16(name2, value) {
+    const element = this.getDataElement(name2);
+    assert(element, `Field not found: ${name2}`);
+    const formatElement = element.ref;
+    assert(formatElement, `Field Format not found: ${name2}`);
+    assert(formatElement.byteSize === BytesSize.uint16, `Field is not a uint16: ${name2}`);
+    const view = new DataView(element.data.buffer, element.data.byteOffset, element.data.byteLength);
+    const useLittle = this.#endian === "LE";
+    view.setUint16(0, value, useLittle);
+    return this;
+  }
+  setUint8(name2, value) {
+    const element = this.getDataElement(name2);
+    assert(element, `Field not found: ${name2}`);
+    const formatElement = element.ref;
+    assert(formatElement, `Field Format not found: ${name2}`);
+    assert(formatElement.byteSize === BytesSize.uint8, `Field is not a uint8: ${name2}`);
+    element.data[0] = value;
+    return this;
+  }
+  /**
+  * Adjust the offset so it lands on the alignment boundary.
+  * 1 = byte align
+  * 2 = 16bit align
+  * 4 = 32bit align
+  * 8 = 64bit align
+  * @param alignment - the byte alignment
+  */
+  alignTo(alignment) {
+    const aMask = alignment - 1;
+    this.#offset = this.#offset + aMask & ~aMask;
+  }
+  /**
+  * Append a data element to the binary data.
+  * @param data - the data to add
+  * @returns the DataElement added
+  */
+  addDataElement(data, alignment) {
+    this.alignTo(alignment);
+    const offset = this.#offset;
+    const name2 = `data_${offset}`;
+    const size = data.byteLength;
+    const de = {
+      name: name2,
+      offset,
+      size,
+      data
+    };
+    this.#dataElementMap.set(de.name, de);
+    this.#offset = offset + size;
+    return de;
+  }
+  /**
+  * Append the data and set the pointer to it.
+  * The Uint32Array  will be converted to the proper endianness if necessary.
+  * @param name - name of the pointer field
+  * @param data - the data to add
+  * @param alignment - the alignment for the data, default 4
+  * @returns this
+  */
+  setPtrUint32Array(name2, data, alignment = 4) {
+    return this.#setPtrData(name2, convertUint32ArrayToUint8Array(data, this.#useLE), alignment);
+  }
+  /**
+  * Append the data and set the pointer to it.
+  * The Uint16Array  will be converted to the proper endianness if necessary.
+  * @param name - name of the pointer field
+  * @param data - the data to add
+  * @param alignment - the alignment for the data, default 2
+  * @returns this
+  */
+  setPtrUint16Array(name2, data, alignment = 2) {
+    return this.#setPtrData(name2, convertUint16ArrayToUint8Array(data, this.#useLE), alignment);
+  }
+  /**
+  * Append the data and set the pointer to it.
+  * @param name - name of the pointer field
+  * @param data - the data to add
+  * @param alignment - the alignment for the data, default 1
+  * @returns this
+  */
+  setPtrUint8Array(name2, data, alignment = 1) {
+    return this.#setPtrData(name2, data, alignment);
+  }
+  /**
+  * Append the string and set the pointer to it. It will be encoded as UTF-8.
+  * Note: the alignment is 1. Use alignTo() if you need a different alignment.
+  * @param name - name of the pointer field
+  * @param str - the data to add
+  * @returns this
+  */
+  setPtrString(name2, str) {
+    return this.#setPtrData(name2, this.#encoder.encode(str), 1);
+  }
+  #setPtrData(name2, dataView, alignment) {
+    const element = this.getDataElement(name2);
+    assert(element, `Field not found: ${name2}`);
+    const formatElement = element.ref;
+    assert(formatElement, `Field Format not found: ${name2}`);
+    assert(formatElement.type === "ptr+size", `Field is not a pointer: ${name2}`);
+    assert(formatElement.byteSize === alignment, `Pointer byte size mismatch: ${name2}`);
+    const data = new Uint8Array(dataView.buffer, dataView.byteOffset, dataView.byteLength);
+    const de = this.addDataElement(data, alignment);
+    this.#setPtr(element, de.offset, de.size);
+    return this;
+  }
+  #setPtr(element, dataOffset, dataLength) {
+    assert(element.data.byteLength >= 8, `Pointer data too small: ${element.name}`);
+    const view = new DataView(element.data.buffer, element.data.byteOffset, element.data.byteLength);
+    view.setUint32(0, dataOffset, this.#useLE);
+    view.setUint32(4, dataLength, this.#useLE);
+  }
+  get offset() {
+    return this.#offset;
+  }
+  get endian() {
+    return this.#endian;
+  }
+  getDataElement(name2) {
+    return this.#dataElementMap.get(name2);
+  }
+  build() {
+    const buffer$1 = new Uint8Array(this.#offset);
+    for (const element of this.#dataElementMap.values()) buffer$1.set(element.data, element.offset);
+    return buffer$1;
+  }
+};
+function convertUint32ArrayEndiannessInPlace(data) {
+  const view = new DataView(data.buffer, data.byteOffset, data.byteLength);
+  const byteLength = data.length * 4;
+  for (let i = 0; i < byteLength; i += 4) {
+    const v = view.getUint32(i, true);
+    view.setUint32(i, v, false);
+  }
+  return data;
+}
+function convertUint16ArrayEndiannessInPlace(data) {
+  const view = new DataView(data.buffer, data.byteOffset, data.byteLength);
+  const byteLength = data.length * 2;
+  for (let i = 0; i < byteLength; i += 2) {
+    const v = view.getUint16(i, true);
+    view.setUint16(i, v, false);
+  }
+  return data;
+}
+function convertUint32ArrayToUint8Array(data, useLittle, isLE = isLittleEndian) {
+  if (isLE === useLittle) return new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+  const target = new Uint32Array(data.length);
+  target.set(data);
+  convertUint32ArrayEndiannessInPlace(target);
+  return new Uint8Array(target.buffer, target.byteOffset, target.byteLength);
+}
+function convertUint16ArrayToUint8Array(data, useLittle, isLE = isLittleEndian) {
+  if (isLE === useLittle) return new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+  const target = new Uint16Array(data.length);
+  target.set(data);
+  convertUint16ArrayEndiannessInPlace(target);
+  return new Uint8Array(target.buffer, target.byteOffset, target.byteLength);
+}
+function rawNumberToUint32Array(value) {
+  return new Uint32Array([value]);
+}
+function rawNumberToUint16Array(value) {
+  return new Uint16Array([value]);
+}
+var BinaryDataReader = class {
+  data;
+  format;
+  #decoder = new TextDecoder();
+  #useLE;
+  /**
+  * Binary Data Reader
+  * @param data - the raw binary data
+  * @param format - the expected format
+  * @param endian - the endian of the data (can be changed later)
+  */
+  constructor(data, format4, endian = endianness()) {
+    this.data = new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+    this.format = format4;
+    this.#useLE = endian === "LE";
+  }
+  /**
+  * Get a string from the data.
+  * It will decode the string as UTF-8 from the following field types: 'string', 'ptrString', 'ptrUint8Array'.
+  * @param name - name of the string field
+  * @returns string value
+  */
+  getString(name2) {
+    const element = this.getDataElement(name2);
+    const formatElement = element.ref;
+    assert(formatElement.byteSize === BytesSize.string, `Field is not a string: ${name2}`);
+    if (formatElement.type === "value") return this.#decoder.decode(element.data);
+    assert(formatElement.type === "ptr+size", `Field is not a string: ${name2}`);
+    const strData = this.#getPtrData(element);
+    return this.#decoder.decode(strData);
+  }
+  /**
+  * Get a Uint32 from the data.
+  * @param name - name of the Uint32 field
+  * @returns number value
+  */
+  getUint32(name2) {
+    const element = this.getDataElement(name2);
+    const formatElement = element.ref;
+    assert(formatElement.type === "value" && formatElement.byteSize === BytesSize.uint32, `Field is not a uint32: ${name2}`);
+    return new DataView(element.data.buffer, element.data.byteOffset, element.data.byteLength).getUint32(0, this.#useLE);
+  }
+  /**
+  * Get a Uint16 from the data.
+  * @param name - name of the Uint16 field
+  * @returns number value
+  */
+  getUint16(name2) {
+    const element = this.getDataElement(name2);
+    const formatElement = element.ref;
+    assert(formatElement.type === "value" && formatElement.byteSize === BytesSize.uint16, `Field is not a uint16: ${name2}`);
+    return new DataView(element.data.buffer, element.data.byteOffset, element.data.byteLength).getUint16(0, this.#useLE);
+  }
+  /**
+  * Read a field as Uint16 starting at the given byte offset.
+  * @param name - name of field
+  * @param byteOffset - offset of in bytes from the beginning of the field
+  * @returns the value read.
+  */
+  getAsUint16(name2, byteOffset = 0) {
+    const element = this.getDataElement(name2);
+    return new DataView(element.data.buffer, element.data.byteOffset, element.data.byteLength).getUint16(byteOffset, this.#useLE);
+  }
+  /**
+  * Get a Uint8 from the data.
+  * @param name - name of the Uint8 field
+  * @returns number value
+  */
+  getUint8(name2) {
+    const element = this.getDataElement(name2);
+    const formatElement = element.ref;
+    assert(formatElement.type === "value" && formatElement.byteSize === BytesSize.uint8, `Field is not a uint8: ${name2}`);
+    return element.data[0];
+  }
+  /**
+  * Gets Uint32Array data from a pointer field.
+  * Note: The returned Uint32Array may be a view of the underlying data.
+  * If the endianness does not match, a copy will be made.
+  * @param name - name of the field
+  * @returns Uint32Array value
+  */
+  getPtrUint32Array(name2) {
+    const element = this.getDataElement(name2);
+    const ref = element.ref;
+    assert(ref.type === "ptr+size" && ref.byteSize === BytesSize.uint32, `Field is not a ptrUint32Array: ${name2}`);
+    const arrData = this.#getPtrData(element);
+    const rawData32 = new Uint32Array(arrData.buffer, arrData.byteOffset, arrData.byteLength / ref.byteSize);
+    if (isLittleEndian === this.#useLE) return rawData32;
+    return convertUint32ArrayEndiannessInPlace(new Uint32Array(rawData32));
+  }
+  /**
+  * Gets Uint16Array data from a pointer field.
+  * Note: The returned Uint16Array may be a view of the underlying data.
+  * If the endianness does not match, a copy will be made.
+  * @param name - name of the field
+  * @returns Uint16Array value
+  */
+  getPtrUint16Array(name2) {
+    const element = this.getDataElement(name2);
+    const ref = element.ref;
+    assert(ref.type === "ptr+size" && ref.byteSize === BytesSize.uint16, `Field is not a ptrUint16Array: ${name2}`);
+    const arrData = this.#getPtrData(element);
+    const rawData16 = new Uint16Array(arrData.buffer, arrData.byteOffset, arrData.byteLength / ref.byteSize);
+    if (isLittleEndian === this.#useLE) return rawData16;
+    return convertUint16ArrayEndiannessInPlace(new Uint16Array(rawData16));
+  }
+  /**
+  * Gets Uint8Array data from a pointer field.
+  * Note: The returned Uint8Array is a view of the underlying data.
+  * @param name - name of the field
+  * @returns Uint8Array value
+  */
+  getPtrUint8Array(name2) {
+    const element = this.getDataElement(name2);
+    assert(element.ref.type === "ptr+size", `Field is not a ptr+size: ${name2}`);
+    return this.#getPtrData(element);
+  }
+  /**
+  * Gets string data from a pointer field.
+  * @param name - name of the field
+  * @returns string value
+  */
+  getPtrString(name2) {
+    const element = this.getDataElement(name2);
+    assert(element.ref.type === "ptr+size", `Field is not a ptr+size: ${name2}`);
+    const strData = this.#getPtrData(element);
+    return this.#decoder.decode(strData);
+  }
+  #getPtrData(element) {
+    const formatElement = element.ref;
+    assert(formatElement.type === "ptr+size", `Field is not a ptr+size: ${element.name} (${formatElement.type})`);
+    const view = new DataView(element.data.buffer, element.data.byteOffset, element.data.byteLength);
+    const offset = view.getUint32(0, this.#useLE);
+    const length = view.getUint32(4, this.#useLE);
+    return this.data.subarray(offset, offset + length);
+  }
+  /**
+  * Get the Element information by name
+  * @param name - name of the field
+  * @returns DataElementWithRef
+  */
+  getDataElement(name2) {
+    const element = this.format.getField(name2);
+    assert(element, `Field not found: ${name2}`);
+    const data = this.data.subarray(element.offset, element.offset + element.size);
+    return {
+      name: element.name,
+      offset: element.offset,
+      size: element.size,
+      data,
+      ref: element
+    };
+  }
+  set endian(endian) {
+    this.#useLE = endian === "LE";
+  }
+  get endian() {
+    return this.#useLE ? "LE" : "BE";
+  }
+  reverseEndian() {
+    this.#useLE = !this.#useLE;
+  }
+  /**
+  * Get the raw bytes for a field.
+  * @param name - name of the field
+  * @returns the bytes or undefined
+  */
+  getUint8Array(name2) {
+    const element = this.getDataElement(name2);
+    if (!element) return void 0;
+    return element.data;
+  }
+  /**
+  * Get the FormatElement for a field.
+  * @param name - name of the field
+  * @returns the element or undefined
+  */
+  getField(name2) {
+    return this.format.getField(name2);
+  }
+};
+function formatElementToJSON(fe) {
+  const { value } = fe;
+  const v = value ? [...value] : void 0;
+  return {
+    ...fe,
+    value: v
+  };
+}
+function byteAlign(offset, alignment) {
+  const aMask = alignment - 1;
+  return offset + aMask & ~aMask;
+}
+function isByteAlignment(value) {
+  return value === 1 || value === 2 || value === 4 || value === 8;
+}
+var GTrieNode = class {
+  children;
+  value;
+  constructor(value, children) {
+    this.value = value;
+    this.children = children;
+  }
+};
+var GTrie = class GTrie2 {
+  root;
+  constructor() {
+    this.root = new GTrieNode();
+  }
+  /**
+  *
+  * @param keys - the path to the child node
+  * @param value - the value to set / insert
+  * @return the previous value if one existed
+  */
+  insert(keys4, value) {
+    const node = this.insertNode(keys4);
+    const prev = node.value;
+    node.value = value;
+    return prev;
+  }
+  /**
+  * Insert nodes for the given keys into the trie.
+  * Existing nodes are reused.
+  * @param keys
+  * @returns the final node inserted or found
+  */
+  insertNode(keys4) {
+    let currentNode = this.root;
+    for (const key of keys4) {
+      let children = currentNode.children;
+      if (!children) {
+        children = /* @__PURE__ */ new Map();
+        currentNode.children = children;
+      }
+      let child = children.get(key);
+      if (!child) {
+        child = new GTrieNode();
+        children.set(key, child);
+      }
+      currentNode = child;
+    }
+    return currentNode;
+  }
+  findNode(keys4) {
+    let currentNode = this.root;
+    for (const key of keys4) {
+      const children = currentNode.children;
+      if (!children) return;
+      const child = children.get(key);
+      if (!child) return;
+      currentNode = child;
+    }
+    return currentNode;
+  }
+  has(keys4) {
+    return this.findNode(keys4)?.value !== void 0;
+  }
+  hasNode(keys4) {
+    return this.findNode(keys4) !== void 0;
+  }
+  get(keys4) {
+    const node = this.findNode(keys4);
+    return node ? node.value : void 0;
+  }
+  static fromEntries(entries) {
+    const trie = new GTrie2();
+    for (const [keys4, value] of entries) trie.insert(keys4, value);
+    return trie;
+  }
+};
+function measurePerfStart(name2) {
+  performance.mark(name2 + "-start");
+}
+function measurePerfEnd(name2) {
+  performance.mark(name2 + "-end");
+  performance.measure(name2, name2 + "-start", name2 + "-end");
+}
+function measurePerf(name2) {
+  measurePerfStart(name2);
+  return () => {
+    measurePerfEnd(name2);
+  };
+}
+var StringTable = class {
+  #index;
+  #data;
+  #strLenBits;
+  #strLenMask;
+  #decoder = new TextDecoder();
+  /**
+  *
+  * @param index - the lookup index format: `offset|len` where the low bits are the length
+  * @param utf8ByteData - the UTF-8 encoded byte data for all the strings
+  * @param strLenBits - number of bits used to store the length of the string in the index entry
+  */
+  constructor(index, utf8ByteData, strLenBits) {
+    this.#index = index;
+    this.#data = utf8ByteData;
+    this.#strLenBits = strLenBits;
+    this.#strLenMask = (1 << strLenBits) - 1;
+  }
+  get index() {
+    return this.#index;
+  }
+  get charData() {
+    return this.#data;
+  }
+  get strLenBits() {
+    return this.#strLenBits;
+  }
+  get length() {
+    return this.#index.length;
+  }
+  getStringBytes(idx$1) {
+    if (idx$1 < 0 || idx$1 >= this.#index.length) return void 0;
+    return this.#getBytesByIndexValue(this.#index[idx$1]);
+  }
+  getString(idx$1) {
+    const bytes = this.getStringBytes(idx$1);
+    if (!bytes) return void 0;
+    return this.#decoder.decode(bytes);
+  }
+  #getBytesByIndexValue(value) {
+    const offset = value >>> this.#strLenBits;
+    const length = value & this.#strLenMask;
+    return this.#data.subarray(offset, offset + length);
+  }
+  dataByteLength() {
+    return this.#data.byteLength;
+  }
+  bitInfo() {
+    const strLenBits = this.strLenBits;
+    const offsetBits = Math.ceil(Math.log2(this.charData.length + 1));
+    return {
+      strLenBits,
+      offsetBits,
+      minIndexBits: strLenBits + offsetBits
+    };
+  }
+  values() {
+    return [...this.#index].map((v) => this.#getBytesByIndexValue(v));
+  }
+  toString() {
+    return [...this.#index].map((_, i) => this.getString(i) || "").join(", ");
+  }
+  toJSON() {
+    return {
+      index: [...this.#index],
+      data: [...this.#data],
+      strLenBits: this.#strLenBits
+    };
+  }
+};
+var StringTableBuilder = class StringTableBuilder2 {
+  #data = [];
+  #encoder = new TextEncoder();
+  #lookupTrie = new GTrie();
+  #locked = false;
+  #maxStrLen = 0;
+  addStringBytes(bytes) {
+    assert(!this.#locked, "StringTableBuilder is locked and cannot be modified.");
+    const found = this.#lookupTrie.get(bytes);
+    if (found !== void 0) return found;
+    const idx$1 = this.#data.push(bytes) - 1;
+    this.#lookupTrie.insert(bytes, idx$1);
+    this.#maxStrLen = Math.max(this.#maxStrLen, bytes.length);
+    return idx$1;
+  }
+  addString(str) {
+    const bytes = this.#encoder.encode(str);
+    return this.addStringBytes(bytes);
+  }
+  getEntry(idx$1) {
+    return this.#data[idx$1];
+  }
+  get length() {
+    return this.#data.length;
+  }
+  build() {
+    const endPerf = measurePerf("StringTableBuilder.build");
+    const table = this.#build();
+    endPerf();
+    return table;
+  }
+  #build() {
+    this.#locked = true;
+    if (!this.#data.length) return new StringTable([], new Uint8Array(0), 8);
+    const sortedBySize = this.#data.map((b, i) => ({
+      b,
+      i
+    })).sort((a, b) => b.b.length - a.b.length);
+    const byteValues = [];
+    const strLenBits = Math.ceil(Math.log2(this.#maxStrLen + 1));
+    const strLenMask = (1 << strLenBits) - 1;
+    const index = new Array(this.#data.length);
+    for (const { b, i } of sortedBySize) {
+      let offset = findValues(b);
+      if (offset < 0) offset = appendValues(b);
+      const length = b.length;
+      assert(length <= strLenMask, `String length ${length} exceeds maximum of ${strLenMask}`);
+      index[i] = offset << strLenBits | length;
+    }
+    return new StringTable(index, new Uint8Array(byteValues), strLenBits);
+    function findValues(buf) {
+      const bufLen = buf.length;
+      const maxOffset = byteValues.length - bufLen;
+      for (let i = 0; i <= maxOffset; i++) {
+        let match2 = true;
+        for (let j = 0; j < bufLen; j++) if (byteValues[i + j] !== buf[j]) {
+          match2 = false;
+          break;
+        }
+        if (match2) return i;
+      }
+      return -1;
+    }
+    function appendValues(buf) {
+      const offset = byteValues.length;
+      byteValues.push(...buf);
+      return offset;
+    }
+  }
+  static fromStringTable(table) {
+    const builder = new StringTableBuilder2();
+    const values = table.values();
+    const len = values.length;
+    for (let i = 0; i < len; ++i) builder.addStringBytes(values[i]);
+    return builder;
+  }
+};
+var bomCode = 21587;
+function getStringTableBinaryFormat() {
+  return new BinaryFormatBuilder().addUint8("indexBits", "The number of bits needed for each index entry", 32).addUint8("strLenBits", "The number of bits needed to store the max length of a string in the table.", 8).addUint16("bom", "The Byte Order Mark.", bomCode).addString("reserved", "Reserved for future use", 4).addUint32ArrayPtr("index32", "String index array of 32 bit entries").addUint16ArrayPtr("index16", "String index array of 16 bit entries", "index32").addUint8ArrayPtr("index", "String index array of 8 bit entries", "index32").addUint8ArrayPtr("data", "String byte data").build();
+}
+function encodeStringTableToBinary(table, endian) {
+  const strLenBits = table.strLenBits;
+  const minIndexBits = strLenBits + Math.ceil(Math.log2(table.charData.length + 1));
+  const indexBits = minIndexBits <= 16 ? 16 : 32;
+  assert(minIndexBits <= indexBits, `Index bits ${indexBits} is too small for required bits ${minIndexBits}`);
+  const builder = new BinaryDataBuilder(getStringTableBinaryFormat(), endian);
+  builder.setUint8("indexBits", indexBits);
+  builder.setUint8("strLenBits", strLenBits);
+  builder.setUint16("bom", bomCode);
+  if (indexBits === 16) builder.setPtrUint16Array("index16", toU16Array(table.index));
+  else builder.setPtrUint32Array("index32", toU32Array(table.index));
+  builder.setPtrUint8Array("data", table.charData);
+  return builder.build();
+}
+function decodeStringTableFromBinary(data, endian) {
+  if (!data?.length) return new StringTable([], new Uint8Array(0), 8);
+  const reader = new BinaryDataReader(data, getStringTableBinaryFormat(), endian);
+  const indexBits = reader.getUint8("indexBits");
+  const strLenBits = reader.getUint8("strLenBits");
+  const bomStored = reader.getUint16("bom");
+  assert(!bomStored || bomStored === bomCode, "Endian mismatch");
+  return new StringTable(indexBits === 16 ? reader.getPtrUint16Array("index16") : reader.getPtrUint32Array("index32"), reader.getPtrUint8Array("data"), strLenBits);
+}
+function toU16Array(data) {
+  if (data instanceof Uint16Array) return data;
+  return new Uint16Array(data);
+}
+function toU32Array(data) {
+  if (data instanceof Uint32Array) return data;
+  return new Uint32Array(data);
 }
 function expandCharacterSet(line, rangeChar = "-") {
   const charSet = /* @__PURE__ */ new Set();
@@ -41262,8 +41980,8 @@ function assertValidUtf16Character(char) {
     const len = char.length;
     const codes$1 = toCharCodes(char.slice(0, 2)).map((c) => "0x" + ("0000" + c.toString(16)).slice(-4));
     let message;
-    if (len == 1) message = `Invalid utf16 character, lone surrogate: ${codes$1[0]}`;
-    else if (len == 2) message = `Invalid utf16 character, not a valid surrogate pair: [${codes$1.join(", ")}]`;
+    if (len === 1) message = `Invalid utf16 character, lone surrogate: ${codes$1[0]}`;
+    else if (len === 2) message = `Invalid utf16 character, not a valid surrogate pair: [${codes$1.join(", ")}]`;
     else message = `Invalid utf16 character, must be a single character, found: ${len}`;
     throw new Error(message);
   }
@@ -41273,15 +41991,32 @@ function toCharCodes(s) {
   for (let i = 0; i < s.length; ++i) values.push(s.charCodeAt(i));
   return values;
 }
-function encodeUtf8N_BE(code) {
+function encodeToUtf8_32(code) {
   if (code < 128) return code;
   if (code < 2048) return 49280 | (code & 1984) << 2 | code & 63;
   if (code < 65536) return 14712960 | (code & 61440) << 4 | (code & 4032) << 2 | code & 63;
   return 4034953344 + ((code & 1835008) << 6 | (code & 258048) << 4 | (code & 4032) << 2 | code & 63);
 }
+function encodeToUtf8_32Rev(code) {
+  if (code < 128) return code;
+  if (code < 2048) return 32960 | (code & 1984) >> 6 | (code & 63) << 8;
+  if (code < 65536) return 8421600 | (code & 61440) >>> 12 | (code & 4032) << 2 | (code & 63) << 16;
+  return 2155905264 + ((code & 1835008) >>> 18 | (code & 258048) >>> 4 | (code & 4032) << 10 | (code & 63) << 24);
+}
 var Utf8Accumulator = class Utf8Accumulator2 {
+  /**
+  * Number of remaining continuation bytes expected for the current code point being decoded.
+  */
   remaining = 0;
+  /**
+  * Partially decoded code point value being accumulated.
+  */
   value = 0;
+  /**
+  * Decode a single utf8 byte
+  * @param byte
+  * @returns a CodePoint if a full code point has been decoded, undefined if more bytes are needed, or 0xfffd on error.
+  */
   decode(byte) {
     let remaining = this.remaining;
     if (byte & -256) return this.reset();
@@ -41315,6 +42050,18 @@ var Utf8Accumulator = class Utf8Accumulator2 {
     }
     return this.reset();
   }
+  get codePoint() {
+    return this.remaining ? void 0 : this.value;
+  }
+  decodeBytesToString(bytes) {
+    let value = "";
+    const len = bytes.length;
+    for (let i = 0; i < len; ++i) {
+      const code = this.decode(bytes[i]);
+      if (code) value += String.fromCodePoint(code);
+    }
+    return value;
+  }
   reset() {
     this.remaining = 0;
     this.value = 0;
@@ -41335,50 +42082,41 @@ var Utf8Accumulator = class Utf8Accumulator2 {
     return new this();
   }
 };
+function encodeTextToUtf8_32Rev(offset) {
+  const text = offset.text;
+  let code = text.charCodeAt(offset.i) & 65535;
+  code = (code & 63488) === 55296 ? text.codePointAt(offset.i++) || 0 : code;
+  offset.i++;
+  if (code < 128) return code;
+  if (code < 2048) return 32960 | (code & 1984) >> 6 | (code & 63) << 8;
+  if (code < 65536) return 8421600 | (code & 61440) >>> 12 | (code & 4032) << 2 | (code & 63) << 16;
+  return 2155905264 + ((code & 1835008) >>> 18 | (code & 258048) >>> 4 | (code & 4032) << 10 | (code & 63) << 24);
+}
 function encodeTextToUtf8Into(text, into, offset = 0) {
+  const t = {
+    text,
+    i: 0
+  };
   let i = offset;
-  const len = text.length;
-  for (let j = 0; j < len; j++) {
-    let code = text.charCodeAt(j);
-    code = (code & 63488) === 55296 ? text.codePointAt(j++) || 0 : code;
-    if (code < 128) {
-      into[i++] = code;
-      continue;
-    }
-    if (code < 2048) {
-      const u$1 = 49280 | (code & 1984) << 2 | code & 63;
-      into[i++] = u$1 >>> 8;
-      into[i++] = u$1 & 255;
-      continue;
-    }
-    if (code < 65536) {
-      const u$1 = 14712960 | (code & 61440) << 4 | (code & 4032) << 2 | code & 63;
-      into[i++] = u$1 >>> 16;
-      into[i++] = u$1 >>> 8 & 255;
-      into[i++] = u$1 & 255;
-      continue;
-    }
-    const u = 4034953344 | ((code & 1835008) << 6 | (code & 258048) << 4 | (code & 4032) << 2 | code & 63);
-    into[i++] = u >>> 24 & 255;
-    into[i++] = u >>> 16 & 255;
-    into[i++] = u >>> 8 & 255;
-    into[i++] = u & 255;
+  for (; t.i < text.length; ) {
+    const code = encodeTextToUtf8_32Rev(t);
+    for (let utf8_32Rev = code; utf8_32Rev !== 0; utf8_32Rev >>>= 8) into[i++] = utf8_32Rev & 255;
   }
   return i - offset;
 }
 function encodeTextToUtf8(text) {
-  const array = new Array(text.length);
-  const len = encodeTextToUtf8Into(text, array);
-  array.length !== len && (array.length = len);
-  return array;
+  const into = new Array(text.length);
+  encodeTextToUtf8Into(text, into);
+  return into;
 }
 Object.freeze([0]);
-var CharIndex = class {
+var CharIndex = class CharIndex2 {
   #charToUtf8SeqMap;
   #lastWord = "";
   #lastWordSeq = [];
   #multiByteChars;
-  constructor(charIndex) {
+  charIndex;
+  constructor(charIndex = /* @__PURE__ */ new Set()) {
     this.charIndex = charIndex;
     this.#charToUtf8SeqMap = buildCharIndexSequenceMap(charIndex);
     this.#multiByteChars = [...this.#charToUtf8SeqMap.values()].some((c) => c.length > 1);
@@ -41401,19 +42139,27 @@ var CharIndex = class {
     return this.#multiByteChars;
   }
   get size() {
-    return this.charIndex.length;
+    return this.charIndex.size;
   }
   toJSON() {
-    return { charIndex: this.charIndex };
+    return { charIndex: [...this.charIndex].join("") };
+  }
+  static fromJSON(json) {
+    return new CharIndex2(new Set(json.charIndex));
+  }
+  static fromIterable(charIndex) {
+    const charSet = /* @__PURE__ */ new Set();
+    for (const s of charIndex) for (const c of s) charSet.add(c);
+    return new CharIndex2(charSet);
   }
 };
 function buildCharIndexSequenceMap(charIndex) {
-  const map3 = /* @__PURE__ */ new Map();
-  for (const key of charIndex) map3.set(key, encodeTextToUtf8(key));
-  return map3;
+  const map$2 = /* @__PURE__ */ new Map();
+  for (const key of charIndex) map$2.set(key, encodeTextToUtf8(key));
+  return map$2;
 }
 var CharIndexBuilder = class {
-  charIndex = [];
+  charIndex = /* @__PURE__ */ new Set();
   charIndexMap = /* @__PURE__ */ new Map();
   charIndexSeqMap = /* @__PURE__ */ new Map();
   #mapIdxToSeq = /* @__PURE__ */ new Map();
@@ -41424,8 +42170,8 @@ var CharIndexBuilder = class {
     const found = this.charIndexMap.get(c);
     if (found !== void 0) return found;
     const nc = c.normalize("NFC");
-    this.charIndex.push(nc);
-    const utf8 = encodeUtf8N_BE(nc.codePointAt(0) || 0);
+    this.charIndex.add(nc);
+    const utf8 = encodeToUtf8_32(nc.codePointAt(0) || 0);
     this.charIndexMap.set(c, utf8);
     this.charIndexMap.set(nc, utf8);
     this.charIndexMap.set(c.normalize("NFD"), utf8);
@@ -41458,13 +42204,14 @@ var CharIndexBuilder = class {
     return seq;
   }
   get size() {
-    return this.charIndex.length;
+    return this.charIndex.size;
   }
   build() {
     return new CharIndex(this.charIndex);
   }
 };
 function splitUtf8(utf8) {
+  utf8 = utf8 < 0 ? 4294967296 + utf8 : utf8;
   if (utf8 <= 255) return [utf8];
   if (utf8 <= 65535) return [utf8 >> 8 & 255, utf8 & 255];
   if (utf8 <= 16777215) return [
@@ -41479,405 +42226,359 @@ function splitUtf8(utf8) {
     utf8 & 255
   ].filter((v) => v);
 }
-function extractInfo(info4) {
-  const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = info4;
+var NodeHeaderNumChildrenShift = 0;
+var NodeHeaderEOWMask = 256;
+var NodeHeaderPrefixMask = 1073741312;
+var NodeHeaderPrefixShift = 9;
+var NodeHeaderNumChildrenMask = 255;
+var NodeMaskCharByte = 255;
+var NodeChildIndexRefShift = 8;
+var MAX_AUTO_ADD_TO_STRING_TABLE = 4;
+function optimizeNodes(nodes) {
+  const endPerf = measurePerf("TrieBlob.optimizeNodes");
+  const nodeHashMap = /* @__PURE__ */ new Map();
+  const lockedNodes = /* @__PURE__ */ new WeakMap();
+  const eowNode = nodes[1];
+  getHashList(eowNode).push(eowNode);
+  lockNode(eowNode, 1);
+  walk$3(0);
+  const n = compactNodes(nodes);
+  endPerf();
+  return n;
+  function getHashList(node) {
+    const hash = xorNode(node);
+    let list = nodeHashMap.get(hash);
+    if (list) return list;
+    list = [];
+    nodeHashMap.set(hash, list);
+    return list;
+  }
+  function lockNode(node, index) {
+    lockedNodes.set(node, index);
+    return index;
+  }
+  function findMatchingLockedNode(hash, node) {
+    const candidates = nodeHashMap.get(hash);
+    if (!candidates) return void 0;
+    return findMatchingNode(node, candidates);
+  }
+  function registerNode(nodeIdx, node) {
+    if (!nodeIdx) return nodeIdx;
+    const match2 = findMatchingLockedNode(xorNode(node), node);
+    if (!match2) {
+      getHashList(node).push(node);
+      return lockNode(node, nodeIdx);
+    }
+    return lockNode(node, lockedNodes.get(match2) || 0);
+  }
+  function walk$3(nodeIdx) {
+    const node = nodes[nodeIdx];
+    if (lockedNodes.has(node)) return nodeIdx;
+    const count$2 = node.length - 1;
+    for (let i = 1; i <= count$2; ++i) {
+      const entry = node[i];
+      const childIdx = entry >> 8;
+      const newChildIdx = walk$3(childIdx);
+      if (newChildIdx !== childIdx) node[i] = entry & 255 | newChildIdx << 8;
+    }
+    return registerNode(nodeIdx, node);
+  }
+}
+function xorNode(a) {
+  let xor = 0;
+  for (let i = 0; i < a.length; ++i) xor ^= a[i];
+  return xor;
+}
+function findMatchingNode(node, candidates) {
+  for (let i = candidates.length - 1; i >= 0; --i) {
+    const candidate = candidates[i];
+    if (compareNodes(node, candidate)) return candidate;
+  }
+}
+function compareNodes(a, b) {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length && diff === 0; ++i) diff = a[i] - b[i];
+  return !diff;
+}
+function compactNodes(nodes) {
+  const nodeMap = /* @__PURE__ */ new Map();
+  const compacted = [];
+  nodeMap.set(0, 0);
+  nodeMap.set(1, 1);
+  compacted.push(nodes[0], nodes[1]);
+  walk$3(0);
+  return compacted;
+  function walk$3(nodeIdx) {
+    const found = nodeMap.get(nodeIdx);
+    if (found) return found;
+    const node = nodes[nodeIdx];
+    const count$2 = node.length - 1;
+    for (let i = 1; i <= count$2; ++i) {
+      const entry = node[i];
+      const newChildIdx = walk$3(entry >> 8);
+      node[i] = entry & 255 | newChildIdx << 8;
+    }
+    if (!nodeIdx) return nodeIdx;
+    const newIndex = compacted.push(node) - 1;
+    nodeMap.set(nodeIdx, newIndex);
+    return newIndex;
+  }
+}
+function calculateByteSize(nodes) {
+  let count$2 = 0;
+  for (let i = nodes.length - 1; i >= 0; --i) count$2 += nodes[i].length;
+  return count$2 * 4;
+}
+function copyNodes(nodes) {
+  const size = calculateByteSize(nodes);
+  const dst = Array(nodes.length);
+  const buffer$1 = new ArrayBuffer(size);
+  for (let i = 0, offset = 0; i < nodes.length; ++i) {
+    const node = nodes[i];
+    const nodeCopy = new Uint32Array(buffer$1, offset, node.length);
+    nodeCopy.set(node);
+    dst[i] = nodeCopy;
+    offset += nodeCopy.byteLength;
+  }
+  return dst;
+}
+function copyNodesAndStringTable(src) {
   return {
-    NodeMaskEOW,
-    NodeMaskChildCharIndex,
-    NodeChildRefShift
+    nodes: copyNodes(src.nodes),
+    stringTableBuilder: StringTableBuilder.fromStringTable(src.stringTable)
   };
 }
-var FastTrieBlobInternals = class {
-  NodeMaskEOW;
-  NodeMaskChildCharIndex;
-  NodeChildRefShift;
-  isIndexDecoderNeeded;
-  info;
-  constructor(nodes, charIndex, maskInfo, info4) {
-    this.nodes = nodes;
-    this.charIndex = charIndex;
-    const { NodeMaskEOW, NodeMaskChildCharIndex, NodeChildRefShift } = maskInfo;
-    this.NodeMaskEOW = NodeMaskEOW;
-    this.NodeMaskChildCharIndex = NodeMaskChildCharIndex;
-    this.NodeChildRefShift = NodeChildRefShift;
-    this.isIndexDecoderNeeded = charIndex.indexContainsMultiByteChars();
-    this.info = mergeOptionalWithDefaults(info4);
-  }
-};
-var FastTrieBlobInternalsAndMethods = class extends FastTrieBlobInternals {
-  nodeFindNode;
-  nodeFindExact;
-  nodeGetChild;
-  isForbidden;
-  findExact;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(nodes, charIndex, maskInfo, info4, trieMethods) {
-    super(nodes, charIndex, maskInfo, info4);
-    this.nodeFindExact = trieMethods.nodeFindExact;
-    this.nodeGetChild = trieMethods.nodeGetChild;
-    this.isForbidden = trieMethods.isForbidden;
-    this.findExact = trieMethods.findExact;
-    this.nodeFindNode = trieMethods.nodeFindNode;
-    this.hasForbiddenWords = trieMethods.hasForbiddenWords;
-    this.hasCompoundWords = trieMethods.hasCompoundWords;
-    this.hasNonStrictWords = trieMethods.hasNonStrictWords;
-  }
-};
-function sortNodes(nodes, mask) {
-  if (Object.isFrozen(nodes)) {
-    assertSorted(nodes, mask);
-    return nodes;
-  }
-  for (let i = 0; i < nodes.length; ++i) {
-    let node = nodes[i];
-    if (node.length > 2) {
-      const isFrozen = Object.isFrozen(node);
-      node = isFrozen ? Uint32Array.from(node) : node;
-      const nodeInfo = node[0];
-      node[0] = 0;
-      node.sort((a, b) => !a ? -1 : !b ? 1 : (a & mask) - (b & mask));
-      node[0] = nodeInfo;
-      if (isFrozen) {
-        nodes[i] = node;
-        Object.freeze(node);
-      }
+function optimizeNodesWithStringTable(src) {
+  const endPerf = measurePerf("TrieBlob.optimizeNodesWithStringTable");
+  const { nodes, stringTableBuilder: builder } = copyNodesAndStringTable(src);
+  const multipleNodeRefs = calcHasMultipleReferences(nodes);
+  const multiStringRefs = /* @__PURE__ */ new Set([0]);
+  if (!builder.length) builder.addString("");
+  walkNodes(nodes, 0, { after: processNode });
+  const r = {
+    nodes: optimizeNodes(nodes),
+    stringTable: builder.build()
+  };
+  endPerf();
+  return r;
+  function processNode(nodeIdx) {
+    const node = nodes[nodeIdx];
+    if (node.length !== 2) return;
+    const header = node[0];
+    if ((header & NodeHeaderEOWMask) !== 0) return;
+    if (header & NodeHeaderPrefixMask) return;
+    const childEntry = node[1];
+    const charByte = childEntry & NodeMaskCharByte;
+    const childIdx = childEntry >>> 8;
+    if (multipleNodeRefs.has(childIdx)) return;
+    const childNode = nodes[childIdx];
+    const childHeader = childNode[0];
+    const childPrefixIdx = (childHeader & NodeHeaderPrefixMask) >>> NodeHeaderPrefixShift;
+    const childBytes = builder.getEntry(childPrefixIdx) || [];
+    if (!multiStringRefs.has(childPrefixIdx)) {
+      multiStringRefs.add(childPrefixIdx);
+      if (childBytes.length >= MAX_AUTO_ADD_TO_STRING_TABLE) return;
     }
-  }
-  Object.freeze(nodes);
-  return nodes;
-}
-function assertSorted(nodes, mask) {
-  for (let i = 0; i < nodes.length; ++i) {
-    const node = nodes[i];
-    if (node.length > 2) {
-      let last = -1;
-      for (let j = 1; j < node.length; ++j) {
-        const n = node[j] & mask;
-        if (n < last) throw new Error(`Node ${i} is not sorted. ${last} > ${n}`);
-        last = n;
-      }
-    }
+    const prefixBytes = [charByte, ...childBytes];
+    const prefixIdx = builder.addStringBytes(prefixBytes);
+    const newNode = Uint32Array.from(childNode);
+    newNode[0] = prefixIdx << NodeHeaderPrefixShift | childHeader & ~NodeHeaderPrefixMask;
+    nodes[nodeIdx] = newNode;
   }
 }
-var EmptyKeys$1 = Object.freeze([]);
-var EmptyNodes$1 = Object.freeze([]);
-var EmptyEntries$1 = Object.freeze([]);
-var FastTrieBlobINode = class FastTrieBlobINode2 {
-  id;
-  node;
-  eow;
-  _keys;
-  _count;
-  _size;
-  _chained;
-  _nodesEntries;
-  _entries;
-  _values;
-  charToIdx;
-  constructor(trie, nodeIdx) {
-    this.trie = trie;
-    this.nodeIdx = nodeIdx;
-    const node = trie.nodes[nodeIdx];
-    this.node = node;
-    this.eow = !!(node[0] & trie.NodeMaskEOW);
-    this._count = node.length - 1;
-    this.id = nodeIdx;
-    this.findExact = (word) => trie.nodeFindExact(nodeIdx, word);
-  }
-  /** get keys to children */
-  keys() {
-    if (this._keys) return this._keys;
-    if (!this._count) return EmptyKeys$1;
-    this._keys = this.getNodesEntries().map(([key]) => key);
-    return this._keys;
-  }
-  values() {
-    if (!this._count) return EmptyNodes$1;
-    if (this._values) return this._values;
-    this._values = this.entries().map(([, value]) => value);
-    return this._values;
-  }
-  entries() {
-    if (this._entries) return this._entries;
-    if (!this._count) return EmptyEntries$1;
-    this._entries = this.getNodesEntries().map(([key, value]) => [key, new FastTrieBlobINode2(this.trie, value)]);
-    return this._entries;
-  }
-  /** get child ITrieNode */
-  get(char) {
-    const idx$1 = this.trie.nodeGetChild(this.id, char);
-    if (idx$1 === void 0) return void 0;
-    return new FastTrieBlobINode2(this.trie, idx$1);
-  }
-  getNode(chars) {
-    const idx$1 = this.trie.nodeFindNode(this.id, chars);
-    if (idx$1 === void 0) return void 0;
-    return new FastTrieBlobINode2(this.trie, idx$1);
-  }
-  has(char) {
-    return this.trie.nodeGetChild(this.id, char) !== void 0;
-  }
-  hasChildren() {
-    return this._count > 0;
-  }
-  child(keyIdx) {
-    if (!this._values && !this.containsChainedIndexes()) {
-      const nodeIdx = this.node[keyIdx + 1] >>> this.trie.NodeChildRefShift;
-      return new FastTrieBlobINode2(this.trie, nodeIdx);
+function calcHasMultipleReferences(nodes) {
+  const seen = /* @__PURE__ */ new Set();
+  const multiple = /* @__PURE__ */ new Set();
+  walkNodes(nodes, 0, { before: (nodeIdx) => {
+    if (seen.has(nodeIdx)) {
+      multiple.add(nodeIdx);
+      return true;
     }
-    return this.values()[keyIdx];
+    seen.add(nodeIdx);
+    return false;
+  } });
+  return multiple;
+}
+function walkNodes(nodes, nodeIdx, options) {
+  const after = options.after || (() => void 0);
+  const before = options.before || (() => void 0);
+  function walk$3(nodeIdx$1) {
+    if (before(nodeIdx$1)) return;
+    const node = nodes[nodeIdx$1];
+    const count$2 = node.length - 1;
+    for (let i = 1; i <= count$2; ++i) walk$3(node[i] >> 8);
+    after(nodeIdx$1);
   }
-  getCharToIdxMap() {
-    const m = this.charToIdx;
-    if (m) return m;
-    const map3 = /* @__PURE__ */ Object.create(null);
-    const keys4 = this.keys();
-    for (let i = 0; i < keys4.length; ++i) map3[keys4[i]] = i;
-    this.charToIdx = map3;
-    return map3;
+  walk$3(nodeIdx);
+}
+function resolveMap(map$2, key, resolve6) {
+  const r = map$2.get(key);
+  if (r !== void 0) return r;
+  const v = resolve6(key);
+  map$2.set(key, v);
+  return v;
+}
+var COMPOUND_FIX = "+";
+var OPTIONAL_COMPOUND_FIX = "*";
+var CASE_INSENSITIVE_PREFIX = "~";
+var FORBID_PREFIX = "!";
+var LINE_COMMENT = "#";
+var IDENTITY_PREFIX = "=";
+var SUGGESTION_PREFIX = ":";
+var SUGGESTIONS_DISABLED = " ";
+var defaultTrieInfo = Object.freeze({
+  compoundCharacter: COMPOUND_FIX,
+  forbiddenWordPrefix: FORBID_PREFIX,
+  stripCaseAndAccentsPrefix: CASE_INSENSITIVE_PREFIX,
+  suggestionPrefix: SUGGESTION_PREFIX
+});
+function mergeDefaults(value, defaultValue) {
+  const result = { ...defaultValue };
+  if (value) {
+    for (const [k, v] of Object.entries(value)) if (k in result) result[k] = v ?? result[k];
   }
-  findExact(word) {
-    return this.trie.nodeFindExact(this.id, word);
+  return result;
+}
+function mergeOptionalWithDefaults(...options) {
+  return options.reduce((acc, opt) => mergeDefaults(opt, acc), defaultTrieInfo);
+}
+function matchEntirePrefix(text, prefix) {
+  while (!prefix.done) {
+    const byte = prefix.cur();
+    const charVal = text.cur();
+    if (text.done || byte !== charVal) return false;
+    prefix.next();
+    text.next();
   }
-  isForbidden(word) {
-    const n = this.trie.nodeGetChild(this.id, this.trie.info.forbiddenWordPrefix);
-    if (n === void 0) return false;
-    return this.trie.nodeFindExact(n, word);
+  return true;
+}
+function toUint8Array(data) {
+  return data instanceof Uint8Array ? data : new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+}
+var headerSig = "TrieBlob";
+var version = "00.01.00";
+var endianSig = 67305985;
+function getBinaryFormat() {
+  return new BinaryFormatBuilder().addString("sig", 'Signature "TrieBlob"', headerSig).addUint32("endian", "Endianness signature", endianSig).addString("version", "Version string", version).addUint32ArrayPtr("nodes", "Pointer to nodes array").addString("reserved0", "Old Pointer to TrieInfo JSON string", 8).addString("trieInfo", "Pointer to TrieInfo JSON string", 16).addString("characteristics", "Available characteristic values", 8).addUint8ArrayPtr("stringTable", "Pointer to String Table data").addString("reserved", "Reserved space", 64).build();
+}
+function encodeTrieBlobToBTrie(blob) {
+  const builder = new BinaryDataBuilder(getBinaryFormat());
+  builder.setPtrUint32Array("nodes", blob.nodes);
+  builder.setString("trieInfo", cvtTrieInfoToFlags(blob.info));
+  builder.setString("characteristics", cvtTrieCharacteristicsToFlags(blob.characteristics));
+  if (blob.stringTable.length) {
+    const stringTableData = encodeStringTableToBinary(blob.stringTable, builder.endian);
+    builder.setPtrUint8Array("stringTable", stringTableData);
   }
-  findCaseInsensitive(word) {
-    const n = this.trie.nodeGetChild(this.id, this.trie.info.stripCaseAndAccentsPrefix);
-    if (n === void 0) return false;
-    return this.trie.nodeFindExact(n, word);
+  return builder.build();
+}
+function decodeTrieBlobToBTrie(blob) {
+  const reader = new BinaryDataReader(blob, getBinaryFormat());
+  if (reader.getString("sig") !== headerSig) throw new ErrorDecodeTrieBlob("Invalid TrieBlob Header");
+  if (reader.getUint32("endian") !== endianSig) {
+    reader.reverseEndian();
+    assert(reader.getUint32("endian") === endianSig, "Invalid TrieBlob Header after endian conversion");
   }
-  containsChainedIndexes() {
-    if (this._chained !== void 0) return this._chained;
-    if (!this._count || !this.trie.isIndexDecoderNeeded) {
-      this._chained = false;
-      return false;
-    }
-    let found = false;
-    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-    const len = this._count;
-    const node = this.node;
-    for (let i = 1; i <= len && !found; ++i) {
-      const codePoint = node[i] & NodeMaskChildCharIndex;
-      found = Utf8Accumulator.isMultiByte(codePoint);
-    }
-    this._chained = !!found;
-    return this._chained;
+  const fileVersion = reader.getString("version");
+  if (fileVersion !== version) {
+    console.warn(`Warning: TrieBlob version mismatch. Expected: ${version}, Found: ${fileVersion}`);
+    assert(fileVersion.startsWith(version.slice(0, 6)), "Unsupported TrieBlob version");
   }
-  getNodesEntries() {
-    if (this._nodesEntries) return this._nodesEntries;
-    if (!this.containsChainedIndexes()) {
-      const entries = Array(this._count);
-      const nodes = this.node;
-      const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-      const RefShift = this.trie.NodeChildRefShift;
-      for (let i = 0; i < this._count; ++i) {
-        const entry = nodes[i + 1];
-        const codePoint = entry & NodeMaskChildCharIndex;
-        entries[i] = [String.fromCodePoint(codePoint), entry >>> RefShift];
-      }
-      this._nodesEntries = entries;
-      return entries;
-    }
-    this._nodesEntries = this.walkChainedIndexes();
-    return this._nodesEntries;
-  }
-  walkChainedIndexes() {
-    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.trie.NodeChildRefShift;
-    const nodes = this.trie.nodes;
-    const acc = Utf8Accumulator.create();
-    const stack = [{
-      n: this.node,
-      c: 1,
-      acc
-    }];
-    let depth = 0;
-    const entries = Array(this._count);
-    let eIdx = 0;
-    while (depth >= 0) {
-      const s = stack[depth];
-      const { n: node, c: off } = s;
-      if (off >= node.length) {
-        --depth;
-        continue;
-      }
-      ++s.c;
-      const entry = node[off];
-      const charIdx = entry & NodeMaskChildCharIndex;
-      const acc$1 = s.acc.clone();
-      const codePoint = acc$1.decode(charIdx);
-      if (codePoint !== void 0) {
-        const char = String.fromCodePoint(codePoint);
-        const nodeIdx = entry >>> NodeChildRefShift;
-        entries[eIdx++] = [char, nodeIdx];
-        continue;
-      }
-      const idx$1 = entry >>> NodeChildRefShift;
-      const ss = stack[++depth];
-      if (ss) {
-        ss.n = nodes[idx$1];
-        ss.c = 1;
-        ss.acc = acc$1;
-      } else stack[depth] = {
-        n: nodes[idx$1],
-        c: 1,
-        acc: acc$1
-      };
-    }
-    return entries;
-  }
-  get size() {
-    if (this._size === void 0) {
-      if (!this.containsChainedIndexes()) {
-        this._size = this._count;
-        return this._size;
-      }
-      this._size = this.getNodesEntries().length;
-    }
-    return this._size;
+  const nodes = reader.getPtrUint32Array("nodes");
+  const info4 = parseTrieInfoFlags(reader.getString("trieInfo"));
+  const characteristics = parseTrieCharacteristics(reader.getString("characteristics"));
+  return {
+    nodes,
+    stringTable: decodeStringTableFromBinary(reader.getPtrUint8Array("stringTable"), reader.endian),
+    info: info4,
+    characteristics
+  };
+}
+var ErrorDecodeTrieBlob = class extends Error {
+  constructor(message) {
+    super(message);
   }
 };
-var FastTrieBlobIRoot = class extends FastTrieBlobINode {
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(trie, nodeIdx) {
-    super(trie, nodeIdx);
-    this.hasForbiddenWords = trie.hasForbiddenWords;
-    this.hasCompoundWords = trie.hasCompoundWords;
-    this.hasNonStrictWords = trie.hasNonStrictWords;
-  }
-  resolveId(id) {
-    return new FastTrieBlobINode(this.trie, id);
-  }
-  find(word, strict) {
-    let found = this.findExact(word);
-    if (found) return {
-      found: word,
-      compoundUsed: false,
-      caseMatched: true
-    };
-    if (strict) return void 0;
-    found = this.findCaseInsensitive(word);
-    return found ? {
-      found: word,
-      compoundUsed: false,
-      caseMatched: false
-    } : void 0;
-  }
-  get info() {
-    return this.trie.info;
-  }
-  get forbidPrefix() {
-    return this.trie.info.forbiddenWordPrefix;
-  }
-  get compoundFix() {
-    return this.trie.info.compoundCharacter;
-  }
-  get caseInsensitivePrefix() {
-    return this.trie.info.stripCaseAndAccentsPrefix;
-  }
-};
-var TrieBlobInternals = class {
-  NodeMaskEOW;
-  NodeMaskNumChildren;
-  NodeMaskChildCharIndex;
-  NodeChildRefShift;
-  isIndexDecoderNeeded;
-  nodeFindExact;
-  isForbidden;
-  findExact;
-  nodeGetChild;
-  nodeFindNode;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(nodes, charIndex, maskInfo, methods) {
-    this.nodes = nodes;
-    this.charIndex = charIndex;
-    const { NodeMaskEOW, NodeMaskChildCharIndex, NodeMaskNumChildren, NodeChildRefShift } = maskInfo;
-    this.NodeMaskEOW = NodeMaskEOW;
-    this.NodeMaskNumChildren = NodeMaskNumChildren;
-    this.NodeMaskChildCharIndex = NodeMaskChildCharIndex;
-    this.NodeChildRefShift = NodeChildRefShift;
-    this.isIndexDecoderNeeded = charIndex.indexContainsMultiByteChars();
-    this.nodeFindExact = methods.nodeFindExact;
-    this.isForbidden = methods.isForbidden;
-    this.findExact = methods.findExact;
-    this.nodeGetChild = methods.nodeGetChild;
-    this.nodeFindNode = methods.nodeFindNode;
-    this.hasForbiddenWords = methods.hasForbiddenWords;
-    this.hasCompoundWords = methods.hasCompoundWords;
-    this.hasNonStrictWords = methods.hasNonStrictWords;
-  }
-};
-var EmptyKeys = Object.freeze([]);
-var EmptyNodes = Object.freeze([]);
-var EmptyEntries = Object.freeze([]);
+function isBTrieData(data) {
+  const buf = toUint8Array(data);
+  if (buf.length < 8) return false;
+  for (let i = 0; i < 8; i++) if (buf[i] !== headerSig.codePointAt(i)) return false;
+  return true;
+}
+function trieBlobNodeRefToITrieNodeId(ref) {
+  return (BigInt(ref.nodeIdx) << 32n) + BigInt(ref.pfx);
+}
+function iTrieNodeIdToTrieBlobNodeRefParts(id) {
+  assert(typeof id === "bigint", "iTrieNodeIdToTrieBlobNodeRefParts: id must be a bigint");
+  return {
+    nodeIdx: Number(id >> 32n) & 2147483647,
+    pfx: Number(id & 4294967295n)
+  };
+}
+var EMPTY_KEYS = Object.freeze([]);
+var EMPTY_NODES = Object.freeze([]);
+var EMPTY_ENTRIES = Object.freeze([]);
 var TrieBlobINode = class TrieBlobINode2 {
   id;
   node;
   eow;
   _keys;
-  _count;
+  _hasChildren;
   _size;
-  _chained;
   _nodesEntries;
   _entries;
   _values;
   charToIdx;
-  constructor(trie, nodeIdx) {
+  trie;
+  constructor(trie, node) {
     this.trie = trie;
-    this.nodeIdx = nodeIdx;
-    const node = trie.nodes[nodeIdx];
     this.node = node;
-    this.eow = !!(node & trie.NodeMaskEOW);
-    this._count = node & trie.NodeMaskNumChildren;
-    this.id = nodeIdx;
+    this.eow = trie.isEow(node);
+    this.id = trieBlobNodeRefToITrieNodeId(node);
   }
   /** get keys to children */
   keys() {
     if (this._keys) return this._keys;
-    if (!this._count) return EmptyKeys;
+    if (!this.hasChildren) return EMPTY_KEYS;
     this._keys = this.getNodesEntries().map(([key]) => key);
     return this._keys;
   }
   values() {
-    if (!this._count) return EmptyNodes;
+    if (!this.hasChildren) return EMPTY_NODES;
     if (this._values) return this._values;
     this._values = this.entries().map(([, value]) => value);
     return this._values;
   }
+  valueAt(keyIdx) {
+    if (this._values) return this._values[keyIdx];
+    return this.entryAt(keyIdx)[1];
+  }
   entries() {
     if (this._entries) return this._entries;
-    if (!this._count) return EmptyEntries;
+    if (!this.hasChildren) return EMPTY_ENTRIES;
     this._entries = this.getNodesEntries().map(([key, value]) => [key, new TrieBlobINode2(this.trie, value)]);
     return this._entries;
+  }
+  entryAt(keyIdx) {
+    if (this._entries) return this._entries[keyIdx];
+    return this.entries()[keyIdx];
   }
   /** get child ITrieNode */
   get(char) {
     return this.#getChildNode(char);
   }
   has(char) {
-    return this.trie.nodeGetChild(this.nodeIdx, char) !== void 0;
+    return this.trie.nodeGetChild(this.node, char) !== void 0;
   }
   hasChildren() {
-    return this._count > 0;
+    return this._hasChildren ??= this.trie.hasChildren(this.node);
   }
   child(keyIdx) {
-    if (!this._values && !this.containsChainedIndexes()) {
-      const nodeIdx = this.trie.nodes[this.nodeIdx + keyIdx + 1] >>> this.trie.NodeChildRefShift;
-      return new TrieBlobINode2(this.trie, nodeIdx);
-    }
-    return this.values()[keyIdx];
+    return this.valueAt(keyIdx);
   }
-  #getChildNodeIdx(char) {
-    return this.trie.nodeGetChild(this.nodeIdx, char);
+  #getChildNodeRef(char) {
+    return this.trie.nodeGetChild(this.node, char);
   }
   #getChildNode(char) {
     if (this.charToIdx) {
@@ -41885,119 +42586,22 @@ var TrieBlobINode = class TrieBlobINode2 {
       if (keyIdx === void 0) return void 0;
       return this.child(keyIdx);
     }
-    const idx$1 = this.#getChildNodeIdx(char);
+    const idx$1 = this.#getChildNodeRef(char);
     if (idx$1 === void 0) return void 0;
     return new TrieBlobINode2(this.trie, idx$1);
   }
-  getCharToIdxMap() {
-    const m = this.charToIdx;
-    if (m) return m;
-    const map3 = /* @__PURE__ */ Object.create(null);
-    const keys4 = this.keys();
-    for (let i = 0; i < keys4.length; ++i) map3[keys4[i]] = i;
-    this.charToIdx = map3;
-    return map3;
-  }
   getNode(word) {
-    const n = this.trie.nodeFindNode(this.nodeIdx, word);
+    const n = this.trie.nodeFindNode(this.node, word);
     return n === void 0 ? void 0 : new TrieBlobINode2(this.trie, n);
   }
   findExact(word) {
-    return this.trie.nodeFindExact(this.nodeIdx, word);
-  }
-  containsChainedIndexes() {
-    if (this._chained !== void 0) return this._chained;
-    if (!this._count || !this.trie.isIndexDecoderNeeded) {
-      this._chained = false;
-      return false;
-    }
-    let found = false;
-    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-    const offset = this.nodeIdx + 1;
-    const nodes = this.trie.nodes;
-    const len = this._count;
-    for (let i = 0; i < len && !found; ++i) {
-      const charIdx = nodes[i + offset] & NodeMaskChildCharIndex;
-      found = Utf8Accumulator.isMultiByte(charIdx);
-    }
-    this._chained = !!found;
-    return this._chained;
+    return this.trie.nodeFindExact(this.node, word);
   }
   getNodesEntries() {
-    if (this._nodesEntries) return this._nodesEntries;
-    if (!this.containsChainedIndexes()) {
-      const entries = Array(this._count);
-      const nodes = this.trie.nodes;
-      const offset = this.nodeIdx + 1;
-      const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-      const RefShift = this.trie.NodeChildRefShift;
-      for (let i = 0; i < this._count; ++i) {
-        const entry = nodes[offset + i];
-        const codePoint = entry & NodeMaskChildCharIndex;
-        entries[i] = [String.fromCodePoint(codePoint), entry >>> RefShift];
-      }
-      this._nodesEntries = entries;
-      return entries;
-    }
-    this._nodesEntries = this.walkChainedIndexes();
-    return this._nodesEntries;
-  }
-  walkChainedIndexes() {
-    const NodeMaskChildCharIndex = this.trie.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.trie.NodeChildRefShift;
-    const NodeMaskNumChildren = this.trie.NodeMaskNumChildren;
-    const nodes = this.trie.nodes;
-    const acc = Utf8Accumulator.create();
-    const stack = [{
-      nodeIdx: this.nodeIdx + 1,
-      lastIdx: this.nodeIdx + this._count,
-      acc
-    }];
-    let depth = 0;
-    const entries = Array(this._count);
-    let eIdx = 0;
-    while (depth >= 0) {
-      const s = stack[depth];
-      const { nodeIdx, lastIdx } = s;
-      if (nodeIdx > lastIdx) {
-        --depth;
-        continue;
-      }
-      ++s.nodeIdx;
-      const entry = nodes[nodeIdx];
-      const charIdx = entry & NodeMaskChildCharIndex;
-      const acc$1 = s.acc.clone();
-      const codePoint = acc$1.decode(charIdx);
-      if (codePoint !== void 0) {
-        const char = String.fromCodePoint(codePoint);
-        const nodeIdx$1 = entry >>> NodeChildRefShift;
-        entries[eIdx++] = [char, nodeIdx$1];
-        continue;
-      }
-      const idx$1 = entry >>> NodeChildRefShift;
-      const lIdx = idx$1 + (nodes[idx$1] & NodeMaskNumChildren);
-      const ss = stack[++depth];
-      if (ss) {
-        ss.nodeIdx = idx$1 + 1;
-        ss.lastIdx = lIdx;
-        ss.acc = acc$1;
-      } else stack[depth] = {
-        nodeIdx: idx$1 + 1,
-        lastIdx: lIdx,
-        acc: acc$1
-      };
-    }
-    return entries;
+    return this._nodesEntries ??= this.trie.getChildEntries(this.node);
   }
   get size() {
-    if (this._size === void 0) {
-      if (!this.containsChainedIndexes()) {
-        this._size = this._count;
-        return this._size;
-      }
-      this._size = this.getNodesEntries().length;
-    }
-    return this._size;
+    return this._size ??= this.getNodesEntries().length;
   }
 };
 var TrieBlobIRoot = class extends TrieBlobINode {
@@ -42006,17 +42610,18 @@ var TrieBlobIRoot = class extends TrieBlobINode {
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
-  constructor(trie, nodeIdx, info4, methods) {
+  info;
+  constructor(trie, nodeIdx) {
     super(trie, nodeIdx);
-    this.info = info4;
-    this.find = methods.find;
+    this.info = trie.info;
+    this.find = trie.find;
     this.isForbidden = trie.isForbidden;
     this.hasForbiddenWords = trie.hasForbiddenWords;
     this.hasCompoundWords = trie.hasCompoundWords;
     this.hasNonStrictWords = trie.hasNonStrictWords;
   }
   resolveId(id) {
-    return new TrieBlobINode(this.trie, id);
+    return new TrieBlobINode(this.trie, this.trie.fromITrieNodeId(id));
   }
   get forbidPrefix() {
     return this.info.forbiddenWordPrefix;
@@ -42027,65 +42632,106 @@ var TrieBlobIRoot = class extends TrieBlobINode {
   get caseInsensitivePrefix() {
     return this.info.stripCaseAndAccentsPrefix;
   }
+  get suggestionPrefix() {
+    return this.info.suggestionPrefix;
+  }
 };
-var NodeHeaderNumChildrenBits = 8;
-var NodeHeaderNumChildrenShift = 0;
-var HEADER_SIZE = 32;
-var HEADER_OFFSET = 0;
-var HEADER_OFFSET_SIG = HEADER_OFFSET;
-var HEADER_OFFSET_ENDIAN = HEADER_OFFSET_SIG + 8;
-var HEADER_OFFSET_VERSION = HEADER_OFFSET_ENDIAN + 4;
-var HEADER_OFFSET_NODES = HEADER_OFFSET_VERSION + 4;
-var HEADER_OFFSET_NODES_LEN = HEADER_OFFSET_NODES + 4;
-var HEADER_OFFSET_CHAR_INDEX = HEADER_OFFSET_NODES_LEN + 4;
-var HEADER = {
-  header: HEADER_OFFSET,
-  sig: HEADER_OFFSET_SIG,
-  version: HEADER_OFFSET_VERSION,
-  endian: HEADER_OFFSET_ENDIAN,
-  nodes: HEADER_OFFSET_NODES,
-  nodesLen: HEADER_OFFSET_NODES_LEN,
-  charIndex: HEADER_OFFSET_CHAR_INDEX,
-  charIndexLen: HEADER_OFFSET_CHAR_INDEX + 4
+var TypedArrayCursor = class {
+  array;
+  i;
+  done;
+  length;
+  constructor(array, i = 0, done) {
+    this.array = array;
+    this.i = i;
+    this.length = array.length;
+    this.done = (done ?? (i >= this.length ? true : void 0)) || void 0;
+  }
+  cur() {
+    return this.done ? void 0 : this.array[this.i];
+  }
+  next() {
+    if (this.done) return void 0;
+    const i = ++this.i;
+    if (i >= this.array.length) {
+      this.done = true;
+      return;
+    }
+    return this.array[i];
+  }
 };
-var headerSig = "TrieBlob";
-var version = "00.01.00";
-var endianSig = 67305985;
+function createUint8ArrayCursor(array, i = 0) {
+  return new TypedArrayCursor(array, i);
+}
+var Utf8CursorImpl = class {
+  text;
+  i;
+  code;
+  done;
+  constructor(text, i = 0) {
+    this.text = text;
+    this.i = i < 0 ? i = text.length : i;
+    this.code = 0;
+    this.done = i < 0 || i >= text.length ? true : void 0;
+    this.cur();
+  }
+  cur() {
+    if (this.done) return 0;
+    this.code ||= encodeTextToUtf8_32Rev(this);
+    return this.code & 255;
+  }
+  next() {
+    if (this.done) return 0;
+    this.code >>>= 8;
+    this.code ||= encodeTextToUtf8_32Rev(this);
+    this.done = !this.code && this.i >= this.text.length;
+    return this.code & 255;
+  }
+};
+function createTextToUtf8Cursor(text, offset = 0) {
+  return new Utf8CursorImpl(text, offset);
+}
 var TrieBlob = class TrieBlob2 {
   info;
   #forbidIdx;
   #compoundIdx;
   #nonStrictIdx;
+  #suggestIdx;
   #size;
   #iTrieRoot;
   /** the nodes data in 8 bits */
   #nodes8;
-  #beAdj = (0, import_node_os.endianness)() === "BE" ? 3 : 0;
+  #stringTable;
+  #beAdj = endianness() === "BE" ? 3 : 0;
+  #rootRef;
   wordToCharacters = (word) => [...word];
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
-  constructor(nodes, charIndex, info4) {
+  nodes;
+  NodeMaskNumChildren;
+  NodeChildRefShift;
+  hasPreferredSuggestions;
+  constructor(nodes, stringTable, info4) {
     this.nodes = nodes;
-    this.charIndex = charIndex;
+    this.#stringTable = stringTable;
     trieBlobSort(nodes);
     this.info = mergeOptionalWithDefaults(info4);
+    this.#rootRef = this.toRef(0);
     this.#nodes8 = new Uint8Array(nodes.buffer, nodes.byteOffset + this.#beAdj);
-    this.#forbidIdx = this._lookupNode(0, this.info.forbiddenWordPrefix);
-    this.#compoundIdx = this._lookupNode(0, this.info.compoundCharacter);
-    this.#nonStrictIdx = this._lookupNode(0, this.info.stripCaseAndAccentsPrefix);
+    this.#forbidIdx = this.#findNode(this.#rootRef, this.info.forbiddenWordPrefix);
+    this.#compoundIdx = this.#findNode(this.#rootRef, this.info.compoundCharacter);
+    this.#nonStrictIdx = this.#findNode(this.#rootRef, this.info.stripCaseAndAccentsPrefix);
+    this.#suggestIdx = this.#findNode(this.#rootRef, this.info.suggestionPrefix);
     this.hasForbiddenWords = !!this.#forbidIdx;
     this.hasCompoundWords = !!this.#compoundIdx;
     this.hasNonStrictWords = !!this.#nonStrictIdx;
-  }
-  wordToUtf8Seq(word) {
-    return this.charIndex.wordToUtf8Seq(word);
-  }
-  letterToNodeCharIndexSequence(letter) {
-    return this.charIndex.getCharUtf8Seq(letter);
+    this.NodeMaskNumChildren = NodeHeaderNumChildrenMask;
+    this.NodeChildRefShift = NodeChildIndexRefShift;
+    this.hasPreferredSuggestions = !!this.#suggestIdx;
   }
   has(word) {
-    return this.#hasWord(0, word);
+    return this.#hasWord(this.rootRef, word);
   }
   isForbiddenWord(word) {
     return !!this.#forbidIdx && this.#hasWord(this.#forbidIdx, word);
@@ -42099,21 +42745,25 @@ var TrieBlob = class TrieBlob2 {
   * @param strict - if `true` the case and accents must match.
   */
   find(word, strict) {
-    if (!this.hasCompoundWords) {
-      if (this.#hasWord(0, word)) return {
+    const found = this.#hasWord(this.rootRef, word);
+    if (found || !this.hasCompoundWords) {
+      if (found) return {
         found: word,
         compoundUsed: false,
-        caseMatched: true
+        caseMatched: true,
+        forbidden: void 0
       };
       if (strict || !this.#nonStrictIdx) return {
         found: false,
         compoundUsed: false,
-        caseMatched: false
+        caseMatched: false,
+        forbidden: void 0
       };
       return {
         found: this.#hasWord(this.#nonStrictIdx, word) && word,
         compoundUsed: false,
-        caseMatched: false
+        caseMatched: false,
+        forbidden: void 0
       };
     }
   }
@@ -42121,38 +42771,39 @@ var TrieBlob = class TrieBlob2 {
     return this.#iTrieRoot ??= this._getRoot();
   }
   _getRoot() {
-    return new TrieBlobIRoot(new TrieBlobInternals(this.nodes, this.charIndex, {
-      NodeMaskEOW: TrieBlob2.NodeMaskEOW,
-      NodeMaskNumChildren: TrieBlob2.NodeMaskNumChildren,
-      NodeMaskChildCharIndex: TrieBlob2.NodeMaskChildCharIndex,
-      NodeChildRefShift: TrieBlob2.NodeChildRefShift
-    }, {
-      nodeFindExact: (idx$1, word) => this.#hasWord(idx$1, word),
-      nodeGetChild: (idx$1, letter) => this._lookupNode(idx$1, letter),
-      nodeFindNode: (idx$1, word) => this.#findNode(idx$1, word),
-      isForbidden: (word) => this.isForbiddenWord(word),
-      findExact: (word) => this.has(word),
+    return new TrieBlobIRoot({
+      info: this.info,
+      nodes: this.nodes,
+      nodeFindExact: this.#hasWord.bind(this),
+      nodeGetChild: this.#findNode.bind(this),
+      nodeFindNode: this.#findNode.bind(this),
+      isEow: this.isRefEOW.bind(this),
+      getChildEntries: this.#getChildrenFromRef.bind(this),
+      hasChildren: this.hasChildren.bind(this),
+      isForbidden: this.isForbiddenWord.bind(this),
+      findExact: this.has.bind(this),
+      find: this.find.bind(this),
+      nodeToITrieNodeId: trieBlobNodeRefToITrieNodeId,
+      fromITrieNodeId: iTrieNodeIdToTrieBlobNodeRefParts,
       hasCompoundWords: this.hasCompoundWords,
       hasForbiddenWords: this.hasForbiddenWords,
-      hasNonStrictWords: this.hasNonStrictWords
-    }), 0, this.info, { find: (word, strict) => this.find(word, strict) });
+      hasNonStrictWords: this.hasNonStrictWords,
+      hasPreferredSuggestions: this.hasPreferredSuggestions
+    }, this.rootRef);
   }
   getNode(prefix) {
     return findNode$1(this.getRoot(), prefix);
   }
+  get stringTable() {
+    return this.#stringTable;
+  }
   /**
   * Check if the word is in the trie starting at the given node index.
   */
-  #hasWord(nodeIdx, word) {
-    const nodeIdxFound = this.#findNode(nodeIdx, word);
+  #hasWord(nodeRef, word) {
+    const nodeIdxFound = this.#findNode(nodeRef, word);
     if (!nodeIdxFound) return false;
-    const node = this.nodes[nodeIdxFound];
-    const m = TrieBlob2.NodeMaskEOW;
-    return (node & m) === m;
-  }
-  #findNode(nodeIdx, word) {
-    const wordIndexes = this.wordToUtf8Seq(word);
-    return this.#lookupNode(nodeIdx, wordIndexes);
+    return this.isRefEOW(nodeIdxFound);
   }
   /**
   * Find the node index for the given Utf8 character sequence.
@@ -42160,63 +42811,87 @@ var TrieBlob = class TrieBlob2 {
   * @param seq - the byte sequence of the character to look for
   * @returns
   */
-  #lookupNode(nodeIdx, seq) {
-    const NodeMaskNumChildren = TrieBlob2.NodeMaskNumChildren;
-    const NodeChildRefShift = TrieBlob2.NodeChildRefShift;
-    const nodes = this.nodes;
-    const nodes8 = this.#nodes8;
-    const wordIndexes = seq;
-    const len = wordIndexes.length;
-    let node = nodes[nodeIdx];
-    for (let p = 0; p < len; ++p, node = nodes[nodeIdx]) {
-      const letterIdx = wordIndexes[p];
-      const count3 = node & NodeMaskNumChildren;
+  #findNode(nodeRef, text) {
+    if (!nodeRef) return void 0;
+    const _nodes = this.nodes;
+    const _nodes8 = this.#nodes8;
+    const pfxShift = NodeHeaderPrefixShift;
+    let { nodeIdx, pfx, prefix } = nodeRef;
+    const t = createTextToUtf8Cursor(text);
+    for (; !t.done; t.next()) {
+      const nodes = _nodes;
+      const nodes8 = _nodes8;
+      const node = nodes[nodeIdx];
+      const prefixIdx = node >>> pfxShift;
+      prefix ||= prefixIdx ? this.#stringTable.getStringBytes(prefixIdx) : void 0;
+      const pfxCursor = prefix && createUint8ArrayCursor(prefix, pfx);
+      if (pfxCursor && !matchEntirePrefix(t, pfxCursor)) return t.done ? {
+        nodeIdx,
+        pfx: pfxCursor.i,
+        prefix
+      } : void 0;
+      prefix = void 0;
+      pfx = 0;
+      const charVal = t.cur() & 255;
+      const count$2 = node & 255;
       const idx4 = nodeIdx << 2;
-      if (count3 > 15) {
-        const pEnd = idx4 + (count3 << 2);
-        let i$1 = idx4 + 4;
+      if (count$2 > 15) {
+        const pEnd = idx4 + (count$2 << 2);
+        let i = idx4 + 4;
         let j = pEnd;
-        while (j - i$1 >= 4) {
-          const m = i$1 + j >> 1 & -4;
-          if (nodes8[m] < letterIdx) i$1 = m + 4;
+        while (j - i >= 4) {
+          const m = i + j >> 1 & -4;
+          if (nodes8[m] < charVal) i = m + 4;
           else j = m;
         }
-        if (i$1 > pEnd || nodes8[i$1] !== letterIdx) return void 0;
-        nodeIdx = nodes[i$1 >> 2] >>> NodeChildRefShift;
-        continue;
+        if (i > pEnd || nodes8[i] !== charVal) return void 0;
+        nodeIdx = nodes[i >> 2] >>> 8;
+      } else {
+        let i = idx4 + count$2 * 4;
+        for (; i > idx4; i -= 4) if (nodes8[i] === charVal) break;
+        if (i <= idx4) return void 0;
+        nodeIdx = nodes[i >> 2] >>> 8;
       }
-      let i = idx4 + count3 * 4;
-      for (; i > idx4; i -= 4) if (nodes8[i] === letterIdx) break;
-      if (i <= idx4) return void 0;
-      nodeIdx = nodes[i >> 2] >>> NodeChildRefShift;
     }
-    return nodeIdx;
+    return {
+      nodeIdx,
+      pfx,
+      prefix
+    };
   }
   /**
-  * Find the node index for the given character.
-  * @param nodeIdx - node index to start the search
-  * @param char - character to look for
-  * @returns
+  * get an iterable for all the words in the dictionary.
+  * @param prefix - optional prefix to filter the words returned. The words will be prefixed with this value.
   */
-  _lookupNode(nodeIdx, char) {
-    const indexSeq = this.letterToNodeCharIndexSequence(char);
-    return this.#lookupNode(nodeIdx, indexSeq);
+  *words(prefix) {
+    if (!prefix) {
+      yield* this.#walkWords(this.rootRef);
+      return;
+    }
+    const nodeIdx = this.#findNode(this.rootRef, prefix);
+    if (!nodeIdx) return;
+    for (const suffix of this.#walkWords(nodeIdx)) yield prefix + suffix;
   }
-  *words() {
-    const NodeMaskNumChildren = TrieBlob2.NodeMaskNumChildren;
-    const NodeMaskEOW = TrieBlob2.NodeMaskEOW;
-    const NodeMaskChildCharIndex = TrieBlob2.NodeMaskChildCharIndex;
-    const NodeChildRefShift = TrieBlob2.NodeChildRefShift;
+  *#walkWords(rootRef) {
+    const NodeMaskNumChildren = NodeHeaderNumChildrenMask;
+    const NodeMaskEOW = NodeHeaderEOWMask;
+    const NodeMaskChildCharIndex = NodeMaskCharByte;
+    const NodeChildRefShift = NodeChildIndexRefShift;
+    const nodeHeaderPrefixShift = NodeHeaderPrefixShift;
     const nodes = this.nodes;
+    const st = this.#stringTable;
     const stack = [{
-      nodeIdx: 0,
+      nodeIdx: rootRef.nodeIdx,
+      pfx: rootRef.pfx,
       pos: 0,
       word: "",
       acc: Utf8Accumulator.create()
     }];
     let depth = 0;
     while (depth >= 0) {
-      const { nodeIdx, pos, word, acc } = stack[depth];
+      const s = stack[depth];
+      if (!s.pos) applyPrefixString(s);
+      const { nodeIdx, pos, word, acc } = s;
       const node = nodes[nodeIdx];
       if (!pos && node & NodeMaskEOW) yield word;
       if (pos >= (node & NodeMaskNumChildren)) {
@@ -42231,106 +42906,239 @@ var TrieBlob = class TrieBlob2 {
       stack[depth] = {
         nodeIdx: entry >>> NodeChildRefShift,
         pos: 0,
+        pfx: 0,
         word: word + letter,
         acc: nAcc
       };
     }
+    function applyPrefixString(s) {
+      const prefixIdx = nodes[s.nodeIdx] >>> nodeHeaderPrefixShift;
+      const fullPrefix = prefixIdx ? st.getStringBytes(prefixIdx) : void 0;
+      if (!fullPrefix || s.pfx >= fullPrefix.length) return;
+      let prefix = fullPrefix;
+      if (s.pfx) prefix = prefix.subarray(s.pfx);
+      s.word += s.acc.decodeBytesToString(prefix);
+      s.pfx = fullPrefix.length;
+    }
   }
   get size() {
     if (this.#size) return this.#size;
-    const NodeMaskNumChildren = TrieBlob2.NodeMaskNumChildren;
+    const NodeMaskNumChildren = NodeHeaderNumChildrenMask;
     const nodes = this.nodes;
     let p = 0;
-    let count3 = 0;
+    let count$2 = 0;
     while (p < nodes.length) {
-      ++count3;
+      ++count$2;
       p += (nodes[p] & NodeMaskNumChildren) + 1;
     }
-    this.#size = count3;
-    return count3;
+    this.#size = count$2;
+    return count$2;
   }
   toJSON() {
     return {
       options: this.info,
-      nodes: nodesToJson(this.nodes),
-      charIndex: this.charIndex
+      nodes: nodesToJson(this.nodes)
     };
   }
+  encodeToBTrie() {
+    return this.encodeBin();
+  }
   encodeBin() {
-    const charIndex = import_node_buffer.Buffer.from(this.charIndex.charIndex.join("\n"));
-    const nodeOffset = HEADER_SIZE + (charIndex.byteLength + 3 & -4);
-    const size = nodeOffset + this.nodes.length * 4;
-    const useLittle = isLittleEndian();
-    const buffer$1 = import_node_buffer.Buffer.alloc(size);
-    const header = new DataView(buffer$1.buffer);
-    const nodeData = new Uint8Array(this.nodes.buffer);
-    buffer$1.write(headerSig, HEADER.sig, "utf8");
-    buffer$1.write(version, HEADER.version, "utf8");
-    header.setUint32(HEADER.endian, endianSig, useLittle);
-    header.setUint32(HEADER.nodes, nodeOffset, useLittle);
-    header.setUint32(HEADER.nodesLen, this.nodes.length, useLittle);
-    header.setUint32(HEADER.charIndex, HEADER_SIZE, useLittle);
-    header.setUint32(HEADER.charIndexLen, charIndex.length, useLittle);
-    buffer$1.set(charIndex, HEADER_SIZE);
-    buffer$1.set(nodeData, nodeOffset);
-    return buffer$1;
+    return encodeTrieBlobToBTrie({
+      nodes: this.nodes,
+      stringTable: this.stringTable,
+      info: this.info,
+      characteristics: this
+    });
   }
   static decodeBin(blob) {
-    if (!checkSig(blob)) throw new ErrorDecodeTrieBlob("Invalid TrieBlob Header");
-    const header = new DataView(blob.buffer);
-    const useLittle = isLittleEndian();
-    if (header.getUint32(HEADER.endian, useLittle) !== endianSig) throw new ErrorDecodeTrieBlob("Invalid TrieBlob Header");
-    const offsetNodes = header.getUint32(HEADER.nodes, useLittle);
-    const lenNodes = header.getUint32(HEADER.nodesLen, useLittle);
-    const offsetCharIndex = header.getUint32(HEADER.charIndex, useLittle);
-    const lenCharIndex = header.getUint32(HEADER.charIndexLen, useLittle);
-    const charIndex = import_node_buffer.Buffer.from(blob.subarray(offsetCharIndex, offsetCharIndex + lenCharIndex)).toString("utf8").split("\n");
-    return new TrieBlob2(new Uint32Array(blob.buffer, offsetNodes, lenNodes), new CharIndex(charIndex), defaultTrieInfo);
+    const info4 = decodeTrieBlobToBTrie(blob);
+    return new TrieBlob2(info4.nodes, info4.stringTable, info4.info);
   }
-  static NodeMaskEOW = 256;
-  static NodeMaskNumChildren = (1 << NodeHeaderNumChildrenBits) - 1 & 65535;
-  static NodeMaskNumChildrenShift = NodeHeaderNumChildrenShift;
-  static NodeChildRefShift = 8;
   /**
-  * Only 8 bits are reserved for the character index.
-  * The max index is {@link TrieBlob.SpecialCharIndexMask} - 1.
-  * Node chaining is used to reference higher character indexes.
-  * - @see {@link TrieBlob.SpecialCharIndexMask}
-  * - @see {@link TrieBlob.MaxCharIndex}
+  * Walk the trie starting at the given reference at position 0 (or depth).
+  * @param stack - the stack used while walking - updated
+  * @param depth - that starting depth in the stack
+  * @yields the depth in the stack. The stack will contain the current Reference.
   */
-  static NodeMaskChildCharIndex = 255;
-  static nodesView(trie) {
-    return new Uint32Array(trie.nodes);
+  *#walk(stack, depth = 0) {
+    const MaskNumChildren = NodeHeaderNumChildrenMask;
+    const NodeRefShift = NodeChildIndexRefShift;
+    const CharMask = NodeMaskCharByte;
+    const PrefixMask = NodeHeaderPrefixMask;
+    const PrefixShift = NodeHeaderPrefixShift;
+    const nodes = this.nodes;
+    stack[0] ||= {
+      nodeIdx: 0,
+      pfx: 0,
+      pos: 0,
+      prefix: void 0,
+      bChar: 0
+    };
+    while (depth >= 0) {
+      let s = stack[depth];
+      const { nodeIdx, pos, pfx, prefix } = s;
+      if (!pos) {
+        if (!(yield depth)) {
+          --depth;
+          continue;
+        }
+      }
+      if (prefix) {
+        if (pos) {
+          --depth;
+          continue;
+        }
+        s.pos = 1;
+        ++depth;
+        stack[depth] ||= {
+          nodeIdx: 0,
+          pfx: 0,
+          pos: 0,
+          prefix: void 0,
+          bChar: 0
+        };
+        s = stack[depth];
+        s.nodeIdx = nodeIdx;
+        s.pfx = pfx + 1;
+        s.pos = 0;
+        s.prefix = s.pfx < prefix.length ? prefix : void 0;
+        s.bChar = prefix[pfx];
+        continue;
+      }
+      if (pos >= (nodes[nodeIdx] & MaskNumChildren)) {
+        --depth;
+        continue;
+      }
+      const entry = nodes[nodeIdx + ++s.pos];
+      const eNodeIdx = entry >>> NodeRefShift;
+      ++depth;
+      stack[depth] ||= {
+        nodeIdx: 0,
+        pfx: 0,
+        pos: 0,
+        prefix: void 0,
+        bChar: 0
+      };
+      s = stack[depth];
+      s.nodeIdx = eNodeIdx;
+      s.pfx = 0;
+      s.pos = 0;
+      const pfxV = nodes[eNodeIdx] & PrefixMask;
+      s.prefix = pfxV ? this.#stringTable.getStringBytes(pfxV >>> PrefixShift) : void 0;
+      s.bChar = entry & CharMask;
+    }
   }
-};
-function isLittleEndian() {
-  const buf = new Uint8Array([
-    1,
-    2,
-    3,
-    4
-  ]);
-  return new DataView(buf.buffer).getUint32(0, true) === 67305985;
-}
-function checkSig(blob) {
-  if (blob.length < HEADER_SIZE) return false;
-  if (import_node_buffer.Buffer.from(blob, 0, 8).toString("utf8", 0, 8) !== headerSig) return false;
-  return true;
-}
-var ErrorDecodeTrieBlob = class extends Error {
-  constructor(message) {
-    super(message);
+  getChildrenFromRef(ref) {
+    return this.#getChildrenFromRef(this.#cvtToRefPfx(ref));
+  }
+  hasChildren(ref) {
+    const node = this.nodes[ref.nodeIdx];
+    const pfxV = node & NodeHeaderPrefixMask;
+    const has$1 = (node & NodeHeaderNumChildrenMask) !== 0;
+    if (!pfxV) return has$1;
+    if (isRefPfx(ref)) return ref.prefix ? true : has$1;
+    ref = this.#cvtToRefPfx(ref);
+    return ref.prefix ? true : has$1;
+  }
+  #getChildrenFromRef(ref) {
+    const accStack = [Utf8Accumulator.create()];
+    const stack = [{
+      ...ref,
+      pos: 0,
+      bChar: 0
+    }];
+    const results = [];
+    const iterable = this.#walk(stack);
+    let deeper = false;
+    for (let next = iterable.next(true); !next.done; next = iterable.next(deeper)) {
+      const depth = next.value;
+      if (depth <= 0) {
+        if (!depth) {
+          deeper = true;
+          continue;
+        }
+        break;
+      }
+      const s = stack[depth];
+      accStack[depth] = accStack[depth - 1].clone(accStack[depth]);
+      const char = accStack[depth].decode(s.bChar);
+      if (char) {
+        deeper = false;
+        results.push([String.fromCodePoint(char), {
+          nodeIdx: s.nodeIdx,
+          pfx: s.pfx,
+          prefix: s.prefix
+        }]);
+        continue;
+      }
+      deeper = true;
+    }
+    return results;
+  }
+  /**
+  * Checks if a location is at an end-of-word node.
+  * @param ref
+  * @returns
+  */
+  isRefEOW(ref) {
+    if (ref.prefix && ref.pfx < ref.prefix.length) return false;
+    return !!(this.nodes[ref.nodeIdx] & NodeHeaderEOWMask);
+  }
+  #getNodePrefix(nodeIdx, pfx) {
+    const pfxV = this.nodes[nodeIdx] & NodeHeaderPrefixMask;
+    const prefix = pfxV ? this.#stringTable.getStringBytes(pfxV >>> NodeHeaderPrefixShift) : void 0;
+    if (!prefix) return void 0;
+    if (pfx >= prefix.length) return void 0;
+    return prefix;
+  }
+  #cvtToRefPfx(ref) {
+    if (isRefPfx(ref)) return ref;
+    const refPfx = ref;
+    refPfx.prefix = this.#getNodePrefix(ref.nodeIdx, ref.pfx);
+    return refPfx;
+  }
+  toRef(nodeIdx, pfx = 0) {
+    return this.#cvtToRefPfx({
+      nodeIdx,
+      pfx
+    });
+  }
+  get rootRef() {
+    return this.#rootRef;
+  }
+  getNodeDebugInfo(ref) {
+    const node = this.nodes[ref.nodeIdx];
+    const isEOW = !!(node & NodeHeaderEOWMask);
+    const count$2 = node & NodeHeaderNumChildrenMask;
+    const children = /* @__PURE__ */ new Map();
+    for (let i = 1; i <= count$2; ++i) {
+      const entry = this.nodes[ref.nodeIdx + i];
+      const c = entry & NodeMaskCharByte;
+      const idx$1 = entry >>> NodeChildIndexRefShift;
+      children.set(charToHex(c), numberToHex(idx$1) + " " + idx$1);
+    }
+    return {
+      ...ref,
+      prefix: ref.prefix ? [...ref.prefix].map(charToHex).join(", ") : "",
+      isEOW,
+      count: count$2,
+      children
+    };
+  }
+  static copyNodes(trie) {
+    return new Uint32Array(trie.nodes);
   }
 };
 function nodesToJson(nodes) {
   function nodeElement(offset$1) {
     const node = nodes[offset$1];
-    const numChildren = node & TrieBlob.NodeMaskNumChildren;
-    const eow = !!(node & TrieBlob.NodeMaskEOW);
+    const numChildren = node & NodeHeaderNumChildrenMask;
+    const eow = !!(node & NodeHeaderEOWMask);
     const children = [];
     for (let i = 1; i <= numChildren; ++i) children.push({
-      c: ("00" + (nodes[offset$1 + i] & TrieBlob.NodeMaskChildCharIndex).toString(16)).slice(-2),
-      o: nodes[offset$1 + i] >>> TrieBlob.NodeChildRefShift
+      c: ("00" + (nodes[offset$1 + i] & NodeMaskCharByte).toString(16)).slice(-2),
+      o: nodes[offset$1 + i] >>> NodeChildIndexRefShift
     });
     return {
       id: offset$1,
@@ -42349,8 +43157,8 @@ function nodesToJson(nodes) {
   return elements;
 }
 function trieBlobSort(data) {
-  const MaskNumChildren = TrieBlob.NodeMaskNumChildren;
-  const MaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
+  const MaskNumChildren = NodeHeaderNumChildrenMask;
+  const MaskChildCharIndex = NodeMaskCharByte;
   const limit = data.length;
   let idx$1 = 0;
   let node = data[0];
@@ -42370,319 +43178,105 @@ function trieBlobSort(data) {
     data.slice(start, end).sort((a, b) => (a & MaskChildCharIndex) - (b & MaskChildCharIndex)).forEach((v, i$1) => data[start + i$1] = v);
   }
 }
-var FastTrieBlob = class FastTrieBlob2 {
-  _readonly = false;
-  #forbidIdx;
-  #compoundIdx;
-  #nonStrictIdx;
-  _iTrieRoot;
-  wordToCharacters;
-  hasForbiddenWords;
-  hasCompoundWords;
-  hasNonStrictWords;
-  constructor(nodes, _charIndex, bitMasksInfo, info4) {
-    this.nodes = nodes;
-    this._charIndex = _charIndex;
-    this.bitMasksInfo = bitMasksInfo;
-    this.info = info4;
-    this.wordToCharacters = (word) => [...word];
-    this.#forbidIdx = this.#searchNodeForChar(0, this.info.forbiddenWordPrefix) || 0;
-    this.#compoundIdx = this.#searchNodeForChar(0, this.info.compoundCharacter) || 0;
-    this.#nonStrictIdx = this.#searchNodeForChar(0, this.info.stripCaseAndAccentsPrefix) || 0;
-    this.hasForbiddenWords = !!this.#forbidIdx;
-    this.hasCompoundWords = !!this.#compoundIdx;
-    this.hasNonStrictWords = !!this.#nonStrictIdx;
-  }
-  wordToUtf8Seq(word) {
-    return this._charIndex.wordToUtf8Seq(word);
-  }
-  letterToUtf8Seq(letter) {
-    return this._charIndex.getCharUtf8Seq(letter);
-  }
-  has(word) {
-    return this.#has(0, word);
-  }
-  hasCaseInsensitive(word) {
-    if (!this.#nonStrictIdx) return false;
-    return this.#has(this.#nonStrictIdx, word);
-  }
-  #has(nodeIdx, word) {
-    return this.#hasSorted(nodeIdx, word);
-  }
-  #hasSorted(nodeIdx, word) {
-    const charIndexes = this.wordToUtf8Seq(word);
-    const found = this.#lookupNode(nodeIdx, charIndexes);
-    if (found === void 0) return false;
-    return !!(this.nodes[found][0] & this.bitMasksInfo.NodeMaskEOW);
-  }
-  /**
-  * Find the node index for the given Utf8 character sequence.
-  * @param nodeIdx - node index to start the search
-  * @param seq - the byte sequence of the character to look for
-  * @returns
-  */
-  #lookupNode(nodeIdx, seq) {
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const nodes = this.nodes;
-    const len = seq.length;
-    let node = nodes[nodeIdx];
-    for (let p = 0; p < len; ++p, node = nodes[nodeIdx]) {
-      const letterIdx = seq[p];
-      const count3 = node.length;
-      if (count3 < 2) return void 0;
-      let i = 1;
-      let j = count3 - 1;
-      let c = -1;
-      while (i < j) {
-        const m = i + j >> 1;
-        c = node[m] & NodeMaskChildCharIndex;
-        if (c < letterIdx) i = m + 1;
-        else j = m;
-      }
-      if (i >= count3 || (node[i] & NodeMaskChildCharIndex) !== letterIdx) return void 0;
-      nodeIdx = node[i] >>> NodeChildRefShift;
-      if (!nodeIdx) return void 0;
-    }
-    return nodeIdx;
-  }
-  *words() {
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
-    const nodes = this.nodes;
-    const stack = [{
-      nodeIdx: 0,
-      pos: 0,
-      word: "",
-      accumulator: Utf8Accumulator.create()
-    }];
-    let depth = 0;
-    while (depth >= 0) {
-      const { nodeIdx, pos, word, accumulator } = stack[depth];
-      const node = nodes[nodeIdx];
-      if (!pos && node[0] & NodeMaskEOW) yield word;
-      if (pos >= node.length - 1) {
-        --depth;
-        continue;
-      }
-      const entry = node[++stack[depth].pos];
-      const charIdx = entry & NodeMaskChildCharIndex;
-      const acc = accumulator.clone();
-      const codePoint = acc.decode(charIdx);
-      const letter = codePoint && String.fromCodePoint(codePoint) || "";
-      ++depth;
-      stack[depth] = {
-        nodeIdx: entry >>> NodeChildRefShift,
-        pos: 0,
-        word: word + letter,
-        accumulator: acc
-      };
-    }
-  }
-  toTrieBlob() {
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const nodes = this.nodes;
-    function calcNodeToIndex(nodes$1) {
-      let offset$1 = 0;
-      const idx$1 = Array(nodes$1.length + 1);
-      for (let i = 0; i < nodes$1.length; ++i) {
-        idx$1[i] = offset$1;
-        offset$1 += nodes$1[i].length;
-      }
-      idx$1[nodes$1.length] = offset$1;
-      return idx$1;
-    }
-    const nodeToIndex = calcNodeToIndex(nodes);
-    const nodeElementCount = nodeToIndex[nodeToIndex.length - 1];
-    const binNodes = new Uint32Array(nodeElementCount);
-    const lenShift = TrieBlob.NodeMaskNumChildrenShift;
-    const refShift = TrieBlob.NodeChildRefShift;
-    let offset = 0;
-    for (let i = 0; i < nodes.length; ++i) {
-      const node = nodes[i];
-      binNodes[offset++] = node.length - 1 << lenShift | node[0];
-      for (let j = 1; j < node.length; ++j) {
-        const v = node[j];
-        const nodeRef = v >>> NodeChildRefShift;
-        const charIndex = v & NodeMaskChildCharIndex;
-        binNodes[offset++] = nodeToIndex[nodeRef] << refShift | charIndex;
-      }
-    }
-    return new TrieBlob(binNodes, this._charIndex, this.info);
-  }
-  isReadonly() {
-    return this._readonly;
-  }
-  freeze() {
-    this._readonly = true;
-    return this;
-  }
-  toJSON() {
-    return {
-      info: this.info,
-      nodes: nodesToJSON(this.nodes)
-    };
-  }
-  static create(data) {
-    return new FastTrieBlob2(data.nodes, data.charIndex, extractInfo(data), data.info);
-  }
-  static toITrieNodeRoot(trie) {
-    return new FastTrieBlobIRoot(new FastTrieBlobInternalsAndMethods(trie.nodes, trie._charIndex, trie.bitMasksInfo, trie.info, {
-      nodeFindNode: (idx$1, word) => trie.#lookupNode(idx$1, trie.wordToUtf8Seq(word)),
-      nodeFindExact: (idx$1, word) => trie.#has(idx$1, word),
-      nodeGetChild: (idx$1, letter) => trie.#searchNodeForChar(idx$1, letter),
-      isForbidden: (word) => trie.isForbiddenWord(word),
-      findExact: (word) => trie.has(word),
-      hasForbiddenWords: trie.hasForbiddenWords,
-      hasCompoundWords: trie.hasCompoundWords,
-      hasNonStrictWords: trie.hasNonStrictWords
-    }), 0);
-  }
-  static NodeMaskEOW = TrieBlob.NodeMaskEOW;
-  static NodeChildRefShift = TrieBlob.NodeChildRefShift;
-  static NodeMaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
-  static DefaultBitMaskInfo = {
-    NodeMaskEOW: FastTrieBlob2.NodeMaskEOW,
-    NodeMaskChildCharIndex: FastTrieBlob2.NodeMaskChildCharIndex,
-    NodeChildRefShift: FastTrieBlob2.NodeChildRefShift
-  };
-  get iTrieRoot() {
-    return this._iTrieRoot ??= FastTrieBlob2.toITrieNodeRoot(this);
-  }
-  getRoot() {
-    return this.iTrieRoot;
-  }
-  getNode(prefix) {
-    return findNode$1(this.getRoot(), prefix);
-  }
-  isForbiddenWord(word) {
-    return !!this.#forbidIdx && this.#has(this.#forbidIdx, word);
-  }
-  nodeInfo(nodeIndex, accumulator) {
-    const acc = accumulator ?? Utf8Accumulator.create();
-    const n = this.nodes[nodeIndex];
-    const eow = !!(n[0] & this.bitMasksInfo.NodeMaskEOW);
-    const children = [];
-    children.length = n.length - 1;
-    for (let p = 1; p < n.length; ++p) {
-      const v = n[p];
-      const cIdx = v & this.bitMasksInfo.NodeMaskChildCharIndex;
-      const codePoint = acc.clone().decode(cIdx);
-      children[p] = {
-        c: codePoint !== void 0 ? String.fromCodePoint(codePoint) : "\u220E",
-        i: v >>> this.bitMasksInfo.NodeChildRefShift,
-        cIdx
-      };
-    }
-    return {
-      eow,
-      children
-    };
-  }
-  /** number of nodes */
-  get size() {
-    return this.nodes.length;
-  }
-  /** Search from nodeIdx for the node index representing the character. */
-  #searchNodeForChar(nodeIdx, char) {
-    const charIndexes = this.letterToUtf8Seq(char);
-    return this.#lookupNode(nodeIdx, charIndexes);
-  }
-  get charIndex() {
-    return [...this._charIndex.charIndex];
-  }
-  static fromTrieBlob(trie) {
-    const bitMasksInfo = {
-      NodeMaskEOW: TrieBlob.NodeMaskEOW,
-      NodeMaskChildCharIndex: TrieBlob.NodeMaskChildCharIndex,
-      NodeChildRefShift: TrieBlob.NodeChildRefShift
-    };
-    const trieNodesBin = TrieBlob.nodesView(trie);
-    const nodeOffsets = [];
-    for (let offset = 0; offset < trieNodesBin.length; offset += (trieNodesBin[offset] & TrieBlob.NodeMaskNumChildren) + 1) nodeOffsets.push(offset);
-    const offsetToNodeIndex = new Map(nodeOffsets.map((offset, i) => [offset, i]));
-    const nodes = Array.from({ length: nodeOffsets.length });
-    for (let i = 0; i < nodes.length; ++i) {
-      const offset = nodeOffsets[i];
-      const n = trieNodesBin[offset];
-      const eow = n & TrieBlob.NodeMaskEOW;
-      const count3 = n & TrieBlob.NodeMaskNumChildren;
-      const node = new Uint32Array(count3 + 1);
-      node[0] = eow;
-      nodes[i] = node;
-      for (let j = 1; j <= count3; ++j) {
-        const n$1 = trieNodesBin[offset + j];
-        const charIndex = n$1 & TrieBlob.NodeMaskChildCharIndex;
-        const nodeIndex = n$1 >>> TrieBlob.NodeChildRefShift;
-        const idx$1 = offsetToNodeIndex.get(nodeIndex);
-        if (idx$1 === void 0) throw new Error(`Invalid node index ${nodeIndex}`);
-        node[j] = idx$1 << TrieBlob.NodeChildRefShift | charIndex;
-      }
-    }
-    return new FastTrieBlob2(sortNodes(nodes, TrieBlob.NodeMaskChildCharIndex), trie.charIndex, bitMasksInfo, trie.info);
-  }
-  static isFastTrieBlob(obj) {
-    return obj instanceof FastTrieBlob2;
-  }
-};
-function nodesToJSON(nodes) {
-  const mapNodeToAcc = /* @__PURE__ */ new Map();
-  function mapNode(node, i) {
-    if (node.length === 1) return {
-      i,
-      w: !!(node[0] & TrieBlob.NodeMaskEOW) && 1 || 0
-    };
-    const acc = mapNodeToAcc.get(node) || Utf8Accumulator.create();
-    function mapChild(n) {
-      const index = n >>> TrieBlob.NodeChildRefShift;
-      const seq = n & TrieBlob.NodeMaskChildCharIndex;
-      const cAcc = acc.clone();
-      const codePoint = cAcc.decode(seq);
-      if (codePoint === void 0) mapNodeToAcc.set(nodes[index], cAcc);
-      return {
-        i: index,
-        c: codePoint && String.fromCodePoint(codePoint) || void 0,
-        s: seq.toString(16).padStart(2, "0")
-      };
-    }
-    return {
-      i,
-      w: !!(node[0] & TrieBlob.NodeMaskEOW) && 1 || 0,
-      c: [...node.slice(1)].map(mapChild)
-    };
-  }
-  return nodes.map((n, i) => mapNode(n, i));
+function numberToHex(n) {
+  const digits = n.toString(16).padStart(8, "0");
+  return "0x" + digits.slice(0, 4) + "_" + digits.slice(4);
 }
-function resolveMap(map3, key, resolve6) {
-  const r = map3.get(key);
-  if (r !== void 0) return r;
-  const v = resolve6(key);
-  map3.set(key, v);
-  return v;
+function charToHex(c) {
+  return c.toString(16).padStart(2, "0") + " " + (c >= 32 && c <= 126 ? String.fromCodePoint(c) : ".");
 }
-var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
+function isRefPfx(ref) {
+  return "prefix" in ref;
+}
+function sortNodes(nodes, mask) {
+  const endPerf = measurePerf("TrieBlobBuilder.sortNodes");
+  for (let i = 0; i < nodes.length; ++i) {
+    const node = nodes[i];
+    if (node.length <= 2 || isSorted(node, mask, 1)) continue;
+    sortSubArray(node, mask, 1);
+  }
+  endPerf();
+  return nodes;
+}
+function sortSubArray(node, mask, startAt) {
+  const compare$3 = (a, b) => !a ? -1 : !b ? 1 : (a & mask) - (b & mask);
+  if (node.subarray === void 0) {
+    const header = node[0];
+    node[0] = Number.MIN_SAFE_INTEGER;
+    node.sort(compare$3);
+    node[0] = header;
+    return;
+  }
+  node.subarray(startAt).sort(compare$3);
+}
+function isSorted(node, mask, start, end) {
+  if (node.length > 2) {
+    const limit = end ?? node.length;
+    let last = -1;
+    for (let j = start; j < limit; ++j) {
+      const n = node[j] & mask;
+      if (n < last) return false;
+      last = n;
+    }
+  }
+  return true;
+}
+function toTrieBlob(nodes, stringTable, info4) {
+  const endPerf = measurePerf("TrieBlob.toTrieBlob");
+  const nodeMaskChildCharIndex = NodeMaskCharByte;
+  const nodeChildRefShift = NodeChildIndexRefShift;
+  function calcNodeToIndex(nodes$1) {
+    let offset$1 = 0;
+    const idx$1 = Array(nodes$1.length + 1);
+    for (let i = 0; i < nodes$1.length; ++i) {
+      idx$1[i] = offset$1;
+      offset$1 += nodes$1[i].length;
+    }
+    idx$1[nodes$1.length] = offset$1;
+    return idx$1;
+  }
+  const nodeToIndex = calcNodeToIndex(nodes);
+  const nodeElementCount = nodeToIndex[nodeToIndex.length - 1];
+  const binNodes = new Uint32Array(nodeElementCount);
+  const lenShift = NodeHeaderNumChildrenShift;
+  const refShift = NodeChildIndexRefShift;
+  const NodeHeaderMask = ~NodeHeaderNumChildrenMask;
+  let offset = 0;
+  for (let i = 0; i < nodes.length; ++i) {
+    const node = nodes[i];
+    binNodes[offset++] = node.length - 1 << lenShift | node[0] & NodeHeaderMask;
+    for (let j = 1; j < node.length; ++j) {
+      const v = node[j];
+      const nodeRef = v >>> nodeChildRefShift;
+      const charIndex = v & nodeMaskChildCharIndex;
+      binNodes[offset++] = nodeToIndex[nodeRef] << refShift | charIndex;
+    }
+  }
+  const t = new TrieBlob(binNodes, stringTable, info4);
+  endPerf();
+  return t;
+}
+var AUTO_OPTIMIZE_NODE_COUNT = 0;
+var TrieBlobBuilder = class TrieBlobBuilder2 {
   charIndex = new CharIndexBuilder();
   nodes;
   _readonly = false;
   IdxEOW;
   _cursor;
-  _options;
+  _cursorId = 0;
   wordToCharacters = (word) => [...word];
-  bitMasksInfo;
-  constructor(options, bitMasksInfo = FastTrieBlobBuilder2.DefaultBitMaskInfo) {
-    this._options = mergeOptionalWithDefaults(options);
-    this.bitMasksInfo = bitMasksInfo;
-    this.nodes = [[0], Object.freeze([FastTrieBlobBuilder2.NodeMaskEOW])];
+  #infoBuilder;
+  constructor(options, characteristics) {
+    this.nodes = [[0], Object.freeze([NodeHeaderEOWMask])];
     this.IdxEOW = 1;
+    this.#infoBuilder = new TrieInfoBuilder(options, characteristics);
   }
   setOptions(options) {
-    this._options = mergeOptionalWithDefaults(this.options, options);
-    return this.options;
+    this.#infoBuilder.setInfo(options);
+    return this.#infoBuilder.getActiveInfo();
   }
   get options() {
-    return this._options;
+    return this.#infoBuilder.getActiveInfo();
   }
   wordToUtf8Seq(word) {
     return this.charIndex.wordToUtf8Seq(word);
@@ -42692,28 +43286,35 @@ var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
   }
   insert(word) {
     this.#assertNotReadonly();
-    if (typeof word === "string") return this._insert(word);
-    const words = word;
-    for (const w of words) this._insert(w);
-    return this;
+    if (typeof word === "string") return this.#insertWord(word);
+    return this.insertWords(word);
   }
   getCursor() {
     this.#assertNotReadonly();
-    this._cursor ??= this.createCursor();
+    this._cursor ??= this.createCursor(++this._cursorId);
     return this._cursor;
   }
-  createCursor() {
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
-    const LetterMask = this.bitMasksInfo.NodeMaskChildCharIndex;
+  createCursor(id) {
+    const endPerf = measurePerf("TrieBlobBuilder.cursor");
+    const nodeChildRefShift = NodeChildIndexRefShift;
+    const NodeMaskEOW = NodeHeaderEOWMask;
+    const LetterMask = NodeMaskCharByte;
     const refNodes = [0, 1];
+    const lookupCharCode = createCharUtf8_32RevLookup();
+    let disposed = false;
+    const dispose = () => {
+      if (disposed) return;
+      endPerf();
+      disposed = true;
+      if (this._cursorId === id) this._cursor = void 0;
+    };
     function childPos(node, letterIdx) {
       for (let i = 1; i < node.length; ++i) if ((node[i] & LetterMask) === letterIdx) return i;
       return 0;
     }
-    (0, import_node_assert.default)(this.nodes.length === 2);
-    const eow = 1;
-    const eowShifted = eow << NodeChildRefShift;
+    assert(this.nodes.length === 2);
+    const eowNodeIndex = 1;
+    const eowShifted = eowNodeIndex << nodeChildRefShift;
     const nodes = this.nodes;
     const stack = [{
       nodeIdx: 0,
@@ -42722,24 +43323,28 @@ var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
     }];
     let nodeIdx = 0;
     let depth = 0;
-    const insertChar = (char) => {
+    const assertNotDisposed = () => {
+      assert(!disposed, "Cursor has been disposed");
+      assert(id === this._cursorId, "Cursor is no longer valid");
+    };
+    function insertChar(char) {
+      assertNotDisposed();
       if (!nodes[nodeIdx]) refNodes.push(nodeIdx);
       const pDepth = depth;
-      const utf8Seq = this.letterToUtf8Seq(char);
-      for (let i = 0; i < utf8Seq.length; ++i) insertCharIndexes(utf8Seq[i], pDepth);
-    };
-    const insertCharIndexes = (seq, pDepth) => {
+      for (let encoded = lookupCharCode(char); encoded; encoded >>>= 8) insertCharByteCode(encoded & 255, pDepth);
+    }
+    function insertCharByteCode(byte, pDepth) {
       if (nodes[nodeIdx] && Object.isFrozen(nodes[nodeIdx])) {
         nodeIdx = nodes.push([...nodes[nodeIdx]]) - 1;
         const { pos: pos$1, nodeIdx: pNodeIdx } = stack[depth];
         const pNode = nodes[pNodeIdx];
-        pNode[pos$1] = pNode[pos$1] & LetterMask | nodeIdx << NodeChildRefShift;
+        pNode[pos$1] = pNode[pos$1] & LetterMask | nodeIdx << nodeChildRefShift;
       }
       const node = nodes[nodeIdx] || [0];
       nodes[nodeIdx] = node;
-      const hasIdx = childPos(node, seq);
-      const childIdx = hasIdx ? node[hasIdx] >>> NodeChildRefShift : nodes.length;
-      const pos = hasIdx || node.push(childIdx << NodeChildRefShift | seq) - 1;
+      const hasIdx = childPos(node, byte);
+      const childIdx = hasIdx ? node[hasIdx] >>> nodeChildRefShift : nodes.length;
+      const pos = hasIdx || node.push(childIdx << nodeChildRefShift | byte) - 1;
       ++depth;
       const s = stack[depth];
       if (s) {
@@ -42752,9 +43357,10 @@ var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
         pDepth
       };
       nodeIdx = childIdx;
-    };
-    const markEOW = () => {
-      if (nodeIdx === eow) return;
+    }
+    function markEOW() {
+      assertNotDisposed();
+      if (nodeIdx === eowNodeIndex) return;
       const node = nodes[nodeIdx];
       if (!node) {
         const { pos, nodeIdx: pNodeIdx } = stack[depth];
@@ -42764,59 +43370,81 @@ var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
         nodes[nodeIdx] = node;
         node[0] |= NodeMaskEOW;
       }
-      nodeIdx = eow;
-    };
-    const reference = (refId) => {
+      nodeIdx = eowNodeIndex;
+    }
+    function reference(refId) {
+      assertNotDisposed();
       const refNodeIdx = refNodes[refId];
-      (0, import_node_assert.default)(refNodeIdx !== void 0);
-      (0, import_node_assert.default)(nodes[nodeIdx] === void 0);
-      (0, import_node_assert.default)(nodes[refNodeIdx]);
+      assert(refNodeIdx !== void 0);
+      assert(nodes[nodeIdx] === void 0);
+      assert(nodes[refNodeIdx]);
       Object.freeze(nodes[refNodeIdx]);
       const s = stack[depth];
       nodeIdx = s.nodeIdx;
       const pos = s.pos;
       const node = nodes[nodeIdx];
-      node[pos] = refNodeIdx << NodeChildRefShift | node[pos] & LetterMask;
-    };
-    const backStep = (num) => {
+      node[pos] = refNodeIdx << nodeChildRefShift | node[pos] & LetterMask;
+    }
+    function backStep(num) {
+      assertNotDisposed();
       if (!num) return;
-      (0, import_node_assert.default)(num <= depth && num > 0);
+      assert(num <= depth && num > 0);
       for (let n = num; n > 0; --n) depth = stack[depth].pDepth;
       nodeIdx = stack[depth + 1].nodeIdx;
-    };
+    }
     return {
       insertChar,
       markEOW,
       reference,
-      backStep
+      backStep,
+      dispose,
+      [Symbol.dispose]: dispose
     };
   }
-  _insert(word) {
+  /**
+  * Insert multiple words. Performance is (~10%) better if the words are sorted.
+  * @param words - words to insert
+  * @returns this
+  */
+  insertWords(words) {
+    for (const word of words) this.#insertWord(word);
+    return this;
+  }
+  #insertWord(word) {
     word = word.trim();
     if (!word) return this;
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
+    this.#infoBuilder.addWord(word);
+    const NodeMaskChildCharIndex = NodeMaskCharByte;
+    const nodeChildRefShift = NodeChildIndexRefShift;
+    const NodeMaskEOW = NodeHeaderEOWMask;
     const IdxEOW = this.IdxEOW;
     const nodes = this.nodes;
-    const utf8Seq = this.wordToUtf8Seq(word);
-    const len = utf8Seq.length;
     let nodeIdx = 0;
-    for (let p = 0; p < len; ++p) {
-      const seq = utf8Seq[p];
-      const node = nodes[nodeIdx];
-      let i = node.length - 1;
-      for (; i > 0; --i) if ((node[i] & NodeMaskChildCharIndex) === seq) break;
-      if (i > 0) {
-        nodeIdx = node[i] >>> NodeChildRefShift;
-        if (nodeIdx === 1 && p < len - 1) {
-          nodeIdx = this.nodes.push([NodeMaskEOW]) - 1;
-          node[i] = nodeIdx << NodeChildRefShift | seq;
+    const wLen = word.length;
+    const bytes = [];
+    for (const t = {
+      text: word,
+      i: 0
+    }; t.i < wLen; ) {
+      const isLastChar = t.i >= wLen - 1;
+      for (let utf8Code = encodeTextToUtf8_32Rev(t); utf8Code; utf8Code >>>= 8) {
+        const seq = utf8Code & 255;
+        bytes.push(seq);
+        const node = nodes[nodeIdx];
+        let i = node.length - 1;
+        for (; i > 0; --i) if ((node[i] & NodeMaskChildCharIndex) === seq) break;
+        const isEow = isLastChar && utf8Code <= 255;
+        if (i > 0) {
+          nodeIdx = node[i] >>> nodeChildRefShift;
+          if (nodeIdx === 1 && !isEow) {
+            nodeIdx = this.nodes.push([NodeMaskEOW]) - 1;
+            node[i] = nodeIdx << nodeChildRefShift | seq;
+          }
+          continue;
         }
-        continue;
+        nodeIdx = isEow ? IdxEOW : this.nodes.push([0]) - 1;
+        node.push(nodeIdx << nodeChildRefShift | seq);
       }
-      nodeIdx = p < len - 1 ? this.nodes.push([0]) - 1 : IdxEOW;
-      node.push(nodeIdx << NodeChildRefShift | seq);
     }
     if (nodeIdx > 1) {
       const node = nodes[nodeIdx];
@@ -42825,9 +43453,9 @@ var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
     return this;
   }
   has(word) {
-    const NodeMaskChildCharIndex = this.bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeChildRefShift = this.bitMasksInfo.NodeChildRefShift;
-    const NodeMaskEOW = this.bitMasksInfo.NodeMaskEOW;
+    const NodeMaskChildCharIndex = NodeMaskCharByte;
+    const nodeChildRefShift = NodeChildIndexRefShift;
+    const NodeMaskEOW = NodeHeaderEOWMask;
     const nodes = this.nodes;
     const charIndexes = this.wordToUtf8Seq(word);
     const len = charIndexes.length;
@@ -42838,7 +43466,7 @@ var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
       let i = node.length - 1;
       for (; i > 0; --i) if ((node[i] & NodeMaskChildCharIndex) === letterIdx) break;
       if (i < 1) return false;
-      nodeIdx = node[i] >>> NodeChildRefShift;
+      nodeIdx = node[i] >>> nodeChildRefShift;
     }
     return !!(node[0] & NodeMaskEOW);
   }
@@ -42849,30 +43477,63 @@ var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
     this._readonly = true;
     return this;
   }
-  build() {
-    this._cursor = void 0;
+  copyNodes() {
+    return this.nodes.map((n) => [...n]);
+  }
+  build(buildOptions) {
+    this._cursor?.dispose?.();
     this._readonly = true;
     this.freeze();
-    return FastTrieBlob.create(new FastTrieBlobInternals(sortNodes(this.nodes.map((n) => Uint32Array.from(n)), this.bitMasksInfo.NodeMaskChildCharIndex), this.charIndex.build(), this.bitMasksInfo, this.options));
+    const endPerf = measurePerf("TrieBlobBuilder.build");
+    const { optimize, useStringTable } = buildOptions || {};
+    const info4 = this.#infoBuilder.build();
+    const bNodes = this.nodes;
+    let sortedNodes = sortNodes(bNodes, NodeMaskCharByte);
+    if (optimize ?? sortNodes.length < AUTO_OPTIMIZE_NODE_COUNT) sortedNodes = optimizeNodes(sortedNodes);
+    const stringTable = new StringTableBuilder().build();
+    const r = useStringTable ? optimizeNodesWithStringTable({
+      nodes: sortedNodes,
+      stringTable
+    }) : {
+      nodes: sortedNodes,
+      stringTable
+    };
+    const data = toTrieBlob(r.nodes, r.stringTable, normalizeTrieInfo(info4.info));
+    endPerf();
+    return data;
   }
   toJSON() {
     return {
       options: this.options,
-      nodes: nodesToJSON(this.nodes.map((n) => Uint32Array.from(n)))
+      nodes: this.nodes
     };
   }
   #assertNotReadonly() {
-    (0, import_node_assert.default)(!this.isReadonly(), "FastTrieBlobBuilder is readonly");
+    assert(!this.isReadonly(), "FastTrieBlobBuilder is readonly");
   }
-  static fromWordList(words, options) {
-    return new FastTrieBlobBuilder2(options).insert(words).build();
+  static fromWordList(words, options, buildOptions) {
+    return new TrieBlobBuilder2(options).insert(words).build(buildOptions);
   }
-  static fromTrieRoot(root) {
-    const bitMasksInfo = FastTrieBlobBuilder2.DefaultBitMaskInfo;
-    const NodeChildRefShift = bitMasksInfo.NodeChildRefShift;
-    const NodeCharIndexMask = bitMasksInfo.NodeMaskChildCharIndex;
-    const NodeMaskEOW = bitMasksInfo.NodeMaskEOW;
-    const tf2 = new FastTrieBlobBuilder2(void 0, bitMasksInfo);
+  /**
+  * Create a TrieBlob from a TrieRoot.
+  *
+  * This is equivalent to, but slightly faster because it avoids creating an ITrieNodes
+  * ```ts
+  * static fromTrieRoot(root: TrieRoot, optimize?: boolean): TrieBlob {
+  *   return this.fromITrieRoot(trieRootToITrieRoot(root), optimize);
+  * }
+  * ```
+  *
+  * @param root - TrieRoot
+  * @param buildOptions - optional build options
+  * @returns TrieBlob
+  */
+  static fromTrieRoot(root, buildOptions) {
+    const endPerf = measurePerf("TrieBlobBuilder.fromTrieRoot");
+    const NodeCharIndexMask = NodeMaskCharByte;
+    const nodeChildRefShift = NodeChildIndexRefShift;
+    const NodeMaskEOW = NodeHeaderEOWMask;
+    const tf2 = new TrieBlobBuilder2(void 0, root);
     const IdxEOW = tf2.IdxEOW;
     const known = /* @__PURE__ */ new Map([[root, 0]]);
     function resolveNode(n) {
@@ -42903,47 +43564,132 @@ var FastTrieBlobBuilder = class FastTrieBlobBuilder2 {
       assertValidUtf16Character(char);
       for (const idx$1 of indexSeq.slice(0, -1)) {
         const pos = resolveChild(node, idx$1);
-        if (pos < node.length) node = tf2.nodes[node[pos] >>> NodeChildRefShift];
+        if (pos < node.length) node = tf2.nodes[node[pos] >>> nodeChildRefShift];
         else {
           const next = [0];
-          node[pos] = tf2.nodes.push(next) - 1 << NodeChildRefShift | idx$1;
+          const nodeIdx = tf2.nodes.push(next) - 1;
+          node[pos] = nodeIdx << nodeChildRefShift | idx$1;
           node = next;
         }
       }
       const letterIdx = indexSeq[indexSeq.length - 1];
       const i = node.push(letterIdx) - 1;
-      node[i] = walk$3(n) << NodeChildRefShift | letterIdx;
+      node[i] = walk$3(n) << nodeChildRefShift | letterIdx;
     }
     walk$3(root);
-    return tf2.build();
+    const result = tf2.build(buildOptions);
+    endPerf();
+    return result;
   }
-  static NodeMaskEOW = TrieBlob.NodeMaskEOW;
-  static NodeChildRefShift = TrieBlob.NodeChildRefShift;
-  static NodeMaskChildCharIndex = TrieBlob.NodeMaskChildCharIndex;
-  static DefaultBitMaskInfo = {
-    NodeMaskEOW: FastTrieBlobBuilder2.NodeMaskEOW,
-    NodeMaskChildCharIndex: FastTrieBlobBuilder2.NodeMaskChildCharIndex,
-    NodeChildRefShift: FastTrieBlobBuilder2.NodeChildRefShift
-  };
+  /**
+  * Create a TrieBlob from a TrieRoot.
+  *
+  * @param root - root node
+  * @param buildOptions - optional build options
+  * @returns TrieBlob
+  */
+  static fromITrieRoot(root, buildOptions) {
+    const endPerf = measurePerf("TrieBlobBuilder.fromITrieRoot");
+    const NodeCharIndexMask = NodeMaskCharByte;
+    const nodeChildRefShift = NodeChildIndexRefShift;
+    const NodeMaskEOW = NodeHeaderEOWMask;
+    const tf2 = new TrieBlobBuilder2(void 0, root);
+    const IdxEOW = tf2.IdxEOW;
+    const known = /* @__PURE__ */ new Map([[root.id, 0]]);
+    function resolveNode(n) {
+      if (n.eow && !n.hasChildren()) return IdxEOW;
+      const node = [n.eow ? NodeMaskEOW : 0];
+      return tf2.nodes.push(node) - 1;
+    }
+    function walk$3(n) {
+      const found = known.get(n.id);
+      if (found) return found;
+      const nodeIdx = resolveMap(known, n.id, () => resolveNode(n));
+      const node = tf2.nodes[nodeIdx];
+      if (!n.hasChildren()) return nodeIdx;
+      const children = n.entries();
+      for (const [char, childNode] of children) addCharToNode(node, char, childNode);
+      return nodeIdx;
+    }
+    function resolveChild(node, charIndex) {
+      let i = 1;
+      for (i = 1; i < node.length && (node[i] & NodeCharIndexMask) !== charIndex; ++i) ;
+      return i;
+    }
+    function addCharToNode(node, char, n) {
+      const indexSeq = tf2.letterToUtf8Seq(char);
+      assertValidUtf16Character(char);
+      for (const idx$1 of indexSeq.slice(0, -1)) {
+        const pos = resolveChild(node, idx$1);
+        if (pos < node.length) node = tf2.nodes[node[pos] >>> nodeChildRefShift];
+        else {
+          const next = [0];
+          const nodeIdx = tf2.nodes.push(next) - 1;
+          node[pos] = nodeIdx << nodeChildRefShift | idx$1;
+          node = next;
+        }
+      }
+      const letterIdx = indexSeq[indexSeq.length - 1];
+      const i = node.push(letterIdx) - 1;
+      node[i] = walk$3(n) << nodeChildRefShift | letterIdx;
+    }
+    walk$3(root);
+    const result = tf2.build(buildOptions);
+    endPerf();
+    return result;
+  }
 };
+function createCharUtf8_32RevLookup(maxSize = 256) {
+  let size = 0;
+  let map$2 = /* @__PURE__ */ Object.create(null);
+  return (char) => {
+    let code = map$2[char];
+    if (!code) {
+      size++;
+      if (size >= maxSize) {
+        size = 1;
+        map$2 = /* @__PURE__ */ Object.create(null);
+      }
+      code = encodeToUtf8_32Rev(char.codePointAt(0) || 0);
+      map$2[char] = code;
+    }
+    return code;
+  };
+}
 function clean(t) {
   const copy = { ...t };
   for (const key of Object.keys(copy)) if (copy[key] === void 0) delete copy[key];
   return copy;
 }
 var defaultLegacyMinCompoundLength$1 = 3;
+var cvtFindWordOptions = memorizeLastCall(_cvtFindWordOptions);
+function _cvtFindWordOptions(options) {
+  return createFindOptions$1({
+    matchCase: options?.caseSensitive,
+    checkForbidden: options?.checkForbidden,
+    compoundSeparator: options?.compoundSeparator
+  });
+}
 var ITrieImpl = class ITrieImpl2 {
   _info;
   root;
   count;
   weightMap;
   #optionsCompound = this.createFindOptions({ compoundMode: "compound" });
+  #findOptionsT = {
+    caseSensitive: true,
+    checkForbidden: true
+  };
+  #findOptionsF = {
+    caseSensitive: false,
+    checkForbidden: true
+  };
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
-  constructor(data, numNodes) {
+  data;
+  constructor(data) {
     this.data = data;
-    this.numNodes = numNodes;
     this.root = data.getRoot();
     this._info = mergeOptionalWithDefaults(data.info);
     this.hasForbiddenWords = data.hasForbiddenWords;
@@ -42967,18 +43713,32 @@ var ITrieImpl = class ITrieImpl2 {
   get info() {
     return this._info;
   }
-  get isCaseAware() {
-    return this.info.isCaseAware ?? true;
-  }
   /**
   * @param text - text to find in the Trie
   */
   find(text) {
     return findWordNode$1(this.data.getRoot(), text, this.#optionsCompound).node;
   }
+  /**
+  * A case sensitive search for the word.
+  * @param word - the word to search for.
+  * @param minLegacyCompoundLength - minimum length of legacy compounds to consider.
+  * @returns true if the word is found and not forbidden.
+  */
   has(word, minLegacyCompoundLength) {
+    if (minLegacyCompoundLength !== void 0) return this.#hasLegacy(word, minLegacyCompoundLength);
+    return this.hasWord(word, true);
+  }
+  #hasLegacy(word, minLegacyCompoundLength) {
     if (this.hasWord(word, false)) return true;
-    if (minLegacyCompoundLength) return !!this.findWord(word, { useLegacyWordCompounds: minLegacyCompoundLength }).found;
+    if (minLegacyCompoundLength) {
+      const f = this.findWord(word, {
+        useLegacyWordCompounds: minLegacyCompoundLength,
+        caseSensitive: false,
+        checkForbidden: true
+      });
+      return !!f.found && !f.forbidden;
+    }
     return false;
   }
   /**
@@ -42988,24 +43748,21 @@ var ITrieImpl = class ITrieImpl2 {
   * @returns true if the word was found and is not forbidden.
   */
   hasWord(word, caseSensitive) {
-    return !!this.findWord(word, {
-      caseSensitive,
-      checkForbidden: false
-    }).found;
+    const options = caseSensitive ? this.#findOptionsT : this.#findOptionsF;
+    const r = this.findWord(word, options);
+    return !r.forbidden && !!r.found;
   }
   findWord(word, options) {
     if (options?.useLegacyWordCompounds) {
       const len = options.useLegacyWordCompounds !== true ? options.useLegacyWordCompounds : defaultLegacyMinCompoundLength$1;
       const findOptions = this.createFindOptions({
         legacyMinCompoundLength: len,
-        matchCase: options.caseSensitive || false
+        matchCase: options.caseSensitive || false,
+        compoundSeparator: void 0
       });
       return findLegacyCompound$1(this.root, word, findOptions);
     }
-    return findWord$1(this.root, word, {
-      matchCase: options?.caseSensitive,
-      checkForbidden: options?.checkForbidden
-    });
+    return findWord$1(this.root, word, cvtFindWordOptions(options));
   }
   /**
   * Determine if a word is in the forbidden word list.
@@ -43020,8 +43777,47 @@ var ITrieImpl = class ITrieImpl2 {
   completeWord(text) {
     const n = this.find(text);
     const compoundChar = this.info.compoundCharacter;
-    const subNodes = pipeSync(n ? iteratorTrieWords$1(n) : [], opFilterSync((w) => w[w.length - 1] !== compoundChar), opMapSync((suffix) => text + suffix));
-    return pipeSync(n && n.eow ? [text] : [], opAppendSync(subNodes));
+    const subNodes = pipeSync2(n ? iteratorTrieWords$1(n) : [], opFilterSync2((w) => w[w.length - 1] !== compoundChar), opMapSync2((suffix) => text + suffix));
+    return pipeSync2(n && n.eow ? [text] : [], opAppendSync2(subNodes));
+  }
+  /**
+  * Checks to see if there are preferred suggestions for the given text.
+  * @param text
+  */
+  wordHasPreferredSuggestions(text) {
+    return this.has(this.info.suggestionPrefix + text);
+  }
+  /**
+  * Get preferred suggestions for the given text.
+  * @param text - the exact word to search for.
+  */
+  getPreferredSuggestions(text) {
+    const prefix = text + this.info.suggestionPrefix;
+    return pipeSync2(this.getAllPreferredSuggestions(prefix), opMapSync2((s) => s.slice(prefix.length)));
+  }
+  /**
+  * Get a list of all preferred suggestions in the trie.
+  * They are returned in order and in the following format:
+  * ```
+  * <word1>:<suggestion1>
+  * <word1>:<suggestion2>
+  * <word2>:<suggestion1>
+  * ```
+  *
+  * If `startingWith` is provided, only words that start with the prefix are returned.
+  *
+  * @param startingWith - optional prefix to filter the words returned.
+  */
+  getAllPreferredSuggestions(startingWith = "") {
+    const regexpSugIndex = /:[0-9a-f]{1,2}:/;
+    const sugPrefix = this.info.suggestionPrefix;
+    return pipeSync2(this.data.words(sugPrefix + startingWith), opMapSync2((result) => result.slice(1).replace(regexpSugIndex, ":")), opFilterSync2((w) => w.includes(":")));
+  }
+  /**
+  * Checks to see if the trie contains preferred suggestions for any words.
+  */
+  get hasPreferredSuggestions() {
+    return this.data.hasPreferredSuggestions;
   }
   /**
   * Suggest spellings for `text`.  The results are sorted by edit distance with changes near the beginning of a word having a greater impact.
@@ -43043,13 +43839,13 @@ var ITrieImpl = class ITrieImpl2 {
     const weightMap = options.weightMap || this.weightMap;
     const adjWord = sep5 ? replaceAllFactory(sep5, "") : (a) => a;
     const optFilter = options.filter;
-    const filter3 = optFilter ? (word, cost) => {
+    const filter$2 = optFilter ? (word, cost) => {
       const w = adjWord(word);
       return !this.isForbiddenWord(w) && optFilter(w, cost);
     } : (word) => !this.isForbiddenWord(adjWord(word));
     const opts = {
       ...options,
-      filter: filter3,
+      filter: filter$2,
       weightMap
     };
     return suggestAStar(this.data, text, opts);
@@ -43060,19 +43856,21 @@ var ITrieImpl = class ITrieImpl2 {
   * Returning a MaxCost < 0 will effectively cause the search for suggestions to stop.
   */
   genSuggestions(collector, compoundMethod) {
-    const filter3 = (word) => !this.isForbiddenWord(word);
+    const filter$2 = (word) => !this.isForbiddenWord(word);
     const options = createSuggestionOptions(clean({
       compoundMethod,
       ...collector.genSuggestionOptions
     }));
     const suggestions2 = getSuggestionsAStar(this.data, collector.word, options);
-    collector.collect(suggestions2, void 0, filter3);
+    collector.collect(suggestions2, void 0, filter$2);
   }
   /**
   * Returns an iterator that can be used to get all words in the trie. For some dictionaries, this can result in millions of words.
+  * Note: this will not compound words automatically.
+  * @param prefix - optional prefix to filter the words returned. The words will be prefixed with this value.
   */
-  words() {
-    return iteratorTrieWords$1(this.root);
+  words(prefix) {
+    return this.data.words(prefix);
   }
   /**
   * Allows iteration over the entire tree.
@@ -43082,19 +43880,23 @@ var ITrieImpl = class ITrieImpl2 {
     return walker$1(this.root);
   }
   static create(words, info4) {
-    const builder = new FastTrieBlobBuilder(info4);
+    const builder = new TrieBlobBuilder(info4);
     builder.insert(words);
-    return new ITrieImpl2(builder.build(), void 0);
+    return new ITrieImpl2(builder.build());
   }
   createFindOptions(options) {
     return createFindOptions$1(options);
   }
 };
-function buildITrieFromWords(words, info4 = {}) {
-  const builder = new FastTrieBlobBuilder(info4);
-  builder.insert(words);
-  const ft = builder.build();
-  return new ITrieImpl(ft.size > 1e3 ? ft.toTrieBlob() : ft);
+function buildITrieFromWords(words, info4 = {}, buildOptions) {
+  const endPerf = measurePerf("buildITrieFromWords");
+  try {
+    const builder = new TrieBlobBuilder(info4);
+    builder.insert(words);
+    return new ITrieImpl(builder.build(buildOptions));
+  } finally {
+    endPerf();
+  }
 }
 var FLAG_WORD = 1;
 function insert(word, root = {}) {
@@ -43110,14 +43912,8 @@ function insert(word, root = {}) {
   node.f = (node.f || 0) | FLAG_WORD;
   return root;
 }
-function iteratorTrieWords(node) {
-  return walkerWords(node);
-}
 function createTrieRoot(options) {
-  return {
-    ...mergeOptionalWithDefaults(options),
-    c: /* @__PURE__ */ Object.create(null)
-  };
+  return new CTrieRoot(options);
 }
 function createTrieRootFromList(words, options) {
   const root = createTrieRoot(options);
@@ -43189,13 +43985,42 @@ function isCircular(root) {
   return checkCircular(root).isCircular;
 }
 function trieNodeToRoot(node, options) {
-  return {
-    ...mergeOptionalWithDefaults(options),
-    c: node.c || /* @__PURE__ */ Object.create(null)
-  };
+  return CTrieRoot.createFrom(node, options);
 }
+var CTrieRoot = class CTrieRoot2 {
+  c;
+  compoundCharacter;
+  stripCaseAndAccentsPrefix;
+  forbiddenWordPrefix;
+  suggestionPrefix;
+  constructor(options) {
+    const newOptions = mergeOptionalWithDefaults(options);
+    this.c = /* @__PURE__ */ Object.create(null);
+    this.compoundCharacter = newOptions.compoundCharacter;
+    this.stripCaseAndAccentsPrefix = newOptions.stripCaseAndAccentsPrefix;
+    this.forbiddenWordPrefix = newOptions.forbiddenWordPrefix;
+    this.suggestionPrefix = newOptions.suggestionPrefix;
+  }
+  get hasForbiddenWords() {
+    return !!this.c[this.forbiddenWordPrefix];
+  }
+  get hasCompoundWords() {
+    return !!this.c[this.compoundCharacter];
+  }
+  get hasNonStrictWords() {
+    return !!this.c[this.stripCaseAndAccentsPrefix];
+  }
+  get hasPreferredSuggestions() {
+    return !!this.c[this.suggestionPrefix];
+  }
+  static createFrom(trie, options) {
+    const root = new CTrieRoot2(options);
+    root.c = trie.c || /* @__PURE__ */ Object.create(null);
+    return root;
+  }
+};
 function consolidate(root) {
-  let count3 = 0;
+  let count$2 = 0;
   const signatures = /* @__PURE__ */ new Map();
   const cached = /* @__PURE__ */ new Map();
   const knownMap = /* @__PURE__ */ new Map();
@@ -43235,7 +44060,7 @@ function consolidate(root) {
     }
     Object.freeze(n);
     signatures.set(sig, n);
-    cached.set(n, count3++);
+    cached.set(n, count$2++);
     knownMap.set(orig, n);
     return n;
   }
@@ -43250,7 +44075,7 @@ function consolidate(root) {
     const ref = signatures.get(sig);
     if (ref) return ref;
     signatures.set(sig, n);
-    cached.set(n, count3++);
+    cached.set(n, count$2++);
     return n;
   }
   const eow = findEow(root) || {
@@ -43258,8 +44083,11 @@ function consolidate(root) {
     c: void 0
   };
   signatures.set(signature$1(eow), eow);
-  cached.set(eow, count3++);
+  cached.set(eow, count$2++);
   return trieNodeToRoot(process6(root), root);
+}
+function decodeBTrie(data) {
+  return TrieBlob.decodeBin(data);
 }
 var _defaultFindOptions = {
   matchCase: false,
@@ -43267,7 +44095,8 @@ var _defaultFindOptions = {
   forbidPrefix: FORBID_PREFIX,
   compoundFix: COMPOUND_FIX,
   caseInsensitivePrefix: CASE_INSENSITIVE_PREFIX,
-  legacyMinCompoundLength: 3
+  legacyMinCompoundLength: 3,
+  compoundSeparator: void 0
 };
 var knownCompoundModes = new Map([
   "none",
@@ -43301,12 +44130,15 @@ var TrieNodeTrie = class TrieNodeTrie2 {
   hasForbiddenWords;
   hasCompoundWords;
   hasNonStrictWords;
+  hasPreferredSuggestions;
+  root;
   constructor(root) {
     this.root = root;
     this.info = mergeOptionalWithDefaults(root);
-    this.hasForbiddenWords = !!root.c[root.forbiddenWordPrefix];
-    this.hasCompoundWords = !!root.c[root.compoundCharacter];
-    this.hasNonStrictWords = !!root.c[root.stripCaseAndAccentsPrefix];
+    this.hasForbiddenWords = root.hasForbiddenWords;
+    this.hasCompoundWords = root.hasCompoundWords;
+    this.hasNonStrictWords = root.hasNonStrictWords;
+    this.hasPreferredSuggestions = root.hasPreferredSuggestions;
   }
   wordToCharacters = (word) => [...word];
   get iTrieRoot() {
@@ -43318,8 +44150,15 @@ var TrieNodeTrie = class TrieNodeTrie2 {
   getNode(prefix) {
     return findNode$1(this.getRoot(), prefix);
   }
-  words() {
-    return iteratorTrieWords(this.root);
+  *words(prefix) {
+    if (!prefix) {
+      yield* iteratorTrieWords$1(this.getRoot());
+      return;
+    }
+    const node = this.getNode(prefix);
+    if (!node) return;
+    if (node.eow) yield prefix;
+    for (const suffix of iteratorTrieWords$1(node)) yield prefix + suffix;
   }
   has(word) {
     return findWordExact(this.root, word);
@@ -43337,6 +44176,289 @@ var TrieNodeTrie = class TrieNodeTrie2 {
     return new TrieNodeTrie2(consolidate(createTrieRootFromList(words, options)));
   }
 };
+function* toIterableIterator$2(i) {
+  yield* i;
+}
+function* filter$1(i, fnFilter) {
+  for (const v of i) if (fnFilter(v)) yield v;
+}
+function* skip$1(i, n) {
+  let a = 0;
+  for (const t of i) {
+    if (a >= n) yield t;
+    a += 1;
+  }
+}
+function* take$1(i, n) {
+  let a = 0;
+  if (n) for (const t of i) {
+    if (a >= n) break;
+    yield t;
+    a += 1;
+  }
+}
+function* concat$1(i, j) {
+  yield* i;
+  yield* j;
+}
+function* concatMap$1(i, fn) {
+  for (const t of i) yield* fn(t);
+}
+function* combine$1(i, j, fnMap) {
+  const jit = j[Symbol.iterator]();
+  for (const r of i) {
+    const s = jit.next().value;
+    yield fnMap(r, s);
+  }
+}
+function map$1(i, fnMap) {
+  function* fn(i$1, fnMap$1) {
+    for (const v of i$1) yield fnMap$1(v);
+  }
+  return fn(i, fnMap);
+}
+function* scan$1(i, fnReduce, initValue) {
+  let index = 0;
+  if (initValue === void 0) {
+    index = 1;
+    const iter = i[Symbol.iterator]();
+    let r = iter.next();
+    if (!r.done) yield r.value;
+    initValue = r.value;
+    i = makeIterable(iter);
+  }
+  let prevValue = initValue;
+  for (const t of i) {
+    const nextValue = fnReduce(prevValue, t, index);
+    yield nextValue;
+    prevValue = nextValue;
+    index += 1;
+  }
+}
+function all$1(i, fn) {
+  for (const t of i) if (!fn(t)) return false;
+  return true;
+}
+function any$1(i, fn) {
+  for (const t of i) if (fn(t)) return true;
+  return false;
+}
+function count$1(i) {
+  return reduce$1(i, (p) => p + 1, 0);
+}
+function first$1(i, fn, defaultValue) {
+  fn = fn || (() => true);
+  for (const t of i) if (fn(t)) return t;
+  return defaultValue;
+}
+function forEach$1(i, fn) {
+  let index = 0;
+  for (const t of i) {
+    fn(t, index);
+    index += 1;
+  }
+}
+function max$1(i, selector = (t) => t) {
+  return reduce$1(i, (p, c) => selector(c) > selector(p) ? c : p, void 0);
+}
+function min$1(i, selector = (t) => t) {
+  return reduce$1(i, (p, c) => selector(c) < selector(p) ? c : p, void 0);
+}
+function reduce$1(i, fnReduce, initialValue) {
+  const iter = makeIterable(i[Symbol.iterator]());
+  let index = 0;
+  if (initialValue === void 0) {
+    index = 1;
+    initialValue = iter.next().value;
+  }
+  let prevValue = initialValue;
+  for (const t of iter) {
+    prevValue = fnReduce(prevValue, t, index);
+    index += 1;
+  }
+  return prevValue;
+}
+async function reduceAsync$1(i, fnReduce, initialValue) {
+  const iter = makeIterable(i[Symbol.iterator]());
+  let index = 0;
+  if (initialValue === void 0) {
+    index = 1;
+    initialValue = iter.next().value;
+  }
+  let previousValue = await initialValue;
+  for (const p of iter) {
+    const t = await p;
+    previousValue = await fnReduce(previousValue, t, index);
+    index += 1;
+  }
+  return previousValue;
+}
+function makeIterable(i) {
+  function* fromIterator(i$1) {
+    for (let r = i$1.next(); !r.done; r = i$1.next()) yield r.value;
+  }
+  function* fromIterable(i$1) {
+    yield* i$1;
+  }
+  return isIterable2(i) ? isIterableIterator(i) ? i : fromIterable(i) : fromIterator(i);
+}
+function isIterable2(i) {
+  return !!i[Symbol.iterator];
+}
+function isIterableIterator(i) {
+  return typeof i.next == "function";
+}
+function filter(fnFilter) {
+  return (i) => filter$1(i, fnFilter);
+}
+function skip(n) {
+  return (i) => skip$1(i, n);
+}
+function take(n) {
+  return (i) => take$1(i, n);
+}
+function concat(j) {
+  return (i) => concat$1(i, j);
+}
+function concatMap(fn) {
+  return (i) => concatMap$1(i, fn);
+}
+function combine(fnMap, j) {
+  return (i) => combine$1(i, j, fnMap);
+}
+function map(fnMap) {
+  return (i) => map$1(i, fnMap);
+}
+function scan(fnReduce, initValue) {
+  return (i) => scan$1(i, fnReduce, initValue);
+}
+function all(fn) {
+  return (i) => all$1(i, fn);
+}
+function any(fn) {
+  return (i) => any$1(i, fn);
+}
+function count() {
+  return (i) => count$1(i);
+}
+function first(fn, defaultValue) {
+  return (i) => first$1(i, fn, defaultValue);
+}
+function forEach(fn) {
+  return (i) => forEach$1(i, fn);
+}
+function max(selector) {
+  return (i) => max$1(i, selector);
+}
+function min(selector) {
+  return (i) => min$1(i, selector);
+}
+function reduce(fnReduce, initialValue) {
+  return (i) => reduce$1(i, fnReduce, initialValue);
+}
+function reduceAsync(fnReduceAsync, initialValue) {
+  return (i) => reduceAsync$1(i, fnReduceAsync, initialValue);
+}
+function pipe(...fns) {
+  return (i) => {
+    for (const fn of fns) i = fn ? fn(i) : i;
+    return i;
+  };
+}
+var ImplSequence = class ImplSequence2 {
+  i;
+  _iterator;
+  constructor(i) {
+    this.i = i;
+  }
+  get iter() {
+    return typeof this.i === "function" ? this.i() : this.i;
+  }
+  get iterator() {
+    if (!this._iterator) this._iterator = this.iter[Symbol.iterator]();
+    return this._iterator;
+  }
+  inject(fn) {
+    const iter = this.i;
+    return () => fn(typeof iter === "function" ? iter() : iter);
+  }
+  chain(fn) {
+    return new ImplSequence2(this.inject(fn));
+  }
+  [Symbol.iterator]() {
+    return this.iter[Symbol.iterator]();
+  }
+  next() {
+    return this.iterator.next();
+  }
+  filter(fnFilter) {
+    return this.chain(filter(fnFilter));
+  }
+  skip(n) {
+    return this.chain(skip(n));
+  }
+  take(n) {
+    return this.chain(take(n));
+  }
+  concat(j) {
+    return this.chain(concat(j));
+  }
+  concatMap(fn) {
+    return this.chain(concatMap(fn));
+  }
+  combine(fn, j) {
+    return this.chain(combine(fn, j));
+  }
+  map(fn) {
+    return this.chain(map(fn));
+  }
+  scan(fnReduce, initValue) {
+    return this.chain(scan(fnReduce, initValue));
+  }
+  pipe(...fns) {
+    if (!fns.length) return this;
+    return this.chain(pipe.apply(null, fns));
+  }
+  all(fnFilter) {
+    return all(fnFilter)(this.iter);
+  }
+  any(fnFilter) {
+    return any(fnFilter)(this.iter);
+  }
+  count() {
+    return count()(this.iter);
+  }
+  first(fnFilter, defaultValue) {
+    return first(fnFilter, defaultValue)(this.iter);
+  }
+  forEach(fn) {
+    return forEach(fn)(this.iter);
+  }
+  max(fnSelector) {
+    return max(fnSelector)(this.iter);
+  }
+  min(fnSelector) {
+    return min(fnSelector)(this.iter);
+  }
+  reduce(fnReduce, initValue) {
+    return reduce(fnReduce, initValue)(this.iter);
+  }
+  reduceAsync(fnReduceAsync, initialValue) {
+    return reduceAsync(fnReduceAsync, initialValue)(this.iter);
+  }
+  reduceToSequence(fnReduce, initialValue) {
+    return this.chain(reduce(fnReduce, initialValue));
+  }
+  toArray() {
+    return [...this.iter];
+  }
+  toIterable() {
+    return toIterableIterator$2(this.iter);
+  }
+};
+function genSequence(i) {
+  return new ImplSequence(i);
+}
 var EOW$3 = "*";
 var DATA$4 = EOW$3;
 function* toIterableIterator$1(iter) {
@@ -43395,17 +44517,17 @@ function importTrie$5(linesX) {
     lines: 0,
     nodes: [],
     root: {}
-  }).root, { isCaseAware: false });
+  }).root, {});
 }
 var EOW$2 = "*";
 var DATA$3 = "__DATA__";
-function* toIterableIterator2(iter) {
+function* toIterableIterator(iter) {
   yield* iter;
 }
 function importTrie$4(linesX) {
   let radix = 16;
   const comment = /^\s*#/;
-  const iter = toIterableIterator2(linesX);
+  const iter = toIterableIterator(linesX);
   function parseHeaderRows(headerRows) {
     const header = headerRows.slice(0, 2).join("\n");
     const headerReg$2 = /^TrieXv2\nbase=(\d+)$/;
@@ -43460,9 +44582,9 @@ function importTrie$4(linesX) {
       s: "",
       c: /* @__PURE__ */ Object.create(null)
     }
-  }).root, { isCaseAware: false });
+  }).root, {});
 }
-var EOW = "$";
+var EOW$1 = "$";
 var BACK = "<";
 var EOL = "\n";
 var LF = "\r";
@@ -43474,7 +44596,7 @@ var REF_INDEX_BEGIN = "[";
 var REF_INDEX_END = "]";
 var INLINE_DATA_COMMENT_LINE = "/";
 var specialCharacters$1 = stringToCharSet$2([
-  EOW,
+  EOW$1,
   BACK,
   EOL,
   REF,
@@ -43501,7 +44623,7 @@ function importTrie$3(linesX) {
   linesX = typeof linesX === "string" ? linesX.split(/^/m) : linesX;
   let radix = 10;
   const comment = /^\s*#/;
-  const iter = tapIterable(pipeSync(linesX, opConcatMapSync((a) => a.split(/^/m))));
+  const iter = tapIterable(pipeSync2(linesX, opConcatMapSync2((a) => a.split(/^/m))));
   function parseHeaderRows(headerRows) {
     const header = headerRows.slice(0, 2).join("\n");
     const headerReg$2 = /^TrieXv[34]\nbase=(\d+)$/;
@@ -43665,7 +44787,7 @@ function parseStream$1(radix, iter) {
     return acc;
   }
   const parsers3 = createStringLookupMap([
-    [EOW, parseEOW],
+    [EOW$1, parseEOW],
     [BACK, parseBack],
     [REF, parseReference],
     [REF_REL, parseReference],
@@ -43710,7 +44832,7 @@ function parseStream$1(radix, iter) {
       parser: parserStart
     }, s);
   }
-  reduceSync(pipeSync(iter, opConcatMapSync((a) => [...a])), parserMain, {
+  reduceSync(pipeSync2(iter, opConcatMapSync2((a) => [...a])), parserMain, {
     nodes: [root],
     root,
     stack: [{
@@ -43731,10 +44853,10 @@ function stringToCharMap(values) {
   return createStringLookupMap(values);
 }
 function createStringLookupMap(values) {
-  const map3 = /* @__PURE__ */ Object.create(null);
+  const map$2 = /* @__PURE__ */ Object.create(null);
   const len = values.length;
-  for (let i = 0; i < len; ++i) map3[values[i][0]] = values[i][1];
-  return map3;
+  for (let i = 0; i < len; ++i) map$2[values[i][0]] = values[i][1];
+  return map$2;
 }
 function tapIterable(iterable) {
   let lastValue;
@@ -43751,7 +44873,7 @@ function tapIterable(iterable) {
   }
   return { [Symbol.iterator]: iterableFn };
 }
-var EOW$1 = Object.freeze({
+var EOW = Object.freeze({
   f: 1,
   k: true
 });
@@ -43764,8 +44886,7 @@ var specialCharacterMap$1 = /* @__PURE__ */ new Map([
 var characterMap = new Map([...specialCharacterMap$1].map((a) => [a[1], a[0]]));
 var DATA$1 = "__DATA__";
 function importTrieV3WithBuilder(builder, srcLines) {
-  const timer = getGlobalPerfTimer();
-  const timerStart = timer.start("importTrieV3");
+  const timerStart = measurePerf("importTrieV3");
   const dataLines = typeof srcLines === "string" ? srcLines.split("\n") : Array.isArray(srcLines) ? srcLines : [...srcLines];
   let radix = 16;
   const comment = /^\s*#/;
@@ -43797,7 +44918,7 @@ function importTrieV3WithBuilder(builder, srcLines) {
     parser: void 0
   };
   const parser2 = parseStream(radix);
-  const timerParse = timer.start("importTrieV3.parse");
+  const timerParse = measurePerf("importTrieV3.parse");
   for (let i = startOfData + 1; i < dataLines.length; ++i) {
     const line = dataLines[i];
     for (const c of line) node = parser2(node, c);
@@ -43867,7 +44988,7 @@ function parseStream(radix) {
     return acc;
   }
   const parsers3 = /* @__PURE__ */ new Map([
-    [EOW, parseEOW],
+    [EOW$1, parseEOW],
     [BACK, parseBack],
     [REF, parseReference],
     [ESCAPE, parseEscapeCharacter],
@@ -43885,11 +45006,14 @@ function stringToCharSet$1(values) {
   for (let i = 0; i < len; ++i) set2[values[i]] = true;
   return set2;
 }
-function importTrieV3AsFastTrieBlob(srcLines) {
-  return importTrieV3WithBuilder(new FastTrieBlobBuilder(), srcLines);
+function importTrieV3AsTrieBlob(srcLines) {
+  return importTrieV3WithBuilder(new TrieBlobBuilder(), srcLines);
 }
 function decodeTrieData(raw) {
-  return decodeStringFormat(typeof raw === "string" ? raw : raw.toString("utf8"));
+  if (typeof raw === "string") return decodeStringFormat(raw);
+  const data = toUint8Array(raw);
+  if (isBTrieData(data)) return decodeBTrie(data);
+  return decodeStringFormat(new TextDecoder().decode(data));
 }
 function decodeStringFormat(data) {
   return importTrie$2(data);
@@ -43898,7 +45022,7 @@ var deserializers$1 = [
   (data) => new TrieNodeTrie(importTrie$5(data)),
   (data) => new TrieNodeTrie(importTrie$5(data)),
   (data) => new TrieNodeTrie(importTrie$4(data)),
-  (data) => importTrieV3AsFastTrieBlob(data),
+  (data) => importTrieV3AsTrieBlob(data),
   (data) => new TrieNodeTrie(importTrie$3(data))
 ];
 var headerReg$1 = /^\s*TrieXv(\d+)/m;
@@ -43926,10 +45050,13 @@ function importTrie$2(input) {
   return method(lines);
 }
 function decodeTrie(raw) {
-  return new ITrieImpl(decodeTrieData(raw));
+  const endPerf = measurePerf("decodeTrie");
+  const t = new ITrieImpl(decodeTrieData(raw));
+  endPerf();
+  return t;
 }
 var specialCharacters = stringToCharSet([
-  EOW,
+  EOW$1,
   BACK,
   EOL,
   REF,
@@ -46130,7 +47257,7 @@ function joinLetters(letters) {
 }
 function parseAlphabet(cs, locale, editCost) {
   const { cost, penalty } = cs;
-  const alphabet = joinLetters([...pipeSync([...pipeSync(expandCharacterSet(cs.characters), opMapSync((c) => caseForms(c, locale).sort()))], opFlattenSync(), opMapSync((letter) => accentForms(letter)), opFlattenSync(), opUniqueSync())].sort());
+  const alphabet = joinLetters([...pipeSync2([...pipeSync2(expandCharacterSet(cs.characters), opMapSync2((c) => caseForms(c, locale).sort()))], opFlattenSync2(), opMapSync2((letter) => accentForms(letter)), opFlattenSync2(), opUniqueSync2())].sort());
   return [
     clean$1({
       map: alphabet,
@@ -46145,7 +47272,7 @@ function parseAlphabet(cs, locale, editCost) {
 }
 function parseAlphabetCaps(alphabet, locale, editCost) {
   return {
-    map: [...pipeSync(expandCharacterSet(alphabet), opMapSync((c) => caseForms(c, locale).sort()))].map((a) => joinLetters(a)).join("|"),
+    map: [...pipeSync2(expandCharacterSet(alphabet), opMapSync2((c) => caseForms(c, locale).sort()))].map((a) => joinLetters(a)).join("|"),
     replace: editCost.capsCosts
   };
 }
@@ -46153,7 +47280,7 @@ function calcFirstCharacterReplaceDefs(alphabets, editCost) {
   return alphabets.map((cs) => calcFirstCharacterReplace(cs, editCost));
 }
 function calcFirstCharacterReplace(cs, editCost) {
-  const mapOfFirstLetters = [...pipeSync(expandCharacterSet(cs.characters), opUniqueSync(), opMapSync((letter) => `(^${letter})`))].sort().join("") + "(^)";
+  const mapOfFirstLetters = [...pipeSync2(expandCharacterSet(cs.characters), opUniqueSync2(), opMapSync2((letter) => `(^${letter})`))].sort().join("") + "(^)";
   const penalty = editCost.firstLetterPenalty;
   return {
     map: mapOfFirstLetters,
@@ -46163,7 +47290,7 @@ function calcFirstCharacterReplace(cs, editCost) {
 }
 function parseAccents(cs, _editCost) {
   const { cost, penalty } = cs;
-  const accents = joinLetters([...pipeSync(expandCharacterSet(cs.characters), opMapSync((char) => stripNonAccents(char)))]);
+  const accents = joinLetters([...pipeSync2(expandCharacterSet(cs.characters), opMapSync2((char) => stripNonAccents(char)))]);
   if (!accents) return void 0;
   return clean$1({
     map: accents,
@@ -46173,8 +47300,8 @@ function parseAccents(cs, _editCost) {
   });
 }
 function calcCostsForAccentedLetters(simpleMap, locale, costs) {
-  const charactersWithAccents = [...pipeSync(splitMap(simpleMap), opMapSync((char) => caseForms(char, locale)), opFlattenSync(), opMapSync((char) => [...accentForms(char)]), opFilterSync((forms$1) => forms$1.length > 1))];
-  const replaceAccentMap = [...pipeSync(charactersWithAccents, opMapSync((forms$1) => /* @__PURE__ */ new Set([...forms$1, ...forms$1.map((char) => stripAccents(char))])), opMapSync((forms$1) => [...forms$1].sort()), opFilterSync((forms$1) => forms$1.length > 1), opMapSync(joinLetters), opUniqueSync())].join("|");
+  const charactersWithAccents = [...pipeSync2(splitMap(simpleMap), opMapSync2((char) => caseForms(char, locale)), opFlattenSync2(), opMapSync2((char) => [...accentForms(char)]), opFilterSync2((forms$1) => forms$1.length > 1))];
+  const replaceAccentMap = [...pipeSync2(charactersWithAccents, opMapSync2((forms$1) => /* @__PURE__ */ new Set([...forms$1, ...forms$1.map((char) => stripAccents(char))])), opMapSync2((forms$1) => [...forms$1].sort()), opFilterSync2((forms$1) => forms$1.length > 1), opMapSync2(joinLetters), opUniqueSync2())].join("|");
   const cost = costs.accentCosts;
   const costToReplaceAccent = !replaceAccentMap ? [] : [{
     map: replaceAccentMap,
@@ -46187,10 +47314,10 @@ function calcCostsForAccentedLetters(simpleMap, locale, costs) {
   }];
   return [...costToReplaceAccent, ...costToNormalizeAccent];
 }
-function* splitMap(map3) {
+function* splitMap(map$2) {
   let seq = "";
   let mode = 0;
-  for (const char of map3) {
+  for (const char of map$2) {
     if (mode && char === ")") {
       yield seq;
       mode = 0;
@@ -46225,7 +47352,7 @@ function hunspellInformationToSuggestionCostDef(hunInfo, locales) {
   function parseAff(aff, costs$1) {
     const regSupportedAff = /^(?:MAP|KEY|TRY|NO-TRY|ICONV|OCONV|REP)\s/;
     const rejectAff = /^(?:MAP|KEY|TRY|ICONV|OCONV|REP)\s+\d+$/;
-    return [...pipeSync(aff.split("\n").map((a) => a.replace(/#.*/, "")).map((a) => a.trim()).filter((a) => regSupportedAff.test(a)).filter((a) => !rejectAff.test(a)), opMapSync((line) => pipeSync(operations, opMapSync((fn) => fn(line, costs$1)), opMapSync(asArrayOf), opFlattenSync())), opFlattenSync(), opFilterSync(isDefined$1))];
+    return [...pipeSync2(aff.split("\n").map((a) => a.replace(/#.*/, "")).map((a) => a.trim()).filter((a) => regSupportedAff.test(a)).filter((a) => !rejectAff.test(a)), opMapSync2((line) => pipeSync2(operations, opMapSync2((fn) => fn(line, costs$1)), opMapSync2(asArrayOf), opFlattenSync2())), opFlattenSync2(), opFilterSync2(isDefined$1))];
   }
   return parseAff(hunInfo.aff, costs);
 }
@@ -46240,10 +47367,10 @@ var regExpMap = /^(?:MAP)\s+(\S+)$/;
 function affMap(line, costs) {
   const m = line.match(regExpMap);
   if (!m) return void 0;
-  const map3 = m[1];
+  const map$2 = m[1];
   const cost = costs.mapCost;
   return {
-    map: map3,
+    map: map$2,
     replace: cost,
     swap: cost
   };
@@ -46307,10 +47434,10 @@ function affKey(line, costs) {
     b: "|"
   })).filter((ab) => ab.a !== "|" && ab.b !== "|").map(({ a, b }) => joinLetters([a, b]));
   const pairsUpper = pairs.map((p) => p.toLocaleUpperCase(costs.locale));
-  const map3 = unique([...pairs, ...pairsUpper]).join("|");
+  const map$2 = unique([...pairs, ...pairsUpper]).join("|");
   const cost = costs.keyboardCost;
   return {
-    map: map3,
+    map: map$2,
     replace: cost,
     swap: cost
   };
@@ -46337,11 +47464,11 @@ function affMapAccents(line, costs) {
 }
 function parseCaps(value, costs) {
   const locale = costs.locale;
-  const map3 = unique([...splitMap(value)].filter((a) => a !== "|").map((s) => caseForms(s, locale)).filter((forms$1) => forms$1.length > 1).map(joinLetters)).join("|");
+  const map$2 = unique([...splitMap(value)].filter((a) => a !== "|").map((s) => caseForms(s, locale)).filter((forms$1) => forms$1.length > 1).map(joinLetters)).join("|");
   const cost = costs.capsCosts;
-  if (!map3) return void 0;
+  if (!map$2) return void 0;
   return {
-    map: map3,
+    map: map$2,
     replace: cost
   };
 }
@@ -46368,7 +47495,7 @@ function mapDictionaryInformation(dictInfo) {
 }
 function processAlphabet(alphabet, locale, editCost) {
   const csAlphabet = toCharSets(alphabet, "a-zA-Z", editCost.baseCost);
-  return [...pipeSync(csAlphabet, opMapSync((cs) => parseAlphabet(cs, locale, editCost)), opFlattenSync()), ...calcFirstCharacterReplaceDefs(csAlphabet, editCost)];
+  return [...pipeSync2(csAlphabet, opMapSync2((cs) => parseAlphabet(cs, locale, editCost)), opFlattenSync2()), ...calcFirstCharacterReplaceDefs(csAlphabet, editCost)];
 }
 function toCharSets(cs, defaultValue, cost, penalty) {
   cs = cs ?? defaultValue;
@@ -46420,9 +47547,9 @@ var defaultAdjustments = [
 function mapDictionaryInformationToWeightMap(dictInfo) {
   const defs = [...mapDictionaryInformation(dictInfo), ...defaultDefs];
   const adjustments = mapDictionaryInformationToAdjustment(dictInfo);
-  const map3 = createWeightMap(...defs);
-  addAdjustment(map3, ...defaultAdjustments, ...adjustments);
-  return map3;
+  const map$2 = createWeightMap(...defs);
+  addAdjustment(map$2, ...defaultAdjustments, ...adjustments);
+  return map$2;
 }
 var baseCost = opCosts.baseCost;
 var postSwapCost = opCosts.swapCost - baseCost;
@@ -46433,6 +47560,7 @@ var normalizeWordForCaseInsensitive = (text) => {
   const t = text.toLowerCase();
   return [t, t.normalize("NFD").replaceAll(/\p{M}/gu, "")];
 };
+var BATCH_SIZE = 0;
 var _defaultOptions = {
   commentCharacter: LINE_COMMENT,
   optionalCompoundCharacter: OPTIONAL_COMPOUND_FIX,
@@ -46446,14 +47574,24 @@ var _defaultOptions = {
   split: false,
   splitKeepBoth: false,
   splitSeparator: /[\s,;]/g,
-  keepOptionalCompoundCharacter: false
+  keepOptionalCompoundCharacter: false,
+  suggestionPrefix: SUGGESTION_PREFIX,
+  disableSuggestionHandling: false,
+  makeWordsForbidden: false
 };
 var defaultParseDictionaryOptions = Object.freeze(_defaultOptions);
 var cSpellToolDirective = "cspell-dictionary:";
 function createDictionaryLineParserMapper(options) {
   const _options = options || _defaultOptions;
-  const { commentCharacter = _defaultOptions.commentCharacter, optionalCompoundCharacter: optionalCompound = _defaultOptions.optionalCompoundCharacter, compoundCharacter: compound = _defaultOptions.compoundCharacter, caseInsensitivePrefix: ignoreCase2 = _defaultOptions.caseInsensitivePrefix, forbiddenPrefix: forbidden = _defaultOptions.forbiddenPrefix, keepExactPrefix: keepCase = _defaultOptions.keepExactPrefix, splitSeparator = _defaultOptions.splitSeparator, splitKeepBoth = _defaultOptions.splitKeepBoth, stripCaseAndAccentsKeepDuplicate = _defaultOptions.stripCaseAndAccentsKeepDuplicate, stripCaseAndAccentsOnForbidden = _defaultOptions.stripCaseAndAccentsOnForbidden, keepOptionalCompoundCharacter = _defaultOptions.keepOptionalCompoundCharacter } = _options;
-  let { stripCaseAndAccents = _defaultOptions.stripCaseAndAccents, split: split2 = _defaultOptions.split } = _options;
+  const { commentCharacter = _defaultOptions.commentCharacter, optionalCompoundCharacter: optionalCompound = _defaultOptions.optionalCompoundCharacter, compoundCharacter: compound = _defaultOptions.compoundCharacter, caseInsensitivePrefix: ignoreCase2 = _defaultOptions.caseInsensitivePrefix, forbiddenPrefix: forbidden = _defaultOptions.forbiddenPrefix, keepExactPrefix: keepCase = _defaultOptions.keepExactPrefix, splitSeparator = _defaultOptions.splitSeparator, splitKeepBoth = _defaultOptions.splitKeepBoth, stripCaseAndAccentsKeepDuplicate = _defaultOptions.stripCaseAndAccentsKeepDuplicate, stripCaseAndAccentsOnForbidden = _defaultOptions.stripCaseAndAccentsOnForbidden, keepOptionalCompoundCharacter = _defaultOptions.keepOptionalCompoundCharacter, makeWordsForbidden = _defaultOptions.makeWordsForbidden } = _options;
+  let { stripCaseAndAccents = !makeWordsForbidden && _defaultOptions.stripCaseAndAccents, split: split2 = _defaultOptions.split, suggestionPrefix = _defaultOptions.suggestionPrefix } = _options;
+  const disableSuggestionHandling = _options.disableSuggestionHandling || [
+    "",
+    " ",
+    "	",
+    "\0"
+  ].includes(suggestionPrefix);
+  if (disableSuggestionHandling) suggestionPrefix = SUGGESTIONS_DISABLED;
   function isString2(line) {
     return typeof line === "string";
   }
@@ -46517,6 +47655,22 @@ function createDictionaryLineParserMapper(options) {
   function _normalize(word) {
     return normalizeWord(stripKeepCasePrefixAndQuotes(word));
   }
+  function* handleForbiddenPrefix(words) {
+    if (!makeWordsForbidden) {
+      yield* words;
+      return;
+    }
+    const f = forbidden;
+    const ff = f + f;
+    const sug = suggestionPrefix;
+    for (const word of words) {
+      if (word.startsWith(sug)) {
+        yield word;
+        continue;
+      }
+      yield (f + word).replaceAll(ff, "");
+    }
+  }
   function* mapNormalize(word) {
     const nWord = _normalize(word);
     const forms$1 = /* @__PURE__ */ new Set();
@@ -46536,11 +47690,84 @@ function createDictionaryLineParserMapper(options) {
   function* splitLines(paragraphs) {
     for (const paragraph of paragraphs) yield* paragraph.split("\n");
   }
-  const mapCompounds = keepOptionalCompoundCharacter ? [] : [opConcatMapSync(mapOptionalPrefix), opConcatMapSync(mapOptionalSuffix)];
-  return opCombineSync(opFilterSync(isString2), splitLines, opMapSync(removeComments), splitWords2, opMapSync(trim), opFilterSync(filterEmptyLines), ...mapCompounds, opConcatMapSync(mapNormalize), opMapSync(removeDoublePrefix));
+  function* handleSuggestions(lines) {
+    if (disableSuggestionHandling) {
+      yield* lines;
+      return;
+    }
+    for (const line of lines) yield* handleSuggestion(line);
+  }
+  const r = /^\s*(?<prefix>[!:~]*)(?<word>.*?)(?:->|:([0-9a-f]{1,2}:)?)(?<suggestions>.*)$/;
+  const suggestionSequence = /* @__PURE__ */ new Map();
+  const knownSuggestions = /* @__PURE__ */ new Set();
+  function addSuggestion(word, suggestion) {
+    const p = suggestionPrefix;
+    const pp = p + p;
+    const n = suggestionSequence.get(word) || 0;
+    const k = word + pp + suggestion;
+    if (knownSuggestions.has(k)) return;
+    knownSuggestions.add(k);
+    suggestionSequence.set(word, n + 1);
+    return k.replace(pp, p + n.toString(16) + p);
+  }
+  function* handleSuggestion(line) {
+    const hasAltFormat = line.includes("->");
+    if (!line.includes(":") && !hasAltFormat) {
+      yield line;
+      return;
+    }
+    const m = line.match(r);
+    if (!m || !m.groups) {
+      yield line;
+      return;
+    }
+    const prefix = m.groups["prefix"] || "";
+    const word = (m.groups["word"] || "").trim();
+    const suggestions2 = (m.groups["suggestions"] || "").split(",").map((s) => s.trim()).filter((s) => !!s);
+    if (!prefix.includes(":")) yield prefix + word;
+    const ww = ":" + word;
+    yield ww;
+    for (let i = 0; i < suggestions2.length; i++) {
+      const sug = addSuggestion(ww, suggestions2[i]);
+      if (sug) yield sug;
+    }
+  }
+  const mapCompounds = keepOptionalCompoundCharacter ? [] : [opConcatMapSync2(mapOptionalPrefix), opConcatMapSync2(mapOptionalSuffix)];
+  const optionalOperators = [];
+  if (options?.sortBatchSize) optionalOperators.push(createBatchAndSortLines(options.sortBatchSize));
+  return opCombineSync2(opFilterSync2(isString2), splitLines, opMapSync2(removeComments), splitWords2, opMapSync2(trim), opFilterSync2(filterEmptyLines), handleSuggestions, ...mapCompounds, opConcatMapSync2(mapNormalize), handleForbiddenPrefix, opMapSync2(removeDoublePrefix), ...optionalOperators);
 }
 function parseDictionaryLines(lines, options) {
   return createDictionaryLineParserMapper(options)(typeof lines === "string" ? [lines] : lines);
+}
+function parseLinesToDictionary(lines, options) {
+  const endPerf = measurePerf("parseLinesToDictionary");
+  const dictLines = parseDictionaryLines(lines, mergeOptions(_defaultOptions, options));
+  const words = [...new Set(dictLines)].sort();
+  const { optimize, useStringTable } = options || {};
+  const t = buildITrieFromWords(words, trieInfoFromOptions(options), {
+    optimize,
+    useStringTable
+  });
+  endPerf();
+  return t;
+}
+function parseDictionary(text, options) {
+  return parseLinesToDictionary(typeof text === "string" ? text.split("\n") : text, options);
+}
+function trieInfoFromOptions(options) {
+  const info4 = extractTrieInfo(options);
+  const sugPrefix = info4.suggestionPrefix ?? SUGGESTION_PREFIX;
+  if (options?.disableSuggestionHandling || sugPrefix !== SUGGESTION_PREFIX) info4.suggestionPrefix = SUGGESTIONS_DISABLED;
+  return info4;
+}
+function mergeOptions(base, ...partials) {
+  const opt = { ...base };
+  for (const p of partials) {
+    if (!p) continue;
+    Object.assign(opt, p);
+  }
+  return opt;
 }
 var RegExpToEncode = /\\([\s,;])/g;
 var RegExpDecode = /<<(%[\da-f]{2})>>/gi;
@@ -46553,8 +47780,28 @@ function decodeLine(line) {
 function splitLine(line, regExp) {
   return encodeLine(line).split(regExp).map((line$1) => decodeLine(line$1));
 }
+function createBatchAndSortLines(batchSize = BATCH_SIZE) {
+  if (batchSize <= 1) return (s) => s;
+  function* batchAndSortLines(lines) {
+    const maxSize = batchSize;
+    const batch = Array(maxSize);
+    let i = 0;
+    for (const line of lines) {
+      batch[i++] = line;
+      if (i >= maxSize) {
+        batch.sort();
+        yield* batch;
+        i = 0;
+      }
+    }
+    batch.length = i;
+    batch.sort();
+    yield* batch;
+  }
+  return batchAndSortLines;
+}
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/text.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/text.js
 init_import_meta_url();
 var regExAllUpper = /^(?:\p{Lu}\p{M}?)+$/u;
 var regExAccents = /\p{M}/gu;
@@ -46571,7 +47818,7 @@ function removeUnboundAccents(text) {
   return text.replaceAll(regExAccents, "");
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
 var defaultNumSuggestions = 10;
 function wordSearchForms(word, isDictionaryCaseSensitive, ignoreCase2) {
   const forms2 = /* @__PURE__ */ new Set();
@@ -46633,7 +47880,7 @@ function createWeightMapFromDictionaryInformation(di) {
   return di ? mapDictionaryInformationToWeightMap(di) : void 0;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
 var dictionaryCounter = 0;
 var DefaultAutoCacheSize = 1e3;
 var logRequests = false;
@@ -46653,8 +47900,12 @@ var CachedDict = class {
     const has = autoCache((word) => this.dict.has(word, this.options), DefaultAutoCacheSize);
     const hasAndLog = (word) => {
       const time = performance.now() - startTime;
+      const misses = has.misses;
       const value = has(word);
-      log.push({ time, method: "has", word, value });
+      if (logRequests) {
+        const miss = has.misses > misses;
+        log.push({ time, method: "has", word, value, miss });
+      }
       return value;
     };
     this.#has = has;
@@ -46690,27 +47941,31 @@ function createCachingDictionary(dict, options) {
   knownOptions.set(dict, cached);
   return cached;
 }
-function enableLogging(enabled = !logRequests) {
+function dictionaryCacheEnableLogging(enabled = !logRequests) {
+  if (enabled && !logRequests) {
+    knownDicts.clear();
+  }
   logRequests = enabled;
+  return logRequests;
 }
-function getLog() {
+function dictionaryCacheGetLog() {
   return log;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/index.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/AutoResolve.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/AutoResolve.js
 init_import_meta_url();
-function autoResolveWeak(map3, key, resolve6) {
-  const found = map3.get(key);
-  if (found !== void 0 || map3.has(key))
+function autoResolveWeak(map2, key, resolve6) {
+  const found = map2.get(key);
+  if (found !== void 0 || map2.has(key))
     return found;
   const value = resolve6(key);
-  map3.set(key, value);
+  map2.set(key, value);
   return value;
 }
 var AutoResolveWeakCache = class {
@@ -46730,17 +47985,17 @@ function createAutoResolveWeakCache() {
   return new AutoResolveWeakCache();
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/util.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/util.js
 init_import_meta_url();
 function isDefined(v) {
   return v !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 init_import_meta_url();
 var import_node_url = require("node:url");
 
-// ../node_modules/.pnpm/fast-equals@5.4.0/node_modules/fast-equals/dist/es/index.mjs
+// ../node_modules/.pnpm/fast-equals@6.0.0/node_modules/fast-equals/dist/es/index.mjs
 init_import_meta_url();
 var { getOwnPropertyNames, getOwnPropertySymbols } = Object;
 var { hasOwnProperty } = Object.prototype;
@@ -46768,9 +48023,6 @@ function createIsCircular(areItemsEqual) {
     return result;
   };
 }
-function getShortTag(value) {
-  return value != null ? value[Symbol.toStringTag] : void 0;
-}
 function getStrictProperties(object2) {
   return getOwnPropertyNames(object2).concat(getOwnPropertySymbols(object2));
 }
@@ -46778,13 +48030,19 @@ var hasOwn = (
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   Object.hasOwn || ((object2, property) => hasOwnProperty.call(object2, property))
 );
-function sameValueZeroEqual(a, b) {
-  return a === b || !a && !b && a !== a && b !== b;
-}
 var PREACT_VNODE = "__v";
 var PREACT_OWNER = "__o";
 var REACT_OWNER = "_owner";
 var { getOwnPropertyDescriptor, keys } = Object;
+var sameValueEqual = (
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  Object.is || function sameValueEqual2(a, b) {
+    return a === b ? a !== 0 || 1 / a === 1 / b : a !== a && b !== b;
+  }
+);
+function strictEqual(a, b) {
+  return a === b;
+}
 function areArrayBuffersEqual(a, b) {
   return a.byteLength === b.byteLength && areTypedArraysEqual(new Uint8Array(a), new Uint8Array(b));
 }
@@ -46804,13 +48062,10 @@ function areDataViewsEqual(a, b) {
   return a.byteLength === b.byteLength && areTypedArraysEqual(new Uint8Array(a.buffer, a.byteOffset, a.byteLength), new Uint8Array(b.buffer, b.byteOffset, b.byteLength));
 }
 function areDatesEqual(a, b) {
-  return sameValueZeroEqual(a.getTime(), b.getTime());
+  return sameValueEqual(a.getTime(), b.getTime());
 }
 function areErrorsEqual(a, b) {
   return a.name === b.name && a.message === b.message && a.cause === b.cause && a.stack === b.stack;
-}
-function areFunctionsEqual(a, b) {
-  return a === b;
 }
 function areMapsEqual(a, b, state) {
   const size = a.size;
@@ -46855,7 +48110,6 @@ function areMapsEqual(a, b, state) {
   }
   return true;
 }
-var areNumbersEqual = sameValueZeroEqual;
 function areObjectsEqual(a, b, state) {
   const properties = keys(a);
   let index = properties.length;
@@ -46892,7 +48146,7 @@ function areObjectsEqualStrict(a, b, state) {
   return true;
 }
 function arePrimitiveWrappersEqual(a, b) {
-  return sameValueZeroEqual(a.valueOf(), b.valueOf());
+  return sameValueEqual(a.valueOf(), b.valueOf());
 }
 function areRegExpsEqual(a, b) {
   return a.source === b.source && a.flags === b.flags;
@@ -46953,35 +48207,10 @@ function isPropertyEqual(a, b, state, property) {
   }
   return hasOwn(b, property) && state.equals(a[property], b[property], property, property, a, b, state);
 }
-var ARRAY_BUFFER_TAG = "[object ArrayBuffer]";
-var ARGUMENTS_TAG = "[object Arguments]";
-var BOOLEAN_TAG = "[object Boolean]";
-var DATA_VIEW_TAG = "[object DataView]";
-var DATE_TAG = "[object Date]";
-var ERROR_TAG = "[object Error]";
-var MAP_TAG = "[object Map]";
-var NUMBER_TAG = "[object Number]";
-var OBJECT_TAG = "[object Object]";
-var REG_EXP_TAG = "[object RegExp]";
-var SET_TAG = "[object Set]";
-var STRING_TAG = "[object String]";
-var TYPED_ARRAY_TAGS = {
-  "[object Int8Array]": true,
-  "[object Uint8Array]": true,
-  "[object Uint8ClampedArray]": true,
-  "[object Int16Array]": true,
-  "[object Uint16Array]": true,
-  "[object Int32Array]": true,
-  "[object Uint32Array]": true,
-  "[object Float16Array]": true,
-  "[object Float32Array]": true,
-  "[object Float64Array]": true,
-  "[object BigInt64Array]": true,
-  "[object BigUint64Array]": true
-};
-var URL_TAG = "[object URL]";
 var toString = Object.prototype.toString;
-function createEqualityComparator({ areArrayBuffersEqual: areArrayBuffersEqual2, areArraysEqual: areArraysEqual2, areDataViewsEqual: areDataViewsEqual2, areDatesEqual: areDatesEqual2, areErrorsEqual: areErrorsEqual2, areFunctionsEqual: areFunctionsEqual2, areMapsEqual: areMapsEqual2, areNumbersEqual: areNumbersEqual2, areObjectsEqual: areObjectsEqual2, arePrimitiveWrappersEqual: arePrimitiveWrappersEqual2, areRegExpsEqual: areRegExpsEqual2, areSetsEqual: areSetsEqual2, areTypedArraysEqual: areTypedArraysEqual2, areUrlsEqual: areUrlsEqual2, unknownTagComparators }) {
+function createEqualityComparator(config) {
+  const supportedComparatorMap = createSupportedComparatorMap(config);
+  const { areArraysEqual: areArraysEqual2, areDatesEqual: areDatesEqual2, areFunctionsEqual, areMapsEqual: areMapsEqual2, areNumbersEqual, areObjectsEqual: areObjectsEqual2, areRegExpsEqual: areRegExpsEqual2, areSetsEqual: areSetsEqual2, getUnsupportedCustomComparator } = config;
   return function comparator(a, b, state) {
     if (a === b) {
       return true;
@@ -46994,11 +48223,11 @@ function createEqualityComparator({ areArrayBuffersEqual: areArrayBuffersEqual2,
       return false;
     }
     if (type !== "object") {
-      if (type === "number") {
-        return areNumbersEqual2(a, b, state);
+      if (type === "number" || type === "bigint") {
+        return areNumbersEqual(a, b, state);
       }
       if (type === "function") {
-        return areFunctionsEqual2(a, b, state);
+        return areFunctionsEqual(a, b, state);
       }
       return false;
     }
@@ -47009,7 +48238,7 @@ function createEqualityComparator({ areArrayBuffersEqual: areArrayBuffersEqual2,
     if (constructor === Object) {
       return areObjectsEqual2(a, b, state);
     }
-    if (Array.isArray(a)) {
+    if (constructor === Array) {
       return areArraysEqual2(a, b, state);
     }
     if (constructor === Date) {
@@ -47024,54 +48253,20 @@ function createEqualityComparator({ areArrayBuffersEqual: areArrayBuffersEqual2,
     if (constructor === Set) {
       return areSetsEqual2(a, b, state);
     }
+    if (constructor === Promise) {
+      return false;
+    }
+    if (Array.isArray(a)) {
+      return areArraysEqual2(a, b, state);
+    }
     const tag = toString.call(a);
-    if (tag === DATE_TAG) {
-      return areDatesEqual2(a, b, state);
+    const supportedComparator = supportedComparatorMap[tag];
+    if (supportedComparator) {
+      return supportedComparator(a, b, state);
     }
-    if (tag === REG_EXP_TAG) {
-      return areRegExpsEqual2(a, b, state);
-    }
-    if (tag === MAP_TAG) {
-      return areMapsEqual2(a, b, state);
-    }
-    if (tag === SET_TAG) {
-      return areSetsEqual2(a, b, state);
-    }
-    if (tag === OBJECT_TAG) {
-      return typeof a.then !== "function" && typeof b.then !== "function" && areObjectsEqual2(a, b, state);
-    }
-    if (tag === URL_TAG) {
-      return areUrlsEqual2(a, b, state);
-    }
-    if (tag === ERROR_TAG) {
-      return areErrorsEqual2(a, b, state);
-    }
-    if (tag === ARGUMENTS_TAG) {
-      return areObjectsEqual2(a, b, state);
-    }
-    if (TYPED_ARRAY_TAGS[tag]) {
-      return areTypedArraysEqual2(a, b, state);
-    }
-    if (tag === ARRAY_BUFFER_TAG) {
-      return areArrayBuffersEqual2(a, b, state);
-    }
-    if (tag === DATA_VIEW_TAG) {
-      return areDataViewsEqual2(a, b, state);
-    }
-    if (tag === BOOLEAN_TAG || tag === NUMBER_TAG || tag === STRING_TAG) {
-      return arePrimitiveWrappersEqual2(a, b, state);
-    }
-    if (unknownTagComparators) {
-      let unknownTagComparator = unknownTagComparators[tag];
-      if (!unknownTagComparator) {
-        const shortTag = getShortTag(a);
-        if (shortTag) {
-          unknownTagComparator = unknownTagComparators[shortTag];
-        }
-      }
-      if (unknownTagComparator) {
-        return unknownTagComparator(a, b, state);
-      }
+    const unsupportedCustomComparator = getUnsupportedCustomComparator && getUnsupportedCustomComparator(a, b, state, tag);
+    if (unsupportedCustomComparator) {
+      return unsupportedCustomComparator(a, b, state);
     }
     return false;
   };
@@ -47083,16 +48278,16 @@ function createEqualityComparatorConfig({ circular, createCustomConfig, strict }
     areDataViewsEqual,
     areDatesEqual,
     areErrorsEqual,
-    areFunctionsEqual,
+    areFunctionsEqual: strictEqual,
     areMapsEqual: strict ? combineComparators(areMapsEqual, areObjectsEqualStrict) : areMapsEqual,
-    areNumbersEqual,
+    areNumbersEqual: sameValueEqual,
     areObjectsEqual: strict ? areObjectsEqualStrict : areObjectsEqual,
     arePrimitiveWrappersEqual,
     areRegExpsEqual,
     areSetsEqual: strict ? combineComparators(areSetsEqual, areObjectsEqualStrict) : areSetsEqual,
     areTypedArraysEqual: strict ? combineComparators(areTypedArraysEqual, areObjectsEqualStrict) : areTypedArraysEqual,
     areUrlsEqual,
-    unknownTagComparators: void 0
+    getUnsupportedCustomComparator: void 0
   };
   if (createCustomConfig) {
     config = Object.assign({}, config, createCustomConfig(config));
@@ -47148,6 +48343,49 @@ function createIsEqual({ circular, comparator, createState, equals, strict }) {
     return comparator(a, b, state);
   };
 }
+function createSupportedComparatorMap({ areArrayBuffersEqual: areArrayBuffersEqual2, areArraysEqual: areArraysEqual2, areDataViewsEqual: areDataViewsEqual2, areDatesEqual: areDatesEqual2, areErrorsEqual: areErrorsEqual2, areFunctionsEqual, areMapsEqual: areMapsEqual2, areNumbersEqual, areObjectsEqual: areObjectsEqual2, arePrimitiveWrappersEqual: arePrimitiveWrappersEqual2, areRegExpsEqual: areRegExpsEqual2, areSetsEqual: areSetsEqual2, areTypedArraysEqual: areTypedArraysEqual2, areUrlsEqual: areUrlsEqual2 }) {
+  return {
+    "[object Arguments]": areObjectsEqual2,
+    "[object Array]": areArraysEqual2,
+    "[object ArrayBuffer]": areArrayBuffersEqual2,
+    "[object AsyncGeneratorFunction]": areFunctionsEqual,
+    "[object BigInt]": areNumbersEqual,
+    "[object BigInt64Array]": areTypedArraysEqual2,
+    "[object BigUint64Array]": areTypedArraysEqual2,
+    "[object Boolean]": arePrimitiveWrappersEqual2,
+    "[object DataView]": areDataViewsEqual2,
+    "[object Date]": areDatesEqual2,
+    // If an error tag, it should be tested explicitly. Like RegExp, the properties are not
+    // enumerable, and therefore will give false positives if tested like a standard object.
+    "[object Error]": areErrorsEqual2,
+    "[object Float16Array]": areTypedArraysEqual2,
+    "[object Float32Array]": areTypedArraysEqual2,
+    "[object Float64Array]": areTypedArraysEqual2,
+    "[object Function]": areFunctionsEqual,
+    "[object GeneratorFunction]": areFunctionsEqual,
+    "[object Int8Array]": areTypedArraysEqual2,
+    "[object Int16Array]": areTypedArraysEqual2,
+    "[object Int32Array]": areTypedArraysEqual2,
+    "[object Map]": areMapsEqual2,
+    "[object Number]": arePrimitiveWrappersEqual2,
+    "[object Object]": (a, b, state) => (
+      // The exception for value comparison is custom `Promise`-like class instances. These should
+      // be treated the same as standard `Promise` objects, which means strict equality, and if
+      // it reaches this point then that strict equality comparison has already failed.
+      typeof a.then !== "function" && typeof b.then !== "function" && areObjectsEqual2(a, b, state)
+    ),
+    // For RegExp, the properties are not enumerable, and therefore will give false positives if
+    // tested like a standard object.
+    "[object RegExp]": areRegExpsEqual2,
+    "[object Set]": areSetsEqual2,
+    "[object String]": arePrimitiveWrappersEqual2,
+    "[object URL]": areUrlsEqual2,
+    "[object Uint8Array]": areTypedArraysEqual2,
+    "[object Uint8ClampedArray]": areTypedArraysEqual2,
+    "[object Uint16Array]": areTypedArraysEqual2,
+    "[object Uint32Array]": areTypedArraysEqual2
+  };
+}
 var deepEqual = createCustomEqual();
 var strictDeepEqual = createCustomEqual({ strict: true });
 var circularDeepEqual = createCustomEqual({ circular: true });
@@ -47156,19 +48394,19 @@ var strictCircularDeepEqual = createCustomEqual({
   strict: true
 });
 var shallowEqual = createCustomEqual({
-  createInternalComparator: () => sameValueZeroEqual
+  createInternalComparator: () => sameValueEqual
 });
 var strictShallowEqual = createCustomEqual({
   strict: true,
-  createInternalComparator: () => sameValueZeroEqual
+  createInternalComparator: () => sameValueEqual
 });
 var circularShallowEqual = createCustomEqual({
   circular: true,
-  createInternalComparator: () => sameValueZeroEqual
+  createInternalComparator: () => sameValueEqual
 });
 var strictCircularShallowEqual = createCustomEqual({
   circular: true,
-  createInternalComparator: () => sameValueZeroEqual,
+  createInternalComparator: () => sameValueEqual,
   strict: true
 });
 function createCustomEqual(options = {}) {
@@ -47179,7 +48417,23 @@ function createCustomEqual(options = {}) {
   return createIsEqual({ circular, comparator, createState, equals, strict });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/simpleCache.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/performance.js
+init_import_meta_url();
+function measurePerfStart2(name2) {
+  performance.mark(name2 + "-start");
+}
+function measurePerfEnd2(name2) {
+  performance.mark(name2 + "-end");
+  performance.measure(name2, name2 + "-start", name2 + "-end");
+}
+function measurePerf2(name2) {
+  measurePerfStart2(name2);
+  return () => {
+    measurePerfEnd2(name2);
+  };
+}
+
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/simpleCache.js
 init_import_meta_url();
 var SimpleWeakCache = class {
   size;
@@ -47298,16 +48552,16 @@ var SimpleCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
 init_import_meta_url();
 var defaultOptions = Object.freeze({
   weightMap: void 0
 });
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/clean.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/clean.js
 init_import_meta_url();
 function clean2(src) {
   const r = src;
@@ -47319,19 +48573,19 @@ function clean2(src) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/repMap.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/repMap.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/regexHelper.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/regexHelper.js
 init_import_meta_url();
 function escapeRegEx(s) {
   return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/repMap.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/repMap.js
 function createMapper(repMap, ignoreCharset) {
   if (!repMap && !ignoreCharset)
-    return (a) => a;
+    return void 0;
   repMap = repMap || [];
   const charsetMap = charsetToRepMapRegEx(ignoreCharset);
   if (charsetMap) {
@@ -47339,7 +48593,7 @@ function createMapper(repMap, ignoreCharset) {
   }
   const filteredMap = repMap.filter(([match2, _]) => !!match2);
   if (!filteredMap.length) {
-    return (a) => a;
+    return void 0;
   }
   const regEx = createMapperRegExp(repMap);
   const values = repMap.filter(([match2, _]) => !!match2).map(([_, into]) => into);
@@ -47347,14 +48601,18 @@ function createMapper(repMap, ignoreCharset) {
     const index = matches.findIndex((a) => !!a);
     return 0 <= index && index < values.length ? values[index] : m;
   }
-  return function(s) {
+  function fn(s) {
     return s.replace(regEx, resolve6);
+  }
+  return {
+    test: regexpRemoveFlags(regEx, "gm"),
+    fn
   };
 }
 function charsetToRepMapRegEx(charset, replaceWith = "") {
   if (!charset)
     return void 0;
-  return charset.split("|").map((chars) => `[${chars.replaceAll(/[\][\\]/g, "\\$&")}]`).map((map3) => [map3, replaceWith]);
+  return charset.split("|").map((chars) => `[${chars.replaceAll(/[\][\\]/g, "\\$&")}]`).map((map2) => [map2, replaceWith]);
 }
 function charsetToRepMap(charset, replaceWith = "") {
   if (!charset)
@@ -47383,12 +48641,21 @@ function createMapperRegExp(repMap) {
   return regEx;
 }
 function createRepMapper(repMap, ignoreCharset) {
-  if (!repMap && !ignoreCharset)
-    return (word) => [word];
+  if (!repMap?.length && !ignoreCharset)
+    return void 0;
+  let tRepMap = repMap || [];
+  const charsetMap = charsetToRepMapRegEx(ignoreCharset);
+  if (charsetMap) {
+    tRepMap = [...tRepMap, ...charsetMap];
+  }
+  const regEx = createMapperRegExp(tRepMap);
   const trie = createTrie(repMap, ignoreCharset);
-  return (word) => {
-    const edits = calcAllEdits(trie, word);
-    return applyEdits(word, edits);
+  return {
+    test: regexpRemoveFlags(regEx, "gm"),
+    fn: (word) => {
+      const edits = calcAllEdits(trie, word);
+      return applyEdits(word, edits);
+    }
   };
 }
 function applyEdits(word, edits) {
@@ -47454,13 +48721,18 @@ function addToTrie(node, match2, replaceWith) {
   s.add(replaceWith);
   node.rep = [...s];
 }
+function regexpRemoveFlags(re, flagsToRemove) {
+  const toRemove = new Set(flagsToRemove);
+  const flags = [...re.flags].filter((f) => !toRemove.has(f)).join("");
+  return new RegExp(re.source, flags);
+}
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/defaults.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/defaults.js
 init_import_meta_url();
 var ignoreCase = true;
 var isForbiddenIgnoreCaseAndAccents = false;
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
 var SpellingDictionaryFromTrie = class {
   trie;
   name;
@@ -47471,6 +48743,7 @@ var SpellingDictionaryFromTrie = class {
   unknownWords = /* @__PURE__ */ new Set();
   mapWord;
   remapWord;
+  repMapper;
   type = "SpellingDictionaryFromTrie";
   isDictionaryCaseSensitive;
   containsNoSuggestWords;
@@ -47483,9 +48756,12 @@ var SpellingDictionaryFromTrie = class {
     this.name = name2;
     this.options = options;
     this.source = source;
-    this.mapWord = createMapper(options.repMap, options.dictionaryInformation?.ignore);
-    this.remapWord = createRepMapper(options.repMap, options.dictionaryInformation?.ignore);
-    this.isDictionaryCaseSensitive = options.caseSensitive ?? trie.isCaseAware;
+    const mapWord = createMapper(options.repMap, options.dictionaryInformation?.ignore);
+    const repMapper = createRepMapper(options.repMap, options.dictionaryInformation?.ignore);
+    this.mapWord = mapWord?.fn;
+    this.remapWord = repMapper?.fn;
+    this.repMapper = repMapper;
+    this.isDictionaryCaseSensitive = options.caseSensitive ?? true;
     this.containsNoSuggestWords = options.noSuggest || false;
     this._size = size || 0;
     this.weightMap = options.weightMap || createWeightMapFromDictionaryInformation(options.dictionaryInformation);
@@ -47510,12 +48786,12 @@ var SpellingDictionaryFromTrie = class {
   }
   has(word, hasOptions) {
     const { useCompounds, ignoreCase: ignoreCase2 } = this.resolveOptions(hasOptions);
-    const r = this._find(word, useCompounds, ignoreCase2);
+    const r = this._find(word, useCompounds, ignoreCase2, void 0);
     return r && !r.forbidden && !!r.found || false;
   }
   find(word, hasOptions) {
     const { useCompounds, ignoreCase: ignoreCase2 } = this.resolveOptions(hasOptions);
-    const r = this._find(word, useCompounds, ignoreCase2);
+    const r = this._find(word, useCompounds, ignoreCase2, hasOptions?.compoundSeparator);
     const { forbidden = this.#isForbidden(word) } = r || {};
     if (this.#ignoreForbiddenWords && forbidden) {
       return void 0;
@@ -47530,18 +48806,21 @@ var SpellingDictionaryFromTrie = class {
     const { useCompounds = this.options.useCompounds, ignoreCase: ignoreCase2 = ignoreCase } = hasOptionToSearchOption(hasOptions);
     return { useCompounds, ignoreCase: ignoreCase2 };
   }
-  _find = (word, useCompounds, ignoreCase2) => this.findAnyForm(word, useCompounds, ignoreCase2);
-  findAnyForm(word, useCompounds, ignoreCase2) {
-    const outerForms = outerWordForms(word, this.remapWord || ((word2) => [this.mapWord(word2)]));
+  _find = (word, useCompounds, ignoreCase2, compoundSeparator) => this.findAnyForm(word, useCompounds, ignoreCase2, compoundSeparator);
+  findAnyForm(word, useCompounds, ignoreCase2, compoundSeparator) {
+    const outerForms = outerWordForms(word, this.repMapper);
     for (const form of outerForms) {
-      const r = this._findAnyForm(form, useCompounds, ignoreCase2);
+      const r = this._findAnyForm(form, useCompounds, ignoreCase2, compoundSeparator);
       if (r)
         return r;
     }
     return void 0;
   }
-  _findAnyForm(mWord, useCompounds, ignoreCase2) {
-    const opts = ignoreCase2 ? this.#findWordOptionsNotCaseSensitive : this.#findWordOptionsCaseSensitive;
+  _findAnyForm(mWord, useCompounds, ignoreCase2, compoundSeparator) {
+    let opts = ignoreCase2 ? this.#findWordOptionsNotCaseSensitive : this.#findWordOptionsCaseSensitive;
+    if (compoundSeparator) {
+      opts = { ...opts, compoundSeparator };
+    }
     const findResult = this.trie.findWord(mWord, opts);
     if (findResult.found !== false) {
       return findResult;
@@ -47578,12 +48857,12 @@ var SpellingDictionaryFromTrie = class {
   }
   _suggest(word, suggestOptions) {
     const { numSuggestions = defaultNumSuggestions, numChanges, includeTies, ignoreCase: ignoreCase2, timeout } = suggestOptions;
-    function filter3(_word) {
+    function filter2(_word) {
       return true;
     }
     const collector = suggestionCollector(word, clean2({
       numSuggestions,
-      filter: filter3,
+      filter: filter2,
       changeLimit: numChanges,
       includeTies,
       ignoreCase: ignoreCase2,
@@ -47601,29 +48880,55 @@ var SpellingDictionaryFromTrie = class {
       this.trie.genSuggestions(impersonateCollector(collector, w), _compoundMethod);
     }
   }
+  getPreferredSuggestions(word) {
+    if (!this.trie.hasPreferredSuggestions)
+      return [];
+    const sugs = [...this.trie.getPreferredSuggestions(word)];
+    return sugs.map((sug, i) => ({ word: sug, cost: i + 1, isPreferred: true }));
+  }
   getErrors() {
     return [];
   }
 };
 function createSpellingDictionaryFromTrieFile(data, name2, source, options) {
+  const endPerf = measurePerf2("createSpellingDictionaryFromTrieFile");
   const trie = decodeTrie(data);
-  return new SpellingDictionaryFromTrie(trie, name2, options, source);
+  const d = new SpellingDictionaryFromTrie(trie, name2, options, source);
+  endPerf();
+  return d;
 }
-function* outerWordForms(word, mapWord) {
+var isAsciiRange = /^[\u0000-\u007F]*$/;
+function* outerWordForms(word, repMapper) {
   const sent = /* @__PURE__ */ new Set();
   let w = word;
   const ww = w;
   yield w;
-  sent.add(w);
-  w = word.normalize("NFC");
-  if (w !== ww) {
-    yield w;
+  if (!isAsciiRange.test(w)) {
     sent.add(w);
+    w = word.normalize("NFC");
+    if (w !== ww) {
+      yield w;
+      sent.add(w);
+    }
+    w = word.normalize("NFD");
+    if (w !== ww && !sent.has(w)) {
+      yield w;
+      sent.add(w);
+    }
   }
-  w = word.normalize("NFD");
-  if (w !== ww && !sent.has(w)) {
-    yield w;
-    sent.add(w);
+  if (!repMapper)
+    return;
+  const mapWord = repMapper.fn;
+  if (!sent.size) {
+    if (!repMapper.test.test(ww))
+      return;
+    for (const m of mapWord(ww)) {
+      if (m !== ww && !sent.has(m)) {
+        yield m;
+        sent.add(m);
+      }
+    }
+    return;
   }
   for (const f of sent) {
     for (const m of mapWord(f)) {
@@ -47636,12 +48941,18 @@ function* outerWordForms(word, mapWord) {
   return;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 var cachedDictionaries = new AutoWeakCache(_createSpellingDictionary, 64);
 var maxSetSize = 3;
 var cachedParamsByWordList = new SimpleCache(64);
-function createSpellingDictionary(wordList, name2, source, options) {
-  const params = [wordList, name2, source.toString(), options];
+function createSpellingDictionary(wordList, name2, source, options, disableSuggestionsHandling) {
+  const params = [
+    wordList,
+    name2,
+    source.toString(),
+    options,
+    disableSuggestionsHandling
+  ];
   if (!Array.isArray(wordList)) {
     return _createSpellingDictionary(params);
   }
@@ -47658,15 +48969,19 @@ function createSpellingDictionary(wordList, name2, source, options) {
   return cachedDictionaries.get(params);
 }
 function _createSpellingDictionary(params) {
-  const [wordList, name2, source, options] = params;
-  const parseOptions = { stripCaseAndAccents: options?.supportNonStrictSearches ?? true };
+  const n = "";
+  const endPerf = measurePerf2("createSpellingDictionary" + n);
+  const [wordList, name2, source, options, disableSuggestionHandling = false] = params;
+  const parseOptions = { stripCaseAndAccents: options?.supportNonStrictSearches ?? true, disableSuggestionHandling };
   const words = parseDictionaryLines(wordList, parseOptions);
   const trie = buildITrieFromWords(words);
   const opts = { ...options || defaultOptions };
   if (opts.weightMap === void 0 && opts.dictionaryInformation) {
     opts.weightMap = createWeightMapFromDictionaryInformation(opts.dictionaryInformation);
   }
-  return new SpellingDictionaryFromTrie(trie, name2, opts, source);
+  const d = new SpellingDictionaryFromTrie(trie, name2, opts, source);
+  endPerf();
+  return d;
 }
 function createFailedToLoadDictionary(name2, sourceUrl, error3, options) {
   const sourceHref = typeof sourceUrl === "string" ? sourceUrl : sourceUrl.href;
@@ -47682,7 +48997,7 @@ function createFailedToLoadDictionary(name2, sourceUrl, error3, options) {
     isNoSuggestWord: () => false,
     isForbidden: () => false,
     suggest: () => [],
-    mapWord: (a) => a,
+    mapWord: void 0,
     genSuggestions: () => {
       return;
     },
@@ -47693,13 +49008,16 @@ function createFailedToLoadDictionary(name2, sourceUrl, error3, options) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/util/textMappers.js
+// ../node_modules/.pnpm/@cspell+cspell-pipe@9.6.0/node_modules/@cspell/cspell-pipe/dist/sync/index.js
+init_import_meta_url();
+
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/util/textMappers.js
 init_import_meta_url();
 function* mapperRemoveCaseAndAccents(words) {
   for (const word of words) {
@@ -47711,14 +49029,13 @@ function* mapperRemoveCaseAndAccents(words) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/index.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 init_import_meta_url();
-var import_node_assert2 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
 init_import_meta_url();
 function normalizeTyposDefValue(value) {
   if (!value)
@@ -47798,15 +49115,20 @@ function isArray(v) {
 function hasSuggestions(v) {
   return isString(v) || isArray(v);
 }
+function assert2(condition, message = "Assert Failed") {
+  if (condition)
+    return;
+  throw new Error(message);
+}
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 function assertString(v) {
-  (0, import_node_assert2.default)(typeof v === "string", "A string was expected.");
+  assert2(typeof v === "string", "A string was expected.");
   return true;
 }
 var suggestionsSeparator = /[,]/;
-var typoSuggestionsSeparator = /:|->/;
 var typoEntrySeparator = /[\n;]/;
+var sugFormatRegex = /^\s*(?:[!~:])*(?<word>.*?)(?<separator>(->|:([0-9a-f]{1,2}:)?))(?<sugs>.*)$/;
 function normalize2(s) {
   return s.normalize();
 }
@@ -47837,7 +49159,7 @@ function sanitizeIntoTypoDef(dirtyDef) {
       def[key] = sugs;
       continue;
     }
-    (0, import_node_assert2.default)(value === false, "Unexpected suggestion type.");
+    assert2(value === false, "Unexpected suggestion type.");
     def[key] = false;
   }
   return def;
@@ -47845,7 +49167,7 @@ function sanitizeIntoTypoDef(dirtyDef) {
 function processEntriesToTyposDef(entries) {
   const def = isIterable3(entries) ? reduceToTyposDef(entries) : entries;
   const result = sanitizeIntoTypoDef(def);
-  (0, import_node_assert2.default)(result);
+  assert2(result);
   return result;
 }
 function reduceToTyposDef(entries) {
@@ -47882,13 +49204,17 @@ function splitIntoLines(content) {
   return trimAndFilter(normalize2(content).split(typoEntrySeparator));
 }
 function splitEntry(line) {
-  return line.split(typoSuggestionsSeparator, 2);
+  const m = line.match(sugFormatRegex);
+  if (!m?.groups) {
+    return [line.trim(), void 0];
+  }
+  return [m.groups.word.trim(), m.groups.sugs.trim()];
 }
 function isIterable3(v) {
   return Symbol.iterator in v;
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
 var TyposDictionaryImpl = class {
   name;
   source;
@@ -47897,6 +49223,7 @@ var TyposDictionaryImpl = class {
   options = {};
   type = "typos";
   size;
+  mapWord = void 0;
   ignoreWords;
   /**
    * Note: ignoreWordsLower is only suggestions with the case and accents removed.
@@ -48007,9 +49334,6 @@ var TyposDictionaryImpl = class {
   getPreferredSuggestions(word) {
     return this._suggest(word) || this._suggest(word.toLowerCase()) || [];
   }
-  mapWord(word) {
-    return word;
-  }
   isDictionaryCaseSensitive = true;
   getErrors() {
     return [];
@@ -48023,7 +49347,7 @@ function createTyposDictionary(entries, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
 var FlagWordsDictionaryTrie = class extends SpellingDictionaryFromTrie {
   name;
   source;
@@ -48057,6 +49381,9 @@ var FlagWordsDictionaryTrie = class extends SpellingDictionaryFromTrie {
     return;
   }
   isDictionaryCaseSensitive = true;
+  terms() {
+    return this.trie.words();
+  }
 };
 var FlagWordsDictionary = class {
   name;
@@ -48066,6 +49393,7 @@ var FlagWordsDictionary = class {
   containsNoSuggestWords = false;
   options = {};
   type = "flag-words";
+  mapWord = void 0;
   constructor(name2, source, dictTypos, dictTrie) {
     this.name = name2;
     this.source = source;
@@ -48108,9 +49436,6 @@ var FlagWordsDictionary = class {
   genSuggestions() {
     return;
   }
-  mapWord(word) {
-    return word;
-  }
   get size() {
     return this.dictTypos.size + (this.dictTrie?.size || 0);
   }
@@ -48118,23 +49443,26 @@ var FlagWordsDictionary = class {
   getErrors() {
     return [];
   }
+  *terms() {
+    if (this.dictTrie) {
+      yield* this.dictTrie.terms();
+      return;
+    }
+    return;
+  }
 };
 var createCache2 = createAutoResolveWeakCache();
 function createFlagWordsDictionary(wordList, name2, source) {
   return createCache2.get(wordList, () => {
     const testSpecialCharacters = /[~*+]/;
     const { t: specialWords, f: typoWords } = bisect(parseDictionaryLines(wordList, { stripCaseAndAccents: false }), (line) => testSpecialCharacters.test(line));
-    const trieDict = specialWords.size ? buildTrieDict(specialWords, name2, source) : void 0;
+    const trie = parseDictionary(specialWords, { stripCaseAndAccents: false, makeWordsForbidden: true });
+    const trieDict = new FlagWordsDictionaryTrie(trie, name2, source);
     const typosDict = createTyposDictionary(typoWords, name2, source);
-    if (!trieDict)
+    if (!specialWords.size)
       return typosDict;
     return new FlagWordsDictionary(name2, source, typosDict, trieDict);
   });
-}
-var regExpCleanIgnore = /^(!!)+/;
-function buildTrieDict(words, name2, source) {
-  const trie = buildITrieFromWords(pipeSync(words, opMapSync((w) => "!" + w), opMapSync((w) => w.replace(regExpCleanIgnore, ""))));
-  return new FlagWordsDictionaryTrie(trie, name2, source);
 }
 function bisect(values, predicate) {
   const t = /* @__PURE__ */ new Set();
@@ -48149,7 +49477,7 @@ function bisect(values, predicate) {
   return { t, f };
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
 init_import_meta_url();
 var NormalizeForm = "NFC";
 var IgnoreWordsDictionary = class {
@@ -48160,6 +49488,7 @@ var IgnoreWordsDictionary = class {
   containsNoSuggestWords = true;
   options = {};
   type = "ignore";
+  mapWord = void 0;
   constructor(name2, source, words) {
     this.name = name2;
     this.source = source;
@@ -48210,9 +49539,6 @@ var IgnoreWordsDictionary = class {
   genSuggestions() {
     return;
   }
-  mapWord(word) {
-    return word;
-  }
   get size() {
     return this.dict.size;
   }
@@ -48240,16 +49566,13 @@ function createIgnoreWordsDictionary(wordList, name2, source, options) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
 init_import_meta_url();
-function identityString(w) {
-  return w;
-}
 var SpellingDictionaryCollectionImpl = class {
   dictionaries;
   name;
   options = { weightMap: void 0 };
-  mapWord = identityString;
+  mapWord = void 0;
   type = "SpellingDictionaryCollection";
   source;
   isDictionaryCaseSensitive;
@@ -48283,12 +49606,12 @@ var SpellingDictionaryCollectionImpl = class {
   _suggest(word, suggestOptions) {
     const { numSuggestions = defaultNumSuggestions, numChanges, ignoreCase: ignoreCase2, includeTies, timeout } = suggestOptions;
     const prefixNoCase = CASE_INSENSITIVE_PREFIX;
-    const filter3 = (word2, _cost) => {
+    const filter2 = (word2, _cost) => {
       return (ignoreCase2 || word2[0] !== prefixNoCase) && !this.isForbidden(word2) && !this.isNoSuggestWord(word2, suggestOptions);
     };
     const collectorOptions = {
       numSuggestions,
-      filter: filter3,
+      filter: filter2,
       changeLimit: numChanges,
       includeTies,
       ignoreCase: ignoreCase2,
@@ -48354,7 +49677,7 @@ function isWordForbiddenInAnyDictionary(dicts, word, ignoreCase2) {
   return dicts.find((dict) => dict.isForbidden(word, ignoreCase2));
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
 init_import_meta_url();
 var SuggestDictionaryImpl = class {
   name;
@@ -48364,6 +49687,7 @@ var SuggestDictionaryImpl = class {
   options = {};
   type = "suggest";
   size;
+  mapWord = void 0;
   /**
    * Note: ignoreWordsLower is only suggestions with the case and accents removed.
    * The logic is that if someone explicity ignored an upper case version, it does not
@@ -48441,9 +49765,6 @@ var SuggestDictionaryImpl = class {
     const sugs = this.suggest(collector.word);
     sugs.forEach((result) => collector.add(result));
   }
-  mapWord(word) {
-    return word;
-  }
   isDictionaryCaseSensitive = true;
   getErrors() {
     return [];
@@ -48457,7 +49778,7 @@ function createSuggestDictionary(entries, name2, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
+// ../node_modules/.pnpm/cspell-dictionary@9.6.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
 var cache = createAutoResolveWeakCache();
 function createInlineSpellingDictionary(inlineDict, source) {
   return cache.get(inlineDict, () => {
@@ -48473,20 +49794,14 @@ function createInlineSpellingDictionary(inlineDict, source) {
   });
 }
 
-// ../node_modules/.pnpm/cspell-dictionary@9.4.0/node_modules/cspell-dictionary/dist/index.js
-var _debug = {
-  cacheDictionaryEnableLogging: enableLogging,
-  cacheDictionaryGetLog: getLog
-};
-
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
 init_import_meta_url();
 var path6 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/util.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/util.js
 init_import_meta_url();
 var uniqueFn = uniqueFilterFnGenerator;
 function uniqueFilterFnGenerator(extractFn) {
@@ -48510,10 +49825,10 @@ function clean3(src) {
 }
 function scanMap(accFn, init) {
   let acc = init;
-  let first3 = true;
+  let first2 = true;
   return function(value) {
-    if (first3 && acc === void 0) {
-      first3 = false;
+    if (first2 && acc === void 0) {
+      first2 = false;
       acc = value;
       return acc;
     }
@@ -48544,7 +49859,7 @@ function doSetsIntersect(a, b) {
   return a.size <= b.size ? compare3(a, b) : compare3(b, a);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Models/CSpellSettingsInternalDef.js
 var SymbolCSpellSettingsInternal = /* @__PURE__ */ Symbol("CSpellSettingsInternal");
 function cleanCSpellSettingsInternal(parts) {
   return parts ? Object.assign(clean3(parts), { [SymbolCSpellSettingsInternal]: true }) : { [SymbolCSpellSettingsInternal]: true };
@@ -48565,14 +49880,14 @@ function isDictionaryFileDefinitionInternal(def) {
   return !!(def.path || def.file);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
 init_import_meta_url();
-function autoResolve(map3, key, resolve6) {
-  const found = map3.get(key);
-  if (found !== void 0 || map3.has(key))
+function autoResolve(map2, key, resolve6) {
+  const found = map2.get(key);
+  if (found !== void 0 || map2.has(key))
     return found;
   const value = resolve6(key);
-  map3.set(key, value);
+  map2.set(key, value);
   return value;
 }
 var CacheStatsTracker = class {
@@ -48628,21 +49943,21 @@ var AutoResolveCache = class {
 function createAutoResolveCache() {
   return new AutoResolveCache();
 }
-function autoResolveWeak2(map3, key, resolve6) {
-  const found = map3.get(key);
-  if (found !== void 0 || map3.has(key))
+function autoResolveWeak2(map2, key, resolve6) {
+  const found = map2.get(key);
+  if (found !== void 0 || map2.has(key))
     return found;
   const value = resolve6(key);
-  map3.set(key, value);
+  map2.set(key, value);
   return value;
 }
 var AutoResolveWeakCache2 = class {
   _map = /* @__PURE__ */ new WeakMap();
   _stats = new CacheStatsTracker();
   get(k, resolve6) {
-    const map3 = this._map;
-    const found = map3.get(k);
-    if (found !== void 0 || map3.has(k)) {
+    const map2 = this._map;
+    const found = map2.get(k);
+    if (found !== void 0 || map2.has(k)) {
       ++this._stats.hits;
       return found;
     }
@@ -48652,7 +49967,7 @@ var AutoResolveWeakCache2 = class {
     }
     ++this._stats.resolved;
     const value = resolve6(k);
-    map3.set(k, value);
+    map2.set(k, value);
     return value;
   }
   get map() {
@@ -48689,8 +50004,8 @@ var AutoResolveWeakWeakCache = class {
   _map = /* @__PURE__ */ new WeakMap();
   _stats = new CacheStatsTracker();
   get(k, resolve6) {
-    const map3 = this._map;
-    const found = map3.get(k);
+    const map2 = this._map;
+    const found = map2.get(k);
     const foundValue = found?.deref();
     if (found !== void 0 && foundValue) {
       ++this._stats.hits;
@@ -48699,13 +50014,13 @@ var AutoResolveWeakWeakCache = class {
     ++this._stats.misses;
     if (!resolve6) {
       if (found) {
-        map3.delete(k);
+        map2.delete(k);
       }
       return void 0;
     }
     ++this._stats.resolved;
     const value = resolve6(k);
-    map3.set(k, new WeakRef(value));
+    map2.set(k, new WeakRef(value));
     return value;
   }
   get map() {
@@ -48739,24 +50054,24 @@ function createAutoResolveWeakWeakCache() {
   return new AutoResolveWeakWeakCache();
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 init_import_meta_url();
 var import_node_module2 = require("node:module");
 var os2 = __toESM(require("node:os"), 1);
 var path5 = __toESM(require("node:path"), 1);
 var import_node_url8 = require("node:url");
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.4.0/node_modules/@cspell/cspell-resolver/dist/index.mjs
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.6.0/node_modules/@cspell/cspell-resolver/dist/index.mjs
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.4.0/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.6.0/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 init_import_meta_url();
 
 // ../node_modules/.pnpm/global-directory@4.0.1/node_modules/global-directory/index.js
 init_import_meta_url();
 var import_node_process = __toESM(require("node:process"), 1);
 var import_node_path = __toESM(require("node:path"), 1);
-var import_node_os2 = __toESM(require("node:os"), 1);
+var import_node_os = __toESM(require("node:os"), 1);
 var import_node_fs = __toESM(require("node:fs"), 1);
 var import_ini = __toESM(require_ini(), 1);
 var isWindows = import_node_process.default.platform === "win32";
@@ -48792,7 +50107,7 @@ var getNpmPrefix = () => {
   if (envPrefix) {
     return envPrefix;
   }
-  const homePrefix = readRc(import_node_path.default.join(import_node_os2.default.homedir(), ".npmrc"));
+  const homePrefix = readRc(import_node_path.default.join(import_node_os.default.homedir(), ".npmrc"));
   if (homePrefix) {
     return homePrefix;
   }
@@ -48823,11 +50138,11 @@ var getYarnPrefix = () => {
   if (windowsPrefix) {
     return windowsPrefix;
   }
-  const configPrefix = import_node_path.default.join(import_node_os2.default.homedir(), ".config/yarn");
+  const configPrefix = import_node_path.default.join(import_node_os.default.homedir(), ".config/yarn");
   if (import_node_fs.default.existsSync(configPrefix)) {
     return configPrefix;
   }
-  const homePrefix = import_node_path.default.join(import_node_os2.default.homedir(), ".yarn-config");
+  const homePrefix = import_node_path.default.join(import_node_os.default.homedir(), ".yarn-config");
   if (import_node_fs.default.existsSync(homePrefix)) {
     return homePrefix;
   }
@@ -48845,24 +50160,24 @@ globalDirectory.yarn.packages = import_node_path.default.join(yarnPrefix, getYar
 globalDirectory.yarn.binaries = import_node_path.default.join(globalDirectory.yarn.packages, ".bin");
 var global_directory_default = globalDirectory;
 
-// ../node_modules/.pnpm/@cspell+cspell-resolver@9.4.0/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
+// ../node_modules/.pnpm/@cspell+cspell-resolver@9.6.0/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 var import_requireResolve = __toESM(require_requireResolve(), 1);
 function resolveGlobal(modulesName) {
   const paths = [global_directory_default.npm.packages, global_directory_default.yarn.packages];
   return (0, import_requireResolve.requireResolve)(modulesName, paths);
 }
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@9.4.0/node_modules/@cspell/dynamic-import/dist/esm/index.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@9.6.0/node_modules/@cspell/dynamic-import/dist/esm/index.mjs
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@9.4.0/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@9.6.0/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 init_import_meta_url();
 var import_node_fs4 = require("node:fs");
 var import_node_path5 = require("node:path");
 
-// ../node_modules/.pnpm/@cspell+url@9.4.0/node_modules/@cspell/url/dist/index.js
+// ../node_modules/.pnpm/@cspell+url@9.6.0/node_modules/@cspell/url/dist/index.js
 init_import_meta_url();
-var import_node_assert3 = __toESM(require("node:assert"), 1);
+var import_node_assert = __toESM(require("node:assert"), 1);
 var import_node_path2 = __toESM(require("node:path"), 1);
 var import_node_url2 = require("node:url");
 var isURLRegEx = /^(\w[\w-]{1,63}:\/|data:|stdin:)/i;
@@ -49006,7 +50321,7 @@ var FileUrlBuilder = class {
     this.windows = options.windows ?? (sep5 ? sep5 === "\\" : void 0) ?? isWindows2;
     this.path = options.path ?? (this.windows ? import_node_path2.default.win32 : import_node_path2.default.posix);
     this.cwd = options.cwd ?? this.pathToFileURL(this.path.resolve() + "/", this.rootFileURL());
-    (0, import_node_assert3.default)(this.path.sep === (this.windows ? "\\" : "/"), `Path separator should match OS type Windows: ${this.windows === true ? "true" : (this.windows ?? "undefined") || "false"}, sep: ${this.path.sep}, options: ` + JSON.stringify({
+    (0, import_node_assert.default)(this.path.sep === (this.windows ? "\\" : "/"), `Path separator should match OS type Windows: ${this.windows === true ? "true" : (this.windows ?? "undefined") || "false"}, sep: ${this.path.sep}, options: ` + JSON.stringify({
       isWindows: isWindows2,
       sep: `${sep5}`,
       windows: options.windows,
@@ -49173,7 +50488,7 @@ init_import_meta_url();
 
 // ../node_modules/.pnpm/import-meta-resolve@4.2.0/node_modules/import-meta-resolve/lib/resolve.js
 init_import_meta_url();
-var import_node_assert5 = __toESM(require("node:assert"), 1);
+var import_node_assert3 = __toESM(require("node:assert"), 1);
 var import_node_fs3 = require("node:fs");
 var import_node_process2 = __toESM(require("node:process"), 1);
 var import_node_url5 = require("node:url");
@@ -49193,7 +50508,7 @@ var import_node_url3 = require("node:url");
 // ../node_modules/.pnpm/import-meta-resolve@4.2.0/node_modules/import-meta-resolve/lib/errors.js
 init_import_meta_url();
 var import_node_v8 = __toESM(require("node:v8"), 1);
-var import_node_assert4 = __toESM(require("node:assert"), 1);
+var import_node_assert2 = __toESM(require("node:assert"), 1);
 var import_node_util3 = require("node:util");
 var own = {}.hasOwnProperty;
 var classRegExp = /^([A-Z][a-z\d]*)+$/;
@@ -49224,7 +50539,7 @@ codes2.ERR_INVALID_ARG_TYPE = createError(
    * @param {unknown} actual
    */
   (name2, expected, actual) => {
-    import_node_assert4.default.ok(typeof name2 === "string", "'name' must be a string");
+    import_node_assert2.default.ok(typeof name2 === "string", "'name' must be a string");
     if (!Array.isArray(expected)) {
       expected = [expected];
     }
@@ -49240,14 +50555,14 @@ codes2.ERR_INVALID_ARG_TYPE = createError(
     const instances = [];
     const other = [];
     for (const value of expected) {
-      import_node_assert4.default.ok(
+      import_node_assert2.default.ok(
         typeof value === "string",
         "All expected entries have to be of type string"
       );
       if (kTypes.has(value)) {
         types.push(value.toLowerCase());
       } else if (classRegExp.exec(value) === null) {
-        import_node_assert4.default.ok(
+        import_node_assert2.default.ok(
           value !== "object",
           'The value "object" should be written as "Object"'
         );
@@ -49323,7 +50638,7 @@ codes2.ERR_INVALID_PACKAGE_TARGET = createError(
   (packagePath, key, target, isImport = false, base = void 0) => {
     const relatedError = typeof target === "string" && !isImport && target.length > 0 && !target.startsWith("./");
     if (key === ".") {
-      import_node_assert4.default.ok(isImport === false);
+      import_node_assert2.default.ok(isImport === false);
       return `Invalid "exports" main target ${JSON.stringify(target)} defined in the package config ${packagePath}package.json${base ? ` imported from ${base}` : ""}${relatedError ? '; targets must start with "./"' : ""}`;
     }
     return `Invalid "${isImport ? "imports" : "exports"}" target ${JSON.stringify(
@@ -49488,9 +50803,9 @@ var captureLargerStackTrace = hideStackFrames(
 );
 function getMessage(key, parameters, self) {
   const message = messages.get(key);
-  import_node_assert4.default.ok(message !== void 0, "expected `message` to be found");
+  import_node_assert2.default.ok(message !== void 0, "expected `message` to be found");
   if (typeof message === "function") {
-    import_node_assert4.default.ok(
+    import_node_assert2.default.ok(
       message.length <= parameters.length,
       // Default options do not count.
       `Code: ${key}; The provided arguments length (${parameters.length}) does not match the required ones (${message.length}).`
@@ -49500,7 +50815,7 @@ function getMessage(key, parameters, self) {
   const regex = /%[dfijoOs]/g;
   let expectedLength = 0;
   while (regex.exec(message) !== null) expectedLength++;
-  import_node_assert4.default.ok(
+  import_node_assert2.default.ok(
     expectedLength === parameters.length,
     `Code: ${key}; The provided arguments length (${parameters.length}) does not match the required ones (${expectedLength}).`
   );
@@ -50434,7 +51749,7 @@ function moduleResolve(specifier, base, conditions, preserveSymlinks) {
       resolved = packageResolve(specifier, base, conditions);
     }
   }
-  import_node_assert5.default.ok(resolved !== void 0, "expected to be defined");
+  import_node_assert3.default.ok(resolved !== void 0, "expected to be defined");
   if (resolved.protocol !== "file:") {
     return resolved;
   }
@@ -50489,7 +51804,7 @@ function throwIfInvalidParentURL(parentURL) {
 }
 function defaultResolve(specifier, context = {}) {
   const { parentURL } = context;
-  import_node_assert5.default.ok(parentURL !== void 0, "expected `parentURL` to be defined");
+  import_node_assert3.default.ok(parentURL !== void 0, "expected `parentURL` to be defined");
   throwIfInvalidParentURL(parentURL);
   let parsedParentURL;
   if (parentURL) {
@@ -50552,7 +51867,7 @@ function resolve(specifier, parent) {
   }
 }
 
-// ../node_modules/.pnpm/@cspell+dynamic-import@9.4.0/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+// ../node_modules/.pnpm/@cspell+dynamic-import@9.6.0/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 var isWindowsPath = /^[a-z]:\\/i;
 async function dynamicImportFrom(moduleName, paths) {
   paths = Array.isArray(paths) ? paths : paths ? [paths] : void 0;
@@ -50607,24 +51922,24 @@ function dirToUrl(dir) {
   return toFileDirURL(abs);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var import_resolve_from = __toESM(require_resolve_from(), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/fileSystem.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/fileSystem.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-io@9.4.0/node_modules/cspell-io/dist/index.js
+// ../node_modules/.pnpm/cspell-io@9.6.0/node_modules/cspell-io/dist/index.js
 init_import_meta_url();
-var import_node_buffer2 = require("node:buffer");
+var import_node_buffer = require("node:buffer");
 var import_node_zlib = require("node:zlib");
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.4.0/node_modules/@cspell/cspell-service-bus/dist/esm/index.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.6.0/node_modules/@cspell/cspell-service-bus/dist/esm/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.4.0/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.6.0/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.4.0/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.6.0/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
 init_import_meta_url();
 var ErrorUnhandledRequest = class extends Error {
   request;
@@ -50654,7 +51969,7 @@ var UnhandledHandlerError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.4.0/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.6.0/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
 init_import_meta_url();
 var BaseServiceRequest = class {
   type;
@@ -50680,7 +51995,7 @@ function isServiceResponseSuccess(res) {
   return "value" in res && res.error === void 0;
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.4.0/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.6.0/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
 var MAX_DEPTH = 10;
 var ServiceBus = class {
   handlers = [];
@@ -50727,7 +52042,7 @@ var ServiceBus = class {
   }
 };
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.4.0/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.6.0/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
 init_import_meta_url();
 function createRequestHandler(requestDef, fn, name2, description) {
   return createIsRequestHandler(requestDef.is, fn, name2 ?? requestDef.type, description);
@@ -50743,7 +52058,7 @@ function createIsRequestHandler(isA, fn, name2, description) {
   };
 }
 
-// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.4.0/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
+// ../node_modules/.pnpm/@cspell+cspell-service-bus@9.6.0/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
 init_import_meta_url();
 function requestFactory(requestType) {
   class RequestClass extends ServiceRequestCls {
@@ -50765,7 +52080,7 @@ function requestFactory(requestType) {
   return RequestClass;
 }
 
-// ../node_modules/.pnpm/cspell-io@9.4.0/node_modules/cspell-io/dist/index.js
+// ../node_modules/.pnpm/cspell-io@9.6.0/node_modules/cspell-io/dist/index.js
 var import_node_fs5 = require("node:fs");
 var import_node_url6 = require("node:url");
 var import_node_util4 = require("node:util");
@@ -50836,20 +52151,20 @@ var AssertionError = class extends Error {
 function assert$1(value, message) {
   if (!value) throw new AssertionError(message ?? "Assertion failed");
 }
-function asUint8Array(data) {
+function toUint8Array2(data) {
+  if (data instanceof Uint8Array) return data;
   return new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
 }
 function arrayBufferViewToBuffer(data) {
-  if (data instanceof import_node_buffer2.Buffer) return data;
-  const buf = import_node_buffer2.Buffer.from(data.buffer);
-  if (data.byteOffset === 0 && data.byteLength === data.buffer.byteLength) return buf;
-  return buf.subarray(data.byteOffset, data.byteOffset + data.byteLength);
+  if (data instanceof import_node_buffer.Buffer) return data;
+  return import_node_buffer.Buffer.from(data.buffer, data.byteOffset, data.byteLength);
 }
 function copyArrayBufferView(data) {
   return new Uint8Array(data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength));
 }
 function swap16(data) {
-  return arrayBufferViewToBuffer(data).swap16();
+  arrayBufferViewToBuffer(data).swap16();
+  return data;
 }
 function swapBytes(data) {
   return swap16(copyArrayBufferView(data));
@@ -50861,18 +52176,18 @@ var decoderUTF16LE = new TextDecoder("utf-16le");
 var decoderUTF16BE = createTextDecoderUtf16BE();
 var encoderUTF8 = new TextEncoder();
 function decodeUtf16LE(data) {
-  const buf = asUint8Array(data);
+  const buf = toUint8Array2(data);
   const bom = buf[0] << 8 | buf[1];
   return decoderUTF16LE.decode(bom === BOM_LE ? buf.subarray(2) : buf);
 }
 function decodeUtf16BE(data) {
-  const buf = asUint8Array(data);
+  const buf = toUint8Array2(data);
   const bom = buf[0] << 8 | buf[1];
   return decoderUTF16BE.decode(bom === BOM_BE ? buf.subarray(2) : buf);
 }
 function decodeToString(data, encoding) {
   if (isGZipped(data)) return decodeToString(decompressBuffer(data), encoding);
-  const buf = asUint8Array(data);
+  const buf = toUint8Array2(data);
   const bom = buf[0] << 8 | buf[1];
   if (bom === BOM_BE || buf[0] === 0 && buf[1] !== 0) return decodeUtf16BE(buf);
   if (bom === BOM_LE || buf[0] !== 0 && buf[1] === 0) return decodeUtf16LE(buf);
@@ -50899,7 +52214,7 @@ function decode(data, encoding) {
   }
   return decodeToString(data, encoding);
 }
-function encodeString(str, encoding, bom) {
+function encodeString$1(str, encoding, bom) {
   switch (encoding) {
     case void 0:
     case "utf-8":
@@ -50912,12 +52227,12 @@ function encodeString(str, encoding, bom) {
     case "utf16le":
       return encodeUtf16LE(str, bom);
   }
-  return import_node_buffer2.Buffer.from(str, encoding);
+  return import_node_buffer.Buffer.from(str, encoding);
 }
 function encodeUtf16LE(str, bom = true) {
-  const buf = import_node_buffer2.Buffer.from(str, "utf16le");
+  const buf = import_node_buffer.Buffer.from(str, "utf16le");
   if (bom) {
-    const target = import_node_buffer2.Buffer.alloc(buf.length + 2);
+    const target = import_node_buffer.Buffer.alloc(buf.length + 2);
     target.writeUint16LE(BOM_BE);
     buf.copy(target, 2);
     return target;
@@ -50946,39 +52261,72 @@ var UnsupportedEncodingError = class extends Error {
 };
 function isGZipped(data) {
   if (typeof data === "string") return false;
-  const buf = asUint8Array(data);
+  const buf = toUint8Array2(data);
   return buf[0] === 31 && buf[1] === 139;
 }
 function decompressBuffer(data) {
   if (!isGZipped(data)) return data;
   return (0, import_node_zlib.gunzipSync)(arrayBufferViewToBuffer(data));
 }
+async function decompress(data, method = "gzip") {
+  const ds = new DecompressionStream(method || "deflate-raw");
+  const writer = ds.writable.getWriter();
+  writer.write(data);
+  writer.close();
+  const reader = ds.readable.getReader();
+  const chunks = [];
+  let size = 0;
+  while (true) {
+    const chunk = await reader.read();
+    if (chunk.done) break;
+    chunks.push(chunk.value);
+    size += chunk.value.length;
+  }
+  const result = new Uint8Array(size);
+  for (let offset = 0, i = 0; i < chunks.length; i++) {
+    result.set(chunks[i], offset);
+    offset += chunks[i].length;
+  }
+  return result;
+}
 var CFileResource = class CFileResource2 {
-  _text;
   baseFilename;
-  _gz;
+  url;
+  content;
+  encoding;
+  #gz;
+  #text;
+  #data;
   constructor(url2, content, encoding, baseFilename, gz) {
     this.url = url2;
     this.content = content;
     this.encoding = encoding;
     this.baseFilename = baseFilename ?? (url2.protocol !== "data:" && url2.pathname.split("/").pop() || void 0);
-    this._gz = gz;
+    this.#gz = gz;
   }
   get gz() {
-    if (this._gz !== void 0) return this._gz;
+    if (this.#gz !== void 0) return this.#gz;
     if (this.url.pathname.endsWith(".gz")) return true;
     if (typeof this.content === "string") return false;
     return isGZipped(this.content);
   }
   getText(encoding) {
-    if (this._text !== void 0) return this._text;
+    if (this.#text !== void 0) return this.#text;
     const text = typeof this.content === "string" ? this.content : decode(this.content, encoding ?? this.encoding);
-    this._text = text;
+    this.#text = text;
     return text;
   }
-  getBytes() {
-    const arrayBufferview = typeof this.content === "string" ? encodeString(this.content, this.encoding) : this.content;
-    return arrayBufferview instanceof Uint8Array ? arrayBufferview : new Uint8Array(arrayBufferview.buffer, arrayBufferview.byteOffset, arrayBufferview.byteLength);
+  async getBytes(unzip) {
+    if (unzip !== false && this.#data !== void 0) return this.#data;
+    if (typeof this.content === "string") {
+      this.#data = encodeString$1(this.content, this.encoding);
+      return this.#data;
+    }
+    if (unzip ?? isGZipped(this.content)) {
+      this.#data = await decompress(this.content, "gzip");
+      return this.#data;
+    }
+    return this.content;
   }
   toJson() {
     return {
@@ -51033,7 +52381,7 @@ function toReadFileOptions(options) {
   if (typeof options === "string") return { encoding: options };
   return options;
 }
-function toError4(e) {
+function toError$1(e) {
   if (e instanceof Error) return e;
   if (typeof e === "object" && e && "message" in e && typeof e.message === "string") return new Error(e.message, { cause: e });
   return new Error(e && e.toString());
@@ -51046,17 +52394,17 @@ var FileType = /* @__PURE__ */ (function(FileType$1) {
   return FileType$1;
 })({});
 function encodeDataUrl(data, mediaType, attributes) {
-  if (typeof data === "string") return encodeString$1(data, mediaType, attributes);
+  if (typeof data === "string") return encodeString(data, mediaType, attributes);
   return `data:${mediaType}${encodeAttributes(attributes || [])};base64,${arrayBufferViewToBuffer(data).toString("base64url")}`;
 }
 function toDataUrl(data, mediaType, attributes) {
   return new URL(encodeDataUrl(data, mediaType, attributes));
 }
-function encodeString$1(data, mediaType, attributes) {
+function encodeString(data, mediaType, attributes) {
   mediaType = mediaType || "text/plain";
   attributes = attributes || [];
   const asUrlComp = encodeURIComponent(data);
-  const asBase64 = import_node_buffer2.Buffer.from(data).toString("base64url");
+  const asBase64 = import_node_buffer.Buffer.from(data).toString("base64url");
   const useBase64 = asBase64.length < asUrlComp.length - 7;
   const encoded = useBase64 ? asBase64 : asUrlComp;
   const attribMap = new Map([["charset", "utf-8"], ...attributes]);
@@ -51080,7 +52428,7 @@ function decodeDataUrl(url2) {
   const encoding = attributes.get("charset");
   return {
     mediaType,
-    data: !!match2.groups["base64"] ? import_node_buffer2.Buffer.from(encodedData, "base64url") : import_node_buffer2.Buffer.from(decodeURIComponent(encodedData)),
+    data: !!match2.groups["base64"] ? import_node_buffer.Buffer.from(encodedData, "base64url") : import_node_buffer.Buffer.from(decodeURIComponent(encodedData)),
     encoding,
     attributes
   };
@@ -51142,9 +52490,9 @@ function getCause(e) {
   return isErrorWithOptionalCause(e) ? e.cause : void 0;
 }
 function toFetchUrlError(err, url2) {
-  return err instanceof FetchUrlError ? err : FetchUrlError.fromError(url2, toError$1(err));
+  return err instanceof FetchUrlError ? err : FetchUrlError.fromError(url2, toError4(err));
 }
-function toError$1(err) {
+function toError4(err) {
   return err instanceof Error ? err : new Error("Unknown Error", { cause: err });
 }
 async function fetchHead(request) {
@@ -51161,7 +52509,7 @@ async function fetchURL(url2, signal) {
   try {
     const response = await _fetch(signal ? new Request(url2, { signal }) : url2);
     if (!response.ok) throw FetchUrlError.create(url2, response.status);
-    return import_node_buffer2.Buffer.from(await response.arrayBuffer());
+    return await response.bytes();
   } catch (e) {
     throw toFetchUrlError(e, url2);
   }
@@ -51257,7 +52605,7 @@ var handleRequestFsStatSync = RequestFsStatSync.createRequestHandler((req) => {
   try {
     return createResponse((0, import_node_fs5.statSync)((0, import_node_url6.fileURLToPath)(params.url)));
   } catch (e) {
-    return createResponseFail(req, toError4(e));
+    return createResponseFail(req, toError$1(e));
   }
 }, void 0, "Node: fs.stat.");
 var handleRequestFsStatHttp = RequestFsStat.createRequestHandler((req, next) => {
@@ -51333,7 +52681,7 @@ function encodeContent(ref, content) {
       "utf8",
       "utf-8"
     ].includes(ref.encoding)) return content;
-    return arrayBufferViewToBuffer(encodeString(content, ref.encoding));
+    return arrayBufferViewToBuffer(encodeString$1(content, ref.encoding));
   }
   return arrayBufferViewToBuffer(content);
 }
@@ -51861,11 +53209,11 @@ async function getStat(filenameOrUri) {
   try {
     return await getDefaultCSpellIO().getStat(filenameOrUri);
   } catch (e) {
-    return toError4(e);
+    return toError$1(e);
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/fileSystem.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/fileSystem.js
 function getVirtualFS() {
   return getDefaultVirtualFs();
 }
@@ -51873,7 +53221,7 @@ function getFileSystem() {
   return getVirtualFS().fs;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/pkg-info.mjs
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/pkg-info.mjs
 init_import_meta_url();
 var import_node_url7 = require("node:url");
 var url = import_meta_url;
@@ -51886,7 +53234,7 @@ function calcSrcDirectory() {
 }
 var srcDirectory = calcSrcDirectory();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/templates.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/templates.js
 init_import_meta_url();
 function replaceTemplate(template2, replacements) {
   const templateStart = "${";
@@ -51923,7 +53271,7 @@ function envToTemplateVars(env4) {
   return vars;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/url.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/url.js
 init_import_meta_url();
 function getSourceDirectoryUrl() {
   const srcDirectoryURL = toFileDirURL(srcDirectory);
@@ -51943,7 +53291,7 @@ function windowsDriveLetterToUpper(absoluteFilePath) {
   return absoluteFilePath.replace(regExpWindowsPathDriveLetter2, (s) => s.toUpperCase());
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var regExpStartsWidthNodeModules = /^node_modules[/\\]/;
 var debugMode = false;
 var FileResolver = class {
@@ -52222,7 +53570,7 @@ async function resolveFile(filename, relativeTo, fs6 = getFileSystem()) {
   return resolver.resolveFile(filename, relativeTo);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
 init_import_meta_url();
 function createDictionaryReferenceCollection(dictionaries) {
   return new _DictionaryReferenceCollection(dictionaries);
@@ -52269,7 +53617,7 @@ function mapReference(ref) {
   return { name: name2.trim(), weight };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/DictionarySettings.js
 function filterDictDefsToLoad(dictRefCol, defs) {
   const allActiveDefs = defs.filter(({ name: name2 }) => dictRefCol.isEnabled(name2)).map(fixPath);
   return [...new Map(allActiveDefs.map((d) => [d.name, d])).values()];
@@ -52279,10 +53627,12 @@ function fixPath(def) {
     return def;
   }
   const newPath = fixDicPath(def.path, def.file);
+  const newBTriePath = def.btrie ? fixDicPath(def.btrie, def.file) : void 0;
   return {
     ...def,
     file: void 0,
-    path: newPath
+    path: newPath,
+    btrie: newBTriePath
   };
 }
 function fixDicPath(defPath, defFile) {
@@ -52351,15 +53701,18 @@ var _DictionaryDefinitionInternalWithSource = class {
     this.sourceURL = sourceURL;
     this.__source = sourceURL.href;
     const defAll = def;
-    const { path: relPath = "", file = "", addWords, description, dictionaryInformation, type, repMap, noSuggest, ignoreForbiddenWords, scope, supportNonStrictSearches, useCompounds } = defAll;
+    const { path: relPath = "", file = "", btrie, addWords, description, dictionaryInformation, type, repMap, noSuggest, ignoreForbiddenWords, scope, supportNonStrictSearches, useCompounds } = defAll;
     const defaultPath = sourceURL;
     const filePath = fixDicPath(relPath, file);
     const name2 = determineName(filePath, def);
     const resolvedPath = toFilePathOrHref(resolveRelativeTo(filePath, defaultPath));
+    let bTriePath = btrie ? fixDicPath(btrie, file) : void 0;
+    bTriePath = bTriePath ? toFilePathOrHref(resolveRelativeTo(bTriePath, defaultPath)) : void 0;
     const ddi = {
       name: name2,
       file: void 0,
       path: resolvedPath,
+      btrie: bTriePath,
       addWords,
       description,
       dictionaryInformation,
@@ -52386,19 +53739,19 @@ var _DictionaryDefinitionInternalWithSource = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+strong-weak-map@9.4.0/node_modules/@cspell/strong-weak-map/dist/esm/index.js
+// ../node_modules/.pnpm/@cspell+strong-weak-map@9.6.0/node_modules/@cspell/strong-weak-map/dist/esm/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+strong-weak-map@9.4.0/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
+// ../node_modules/.pnpm/@cspell+strong-weak-map@9.6.0/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
 init_import_meta_url();
 var StrongWeakMap = class {
   map;
@@ -52524,7 +53877,71 @@ var StrongWeakMap = class {
   [Symbol.toStringTag] = "StrongWeakMap";
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/simpleCache.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/perf/index.js
+init_import_meta_url();
+
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/perf/performance.js
+init_import_meta_url();
+function measurePerfStart3(name2) {
+  performance.mark(name2 + "-start");
+}
+function measurePerfEnd3(name2) {
+  performance.mark(name2 + "-end");
+  performance.measure(name2, name2 + "-start", name2 + "-end");
+}
+function measurePerf3(name2) {
+  measurePerfStart3(name2);
+  return () => {
+    measurePerfEnd3(name2);
+  };
+}
+function measurePerfFn(name2, fn) {
+  const perfEnd = measurePerf3(name2);
+  try {
+    return fn();
+  } finally {
+    perfEnd();
+  }
+}
+
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/perf/timer.js
+init_import_meta_url();
+function createPerfTimer(name2, onEnd, timeNowFn) {
+  return new SimpleTimer(name2, onEnd, timeNowFn);
+}
+var SimpleTimer = class {
+  name;
+  onEnd;
+  timeNowFn;
+  _start = performance.now();
+  _elapsed = void 0;
+  _running = true;
+  constructor(name2, onEnd, timeNowFn = performance.now) {
+    this.name = name2;
+    this.onEnd = onEnd;
+    this.timeNowFn = timeNowFn;
+  }
+  get startTime() {
+    return this._start;
+  }
+  get elapsed() {
+    return this._elapsed ?? performance.now() - this._start;
+  }
+  end() {
+    if (!this._running)
+      return;
+    this._running = false;
+    const end = performance.now();
+    this._elapsed = end - this._start;
+    this.onEnd?.(this._elapsed, this.name);
+  }
+  start() {
+    this._start = performance.now();
+    this._running = true;
+  }
+};
+
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/simpleCache.js
 init_import_meta_url();
 var SimpleCache2 = class {
   size;
@@ -52600,7 +54017,7 @@ var AutoCache = class extends SimpleCache2 {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
 init_import_meta_url();
 var SpellingDictionaryLoadError = class extends Error {
   uri;
@@ -52619,7 +54036,7 @@ function isSpellingDictionaryLoadError(e) {
   return e instanceof SpellingDictionaryLoadError;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
 var MAX_AGE = 1e4;
 var loaders = {
   S: loadSimpleWordList,
@@ -52655,7 +54072,7 @@ var DictionaryLoader = class {
       if (entry) {
         return entry.pending.then(([dictionary]) => dictionary);
       }
-      const loadedEntry = this.loadEntry(def.path, def);
+      const loadedEntry = this.loadEntry(def.btrie || def.path, def);
       this.setCacheEntry(key, loadedEntry, def);
       this.keepAliveCache.set(def, loadedEntry);
       return loadedEntry.pending.then(([dictionary]) => dictionary);
@@ -52709,8 +54126,8 @@ var DictionaryLoader = class {
   loadEntry(fileOrUri, options, now = Date.now()) {
     const url2 = toFileURL(fileOrUri);
     options = this.normalizeOptions(url2, options);
-    const pDictionary = load(this.reader, toFileURL(fileOrUri), options).catch((e) => createFailedToLoadDictionary(options.name, fileOrUri, new SpellingDictionaryLoadError(url2.href, options, e, "failed to load"), options));
-    const pStat = this.getStat(fileOrUri);
+    const pDictionary = load(this.reader, url2, options).catch((e) => createFailedToLoadDictionary(options.name, fileOrUri, new SpellingDictionaryLoadError(url2.href, options, e, "failed to load"), options));
+    const pStat = this.getStat(url2);
     const pending = Promise.all([pDictionary, pStat]);
     const sig = now + Math.random();
     const entry = {
@@ -52762,12 +54179,19 @@ var DictionaryLoader = class {
   }
 };
 function toReader(fs6) {
-  async function readFile4(url2) {
-    return (await fs6.readFile(url2)).getText();
+  function readResource(url2) {
+    return fs6.readFile(url2);
+  }
+  async function readText(url2) {
+    return (await readResource(url2)).getText();
+  }
+  async function read2(url2) {
+    return (await readResource(url2)).getBytes();
   }
   return {
-    read: readFile4,
-    readLines: async (filename) => toLines(await readFile4(filename))
+    read: read2,
+    readText,
+    readLines: async (filename) => toLines(await readText(filename))
   };
 }
 var importantOptionKeys = ["name", "noSuggest", "useCompounds", "type"];
@@ -52779,17 +54203,17 @@ function determineType(uri, opts) {
   const t = opts.type && opts.type in loaders && opts.type || "S";
   const defLoaderType = t;
   const defType = uri.pathname.endsWith(".trie.gz") ? "T" : defLoaderType;
-  const regTrieTest = /\.trie\b/i;
+  const regTrieTest = /\.b?trie\b/i;
   return regTrieTest.test(uri.pathname) ? "T" : defType;
 }
-function load(reader, uri, options) {
+async function load(reader, uri, options) {
   const type = determineType(uri, options);
   const loader2 = loaders[type] || loaders.default;
   return loader2(reader, uri, options);
 }
 async function legacyWordList(reader, filename, options) {
   const lines = await reader.readLines(filename);
-  return _legacyWordListSync(lines, filename, options);
+  return measurePerfFn("legacyWords", () => _legacyWordListSync(lines, filename, options));
 }
 function _legacyWordListSync(lines, filename, options) {
   const words = pipeSync(
@@ -52800,11 +54224,11 @@ function _legacyWordListSync(lines, filename, options) {
     opConcatMapSync((line) => line.split(/[^\w\p{L}\p{M}'’]+/gu)),
     opFilterSync((word) => !!word)
   );
-  return createSpellingDictionary(words, options.name, filename.toString(), options);
+  return createSpellingDictionary(words, options.name, filename.toString(), options, true);
 }
 async function wordsPerLineWordList(reader, filename, options) {
   const lines = await reader.readLines(filename);
-  return _wordsPerLineWordList(lines, filename.toString(), options);
+  return measurePerfFn("wordsPerLineWordList", () => _wordsPerLineWordList(lines, filename.toString(), options));
 }
 function _wordsPerLineWordList(lines, filename, options) {
   const words = pipeSync(
@@ -52815,21 +54239,21 @@ function _wordsPerLineWordList(lines, filename, options) {
     opConcatMapSync((line) => line.split(/\s+/gu)),
     opFilterSync((word) => !!word)
   );
-  return createSpellingDictionary(words, options.name, filename, options);
+  return createSpellingDictionary(words, options.name, filename, options, true);
 }
 async function loadSimpleWordList(reader, filename, options) {
   const lines = await reader.readLines(filename);
-  return createSpellingDictionary(lines, options.name, filename.href, options);
+  return measurePerfFn("loadSimpleWordList", () => createSpellingDictionary(lines, options.name, filename.href, options));
 }
 async function loadTrie(reader, filename, options) {
   const content = await reader.read(filename);
-  return createSpellingDictionaryFromTrieFile(content, options.name, filename.href, options);
+  return measurePerfFn("loadTrie", () => createSpellingDictionaryFromTrieFile(content, options.name, filename.href, options));
 }
 function toLines(content) {
   return content.split(/\n|\r\n|\r/);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
 var loader;
 function getDictionaryLoader(vfs) {
   if (loader)
@@ -52843,7 +54267,7 @@ async function refreshCacheEntries(maxAge, now) {
   return getDictionaryLoader().refreshCacheEntries(maxAge, now);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
 function loadDictionaryDefs(defsToLoad) {
   return defsToLoad.map(loadDictionary);
 }
@@ -52890,25 +54314,25 @@ function _getDictionaryInternal(settings, spellDictionaries) {
   return createCollection(dictionaries, "dictionary collection");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionary.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Document/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Document/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/fileTypes.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/fileTypes.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.4.0/node_modules/@cspell/filetypes/dist/index.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.6.0/node_modules/@cspell/filetypes/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.4.0/node_modules/@cspell/filetypes/dist/filetypes.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.6.0/node_modules/@cspell/filetypes/dist/filetypes.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.4.0/node_modules/@cspell/filetypes/dist/definitions.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.6.0/node_modules/@cspell/filetypes/dist/definitions.js
 init_import_meta_url();
 var definitions = [
   { id: "ada", extensions: [".adb", ".ads"] },
@@ -52923,6 +54347,7 @@ var definitions = [
   { id: "cache_files", extensions: [], filenames: [".DS_Store", ".cspellcache", ".eslintcache"] },
   { id: "clojure", extensions: [".clj", ".cljc", ".cljs", ".cljx", ".clojure", ".edn"] },
   { id: "cmake", extensions: [".cmake"], filenames: ["CMakeLists.txt"] },
+  { id: "codeowners", extensions: [], filenames: ["codeowners"] },
   { id: "coffeescript", extensions: [".coffee", ".cson", ".iced"] },
   {
     id: "cpp",
@@ -52983,13 +54408,13 @@ var definitions = [
   { id: "haxe", extensions: [".hx"] },
   { id: "hlsl", extensions: [".cginc", ".compute", ".fx", ".fxh", ".hlsl", ".hlsli", ".psh", ".vsh"] },
   { id: "html", extensions: [".asp", ".aspx", ".ejs", ".htm", ".html", ".jshtm", ".jsp", ".mdoc", ".rhtml", ".shtml", ".volt", ".vue", ".xht", ".xhtml"] },
-  { id: "ignore", extensions: [".git-blame-ignore-revs", ".gitignore", ".gitignore_global", ".npmignore"], filenames: [".vscodeignore"] },
+  { id: "ignore", extensions: [".git-blame-ignore-revs", ".gitignore", ".gitignore_global", ".npmignore"], filenames: [".*ignore"] },
   { id: "ini", extensions: [".conf", ".ini"] },
   { id: "jade", extensions: [".jade", ".pug"] },
   { id: "java", extensions: [".jav", ".java"] },
   { id: "javascript", extensions: [".cjs", ".es6", ".js", ".mjs", ".pac"], filenames: ["jakefile"] },
   { id: "javascriptreact", extensions: [".jsx"] },
-  { id: "jinja", extensions: [".jinja"] },
+  { id: "jinja", extensions: [".j2", ".jinja", ".jinja2"] },
   {
     id: "json",
     extensions: [
@@ -53093,6 +54518,7 @@ var definitions = [
     extensions: [".cfg", ".conf", ".directory", ".editorconfig", ".gitattributes", ".gitconfig", ".gitmodules", ".npmrc", ".properties", ".repo"],
     filenames: [".env", "gitconfig"]
   },
+  { id: "protobuf", extensions: [".proto", ".txtpb", ".textproto", ".textpb", ".pbtxt"] },
   { id: "puppet", extensions: [".puppet"] },
   { id: "purescript", extensions: [".purs"] },
   { id: "python", extensions: [".cpy", ".gyp", ".gypi", ".ipy", ".py", ".pyi", ".pyt", ".pyw", ".rpy"], filenames: ["SConscript", "SConstruct"] },
@@ -53281,7 +54707,7 @@ var definitions = [
   { id: "zon", extensions: [".zon"], description: "Zig programming language package file" }
 ];
 
-// ../node_modules/.pnpm/@cspell+filetypes@9.4.0/node_modules/@cspell/filetypes/dist/filetypes.js
+// ../node_modules/.pnpm/@cspell+filetypes@9.6.0/node_modules/@cspell/filetypes/dist/filetypes.js
 var binaryFormatIds = definitions.filter((d) => d.format === "Binary").map((d) => d.id);
 var binaryLanguages = /* @__PURE__ */ new Set(["binary", "image", "video", "fonts", ...binaryFormatIds]);
 var generatedFiles = /* @__PURE__ */ new Set([
@@ -53314,17 +54740,17 @@ function doesSetContainAnyOf(setOfIds, fileTypeId) {
   return false;
 }
 function buildLanguageExtensionMapSet(defs) {
-  return defs.reduce((map3, def) => {
+  return defs.reduce((map2, def) => {
     function addId(value) {
-      autoResolve2(map3, value, () => /* @__PURE__ */ new Set()).add(def.id);
+      autoResolve2(map2, value, () => /* @__PURE__ */ new Set()).add(def.id);
     }
     def.extensions.forEach(addId);
     def.filenames?.forEach((filename) => typeof filename === "string" ? addId(filename) : void 0);
-    return map3;
+    return map2;
   }, /* @__PURE__ */ new Map());
 }
-function buildExtensionToLanguageIdMap(map3) {
-  return new Map([...map3].map(([k, s]) => [k, [...s]]));
+function buildExtensionToLanguageIdMap(map2) {
+  return new Map([...map2].map(([k, s]) => [k, [...s]]));
 }
 function matchPatternsToFilename(basename6) {
   return idsWithRegExp.filter(({ regexp }) => regexp.test(basename6)).map(({ id }) => id);
@@ -53351,12 +54777,12 @@ var regExpPathSep = /[\\/]/g;
 function basename2(filename) {
   return regExpPathSep.test(filename) ? filename.split(regExpPathSep).slice(-1).join("") : filename;
 }
-function autoResolve2(map3, key, resolve6) {
-  const found = map3.get(key);
-  if (found !== void 0 || map3.has(key))
+function autoResolve2(map2, key, resolve6) {
+  const found = map2.get(key);
+  if (found !== void 0 || map2.has(key))
     return found;
   const value = resolve6(key);
-  map3.set(key, value);
+  map2.set(key, value);
   return value;
 }
 function escapeRegEx2(s) {
@@ -53395,9 +54821,9 @@ function defToRegExp(def) {
   return { regexp, id: def.id };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/Uri.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/Uri.js
 init_import_meta_url();
-var import_node_assert6 = __toESM(require("node:assert"), 1);
+var import_node_assert4 = __toESM(require("node:assert"), 1);
 var STDIN_PROTOCOL = "stdin:";
 function toUri(uriOrFile) {
   if (UriImpl.isUri(uriOrFile))
@@ -53503,7 +54929,7 @@ function normalizeFilePath(path17) {
   return normalizeDriveLetter(path17.replaceAll("\\", "/"));
 }
 function parseStdinUri(uri) {
-  (0, import_node_assert6.default)(uri.startsWith(STDIN_PROTOCOL));
+  (0, import_node_assert4.default)(uri.startsWith(STDIN_PROTOCOL));
   const idxSlash = STDIN_PROTOCOL.length;
   let idxSlashEnd = idxSlash;
   for (; uri[idxSlashEnd] === "/"; ++idxSlashEnd) {
@@ -53529,13 +54955,13 @@ function documentUriToURL(uri) {
   return toURL(uri instanceof URL ? uri : typeof uri === "string" ? toFileURL(uri) : new URL(uriFrom(uri).toString()));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
 init_import_meta_url();
 function normalizeLanguageIds(languageId) {
   return (Array.isArray(languageId) ? languageId.join(",") : languageId).split(",").map((s) => s.trim());
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
 function isBinaryDoc(document) {
   return isBinaryFile2(toUri(document.uri), document.languageId, document.text);
 }
@@ -53553,13 +54979,13 @@ function isBinaryFile2(filename, languageId, text) {
   return text?.slice(0, 1024).includes("\0") || false;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 init_import_meta_url();
 var import_promises = require("node:fs/promises");
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 init_import_meta_url();
-var import_node_assert7 = __toESM(require("node:assert"), 1);
+var import_node_assert5 = __toESM(require("node:assert"), 1);
 
 // ../node_modules/.pnpm/vscode-languageserver-textdocument@1.0.12/node_modules/vscode-languageserver-textdocument/lib/esm/main.js
 init_import_meta_url();
@@ -53786,7 +55212,7 @@ function getWellformedEdit(textEdit) {
   return textEdit;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 var TextDocumentImpl = class {
   languageId;
   locale;
@@ -53877,14 +55303,14 @@ function createTextDocument({ uri, content, languageId, locale, version: version
   return new TextDocumentImpl(uri, content, languageId, locale, version3);
 }
 function updateTextDocument(doc, edits, version3) {
-  (0, import_node_assert7.default)(isTextDocumentImpl(doc), "Unknown TextDocument type");
+  (0, import_node_assert5.default)(isTextDocumentImpl(doc), "Unknown TextDocument type");
   return doc.update(edits, version3);
 }
 function isTextDocumentImpl(doc) {
   return doc instanceof TextDocumentImpl;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 var defaultEncoding = "utf8";
 function fileToDocument(file, text, languageId, locale) {
   return clean3({
@@ -53919,10 +55345,10 @@ function isDocumentWithText(doc) {
   return doc.text !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-glob@9.4.0/node_modules/cspell-glob/dist/index.js
+// ../node_modules/.pnpm/cspell-glob@9.6.0/node_modules/cspell-glob/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-glob@9.4.0/node_modules/cspell-glob/dist/globHelper.js
+// ../node_modules/.pnpm/cspell-glob@9.6.0/node_modules/cspell-glob/dist/globHelper.js
 init_import_meta_url();
 var Path2 = __toESM(require("node:path"), 1);
 var { posix } = Path2;
@@ -54262,7 +55688,7 @@ function workaroundPicomatchBug(glob2) {
   return glob2.split("/").map((s) => obj[s] ? `{${s},${s}}` : s).join("/");
 }
 
-// ../node_modules/.pnpm/cspell-glob@9.4.0/node_modules/cspell-glob/dist/GlobMatcher.js
+// ../node_modules/.pnpm/cspell-glob@9.6.0/node_modules/cspell-glob/dist/GlobMatcher.js
 init_import_meta_url();
 var Path3 = __toESM(require("node:path"), 1);
 var import_picomatch = __toESM(require_picomatch2(), 1);
@@ -54398,10 +55824,10 @@ function logMatchTest(id, filename, match2) {
   console.warn("%s;%d;%s", filename, id, JSON.stringify(match2.matched));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/FeatureFlags/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/FeatureFlags/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
 init_import_meta_url();
 var systemFeatureFlags;
 var FeatureFlags = class {
@@ -54472,14 +55898,14 @@ function toBool(value) {
   return boolValues[value.toLowerCase()];
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/getDictionary.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/getDictionary.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 init_import_meta_url();
-var import_node_assert8 = __toESM(require("node:assert"), 1);
+var import_node_assert6 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/constants.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/constants.js
 init_import_meta_url();
 var configSettingsFileVersion0_1 = "0.1";
 var configSettingsFileVersion0_2 = "0.2";
@@ -54487,10 +55913,10 @@ var currentSettingsFileVersion = configSettingsFileVersion0_2;
 var ENV_CSPELL_GLOB_ROOT = "CSPELL_GLOB_ROOT";
 var defaultConfigFileModuleRef = "@cspell/cspell-bundled-dicts/cspell-default.json";
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
 init_import_meta_url();
 var CalcLeftRightResultWeakCache = class {
   map = new AutoResolveWeakCache2();
@@ -54517,7 +55943,7 @@ var CalcLeftRightResultWeakCache = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
 var cacheMergeListUnique = new CalcLeftRightResultWeakCache();
 var cacheMergeLists = new CalcLeftRightResultWeakCache();
 function mergeListUnique(left, right) {
@@ -54557,10 +55983,10 @@ function stats() {
   };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/patterns.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/patterns.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/textRegex.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/textRegex.js
 init_import_meta_url();
 var regExSplitWords = /(\p{Ll}\p{M}?)(\p{Lu})/gu;
 var regExSplitWords2 = /(\p{Lu}\p{M}?)((\p{Lu}\p{M}?)\p{Ll})/gu;
@@ -54674,7 +56100,7 @@ function removeVerboseFromRegExp(pattern) {
   return result.result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/patterns.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/patterns.js
 var emptyRegExpList = [];
 var emptyPatternDefinitions = [];
 var cache4 = new CalcLeftRightResultWeakCache();
@@ -54710,7 +56136,7 @@ function toRegExp(pattern) {
   return pattern instanceof RegExp ? new RegExp(pattern) : stringToRegExp(pattern, "gim", "g");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
 init_import_meta_url();
 var CwdUrlResolver = class {
   #lastPath;
@@ -54739,7 +56165,7 @@ var CwdUrlResolver = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 var emptyWords2 = [];
 Object.freeze(emptyWords2);
 var cachedMerges = new AutoResolveWeakCache2();
@@ -54759,8 +56185,8 @@ onClearCache(() => {
   envCSpellGlobRoot = process.env[ENV_CSPELL_GLOB_ROOT];
 });
 function _mergeWordsCached(left, right) {
-  const map3 = autoResolveWeak2(cachedMerges, left, () => /* @__PURE__ */ new WeakMap());
-  return autoResolveWeak2(map3, right, () => [...left, ...right]);
+  const map2 = autoResolveWeak2(cachedMerges, left, () => /* @__PURE__ */ new WeakMap());
+  return autoResolveWeak2(map2, right, () => [...left, ...right]);
 }
 function mergeWordsCached(left, right) {
   if (!Array.isArray(left) || !left.length) {
@@ -54792,8 +56218,8 @@ function isEmpty(obj) {
   return !obj || Object.keys(obj).length === 0;
 }
 function merge2(left, right) {
-  const map3 = mergeCache.get(left, () => /* @__PURE__ */ new WeakMap());
-  return autoResolveWeak2(map3, right, () => _merge(left, right));
+  const map2 = mergeCache.get(left, () => /* @__PURE__ */ new WeakMap());
+  return autoResolveWeak2(map2, right, () => _merge(left, right));
 }
 function _merge(left, right) {
   const _left = toInternalSettings(left);
@@ -54815,7 +56241,7 @@ function _merge(left, right) {
   }
   const includeRegExpList = takeRightOtherwiseLeft(_left.includeRegExpList, _right.includeRegExpList);
   const optionals = includeRegExpList?.length ? { includeRegExpList } : {};
-  const version3 = max3(_left.version, _right.version);
+  const version3 = max2(_left.version, _right.version);
   const valuesToClear = {
     name: void 0,
     id: void 0,
@@ -54915,7 +56341,7 @@ function mergeSources(left, right) {
     sources: [left, right]
   };
 }
-function max3(a, b) {
+function max2(a, b) {
   if (a === void 0 || a === null)
     return b;
   if (b === void 0 || b === null)
@@ -54970,10 +56396,10 @@ function resolveParser(settings) {
   if (typeof settings.parser === "function")
     return settings.parser;
   const parserName = settings.parser;
-  (0, import_node_assert8.default)(typeof parserName === "string");
+  (0, import_node_assert6.default)(typeof parserName === "string");
   const parsers3 = extractParsers(settings.plugins);
   const parser2 = parsers3.get(parserName);
-  (0, import_node_assert8.default)(parser2, `Parser "${parserName}" not found.`);
+  (0, import_node_assert6.default)(parser2, `Parser "${parserName}" not found.`);
   return parser2;
 }
 function* parsers(plugins) {
@@ -54994,61 +56420,21 @@ function extractParsers(plugins) {
   return parserCache.get(plugins, mapPlugins);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/getDictionary.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/getDictionary.js
 async function getDictionary(settings) {
   return getDictionaryInternal(toInternalSettings(settings));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/perf/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/perf/timer.js
-init_import_meta_url();
-function createPerfTimer2(name2, onEnd, timeNowFn) {
-  return new SimpleTimer(name2, onEnd, timeNowFn);
-}
-var SimpleTimer = class {
-  name;
-  onEnd;
-  timeNowFn;
-  _start = performance.now();
-  _elapsed = void 0;
-  _running = true;
-  constructor(name2, onEnd, timeNowFn = performance.now) {
-    this.name = name2;
-    this.onEnd = onEnd;
-    this.timeNowFn = timeNowFn;
-  }
-  get startTime() {
-    return this._start;
-  }
-  get elapsed() {
-    return this._elapsed ?? performance.now() - this._start;
-  }
-  end() {
-    if (!this._running)
-      return;
-    this._running = false;
-    const end = performance.now();
-    this._elapsed = end - this._start;
-    this.onEnd?.(this._elapsed, this.name);
-  }
-  start() {
-    this._start = performance.now();
-    this._running = true;
-  }
-};
-
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
-init_import_meta_url();
-
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
 init_import_meta_url();
 var simpleGlobCache = /* @__PURE__ */ new Map();
 var globCache = /* @__PURE__ */ new WeakMap();
@@ -55079,13 +56465,13 @@ function getGlobMatcherGlobGlob(glob2) {
   return m;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
 function checkFilenameMatchesExcludeGlob(filename, globs) {
   const m = getGlobMatcherForExcluding(globs);
   return m.match(filename);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
 function calcOverrideSettings(settings, filename) {
   const _settings = toInternalSettings(settings);
   const overrides = _settings.overrides || [];
@@ -55093,26 +56479,26 @@ function calcOverrideSettings(settings, filename) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
 init_import_meta_url();
-var import_node_assert10 = __toESM(require("node:assert"), 1);
+var import_node_assert8 = __toESM(require("node:assert"), 1);
 var import_node_path9 = __toESM(require("node:path"), 1);
 var import_node_url12 = require("node:url");
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/createReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/createReaderWriter.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 init_import_meta_url();
 var import_posix = require("node:path/posix");
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
 init_import_meta_url();
 var CSpellConfigFile = class {
   url;
@@ -55183,10 +56569,10 @@ function satisfiesCSpellConfigFile(obj) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
 init_import_meta_url();
 var CSpellConfigFileInMemory = class _CSpellConfigFileInMemory extends ImplCSpellConfigFile {
   url;
@@ -55208,7 +56594,7 @@ var CSpellConfigFileInMemory = class _CSpellConfigFileInMemory extends ImplCSpel
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
 init_import_meta_url();
 var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
   url;
@@ -55226,11 +56612,11 @@ var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 init_import_meta_url();
 var import_comment_json = __toESM(require_src2(), 1);
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/serializers/util.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/serializers/util.js
 init_import_meta_url();
 function detectIndent(content) {
   const m = content.match(/^[ \t]+/m);
@@ -55241,7 +56627,7 @@ function detectIndentAsNum(content) {
   return indent2.length;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/Errors.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/Errors.js
 init_import_meta_url();
 var ParseError = class extends Error {
   url;
@@ -55251,7 +56637,7 @@ var ParseError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 var CSpellConfigFileJson = class _CSpellConfigFileJson extends ImplCSpellConfigFile {
   url;
   indent = 2;
@@ -55322,7 +56708,7 @@ function isCSpellSettings(cfg) {
   return !(!cfg || typeof cfg !== "object" || Array.isArray(cfg));
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
 init_import_meta_url();
 var CSpellConfigFilePackageJson = class extends ImplCSpellConfigFile {
   url;
@@ -55357,7 +56743,7 @@ function parseCSpellConfigFilePackageJson(file) {
   return new CSpellConfigFilePackageJson(url2, cspell, serialize);
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
 init_import_meta_url();
 
 // ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/index.js
@@ -55472,18 +56858,18 @@ function skipUntil(str, ptr, sep5, end, banNewLines = false) {
   });
 }
 function getStringEnd(str, seek) {
-  let first3 = str[seek];
-  let target = first3 === str[seek + 1] && str[seek + 1] === str[seek + 2] ? str.slice(seek, seek + 3) : first3;
+  let first2 = str[seek];
+  let target = first2 === str[seek + 1] && str[seek + 1] === str[seek + 2] ? str.slice(seek, seek + 3) : first2;
   seek += target.length - 1;
   do
     seek = str.indexOf(target, ++seek);
-  while (seek > -1 && first3 !== "'" && isEscaped(str, seek));
+  while (seek > -1 && first2 !== "'" && isEscaped(str, seek));
   if (seek > -1) {
     seek += target.length;
     if (target.length > 1) {
-      if (str[seek] === first3)
+      if (str[seek] === first2)
         seek++;
-      if (str[seek] === first3)
+      if (str[seek] === first2)
         seek++;
     }
   }
@@ -56205,7 +57591,7 @@ function stringify2(obj, { maxDepth = 1e3, numbersAsFloat = false } = {}) {
   return str;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
 var CSpellConfigFileToml = class _CSpellConfigFileToml extends ImplCSpellConfigFile {
   url;
   constructor(url2, settings) {
@@ -56251,12 +57637,29 @@ function isCSpellSettings2(cfg) {
   return !(!cfg || typeof cfg !== "object" || Array.isArray(cfg));
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileWithErrors.js
 init_import_meta_url();
-var import_node_assert9 = __toESM(require("node:assert"), 1);
+var CSpellConfigFileWithErrors = class extends ImplCSpellConfigFile {
+  url;
+  settings;
+  error;
+  constructor(url2, settings, error3) {
+    super(url2, settings);
+    this.url = url2;
+    this.settings = settings;
+    this.error = error3;
+  }
+  get readonly() {
+    return true;
+  }
+};
+
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+init_import_meta_url();
+var import_node_assert7 = __toESM(require("node:assert"), 1);
 var import_yaml = __toESM(require_dist(), 1);
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/UpdateConfig/CfgTree.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/UpdateConfig/CfgTree.js
 init_import_meta_url();
 var nodeValueSymbol = /* @__PURE__ */ Symbol.for("cspell.config.nodeValue");
 function isNodeValue(value) {
@@ -56267,7 +57670,7 @@ function isNodeValue(value) {
   return "value" in value && "comment" in value && "commentBefore" in value && Object.keys(value).length === 3;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
 var CSpellConfigFileYaml = class _CSpellConfigFileYaml extends MutableCSpellConfigFile {
   url;
   yamlDoc;
@@ -56285,7 +57688,7 @@ var CSpellConfigFileYaml = class _CSpellConfigFileYaml extends MutableCSpellConf
   }
   addWords(wordsToAdd) {
     const cfgWords = this.yamlDoc.get("words") || new import_yaml.YAMLSeq();
-    (0, import_node_assert9.default)((0, import_yaml.isSeq)(cfgWords), "Expected words to be a YAML sequence");
+    (0, import_node_assert7.default)((0, import_yaml.isSeq)(cfgWords), "Expected words to be a YAML sequence");
     const knownWords = new Set(cfgWords.items.map((item) => getScalarValue(item)));
     wordsToAdd.forEach((w) => {
       if (knownWords.has(w))
@@ -56420,21 +57823,21 @@ var CSpellConfigFileYaml = class _CSpellConfigFileYaml extends MutableCSpellConf
     this.yamlDoc.set(key, value);
     const contents = this.#getContentsMap();
     const pair = findPair(contents, key);
-    (0, import_node_assert9.default)(pair, `Expected pair for key: ${String(key)}`);
+    (0, import_node_assert7.default)(pair, `Expected pair for key: ${String(key)}`);
     this.#fixPair(pair);
   }
   #toNode(value) {
     return (0, import_yaml.isNode)(value) ? value : this.yamlDoc.createNode(value);
   }
   #fixPair(pair) {
-    (0, import_node_assert9.default)((0, import_yaml.isPair)(pair), "Expected pair to be a Pair");
+    (0, import_node_assert7.default)((0, import_yaml.isPair)(pair), "Expected pair to be a Pair");
     pair.key = this.#toNode(pair.key);
     pair.value = this.#toNode(pair.value);
     return pair;
   }
   #getContentsMap() {
     const contents = this.yamlDoc.contents;
-    (0, import_node_assert9.default)((0, import_yaml.isMap)(contents), "Expected contents to be a YAMLMap");
+    (0, import_node_assert7.default)((0, import_yaml.isMap)(contents), "Expected contents to be a YAMLMap");
     return contents;
   }
   static parse(file) {
@@ -56541,8 +57944,8 @@ function sortWords(words) {
       return compare3(getScalarValue(a), getScalarValue(b));
     });
     if (group[0] !== head && (0, import_yaml.isScalar)(head)) {
-      const first3 = group[0] = toScalar(group[0]);
-      adjustSectionHeader(first3, head, firstGroup);
+      const first2 = group[0] = toScalar(group[0]);
+      adjustSectionHeader(first2, head, firstGroup);
     }
     firstGroup = false;
   }
@@ -56618,7 +58021,7 @@ var ConfigArrayNode = class extends ConfigNodeBase {
     }
     this.#yNode.set(key, value.value);
     const yNodeValue = getYamlNode(this.#yNode, key);
-    (0, import_node_assert9.default)(yNodeValue);
+    (0, import_node_assert7.default)(yNodeValue);
     yNodeValue.comment = value.comment ?? null;
     yNodeValue.commentBefore = value.commentBefore ?? null;
   }
@@ -56683,7 +58086,7 @@ var ConfigObjectNode = class extends ConfigNodeBase {
     }
     this.#yNode.set(key, value.value);
     const yNodeValue = getYamlNode(this.#yNode, key);
-    (0, import_node_assert9.default)(yNodeValue);
+    (0, import_node_assert7.default)(yNodeValue);
     yNodeValue.comment = value.comment ?? null;
     yNodeValue.commentBefore = value.commentBefore ?? null;
   }
@@ -56702,7 +58105,7 @@ var ConfigScalarNode = class extends ConfigNodeBase {
     super("scalar");
     this.$doc = doc;
     this.$yNode = yNode;
-    (0, import_node_assert9.default)((0, import_yaml.isScalar)(yNode), "Expected yNode to be a Scalar");
+    (0, import_node_assert7.default)((0, import_yaml.isScalar)(yNode), "Expected yNode to be a Scalar");
   }
   get value() {
     return this.$yNode.toJS(this.$doc);
@@ -56766,7 +58169,7 @@ function setYamlNodeValue(yamlNode, nodeValue) {
   }
   const value = nodeValue.value;
   if ((0, import_yaml.isSeq)(yamlNode)) {
-    (0, import_node_assert9.default)(Array.isArray(value), "Expected value to be an array for YAMLSeq");
+    (0, import_node_assert7.default)(Array.isArray(value), "Expected value to be an array for YAMLSeq");
     yamlNode.items = [];
     for (let i = 0; i < value.length; ++i) {
       yamlNode.set(i, value[i]);
@@ -56774,7 +58177,7 @@ function setYamlNodeValue(yamlNode, nodeValue) {
     return;
   }
   if ((0, import_yaml.isMap)(yamlNode)) {
-    (0, import_node_assert9.default)(typeof value === "object" && value !== null, "Expected value to be an object for YAMLMap");
+    (0, import_node_assert7.default)(typeof value === "object" && value !== null, "Expected value to be an object for YAMLMap");
     yamlNode.items = [];
     for (const [key, val] of Object.entries(value)) {
       yamlNode.set(key, val);
@@ -56806,10 +58209,10 @@ function removeSchemaComment(node) {
   node.commentBefore = node.commentBefore?.replaceAll(/^ yaml-language-server: \$schema=.*\n?/gm, "") ?? null;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/middlewareHelper.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/middlewareHelper.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/defaultNext.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/defaultNext.js
 init_import_meta_url();
 var defaultNextDeserializer = (content) => {
   throw new Error(`Unable to parse config file: "${content.url}"`);
@@ -56818,7 +58221,7 @@ var defaultNextSerializer = (file) => {
   throw new Error(`Unable to serialize config file: "${file.url}"`);
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/middlewareHelper.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/middlewareHelper.js
 function getDeserializer(middleware) {
   let next = defaultNextDeserializer;
   for (const des of middleware) {
@@ -56856,13 +58259,13 @@ function getLoader(loaders2) {
   return next;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/util/toURL.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/util/toURL.js
 init_import_meta_url();
 function toURL2(url2) {
   return typeof url2 === "string" ? new URL(url2) : url2;
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 var CSpellConfigFileReaderWriterImpl = class {
   io;
   middleware;
@@ -56950,7 +58353,7 @@ var UntrustedUrlError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/defaultIO.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/defaultIO.js
 init_import_meta_url();
 var import_node_fs6 = require("node:fs");
 var defaultIO = {
@@ -56966,14 +58369,14 @@ async function writeFile2(file) {
   return { url: file.url };
 }
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/loaders/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/loaders/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
 init_import_meta_url();
 var import_posix2 = require("node:path/posix");
-var _debug2 = false;
-var _log = _debug2 ? console.warn.bind(console) : () => void 0;
+var _debug = false;
+var _log = _debug ? console.warn.bind(console) : () => void 0;
 async function importJavaScript(url2, hashSuffix) {
   try {
     const _url = new URL(url2.href);
@@ -57016,13 +58419,13 @@ var LoaderJavaScript = class {
 };
 var loaderJavaScript = new LoaderJavaScript();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/loaders/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/loaders/index.js
 var defaultLoaders = [loaderJavaScript];
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/serializers/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/serializers/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
 init_import_meta_url();
 function deserializer(params, next) {
   if (!isJsonFile(params.url.pathname))
@@ -57040,7 +58443,7 @@ function serializer(settings, next) {
 }
 var serializerCSpellJson = { deserialize: deserializer, serialize: serializer };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/serializers/cspellToml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/serializers/cspellToml.js
 init_import_meta_url();
 function deserializer2(params, next) {
   if (!isTomlFile(params.url.pathname))
@@ -57058,7 +58461,7 @@ function serializer2(settings, next) {
 }
 var serializerCSpellToml = { deserialize: deserializer2, serialize: serializer2 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
 init_import_meta_url();
 function deserializer3(params, next) {
   if (!isYamlFile(params.url.pathname))
@@ -57076,7 +58479,7 @@ function serializer3(settings, next) {
 }
 var serializerCSpellYaml = { deserialize: deserializer3, serialize: serializer3 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/serializers/packageJson.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/serializers/packageJson.js
 init_import_meta_url();
 var isSupportedFormat = /\bpackage\.json$/i;
 function deserializer4(params, next) {
@@ -57091,7 +58494,7 @@ function serializer4(settings, next) {
 }
 var serializerPackageJson = { deserialize: deserializer4, serialize: serializer4 };
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/serializers/index.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/serializers/index.js
 var defaultDeserializers = [
   serializerCSpellJson,
   serializerCSpellYaml,
@@ -57099,12 +58502,12 @@ var defaultDeserializers = [
   serializerCSpellToml
 ];
 
-// ../node_modules/.pnpm/cspell-config-lib@9.4.0/node_modules/cspell-config-lib/dist/createReaderWriter.js
+// ../node_modules/.pnpm/cspell-config-lib@9.6.0/node_modules/cspell-config-lib/dist/createReaderWriter.js
 function createReaderWriter(deserializers = [], loaders2 = [], io = defaultIO) {
   return new CSpellConfigFileReaderWriterImpl(io, [...defaultDeserializers, ...deserializers], [...defaultLoaders, ...loaders2]);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/logger.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/logger.js
 init_import_meta_url();
 var _logger = console;
 function logError(...args) {
@@ -57119,10 +58522,10 @@ function setLogger(logger) {
   return oldLogger;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 init_import_meta_url();
 var import_promises2 = __toESM(require("node:fs/promises"), 1);
 var import_node_path7 = __toESM(require("node:path"), 1);
@@ -57130,10 +58533,10 @@ var import_node_path7 = __toESM(require("node:path"), 1);
 // ../node_modules/.pnpm/env-paths@3.0.0/node_modules/env-paths/index.js
 init_import_meta_url();
 var import_node_path6 = __toESM(require("node:path"), 1);
-var import_node_os3 = __toESM(require("node:os"), 1);
+var import_node_os2 = __toESM(require("node:os"), 1);
 var import_node_process3 = __toESM(require("node:process"), 1);
-var homedir2 = import_node_os3.default.homedir();
-var tmpdir = import_node_os3.default.tmpdir();
+var homedir2 = import_node_os2.default.homedir();
+var tmpdir = import_node_os2.default.tmpdir();
 var { env } = import_node_process3.default;
 var macos = (name2) => {
   const library = import_node_path6.default.join(homedir2, "Library");
@@ -57204,7 +58607,7 @@ if (xdgConfig) {
   xdgConfigDirectories.unshift(xdgConfig);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 var packageName = "cspell";
 var legacyLocationDir = xdgConfig ? import_node_path7.default.join(xdgConfig, "configstore") : void 0;
 var cspellGlobalLocationDir = envPaths(packageName, { suffix: "" }).config;
@@ -57259,15 +58662,15 @@ var GlobalConfigStore = class {
   static defaultLocation = import_node_path7.default.join(cspellGlobalLocationDir, defaultConfigFileName);
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 init_import_meta_url();
-var import_node_os4 = require("node:os");
+var import_node_os3 = require("node:os");
 var import_node_url9 = require("node:url");
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
 init_import_meta_url();
 function toGlobDef(g, root, source) {
   if (g === void 0)
@@ -57288,7 +58691,7 @@ function toGlobDef(g, root, source) {
   return g;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 function normalizeRawConfig(config) {
   if (typeof config.version === "number") {
     config.version = config.version.toString();
@@ -57387,7 +58790,7 @@ function normalizeCacheSettings(settings, pathToSettingsFile) {
 }
 function resolveFilePath(filename, pathToSettingsFile) {
   const cwd = process.cwd();
-  return toFileURL(filename.replace("${cwd}", cwd).replace(/^~/, (0, import_node_os4.homedir)()), pathToSettingsFile);
+  return toFileURL(filename.replace("${cwd}", cwd).replace(/^~/, (0, import_node_os3.homedir)()), pathToSettingsFile);
 }
 function resolveFilePathToPath(filename, pathToSettingsFile) {
   const url2 = resolveFilePath(filename, pathToSettingsFile);
@@ -57403,7 +58806,13 @@ function normalizeImport(imports) {
   return [];
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
+function configErrorToRawSettings(error3, url2) {
+  const filename = toFilePathOrHref(url2);
+  const fileRef = { filename, error: error3 };
+  const source = { name: filename, filename };
+  return { __importRef: fileRef, source };
+}
 function configToRawSettings(cfgFile) {
   if (!cfgFile)
     return {};
@@ -57434,7 +58843,7 @@ function urlToSimpleId(url2) {
   return url2.pathname.split("/").slice(-2).join("/");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
 var globalConfig = new GlobalConfigStore();
 async function getGlobalConfig() {
   const name2 = "CSpell Configstore";
@@ -57471,11 +58880,15 @@ function getGlobalConfigPath() {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
 init_import_meta_url();
 var ImportError = class extends Error {
   cause;
   constructor(msg, cause) {
+    if (isError(cause)) {
+      msg += `
+  ${cause.message}`;
+    }
     super(msg);
     this.cause = isError(cause) ? cause : void 0;
   }
@@ -57486,13 +58899,13 @@ var UnsupportedPnpFile = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 init_import_meta_url();
 var import_node_url11 = require("node:url");
 var import_clear_module = __toESM(require_clear_module(), 1);
 var import_import_fresh = __toESM(require_import_fresh(), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/findUp.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/findUp.js
 init_import_meta_url();
 var import_promises3 = require("node:fs/promises");
 var import_node_path8 = __toESM(require("node:path"), 1);
@@ -57535,7 +58948,7 @@ function toDirPath(urlOrPath) {
   return urlOrPath instanceof URL ? (0, import_node_url10.fileURLToPath)(new URL(".", urlOrPath)) : urlOrPath;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 var defaultPnpFiles = [".pnp.cjs", ".pnp.js"];
 var supportedSchemas = /* @__PURE__ */ new Set(["file:"]);
 var cachedRequests = /* @__PURE__ */ new Map();
@@ -57634,7 +59047,7 @@ function isSupported(url2) {
   return supportedSchemas.has(url2.protocol);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
 init_import_meta_url();
 var supportedExtensions = [
   ".json",
@@ -57646,7 +59059,8 @@ var supportedExtensions = [
   ".js",
   ".toml",
   ".mts",
-  ".ts"
+  ".ts",
+  ".cts"
 ];
 var setOfLocations = /* @__PURE__ */ new Set([
   "package.json",
@@ -57696,18 +59110,18 @@ function genCfgLoc(filename, extensions) {
   return extensions.map((ext) => filename + ext);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 init_import_meta_url();
 var import_posix3 = require("node:path/posix");
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
 init_import_meta_url();
 async function findUpFromUrl2(name2, from, options = {}) {
   const fs6 = options.fs ?? getVirtualFS().fs;
   return fs6.findUp(name2, from, options);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 var ConfigSearch = class {
   /**
    * Cache of search results.
@@ -57855,8 +59269,8 @@ var DirConfigScanner = class {
   }
 };
 function setupSearchPlacesByProtocol(searchPlaces2, allowedExtensionsByProtocol) {
-  const map3 = new Map([...allowedExtensionsByProtocol.entries()].map(([k, v]) => [k, new Set(v)]).map(([protocol, exts]) => [protocol, searchPlaces2.filter((url2) => exts.has((0, import_posix3.extname)(url2)))]));
-  return map3;
+  const map2 = new Map([...allowedExtensionsByProtocol.entries()].map(([k, v]) => [k, new Set(v)]).map(([protocol, exts]) => [protocol, searchPlaces2.filter((url2) => exts.has((0, import_posix3.extname)(url2)))]));
+  return map2;
 }
 async function checkPackageJson(fs6, filename) {
   try {
@@ -57868,7 +59282,7 @@ async function checkPackageJson(fs6, filename) {
   }
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
 init_import_meta_url();
 var defaultSettings = createCSpellSettingsInternal({
   id: "default",
@@ -57876,7 +59290,7 @@ var defaultSettings = createCSpellSettingsInternal({
   version: currentSettingsFileVersion
 });
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
 init_import_meta_url();
 var defaultPnPSettings = Object.freeze({});
 var lastPnP = defaultPnPSettings;
@@ -57892,12 +59306,12 @@ function equal(a, b) {
   return a === b || a.usePnP === b.usePnP && (a.pnpFiles === b.pnpFiles || a.pnpFiles?.join("|") === b.pnpFiles?.join("|"));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLoader.js
 var supportedCSpellConfigVersions = [configSettingsFileVersion0_2];
 var setOfSupportedConfigVersions = Object.freeze(new Set(supportedCSpellConfigVersions));
 var defaultConfigLoader = void 0;
 var defaultExtensions = [".json", ".yaml", ".yml", ".jsonc", ".toml"];
-var defaultJsExtensions = [".js", ".cjs", ".mjs", ".ts", ".mts"];
+var defaultJsExtensions = [".js", ".cjs", ".mjs", ".ts", ".mts", ".cts"];
 var defaultExtensionsAll = [...defaultExtensions, ...defaultJsExtensions];
 var trustedSearch = /* @__PURE__ */ new Map([
   ["*", defaultExtensions],
@@ -57972,7 +59386,10 @@ var ConfigLoader = class {
     if (!location)
       return void 0;
     const file = await this.readConfigFile(location);
-    return file instanceof Error ? void 0 : file;
+    if (file instanceof Error) {
+      return new CSpellConfigFileWithErrors(location, configErrorToRawSettings(file, location), file);
+    }
+    return file;
   }
   /**
    *
@@ -57985,10 +59402,13 @@ var ConfigLoader = class {
     const configFile = await this.searchForConfigFile(searchFrom, stopAt);
     if (!configFile)
       return void 0;
+    if (configFile instanceof CSpellConfigFileWithErrors) {
+      return toInternalSettings(configFile.settings);
+    }
     return this.mergeConfigFileWithImports(configFile, options);
   }
   getGlobalSettings() {
-    (0, import_node_assert10.default)(this.globalSettings, "Global settings not loaded");
+    (0, import_node_assert8.default)(this.globalSettings, "Global settings not loaded");
     return this.globalSettings;
   }
   async getGlobalSettingsAsync() {
@@ -58154,7 +59574,7 @@ var ConfigLoader = class {
     const url2 = cfgFile.url;
     const fileRef = rawSettings.__importRef;
     const source = rawSettings.source;
-    (0, import_node_assert10.default)(source);
+    (0, import_node_assert8.default)(source);
     const settings = {
       version: defaultSettings.version,
       ...rawSettings,
@@ -58190,8 +59610,8 @@ var ConfigLoader = class {
     return finalizeSettings2;
   }
   createCSpellConfigFile(filename, settings) {
-    const map3 = autoResolveWeak2(this.cachedCSpellConfigFileInMemory, settings, () => /* @__PURE__ */ new Map());
-    return autoResolve(map3, filename, () => this.cspellConfigFileReaderWriter.toCSpellConfigFile({ url: toFileURL(filename), settings }));
+    const map2 = autoResolveWeak2(this.cachedCSpellConfigFileInMemory, settings, () => /* @__PURE__ */ new Map());
+    return autoResolve(map2, filename, () => this.cspellConfigFileReaderWriter.toCSpellConfigFile({ url: toFileURL(filename), settings }));
   }
   toCSpellConfigFile(cfg) {
     if (cfg instanceof CSpellConfigFile)
@@ -58361,7 +59781,7 @@ function relativeToCwd(file) {
   return [prefix || ".", ...urlPath.slice(i)].join("/");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
 init_import_meta_url();
 var gcl = getDefaultConfigLoaderInternal;
 function searchForConfig(searchFrom, options) {
@@ -58390,7 +59810,7 @@ function getDefaultConfigLoader() {
   return getDefaultConfigLoaderInternal();
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
 init_import_meta_url();
 function extractImportErrors(settings) {
   const imports = mergeImportRefs2(settings);
@@ -58414,7 +59834,7 @@ function isImportFileRefWithError(ref) {
   return !!ref.error;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
 init_import_meta_url();
 async function readSettings(filename, relativeToOrPnP, pnpSettings) {
   const loader2 = getDefaultConfigLoader();
@@ -58423,19 +59843,19 @@ async function readSettings(filename, relativeToOrPnP, pnpSettings) {
   return loader2.readSettingsAsync(filename, relativeTo, pnp);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/grammar.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/grammar.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
 init_import_meta_url();
 function isPatternInclude(p) {
   return !!p.include;
@@ -58458,7 +59878,7 @@ function isPatternPatterns(p) {
   return Array.isArray(p.patterns);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/matchResult.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/matchResult.js
 init_import_meta_url();
 function segmentMatch(mr) {
   const { matches, index, groups, input } = mr;
@@ -58496,9 +59916,9 @@ function createSimpleMatchResult(match2, input, index, lineNumber) {
   return { index, input, match: match2, matches: [match2], groups, lineNumber };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/scope.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/scope.js
 init_import_meta_url();
-var import_node_assert11 = __toESM(require("node:assert"), 1);
+var import_node_assert9 = __toESM(require("node:assert"), 1);
 var Scope = class _Scope {
   value;
   parent;
@@ -58556,7 +59976,7 @@ var ScopePool = class {
     for (const value of parentToChild) {
       parent = this.getScope(value, parent);
     }
-    (0, import_node_assert11.default)(parent, "Empty scope is not allowed.");
+    (0, import_node_assert9.default)(parent, "Empty scope is not allowed.");
     return parent;
   }
 };
@@ -58564,7 +59984,7 @@ function isScopeLike(value) {
   return typeof value === "object" && !Array.isArray(value) && value.value !== void 0;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
 function normalizeGrammar(grammar2) {
   return new ImplNGrammar(grammar2);
 }
@@ -58834,25 +60254,25 @@ var ImplNPatternPatterns = class {
   }
 };
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/grammar.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/grammar.js
 function compileGrammar(grammar2) {
   return normalizeGrammar(grammar2);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 init_import_meta_url();
-var import_node_assert12 = __toESM(require("node:assert"), 1);
+var import_node_assert10 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/util.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/util.js
 init_import_meta_url();
 function isDefined4(t) {
   return t !== void 0 && t !== null;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
 function applyCaptureToBeginOrMatch(matchRuleResult) {
   const { match: match2, rule } = matchRuleResult;
   const bePattern = rule.pattern;
@@ -58891,17 +60311,17 @@ function applyCaptures(rule, match2, captures) {
     };
     return [tokenized];
   }
-  const min3 = match2.index;
-  const max4 = match2.index + text.length;
+  const min2 = match2.index;
+  const max3 = match2.index + text.length;
   function trimSegment(seg) {
     const { index, match: match3 } = seg;
     const right = match3.length;
-    if (index >= min3 && right <= max4)
+    if (index >= min2 && right <= max3)
       return seg;
-    if (index >= max4 || right < min3)
+    if (index >= max3 || right < min2)
       return void 0;
-    const a = Math.max(index, min3) - index;
-    const b = Math.min(right, max4) - index;
+    const a = Math.max(index, min2) - index;
+    const b = Math.min(right, max3) - index;
     const text2 = match3.slice(a, b);
     return {
       ...seg,
@@ -58978,7 +60398,7 @@ function applyCaptures(rule, match2, captures) {
   return parsedText;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 function tokenizeLine(line, rule) {
   const text = line.text;
   const lineLen = line.text.length;
@@ -59077,7 +60497,7 @@ function calcRuleStack(rule) {
   return rules;
 }
 function must(t, msg = "Must be defined") {
-  (0, import_node_assert12.default)(t !== void 0 && t !== null, msg);
+  (0, import_node_assert10.default)(t !== void 0 && t !== null, msg);
   return t;
 }
 function findParentWithEnd(ctx) {
@@ -59090,16 +60510,16 @@ function findNearestWithEnd(ctx) {
   return ctx;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parsers/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parsers/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parsers/typescript/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parsers/typescript/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/grammars/typescript.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/grammars/typescript.js
 init_import_meta_url();
 var repository = {
   statements: {
@@ -59263,9 +60683,9 @@ var grammar = {
   repository
 };
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
 init_import_meta_url();
-var import_node_assert13 = __toESM(require("node:assert"), 1);
+var import_node_assert11 = __toESM(require("node:assert"), 1);
 function appendMappedText(a, b) {
   if (!a.map && !b.map) {
     return { text: a.text + b.text };
@@ -59274,10 +60694,10 @@ function appendMappedText(a, b) {
   const bLen = b.text.length;
   const aMap = [0, 0, ...a.map || [0, 0, aLen, aLen]];
   const bMap = [0, 0, ...b.map || [0, 0, bLen, bLen]];
-  (0, import_node_assert13.default)(aMap[aMap.length - 1] === aLen);
-  (0, import_node_assert13.default)(bMap[bMap.length - 1] === bLen);
-  (0, import_node_assert13.default)((aMap.length & 1) === 0);
-  (0, import_node_assert13.default)((bMap.length & 1) === 0);
+  (0, import_node_assert11.default)(aMap[aMap.length - 1] === aLen);
+  (0, import_node_assert11.default)(bMap[bMap.length - 1] === bLen);
+  (0, import_node_assert11.default)((aMap.length & 1) === 0);
+  (0, import_node_assert11.default)((bMap.length & 1) === 0);
   return {
     text: a.text + b.text,
     map: joinMaps(aMap, bMap)
@@ -59302,7 +60722,7 @@ function joinMaps(aMap, bMap) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/mappers/typescript.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/mappers/typescript.js
 init_import_meta_url();
 var hexChars = {
   "0": 0,
@@ -59341,20 +60761,20 @@ var escapeChars = {
 function mapRawString(text) {
   const end = text.length;
   let t = "";
-  const map3 = [];
+  const map2 = [];
   const isHex = /^[0-9a-fA-F]+$/;
   let i, j;
   for (i = 0, j = 0; i < end; ++i) {
     let parsed;
     const ti = text[i];
     if (ti === "\\") {
-      map3.push(i, j);
+      map2.push(i, j);
       const tc = text[++i];
       const ec = escapeChars[tc];
       if (ec) {
         t += ec;
         j += ec.length;
-        map3.push(i, j);
+        map2.push(i, j);
         continue;
       }
       switch (tc) {
@@ -59425,26 +60845,26 @@ function mapRawString(text) {
           break;
         }
       }
-      map3.push(i + 1, j);
+      map2.push(i + 1, j);
       continue;
     }
     t += ti;
     ++j;
   }
-  if (map3.length) {
-    const ii = map3[map3.length - 2];
-    const jj = map3[map3.length - 1];
+  if (map2.length) {
+    const ii = map2[map2.length - 2];
+    const jj = map2[map2.length - 1];
     if (ii !== i || jj !== j) {
-      map3.push(i, j);
+      map2.push(i, j);
     }
   }
   return {
     text: t,
-    map: map3
+    map: map2
   };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parser/parser.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parser/parser.js
 init_import_meta_url();
 function mapTokenizedLine(tl) {
   return tl.tokens.map((t) => ({
@@ -59464,7 +60884,7 @@ function createParser(grammar2, name2, transform2 = mapTokenizedLines) {
   return { name: name2, parse: parse4 };
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
 var tsGrammar = compileGrammar(grammar);
 var pool = new ScopePool();
 var useScope = /* @__PURE__ */ new WeakMap();
@@ -59546,10 +60966,10 @@ function doesScopeMatch(s, match2) {
   return typeof s === "string" ? s.startsWith(match2) : s.value.startsWith(match2);
 }
 
-// ../node_modules/.pnpm/cspell-grammar@9.4.0/node_modules/cspell-grammar/dist/parsers/index.js
+// ../node_modules/.pnpm/cspell-grammar@9.6.0/node_modules/cspell-grammar/dist/parsers/index.js
 var parsers2 = [parser];
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
 init_import_meta_url();
 var PatternRegExp = class extends RegExp {
   constructor(pattern) {
@@ -59560,7 +60980,7 @@ var PatternRegExp = class extends RegExp {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
 init_import_meta_url();
 var defaultLocale = "en";
 var defaultLanguageSettings = [];
@@ -59661,21 +61081,21 @@ function calcSettingsForLanguageId(baseSettings, languageId) {
   return langSettings;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
 init_import_meta_url();
 var regExMatchUrls = /(?:https?|ftp):\/\/[^\s"]+/gi;
 var regExHRef = /\bhref\s*=\s*".*?"/gi;
 var regExMatchCommonHexFormats = /(?:#[0-9a-f]{3,8})|(?:0x[0-9a-f]+)|(?:\\u[0-9a-f]{4})|(?:\\x\{[0-9a-f]{4}\})/gi;
 var regExCommitHash = /\b(?![a-f]+\b)(?:0x)?[0-9a-f]{7,}\b/gi;
 var regExCommitHashLink = /\[[0-9a-f]{7,}\]/gi;
-var regExCStyleHexValue = /\b0x[0-9a-f_]+\b/gi;
+var regExCStyleHexValue = /\b0x[0-9a-f_]+n?\b/gi;
 var regExCSSHexValue = /#[0-9a-f]{3,8}\b/gi;
 var regExUUID = /\b[0-9a-fx]{8}-[0-9a-fx]{4}-[0-9a-fx]{4}-[0-9a-fx]{4}-[0-9a-fx]{12}\b/gi;
 var regExUnicodeRef = /\bU\+[0-9a-f]{4,5}(?:-[0-9a-f]{4,5})?/gi;
 var regExSpellingGuardBlock = /(\bc?spell(?:-?checker)?::?)\s*disable(?!-line|-next)\b(?!-)[\s\S]*?((?:\1\s*enable\b)|$)/gi;
 var regExSpellingGuardNext = /\bc?spell(?:-?checker)?::?\s*disable-next\b.*\s\s?.*/gi;
 var regExSpellingGuardLine = /^.*\bc?spell(?:-?checker)?::?\s*disable-line\b.*/gim;
-var regExIgnoreSpellingDirectives = /\bc?spell(?:-?checker)?::?\s*ignoreRegExp.*/gim;
+var regExIgnoreSpellingDirectives = /\bc?spell(?:-?checker)?::?\s*(ignoreRegExp|word|ignore).*/gim;
 var regExPublicKey = /-{5}BEGIN\s+((?:RSA\s+)?PUBLIC\s+KEY)[\w=+\-/=\\\s]+?END\s+\1-{5}/g;
 var regExCert = /-{5}BEGIN\s+(CERTIFICATE|(?:RSA\s+)?(?:PRIVATE|PUBLIC)\s+KEY)[\w=+\-/=\\\s]+?END\s+\1-{5}/g;
 var regExSshRSA = /ssh-rsa\s+[a-z0-9/+]{28,}={0,3}(?![a-z0-9/+=])/gi;
@@ -59691,7 +61111,7 @@ var regExRepeatedChar = /^(\w)\1{3,}$/i;
 var regExSha = /\bsha\d+-[a-z0-9+/]{25,}={0,3}/gi;
 var regExHashStrings = /(?:\b(?:sha\d+|md5|base64|crypt|bcrypt|scrypt|security-token|assertion)[-,:$=]|#code[/])[-\w/+%.]{25,}={0,3}(?:(['"])\s*\+?\s*\1?[-\w/+%.]+={0,3})*(?![-\w/+=%.])/gi;
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
 var defaultConfigFile = () => resolveConfigModule(defaultConfigFileModuleRef);
 var regExpSpellCheckerDisable = [
   new PatternRegExp(regExSpellingGuardBlock),
@@ -59823,16 +61243,16 @@ function getDefaultSettings(useDefaultDictionaries = true) {
   return defaultSettingsLoader.getDefaultSettingsAsync(useDefaultDictionaries);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/text.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/text.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/search.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/search.js
 init_import_meta_url();
 function binarySearch(arr, item, leftOffset, rightOffset) {
   let left = Math.max(leftOffset ?? 0, 0);
@@ -59848,7 +61268,7 @@ function binarySearch(arr, item, leftOffset, rightOffset) {
   return left;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/text.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/text.js
 function splitCamelCaseWordWithOffset(wo) {
   return splitCamelCaseWord(wo.text).map(scanMap((last, text) => ({ text, offset: last.offset + last.text.length }), {
     text: "",
@@ -60013,7 +61433,7 @@ function removeAccents2(text) {
   return text.normalize("NFD").replace(regExAccents2, "");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
 var regExMatchRegEx = /\/.*\/[gimuy]*/;
 var regExCSpellInDocDirective = /\b(?:spell-?checker|c?spell)::?(.*)/gi;
 var regExCSpellDirectiveKey = /(?<=\b(?:spell-?checker|c?spell)::?)(?!:)(.*)/i;
@@ -60162,9 +61582,9 @@ function parseSettingMatchValidation(possibleMatch) {
   return issue;
 }
 function* filterUniqueSuggestions(sugs) {
-  const map3 = /* @__PURE__ */ new Map();
+  const map2 = /* @__PURE__ */ new Map();
   for (const sug of sugs) {
-    const existing = map3.get(sug.word);
+    const existing = map2.get(sug.word);
     if (existing && sug.isPreferred) {
       existing.isPreferred = true;
     }
@@ -60268,7 +61688,7 @@ function parseDisable(acc, _match) {
   return acc;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
 function combineTextAndLanguageSettings(settings, text, languageId) {
   if (!text) {
     return toInternalSettings(calcSettingsForLanguageId(settings, languageId));
@@ -60283,10 +61703,10 @@ function extractSettingsFromText(text) {
   return getInDocumentSettings(text);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/spellCheckFile.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/spellCheckFile.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
 init_import_meta_url();
 var path12 = __toESM(require("node:path"), 1);
 async function determineTextDocumentSettings(doc, settings) {
@@ -60304,14 +61724,14 @@ function getLanguageForFilename(filename) {
   return findMatchingFileTypes(basename6);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/index.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 init_import_meta_url();
-var import_node_assert17 = __toESM(require("node:assert"), 1);
+var import_node_assert15 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/@cspell+cspell-types@9.4.0/node_modules/@cspell/cspell-types/dist/index.mjs
+// ../node_modules/.pnpm/@cspell+cspell-types@9.6.0/node_modules/@cspell/cspell-types/dist/index.mjs
 init_import_meta_url();
 var IssueType = /* @__PURE__ */ (function(IssueType$1) {
   IssueType$1[IssueType$1["spelling"] = 0] = "spelling";
@@ -60334,11 +61754,11 @@ var defaultCSpellSettings = {
   minRandomLength: 40
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/suggestions.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/suggestions.js
 init_import_meta_url();
-var import_node_assert14 = __toESM(require("node:assert"), 1);
+var import_node_assert12 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/memorizeLastCall.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/memorizeLastCall.js
 init_import_meta_url();
 function memorizeLastCall2(fn) {
   let last;
@@ -60353,7 +61773,7 @@ function memorizeLastCall2(fn) {
   };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/suggestions.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/suggestions.js
 var emptySuggestionOptions = Object.freeze({});
 var emptyCSpellSettings = Object.freeze({});
 var memorizeSuggestions = memorizeLastCall2(cacheSuggestionsForWord);
@@ -60394,7 +61814,7 @@ async function _suggestionsForWordAsync(word, options, settings, dictionaryColle
   const suggestionsByDictionary = dictionaryCollection.dictionaries.flatMap((dict) => dict.suggest(word, opts).map((r) => ({ ...r, dictName: dict.name })));
   const locale = adjustLocale(language || config.language || void 0);
   const collator2 = Intl.Collator(locale);
-  const combined = limitResults(combine3(suggestionsByDictionary.sort((a, b) => a.cost - b.cost || collator2.compare(a.word, b.word))), numSuggestions, includeTies);
+  const combined = limitResults(combine2(suggestionsByDictionary.sort((a, b) => a.cost - b.cost || collator2.compare(a.word, b.word))), numSuggestions, includeTies);
   const sugsAdjusted = calcSuggestionAdjustedToToMatchCase(word, combined, locale, ignoreCase2, extendsDictionaryCollection);
   const allSugs = sugsAdjusted.map((sug) => {
     const found = extendsDictionaryCollection.find(sug.word);
@@ -60409,7 +61829,7 @@ async function _suggestionsForWordAsync(word, options, settings, dictionaryColle
     suggestions: limitResults(allSugs, numSuggestions, includeTies)
   };
 }
-function combine3(suggestions2) {
+function combine2(suggestions2) {
   const words = /* @__PURE__ */ new Map();
   for (const sug of suggestions2) {
     const { word, cost, dictName, ...rest } = sug;
@@ -60486,7 +61906,7 @@ function matchCase2(word, isPreferred, style) {
     return word;
   if (style.isAllCaps)
     return word.toLocaleUpperCase(locale);
-  (0, import_node_assert14.default)(style.isTitleCase);
+  (0, import_node_assert12.default)(style.isTitleCase);
   return word.replace(/^\p{L}/u, (firstLetter) => firstLetter.toLocaleUpperCase(locale));
 }
 var regExpHasCaps = /\p{Lu}/u;
@@ -60516,20 +61936,20 @@ var SuggestionError = class extends Error {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/defaultConstants.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/defaultConstants.js
 init_import_meta_url();
 var defaultMaxNumberOfProblems = 200;
 var defaultMaxDuplicateProblems = 5;
 var defaultMinWordLength = 4;
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 init_import_meta_url();
-var import_node_assert16 = __toESM(require("node:assert"), 1);
+var import_node_assert14 = __toESM(require("node:assert"), 1);
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
 init_import_meta_url();
 var PairingHeap2 = class {
   compare;
@@ -60614,13 +62034,13 @@ function mergeSiblings2(compare3, n) {
   return ss ? merge3(compare3, m, mergeSiblings2(compare3, ss)) : m;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/regexHelper.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/regexHelper.js
 init_import_meta_url();
 function escapeRegEx3(s) {
   return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
 var ignoreBreak = Object.freeze([]);
 function split(line, offset, isValidWord, options = {}) {
   const relWordToSplit = findNextWordText({ text: line.text, offset: offset - line.offset });
@@ -60928,7 +62348,7 @@ function mergeSortedBreaks(...maps) {
   return maps.flat().sort((a, b) => a.offset - b.offset);
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
 init_import_meta_url();
 var maxRadio = 0.5;
 function isRandomString(s, maxNoiseToLengthRatio = maxRadio) {
@@ -60955,7 +62375,7 @@ function extractHexSequences(s, minLength = MIN_HEX_SEQUENCE_LENGTH) {
   return [...s.matchAll(hexSequence)].filter((m) => m[0].length >= minLength && (m.index === 0 || !isLetterAt(s, m.index - 1)) && !isLetterAt(s, m.index + m[0].length)).map((m) => ({ text: m[0], offset: m.index }));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
 init_import_meta_url();
 function hasWordCheck(dict, word) {
   word = word.includes("\\") ? word.replaceAll("\\", "") : word;
@@ -60967,12 +62387,12 @@ function isWordValidWithEscapeRetry(dict, wo, line) {
   line.text[wo.offset - line.offset - 1] === "\\" && hasWordCheck(dict, wo.text.slice(1));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/TextMap.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/TextMap.js
 init_import_meta_url();
-var import_node_assert15 = __toESM(require("node:assert"), 1);
+var import_node_assert13 = __toESM(require("node:assert"), 1);
 function extractTextMapRangeOrigin(textMap, extractRange) {
   const { text: srcTxt, range: srcRange, map: srcMap } = textMap;
   const [r0, r1] = srcRange;
@@ -60985,7 +62405,7 @@ function extractTextMapRangeOrigin(textMap, extractRange) {
     const text2 = srcTxt.slice(a, b);
     return { text: text2, range };
   }
-  (0, import_node_assert15.default)((srcMap.length & 1) === 0, "Map must be pairs of values.");
+  (0, import_node_assert13.default)((srcMap.length & 1) === 0, "Map must be pairs of values.");
   const mapLen = srcMap.length;
   const mapEndSrc = srcMap[mapLen - 2];
   const mapEndDst = srcMap[mapLen - 1];
@@ -61010,25 +62430,25 @@ function extractTextMapRangeOrigin(textMap, extractRange) {
     return { text, range };
   }
   const ab = [a0, a1];
-  const map3 = sMap.slice(aIdx, bIdx + 2).map((v, i) => v - ab[i & 1]);
-  return { text, range, map: map3 };
+  const map2 = sMap.slice(aIdx, bIdx + 2).map((v, i) => v - ab[i & 1]);
+  return { text, range, map: map2 };
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
-function mapRangeBackToOriginalPos(offRange, map3) {
-  if (!map3 || !map3.length)
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/parsedText.js
+function mapRangeBackToOriginalPos(offRange, map2) {
+  if (!map2 || !map2.length)
     return offRange;
   const [start, end] = offRange;
   let i = 0, j = 0, p = 1;
-  while (p < map3.length && map3[p] < start) {
-    i = map3[p - 1];
-    j = map3[p];
+  while (p < map2.length && map2[p] < start) {
+    i = map2[p - 1];
+    j = map2[p];
     p += 2;
   }
   const iA = start - j + i;
-  while (p < map3.length && map3[p] < end) {
-    i = map3[p - 1];
-    j = map3[p];
+  while (p < map2.length && map2[p] < end) {
+    i = map2[p - 1];
+    j = map2[p];
     p += 2;
   }
   const iB = end - j + i;
@@ -61073,10 +62493,10 @@ function createMappedTextSegmenter(includeRanges) {
   return segmenter;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 var MIN_HEX_SEQUENCE_LENGTH2 = 8;
 function lineValidatorFactory(sDict, options) {
-  const { minWordLength = defaultMinWordLength, flagWords = [], allowCompoundWords = false, ignoreCase: ignoreCase2 = true, ignoreRandomStrings = defaultCSpellSettings.ignoreRandomStrings, minRandomLength = defaultCSpellSettings.minRandomLength, unknownWords = unknownWordsChoices.ReportAll } = options;
+  const { minWordLength = defaultMinWordLength, flagWords = [], allowCompoundWords = false, ignoreCase: ignoreCase2 = true, ignoreRandomStrings = defaultCSpellSettings.ignoreRandomStrings, minRandomLength = defaultCSpellSettings.minRandomLength, unknownWords = unknownWordsChoices.ReportAll, numSuggestions } = options;
   const hasWordOptions = {
     ignoreCase: ignoreCase2,
     useCompounds: allowCompoundWords || void 0
@@ -61129,18 +62549,23 @@ function lineValidatorFactory(sDict, options) {
     return autoResolve(cacheGetPreferredSuggestions, word, () => dictCol.getPreferredSuggestions(word));
   }
   const cacheHasSimpleSuggestions = /* @__PURE__ */ new Map();
-  function hasSimpleSuggestions(word) {
+  function getSimpleSuggestions(word) {
+    const numSug = numSuggestions ?? 5;
     return autoResolve(cacheHasSimpleSuggestions, word, () => {
       const sugs = dictCol.suggest(word, {
         numSuggestions: 1,
         compoundMethod: 0,
-        includeTies: false,
+        includeTies: true,
+        // We want the top suggestions even if there are ties
         ignoreCase: ignoreCase2,
         timeout: 100,
         numChanges: 1.8
         // Only consider very simple changes (1 edit distance plus case changes)
       });
-      return !!sugs.length;
+      if (sugs.length > numSug) {
+        sugs.length = numSug;
+      }
+      return sugs;
     });
   }
   function isWordFlagged(wo) {
@@ -61155,7 +62580,11 @@ function lineValidatorFactory(sDict, options) {
     if (!sugs?.length) {
       issue.hasPreferredSuggestions = sugs !== void 0 ? false : void 0;
       if (unknownWords === unknownWordsChoices.ReportSimple) {
-        issue.hasSimpleSuggestions = hasSimpleSuggestions(issue.text);
+        const sug = getSimpleSuggestions(issue.text);
+        issue.hasSimpleSuggestions = !!sug.length;
+        if (sug.length) {
+          issue.suggestionsEx = sug.map((s) => ({ ...s, isPreferred: !!s.isPreferred }));
+        }
       }
       return issue;
     }
@@ -61193,7 +62622,7 @@ function lineValidatorFactory(sDict, options) {
       if (word.text.length >= minWordLength * 2 || [...word.text].length >= minWordLength)
         return false;
       const offset = word.offset - line.offset;
-      import_node_assert16.default.equal(line.text.slice(offset, offset + word.text.length), word.text);
+      import_node_assert14.default.equal(line.text.slice(offset, offset + word.text.length), word.text);
       const prefix = [...line.text.slice(Math.max(0, offset - 2), offset)];
       const hasLetterPrefix = !!prefix.length && regExpIsLetter.test(prefix[prefix.length - 1]);
       if (hasLetterPrefix)
@@ -61382,13 +62811,13 @@ function textValidatorFactory(dict, options) {
   const lineValidator = lineValidatorFactory(dict, options);
   const lineValidatorFn = lineValidator.fn;
   function validate(pText) {
-    const { text, range: srcRange, map: map3 } = pText;
+    const { text, range: srcRange, map: map2 } = pText;
     const srcOffset = srcRange[0];
     const segment = { text, offset: 0 };
     const lineSegment = { line: segment, segment };
     function mapBackToOriginSimple(vr) {
       const { text: text2, offset, isFlagged, isFound, suggestionsEx, hasPreferredSuggestions, hasSimpleSuggestions } = vr;
-      const r = mapRangeBackToOriginalPos([offset, offset + text2.length], map3);
+      const r = mapRangeBackToOriginalPos([offset, offset + text2.length], map2);
       const range = [r[0] + srcOffset, r[1] + srcOffset];
       return { text: text2, range, isFlagged, isFound, suggestionsEx, hasPreferredSuggestions, hasSimpleSuggestions };
     }
@@ -61423,7 +62852,7 @@ function filterExcludedTextOffsets(issues, excluded) {
   return keep;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
 init_import_meta_url();
 function settingsToValidateOptions(settings) {
   const opt = {
@@ -61436,10 +62865,10 @@ function settingsToValidateOptions(settings) {
   return opt;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/TextRange.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/TextRange.js
 init_import_meta_url();
 function toMatchRangeWithText(m) {
   const index = m.index || 0;
@@ -61553,7 +62982,7 @@ function flatten(data) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
 function calcTextInclusionRanges(text, options) {
   const { ignoreRegExpList = [], includeRegExpList = [] } = options;
   const filteredIncludeList = includeRegExpList.filter((a) => !!a);
@@ -61562,12 +62991,13 @@ function calcTextInclusionRanges(text, options) {
   return includeRanges;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
 init_import_meta_url();
 function traceWord(word, dictCollection, config) {
   const opts = {
     ignoreCase: config.ignoreCase ?? true,
-    useCompounds: config.allowCompoundWords || false
+    useCompounds: config.allowCompoundWords || false,
+    compoundSeparator: "\u2022"
   };
   const splits = split({ text: word, offset: 0 }, 0, checkWord);
   const wfSplits = splits.words.map((s) => ({ word: s.text, found: s.isFound }));
@@ -61649,7 +63079,7 @@ var CTraceResult = class extends Array {
   }
 };
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 var ERROR_NOT_PREPARED = "Validator Must be prepared before calling this function.";
 var DocumentValidator = class _DocumentValidator {
   settings;
@@ -61695,21 +63125,22 @@ var DocumentValidator = class _DocumentValidator {
     return this._prepared;
   }
   async _prepareAsync() {
-    (0, import_node_assert17.default)(!this._ready);
-    const timer = createPerfTimer2("_prepareAsync");
+    (0, import_node_assert15.default)(!this._ready);
+    const timer = createPerfTimer("_prepareAsync");
     const { options, settings: rawSettings } = this;
     const resolveImportsRelativeTo = toFileURL(options.resolveImportsRelativeTo || toFileURL("./virtual.settings.json"));
     const settings = rawSettings.import?.length ? await resolveSettingsImports(rawSettings, resolveImportsRelativeTo) : rawSettings;
     const useSearchForConfig = !options.noConfigSearch && !settings.noConfigSearch || options.noConfigSearch === false;
     const pLocalConfig = options.configFile ? loadConfig(options.configFile, settings) : useSearchForConfig ? timePromise(this.perfTiming, "__searchForDocumentConfig", searchForDocumentConfig(this._document, settings, settings)) : void 0;
     if (pLocalConfig) {
-      timePromise(this.perfTiming, "_loadConfig", pLocalConfig);
+      timePromise(this.perfTiming, "_loadConfig", pLocalConfig).catch(() => void 0);
     }
     const localConfig = await catchPromiseError(pLocalConfig, (e) => this.addPossibleError(e)) || {};
-    this.addPossibleError(localConfig?.__importRef?.error);
+    extractImportErrors(localConfig).forEach((e) => this.addPossibleError(e.error));
     const config = mergeSettings(settings, localConfig);
     const docSettings = await timePromise(this.perfTiming, "_determineTextDocumentSettings", determineTextDocumentSettings(this._document, config));
     const dict = await timePromise(this.perfTiming, "_getDictionaryInternal", getDictionaryInternal(docSettings));
+    const stopMeasure = measurePerf3("DocumentValidator._prepareAsync");
     const recGlobMatcherTime = recordPerfTime(this.perfTiming, "_GlobMatcher");
     const matcher = getGlobMatcherForExcluding(localConfig?.ignorePaths);
     const uri = this._document.uri;
@@ -61740,13 +63171,15 @@ var DocumentValidator = class _DocumentValidator {
     this._ready = true;
     this._preparationTime = timer.elapsed;
     this.perfTiming.prepTime = this._preparationTime;
+    stopMeasure();
   }
   async _updatePrep() {
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
-    const timer = createPerfTimer2("_updatePrep");
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
+    const timer = createPerfTimer("_updatePrep");
     const prep = this._preparations;
     const docSettings = await determineTextDocumentSettings(this._document, prep.config);
     const dict = await getDictionaryInternal(docSettings);
+    const stopMeasure = measurePerf3("DocumentValidator._updatePrep");
     const shouldCheck = docSettings.enabled ?? true;
     const finalSettings = finalizeSettings(docSettings);
     const validateOptions2 = settingsToValidateOptions(finalSettings);
@@ -61764,6 +63197,7 @@ var DocumentValidator = class _DocumentValidator {
       textValidator
     };
     this._preparationTime = timer.elapsed;
+    stopMeasure();
   }
   /**
    * The amount of time in ms to prepare for validation.
@@ -61787,8 +63221,8 @@ var DocumentValidator = class _DocumentValidator {
     return this.check({ text, range, scope });
   }
   check(parsedText) {
-    (0, import_node_assert17.default)(this._ready);
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._ready);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     const { segmenter, textValidator } = this._preparations;
     const document = this._document;
     let line = void 0;
@@ -61796,7 +63230,7 @@ var DocumentValidator = class _DocumentValidator {
       const { range, text, isFlagged, isFound, suggestionsEx, hasPreferredSuggestions, hasSimpleSuggestions } = issue;
       const offset = range[0];
       const length = range[1] - range[0];
-      (0, import_node_assert17.default)(!line || line.offset <= offset);
+      (0, import_node_assert15.default)(!line || line.offset <= offset);
       if (!line || line.offset + line.text.length <= offset) {
         line = document.lineAt(offset);
       }
@@ -61852,8 +63286,8 @@ var DocumentValidator = class _DocumentValidator {
     try {
       if (this.skipValidation)
         return [];
-      (0, import_node_assert17.default)(this._ready);
-      (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+      (0, import_node_assert15.default)(this._ready);
+      (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
       const spellingIssues = forceCheck || this.shouldCheckDocument() ? [...this._checkParsedText(this._parse())] : [];
       const directiveIssues = this.checkDocumentDirectives();
       const allIssues = [...spellingIssues, ...directiveIssues].sort((a, b) => a.offset - b.offset);
@@ -61863,8 +63297,8 @@ var DocumentValidator = class _DocumentValidator {
     }
   }
   checkDocumentDirectives(forceCheck = false) {
-    (0, import_node_assert17.default)(this._ready);
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._ready);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     const validateDirectives = forceCheck || this.validateDirectives;
     if (!validateDirectives)
       return [];
@@ -61892,11 +63326,11 @@ var DocumentValidator = class _DocumentValidator {
    * @returns MatchRanges of text to include.
    */
   getCheckedTextRanges() {
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     return this._preparations.includeRanges;
   }
   traceWord(word) {
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     return traceWord(word, this._preparations.dictionary, this._preparations.config);
   }
   defaultParser() {
@@ -61907,10 +63341,11 @@ var DocumentValidator = class _DocumentValidator {
     }));
   }
   *_checkParsedText(parsedTexts) {
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     const { maxNumberOfProblems = defaultMaxNumberOfProblems, maxDuplicateProblems = defaultMaxDuplicateProblems } = this._preparations.validateOptions;
     let numProblems = 0;
     const mapOfProblems = /* @__PURE__ */ new Map();
+    const stopMeasure = measurePerf3("DocumentValidator._checkParsedText");
     for (const pText of parsedTexts) {
       for (const issue of this.check(pText)) {
         const { text } = issue;
@@ -61923,6 +63358,7 @@ var DocumentValidator = class _DocumentValidator {
           return;
       }
     }
+    stopMeasure();
   }
   addPossibleError(error3) {
     if (!error3)
@@ -61930,7 +63366,7 @@ var DocumentValidator = class _DocumentValidator {
     error3 = this.errors.push(toError2(error3));
   }
   _parse() {
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     const parser2 = this._preparations.finalSettings.parserFn;
     if (typeof parser2 !== "object")
       return this.defaultParser();
@@ -61940,7 +63376,7 @@ var DocumentValidator = class _DocumentValidator {
     return this._suggestions.get(text);
   }
   genSuggestions(text) {
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     const settings = this._preparations.docSettings;
     const dict = this._preparations.dictionary;
     const sugOptions = {
@@ -61955,7 +63391,7 @@ var DocumentValidator = class _DocumentValidator {
     return this.adjustSuggestions(text, rawSuggestions);
   }
   adjustSuggestions(text, rawSuggestions) {
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     const settings = this._preparations.docSettings;
     const ignoreCase2 = !(settings.caseSensitive ?? false);
     const locale = this._preparations.config.language;
@@ -61964,8 +63400,8 @@ var DocumentValidator = class _DocumentValidator {
     return sugsWithAlt.map(sanitizeSuggestion);
   }
   getFinalizedDocSettings() {
-    (0, import_node_assert17.default)(this._ready);
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._ready);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     return this._preparations.docSettings;
   }
   /**
@@ -61976,7 +63412,7 @@ var DocumentValidator = class _DocumentValidator {
    * @returns true if the document settings have resolved to be `enabled`
    */
   shouldCheckDocument() {
-    (0, import_node_assert17.default)(this._preparations, ERROR_NOT_PREPARED);
+    (0, import_node_assert15.default)(this._preparations, ERROR_NOT_PREPARED);
     return this._preparations.shouldCheck;
   }
   /**
@@ -62021,7 +63457,7 @@ async function shouldCheckDocument(doc, options, settings) {
     const useSearchForConfig = !options.noConfigSearch && !settings.noConfigSearch || options.noConfigSearch === false;
     const pLocalConfig = options.configFile ? loadConfig(options.configFile, settings) : useSearchForConfig ? searchForDocumentConfig(doc, settings, settings) : void 0;
     const localConfig = await catchPromiseError(pLocalConfig, addPossibleError) || {};
-    addPossibleError(localConfig?.__importRef?.error);
+    extractImportErrors(localConfig).forEach((e) => addPossibleError(e.error));
     const config = mergeSettings(settings, localConfig);
     const matcher = getGlobMatcherForExcluding(localConfig?.ignorePaths);
     if (matcher.match(uriToFilePath(doc.uri))) {
@@ -62035,14 +63471,14 @@ async function shouldCheckDocument(doc, options, settings) {
   return await shouldCheck();
 }
 function recordPerfTime(timings, name2) {
-  const timer = createPerfTimer2(name2, (elapsed) => timings[name2] = elapsed);
+  const timer = createPerfTimer(name2, (elapsed) => timings[name2] = elapsed);
   return () => timer.end();
 }
 function timePromise(timings, name2, p) {
   return p.finally(recordPerfTime(timings, name2));
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/spellCheckFile.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/spellCheckFile.js
 async function spellCheckDocument(document, options, settingsOrConfigFile) {
   const settingsUsed = satisfiesCSpellConfigFile(settingsOrConfigFile) ? settingsOrConfigFile.settings : settingsOrConfigFile;
   if (isBinaryDoc(document)) {
@@ -62057,7 +63493,7 @@ async function spellCheckDocument(document, options, settingsOrConfigFile) {
     };
   }
   try {
-    const timer = createPerfTimer2("loadFile");
+    const timer = createPerfTimer("loadFile");
     const doc = await resolveDocument(document).finally(() => timer.end());
     if (isBinaryDoc(doc)) {
       return {
@@ -62090,9 +63526,9 @@ async function spellCheckDocument(document, options, settingsOrConfigFile) {
 }
 async function spellCheckFullDocument(document, options, settingsOrConfigFile) {
   const perf = {};
-  const timer = createPerfTimer2("spellCheckFullDocument", (elapsed) => perf.totalTimeMs = elapsed);
-  const timerCheck = createPerfTimer2("check", (elapsed) => perf.checkTimeMs = elapsed);
-  const timerPrepare = createPerfTimer2("prepare", (elapsed) => perf.prepareTimeMs = elapsed);
+  const timer = createPerfTimer("spellCheckFullDocument", (elapsed) => perf.totalTimeMs = elapsed);
+  const timerCheck = createPerfTimer("check", (elapsed) => perf.checkTimeMs = elapsed);
+  const timerPrepare = createPerfTimer("prepare", (elapsed) => perf.prepareTimeMs = elapsed);
   const doc = documentToTextDocument(document);
   const docValOptions = options;
   const docValidator = await DocumentValidator.create(doc, docValOptions, settingsOrConfigFile).finally(() => timerPrepare.end());
@@ -62128,7 +63564,7 @@ async function spellCheckFullDocument(document, options, settingsOrConfigFile) {
   return result;
 }
 
-// ../node_modules/.pnpm/cspell-lib@9.4.0/node_modules/cspell-lib/dist/lib/util/textApi.js
+// ../node_modules/.pnpm/cspell-lib@9.6.0/node_modules/cspell-lib/dist/lib/util/textApi.js
 var textApi_exports = {};
 __export(textApi_exports, {
   calculateTextDocumentOffsets: () => calculateTextDocumentOffsets,
@@ -62161,8 +63597,8 @@ __export(textApi_exports, {
 });
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell@9.4.0/node_modules/cspell/dist/esm/application-DCyfKhGm.js
-var import_node_assert18 = __toESM(require("node:assert"), 1);
+// ../node_modules/.pnpm/cspell@9.6.0/node_modules/cspell/dist/esm/application-BJHh60xM.js
+var import_node_assert16 = __toESM(require("node:assert"), 1);
 var import_node_util5 = require("node:util");
 
 // ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/index.js
@@ -62358,7 +63794,7 @@ var ansi_styles_default = ansiStyles;
 // ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/supports-color/index.js
 init_import_meta_url();
 var import_node_process4 = __toESM(require("node:process"), 1);
-var import_node_os5 = __toESM(require("node:os"), 1);
+var import_node_os4 = __toESM(require("node:os"), 1);
 var import_node_tty = __toESM(require("node:tty"), 1);
 function hasFlag(flag, argv = globalThis.Deno ? globalThis.Deno.args : import_node_process4.default.argv) {
   const prefix = flag.startsWith("-") ? "" : flag.length === 1 ? "-" : "--";
@@ -62418,12 +63854,12 @@ function _supportsColor(haveStream, { streamIsTTY, sniffFlags = true } = {}) {
   if (haveStream && !streamIsTTY && forceColor === void 0) {
     return 0;
   }
-  const min3 = forceColor || 0;
+  const min2 = forceColor || 0;
   if (env3.TERM === "dumb") {
-    return min3;
+    return min2;
   }
   if (import_node_process4.default.platform === "win32") {
-    const osRelease = import_node_os5.default.release().split(".");
+    const osRelease = import_node_os4.default.release().split(".");
     if (Number(osRelease[0]) >= 10 && Number(osRelease[2]) >= 10586) {
       return Number(osRelease[2]) >= 14931 ? 3 : 2;
     }
@@ -62436,7 +63872,7 @@ function _supportsColor(haveStream, { streamIsTTY, sniffFlags = true } = {}) {
     if (["TRAVIS", "APPVEYOR", "GITLAB_CI", "BUILDKITE", "DRONE"].some((sign) => sign in env3) || env3.CI_NAME === "codeship") {
       return 1;
     }
-    return min3;
+    return min2;
   }
   if ("TEAMCITY_VERSION" in env3) {
     return /^(9\.(0*[1-9]\d*)\.|\d{2,}\.)/.test(env3.TEAMCITY_VERSION) ? 1 : 0;
@@ -62473,7 +63909,7 @@ function _supportsColor(haveStream, { streamIsTTY, sniffFlags = true } = {}) {
   if ("COLORTERM" in env3) {
     return 1;
   }
-  return min3;
+  return min2;
 }
 function createSupportsColor(stream, options = {}) {
   const level = _supportsColor(stream, {
@@ -62820,17 +64256,27 @@ var chalk_template_default = makeChalkTemplate(template);
 var templateStderr = makeTemplate(chalkStderr);
 var chalkTemplateStderr = makeChalkTemplate(templateStderr);
 
-// ../node_modules/.pnpm/cspell@9.4.0/node_modules/cspell/dist/esm/application-DCyfKhGm.js
+// ../node_modules/.pnpm/ansi-regex@6.2.2/node_modules/ansi-regex/index.js
+init_import_meta_url();
+function ansiRegex({ onlyFirst = false } = {}) {
+  const ST = "(?:\\u0007|\\u001B\\u005C|\\u009C)";
+  const osc = `(?:\\u001B\\][\\s\\S]*?${ST})`;
+  const csi = "[\\u001B\\u009B][[\\]()#;?]*(?:\\d{1,4}(?:[;:]\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]";
+  const pattern = `${osc}|${csi}`;
+  return new RegExp(pattern, onlyFirst ? void 0 : "g");
+}
+
+// ../node_modules/.pnpm/cspell@9.6.0/node_modules/cspell/dist/esm/application-BJHh60xM.js
 var import_promises4 = __toESM(require("node:fs/promises"), 1);
 var import_node_fs7 = require("node:fs");
 var import_node_url13 = require("node:url");
 var path$1 = __toESM(require("node:path"), 1);
 var import_node_path10 = __toESM(require("node:path"), 1);
 
-// ../node_modules/.pnpm/cspell-gitignore@9.4.0/node_modules/cspell-gitignore/dist/index.js
+// ../node_modules/.pnpm/cspell-gitignore@9.6.0/node_modules/cspell-gitignore/dist/index.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-gitignore@9.4.0/node_modules/cspell-gitignore/dist/findRepoRoot.js
+// ../node_modules/.pnpm/cspell-gitignore@9.6.0/node_modules/cspell-gitignore/dist/findRepoRoot.js
 init_import_meta_url();
 async function findRepoRoot(directory, vfs) {
   directory = toFileDirURL(directory);
@@ -62843,13 +64289,13 @@ async function findRepoRoot(directory, vfs) {
   return toFilePathOrHref(new URL(".", found));
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.4.0/node_modules/cspell-gitignore/dist/GitIgnore.js
+// ../node_modules/.pnpm/cspell-gitignore@9.6.0/node_modules/cspell-gitignore/dist/GitIgnore.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-gitignore@9.4.0/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
+// ../node_modules/.pnpm/cspell-gitignore@9.6.0/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
 init_import_meta_url();
 
-// ../node_modules/.pnpm/cspell-gitignore@9.4.0/node_modules/cspell-gitignore/dist/utils.js
+// ../node_modules/.pnpm/cspell-gitignore@9.6.0/node_modules/cspell-gitignore/dist/utils.js
 init_import_meta_url();
 function isDefined5(v) {
   return v !== void 0 && v !== null;
@@ -62867,7 +64313,7 @@ function makeRelativeTo(child, parent) {
   return rel;
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.4.0/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
+// ../node_modules/.pnpm/cspell-gitignore@9.6.0/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
 var GitIgnoreFile = class _GitIgnoreFile {
   matcher;
   gitignore;
@@ -62982,7 +64428,7 @@ function globToString(glob2, relativeToDir) {
   return (base ? base + "/" : "") + glob2.glob;
 }
 
-// ../node_modules/.pnpm/cspell-gitignore@9.4.0/node_modules/cspell-gitignore/dist/GitIgnore.js
+// ../node_modules/.pnpm/cspell-gitignore@9.6.0/node_modules/cspell-gitignore/dist/GitIgnore.js
 var GitIgnore = class {
   resolvedGitIgnoreHierarchies = /* @__PURE__ */ new Map();
   knownGitIgnoreHierarchies = /* @__PURE__ */ new Map();
@@ -63112,7 +64558,7 @@ async function asyncIterableToArray(iter) {
   return r;
 }
 
-// ../node_modules/.pnpm/cspell@9.4.0/node_modules/cspell/dist/esm/application-DCyfKhGm.js
+// ../node_modules/.pnpm/cspell@9.6.0/node_modules/cspell/dist/esm/application-BJHh60xM.js
 var import_node_crypto = __toESM(require("node:crypto"), 1);
 var import_consumers = __toESM(require("node:stream/consumers"), 1);
 
@@ -63178,7 +64624,7 @@ function pushDirectoryWithRelativePath(root) {
 function pushDirectoryFilterWithRelativePath(root) {
   return function(directoryPath, paths, filters) {
     const relativePath = directoryPath.substring(root.length) || ".";
-    if (filters.every((filter3) => filter3(relativePath, true))) paths.push(relativePath);
+    if (filters.every((filter2) => filter2(relativePath, true))) paths.push(relativePath);
   };
 }
 var pushDirectory = (directoryPath, paths) => {
@@ -63186,7 +64632,7 @@ var pushDirectory = (directoryPath, paths) => {
 };
 var pushDirectoryFilter = (directoryPath, paths, filters) => {
   const path17 = directoryPath || ".";
-  if (filters.every((filter3) => filter3(path17, true))) paths.push(path17);
+  if (filters.every((filter2) => filter2(path17, true))) paths.push(path17);
 };
 var empty$2 = () => {
 };
@@ -63197,10 +64643,10 @@ function build$6(root, options) {
   return filters && filters.length ? pushDirectoryFilter : pushDirectory;
 }
 var pushFileFilterAndCount = (filename, _paths, counts, filters) => {
-  if (filters.every((filter3) => filter3(filename, false))) counts.files++;
+  if (filters.every((filter2) => filter2(filename, false))) counts.files++;
 };
 var pushFileFilter = (filename, paths, _counts, filters) => {
-  if (filters.every((filter3) => filter3(filename, false))) paths.push(filename);
+  if (filters.every((filter2) => filter2(filename, false))) paths.push(filename);
 };
 var pushFileCount = (_filename, _paths, counts, _filters) => {
   counts.files++;
@@ -63715,8 +65161,8 @@ var escapeWin32Path = (path$12) => path$12.replace(WIN32_UNESCAPED_GLOB_SYMBOLS,
 var escapePath = isWin ? escapeWin32Path : escapePosixPath;
 function isDynamicPattern(pattern, options) {
   if ((options === null || options === void 0 ? void 0 : options.caseSensitiveMatch) === false) return true;
-  const scan3 = import_picomatch2.default.scan(pattern);
-  return scan3.isGlob || scan3.negated;
+  const scan2 = import_picomatch2.default.scan(pattern);
+  return scan2.isGlob || scan2.negated;
 }
 function log2(...tasks) {
   console.log(`[tinyglobby ${(/* @__PURE__ */ new Date()).toLocaleTimeString("es")}]`, ...tasks);
@@ -63899,7 +65345,7 @@ async function glob(patternsOrOptions, options) {
   return formatPaths(await crawler.withPromise(), relative6);
 }
 
-// ../node_modules/.pnpm/cspell@9.4.0/node_modules/cspell/dist/esm/application-DCyfKhGm.js
+// ../node_modules/.pnpm/cspell@9.6.0/node_modules/cspell/dist/esm/application-BJHh60xM.js
 var readline = __toESM(require("node:readline"), 1);
 
 // ../node_modules/.pnpm/flatted@3.3.3/node_modules/flatted/esm/index.js
@@ -63975,17 +65421,7 @@ var stringify4 = (value, replacer, space) => {
   }
 };
 
-// ../node_modules/.pnpm/ansi-regex@6.2.2/node_modules/ansi-regex/index.js
-init_import_meta_url();
-function ansiRegex({ onlyFirst = false } = {}) {
-  const ST = "(?:\\u0007|\\u001B\\u005C|\\u009C)";
-  const osc = `(?:\\u001B\\][\\s\\S]*?${ST})`;
-  const csi = "[\\u001B\\u009B][[\\]()#;?]*(?:\\d{1,4}(?:[;:]\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]";
-  const pattern = `${osc}|${csi}`;
-  return new RegExp(pattern, onlyFirst ? void 0 : "g");
-}
-
-// ../node_modules/.pnpm/cspell@9.4.0/node_modules/cspell/dist/esm/application-DCyfKhGm.js
+// ../node_modules/.pnpm/cspell@9.6.0/node_modules/cspell/dist/esm/application-BJHh60xM.js
 var ImplChannel = class {
   constructor(stream) {
     this.stream = stream;
@@ -64048,7 +65484,7 @@ var IOError = class extends ApplicationError {
     return this.cause.code === "ENOENT";
   }
 };
-function toError5(e) {
+function toError$12(e) {
   if (isError5(e)) return e;
   if (isErrorLike(e)) {
     const ex = new Error(e.message, { cause: e });
@@ -64068,8 +65504,256 @@ function isErrorLike(e) {
 }
 function toApplicationError(e, message) {
   if (e instanceof ApplicationError && !message) return e;
-  const err = toError5(e);
+  const err = toError$12(e);
   return new ApplicationError(message ?? err.message, void 0, err);
+}
+function getPerfMeasurements() {
+  const measurements = performance.getEntriesByType("measure");
+  const root = {
+    depth: -1,
+    totalTimeMs: 0,
+    nestedTimeMs: 0,
+    children: /* @__PURE__ */ new Map()
+  };
+  if (!measurements.length) return [];
+  const stack = [];
+  let depth = 0;
+  for (let i = 0; i < measurements.length; i++) {
+    const m = measurements[i];
+    rollUpStack(m.startTime);
+    const s = {
+      m,
+      p: addToParent(depth === 0 ? root : stack[depth - 1].p, m)
+    };
+    stack[depth++] = s;
+  }
+  sortChildren(root);
+  return [...root.children.values()].flatMap((r) => [...flattenChildren(r)]);
+  function contains(m, t) {
+    const stop = m.startTime + m.duration;
+    return t >= m.startTime && t < stop;
+  }
+  function rollUpStack(t) {
+    for (; depth > 0 && !contains(stack[depth - 1].m, t); --depth) ;
+  }
+  function addToParent(p, m) {
+    p.children ??= /* @__PURE__ */ new Map();
+    p.nestedTimeMs += m.duration;
+    return updateChild(p.children, m, p.depth + 1);
+  }
+  function updateChild(children, m, depth$1) {
+    const p = children.get(m.name);
+    if (p) {
+      p.totalTimeMs += m.duration;
+      p.count += 1;
+      p.minTimeMs = Math.min(p.minTimeMs, m.duration);
+      p.maxTimeMs = Math.max(p.maxTimeMs, m.duration);
+      return p;
+    }
+    const n = {
+      name: m.name,
+      depth: depth$1,
+      totalTimeMs: m.duration,
+      nestedTimeMs: 0,
+      count: 1,
+      minTimeMs: m.duration,
+      maxTimeMs: m.duration
+    };
+    children.set(m.name, n);
+    return n;
+  }
+  function* flattenChildren(m) {
+    yield m;
+    if (!m.children) return;
+    for (const child of m.children.values()) yield* flattenChildren(child);
+  }
+  function sortChildren(m) {
+    if (!m.children) return;
+    m.children = new Map([...m.children.entries()].sort((a, b) => b[1].totalTimeMs - a[1].totalTimeMs));
+    m.children.forEach(sortChildren);
+  }
+}
+function isAnsiString(s) {
+  return s.includes("\x1B") || s.includes("\x9B");
+}
+function width(s, tabWidth = 1) {
+  return s.replaceAll("\u2026", ".").replaceAll("	", " ".repeat(tabWidth)).replaceAll(/\p{M}/gu, "").replaceAll(/\p{L}/gu, ".").replaceAll(/[\u0000-\u001F\u0300-\u036F]/g, "").replaceAll(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, ".").length;
+}
+function ansiWidth(s) {
+  return width((0, import_node_util5.stripVTControlCharacters)(s));
+}
+function fragmentString(str, splitOnRegex, sType) {
+  const fragments = [];
+  let lastIndex = 0;
+  for (const match2 of str.matchAll(new RegExp(splitOnRegex))) {
+    if (match2.index > lastIndex) fragments.push({
+      type: "text",
+      text: str.slice(lastIndex, match2.index)
+    });
+    fragments.push({
+      type: sType,
+      text: match2[0]
+    });
+    lastIndex = match2.index + match2[0].length;
+  }
+  if (lastIndex < str.length) fragments.push({
+    type: "text",
+    text: str.slice(lastIndex)
+  });
+  return fragments;
+}
+var ansi = ansiRegex();
+function parseAnsiStr(str) {
+  return fragmentString(str, ansi, "ansi");
+}
+function pruneAnsiTextEnd(str, maxWidth, pad$1 = "\u2026") {
+  if (!maxWidth || maxWidth <= 0) return str;
+  if (str.length <= maxWidth) return str;
+  if (ansiWidth(str) <= maxWidth) return str;
+  const padWidth$1 = ansiWidth(pad$1);
+  const fragments = parseAnsiStr(str);
+  let remaining = maxWidth - padWidth$1;
+  for (const frag of fragments) {
+    if (frag.type !== "text") continue;
+    if (remaining <= 0) {
+      frag.text = "";
+      continue;
+    }
+    const pruned = pruneTextEnd(frag.text, remaining, pad$1);
+    if (pruned !== frag.text) {
+      frag.text = pruned;
+      remaining = 0;
+      continue;
+    }
+    remaining -= width(frag.text);
+  }
+  return fragments.map((frag) => frag.text).join("");
+}
+function pruneTextEnd(str, maxWidth, pad$1 = "\u2026") {
+  if (!maxWidth || maxWidth <= 0) return str;
+  if (str.length <= maxWidth) return str;
+  if (isAnsiString(str)) return pruneAnsiTextEnd(str, maxWidth, pad$1);
+  const maxWidthWithPad = maxWidth - width(pad$1);
+  const letters = [...str];
+  let len = 0;
+  for (let i = 0; i < letters.length; i++) {
+    const c = letters[i];
+    len += width(c);
+    if (len > maxWidthWithPad) {
+      let j = i + 1;
+      while (j < letters.length && width(letters[j]) === 0) ++j;
+      return j === letters.length ? str : letters.slice(0, i).join("") + pad$1;
+    }
+  }
+  return str;
+}
+function pad(s, w) {
+  const p = padWidth(s, w);
+  if (!p) return s;
+  return s.padEnd(p + s.length);
+}
+function padWidth(s, target) {
+  const sWidth = ansiWidth(s);
+  return Math.max(target - sWidth, 0);
+}
+function padLeft(s, w) {
+  const p = padWidth(s, w);
+  if (!p) return s;
+  return s.padStart(p + s.length);
+}
+function tableToLines(table, deliminator) {
+  const del = deliminator || table.deliminator || " | ";
+  const columnWidths = [];
+  const columnAlignments = table.columnAlignments || [];
+  const maxColumnWidthsMap = table.maxColumnWidths || {};
+  const tableIndent = table.indent ? typeof table.indent === "number" ? " ".repeat(table.indent) : table.indent : "";
+  const { header, rows } = table;
+  const simpleHeader = header.map((col) => Array.isArray(col) ? col[1] : col);
+  const columnFieldNames = header.map((col) => Array.isArray(col) ? col[0] : col);
+  const maxColumnWidths = columnFieldNames.map((field, idx2) => maxColumnWidthsMap[field] ?? maxColumnWidthsMap[idx2]);
+  function getCell(row, col) {
+    return getCellFromRow(rows[row], col);
+  }
+  function getCellFromRow(row, col) {
+    if (!row) return void 0;
+    if (Array.isArray(row)) return row[col];
+    return row[columnFieldNames[col]];
+  }
+  function rowToCells(row) {
+    if (Array.isArray(row)) return row;
+    return columnFieldNames.map((fieldName) => row[fieldName]);
+  }
+  function getText(col, maxWidth) {
+    return !col ? "" : typeof col === "string" ? pruneTextEnd(col, maxWidth) : col(maxWidth);
+  }
+  function getRCText(row, col, maxWidth) {
+    return getText(getCell(row, col), maxWidth);
+  }
+  function recordHeaderWidths(header$1) {
+    header$1.forEach((col, idx2) => {
+      columnWidths[idx2] = Math.max(ansiWidth(col), columnWidths[idx2] || 0);
+    });
+  }
+  function recordColWidths() {
+    for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) for (let colIndex = 0; colIndex < columnFieldNames.length; colIndex++) columnWidths[colIndex] = Math.max(ansiWidth(getRCText(rowIndex, colIndex, void 0)), columnWidths[colIndex] || 0);
+  }
+  function justifyRow(c, i) {
+    return columnAlignments[i] === "R" ? padLeft(c, columnWidths[i]) : pad(c, columnWidths[i]);
+  }
+  function toHeaderLine(header$1) {
+    return tableIndent + decorateRowWith(header$1.map((c, i) => getText(c, columnWidths[i])), justifyRow, headerDecorator).join(del);
+  }
+  function toLine(row) {
+    return tableIndent + decorateRowWith(rowToCells(row).map((c, i) => getText(c, columnWidths[i])), justifyRow).join(del);
+  }
+  function* process$1() {
+    if (table.title) yield table.title;
+    yield toHeaderLine(simpleHeader);
+    yield* rows.map(toLine);
+  }
+  function sumColumnWidths() {
+    return columnWidths.reduce((sum, width$1) => sum + width$1, 0);
+  }
+  function adjustColWidths() {
+    for (let i = 0; i < columnWidths.length; i++) {
+      const mw = maxColumnWidths[i];
+      if (!mw) continue;
+      columnWidths[i] = Math.min(columnWidths[i], mw);
+    }
+    if (!table.terminalWidth) return;
+    const dWidth = (columnWidths.length - 1) * ansiWidth(del);
+    const lineWidth = table.terminalWidth - dWidth;
+    if (lineWidth <= columnWidths.length * 2) {
+      const fixedWidth = Math.max(Math.min(...columnWidths), 5);
+      for (let i = 0; i < columnWidths.length; i++) columnWidths[i] = fixedWidth;
+      return;
+    }
+    if (columnWidths.length === 1) {
+      columnWidths[0] = lineWidth;
+      return;
+    }
+    function trimWidestColumn(neededToTrim) {
+      let first2 = 0;
+      let second = 0;
+      for (let i = 0; i < columnWidths.length; i++) if (columnWidths[i] > columnWidths[first2]) {
+        second = first2;
+        first2 = i;
+      } else if (columnWidths[i] > columnWidths[second]) second = i;
+      const diff = Math.max(columnWidths[first2] - columnWidths[second], 1);
+      columnWidths[first2] -= Math.min(diff, neededToTrim);
+    }
+    for (let sum = sumColumnWidths(); sum > lineWidth; sum = sumColumnWidths()) trimWidestColumn(sum - lineWidth);
+  }
+  recordHeaderWidths(simpleHeader);
+  recordColWidths();
+  adjustColWidths();
+  return [...process$1()];
+}
+function headerDecorator(t) {
+  return source_default.bold(source_default.underline(t));
+}
+function decorateRowWith(row, ...decorators) {
+  return decorators.reduce((row$1, decorator) => row$1.map(decorator), row);
 }
 var uniqueFn2 = uniqueFilterFnGenerator2;
 function uniqueFilterFnGenerator2(extractFn) {
@@ -64095,7 +65779,7 @@ var templateIssueWithContextWithSuggestions = `{green $filename}:{yellow $row:$c
 	 Suggestions: {yellow [$suggestions]}`;
 var templateIssueLegacy = `{green $filename}[$row, $col]: $message: {red $text}`;
 var templateIssueWordsOnly = "$text";
-(0, import_node_assert18.default)(true);
+(0, import_node_assert16.default)(true);
 function genIssueEmitter(stdIO, errIO, template2, uniqueIssues, reportedIssuesCollection) {
   const uniqueFilter = uniqueIssues ? uniqueFilterFnGenerator2((issue) => issue.text) : () => true;
   const defaultWidth = 10;
@@ -64222,6 +65906,7 @@ function getReporter(options, config) {
     if (!fileGlobs.length && !result.files) return;
     const { files, issues: issues$1, cachedFiles, filesWithIssues, errors, skippedFiles } = result;
     const numFilesWithIssues = filesWithIssues.size;
+    const chalk$1 = stderr.chalk;
     if (stderr.getColorLevel() > 0) {
       stderr.write("\r");
       stderr.clearLine(0);
@@ -64248,14 +65933,80 @@ function getReporter(options, config) {
       consoleError(`  Files Skipped  : ${perfStats.filesSkipped.toString().padStart(6)}`);
       consoleError(`  Files Cached   : ${perfStats.filesCached.toString().padStart(6)}`);
       consoleError(`  Processing Time: ${perfStats.elapsedTimeMs.toFixed(2).padStart(9)}ms`);
-      consoleError("Stats:");
-      const stats2 = Object.entries(perfStats.perf).filter((p) => !!p[1]).map(([key, value]) => [key, value.toFixed(2)]);
-      const padName = Math.max(...stats2.map((s) => s[0].length));
-      const padValue = Math.max(...stats2.map((s) => s[1].length));
-      stats2.sort((a, b) => a[0].localeCompare(b[0]));
-      for (const [key, value] of stats2) value && consoleError(`  ${key.padEnd(padName)}: ${value.padStart(padValue)}ms`);
+      const tableStats = {
+        title: chalk$1.bold("Perf Stats:"),
+        header: ["Name", "Time (ms)"],
+        columnAlignments: ["L", "R"],
+        indent: 2,
+        rows: Object.entries(perfStats.perf).filter((p) => !!p[1]).map(([key, value]) => [key, value.toFixed(2)])
+      };
+      consoleError("");
+      for (const line of tableToLines(tableStats)) consoleError(line);
+      if (options.verboseLevel) verbosePerfReport();
     }
   };
+  function verbosePerfReport() {
+    const perfMeasurements = getPerfMeasurements();
+    if (!perfMeasurements.length) return;
+    const notable = extractNotableBySelfTimeInGroup(perfMeasurements);
+    const chalk$1 = stderr.chalk;
+    const maxDepth = Math.max(...perfMeasurements.map((m) => m.depth));
+    const depthIndicator = (d) => "\u22C5".repeat(d) + " ".repeat(maxDepth - d);
+    const rows = perfMeasurements.map((m) => {
+      const cbd = (text) => colorByDepth(chalk$1, m.depth, text);
+      const cNotable = (text) => notable.has(m) ? chalk$1.yellow(text) : text;
+      return [
+        chalk$1.dim("\u22C5".repeat(m.depth)) + colorByDepthGrayscale(stderr.chalk, m.depth, m.name),
+        cbd(m.totalTimeMs.toFixed(2) + chalk$1.dim(depthIndicator(m.depth))),
+        cbd(cNotable((m.totalTimeMs - m.nestedTimeMs).toFixed(2))),
+        cbd(m.count.toString()),
+        cbd(m.minTimeMs.toFixed(2)),
+        cbd(m.maxTimeMs.toFixed(2)),
+        cbd((m.totalTimeMs / m.count).toFixed(2))
+      ];
+    });
+    const table = tableToLines({
+      title: chalk$1.bold("Detailed Measurements:"),
+      header: [
+        "Name",
+        "Total Time (ms)",
+        "Self (ms)",
+        "Count",
+        "Min (ms)",
+        "Max (ms)",
+        "Avg (ms)"
+      ],
+      rows,
+      columnAlignments: [
+        "L",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      indent: 2
+    });
+    consoleError("\n-------------------------------------------\n");
+    for (const line of table) consoleError(line);
+  }
+  function colorByDepth(chalk$1, depth, text) {
+    const colors = [
+      chalk$1.green,
+      chalk$1.cyan,
+      chalk$1.blue,
+      chalk$1.magenta,
+      chalk$1.red
+    ];
+    const color = colors[depth % colors.length];
+    if (depth / colors.length >= 1) return chalk$1.dim(color(text));
+    return color(text);
+  }
+  function colorByDepthGrayscale(chalk$1, depth, text) {
+    const grayLevel = Math.max(32, 255 - depth * 20);
+    return chalk$1.rgb(grayLevel, grayLevel, grayLevel)(text);
+  }
   function collectPerfStats(p) {
     if (p.cached) {
       perfStats.filesCached++;
@@ -64280,6 +66031,27 @@ function getReporter(options, config) {
     result: !silent && summary2 ? resultEmitter : nullEmitter2,
     features: void 0
   };
+}
+function extractNotableBySelfTimeInGroup(measurements) {
+  const notable = /* @__PURE__ */ new Set();
+  if (!measurements.length) return notable;
+  let highest2;
+  let highestSelfTime = 0;
+  for (const m of measurements) {
+    if (m.depth === 0 || !highest2) {
+      if (highest2) notable.add(highest2);
+      highest2 = m;
+      highestSelfTime = m.totalTimeMs - m.nestedTimeMs;
+      continue;
+    }
+    const selfTime = m.totalTimeMs - m.nestedTimeMs;
+    if (selfTime > highestSelfTime) {
+      highest2 = m;
+      highestSelfTime = selfTime;
+    }
+  }
+  if (highest2) notable.add(highest2);
+  return notable;
 }
 function formatIssue(io, templateStr, issue, maxIssueTextWidth) {
   function clean$12(t$1) {
@@ -64419,7 +66191,7 @@ try {
 }
 var pkgDir = _dirname;
 var name = "cspell";
-var version$1 = "9.4.0";
+var version$1 = "9.6.0";
 var engines = { node: ">=20" };
 var npmPackage = {
   name,
@@ -64548,7 +66320,7 @@ function isStdinUrl(url2) {
   return url2.startsWith(STDINProtocol);
 }
 function resolveStdinUrl(url2, cwd) {
-  (0, import_node_assert18.default)(url2.startsWith(STDINProtocol), `Expected url to start with ${STDINProtocol}`);
+  (0, import_node_assert16.default)(url2.startsWith(STDINProtocol), `Expected url to start with ${STDINProtocol}`);
   const path$2 = decodeURIComponent(url2).slice(STDINProtocol.length).replace(/^\/\//, "").replace(/^\/([a-z]:)/i, "$1");
   const fileUrl = toFileURL(path$2, cwd);
   return new URL(fileUrl.toString().replace(/^file:/, STDINProtocol) + (path$2 ? "" : "/"));
@@ -64599,7 +66371,7 @@ function readFileInfo(filename, encoding = UTF8, handleNotFound = false) {
     text,
     filename
   }), (e) => {
-    const error3 = toError5(e);
+    const error3 = toError$12(e);
     return handleNotFound && error3.code === "EISDIR" ? Promise.resolve({
       text: "",
       filename,
@@ -64763,7 +66535,7 @@ var ImplFileEntryCache = class {
       return {
         key: file,
         notFound: true,
-        err: toError$12(error3)
+        err: toError5(error3)
       };
     }
     if (this.useChecksum) return this.#getFileDescriptorUsingChecksum(file);
@@ -64878,7 +66650,7 @@ var ImplFileEntryCache = class {
 function isNodeError2(error3) {
   return typeof error3 === "object" && error3 !== null && "code" in error3;
 }
-function toError$12(error3) {
+function toError5(error3) {
   if (error3 instanceof Error) return error3;
   if (typeof error3 === "string") return new Error(error3);
   return new Error("Unknown error", { cause: error3 });
@@ -65018,7 +66790,7 @@ var DiskCache = class {
       if (!file.startsWith("file://")) return getDependencyForUrl(file);
       file = toFilePathOrHref(file);
     }
-    (0, import_node_assert18.default)((0, import_node_path10.isAbsolute)(file), `Dependency must be absolute "${file}"`);
+    (0, import_node_assert16.default)((0, import_node_path10.isAbsolute)(file), `Dependency must be absolute "${file}"`);
     const f = this.toRelFile(file);
     let h;
     try {
@@ -65156,7 +66928,7 @@ async function resolveCacheLocation(cacheLocation) {
 }
 function normalizeVersion(version$2) {
   const parts = version$2.split(".").slice(0, 2);
-  (0, import_node_assert18.default)(parts.length === 2);
+  (0, import_node_assert16.default)(parts.length === 2);
   return parts.join(".") + versionSuffix;
 }
 async function readConfig(configFile, root, stopConfigSearchAt) {
@@ -65197,60 +66969,8 @@ async function readConfigHandleError(filename) {
     };
   }
 }
-function prefCharIndex(text, offset, count3 = 1) {
-  if (offset - count3 < 0) return 0;
-  for (; count3 > 0 && offset > 0; count3--) {
-    let code = text.charCodeAt(--offset) || 0;
-    if (code === 65039) code = text.charCodeAt(--offset) || 0;
-    offset -= (code & 64512) === 56320 ? 1 : 0;
-  }
-  return offset < 0 ? 0 : offset;
-}
-function nextCharIndex(text, offset, count3 = 1) {
-  if (offset + count3 >= text.length) return text.length;
-  for (; count3 > 0 && offset < text.length; count3--) {
-    const code = text.charCodeAt(offset++) || 0;
-    offset += (code & 64512) === 55296 ? 1 : 0;
-    if (text.charCodeAt(offset) === 65039) offset++;
-  }
-  return offset > text.length ? text.length : offset;
-}
-function lineContext(lineText, start, end, contextRange) {
-  let left = prefCharIndex(lineText, start, contextRange);
-  let right = nextCharIndex(lineText, end, contextRange);
-  const isLetter2 = /^\p{L}$/u;
-  const isMark = /^\p{M}$/u;
-  for (let n = contextRange / 2; n > 0 && left > 0; n--, left--) {
-    const c = lineText[left - 1];
-    if (isMark.test(c)) {
-      if (!isLetter2.test(lineText[left - 2])) break;
-      left--;
-      continue;
-    }
-    if (!isLetter2.test(lineText[left - 1])) break;
-  }
-  for (let n = contextRange / 2; n > 0 && right < lineText.length; n--, right++) {
-    if (!isLetter2.test(lineText[right])) break;
-    if (isMark.test(lineText[right + 1])) right++;
-  }
-  left = left < 0 ? 0 : left;
-  const t0 = lineText.slice(left, right);
-  const tLeft = t0.trimStart();
-  left = Math.min(left + t0.length - tLeft.length, start);
-  return {
-    text: tLeft.trimEnd(),
-    offset: left
-  };
-}
-function extractContext(tdo, contextRange) {
-  const { line, offset, text } = tdo;
-  const start = offset - line.offset;
-  const context = lineContext(line.text, start, start + text.length, contextRange);
-  context.offset += line.offset;
-  return context;
-}
 function* prefetchIterable(iterable, size) {
-  (0, import_node_assert18.default)(size >= 0);
+  (0, import_node_assert16.default)(size >= 0);
   const buffer = [];
   for (const value of iterable) {
     buffer.push(value);
@@ -65289,7 +67009,7 @@ async function loadReporters(reporters, defaultReporter, config) {
       const { getReporter: getReporter$1 } = await dynamicImportFrom(moduleName, [process.cwd(), pkgDir]);
       return getReporter$1(settings, config);
     } catch (e) {
-      throw new ApplicationError(`Failed to load reporter ${moduleName}: ${toError5(e).message}`);
+      throw new ApplicationError(`Failed to load reporter ${moduleName}: ${toError$12(e).message}`);
     }
   }
   reporters = !reporters || !reporters.length ? ["default"] : [...reporters];
@@ -65350,7 +67070,7 @@ var LintReporter = class {
     return this.#config;
   }
   set config(config) {
-    (0, import_node_assert18.default)(!this.#finalized, "Cannot change the configuration of a finalized reporter");
+    (0, import_node_assert16.default)(!this.#finalized, "Cannot change the configuration of a finalized reporter");
     this.#config = config;
   }
   issue(issue, reportOptions) {
@@ -65378,7 +67098,7 @@ var LintReporter = class {
     };
   }
   async loadReportersAndFinalize(reporters) {
-    (0, import_node_assert18.default)(!this.#finalized, "Cannot change the configuration of a finalized reporter");
+    (0, import_node_assert16.default)(!this.#finalized, "Cannot change the configuration of a finalized reporter");
     const loaded = await loadReporters(reporters, this.defaultReporter, this.config);
     this.#reporters = [...new Set(loaded)].map((reporter) => finalizeReporter(reporter));
   }
@@ -65414,15 +67134,15 @@ var LintReporter = class {
   }
 };
 function getTimeMeasurer() {
-  const timer = createPerfTimer2("timer");
+  const timer = createPerfTimer("timer");
   return () => timer.elapsed;
 }
 function indent(str, padding, firstLinePadding = "") {
-  let pad = firstLinePadding;
+  let pad$1 = firstLinePadding;
   const lines = [];
   for (const line of str.split("\n")) {
-    lines.push(pad + line);
-    pad = padding;
+    lines.push(pad$1 + line);
+    pad$1 = padding;
   }
   return lines.join("\n");
 }
@@ -65491,33 +67211,6 @@ function sizeToNumber(size) {
   if (p.error) return NaN;
   return Number.parseFloat(p.digits) * (unitSizes[p.units] || 1);
 }
-function width(s, tabWidth = 1) {
-  return s.replaceAll("\u2026", ".").replaceAll("	", " ".repeat(tabWidth)).replaceAll(/\p{M}/gu, "").replaceAll(/\p{L}/gu, ".").replaceAll(/[\u0000-\u001F\u0300-\u036F]/g, "").replaceAll(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, ".").length;
-}
-function ansiWidth(s) {
-  return width((0, import_node_util5.stripVTControlCharacters)(s));
-}
-function fragmentString(str, splitOnRegex, sType) {
-  const fragments = [];
-  let lastIndex = 0;
-  for (const match2 of str.matchAll(new RegExp(splitOnRegex))) {
-    if (match2.index > lastIndex) fragments.push({
-      type: "text",
-      text: str.slice(lastIndex, match2.index)
-    });
-    fragments.push({
-      type: sType,
-      text: match2[0]
-    });
-    lastIndex = match2.index + match2[0].length;
-  }
-  if (lastIndex < str.length) fragments.push({
-    type: "text",
-    text: str.slice(lastIndex)
-  });
-  return fragments;
-}
-var ansi = ansiRegex();
 var wrapSep = /\s+|(?<=,)|\.(?=\w)/g;
 function wordWrapAnsiText(str, maxWidth, indent$1 = "", sep$1 = wrapSep) {
   if (!maxWidth || maxWidth <= 0) return str;
@@ -65573,8 +67266,199 @@ function writeStream(stream, data) {
     });
   });
 }
+function prefCharIndex(text, offset, count2 = 1) {
+  if (offset - count2 < 0) return 0;
+  for (; count2 > 0 && offset > 0; count2--) {
+    let code = text.charCodeAt(--offset) || 0;
+    if (code === 65039) code = text.charCodeAt(--offset) || 0;
+    offset -= (code & 64512) === 56320 ? 1 : 0;
+  }
+  return offset < 0 ? 0 : offset;
+}
+function nextCharIndex(text, offset, count2 = 1) {
+  if (offset + count2 >= text.length) return text.length;
+  for (; count2 > 0 && offset < text.length; count2--) {
+    const code = text.charCodeAt(offset++) || 0;
+    offset += (code & 64512) === 55296 ? 1 : 0;
+    if (text.charCodeAt(offset) === 65039) offset++;
+  }
+  return offset > text.length ? text.length : offset;
+}
+function lineContext(lineText, start, end, contextRange) {
+  let left = prefCharIndex(lineText, start, contextRange);
+  let right = nextCharIndex(lineText, end, contextRange);
+  const isLetter2 = /^\p{L}$/u;
+  const isMark = /^\p{M}$/u;
+  for (let n = contextRange / 2; n > 0 && left > 0; n--, left--) {
+    const c = lineText[left - 1];
+    if (isMark.test(c)) {
+      if (!isLetter2.test(lineText[left - 2])) break;
+      left--;
+      continue;
+    }
+    if (!isLetter2.test(lineText[left - 1])) break;
+  }
+  for (let n = contextRange / 2; n > 0 && right < lineText.length; n--, right++) {
+    if (!isLetter2.test(lineText[right])) break;
+    if (isMark.test(lineText[right + 1])) right++;
+  }
+  left = left < 0 ? 0 : left;
+  const t0 = lineText.slice(left, right);
+  const tLeft = t0.trimStart();
+  left = Math.min(left + t0.length - tLeft.length, start);
+  return {
+    text: tLeft.trimEnd(),
+    offset: left
+  };
+}
+function extractContext(tdo, contextRange) {
+  const { line, offset, text } = tdo;
+  const start = offset - line.offset;
+  const context = lineContext(line.text, start, start + text.length, contextRange);
+  context.offset += line.offset;
+  return context;
+}
+var LinterError = class extends Error {
+  constructor(message) {
+    super(message);
+  }
+  toString() {
+    return this.message;
+  }
+};
+async function processFile(filename, cache5, prefetch, processFileOptions) {
+  if (prefetch?.fileResult) return prefetch.fileResult;
+  const { reporter, cfg, configInfo } = processFileOptions;
+  const getElapsedTimeMs = getTimeMeasurer();
+  const reportIssueOptions = prefetch?.reportIssueOptions;
+  const cachedResult = await cache5.getCachedLintResults(filename);
+  if (cachedResult) {
+    reporter.debug(`Filename: ${filename}, using cache`);
+    return {
+      ...cachedResult,
+      elapsedTimeMs: getElapsedTimeMs(),
+      reportIssueOptions: {
+        ...cachedResult.reportIssueOptions,
+        ...reportIssueOptions
+      }
+    };
+  }
+  const result = {
+    fileInfo: { filename },
+    issues: [],
+    processed: false,
+    errors: 0,
+    configErrors: 0,
+    elapsedTimeMs: 0,
+    reportIssueOptions
+  };
+  const fileInfo = prefetch?.fileInfo || await readFileInfo(filename, void 0, true);
+  if (fileInfo.errorCode) {
+    if (fileInfo.errorCode !== "EISDIR" && cfg.options.mustFindFiles) {
+      const err = new LinterError(`File not found: "${filename}"`);
+      reporter.error("Linter:", err);
+      result.errors += 1;
+    }
+    return result;
+  }
+  const doc = fileInfoToDocument(fileInfo, cfg.options.languageId, cfg.locale);
+  const { text } = fileInfo;
+  result.fileInfo = fileInfo;
+  let spellResult = {};
+  try {
+    const { showSuggestions: generateSuggestions, validateDirectives, skipValidation } = cfg.options;
+    const numSuggestions = configInfo.config.numSuggestions ?? 5;
+    const r = await spellCheckDocument(doc, clean4({
+      generateSuggestions,
+      numSuggestions,
+      validateDirectives,
+      skipValidation
+    }), configInfo.config);
+    spellResult = r;
+    result.processed = r.checked;
+    result.perf = r.perf ? { ...r.perf } : void 0;
+    result.issues = textApi_exports.calculateTextDocumentOffsets(doc.uri, text, r.issues).map(mapIssue);
+  } catch (e) {
+    reporter.error(`Failed to process "${filename}"`, toError$12(e));
+    result.errors += 1;
+  }
+  result.elapsedTimeMs = getElapsedTimeMs();
+  const config = spellResult.settingsUsed ?? {};
+  result.reportIssueOptions = mergeReportIssueOptions(spellResult.settingsUsed || configInfo.config, reportIssueOptions);
+  result.configErrors += await reportConfigurationErrors(config, processFileOptions);
+  reportCheckResult(result, doc, spellResult, config, processFileOptions);
+  const dep = calcDependencies(config);
+  await cache5.setCachedLintResults(result, dep.files);
+  return result;
+  function mapIssue({ doc: _, ...tdo }) {
+    const context = cfg.showContext ? extractContext(tdo, cfg.showContext) : void 0;
+    return clean4({
+      ...tdo,
+      context
+    });
+  }
+}
+function reportCheckResult(result, _doc, spellResult, config, processFileOptions) {
+  const { configInfo, reporter, verboseLevel, useColor, cfg, chalk: chalk$1 } = processFileOptions;
+  const elapsed = result.elapsedTimeMs || 0;
+  const dictionaries = config.dictionaries || [];
+  if (verboseLevel > 1) {
+    const dictsUsed = [...dictionaries].sort().map((name$1) => chalk$1.green(name$1)).join(", ");
+    const msg = unindent`
+                    File type: ${config.languageId}, Language: ${config.language}, Issues: ${result.issues.length} ${elapsed.toFixed(2)}ms
+                    Config file Used: ${relativeToCwd2(spellResult.localConfigFilepath || configInfo.source, cfg.root)}
+                    Dictionaries Used:
+                      ${wordWrapAnsiText(dictsUsed, 70)}`;
+    reporter.info(indent(msg, "  "), MessageTypes.Info);
+  }
+  if (cfg.options.debug) {
+    const { enabled, language, languageId, dictionaries: dictionaries$1 } = config;
+    const msg = unindent`\
+                Debug Config: ${(0, import_node_util5.formatWithOptions)({
+      depth: 2,
+      colors: useColor
+    }, {
+      languageId,
+      enabled,
+      language,
+      dictionaries: dictionaries$1
+    })}`;
+    reporter.debug(msg);
+  }
+}
+function calcDependencies(config) {
+  const { configFiles, dictionaryFiles } = extractDependencies(config);
+  return { files: [...configFiles, ...dictionaryFiles] };
+}
+async function reportConfigurationErrors(config, processFileOptions) {
+  const { reporter, configErrors } = processFileOptions;
+  const errors = extractImportErrors(config);
+  let count2 = 0;
+  errors.forEach((ref) => {
+    const key = ref.error.toString();
+    if (configErrors.has(key)) return;
+    configErrors.add(key);
+    count2 += 1;
+    reporter.error("Configuration", ref.error);
+  });
+  (await getDictionary(config)).dictionaries.forEach((dict) => {
+    const dictErrors = dict.getErrors?.() || [];
+    const msg = `Dictionary Error with (${dict.name})`;
+    dictErrors.forEach((error3) => {
+      const key = msg + error3.toString();
+      if (configErrors.has(key)) return;
+      configErrors.add(key);
+      count2 += 1;
+      reporter.error(msg, error3);
+    });
+  });
+  return count2;
+}
+function countConfigErrors(configInfo, processFileOptions) {
+  return reportConfigurationErrors(configInfo.config, processFileOptions);
+}
 var version2 = npmPackage.version;
-var BATCH_SIZE = 8;
+var BATCH_SIZE2 = 8;
 var { opFilterAsync: opFilterAsync2 } = operators;
 async function runLint(cfg) {
   const reporter = new LintReporter(cfg.reporter, cfg.options);
@@ -65583,7 +67467,7 @@ async function runLint(cfg) {
   const useColor = cfg.options.color ?? true;
   const timer = getTimeMeasurer();
   const logDictRequests = truthy(getEnvironmentVariable("CSPELL_ENABLE_DICTIONARY_LOGGING"));
-  if (logDictRequests) _debug.cacheDictionaryEnableLogging(true);
+  if (logDictRequests) dictionaryCacheEnableLogging(true);
   const lintResult = await run2();
   if (logDictRequests) await writeDictionaryLog();
   await reporter.result(lintResult);
@@ -65632,111 +67516,13 @@ async function runLint(cfg) {
       result: fetch$1().catch((e) => toApplicationError(e))
     };
   }
-  async function processFile(filename, configInfo, cache5, prefetch$1) {
-    if (prefetch$1?.fileResult) return prefetch$1.fileResult;
-    const getElapsedTimeMs = getTimeMeasurer();
-    const reportIssueOptions = prefetch$1?.reportIssueOptions;
-    const cachedResult = await cache5.getCachedLintResults(filename);
-    if (cachedResult) {
-      reporter.debug(`Filename: ${filename}, using cache`);
-      return {
-        ...cachedResult,
-        elapsedTimeMs: getElapsedTimeMs(),
-        reportIssueOptions: {
-          ...cachedResult.reportIssueOptions,
-          ...reportIssueOptions
-        }
-      };
-    }
-    const result = {
-      fileInfo: { filename },
-      issues: [],
-      processed: false,
-      errors: 0,
-      configErrors: 0,
-      elapsedTimeMs: 0,
-      reportIssueOptions
-    };
-    const fileInfo = prefetch$1?.fileInfo || await readFileInfo(filename, void 0, true);
-    if (fileInfo.errorCode) {
-      if (fileInfo.errorCode !== "EISDIR" && cfg.options.mustFindFiles) {
-        const err = new LinterError(`File not found: "${filename}"`);
-        reporter.error("Linter:", err);
-        result.errors += 1;
-      }
-      return result;
-    }
-    const doc = fileInfoToDocument(fileInfo, cfg.options.languageId, cfg.locale);
-    const { text } = fileInfo;
-    result.fileInfo = fileInfo;
-    let spellResult = {};
-    try {
-      const { showSuggestions: generateSuggestions, validateDirectives, skipValidation } = cfg.options;
-      const numSuggestions = configInfo.config.numSuggestions ?? 5;
-      const r = await spellCheckDocument(doc, clean4({
-        generateSuggestions,
-        numSuggestions,
-        validateDirectives,
-        skipValidation
-      }), configInfo.config);
-      spellResult = r;
-      result.processed = r.checked;
-      result.perf = r.perf ? { ...r.perf } : void 0;
-      result.issues = textApi_exports.calculateTextDocumentOffsets(doc.uri, text, r.issues).map(mapIssue);
-    } catch (e) {
-      reporter.error(`Failed to process "${filename}"`, toError5(e));
-      result.errors += 1;
-    }
-    result.elapsedTimeMs = getElapsedTimeMs();
-    const config = spellResult.settingsUsed ?? {};
-    result.reportIssueOptions = mergeReportIssueOptions(spellResult.settingsUsed || configInfo.config, reportIssueOptions);
-    result.configErrors += await reportConfigurationErrors(config);
-    reportCheckResult(result, doc, spellResult, configInfo, config);
-    const dep = calcDependencies(config);
-    await cache5.setCachedLintResults(result, dep.files);
-    return result;
-  }
-  function reportCheckResult(result, _doc, spellResult, configInfo, config) {
-    const elapsed$1 = result.elapsedTimeMs || 0;
-    const dictionaries = config.dictionaries || [];
-    if (verboseLevel > 1) {
-      const dictsUsed = [...dictionaries].sort().map((name$1) => source_default.green(name$1)).join(", ");
-      const msg = unindent`
-                    File type: ${config.languageId}, Language: ${config.language}, Issues: ${result.issues.length} ${elapsed$1.toFixed(2)}ms
-                    Config file Used: ${relativeToCwd2(spellResult.localConfigFilepath || configInfo.source, cfg.root)}
-                    Dictionaries Used:
-                      ${wordWrapAnsiText(dictsUsed, 70)}`;
-      reporter.info(indent(msg, "  "), MessageTypes.Info);
-    }
-    if (cfg.options.debug) {
-      const { enabled, language, languageId, dictionaries: dictionaries$1 } = config;
-      const msg = unindent`\
-                Debug Config: ${(0, import_node_util5.formatWithOptions)({
-        depth: 2,
-        colors: useColor
-      }, {
-        languageId,
-        enabled,
-        language,
-        dictionaries: dictionaries$1
-      })}`;
-      reporter.debug(msg);
-    }
-  }
-  function mapIssue({ doc: _, ...tdo }) {
-    const context = cfg.showContext ? extractContext(tdo, cfg.showContext) : void 0;
-    return clean4({
-      ...tdo,
-      context
-    });
-  }
   async function processFiles(files, configInfo, cacheSettings) {
     const fileCount = Array.isArray(files) ? files.length : void 0;
     const status = runResult();
     const cache5 = await createCache5(cacheSettings);
     const failFast = cfg.options.failFast ?? configInfo.config.failFast ?? false;
     function* prefetchFiles(files$1) {
-      const iter = prefetchIterable(pipeSync(files$1, opMapSync((filename) => prefetch(filename, configInfo, cache5))), BATCH_SIZE);
+      const iter = prefetchIterable(pipeSync(files$1, opMapSync((filename) => prefetch(filename, configInfo, cache5))), BATCH_SIZE2);
       for (const v of iter) yield v;
     }
     async function* prefetchFilesAsync(files$1) {
@@ -65770,7 +67556,7 @@ async function runLint(cfg) {
       return {
         filename,
         fileNum: index,
-        result: await processFile(filename, configInfo, cache5, fetchResult)
+        result: await processFile(filename, cache5, fetchResult, getProcessFileOptions(configInfo))
       };
     }
     async function* loadAndProcessFiles() {
@@ -65798,39 +67584,10 @@ async function runLint(cfg) {
     await cache5.reconcile();
     return status;
   }
-  function calcDependencies(config) {
-    const { configFiles, dictionaryFiles } = extractDependencies(config);
-    return { files: [...configFiles, ...dictionaryFiles] };
-  }
-  async function reportConfigurationErrors(config) {
-    const errors = extractImportErrors(config);
-    let count3 = 0;
-    errors.forEach((ref) => {
-      const key = ref.error.toString();
-      if (configErrors.has(key)) return;
-      configErrors.add(key);
-      count3 += 1;
-      reporter.error("Configuration", ref.error);
-    });
-    (await getDictionary(config)).dictionaries.forEach((dict) => {
-      const dictErrors = dict.getErrors?.() || [];
-      const msg = `Dictionary Error with (${dict.name})`;
-      dictErrors.forEach((error3) => {
-        const key = msg + error3.toString();
-        if (configErrors.has(key)) return;
-        configErrors.add(key);
-        count3 += 1;
-        reporter.error(msg, error3);
-      });
-    });
-    return count3;
-  }
-  function countConfigErrors(configInfo) {
-    return reportConfigurationErrors(configInfo.config);
-  }
   async function run2() {
     if (cfg.options.root) setEnvironmentVariable(ENV_CSPELL_GLOB_ROOT, cfg.root);
     const configInfo = await readConfig(cfg.configFile, cfg.root, cfg.options.stopConfigSearchAt);
+    const processFileOptions = getProcessFileOptions(configInfo);
     if (cfg.options.defaultConfiguration !== void 0) configInfo.config.loadDefaultConfiguration = cfg.options.defaultConfiguration;
     configInfo.config = mergeSettings(configInfo.config, cfg.cspellSettingsFromCliOptions);
     const reporterConfig = clean4({
@@ -65853,7 +67610,7 @@ async function runLint(cfg) {
     if (verboseLevel > 1) reporter.info(`Config Files Found:
     ${relativeToCwd2(configInfo.source)}
 `, MessageTypes.Info);
-    const configErrors$1 = await countConfigErrors(configInfo);
+    const configErrors$1 = await countConfigErrors(configInfo, processFileOptions);
     if (configErrors$1 && cfg.options.exitCode !== false && !cfg.options.continueOnError) return runResult({ errors: configErrors$1 });
     const { root } = cfg;
     try {
@@ -65884,6 +67641,17 @@ async function runLint(cfg) {
                     wordsOnly: ${yesNo(!!cfg.options.wordsOnly)}
                     unique:    ${yesNo(!!cfg.options.unique)}
                 `, MessageTypes.Info);
+  }
+  function getProcessFileOptions(configInfo) {
+    return {
+      reporter,
+      chalk: source_default,
+      configInfo,
+      cfg,
+      verboseLevel,
+      useColor,
+      configErrors
+    };
   }
 }
 function checkGlobs(globs, reporter) {
@@ -66029,20 +67797,12 @@ async function* concatAsyncIterables(...iterables) {
 }
 async function writeDictionaryLog() {
   const fields = (getEnvironmentVariable("CSPELL_ENABLE_DICTIONARY_LOG_FIELDS") || "time, word, value").split(",").map((f) => f.trim());
-  const data = fields.join(", ") + "\n" + _debug.cacheDictionaryGetLog().filter((d) => d.method === "has").map((d) => fields.map((f) => f in d ? `${d[f]}` : "").join(", ")).join("\n") + "\n";
+  const data = fields.join(", ") + "\n" + dictionaryCacheGetLog().filter((d) => d.method === "has").map((d) => fields.map((f) => f in d ? `${d[f]}` : "").join(", ")).join("\n") + "\n";
   await writeFileOrStream(getEnvironmentVariable("CSPELL_ENABLE_DICTIONARY_LOG_FILE") || "cspell-dictionary-log.csv", data);
 }
 function globPattern(g) {
   return typeof g === "string" ? g : g.glob;
 }
-var LinterError = class extends Error {
-  constructor(message) {
-    super(message);
-  }
-  toString() {
-    return this.message;
-  }
-};
 function calcVerboseLevel(options) {
   return options.verboseLevel ?? (options.verbose ? 1 : 0);
 }
