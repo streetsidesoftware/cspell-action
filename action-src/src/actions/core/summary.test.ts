@@ -51,5 +51,20 @@ describe('summary', () => {
 
         expect(writeFileMock).not.toHaveBeenCalled();
         expect(appendFileMock).toHaveBeenCalledWith('./tmp/step_summary.md', summaryContent, { encoding: 'utf8' });
+
+        summary.addRaw('Additional content.\n');
+        await summary.write();
+
+        expect(writeFileMock).not.toHaveBeenCalled();
+        expect(appendFileMock).toHaveBeenCalledWith('./tmp/step_summary.md', 'Additional content.\n', {
+            encoding: 'utf8',
+        });
+
+        summary.addRaw('Additional content 2.\n');
+        await summary.write({ overwrite: true });
+
+        expect(writeFileMock).toHaveBeenCalledWith('./tmp/step_summary.md', 'Additional content 2.\n', {
+            encoding: 'utf8',
+        });
     });
 });
