@@ -1,9 +1,9 @@
-import { summary as coreSummary } from '@actions/core';
 import { describe, expect, test, vi } from 'vitest';
 
+import { summary as coreSummary } from './actions/core/index.js';
 import { createLogger } from './logger.js';
 
-vi.mock('@actions/core', async (_importActual) => {
+vi.mock('./actions/core/index.js', async (_importActual) => {
     return {
         debug: vi.fn(),
         info: vi.fn(),

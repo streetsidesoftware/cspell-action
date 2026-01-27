@@ -21,7 +21,6 @@
     "@cspell/cspell-bundled-dicts"
   ],
   "devDependencies": {
-    "@actions/core": "^2.0.2",
     "@actions/github": "^8.0.0",
     "@cspell/cspell-types": "^9.6.2",
     "@octokit/webhooks-types": "^7.6.1",
