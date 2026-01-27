@@ -17684,8 +17684,12 @@ function toCommandProperties(annotationProperties) {
 
 // src/actions/core/command.ts
 function issueCommand(command, properties, message) {
+  const cmd = formatCommand(command, properties, message);
+  process.stdout.write(cmd + os.EOL);
+}
+function formatCommand(command, properties, message) {
   const cmd = new Command(command, properties, message);
-  process.stdout.write(cmd.toString() + os.EOL);
+  return cmd.toString();
 }
 var CMD_STRING = "::";
 var Command = class {
@@ -17754,22 +17758,16 @@ function issueFileCommand(command, message) {
 function prepareKeyValueMessage(key, value) {
   const delimiter = `ghadelimiter_${import_node_crypto.default.randomUUID()}`;
   const convertedValue = toCommandValue(value);
-  if (key.includes(delimiter)) {
-    throw new Error(`Unexpected input: name should not contain the delimiter "${delimiter}"`);
-  }
-  if (convertedValue.includes(delimiter)) {
-    throw new Error(`Unexpected input: value should not contain the delimiter "${delimiter}"`);
-  }
   return `${key}<<${delimiter}${import_node_os.default.EOL}${convertedValue}${import_node_os.default.EOL}${delimiter}`;
 }
 
 // src/actions/core/core.ts
 function getInput(name2, options) {
   const val = process.env[`INPUT_${name2.replace(/ /g, "_").toUpperCase()}`] || "";
-  if (options && options.required && !val) {
+  if (options?.required && !val) {
     throw new Error(`Input required and not supplied: ${name2}`);
   }
-  if (options && options.trimWhitespace === false) {
+  if (options?.trimWhitespace === false) {
     return val;
   }
   return val.trim();
