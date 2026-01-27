@@ -1,9 +1,10 @@
-import { Context } from '@actions/github/lib/context.js';
-import * as path from 'path';
-import * as process from 'process';
+import * as path from 'node:path';
+import * as process from 'node:process';
+
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 import { action } from './action.js';
+import { Context } from './actions/github/index.js';
 import { AppError } from './error.js';
 import { fetchGithubActionFixture, root, sourceDir } from './test/helper.js';
 

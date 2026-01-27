@@ -41,66 +41,6 @@ var init_import_meta_url = __esm({
   }
 });
 
-// ../node_modules/.pnpm/@actions+github@8.0.0/node_modules/@actions/github/lib/context.js
-var require_context = __commonJS({
-  "../node_modules/.pnpm/@actions+github@8.0.0/node_modules/@actions/github/lib/context.js"(exports2) {
-    "use strict";
-    init_import_meta_url();
-    Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.Context = void 0;
-    var fs_1 = require("fs");
-    var os_1 = require("os");
-    var Context2 = class {
-      /**
-       * Hydrate the context from the environment
-       */
-      constructor() {
-        var _a, _b, _c;
-        this.payload = {};
-        if (process.env.GITHUB_EVENT_PATH) {
-          if ((0, fs_1.existsSync)(process.env.GITHUB_EVENT_PATH)) {
-            this.payload = JSON.parse((0, fs_1.readFileSync)(process.env.GITHUB_EVENT_PATH, { encoding: "utf8" }));
-          } else {
-            const path17 = process.env.GITHUB_EVENT_PATH;
-            process.stdout.write(`GITHUB_EVENT_PATH ${path17} does not exist${os_1.EOL}`);
-          }
-        }
-        this.eventName = process.env.GITHUB_EVENT_NAME;
-        this.sha = process.env.GITHUB_SHA;
-        this.ref = process.env.GITHUB_REF;
-        this.workflow = process.env.GITHUB_WORKFLOW;
-        this.action = process.env.GITHUB_ACTION;
-        this.actor = process.env.GITHUB_ACTOR;
-        this.job = process.env.GITHUB_JOB;
-        this.runAttempt = parseInt(process.env.GITHUB_RUN_ATTEMPT, 10);
-        this.runNumber = parseInt(process.env.GITHUB_RUN_NUMBER, 10);
-        this.runId = parseInt(process.env.GITHUB_RUN_ID, 10);
-        this.apiUrl = (_a = process.env.GITHUB_API_URL) !== null && _a !== void 0 ? _a : `https://api.github.com`;
-        this.serverUrl = (_b = process.env.GITHUB_SERVER_URL) !== null && _b !== void 0 ? _b : `https://github.com`;
-        this.graphqlUrl = (_c = process.env.GITHUB_GRAPHQL_URL) !== null && _c !== void 0 ? _c : `https://api.github.com/graphql`;
-      }
-      get issue() {
-        const payload = this.payload;
-        return Object.assign(Object.assign({}, this.repo), { number: (payload.issue || payload.pull_request || payload).number });
-      }
-      get repo() {
-        if (process.env.GITHUB_REPOSITORY) {
-          const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
-          return { owner, repo };
-        }
-        if (this.payload.repository) {
-          return {
-            owner: this.payload.repository.owner.login,
-            repo: this.payload.repository.name
-          };
-        }
-        throw new Error("context.repo requires a GITHUB_REPOSITORY environment variable like 'owner/repo'");
-      }
-    };
-    exports2.Context = Context2;
-  }
-});
-
 // ../node_modules/.pnpm/picomatch@4.0.3/node_modules/picomatch/lib/constants.js
 var require_constants = __commonJS({
   "../node_modules/.pnpm/picomatch@4.0.3/node_modules/picomatch/lib/constants.js"(exports2, module2) {
@@ -17560,7 +17500,6 @@ init_import_meta_url();
 
 // src/main.ts
 init_import_meta_url();
-var import_context = __toESM(require_context(), 1);
 
 // src/action.ts
 init_import_meta_url();
@@ -48813,11 +48752,85 @@ function normalizeFiles(files) {
   return [...files].map((file) => import_node_path12.default.relative(cwd, file));
 }
 
+// src/actions/github/index.ts
+init_import_meta_url();
+
+// src/actions/github/context.ts
+init_import_meta_url();
+var import_fs3 = require("fs");
+var import_os2 = require("os");
+var Context = class {
+  /**
+   * Webhook payload object that triggered the workflow
+   */
+  payload;
+  eventName;
+  sha;
+  ref;
+  workflow;
+  action;
+  actor;
+  job;
+  runAttempt;
+  runNumber;
+  runId;
+  apiUrl;
+  serverUrl;
+  graphqlUrl;
+  /**
+   * Hydrate the context from the environment
+   */
+  constructor() {
+    this.payload = {};
+    if (process.env.GITHUB_EVENT_PATH) {
+      if ((0, import_fs3.existsSync)(process.env.GITHUB_EVENT_PATH)) {
+        this.payload = JSON.parse((0, import_fs3.readFileSync)(process.env.GITHUB_EVENT_PATH, { encoding: "utf8" }));
+      } else {
+        const path17 = process.env.GITHUB_EVENT_PATH;
+        process.stdout.write(`GITHUB_EVENT_PATH ${path17} does not exist${import_os2.EOL}`);
+      }
+    }
+    this.eventName = process.env.GITHUB_EVENT_NAME;
+    this.sha = process.env.GITHUB_SHA;
+    this.ref = process.env.GITHUB_REF;
+    this.workflow = process.env.GITHUB_WORKFLOW;
+    this.action = process.env.GITHUB_ACTION;
+    this.actor = process.env.GITHUB_ACTOR;
+    this.job = process.env.GITHUB_JOB;
+    this.runAttempt = parseInt(process.env.GITHUB_RUN_ATTEMPT, 10);
+    this.runNumber = parseInt(process.env.GITHUB_RUN_NUMBER, 10);
+    this.runId = parseInt(process.env.GITHUB_RUN_ID, 10);
+    this.apiUrl = process.env.GITHUB_API_URL ?? `https://api.github.com`;
+    this.serverUrl = process.env.GITHUB_SERVER_URL ?? `https://github.com`;
+    this.graphqlUrl = process.env.GITHUB_GRAPHQL_URL ?? `https://api.github.com/graphql`;
+  }
+  get issue() {
+    const payload = this.payload;
+    return {
+      ...this.repo,
+      number: (payload.issue || payload.pull_request || payload).number
+    };
+  }
+  get repo() {
+    if (process.env.GITHUB_REPOSITORY) {
+      const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
+      return { owner, repo };
+    }
+    if (this.payload.repository) {
+      return {
+        owner: this.payload.repository.owner.login,
+        repo: this.payload.repository.name
+      };
+    }
+    throw new Error("context.repo requires a GITHUB_REPOSITORY environment variable like 'owner/repo'");
+  }
+};
+
 // src/main.ts
 async function run() {
   try {
     info("cspell-action");
-    const githubContext = new import_context.Context();
+    const githubContext = new Context();
     await action(githubContext);
     info("Done.");
     return void 0;
