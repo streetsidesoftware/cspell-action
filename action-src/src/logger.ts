@@ -1,5 +1,5 @@
-import { debug, error, info, summary as coreSummary, warning } from '@actions/core';
-import { issueCommand } from '@actions/core/lib/command.js';
+import { debug, error, info, summary as coreSummary, warning } from './actions/core/index.js';
+import { issueCommand } from './actions/core/index.js';
 
 export type IssueCommandFn = typeof issueCommand;
 
