@@ -22,7 +22,7 @@
   ],
   "devDependencies": {
     "@actions/core": "^2.0.2",
-    "@actions/github": "^7.0.0",
+    "@actions/github": "^8.0.0",
     "@cspell/cspell-types": "^9.6.2",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^24.10.9",
