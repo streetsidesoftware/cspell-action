@@ -17,11 +17,11 @@ import { toCommandProperties, toCommandValue } from './utils.js';
  */
 export function getInput(name: string, options?: InputOptions): string {
     const val: string = process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
-    if (options && options.required && !val) {
+    if (options?.required && !val) {
         throw new Error(`Input required and not supplied: ${name}`);
     }
 
-    if (options && options.trimWhitespace === false) {
+    if (options?.trimWhitespace === false) {
         return val;
     }
 
@@ -87,15 +87,6 @@ export function error(message: string | Error, properties: AnnotationProperties 
  */
 export function warning(message: string | Error, properties: AnnotationProperties = {}): void {
     issueCommand('warning', toCommandProperties(properties), message instanceof Error ? message.toString() : message);
-}
-
-/**
- * Adds a notice issue
- * @param message notice issue message. Errors will be converted to string via toString()
- * @param properties optional properties to add to the annotation.
- */
-export function notice(message: string | Error, properties: AnnotationProperties = {}): void {
-    issueCommand('notice', toCommandProperties(properties), message instanceof Error ? message.toString() : message);
 }
 
 /**

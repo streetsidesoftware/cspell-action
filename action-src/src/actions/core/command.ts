@@ -37,8 +37,13 @@ import { toCommandValue } from './utils.js';
  * such as setSecret, warning, error, and exportVariable.
  */
 export function issueCommand(command: string, properties: CommandProperties, message: string): void {
+    const cmd = formatCommand(command, properties, message);
+    process.stdout.write(cmd + os.EOL);
+}
+
+export function formatCommand(command: string, properties: CommandProperties, message: string): string {
     const cmd = new Command(command, properties, message);
-    process.stdout.write(cmd.toString() + os.EOL);
+    return cmd.toString();
 }
 
 const CMD_STRING = '::';
