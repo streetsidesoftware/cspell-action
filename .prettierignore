@@ -1,8 +1,10 @@
 .vscode/
 CHANGELOG.md
 cspell.json
-node_modules/
-package-lock.json
-dist/
-action/
+node_modules
+*-lock.*
+dist
+action/lib
+action/node_modules
+action-src/node_modules
 pnpm-lock.yaml
