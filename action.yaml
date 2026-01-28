@@ -112,7 +112,7 @@ outputs:
 
 runs:
   using: 'node24'
-  main: './action/lib/main_root.cjs'
+  main: './action/lib/main_root.js'
 branding:
   icon: 'code'
   color: 'green'

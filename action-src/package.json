@@ -4,14 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node ./build.mjs",
+    "build": "tsdown",
     "build:tsc": "tsc -p .",
     "clean-build": "pnpm clean && pnpm build",
     "clean": "shx rm -rf ../action/lib dist",
     "prepublishOnly": "pnpm build",
-    "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.cjs",
-    "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.cjs",
-    "test": "vitest run",
+    "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
+    "smoke-test": "env-cmd -f ./fixtures/pull_request.json node ./action/lib/main_root.js",
+    "test": "pnpm build:tsc && vitest run",
     "coverage": "vitest run --coverage"
   },
   "bin": {
@@ -26,7 +26,6 @@
     "@types/node": "^24.10.9",
     "cspell": "^9.6.2",
     "cspell-glob": "^9.6.2",
-    "esbuild": "^0.27.2",
     "vscode-uri": "^3.1.0"
   },
   "dependencies": {
@@ -37,6 +36,6 @@
     "build.mjs"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }
