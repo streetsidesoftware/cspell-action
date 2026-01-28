@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "npm@10.1.0",
   "type": "module",
-  "main": "./lib/main_root.cjs",
+  "main": "./lib/main_root.js",
   "bundleDependencies": [
     "@cspell/cspell-bundled-dicts"
   ],
@@ -15,6 +15,6 @@
     "lib"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }

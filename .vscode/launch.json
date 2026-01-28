@@ -23,7 +23,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/action/lib/main_root.cjs",
+            "program": "${workspaceFolder}/action/lib/main_root.js",
             "cwd": "${workspaceFolder}",
             "env": {
                 "GITHUB_EVENT_PATH": "./fixtures/pull_request_payload.json",

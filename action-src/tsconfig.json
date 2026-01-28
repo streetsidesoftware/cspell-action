@@ -2,6 +2,7 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@tsconfig/node24/tsconfig.json",
     "compilerOptions": {
+        "noEmit": true,
         "skipLibCheck": true,
         "declaration": true,
         "isolatedDeclarations": true,
@@ -11,6 +12,5 @@
         "outDir": "dist",
         "rootDir": "./src"
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+    "include": ["src"]
 }

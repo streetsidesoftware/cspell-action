@@ -48,14 +48,13 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "prettier": "^3.8.1",
     "shx": "^0.4.0",
+    "tsdown": "^0.20.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.54.0",
     "vitest": "^4.0.18"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
+    "onlyBuiltDependencies": []
   },
   "engines": {
     "node": ">=24"
