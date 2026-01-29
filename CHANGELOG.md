@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.2.1](https://github.com/streetsidesoftware/cspell-action/compare/v8.2.0...v8.2.1) (2026-01-29)
+
+
+### Updates and Bug Fixes
+
+* drop dependency upon `@actions/github` to get the context. ([#2594](https://github.com/streetsidesoftware/cspell-action/issues/2594)) ([8e0bc6f](https://github.com/streetsidesoftware/cspell-action/commit/8e0bc6fefa607865d06289ab27980236bbc75961))
+* remove direct dependency upon @actions/core ([#2590](https://github.com/streetsidesoftware/cspell-action/issues/2590)) ([f599087](https://github.com/streetsidesoftware/cspell-action/commit/f59908714ba4a0d5d12a8a4e9c8684d2146d2685))
+* Switch action to ESM using tsdown ([#2595](https://github.com/streetsidesoftware/cspell-action/issues/2595)) ([382af06](https://github.com/streetsidesoftware/cspell-action/commit/382af060a7ef0fbd94d2993b099ddc3e45cca481))
+
 ## [8.2.0](https://github.com/streetsidesoftware/cspell-action/compare/v8.1.2...v8.2.0) (2026-01-27)
 
 
