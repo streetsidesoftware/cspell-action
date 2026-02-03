@@ -55,8 +55,8 @@ importers:
         version: 9.6.2
     devDependencies:
       '@cspell/cspell-types':
-        specifier: ^9.6.2
-        version: 9.6.2
+        specifier: ^9.6.3
+        version: 9.6.3
       '@octokit/webhooks-types':
         specifier: ^7.6.1
         version: 7.6.1
@@ -194,6 +194,10 @@ packages:
 
   '@cspell/cspell-types@9.6.2':
     resolution: {integrity: sha512-RsUFrSB0oQHEBnR8yarKIReUPwSu2ROpbjhdVKi4T/nQhMaS+TnIQPBwkMtb2r8A1KS2Hijw4D/4bV/XHoFQWw==}
+    engines: {node: '>=20'}
+
+  '@cspell/cspell-types@9.6.3':
+    resolution: {integrity: sha512-oDTzZ2kG/jJk3TaupESUckDraGJbBpRBEW1xgTrWyIU+uGwdmMXPcGr9XZq9dRS5Zxm01nTgLwxpVM/3BVTvWQ==}
     engines: {node: '>=20'}
 
   '@cspell/cspell-worker@9.6.2':
@@ -2241,6 +2245,8 @@ snapshots:
   '@cspell/cspell-service-bus@9.6.2': {}
 
   '@cspell/cspell-types@9.6.2': {}
+
+  '@cspell/cspell-types@9.6.3': {}
 
   '@cspell/cspell-worker@9.6.2':
     dependencies:
