@@ -67,8 +67,8 @@ importers:
         specifier: ^9.6.2
         version: 9.6.2
       cspell-glob:
-        specifier: ^9.6.2
-        version: 9.6.2
+        specifier: ^9.6.4
+        version: 9.6.4
       vscode-uri:
         specifier: ^3.1.0
         version: 3.1.0
@@ -396,6 +396,10 @@ packages:
 
   '@cspell/url@9.6.2':
     resolution: {integrity: sha512-625EiP1jUOQZ6UQuTUV1XB8Bxa18z3EtC1qA6PJyM3TqUD8PD8Tz183j9av6d/Dq52+7w0F4ovuqjUcTXTfD6g==}
+    engines: {node: '>=20'}
+
+  '@cspell/url@9.6.4':
+    resolution: {integrity: sha512-h6VMlb7bDyGJfwLtipxxtHlT+ojzUXZz14AqZ/NEzY3LfOhfJTGpRcWLYFsgG/L0Ma4qjsYbPJt/Sj1C14j0VA==}
     engines: {node: '>=20'}
 
   '@emnapi/core@1.8.1':
@@ -1149,6 +1153,10 @@ packages:
 
   cspell-glob@9.6.2:
     resolution: {integrity: sha512-5j+g4JzcWjW16ZAtcPHpG138CEfpp1YmuYJoYtze3lIZLgttt+k2gXJsqyWaP/6MdVknI0Q1afGSKYRtH8mLRA==}
+    engines: {node: '>=20'}
+
+  cspell-glob@9.6.4:
+    resolution: {integrity: sha512-253VrjbR8QU15h8GtpDQLX5Ti9uNSuNod2T7f8YEElQOb9I/kUXoCj3Cq4P390IC99klqSHIDxHsxd77ex19lA==}
     engines: {node: '>=20'}
 
   cspell-grammar@9.6.2:
@@ -2384,6 +2392,8 @@ snapshots:
 
   '@cspell/url@9.6.2': {}
 
+  '@cspell/url@9.6.4': {}
+
   '@emnapi/core@1.8.1':
     dependencies:
       '@emnapi/wasi-threads': 1.1.0
@@ -3017,6 +3027,11 @@ snapshots:
   cspell-glob@9.6.2:
     dependencies:
       '@cspell/url': 9.6.2
+      picomatch: 4.0.3
+
+  cspell-glob@9.6.4:
+    dependencies:
+      '@cspell/url': 9.6.4
       picomatch: 4.0.3
 
   cspell-grammar@9.6.2:
