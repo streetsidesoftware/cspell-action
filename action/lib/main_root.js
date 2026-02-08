@@ -28,7 +28,7 @@ import streamConsumers from "node:stream/consumers";
 import { fileURLToPath as fileURLToPath$1 } from "url";
 import * as readline from "node:readline";
 
-//#region rolldown:runtime
+//#region \0rolldown/runtime.js
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -36,7 +36,7 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
-var __exportAll = (all, symbols) => {
+var __exportAll = (all, no_symbols) => {
 	let target = {};
 	for (var name in all) {
 		__defProp(target, name, {
@@ -44,7 +44,7 @@ var __exportAll = (all, symbols) => {
 			enumerable: true
 		});
 	}
-	if (symbols) {
+	if (!no_symbols) {
 		__defProp(target, Symbol.toStringTag, { value: "Module" });
 	}
 	return target;
@@ -16170,13 +16170,12 @@ globalDirectory.yarn = {};
 globalDirectory.yarn.prefix = yarnPrefix;
 globalDirectory.yarn.packages = path.join(yarnPrefix, getYarnWindowsDirectory() ? "Data/global/node_modules" : "global/node_modules");
 globalDirectory.yarn.binaries = path.join(globalDirectory.yarn.packages, ".bin");
-var global_directory_default = globalDirectory;
 
 //#endregion
 //#region ../node_modules/.pnpm/@cspell+cspell-resolver@9.6.4/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 var import_requireResolve = require_requireResolve();
 function resolveGlobal(modulesName) {
-	return (0, import_requireResolve.requireResolve)(modulesName, [global_directory_default.npm.packages, global_directory_default.yarn.packages]);
+	return (0, import_requireResolve.requireResolve)(modulesName, [globalDirectory.npm.packages, globalDirectory.yarn.packages]);
 }
 
 //#endregion
@@ -43499,7 +43498,6 @@ function assembleStyles() {
 	return styles$1;
 }
 const ansiStyles = assembleStyles();
-var ansi_styles_default = ansiStyles;
 
 //#endregion
 //#region ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/supports-color/index.js
@@ -43589,7 +43587,6 @@ const supportsColor = {
 	stdout: createSupportsColor({ isTTY: tty.isatty(1) }),
 	stderr: createSupportsColor({ isTTY: tty.isatty(2) })
 };
-var supports_color_default = supportsColor;
 
 //#endregion
 //#region ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/utilities.js
@@ -43622,7 +43619,7 @@ function stringEncaseCRLFWithFirstIndex(string, prefix, postfix, index) {
 
 //#endregion
 //#region ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/index.js
-const { stdout: stdoutColor, stderr: stderrColor } = supports_color_default;
+const { stdout: stdoutColor, stderr: stderrColor } = supportsColor;
 const GENERATOR = Symbol("GENERATOR");
 const STYLER = Symbol("STYLER");
 const IS_EMPTY = Symbol("IS_EMPTY");
@@ -43653,7 +43650,7 @@ function createChalk(options) {
 	return chalkFactory(options);
 }
 Object.setPrototypeOf(createChalk.prototype, Function.prototype);
-for (const [styleName, style] of Object.entries(ansi_styles_default)) styles[styleName] = { get() {
+for (const [styleName, style] of Object.entries(ansiStyles)) styles[styleName] = { get() {
 	const builder = createBuilder(this, createStyler(style.open, style.close, this[STYLER]), this[IS_EMPTY]);
 	Object.defineProperty(this, styleName, { value: builder });
 	return builder;
@@ -43665,12 +43662,12 @@ styles.visible = { get() {
 } };
 const getModelAnsi = (model, level, type, ...arguments_) => {
 	if (model === "rgb") {
-		if (level === "ansi16m") return ansi_styles_default[type].ansi16m(...arguments_);
-		if (level === "ansi256") return ansi_styles_default[type].ansi256(ansi_styles_default.rgbToAnsi256(...arguments_));
-		return ansi_styles_default[type].ansi(ansi_styles_default.rgbToAnsi(...arguments_));
+		if (level === "ansi16m") return ansiStyles[type].ansi16m(...arguments_);
+		if (level === "ansi256") return ansiStyles[type].ansi256(ansiStyles.rgbToAnsi256(...arguments_));
+		return ansiStyles[type].ansi(ansiStyles.rgbToAnsi(...arguments_));
 	}
-	if (model === "hex") return getModelAnsi("rgb", level, type, ...ansi_styles_default.hexToRgb(...arguments_));
-	return ansi_styles_default[type][model](...arguments_);
+	if (model === "hex") return getModelAnsi("rgb", level, type, ...ansiStyles.hexToRgb(...arguments_));
+	return ansiStyles[type][model](...arguments_);
 };
 for (const model of [
 	"rgb",
@@ -43680,7 +43677,7 @@ for (const model of [
 	styles[model] = { get() {
 		const { level } = this;
 		return function(...arguments_) {
-			const styler = createStyler(getModelAnsi(model, levelMapping[level], "color", ...arguments_), ansi_styles_default.color.close, this[STYLER]);
+			const styler = createStyler(getModelAnsi(model, levelMapping[level], "color", ...arguments_), ansiStyles.color.close, this[STYLER]);
 			return createBuilder(this, styler, this[IS_EMPTY]);
 		};
 	} };
@@ -43688,7 +43685,7 @@ for (const model of [
 	styles[bgModel] = { get() {
 		const { level } = this;
 		return function(...arguments_) {
-			const styler = createStyler(getModelAnsi(model, levelMapping[level], "bgColor", ...arguments_), ansi_styles_default.bgColor.close, this[STYLER]);
+			const styler = createStyler(getModelAnsi(model, levelMapping[level], "bgColor", ...arguments_), ansiStyles.bgColor.close, this[STYLER]);
 			return createBuilder(this, styler, this[IS_EMPTY]);
 		};
 	} };
@@ -43747,7 +43744,6 @@ const applyStyle = (self, string) => {
 Object.defineProperties(createChalk.prototype, styles);
 const chalk = createChalk();
 const chalkStderr = createChalk({ level: stderrColor ? stderrColor.level : 0 });
-var source_default = chalk;
 
 //#endregion
 //#region ../node_modules/.pnpm/chalk-template@1.1.2/node_modules/chalk-template/index.js
@@ -43856,7 +43852,7 @@ function makeChalkTemplate(template) {
 	}
 	return chalkTemplate;
 }
-const template = makeTemplate(source_default);
+const template = makeTemplate(chalk);
 var chalk_template_default = makeChalkTemplate(template);
 const templateStderr = makeTemplate(chalkStderr);
 const chalkTemplateStderr = makeChalkTemplate(templateStderr);
@@ -45371,7 +45367,7 @@ function tableToLines(table, deliminator) {
 	return [...process()];
 }
 function headerDecorator(t) {
-	return source_default.bold(source_default.underline(t));
+	return chalk.bold(chalk.underline(t));
 }
 function decorateRowWith(row, ...decorators) {
 	return decorators.reduce((row, decorator) => row.map(decorator), row);
@@ -47477,7 +47473,7 @@ async function runLint(cfg) {
 					version
 				}, root);
 				const result = await processFiles(await determineFilesToCheck(configInfo, cfg, reporter, globInfo), {
-					chalk: source_default,
+					chalk,
 					configInfo,
 					cfg,
 					verboseLevel,
@@ -47517,7 +47513,7 @@ async function runLint(cfg) {
 	}
 	function getProcessFileOptions(configInfo) {
 		return {
-			chalk: source_default,
+			chalk,
 			configInfo,
 			cfg,
 			verboseLevel,
@@ -47528,7 +47524,7 @@ async function runLint(cfg) {
 	}
 }
 function checkGlobs(globs, reporter) {
-	globs.filter((g) => g.startsWith("'") || g.endsWith("'")).map((glob) => source_default.yellow(glob)).forEach((glob) => reporter.error("Linter", new CheckFailed(`Glob starting or ending with ' (single quote) is not likely to match any files: ${glob}.`)));
+	globs.filter((g) => g.startsWith("'") || g.endsWith("'")).map((glob) => chalk.yellow(glob)).forEach((glob) => reporter.error("Linter", new CheckFailed(`Glob starting or ending with ' (single quote) is not likely to match any files: ${glob}.`)));
 }
 async function determineGlobs(configInfo, cfg) {
 	const useGitignore = cfg.options.gitignore ?? configInfo.config.useGitignore ?? false;
