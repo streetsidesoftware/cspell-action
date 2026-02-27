@@ -65,11 +65,11 @@ jobs:
         run: GITHUB_OUTPUT="" pnpm coverage
 
       - name: Upload coverage Coveralls
-        continue-on-error: true
         uses: coverallsapp/github-action@5cbfd81b66ca5d10c19b062c04de0199c215fb6e # 2.3.7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./action-src/coverage/lcov.info
+          fail-on-error: false
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v3
