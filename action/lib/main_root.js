@@ -25513,72 +25513,6 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 }));
 
 //#endregion
-//#region ../node_modules/.pnpm/core-util-is@1.0.3/node_modules/core-util-is/lib/util.js
-var require_util = /* @__PURE__ */ __commonJSMin(((exports) => {
-	function isArray(arg) {
-		if (Array.isArray) return Array.isArray(arg);
-		return objectToString(arg) === "[object Array]";
-	}
-	exports.isArray = isArray;
-	function isBoolean(arg) {
-		return typeof arg === "boolean";
-	}
-	exports.isBoolean = isBoolean;
-	function isNull(arg) {
-		return arg === null;
-	}
-	exports.isNull = isNull;
-	function isNullOrUndefined(arg) {
-		return arg == null;
-	}
-	exports.isNullOrUndefined = isNullOrUndefined;
-	function isNumber(arg) {
-		return typeof arg === "number";
-	}
-	exports.isNumber = isNumber;
-	function isString(arg) {
-		return typeof arg === "string";
-	}
-	exports.isString = isString;
-	function isSymbol(arg) {
-		return typeof arg === "symbol";
-	}
-	exports.isSymbol = isSymbol;
-	function isUndefined(arg) {
-		return arg === void 0;
-	}
-	exports.isUndefined = isUndefined;
-	function isRegExp(re) {
-		return objectToString(re) === "[object RegExp]";
-	}
-	exports.isRegExp = isRegExp;
-	function isObject(arg) {
-		return typeof arg === "object" && arg !== null;
-	}
-	exports.isObject = isObject;
-	function isDate(d) {
-		return objectToString(d) === "[object Date]";
-	}
-	exports.isDate = isDate;
-	function isError(e) {
-		return objectToString(e) === "[object Error]" || e instanceof Error;
-	}
-	exports.isError = isError;
-	function isFunction(arg) {
-		return typeof arg === "function";
-	}
-	exports.isFunction = isFunction;
-	function isPrimitive(arg) {
-		return arg === null || typeof arg === "boolean" || typeof arg === "number" || typeof arg === "string" || typeof arg === "symbol" || typeof arg === "undefined";
-	}
-	exports.isPrimitive = isPrimitive;
-	exports.isBuffer = __require$1("buffer").Buffer.isBuffer;
-	function objectToString(o) {
-		return Object.prototype.toString.call(o);
-	}
-}));
-
-//#endregion
 //#region ../node_modules/.pnpm/array-timsort@1.0.3/node_modules/array-timsort/src/index.js
 var require_src$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/**
@@ -26280,9 +26214,8 @@ var require_src$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 }));
 
 //#endregion
-//#region ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/common.js
+//#region ../node_modules/.pnpm/comment-json@4.6.2/node_modules/comment-json/src/common.js
 var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { isObject, isArray, isString, isNumber, isFunction } = require_util();
 	const PREFIX_BEFORE = "before";
 	const PREFIX_AFTER_PROP = "after-prop";
 	const PREFIX_AFTER_COLON = "after-colon";
@@ -26313,6 +26246,35 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const NON_PROP_SYMBOL_KEYS = NON_PROP_SYMBOL_PREFIXES.map(Symbol.for);
 	const COLON = ":";
 	const UNDEFINED = void 0;
+	const LINE_BREAKS_BEFORE = /* @__PURE__ */ new WeakMap();
+	const LINE_BREAKS_AFTER = /* @__PURE__ */ new WeakMap();
+	const RAW_STRING_LITERALS = /* @__PURE__ */ new WeakMap();
+	const is_string = (subject) => typeof subject === "string";
+	const is_number = (subject) => typeof subject === "number";
+	/**
+	* @param {unknown} v
+	* @returns {v is NonNullable<object>}
+	*/
+	const is_object = (v) => typeof v === "object" && v !== null;
+	const normalize_key = (key) => is_string(key) || is_number(key) ? String(key) : null;
+	const set_raw_string_literal = (host, key, raw) => {
+		if (!is_object(host) || !is_string(raw)) return;
+		const normalized = normalize_key(key);
+		if (normalized === null) return;
+		let map = RAW_STRING_LITERALS.get(host);
+		if (!map) {
+			map = /* @__PURE__ */ new Map();
+			RAW_STRING_LITERALS.set(host, map);
+		}
+		map.set(normalized, raw);
+	};
+	const get_raw_string_literal = (host, key) => {
+		if (!is_object(host)) return;
+		const normalized = normalize_key(key);
+		if (normalized === null) return;
+		const map = RAW_STRING_LITERALS.get(host);
+		return map ? map.get(normalized) : void 0;
+	};
 	const symbol = (prefix, key) => Symbol.for(prefix + COLON + key);
 	const symbol_checked = (prefix, key) => {
 		if (key) {
@@ -26360,14 +26322,20 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 	const assign = (target, source, keys) => {
 		keys.forEach((key) => {
-			if (!isString(key) && !isNumber(key)) return;
+			if (typeof key !== "string" && typeof key !== "number") return;
 			if (!Object.hasOwn(source, key)) return;
 			target[key] = source[key];
 			copy_comments(target, source, key, key);
 		});
 		return target;
 	};
-	const is_raw_json = isFunction(JSON.isRawJSON) ? JSON.isRawJSON : () => false;
+	const is_raw_json = typeof JSON.isRawJSON === "function" ? JSON.isRawJSON : () => false;
+	const set_comment_line_breaks = (comment, before, after) => {
+		if (is_number(before) && before >= 0) LINE_BREAKS_BEFORE.set(comment, before);
+		if (is_number(after) && after >= 0) LINE_BREAKS_AFTER.set(comment, after);
+	};
+	const get_comment_line_breaks_before = (comment) => LINE_BREAKS_BEFORE.get(comment);
+	const get_comment_line_breaks_after = (comment) => LINE_BREAKS_AFTER.get(comment);
 	module.exports = {
 		PROP_SYMBOL_PREFIXES,
 		PREFIX_BEFORE,
@@ -26391,21 +26359,29 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		copy_comments,
 		swap_comments,
 		assign_non_prop_comments,
+		is_string,
+		is_number,
+		is_object,
 		is_raw_json,
+		set_raw_string_literal,
+		get_raw_string_literal,
+		set_comment_line_breaks,
+		get_comment_line_breaks_before,
+		get_comment_line_breaks_after,
 		assign(target, source, keys) {
-			if (!isObject(target)) throw new TypeError("Cannot convert undefined or null to object");
-			if (!isObject(source)) return target;
+			if (!is_object(target)) throw new TypeError("Cannot convert undefined or null to object");
+			if (!is_object(source)) return target;
 			if (keys === UNDEFINED) {
 				keys = Object.keys(source);
 				assign_non_prop_comments(target, source);
-			} else if (!isArray(keys)) throw new TypeError("keys must be array or undefined");
+			} else if (!Array.isArray(keys)) throw new TypeError("keys must be array or undefined");
 			else if (keys.length === 0) assign_non_prop_comments(target, source);
 			return assign(target, source, keys);
 		},
 		moveComments(source, target, { where: from_where, key: from_key }, { where: to_where, key: to_key }, override = false) {
-			if (!isObject(source)) throw new TypeError("source must be an object");
+			if (!is_object(source)) throw new TypeError("source must be an object");
 			if (!target) target = source;
-			if (!isObject(target)) return;
+			if (!is_object(target)) return;
 			const from_prop = symbol_checked(from_where, from_key);
 			const to_prop = symbol_checked(to_where, to_key);
 			if (!Object.hasOwn(source, from_prop)) return;
@@ -26419,7 +26395,7 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			if (target_comments) target_comments.push(...source_comments);
 		},
 		removeComments(target, { where, key }) {
-			if (!isObject(target)) throw new TypeError("target must be an object");
+			if (!is_object(target)) throw new TypeError("target must be an object");
 			const prop = symbol_checked(where, key);
 			if (!Object.hasOwn(target, prop)) return;
 			delete target[prop];
@@ -26428,9 +26404,8 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 }));
 
 //#endregion
-//#region ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/array.js
+//#region ../node_modules/.pnpm/comment-json@4.6.2/node_modules/comment-json/src/array.js
 var require_array = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { isArray } = require_util();
 	const { sort } = require_src$1();
 	const { PROP_SYMBOL_PREFIXES, UNDEFINED, symbol, copy_comments, swap_comments } = require_common();
 	const reverse_comments = (array) => {
@@ -26551,7 +26526,7 @@ var require_array = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			move_comments(ret, this, 0, this.length, 0);
 			items.forEach((item) => {
 				const prev = length;
-				length += isArray(item) ? item.length : 1;
+				length += Array.isArray(item) ? item.length : 1;
 				if (!(item instanceof CommentArray)) return;
 				move_comments(ret, item, 0, item.length, prev);
 			});
@@ -26574,11 +26549,11 @@ var require_array = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 }));
 
 //#endregion
-//#region ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/parse.js
+//#region ../node_modules/.pnpm/comment-json@4.6.2/node_modules/comment-json/src/parse.js
 var require_parse = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const esprima = require_esprima();
 	const { CommentArray } = require_array();
-	const { PREFIX_BEFORE, PREFIX_AFTER_PROP, PREFIX_AFTER_COLON, PREFIX_AFTER_VALUE, PREFIX_AFTER, PREFIX_BEFORE_ALL, PREFIX_AFTER_ALL, BRACKET_OPEN, BRACKET_CLOSE, CURLY_BRACKET_OPEN, CURLY_BRACKET_CLOSE, COLON, COMMA, MINUS, EMPTY, UNDEFINED, define, assign_non_prop_comments } = require_common();
+	const { PREFIX_BEFORE, PREFIX_AFTER_PROP, PREFIX_AFTER_COLON, PREFIX_AFTER_VALUE, PREFIX_AFTER, PREFIX_BEFORE_ALL, PREFIX_AFTER_ALL, BRACKET_OPEN, BRACKET_CLOSE, CURLY_BRACKET_OPEN, CURLY_BRACKET_CLOSE, COLON, COMMA, MINUS, EMPTY, UNDEFINED, is_object, define, set_raw_string_literal, set_comment_line_breaks, assign_non_prop_comments } = require_common();
 	/**
 	* Tokenize JSON string with comments into an array of tokens.
 	*
@@ -26680,11 +26655,19 @@ var require_parse = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				...current,
 				inline
 			};
+			const previous_line = last ? last.loc.end.line : 1;
+			set_comment_line_breaks(comment, Math.max(0, comment.loc.start.line - previous_line));
 			comments.push(comment);
 			next();
 		}
+		const { length } = comments;
+		if (length) {
+			const comment = comments[length - 1];
+			const current_line = current ? current.loc.start.line : comment.loc.end.line;
+			set_comment_line_breaks(comment, void 0, Math.max(0, current_line - comment.loc.end.line));
+		}
 		if (remove_comments) return;
-		if (!comments.length) return;
+		if (!length) return;
 		if (prefix) {
 			define(comments_host, symbolFor(prefix), comments);
 			return;
@@ -26785,7 +26768,7 @@ var require_parse = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		let v;
 		let source;
 		switch (tt) {
-			case "String":
+			case "String": set_raw_string_literal(comments_host, last_prop, current.value);
 			case "Boolean":
 			case "Null":
 			case "Numeric":
@@ -26799,7 +26782,6 @@ var require_parse = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			default: return {};
 		}
 	}
-	const isObject = (subject) => Object(subject) === subject;
 	/**
 	* Converts a JavaScript Object Notation (JSON) string with comments into an
 	* object.
@@ -26845,7 +26827,7 @@ var require_parse = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		if (current) unexpected();
 		let result = transform("", final);
 		if (!no_comments && result !== null) {
-			if (!isObject(result)) result = new Object(result);
+			if (!is_object(result)) result = new Object(result);
 			assign_non_prop_comments(result, comments_host);
 		}
 		restore_comments_host();
@@ -26859,11 +26841,9 @@ var require_parse = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 }));
 
 //#endregion
-//#region ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/stringify.js
+//#region ../node_modules/.pnpm/comment-json@4.6.2/node_modules/comment-json/src/stringify.js
 var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { isArray, isObject, isFunction, isNumber, isString } = require_util();
-	const { PREFIX_BEFORE_ALL, PREFIX_BEFORE, PREFIX_AFTER_PROP, PREFIX_AFTER_COLON, PREFIX_AFTER_VALUE, PREFIX_AFTER, PREFIX_AFTER_ALL, BRACKET_OPEN, BRACKET_CLOSE, CURLY_BRACKET_OPEN, CURLY_BRACKET_CLOSE, COLON, COMMA, EMPTY, UNDEFINED, is_raw_json } = require_common();
-	const ESCAPABLE = /[\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
+	const { PREFIX_BEFORE_ALL, PREFIX_BEFORE, PREFIX_AFTER_PROP, PREFIX_AFTER_COLON, PREFIX_AFTER_VALUE, PREFIX_AFTER, PREFIX_AFTER_ALL, BRACKET_OPEN, BRACKET_CLOSE, CURLY_BRACKET_OPEN, CURLY_BRACKET_CLOSE, COLON, COMMA, EMPTY, UNDEFINED, is_string, is_number, is_object, get_raw_string_literal, get_comment_line_breaks_before, get_comment_line_breaks_after, is_raw_json } = require_common();
 	const SPACE = " ";
 	const LF = "\n";
 	const STR_NULL = "null";
@@ -26872,35 +26852,46 @@ var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const AFTER_COLON = (prop) => `${PREFIX_AFTER_COLON}:${prop}`;
 	const AFTER_VALUE = (prop) => `${PREFIX_AFTER_VALUE}:${prop}`;
 	const AFTER = (prop) => `${PREFIX_AFTER}:${prop}`;
-	const meta = {
-		"\b": "\\b",
-		"	": "\\t",
-		"\n": "\\n",
-		"\f": "\\f",
-		"\r": "\\r",
-		"\"": "\\\"",
-		"\\": "\\\\"
-	};
-	const escape = (string) => {
-		ESCAPABLE.lastIndex = 0;
-		if (!ESCAPABLE.test(string)) return string;
-		return string.replace(ESCAPABLE, (a) => {
-			const c = meta[a];
-			return typeof c === "string" ? c : a;
-		});
-	};
-	const quote = (string) => `"${escape(string)}"`;
+	const quote = JSON.stringify;
 	const comment_stringify = (value, line) => line ? `//${value}` : `/*${value}*/`;
+	const repeat_line_breaks = (line_breaks, gap) => (LF + gap).repeat(line_breaks);
+	const read_line_breaks = (line_breaks) => is_number(line_breaks) && line_breaks >= 0 ? line_breaks : null;
+	const read_line_breaks_from_loc = (previous_comment, comment) => {
+		if (!previous_comment || !previous_comment.loc || !comment.loc) return null;
+		const { end } = previous_comment.loc;
+		const { start } = comment.loc;
+		if (!end || !start || !is_number(end.line) || !is_number(start.line)) return null;
+		const line_breaks = start.line - end.line;
+		return line_breaks >= 0 ? line_breaks : null;
+	};
+	const count_trailing_line_breaks = (str, gap) => {
+		const unit = LF + gap;
+		const { length } = unit;
+		let i = str.length;
+		let count = 0;
+		while (i >= length && str.slice(i - length, i) === unit) {
+			i -= length;
+			count++;
+		}
+		return count;
+	};
 	const process_comments = (host, symbol_tag, deeper_gap, display_block) => {
 		const comments = host[Symbol.for(symbol_tag)];
 		if (!comments || !comments.length) return EMPTY;
-		let is_line_comment = false;
-		const str = comments.reduce((prev, { inline, type, value }) => {
-			const delimiter = inline ? SPACE : LF + deeper_gap;
-			is_line_comment = type === "LineComment";
-			return prev + delimiter + comment_stringify(value, is_line_comment);
-		}, EMPTY);
-		return display_block || is_line_comment ? str + LF + deeper_gap : str;
+		let str = EMPTY;
+		let last_comment = null;
+		comments.forEach((comment, i) => {
+			const { inline, type, value } = comment;
+			let line_breaks_before = read_line_breaks(get_comment_line_breaks_before(comment));
+			if (line_breaks_before === null) line_breaks_before = read_line_breaks_from_loc(last_comment, comment);
+			if (line_breaks_before === null) line_breaks_before = inline ? 0 : 1;
+			const delimiter = line_breaks_before > 0 ? repeat_line_breaks(line_breaks_before, deeper_gap) : inline ? SPACE : i === 0 ? EMPTY : LF + deeper_gap;
+			str += delimiter + comment_stringify(value, type === "LineComment");
+			last_comment = comment;
+		});
+		const default_line_breaks_after = display_block || last_comment.type === "LineComment" ? 1 : 0;
+		const line_breaks_after = Math.max(default_line_breaks_after, read_line_breaks(get_comment_line_breaks_after(last_comment)) || 0);
+		return str + repeat_line_breaks(line_breaks_after, deeper_gap);
 	};
 	let replacer = null;
 	let indent = EMPTY;
@@ -26908,9 +26899,16 @@ var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		replacer = null;
 		indent = EMPTY;
 	};
-	const join = (one, two, gap) => one ? two ? one + two.trim() + LF + gap : one.trimRight() + LF + gap : two ? two.trimRight() + LF + gap : EMPTY;
+	const join = (one, two, gap) => one ? two ? one + two.trim() + LF + gap : one.trimRight() + repeat_line_breaks(Math.max(1, count_trailing_line_breaks(one, gap)), gap) : two ? two.trimRight() + repeat_line_breaks(Math.max(1, count_trailing_line_breaks(two, gap)), gap) : EMPTY;
 	const join_content = (inside, value, gap) => {
 		return join(process_comments(value, PREFIX_BEFORE, gap + indent, true), inside, gap);
+	};
+	const stringify_string = (holder, key, value) => {
+		const raw = get_raw_string_literal(holder, key);
+		if (is_string(raw)) try {
+			if (JSON.parse(raw) === value) return raw;
+		} catch (e) {}
+		return quote(value);
 	};
 	const array_stringify = (value, gap) => {
 		const deeper_gap = gap + indent;
@@ -26934,7 +26932,7 @@ var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		let inside = EMPTY;
 		let after_comma = EMPTY;
 		let first = true;
-		const keys = isArray(replacer) ? replacer : Object.keys(value);
+		const keys = Array.isArray(replacer) ? replacer : Object.keys(value);
 		const iteratee = (key) => {
 			const sv = stringify(key, value, deeper_gap);
 			if (sv === UNDEFINED) return;
@@ -26951,20 +26949,20 @@ var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 	function stringify(key, holder, gap) {
 		let value = holder[key];
-		if (isObject(value) && isFunction(value.toJSON)) value = value.toJSON(key);
-		if (isFunction(replacer)) value = replacer.call(holder, key, value);
+		if (is_object(value) && typeof value.toJSON === "function") value = value.toJSON(key);
+		if (typeof replacer === "function") value = replacer.call(holder, key, value);
 		switch (typeof value) {
-			case "string": return quote(value);
+			case "string": return stringify_string(holder, key, value);
 			case "number": return Number.isFinite(value) ? String(value) : STR_NULL;
 			case "boolean":
 			case "null": return String(value);
 			case "object":
 				if (is_raw_json(value)) return value.rawJSON;
-				return isArray(value) ? array_stringify(value, gap) : object_stringify(value, gap);
+				return Array.isArray(value) ? array_stringify(value, gap) : object_stringify(value, gap);
 			default:
 		}
 	}
-	const get_indent = (space) => isString(space) ? space : isNumber(space) ? SPACE.repeat(space) : EMPTY;
+	const get_indent = (space) => typeof space === "string" ? space : typeof space === "number" ? SPACE.repeat(space) : EMPTY;
 	const { toString } = Object.prototype;
 	const PRIMITIVE_OBJECT_TYPES = [
 		"[object Number]",
@@ -27006,17 +27004,17 @@ var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = (value, replacer_, space) => {
 		const indent_ = get_indent(space);
 		if (!indent_) return JSON.stringify(value, replacer_);
-		if (!isFunction(replacer_) && !isArray(replacer_)) replacer_ = null;
+		if (typeof replacer_ !== "function" && !Array.isArray(replacer_)) replacer_ = null;
 		replacer = replacer_;
 		indent = indent_;
 		const str = is_primitive_object(value) ? JSON.stringify(value) : stringify("", { "": value }, EMPTY);
 		clean();
-		return isObject(value) ? process_comments(value, PREFIX_BEFORE_ALL, EMPTY, true).trimLeft() + str + process_comments(value, PREFIX_AFTER_ALL, EMPTY).trimRight() : str;
+		return is_object(value) ? process_comments(value, PREFIX_BEFORE_ALL, EMPTY, true).trimLeft() + str + process_comments(value, PREFIX_AFTER_ALL, EMPTY).trimRight() : str;
 	};
 }));
 
 //#endregion
-//#region ../node_modules/.pnpm/comment-json@4.5.1/node_modules/comment-json/src/index.js
+//#region ../node_modules/.pnpm/comment-json@4.6.2/node_modules/comment-json/src/index.js
 var require_src = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { parse, tokenize } = require_parse();
 	const stringify = require_stringify$1();
@@ -45468,7 +45466,7 @@ async function glob(patternsOrOptions, options) {
 }
 
 //#endregion
-//#region ../node_modules/.pnpm/flatted@3.3.3/node_modules/flatted/esm/index.js
+//#region ../node_modules/.pnpm/flatted@3.3.4/node_modules/flatted/esm/index.js
 const { parse: $parse, stringify: $stringify } = JSON;
 const { keys } = Object;
 const Primitive = String;
