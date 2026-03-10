@@ -45466,7 +45466,7 @@ async function glob(patternsOrOptions, options) {
 }
 
 //#endregion
-//#region ../node_modules/.pnpm/flatted@3.3.4/node_modules/flatted/esm/index.js
+//#region ../node_modules/.pnpm/flatted@3.4.1/node_modules/flatted/esm/index.js
 const { parse: $parse, stringify: $stringify } = JSON;
 const { keys } = Object;
 const Primitive = String;
@@ -45476,8 +45476,7 @@ const object = "object";
 const noop = (_, value) => value;
 const primitives = (value) => value instanceof Primitive ? Primitive(value) : value;
 const Primitives = (_, value) => typeof value === primitive ? new Primitive(value) : value;
-const revive = (input, parsed, output, $) => {
-	const lazy = [];
+const resolver = (input, lazy, parsed, $) => (output) => {
 	for (let ke = keys(output), { length } = ke, y = 0; y < length; y++) {
 		const k = ke[y];
 		const value = output[k];
@@ -45487,20 +45486,12 @@ const revive = (input, parsed, output, $) => {
 				parsed.add(tmp);
 				output[k] = ignore;
 				lazy.push({
+					o: output,
 					k,
-					a: [
-						input,
-						parsed,
-						tmp,
-						$
-					]
+					r: tmp
 				});
 			} else output[k] = $.call(output, k, tmp);
 		} else if (output[k] !== ignore) output[k] = $.call(output, k, value);
-	}
-	for (let { length } = lazy, i = 0; i < length; i++) {
-		const { k, a } = lazy[i];
-		output[k] = $.call(output, k, revive.apply(null, a));
 	}
 	return output;
 };
@@ -45517,10 +45508,19 @@ const set = (known, input, value) => {
 */
 const parse = (text, reviver) => {
 	const input = $parse(text, Primitives).map(primitives);
-	const value = input[0];
 	const $ = reviver || noop;
-	const tmp = typeof value === object && value ? revive(input, /* @__PURE__ */ new Set(), value, $) : value;
-	return $.call({ "": tmp }, "", tmp);
+	let value = input[0];
+	if (typeof value === object && value) {
+		const lazy = [];
+		const revive = resolver(input, lazy, /* @__PURE__ */ new Set(), $);
+		value = revive(value);
+		let i = 0;
+		while (i < lazy.length) {
+			const { o, k, r } = lazy[i++];
+			o[k] = $.call(o, k, revive(r));
+		}
+	}
+	return $.call({ "": value }, "", value);
 };
 /**
 * Converts a JS value into a specialized flatted string.
