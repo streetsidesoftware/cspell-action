@@ -10,7 +10,9 @@ export default defineConfig([
         dts: false,
         sourcemap: false,
         clean: true,
-        external: ['@cspell/cspell-bundled-dicts'],
-        inlineOnly: false, // Nearly everything is inlined.
+        deps: {
+            neverBundle: ['@cspell/cspell-bundled-dicts'],
+            onlyAllowBundle: false, // Nearly everything is inlined.
+        },
     },
 ]) as UserConfig[];
