@@ -45033,7 +45033,7 @@ async function glob(patternsOrOptions, options) {
 	return formatPaths(await crawler.withPromise(), relative);
 }
 //#endregion
-//#region ../node_modules/.pnpm/flatted@3.4.1/node_modules/flatted/esm/index.js
+//#region ../node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/esm/index.js
 const { parse: $parse, stringify: $stringify } = JSON;
 const { keys } = Object;
 const Primitive = String;
@@ -45048,7 +45048,7 @@ const resolver = (input, lazy, parsed, $) => (output) => {
 		const k = ke[y];
 		const value = output[k];
 		if (value instanceof Primitive) {
-			const tmp = input[value];
+			const tmp = input[+value];
 			if (typeof tmp === object && !parsed.has(tmp)) {
 				parsed.add(tmp);
 				output[k] = ignore;
