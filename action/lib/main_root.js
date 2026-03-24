@@ -13274,10 +13274,11 @@ function toFileDirURL(dir) {
 	return fileUrlBuilder$1.toFileDirURL(dir);
 }
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.3/node_modules/picomatch/lib/constants.js
+//#region ../node_modules/.pnpm/picomatch@4.0.4/node_modules/picomatch/lib/constants.js
 var require_constants = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const WIN_SLASH = "\\\\/";
 	const WIN_NO_SLASH = `[^${WIN_SLASH}]`;
+	const DEFAULT_MAX_EXTGLOB_RECURSION = 0;
 	/**
 	* Posix glob regex
 	*/
@@ -13327,8 +13328,10 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		SEP: "\\"
 	};
 	module.exports = {
+		DEFAULT_MAX_EXTGLOB_RECURSION,
 		MAX_LENGTH: 1024 * 64,
 		POSIX_REGEX_SOURCE: {
+			__proto__: null,
 			alnum: "a-zA-Z0-9",
 			alpha: "a-zA-Z",
 			ascii: "\\x00-\\x7F",
@@ -13434,7 +13437,7 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 }));
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.3/node_modules/picomatch/lib/utils.js
+//#region ../node_modules/.pnpm/picomatch@4.0.4/node_modules/picomatch/lib/utils.js
 var require_utils = /* @__PURE__ */ __commonJSMin(((exports) => {
 	const { REGEX_BACKSLASH, REGEX_REMOVE_BACKSLASH, REGEX_SPECIAL_CHARS, REGEX_SPECIAL_CHARS_GLOBAL } = require_constants();
 	exports.isObject = (val) => val !== null && typeof val === "object" && !Array.isArray(val);
@@ -13482,7 +13485,7 @@ var require_utils = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.3/node_modules/picomatch/lib/scan.js
+//#region ../node_modules/.pnpm/picomatch@4.0.4/node_modules/picomatch/lib/scan.js
 var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const utils = require_utils();
 	const { CHAR_ASTERISK, CHAR_AT, CHAR_BACKWARD_SLASH, CHAR_COMMA, CHAR_DOT, CHAR_EXCLAMATION_MARK, CHAR_FORWARD_SLASH, CHAR_LEFT_CURLY_BRACE, CHAR_LEFT_PARENTHESES, CHAR_LEFT_SQUARE_BRACKET, CHAR_PLUS, CHAR_QUESTION_MARK, CHAR_RIGHT_CURLY_BRACE, CHAR_RIGHT_PARENTHESES, CHAR_RIGHT_SQUARE_BRACKET } = require_constants();
@@ -13769,7 +13772,7 @@ var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = scan;
 }));
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.3/node_modules/picomatch/lib/parse.js
+//#region ../node_modules/.pnpm/picomatch@4.0.4/node_modules/picomatch/lib/parse.js
 var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const constants = require_constants();
 	const utils = require_utils();
@@ -13796,6 +13799,177 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	*/
 	const syntaxError = (type, char) => {
 		return `Missing ${type}: "${char}" - use "\\\\${char}" to match literal characters`;
+	};
+	const splitTopLevel = (input) => {
+		const parts = [];
+		let bracket = 0;
+		let paren = 0;
+		let quote = 0;
+		let value = "";
+		let escaped = false;
+		for (const ch of input) {
+			if (escaped === true) {
+				value += ch;
+				escaped = false;
+				continue;
+			}
+			if (ch === "\\") {
+				value += ch;
+				escaped = true;
+				continue;
+			}
+			if (ch === "\"") {
+				quote = quote === 1 ? 0 : 1;
+				value += ch;
+				continue;
+			}
+			if (quote === 0) {
+				if (ch === "[") bracket++;
+				else if (ch === "]" && bracket > 0) bracket--;
+				else if (bracket === 0) {
+					if (ch === "(") paren++;
+					else if (ch === ")" && paren > 0) paren--;
+					else if (ch === "|" && paren === 0) {
+						parts.push(value);
+						value = "";
+						continue;
+					}
+				}
+			}
+			value += ch;
+		}
+		parts.push(value);
+		return parts;
+	};
+	const isPlainBranch = (branch) => {
+		let escaped = false;
+		for (const ch of branch) {
+			if (escaped === true) {
+				escaped = false;
+				continue;
+			}
+			if (ch === "\\") {
+				escaped = true;
+				continue;
+			}
+			if (/[?*+@!()[\]{}]/.test(ch)) return false;
+		}
+		return true;
+	};
+	const normalizeSimpleBranch = (branch) => {
+		let value = branch.trim();
+		let changed = true;
+		while (changed === true) {
+			changed = false;
+			if (/^@\([^\\()[\]{}|]+\)$/.test(value)) {
+				value = value.slice(2, -1);
+				changed = true;
+			}
+		}
+		if (!isPlainBranch(value)) return;
+		return value.replace(/\\(.)/g, "$1");
+	};
+	const hasRepeatedCharPrefixOverlap = (branches) => {
+		const values = branches.map(normalizeSimpleBranch).filter(Boolean);
+		for (let i = 0; i < values.length; i++) for (let j = i + 1; j < values.length; j++) {
+			const a = values[i];
+			const b = values[j];
+			const char = a[0];
+			if (!char || a !== char.repeat(a.length) || b !== char.repeat(b.length)) continue;
+			if (a === b || a.startsWith(b) || b.startsWith(a)) return true;
+		}
+		return false;
+	};
+	const parseRepeatedExtglob = (pattern, requireEnd = true) => {
+		if (pattern[0] !== "+" && pattern[0] !== "*" || pattern[1] !== "(") return;
+		let bracket = 0;
+		let paren = 0;
+		let quote = 0;
+		let escaped = false;
+		for (let i = 1; i < pattern.length; i++) {
+			const ch = pattern[i];
+			if (escaped === true) {
+				escaped = false;
+				continue;
+			}
+			if (ch === "\\") {
+				escaped = true;
+				continue;
+			}
+			if (ch === "\"") {
+				quote = quote === 1 ? 0 : 1;
+				continue;
+			}
+			if (quote === 1) continue;
+			if (ch === "[") {
+				bracket++;
+				continue;
+			}
+			if (ch === "]" && bracket > 0) {
+				bracket--;
+				continue;
+			}
+			if (bracket > 0) continue;
+			if (ch === "(") {
+				paren++;
+				continue;
+			}
+			if (ch === ")") {
+				paren--;
+				if (paren === 0) {
+					if (requireEnd === true && i !== pattern.length - 1) return;
+					return {
+						type: pattern[0],
+						body: pattern.slice(2, i),
+						end: i
+					};
+				}
+			}
+		}
+	};
+	const getStarExtglobSequenceOutput = (pattern) => {
+		let index = 0;
+		const chars = [];
+		while (index < pattern.length) {
+			const match = parseRepeatedExtglob(pattern.slice(index), false);
+			if (!match || match.type !== "*") return;
+			const branches = splitTopLevel(match.body).map((branch) => branch.trim());
+			if (branches.length !== 1) return;
+			const branch = normalizeSimpleBranch(branches[0]);
+			if (!branch || branch.length !== 1) return;
+			chars.push(branch);
+			index += match.end + 1;
+		}
+		if (chars.length < 1) return;
+		return `${chars.length === 1 ? utils.escapeRegex(chars[0]) : `[${chars.map((ch) => utils.escapeRegex(ch)).join("")}]`}*`;
+	};
+	const repeatedExtglobRecursion = (pattern) => {
+		let depth = 0;
+		let value = pattern.trim();
+		let match = parseRepeatedExtglob(value);
+		while (match) {
+			depth++;
+			value = match.body.trim();
+			match = parseRepeatedExtglob(value);
+		}
+		return depth;
+	};
+	const analyzeRepeatedExtglob = (body, options) => {
+		if (options.maxExtglobRecursion === false) return { risky: false };
+		const max = typeof options.maxExtglobRecursion === "number" ? options.maxExtglobRecursion : constants.DEFAULT_MAX_EXTGLOB_RECURSION;
+		const branches = splitTopLevel(body).map((branch) => branch.trim());
+		if (branches.length > 1) {
+			if (branches.some((branch) => branch === "") || branches.some((branch) => /^[*?]+$/.test(branch)) || hasRepeatedCharPrefixOverlap(branches)) return { risky: true };
+		}
+		for (const branch of branches) {
+			const safeOutput = getStarExtglobSequenceOutput(branch);
+			if (safeOutput) return {
+				risky: true,
+				safeOutput
+			};
+			if (repeatedExtglobRecursion(branch) > max) return { risky: true };
+		}
+		return { risky: false };
 	};
 	/**
 	* Parse the given input string.
@@ -13926,6 +14100,8 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			token.prev = prev;
 			token.parens = state.parens;
 			token.output = state.output;
+			token.startIndex = state.index;
+			token.tokensIndex = tokens.length;
 			const output = (opts.capture ? "(" : "") + token.open;
 			increment("parens");
 			push({
@@ -13942,6 +14118,30 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			extglobs.push(token);
 		};
 		const extglobClose = (token) => {
+			const literal = input.slice(token.startIndex, state.index + 1);
+			const analysis = analyzeRepeatedExtglob(input.slice(token.startIndex + 2, state.index), opts);
+			if ((token.type === "plus" || token.type === "star") && analysis.risky) {
+				const safeOutput = analysis.safeOutput ? (token.output ? "" : ONE_CHAR) + (opts.capture ? `(${analysis.safeOutput})` : analysis.safeOutput) : void 0;
+				const open = tokens[token.tokensIndex];
+				open.type = "text";
+				open.value = literal;
+				open.output = safeOutput || utils.escapeRegex(literal);
+				for (let i = token.tokensIndex + 1; i < tokens.length; i++) {
+					tokens[i].value = "";
+					tokens[i].output = "";
+					delete tokens[i].suffix;
+				}
+				state.output = token.output + open.output;
+				state.backtrack = true;
+				push({
+					type: "paren",
+					extglob: true,
+					value,
+					output: ""
+				});
+				decrement("parens");
+				return;
+			}
 			let output = token.close + (opts.capture ? ")" : "");
 			let rest;
 			if (token.type === "negate") {
@@ -14627,7 +14827,7 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = parse;
 }));
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.3/node_modules/picomatch/lib/picomatch.js
+//#region ../node_modules/.pnpm/picomatch@4.0.4/node_modules/picomatch/lib/picomatch.js
 var require_picomatch$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const scan = require_scan();
 	const parse = require_parse$1();
@@ -14837,6 +15037,14 @@ var require_picomatch$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	* Compile a regular expression from the `state` object returned by the
 	* [parse()](#parse) method.
 	*
+	* ```js
+	* const picomatch = require('picomatch');
+	* const state = picomatch.parse('*.js');
+	* // picomatch.compileRe(state[, options]);
+	*
+	* console.log(picomatch.compileRe(state));
+	* //=> /^(?:(?!\.)(?=.)[^/]*?\.js)$/
+	* ```
 	* @param {Object} `state`
 	* @param {Object} `options`
 	* @param {Boolean} `returnOutput` Intended for implementors, this argument allows you to return the raw output from the parser.
@@ -14860,10 +15068,10 @@ var require_picomatch$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	*
 	* ```js
 	* const picomatch = require('picomatch');
-	* const state = picomatch.parse('*.js');
-	* // picomatch.compileRe(state[, options]);
+	* // picomatch.makeRe(state[, options]);
 	*
-	* console.log(picomatch.compileRe(state));
+	* const result = picomatch.makeRe('*.js');
+	* console.log(result);
 	* //=> /^(?:(?!\.)(?=.)[^/]*?\.js)$/
 	* ```
 	* @param {String} `state` The object returned from the `.parse` method.
@@ -26953,7 +27161,7 @@ function parseCSpellConfigFilePackageJson(file) {
 	return new CSpellConfigFilePackageJson(url, cspell, serialize);
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/error.js
+//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/error.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27017,7 +27225,7 @@ var TomlError = class extends Error {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/util.js
+//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/util.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27069,8 +27277,12 @@ function skipComment(str, ptr) {
 }
 function skipVoid(str, ptr, banNewLines, banComments) {
 	let c;
-	while ((c = str[ptr]) === " " || c === "	" || !banNewLines && (c === "\n" || c === "\r" && str[ptr + 1] === "\n")) ptr++;
-	return banComments || c !== "#" ? ptr : skipVoid(str, skipComment(str, ptr), banNewLines);
+	while (1) {
+		while ((c = str[ptr]) === " " || c === "	" || !banNewLines && (c === "\n" || c === "\r" && str[ptr + 1] === "\n")) ptr++;
+		if (banComments || c !== "#") break;
+		ptr = skipComment(str, ptr);
+	}
+	return ptr;
 }
 function skipUntil(str, ptr, sep, end, banNewLines = false) {
 	if (!end) {
@@ -27105,7 +27317,7 @@ function getStringEnd(str, seek) {
 	return seek;
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/date.js
+//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/date.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27215,7 +27427,7 @@ var TomlDate = class TomlDate extends Date {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/primitive.js
+//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/primitive.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27353,7 +27565,7 @@ function parseValue(value, toml, ptr, integersAsBigInt) {
 	return date;
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/extract.js
+//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/extract.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27435,7 +27647,7 @@ function extractValue(str, ptr, end, depth, integersAsBigInt) {
 	return [parseValue(slice[0], str, ptr, integersAsBigInt), endPtr];
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/struct.js
+//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/struct.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27579,7 +27791,7 @@ function parseArray(str, ptr, depth, integersAsBigInt) {
 	return [res, ptr];
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/parse.js
+//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/parse.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27717,7 +27929,7 @@ function parse$1(toml, { maxDepth = 1e3, integersAsBigInt } = {}) {
 	return res;
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.0/node_modules/smol-toml/dist/stringify.js
+//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/stringify.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -44252,7 +44464,7 @@ async function asyncIterableToArray(iter) {
 	return r;
 }
 //#endregion
-//#region ../node_modules/.pnpm/fdir@6.5.0_picomatch@4.0.3/node_modules/fdir/dist/index.mjs
+//#region ../node_modules/.pnpm/fdir@6.5.0_picomatch@4.0.4/node_modules/fdir/dist/index.mjs
 var __require = /* @__PURE__ */ createRequire$1(import.meta.url);
 function cleanPath(path) {
 	let normalized = normalize(path);
