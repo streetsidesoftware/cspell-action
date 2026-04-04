@@ -7884,12 +7884,11 @@ Object.freeze({
 	k: true
 });
 new Intl.Collator().compare;
-const specialCharacterMap$1 = new Map([
+const characterMap = new Map([...new Map([
 	["\n", "\\n"],
 	["\r", "\\r"],
 	["\\", "\\\\"]
-]);
-const characterMap = new Map([...specialCharacterMap$1].map((a) => [a[1], a[0]]));
+])].map((a) => [a[1], a[0]]));
 const DATA$1 = "__DATA__";
 function importTrieV3WithBuilder(builder, srcLines) {
 	const timerStart = measurePerf$1("importTrieV3");
@@ -48077,7 +48076,6 @@ function fixLegacy(opts) {
 	if (local && !rest.locale) rest.locale = local;
 	return rest;
 }
-Symbol.asyncIterator;
 //#endregion
 //#region ../node_modules/.pnpm/cspell@9.7.0/node_modules/cspell/dist/esm/application.js
 function lint$1(fileGlobs, options, reporter) {
