@@ -1,11 +1,12 @@
 import eslint from '@eslint/js';
+import { defineConfig } from 'eslint/config';
 import nodePlugin from 'eslint-plugin-n';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import tsEslint from 'typescript-eslint';
 
 // @ts-check
 
-export default tsEslint.config(
+export default defineConfig(
     eslint.configs.recommended,
     nodePlugin.configs['flat/recommended'],
     ...tsEslint.configs.recommended,
