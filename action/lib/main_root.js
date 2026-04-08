@@ -2,19 +2,19 @@ import * as nodeModule from "node:module";
 import { builtinModules, createRequire } from "node:module";
 import * as Path from "node:path";
 import path, { isAbsolute, posix, relative, resolve, sep } from "node:path";
-import * as nativeFs$1 from "fs";
-import nativeFs, { existsSync, readFileSync } from "fs";
+import * as nativeFs from "fs";
+import { existsSync, readFileSync, readdir, readdirSync, realpath, realpathSync, stat, statSync } from "fs";
 import * as os$3 from "os";
 import os, { EOL } from "os";
 import crypto from "node:crypto";
-import fs, { constants, promises, readFileSync as readFileSync$1, realpathSync, statSync } from "node:fs";
+import fs, { constants, promises, readFileSync as readFileSync$1, realpathSync as realpathSync$1, statSync as statSync$1 } from "node:fs";
 import * as os$2 from "node:os";
 import os$1, { homedir } from "node:os";
-import fs$1, { access, appendFile, readFile, stat, writeFile } from "node:fs/promises";
+import fs$1, { access, appendFile, readFile, stat as stat$1, writeFile } from "node:fs/promises";
 import { exec } from "node:child_process";
 import { format, formatWithOptions, inspect, promisify, stripVTControlCharacters } from "node:util";
 import * as path$3 from "path";
-import path$1, { basename, dirname, normalize, posix as posix$1, relative as relative$1, resolve as resolve$1, sep as sep$1 } from "path";
+import path$1, { basename, dirname, isAbsolute as isAbsolute$1, normalize, posix as posix$1, relative as relative$1, resolve as resolve$1, sep as sep$1 } from "path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import assert from "node:assert";
 import process$1 from "node:process";
@@ -11619,7 +11619,7 @@ var SimpleCache$1 = class {
 };
 //#endregion
 //#region ../node_modules/.pnpm/cspell-dictionary@10.0.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
-const defaultOptions = Object.freeze({ weightMap: void 0 });
+const defaultOptions$1 = Object.freeze({ weightMap: void 0 });
 //#endregion
 //#region ../node_modules/.pnpm/cspell-dictionary@10.0.0/node_modules/cspell-dictionary/dist/util/clean.js
 /**
@@ -12011,7 +12011,7 @@ function _createSpellingDictionary(params) {
 		stripCaseAndAccents: options?.supportNonStrictSearches ?? true,
 		disableSuggestionHandling
 	}));
-	const opts = { ...options || defaultOptions };
+	const opts = { ...options || defaultOptions$1 };
 	if (opts.weightMap === void 0 && opts.dictionaryInformation) opts.weightMap = createWeightMapFromDictionaryInformation(opts.dictionaryInformation);
 	const d = new SpellingDictionaryFromTrie(trie, name, opts, source);
 	endPerf();
@@ -12411,7 +12411,7 @@ var FlagWordsDictionaryTrie = class extends SpellingDictionaryFromTrie {
 	containsNoSuggestWords = false;
 	options = {};
 	constructor(trie, name, source) {
-		super(trie, name, defaultOptions, source);
+		super(trie, name, defaultOptions$1, source);
 		this.name = name;
 		this.source = source;
 	}
@@ -16872,7 +16872,7 @@ function emitLegacyIndexDeprecation(url, packageJsonUrl, base, main) {
 */
 function tryStatSync(path) {
 	try {
-		return statSync(path);
+		return statSync$1(path);
 	} catch {}
 }
 /**
@@ -16887,7 +16887,7 @@ function tryStatSync(path) {
 * @returns {boolean}
 */
 function fileExists(url) {
-	const stats = statSync(url, { throwIfNoEntry: false });
+	const stats = statSync$1(url, { throwIfNoEntry: false });
 	const isFile = stats ? stats.isFile() : void 0;
 	return isFile === null || isFile === void 0 ? false : isFile;
 }
@@ -16969,7 +16969,7 @@ function finalizeResolution(resolved, base, preserveSymlinks) {
 		throw error;
 	}
 	if (!preserveSymlinks) {
-		const real = realpathSync(filePath);
+		const real = realpathSync$1(filePath);
 		const { search, hash } = resolved;
 		resolved = pathToFileURL(real + (filePath.endsWith(path.sep) ? "/" : ""));
 		resolved.search = search;
@@ -17538,7 +17538,7 @@ function importResolveModuleName(moduleName, paths) {
 		const url = typeof parent === "string" ? parent.startsWith("file://") ? new URL(parent) : dirToUrl(parent) : parent;
 		const resolvedURL = new URL(resolve$2(modulesNameToImport.toString(), url.toString()));
 		try {
-			if (statSync(resolvedURL).isFile()) return resolvedURL;
+			if (statSync$1(resolvedURL).isFile()) return resolvedURL;
 		} catch {
 			const error = /* @__PURE__ */ new Error(`Cannot find module ${moduleName}`);
 			error.code = "ERR_MODULE_NOT_FOUND";
@@ -18307,7 +18307,7 @@ function toPromiseStats(pStat) {
 const handleRequestFsStatSync = RequestFsStatSync.createRequestHandler((req) => {
 	const { params } = req;
 	try {
-		return createResponse(statSync(fileURLToPath(params.url)));
+		return createResponse(statSync$1(fileURLToPath(params.url)));
 	} catch (e) {
 		return createResponseFail(req, toError$1$1(e));
 	}
@@ -36381,7 +36381,7 @@ function makePredicate(name, entryType) {
 	const checkStat = entryType === "file" ? "isFile" : "isDirectory";
 	function checkName(dir, name) {
 		const f = path.join(dir, name);
-		return stat(f).then((stats) => stats[checkStat]() && f || void 0).catch(() => void 0);
+		return stat$1(f).then((stats) => stats[checkStat]() && f || void 0).catch(() => void 0);
 	}
 	if (!Array.isArray(name)) return (dir) => checkName(dir, name);
 	return async (dir) => {
@@ -45171,7 +45171,7 @@ var Walker = class {
 			symlinks: /* @__PURE__ */ new Map(),
 			visited: [""].slice(0, 0),
 			controller: new Aborter(),
-			fs: options.fs || nativeFs$1
+			fs: options.fs || nativeFs
 		};
 		this.joinPath = build$7(this.root, options);
 		this.pushDirectory = build$6(this.root, options);
@@ -45378,37 +45378,38 @@ var Builder = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/tinyglobby@0.2.15/node_modules/tinyglobby/dist/index.mjs
+//#region ../node_modules/.pnpm/tinyglobby@0.2.16/node_modules/tinyglobby/dist/index.mjs
 const isReadonlyArray = Array.isArray;
+const BACKSLASHES = /\\/g;
 const isWin = process.platform === "win32";
 const ONLY_PARENT_DIRECTORIES = /^(\/?\.\.)+$/;
 function getPartialMatcher(patterns, options = {}) {
 	const patternsCount = patterns.length;
 	const patternsParts = Array(patternsCount);
 	const matchers = Array(patternsCount);
-	const globstarEnabled = !options.noglobstar;
-	for (let i = 0; i < patternsCount; i++) {
+	let i, j;
+	for (i = 0; i < patternsCount; i++) {
 		const parts = splitPattern(patterns[i]);
 		patternsParts[i] = parts;
 		const partsCount = parts.length;
 		const partMatchers = Array(partsCount);
-		for (let j = 0; j < partsCount; j++) partMatchers[j] = (0, import_picomatch.default)(parts[j], options);
+		for (j = 0; j < partsCount; j++) partMatchers[j] = (0, import_picomatch.default)(parts[j], options);
 		matchers[i] = partMatchers;
 	}
 	return (input) => {
 		const inputParts = input.split("/");
 		if (inputParts[0] === ".." && ONLY_PARENT_DIRECTORIES.test(input)) return true;
-		for (let i = 0; i < patterns.length; i++) {
+		for (i = 0; i < patternsCount; i++) {
 			const patternParts = patternsParts[i];
 			const matcher = matchers[i];
 			const inputPatternCount = inputParts.length;
 			const minParts = Math.min(inputPatternCount, patternParts.length);
-			let j = 0;
+			j = 0;
 			while (j < minParts) {
 				const part = patternParts[j];
 				if (part.includes("/")) return true;
 				if (!matcher[j](inputParts[j])) break;
-				if (globstarEnabled && part === "**") return true;
+				if (!options.noglobstar && part === "**") return true;
 				j++;
 			}
 			if (j === inputPatternCount) return true;
@@ -45422,7 +45423,7 @@ const isRoot = isWin ? (p) => WIN32_ROOT_DIR.test(p) : (p) => p === "/";
 function buildFormat(cwd, root, absolute) {
 	if (cwd === root || root.startsWith(`${cwd}/`)) {
 		if (absolute) {
-			const start = isRoot(cwd) ? cwd.length : cwd.length + 1;
+			const start = cwd.length + +!isRoot(cwd);
 			return (p, isDir) => p.slice(start, isDir ? -1 : void 0) || ".";
 		}
 		const prefix = root.slice(cwd.length + 1);
@@ -45443,20 +45444,19 @@ function buildRelative(cwd, root) {
 	}
 	return (p) => {
 		const result = posix$1.relative(cwd, `${root}/${p}`);
-		if (p.endsWith("/") && result !== "") return `${result}/`;
-		return result || ".";
+		return p[p.length - 1] === "/" && result !== "" ? `${result}/` : result || ".";
 	};
 }
 const splitPatternOptions = { parts: true };
-function splitPattern(path$1) {
+function splitPattern(path) {
 	var _result$parts;
-	const result = import_picomatch.default.scan(path$1, splitPatternOptions);
-	return ((_result$parts = result.parts) === null || _result$parts === void 0 ? void 0 : _result$parts.length) ? result.parts : [path$1];
+	const result = import_picomatch.default.scan(path, splitPatternOptions);
+	return ((_result$parts = result.parts) === null || _result$parts === void 0 ? void 0 : _result$parts.length) ? result.parts : [path];
 }
 const POSIX_UNESCAPED_GLOB_SYMBOLS = /(?<!\\)([()[\]{}*?|]|^!|[!+@](?=\()|\\(?![()[\]{}!*+?@|]))/g;
 const WIN32_UNESCAPED_GLOB_SYMBOLS = /(?<!\\)([()[\]{}]|^!|[!+@](?=\())/g;
-const escapePosixPath = (path$1) => path$1.replace(POSIX_UNESCAPED_GLOB_SYMBOLS, "\\$&");
-const escapeWin32Path = (path$1) => path$1.replace(WIN32_UNESCAPED_GLOB_SYMBOLS, "\\$&");
+const escapePosixPath = (path) => path.replace(POSIX_UNESCAPED_GLOB_SYMBOLS, "\\$&");
+const escapeWin32Path = (path) => path.replace(WIN32_UNESCAPED_GLOB_SYMBOLS, "\\$&");
 /**
 * Escapes a path's special characters depending on the platform.
 * @see {@link https://superchupu.dev/tinyglobby/documentation#escapePath}
@@ -45483,28 +45483,31 @@ function isDynamicPattern(pattern, options) {
 function log(...tasks) {
 	console.log(`[tinyglobby ${(/* @__PURE__ */ new Date()).toLocaleTimeString("es")}]`, ...tasks);
 }
+function ensureStringArray(value) {
+	return typeof value === "string" ? [value] : value !== null && value !== void 0 ? value : [];
+}
 const PARENT_DIRECTORY = /^(\/?\.\.)+/;
 const ESCAPING_BACKSLASHES = /\\(?=[()[\]{}!*+?@|])/g;
-const BACKSLASHES = /\\/g;
-function normalizePattern(pattern, expandDirectories, cwd, props, isIgnore) {
+function normalizePattern(pattern, opts, props, isIgnore) {
+	var _PARENT_DIRECTORY$exe;
+	const cwd = opts.cwd;
 	let result = pattern;
-	if (pattern.endsWith("/")) result = pattern.slice(0, -1);
-	if (!result.endsWith("*") && expandDirectories) result += "/**";
+	if (pattern[pattern.length - 1] === "/") result = pattern.slice(0, -1);
+	if (result[result.length - 1] !== "*" && opts.expandDirectories) result += "/**";
 	const escapedCwd = escapePath(cwd);
-	if (path$1.isAbsolute(result.replace(ESCAPING_BACKSLASHES, ""))) result = posix$1.relative(escapedCwd, result);
-	else result = posix$1.normalize(result);
-	const parentDirectoryMatch = PARENT_DIRECTORY.exec(result);
+	result = isAbsolute$1(result.replace(ESCAPING_BACKSLASHES, "")) ? posix$1.relative(escapedCwd, result) : posix$1.normalize(result);
+	const parentDir = (_PARENT_DIRECTORY$exe = PARENT_DIRECTORY.exec(result)) === null || _PARENT_DIRECTORY$exe === void 0 ? void 0 : _PARENT_DIRECTORY$exe[0];
 	const parts = splitPattern(result);
-	if (parentDirectoryMatch === null || parentDirectoryMatch === void 0 ? void 0 : parentDirectoryMatch[0]) {
-		const n = (parentDirectoryMatch[0].length + 1) / 3;
+	if (parentDir) {
+		const n = (parentDir.length + 1) / 3;
 		let i = 0;
 		const cwdParts = escapedCwd.split("/");
 		while (i < n && parts[i + n] === cwdParts[cwdParts.length + i - n]) {
 			result = result.slice(0, (n - i - 1) * 3) + result.slice((n - i) * 3 + parts[i + n].length + 1) || ".";
 			i++;
 		}
-		const potentialRoot = posix$1.join(cwd, parentDirectoryMatch[0].slice(i * 3));
-		if (!potentialRoot.startsWith(".") && props.root.length > potentialRoot.length) {
+		const potentialRoot = posix$1.join(cwd, parentDir.slice(i * 3));
+		if (potentialRoot[0] !== "." && props.root.length > potentialRoot.length) {
 			props.root = potentialRoot;
 			props.depthOffset = -n + i;
 		}
@@ -45520,7 +45523,7 @@ function normalizePattern(pattern, expandDirectories, cwd, props, isIgnore) {
 				newCommonPath.pop();
 				break;
 			}
-			if (part !== props.commonPath[i] || isDynamicPattern(part) || i === parts.length - 1) break;
+			if (i === parts.length - 1 || part !== props.commonPath[i] || isDynamicPattern(part)) break;
 			newCommonPath.push(part);
 		}
 		props.depthOffset = newCommonPath.length;
@@ -45529,135 +45532,126 @@ function normalizePattern(pattern, expandDirectories, cwd, props, isIgnore) {
 	}
 	return result;
 }
-function processPatterns({ patterns = ["**/*"], ignore = [], expandDirectories = true }, cwd, props) {
-	if (typeof patterns === "string") patterns = [patterns];
-	if (typeof ignore === "string") ignore = [ignore];
+function processPatterns(options, patterns, props) {
 	const matchPatterns = [];
 	const ignorePatterns = [];
-	for (const pattern of ignore) {
+	for (const pattern of options.ignore) {
 		if (!pattern) continue;
-		if (pattern[0] !== "!" || pattern[1] === "(") ignorePatterns.push(normalizePattern(pattern, expandDirectories, cwd, props, true));
+		if (pattern[0] !== "!" || pattern[1] === "(") ignorePatterns.push(normalizePattern(pattern, options, props, true));
 	}
 	for (const pattern of patterns) {
 		if (!pattern) continue;
-		if (pattern[0] !== "!" || pattern[1] === "(") matchPatterns.push(normalizePattern(pattern, expandDirectories, cwd, props, false));
-		else if (pattern[1] !== "!" || pattern[2] === "(") ignorePatterns.push(normalizePattern(pattern.slice(1), expandDirectories, cwd, props, true));
+		if (pattern[0] !== "!" || pattern[1] === "(") matchPatterns.push(normalizePattern(pattern, options, props, false));
+		else if (pattern[1] !== "!" || pattern[2] === "(") ignorePatterns.push(normalizePattern(pattern.slice(1), options, props, true));
 	}
 	return {
 		match: matchPatterns,
 		ignore: ignorePatterns
 	};
 }
-function formatPaths(paths, relative) {
-	for (let i = paths.length - 1; i >= 0; i--) {
-		const path$1 = paths[i];
-		paths[i] = relative(path$1);
-	}
-	return paths;
-}
-function normalizeCwd(cwd) {
-	if (!cwd) return process.cwd().replace(BACKSLASHES, "/");
-	if (cwd instanceof URL) return fileURLToPath$1(cwd).replace(BACKSLASHES, "/");
-	return path$1.resolve(cwd).replace(BACKSLASHES, "/");
-}
-function getCrawler(patterns, inputOptions = {}) {
-	const options = process.env.TINYGLOBBY_DEBUG ? {
-		...inputOptions,
-		debug: true
-	} : inputOptions;
-	const cwd = normalizeCwd(options.cwd);
-	if (options.debug) log("globbing with:", {
-		patterns,
-		options,
-		cwd
-	});
-	if (Array.isArray(patterns) && patterns.length === 0) return [{
-		sync: () => [],
-		withPromise: async () => []
-	}, false];
+function buildCrawler(options, patterns) {
+	const cwd = options.cwd;
 	const props = {
 		root: cwd,
-		commonPath: null,
 		depthOffset: 0
 	};
-	const processed = processPatterns({
-		...options,
-		patterns
-	}, cwd, props);
+	const processed = processPatterns(options, patterns, props);
 	if (options.debug) log("internal processing patterns:", processed);
+	const { absolute, caseSensitiveMatch, debug, dot, followSymbolicLinks, onlyDirectories } = options;
+	const root = props.root.replace(BACKSLASHES, "");
 	const matchOptions = {
-		dot: options.dot,
+		dot,
 		nobrace: options.braceExpansion === false,
-		nocase: options.caseSensitiveMatch === false,
+		nocase: !caseSensitiveMatch,
 		noextglob: options.extglob === false,
 		noglobstar: options.globstar === false,
 		posix: true
 	};
-	const matcher = (0, import_picomatch.default)(processed.match, {
-		...matchOptions,
-		ignore: processed.ignore
-	});
+	const matcher = (0, import_picomatch.default)(processed.match, matchOptions);
 	const ignore = (0, import_picomatch.default)(processed.ignore, matchOptions);
 	const partialMatcher = getPartialMatcher(processed.match, matchOptions);
-	const format = buildFormat(cwd, props.root, options.absolute);
-	const formatExclude = options.absolute ? format : buildFormat(cwd, props.root, true);
-	const fdirOptions = {
-		filters: [options.debug ? (p, isDirectory) => {
-			const path$1 = format(p, isDirectory);
-			const matches = matcher(path$1);
-			if (matches) log(`matched ${path$1}`);
-			return matches;
-		} : (p, isDirectory) => matcher(format(p, isDirectory))],
-		exclude: options.debug ? (_, p) => {
-			const relativePath = formatExclude(p, true);
-			const skipped = relativePath !== "." && !partialMatcher(relativePath) || ignore(relativePath);
-			if (skipped) log(`skipped ${p}`);
-			else log(`crawling ${p}`);
-			return skipped;
-		} : (_, p) => {
-			const relativePath = formatExclude(p, true);
-			return relativePath !== "." && !partialMatcher(relativePath) || ignore(relativePath);
-		},
-		fs: options.fs ? {
-			readdir: options.fs.readdir || nativeFs.readdir,
-			readdirSync: options.fs.readdirSync || nativeFs.readdirSync,
-			realpath: options.fs.realpath || nativeFs.realpath,
-			realpathSync: options.fs.realpathSync || nativeFs.realpathSync,
-			stat: options.fs.stat || nativeFs.stat,
-			statSync: options.fs.statSync || nativeFs.statSync
-		} : void 0,
-		pathSeparator: "/",
-		relativePaths: true,
-		resolveSymlinks: true,
-		signal: options.signal
+	const format = buildFormat(cwd, root, absolute);
+	const excludeFormatter = absolute ? format : buildFormat(cwd, root, true);
+	const excludePredicate = (_, p) => {
+		const relativePath = excludeFormatter(p, true);
+		return relativePath !== "." && !partialMatcher(relativePath) || ignore(relativePath);
 	};
-	if (options.deep !== void 0) fdirOptions.maxDepth = Math.round(options.deep - props.depthOffset);
-	if (options.absolute) {
-		fdirOptions.relativePaths = false;
-		fdirOptions.resolvePaths = true;
-		fdirOptions.includeBasePath = true;
-	}
-	if (options.followSymbolicLinks === false) {
-		fdirOptions.resolveSymlinks = false;
-		fdirOptions.excludeSymlinks = true;
-	}
-	if (options.onlyDirectories) {
-		fdirOptions.excludeFiles = true;
-		fdirOptions.includeDirs = true;
-	} else if (options.onlyFiles === false) fdirOptions.includeDirs = true;
-	props.root = props.root.replace(BACKSLASHES, "");
-	const root = props.root;
-	if (options.debug) log("internal properties:", props);
-	const relative = cwd !== root && !options.absolute && buildRelative(cwd, props.root);
-	return [new Builder(fdirOptions).crawl(root), relative];
+	let maxDepth;
+	if (options.deep !== void 0) maxDepth = Math.round(options.deep - props.depthOffset);
+	const crawler = new Builder({
+		filters: [debug ? (p, isDirectory) => {
+			const path = format(p, isDirectory);
+			const matches = matcher(path) && !ignore(path);
+			if (matches) log(`matched ${path}`);
+			return matches;
+		} : (p, isDirectory) => {
+			const path = format(p, isDirectory);
+			return matcher(path) && !ignore(path);
+		}],
+		exclude: debug ? (_, p) => {
+			const skipped = excludePredicate(_, p);
+			log(`${skipped ? "skipped" : "crawling"} ${p}`);
+			return skipped;
+		} : excludePredicate,
+		fs: options.fs,
+		pathSeparator: "/",
+		relativePaths: !absolute,
+		resolvePaths: absolute,
+		includeBasePath: absolute,
+		resolveSymlinks: followSymbolicLinks,
+		excludeSymlinks: !followSymbolicLinks,
+		excludeFiles: onlyDirectories,
+		includeDirs: onlyDirectories || !options.onlyFiles,
+		maxDepth,
+		signal: options.signal
+	}).crawl(root);
+	if (options.debug) log("internal properties:", {
+		...props,
+		root
+	});
+	return [crawler, cwd !== root && !absolute && buildRelative(cwd, root)];
 }
-async function glob(patternsOrOptions, options) {
-	if (patternsOrOptions && (options === null || options === void 0 ? void 0 : options.patterns)) throw new Error("Cannot pass patterns as both an argument and an option");
-	const isModern = isReadonlyArray(patternsOrOptions) || typeof patternsOrOptions === "string";
-	const opts = isModern ? options : patternsOrOptions;
-	const [crawler, relative] = getCrawler(isModern ? patternsOrOptions : patternsOrOptions.patterns, opts);
-	if (!relative) return crawler.withPromise();
-	return formatPaths(await crawler.withPromise(), relative);
+function formatPaths(paths, mapper) {
+	if (mapper) for (let i = paths.length - 1; i >= 0; i--) paths[i] = mapper(paths[i]);
+	return paths;
+}
+const defaultOptions = {
+	caseSensitiveMatch: true,
+	cwd: process.cwd(),
+	debug: !!process.env.TINYGLOBBY_DEBUG,
+	expandDirectories: true,
+	followSymbolicLinks: true,
+	onlyFiles: true
+};
+function getOptions(options) {
+	const opts = {
+		...defaultOptions,
+		...options
+	};
+	opts.cwd = (opts.cwd instanceof URL ? fileURLToPath$1(opts.cwd) : resolve$1(opts.cwd)).replace(BACKSLASHES, "/");
+	opts.ignore = ensureStringArray(opts.ignore);
+	opts.fs && (opts.fs = {
+		readdir: opts.fs.readdir || readdir,
+		readdirSync: opts.fs.readdirSync || readdirSync,
+		realpath: opts.fs.realpath || realpath,
+		realpathSync: opts.fs.realpathSync || realpathSync,
+		stat: opts.fs.stat || stat,
+		statSync: opts.fs.statSync || statSync
+	});
+	if (opts.debug) log("globbing with options:", opts);
+	return opts;
+}
+function getCrawler(globInput, inputOptions = {}) {
+	var _ref;
+	if (globInput && (inputOptions === null || inputOptions === void 0 ? void 0 : inputOptions.patterns)) throw new Error("Cannot pass patterns as both an argument and an option");
+	const isModern = isReadonlyArray(globInput) || typeof globInput === "string";
+	const patterns = ensureStringArray((_ref = isModern ? globInput : globInput.patterns) !== null && _ref !== void 0 ? _ref : "**/*");
+	const options = getOptions(isModern ? inputOptions : globInput);
+	return patterns.length > 0 ? buildCrawler(options, patterns) : [];
+}
+async function glob(globInput, options) {
+	const [crawler, relative] = getCrawler(globInput, options);
+	return crawler ? formatPaths(await crawler.withPromise(), relative) : [];
 }
 //#endregion
 //#region ../node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/esm/index.js
@@ -47526,7 +47520,7 @@ async function calcCacheSettings(config, cacheOptions, root) {
 }
 async function resolveCacheLocation(cacheLocation) {
 	try {
-		if ((await stat(cacheLocation)).isFile()) return cacheLocation;
+		if ((await stat$1(cacheLocation)).isFile()) return cacheLocation;
 		return path.join(cacheLocation, DEFAULT_CACHE_LOCATION);
 	} catch (err) {
 		if (isErrorLike(err) && err.code === "ENOENT") return cacheLocation;
