@@ -20,13 +20,13 @@ jobs:
 
       - name: Get Environment
         id: get-env
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             return process.env;
 
       - name: View context attributes
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           result-encoding: string
           script: |
