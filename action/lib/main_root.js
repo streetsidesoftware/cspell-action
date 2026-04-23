@@ -13357,6 +13357,9 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		CHAR_UNDERSCORE: 95,
 		CHAR_VERTICAL_LINE: 124,
 		CHAR_ZERO_WIDTH_NOBREAK_SPACE: 65279,
+		/**
+		* Create EXTGLOB_CHARS
+		*/
 		extglobChars(chars) {
 			return {
 				"!": {
@@ -13386,6 +13389,9 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				}
 			};
 		},
+		/**
+		* Create GLOB_CHARS
+		*/
 		globChars(win32) {
 			return win32 === true ? WINDOWS_CHARS : POSIX_CHARS;
 		}
@@ -16486,6 +16492,7 @@ function makeNodeErrorWithCode(Base, key) {
 				configurable: true
 			},
 			toString: {
+				/** @this {Error} */
 				value() {
 					return `${this.name} [${key}]: ${this.message}`;
 				},
@@ -26353,6 +26360,34 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		set_comment_line_breaks,
 		get_comment_line_breaks_before,
 		get_comment_line_breaks_after,
+		/**
+		* Assign properties and comments from source to target object.
+		*
+		* @param {Object} target The target object to assign properties and comments
+		*   to.
+		* @param {Object} source The source object to copy properties and comments
+		*   from.
+		* @param {Array<string|number>} [keys] Optional array of keys to assign. If
+		*   not provided, all keys and non-property comments are assigned. If empty
+		*   array, only non-property comments are assigned.
+		* @returns {Object} The target object with assigned properties and comments.
+		*
+		* @throws {TypeError} If target cannot be converted to object or keys is not
+		*   array or undefined.
+		*
+		* @example
+		* const source = parse('{"a": 1 // comment a, "b": 2 // comment b}')
+		* const target = {}
+		*
+		* // Copy all properties and comments
+		* assign(target, source)
+		*
+		* // Copy only specific properties and their comments
+		* assign(target, source, ['a'])
+		*
+		* // Copy only non-property comments
+		* assign(target, source, [])
+		*/
 		assign(target, source, keys) {
 			if (!is_object(target)) throw new TypeError("Cannot convert undefined or null to object");
 			if (!is_object(source)) return target;
@@ -26363,6 +26398,44 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			else if (keys.length === 0) assign_non_prop_comments(target, source);
 			return assign(target, source, keys);
 		},
+		/**
+		* Move comments from one location to another within objects.
+		*
+		* @param {Object} source The source object containing comments to move.
+		* @param {Object} [target] The target object to move comments to. If not
+		*   provided, defaults to source (move within same object).
+		* @param {Object} from The source comment location.
+		* @param {string} from.where The comment position (e.g., 'before',
+		*   'after', 'before-all', etc.).
+		* @param {string} [from.key] The property key for property-specific comments.
+		*   Omit for non-property comments.
+		* @param {Object} to The target comment location.
+		* @param {string} to.where The comment position (e.g., 'before',
+		*   'after', 'before-all', etc.).
+		* @param {string} [to.key] The property key for property-specific comments.
+		*   Omit for non-property comments.
+		* @param {boolean} [override=false] Whether to override existing comments at
+		*   the target location. If false, comments will be appended.
+		*
+		* @throws {TypeError} If source is not an object.
+		* @throws {RangeError} If where parameter is invalid or incompatible with key.
+		*
+		* @example
+		* const obj = parse('{"a": 1 // comment on a}')
+		*
+		* // Move comment from after 'a' to before 'a'
+		* moveComments(obj, obj,
+		*   { where: 'after', key: 'a' },
+		*   { where: 'before', key: 'a' }
+		* )
+		*
+		* @example
+		* // Move non-property comment
+		* moveComments(obj, obj,
+		*   { where: 'before-all' },
+		*   { where: 'after-all' }
+		* )
+		*/
 		moveComments(source, target, { where: from_where, key: from_key }, { where: to_where, key: to_key }, override = false) {
 			if (!is_object(source)) throw new TypeError("source must be an object");
 			if (!target) target = source;
@@ -26379,6 +26452,29 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			const target_comments = target[to_prop];
 			if (target_comments) target_comments.push(...source_comments);
 		},
+		/**
+		* Remove comments from a specific location within an object.
+		*
+		* @param {Object} target The target object to remove comments from.
+		* @param {Object} location The comment location to remove.
+		* @param {string} location.where The comment position (e.g., 'before',
+		*   'after', 'before-all', etc.).
+		* @param {string} [location.key] The property key for property-specific
+		*   comments. Omit for non-property comments.
+		*
+		* @throws {TypeError} If target is not an object.
+		* @throws {RangeError} If where parameter is invalid or incompatible with key.
+		*
+		* @example
+		* const obj = parse('{"a": 1 // comment on a}')
+		*
+		* // Remove comment after 'a'
+		* removeComments(obj, { where: 'after', key: 'a' })
+		*
+		* @example
+		* // Remove non-property comment
+		* removeComments(obj, { where: 'before-all' })
+		*/
 		removeComments(target, { where, key }) {
 			if (!is_object(target)) throw new TypeError("target must be an object");
 			const prop = symbol_checked(where, key);
@@ -28519,6 +28615,11 @@ var require_anchors = /* @__PURE__ */ __commonJSMin(((exports) => {
 				prevAnchors.add(anchor);
 				return anchor;
 			},
+			/**
+			* With circular references, the source node is only resolved after all
+			* of its child nodes are. This is why anchors are set only after all of
+			* the nodes have been created.
+			*/
 			setAnchors: () => {
 				for (const source of aliasObjects) {
 					const ref = sourceObjects.get(source);
@@ -30271,6 +30372,14 @@ var require_binary = /* @__PURE__ */ __commonJSMin(((exports) => {
 		identify: (value) => value instanceof Uint8Array,
 		default: false,
 		tag: "tag:yaml.org,2002:binary",
+		/**
+		* Returns a Buffer in node and an Uint8Array in browsers
+		*
+		* To use the resulting buffer as an image, you'll want to do something like:
+		*
+		*   const blob = new Blob([buffer], { type: 'image/jpeg' })
+		*   document.querySelector('#photo').src = URL.createObjectURL(blob)
+		*/
 		resolve(src, onError) {
 			if (typeof node_buffer.Buffer === "function") return node_buffer.Buffer.from(src, "base64");
 			else if (typeof atob === "function") {
