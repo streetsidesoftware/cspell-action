@@ -36,7 +36,7 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __exportAll = (all, no_symbols) => {
 	let target = {};
 	for (var name in all) __defProp(target, name, {
@@ -254,22 +254,6 @@ function escapeProperty(s) {
 	return toCommandValue(s).replace(/%/g, "%25").replace(/\r/g, "%0D").replace(/\n/g, "%0A").replace(/:/g, "%3A").replace(/,/g, "%2C");
 }
 //#endregion
-//#region src/actions/core/coreTypes.ts
-/**
-* The code to exit an action
-*/
-let ExitCode = /* @__PURE__ */ function(ExitCode) {
-	/**
-	* A code indicating that the action was successful
-	*/
-	ExitCode[ExitCode["Success"] = 0] = "Success";
-	/**
-	* A code indicating that the action was a failure
-	*/
-	ExitCode[ExitCode["Failure"] = 1] = "Failure";
-	return ExitCode;
-}({});
-//#endregion
 //#region src/actions/core/file-command.ts
 function issueFileCommand(command, message) {
 	const filePath = process.env[`GITHUB_${command}`];
@@ -316,7 +300,7 @@ function setOutput(name, value) {
 * @param message add error issue message
 */
 function setFailed(message) {
-	process.exitCode = ExitCode.Failure;
+	process.exitCode = 1;
 	error(message);
 }
 /**
@@ -20505,6 +20489,7 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 							var expr = elementName;
 							qualifiedName = getQualifiedElementName(expr.object) + "." + getQualifiedElementName(expr.property);
 							break;
+						/* istanbul ignore next */
 						default: break;
 					}
 					return qualifiedName;
@@ -21174,7 +21159,8 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				}();
 				exports$8.BinaryExpression = function() {
 					function BinaryExpression(operator, left, right) {
-						this.type = operator === "||" || operator === "&&" ? syntax_1.Syntax.LogicalExpression : syntax_1.Syntax.BinaryExpression;
+						var logical = operator === "||" || operator === "&&";
+						this.type = logical ? syntax_1.Syntax.LogicalExpression : syntax_1.Syntax.BinaryExpression;
 						this.operator = operator;
 						this.left = left;
 						this.right = right;
@@ -31970,6 +31956,7 @@ var require_resolve_block_scalar = /* @__PURE__ */ __commonJSMin(((exports) => {
 					onError(token, "UNEXPECTED_TOKEN", token.message);
 					length += token.source.length;
 					break;
+				/* istanbul ignore next should not happen */
 				default: {
 					onError(token, "UNEXPECTED_TOKEN", `Unexpected token in block scalar header: ${token.type}`);
 					const ts = token.source;
@@ -32019,6 +32006,7 @@ var require_resolve_flow_scalar = /* @__PURE__ */ __commonJSMin(((exports) => {
 				_type = Scalar.Scalar.QUOTE_DOUBLE;
 				value = doubleQuotedValue(source, _onError);
 				break;
+			/* istanbul ignore next should not happen */
 			default:
 				onError(scalar, "UNEXPECTED_TOKEN", `Expected a flow scalar value, but found: ${type}`);
 				return {
@@ -32048,6 +32036,7 @@ var require_resolve_flow_scalar = /* @__PURE__ */ __commonJSMin(((exports) => {
 	function plainValue(source, onError) {
 		let badChar = "";
 		switch (source[0]) {
+			/* istanbul ignore next should not happen */
 			case "	":
 				badChar = "a tab character";
 				break;
@@ -33708,6 +33697,7 @@ var require_parser = /* @__PURE__ */ __commonJSMin(((exports) => {
 				return it.sep ?? it.start;
 			}
 			case "block-seq": return parent.items[parent.items.length - 1].start;
+			/* istanbul ignore next should not happen */
 			default: return [];
 		}
 	}
@@ -33960,6 +33950,7 @@ var require_parser = /* @__PURE__ */ __commonJSMin(((exports) => {
 						});
 						return;
 					}
+					/* istanbul ignore next should not happen */
 					default:
 						yield* this.pop();
 						yield* this.pop(token);
@@ -34077,6 +34068,7 @@ var require_parser = /* @__PURE__ */ __commonJSMin(((exports) => {
 					}
 					yield* this.pop();
 					break;
+				/* istanbul ignore next should not happen */
 				default:
 					yield* this.pop();
 					yield* this.step();
@@ -38882,7 +38874,8 @@ var SimpleTimer = class {
 	end() {
 		if (!this._running) return;
 		this._running = false;
-		this._elapsed = performance.now() - this._start;
+		const end = performance.now();
+		this._elapsed = end - this._start;
 		this.onEnd?.(this._elapsed, this.name);
 	}
 	start() {
