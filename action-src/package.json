@@ -25,7 +25,7 @@
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^24.12.4",
     "cspell": "^10.0.0",
-    "cspell-glob": "^10.0.0",
+    "cspell-glob": "^10.0.1",
     "vscode-uri": "^3.1.0"
   },
   "dependencies": {
