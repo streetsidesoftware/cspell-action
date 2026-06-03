@@ -21,7 +21,7 @@
     "@cspell/cspell-bundled-dicts"
   ],
   "devDependencies": {
-    "@cspell/cspell-types": "^10.0.0",
+    "@cspell/cspell-types": "^10.0.1",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^24.12.4",
     "cspell": "^10.0.0",
