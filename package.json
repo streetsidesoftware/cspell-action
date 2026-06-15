@@ -46,7 +46,7 @@
     "eslint": "^10.4.1",
     "eslint-plugin-n": "^18.0.1",
     "eslint-plugin-simple-import-sort": "^13.0.0",
-    "prettier": "^3.8.3",
+    "prettier": "^3.8.4",
     "shx": "^0.4.0",
     "tsdown": "^0.21.10",
     "typescript": "^6.0.3",
