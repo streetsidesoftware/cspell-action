@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/streetsidesoftware/cspell-action/compare/v8.4.0...v9.0.0) (2026-06-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update CSpell version (10.0.0) ([#2675](https://github.com/streetsidesoftware/cspell-action/issues/2675))
+
+### Features
+
+* Update CSpell version (10.0.0) ([#2675](https://github.com/streetsidesoftware/cspell-action/issues/2675)) ([ad2c881](https://github.com/streetsidesoftware/cspell-action/commit/ad2c8811c41452c03875e40778bfffb824c5b46e))
+
+
+### Updates and Bug Fixes
+
+* Update CSpell version (10.0.1) ([#2711](https://github.com/streetsidesoftware/cspell-action/issues/2711)) ([27dd4ca](https://github.com/streetsidesoftware/cspell-action/commit/27dd4ca8ca703e4358a6d6359f28135cc2522eeb))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2676](https://github.com/streetsidesoftware/cspell-action/issues/2676)) ([927b1b4](https://github.com/streetsidesoftware/cspell-action/commit/927b1b484eb0b1a5d60be86898b3a3d37b768b60))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2683](https://github.com/streetsidesoftware/cspell-action/issues/2683)) ([1130633](https://github.com/streetsidesoftware/cspell-action/commit/1130633c547e1a54423f755c13eb5ad32ad6cd84))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2694](https://github.com/streetsidesoftware/cspell-action/issues/2694)) ([ec37533](https://github.com/streetsidesoftware/cspell-action/commit/ec37533c2a3b3538c99017b53454ff5a5e06abd3))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2695](https://github.com/streetsidesoftware/cspell-action/issues/2695)) ([7dcf120](https://github.com/streetsidesoftware/cspell-action/commit/7dcf1206fe16820657ebc51459e6292c3e9efc96))
+* Workflow Bot -- Update ALL Dependencies (main) ([#2696](https://github.com/streetsidesoftware/cspell-action/issues/2696)) ([d552416](https://github.com/streetsidesoftware/cspell-action/commit/d552416f18f877a6508e5de33265bd6bbf1f51be))
+
 ## [8.4.0](https://github.com/streetsidesoftware/cspell-action/compare/v8.3.0...v8.4.0) (2026-04-05)
 
 
