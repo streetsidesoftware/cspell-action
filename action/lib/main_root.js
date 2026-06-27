@@ -27282,163 +27282,7 @@ function parseCSpellConfigFilePackageJson(file) {
 	return new CSpellConfigFilePackageJson(url, cspell, serialize);
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/error.js
-/*!
-* Copyright (c) Squirrel Chat et al., All rights reserved.
-* SPDX-License-Identifier: BSD-3-Clause
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are met:
-*
-* 1. Redistributions of source code must retain the above copyright notice, this
-*    list of conditions and the following disclaimer.
-* 2. Redistributions in binary form must reproduce the above copyright notice,
-*    this list of conditions and the following disclaimer in the
-*    documentation and/or other materials provided with the distribution.
-* 3. Neither the name of the copyright holder nor the names of its contributors
-*    may be used to endorse or promote products derived from this software without
-*    specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-function getLineColFromPtr(string, ptr) {
-	let lines = string.slice(0, ptr).split(/\r\n|\n|\r/g);
-	return [lines.length, lines.pop().length + 1];
-}
-function makeCodeBlock(string, line, column) {
-	let lines = string.split(/\r\n|\n|\r/g);
-	let codeblock = "";
-	let numberLen = (Math.log10(line + 1) | 0) + 1;
-	for (let i = line - 1; i <= line + 1; i++) {
-		let l = lines[i - 1];
-		if (!l) continue;
-		codeblock += i.toString().padEnd(numberLen, " ");
-		codeblock += ":  ";
-		codeblock += l;
-		codeblock += "\n";
-		if (i === line) {
-			codeblock += " ".repeat(numberLen + column + 2);
-			codeblock += "^\n";
-		}
-	}
-	return codeblock;
-}
-var TomlError = class extends Error {
-	line;
-	column;
-	codeblock;
-	constructor(message, options) {
-		const [line, column] = getLineColFromPtr(options.toml, options.ptr);
-		const codeblock = makeCodeBlock(options.toml, line, column);
-		super(`Invalid TOML document: ${message}\n\n${codeblock}`, options);
-		this.line = line;
-		this.column = column;
-		this.codeblock = codeblock;
-	}
-};
-//#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/util.js
-/*!
-* Copyright (c) Squirrel Chat et al., All rights reserved.
-* SPDX-License-Identifier: BSD-3-Clause
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are met:
-*
-* 1. Redistributions of source code must retain the above copyright notice, this
-*    list of conditions and the following disclaimer.
-* 2. Redistributions in binary form must reproduce the above copyright notice,
-*    this list of conditions and the following disclaimer in the
-*    documentation and/or other materials provided with the distribution.
-* 3. Neither the name of the copyright holder nor the names of its contributors
-*    may be used to endorse or promote products derived from this software without
-*    specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-function isEscaped(str, ptr) {
-	let i = 0;
-	while (str[ptr - ++i] === "\\");
-	return --i && i % 2;
-}
-function indexOfNewline(str, start = 0, end = str.length) {
-	let idx = str.indexOf("\n", start);
-	if (str[idx - 1] === "\r") idx--;
-	return idx <= end ? idx : -1;
-}
-function skipComment(str, ptr) {
-	for (let i = ptr; i < str.length; i++) {
-		let c = str[i];
-		if (c === "\n") return i;
-		if (c === "\r" && str[i + 1] === "\n") return i + 1;
-		if (c < " " && c !== "	" || c === "") throw new TomlError("control characters are not allowed in comments", {
-			toml: str,
-			ptr
-		});
-	}
-	return str.length;
-}
-function skipVoid(str, ptr, banNewLines, banComments) {
-	let c;
-	while (1) {
-		while ((c = str[ptr]) === " " || c === "	" || !banNewLines && (c === "\n" || c === "\r" && str[ptr + 1] === "\n")) ptr++;
-		if (banComments || c !== "#") break;
-		ptr = skipComment(str, ptr);
-	}
-	return ptr;
-}
-function skipUntil(str, ptr, sep, end, banNewLines = false) {
-	if (!end) {
-		ptr = indexOfNewline(str, ptr);
-		return ptr < 0 ? str.length : ptr;
-	}
-	for (let i = ptr; i < str.length; i++) {
-		let c = str[i];
-		if (c === "#") i = indexOfNewline(str, i);
-		else if (c === sep) return i + 1;
-		else if (c === end || banNewLines && (c === "\n" || c === "\r" && str[i + 1] === "\n")) return i;
-	}
-	throw new TomlError("cannot find end of structure", {
-		toml: str,
-		ptr
-	});
-}
-function getStringEnd(str, seek) {
-	let first = str[seek];
-	let target = first === str[seek + 1] && str[seek + 1] === str[seek + 2] ? str.slice(seek, seek + 3) : first;
-	seek += target.length - 1;
-	do
-		seek = str.indexOf(target, ++seek);
-	while (seek > -1 && first !== "'" && isEscaped(str, seek));
-	if (seek > -1) {
-		seek += target.length;
-		if (target.length > 1) {
-			if (str[seek] === first) seek++;
-			if (str[seek] === first) seek++;
-		}
-	}
-	return seek;
-}
-//#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/date.js
+//#region ../node_modules/.pnpm/smol-toml@1.7.0/node_modules/smol-toml/dist/date.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27548,7 +27392,71 @@ var TomlDate = class TomlDate extends Date {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/primitive.js
+//#region ../node_modules/.pnpm/smol-toml@1.7.0/node_modules/smol-toml/dist/error.js
+/*!
+* Copyright (c) Squirrel Chat et al., All rights reserved.
+* SPDX-License-Identifier: BSD-3-Clause
+*
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions are met:
+*
+* 1. Redistributions of source code must retain the above copyright notice, this
+*    list of conditions and the following disclaimer.
+* 2. Redistributions in binary form must reproduce the above copyright notice,
+*    this list of conditions and the following disclaimer in the
+*    documentation and/or other materials provided with the distribution.
+* 3. Neither the name of the copyright holder nor the names of its contributors
+*    may be used to endorse or promote products derived from this software without
+*    specific prior written permission.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+function getLineColFromPtr(string, ptr) {
+	let lines = string.slice(0, ptr).split(/\r\n|\n|\r/g);
+	return [lines.length, lines.pop().length + 1];
+}
+function makeCodeBlock(string, line, column) {
+	let lines = string.split(/\r\n|\n|\r/g);
+	let codeblock = "";
+	let numberLen = (Math.log10(line + 1) | 0) + 1;
+	for (let i = line - 1; i <= line + 1; i++) {
+		let l = lines[i - 1];
+		if (!l) continue;
+		codeblock += i.toString().padEnd(numberLen, " ");
+		codeblock += ":  ";
+		codeblock += l;
+		codeblock += "\n";
+		if (i === line) {
+			codeblock += " ".repeat(numberLen + column + 2);
+			codeblock += "^\n";
+		}
+	}
+	return codeblock;
+}
+var TomlError = class extends Error {
+	line;
+	column;
+	codeblock;
+	constructor(message, options) {
+		const [line, column] = getLineColFromPtr(options.toml, options.ptr);
+		const codeblock = makeCodeBlock(options.toml, line, column);
+		super(`Invalid TOML document: ${message}\n\n${codeblock}`, options);
+		this.line = line;
+		this.column = column;
+		this.codeblock = codeblock;
+	}
+};
+//#endregion
+//#region ../node_modules/.pnpm/smol-toml@1.7.0/node_modules/smol-toml/dist/primitive.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27579,76 +27487,85 @@ var TomlDate = class TomlDate extends Date {
 let INT_REGEX = /^((0x[0-9a-fA-F](_?[0-9a-fA-F])*)|(([+-]|0[ob])?\d(_?\d)*))$/;
 let FLOAT_REGEX = /^[+-]?\d(_?\d)*(\.\d(_?\d)*)?([eE][+-]?\d(_?\d)*)?$/;
 let LEADING_ZERO = /^[+-]?0[0-9_]/;
-let ESCAPE_REGEX$1 = /^[0-9a-f]{2,8}$/i;
-let ESC_MAP = {
-	b: "\b",
-	t: "	",
-	n: "\n",
-	f: "\f",
-	r: "\r",
-	e: "\x1B",
-	"\"": "\"",
-	"\\": "\\"
-};
-function parseString(str, ptr = 0, endPtr = str.length) {
-	let isLiteral = str[ptr] === "'";
-	let isMultiline = str[ptr++] === str[ptr] && str[ptr] === str[ptr + 1];
+function parseString(str, ptr) {
+	let c = str[ptr++];
+	let first = c;
+	let isLiteral = c === "'";
+	let isMultiline = c === str[ptr] && c === str[ptr + 1];
 	if (isMultiline) {
-		endPtr -= 2;
-		if (str[ptr += 2] === "\r") ptr++;
-		if (str[ptr] === "\n") ptr++;
+		if (str[ptr += 2] === "\n") ptr++;
+		else if (str[ptr] === "\r" && str[ptr + 1] === "\n") ptr += 2;
 	}
-	let tmp = 0;
-	let isEscape;
 	let parsed = "";
 	let sliceStart = ptr;
-	while (ptr < endPtr - 1) {
-		let c = str[ptr++];
-		if (c === "\n" || c === "\r" && str[ptr] === "\n") {
-			if (!isMultiline) throw new TomlError("newlines are not allowed in strings", {
-				toml: str,
-				ptr: ptr - 1
-			});
-		} else if (c < " " && c !== "	" || c === "") throw new TomlError("control characters are not allowed in strings", {
+	let state = 0;
+	for (let i = ptr; i < str.length; i++) {
+		c = str[i];
+		if (isMultiline && (c === "\n" || c === "\r" && str[i + 1] === "\n")) state = state && 3;
+		else if (c < " " && c !== "	" || c === "") throw new TomlError("control characters are not allowed in strings", {
 			toml: str,
-			ptr: ptr - 1
+			ptr: i
 		});
-		if (isEscape) {
-			isEscape = false;
-			if (c === "x" || c === "u" || c === "U") {
-				let code = str.slice(ptr, ptr += c === "x" ? 2 : c === "u" ? 4 : 8);
-				if (!ESCAPE_REGEX$1.test(code)) throw new TomlError("invalid unicode escape", {
+		else if ((!state || state === 3) && c === first && (!isMultiline || str[i + 1] === first && str[i + 2] === first)) {
+			if (isMultiline) {
+				if (str[i + 3] === first) i++;
+				if (str[i + 3] === first) i++;
+			}
+			return [state ? parsed : parsed + str.slice(sliceStart, i), i + (isMultiline ? 3 : 1)];
+		} else if (!state) {
+			if (!isLiteral && c === "\\") {
+				parsed += str.slice(sliceStart, sliceStart = i);
+				state = 1;
+			}
+		} else if (state === 1) if (c === "x" || c === "u" || c === "U") {
+			let value = 0;
+			let len = c === "x" ? 2 : c === "u" ? 4 : 8;
+			for (let j = 0; j < len; j++, i++) {
+				let hex = str.charCodeAt(i + 1);
+				let digit = hex >= 48 && hex <= 57 ? hex - 48 : hex >= 65 && hex <= 70 ? hex - 65 + 10 : hex >= 97 && hex <= 102 ? hex - 97 + 10 : -1;
+				if (digit < 0) throw new TomlError("invalid non-hex character in unicode escape", {
 					toml: str,
-					ptr: tmp
+					ptr: i + 1
 				});
-				try {
-					parsed += String.fromCodePoint(parseInt(code, 16));
-				} catch {
-					throw new TomlError("invalid unicode escape", {
-						toml: str,
-						ptr: tmp
-					});
-				}
-			} else if (isMultiline && (c === "\n" || c === " " || c === "	" || c === "\r")) {
-				ptr = skipVoid(str, ptr - 1, true);
-				if (str[ptr] !== "\n" && str[ptr] !== "\r") throw new TomlError("invalid escape: only line-ending whitespace may be escaped", {
-					toml: str,
-					ptr: tmp
-				});
-				ptr = skipVoid(str, ptr);
-			} else if (c in ESC_MAP) parsed += ESC_MAP[c];
+				value = value << 4 | digit;
+			}
+			if (value < 0 || value > 1114111 || value >= 55296 && value <= 57343) throw new TomlError("invalid unicode escape", {
+				toml: str,
+				ptr: i
+			});
+			parsed += String.fromCodePoint(value);
+			sliceStart = i + 1;
+			state = 0;
+		} else if (c === " " || c === "	") state = 2;
+		else {
+			if (c === "b") parsed += "\b";
+			else if (c === "t") parsed += "	";
+			else if (c === "n") parsed += "\n";
+			else if (c === "f") parsed += "\f";
+			else if (c === "r") parsed += "\r";
+			else if (c === "e") parsed += "\x1B";
+			else if (c === "\"") parsed += "\"";
+			else if (c === "\\") parsed += "\\";
 			else throw new TomlError("unrecognized escape sequence", {
 				toml: str,
-				ptr: tmp
+				ptr: i
 			});
-			sliceStart = ptr;
-		} else if (!isLiteral && c === "\\") {
-			tmp = ptr - 1;
-			isEscape = true;
-			parsed += str.slice(sliceStart, tmp);
+			sliceStart = i + 1;
+			state = 0;
+		}
+		else if (c !== " " && c !== "	") {
+			if (state === 2) throw new TomlError("invalid escape: only line-ending whitespace may be escaped", {
+				toml: str,
+				ptr: sliceStart
+			});
+			state = !isLiteral && c === "\\" ? 1 : 0;
+			sliceStart = i;
 		}
 	}
-	return parsed + str.slice(sliceStart, endPtr - 1);
+	throw new TomlError("unfinished string", {
+		toml: str,
+		ptr
+	});
 }
 function parseValue(value, toml, ptr, integersAsBigInt) {
 	if (value === "true") return true;
@@ -27686,7 +27603,78 @@ function parseValue(value, toml, ptr, integersAsBigInt) {
 	return date;
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/extract.js
+//#region ../node_modules/.pnpm/smol-toml@1.7.0/node_modules/smol-toml/dist/util.js
+/*!
+* Copyright (c) Squirrel Chat et al., All rights reserved.
+* SPDX-License-Identifier: BSD-3-Clause
+*
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions are met:
+*
+* 1. Redistributions of source code must retain the above copyright notice, this
+*    list of conditions and the following disclaimer.
+* 2. Redistributions in binary form must reproduce the above copyright notice,
+*    this list of conditions and the following disclaimer in the
+*    documentation and/or other materials provided with the distribution.
+* 3. Neither the name of the copyright holder nor the names of its contributors
+*    may be used to endorse or promote products derived from this software without
+*    specific prior written permission.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+function indexOfNewline(str, start = 0, end = str.length) {
+	let idx = str.indexOf("\n", start);
+	if (str[idx - 1] === "\r") idx--;
+	return idx <= end ? idx : -1;
+}
+function skipComment(str, ptr) {
+	for (let i = ptr; i < str.length; i++) {
+		let c = str[i];
+		if (c === "\n") return i;
+		if (c === "\r" && str[i + 1] === "\n") return i + 1;
+		if (c < " " && c !== "	" || c === "") throw new TomlError("control characters are not allowed in comments", {
+			toml: str,
+			ptr
+		});
+	}
+	return str.length;
+}
+function skipVoid(str, ptr, banNewLines, banComments) {
+	let c;
+	while (1) {
+		while ((c = str[ptr]) === " " || c === "	" || !banNewLines && (c === "\n" || c === "\r" && str[ptr + 1] === "\n")) ptr++;
+		if (banComments || c !== "#") break;
+		ptr = skipComment(str, ptr);
+	}
+	return ptr;
+}
+function skipUntil(str, ptr, sep, end, banNewLines = false) {
+	if (!end) {
+		ptr = indexOfNewline(str, ptr);
+		return ptr < 0 ? str.length : ptr;
+	}
+	for (let i = ptr; i < str.length; i++) {
+		let c = str[i];
+		if (c === "#") i = indexOfNewline(str, i);
+		else if (c === sep) return i + 1;
+		else if (c === end || banNewLines && (c === "\n" || c === "\r" && str[i + 1] === "\n")) return i;
+	}
+	throw new TomlError("cannot find end of structure", {
+		toml: str,
+		ptr
+	});
+}
+//#endregion
+//#region ../node_modules/.pnpm/smol-toml@1.7.0/node_modules/smol-toml/dist/extract.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27741,34 +27729,32 @@ function extractValue(str, ptr, end, depth, integersAsBigInt) {
 		}
 		return [value, endPtr];
 	}
-	let endPtr;
 	if (c === "\"" || c === "'") {
-		endPtr = getStringEnd(str, ptr);
-		let parsed = parseString(str, ptr, endPtr);
+		let [parsed, endPtr] = parseString(str, ptr);
 		if (end) {
 			endPtr = skipVoid(str, endPtr);
 			if (str[endPtr] && str[endPtr] !== "," && str[endPtr] !== end && str[endPtr] !== "\n" && str[endPtr] !== "\r") throw new TomlError("unexpected character encountered", {
 				toml: str,
 				ptr: endPtr
 			});
-			endPtr += +(str[endPtr] === ",");
+			if (str[endPtr] === ",") endPtr++;
 		}
 		return [parsed, endPtr];
 	}
-	endPtr = skipUntil(str, ptr, ",", end);
-	let slice = sliceAndTrimEndOf(str, ptr, endPtr - +(str[endPtr - 1] === ","));
+	let endPtr = skipUntil(str, ptr, ",", end);
+	let slice = sliceAndTrimEndOf(str, ptr, endPtr - (str[endPtr - 1] === "," ? 1 : 0));
 	if (!slice[0]) throw new TomlError("incomplete key-value declaration: no value specified", {
 		toml: str,
 		ptr
 	});
 	if (end && slice[1] > -1) {
 		endPtr = skipVoid(str, ptr + slice[1]);
-		endPtr += +(str[endPtr] === ",");
+		if (str[endPtr] === ",") endPtr++;
 	}
 	return [parseValue(slice[0], str, ptr, integersAsBigInt), endPtr];
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/struct.js
+//#region ../node_modules/.pnpm/smol-toml@1.7.0/node_modules/smol-toml/dist/struct.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -27812,11 +27798,7 @@ function parseKey(str, ptr, end = "=") {
 				toml: str,
 				ptr
 			});
-			let eos = getStringEnd(str, ptr);
-			if (eos < 0) throw new TomlError("unfinished string encountered", {
-				toml: str,
-				ptr
-			});
+			let [part, eos] = parseString(str, ptr);
 			dot = str.indexOf(".", eos);
 			let strEnd = str.slice(eos, dot < 0 || dot > endPtr ? endPtr : dot);
 			let newLine = indexOfNewline(strEnd);
@@ -27835,7 +27817,7 @@ function parseKey(str, ptr, end = "=") {
 					ptr
 				});
 			}
-			parsed.push(parseString(str, ptr, eos));
+			parsed.push(part);
 		} else {
 			dot = str.indexOf(".", ptr);
 			let part = str.slice(ptr, dot < 0 || dot > endPtr ? endPtr : dot);
@@ -27912,7 +27894,7 @@ function parseArray(str, ptr, depth, integersAsBigInt) {
 	return [res, ptr];
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/parse.js
+//#region ../node_modules/.pnpm/smol-toml@1.7.0/node_modules/smol-toml/dist/parse.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -28050,7 +28032,7 @@ function parse$1(toml, { maxDepth = 1e3, integersAsBigInt } = {}) {
 	return res;
 }
 //#endregion
-//#region ../node_modules/.pnpm/smol-toml@1.6.1/node_modules/smol-toml/dist/stringify.js
+//#region ../node_modules/.pnpm/smol-toml@1.7.0/node_modules/smol-toml/dist/stringify.js
 /*!
 * Copyright (c) Squirrel Chat et al., All rights reserved.
 * SPDX-License-Identifier: BSD-3-Clause
@@ -28100,7 +28082,7 @@ function stringifyValue(val, type, depth, numberAsFloat) {
 		if (isNaN(val)) return "nan";
 		if (val === Infinity) return "inf";
 		if (val === -Infinity) return "-inf";
-		if (numberAsFloat && Number.isInteger(val)) return val.toFixed(1);
+		if (Number.isInteger(val) && (numberAsFloat || !Number.isSafeInteger(val))) return val.toFixed(1);
 		return val.toString();
 	}
 	if (type === "bigint" || type === "boolean") return val.toString();
@@ -45571,9 +45553,10 @@ var Builder = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/tinyglobby@0.2.16/node_modules/tinyglobby/dist/index.mjs
+//#region ../node_modules/.pnpm/tinyglobby@0.2.17/node_modules/tinyglobby/dist/index.mjs
 const isReadonlyArray = Array.isArray;
 const BACKSLASHES = /\\/g;
+const DRIVE_RELATIVE_PATH = /^[A-Za-z]:$/;
 const isWin = process.platform === "win32";
 const ONLY_PARENT_DIRECTORIES = /^(\/?\.\.)+$/;
 function getPartialMatcher(patterns, options = {}) {
@@ -45640,6 +45623,9 @@ function buildRelative(cwd, root) {
 		return p[p.length - 1] === "/" && result !== "" ? `${result}/` : result || ".";
 	};
 }
+function ensureNonDriveRelativePath(path) {
+	return path.replace(DRIVE_RELATIVE_PATH, (match) => `${match}/`);
+}
 const splitPatternOptions = { parts: true };
 function splitPattern(path) {
 	var _result$parts;
@@ -45701,7 +45687,7 @@ function normalizePattern(pattern, opts, props, isIgnore) {
 		}
 		const potentialRoot = posix$1.join(cwd, parentDir.slice(i * 3));
 		if (potentialRoot[0] !== "." && props.root.length > potentialRoot.length) {
-			props.root = potentialRoot;
+			props.root = ensureNonDriveRelativePath(potentialRoot);
 			props.depthOffset = -n + i;
 		}
 	}
@@ -45721,7 +45707,7 @@ function normalizePattern(pattern, opts, props, isIgnore) {
 		}
 		props.depthOffset = newCommonPath.length;
 		props.commonPath = newCommonPath;
-		props.root = newCommonPath.length > 0 ? posix$1.join(cwd, ...newCommonPath) : cwd;
+		props.root = ensureNonDriveRelativePath(newCommonPath.length > 0 ? posix$1.join(cwd, ...newCommonPath) : cwd);
 	}
 	return result;
 }
@@ -45810,18 +45796,15 @@ function formatPaths(paths, mapper) {
 }
 const defaultOptions = {
 	caseSensitiveMatch: true,
-	cwd: process.cwd(),
 	debug: !!process.env.TINYGLOBBY_DEBUG,
 	expandDirectories: true,
 	followSymbolicLinks: true,
 	onlyFiles: true
 };
 function getOptions(options) {
-	const opts = {
-		...defaultOptions,
-		...options
-	};
-	opts.cwd = (opts.cwd instanceof URL ? fileURLToPath$1(opts.cwd) : resolve$1(opts.cwd)).replace(BACKSLASHES, "/");
+	const opts = Object.assign({}, options);
+	for (const key in defaultOptions) if (opts[key] === void 0) Object.assign(opts, { [key]: defaultOptions[key] });
+	opts.cwd = (opts.cwd instanceof URL ? fileURLToPath$1(opts.cwd) : resolve$1(opts.cwd || process.cwd())).replace(BACKSLASHES, "/");
 	opts.ignore = ensureStringArray(opts.ignore);
 	opts.fs && (opts.fs = {
 		readdir: opts.fs.readdir || readdir,
