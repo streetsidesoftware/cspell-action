@@ -14,7 +14,8 @@
         "pollyjs",
         "repos",
         "shrinkwrap",
-        "streetsidesoftware"
+        "streetsidesoftware",
+        "Subdeps"
     ],
     "useGitignore": true,
     "ignorePaths": [
