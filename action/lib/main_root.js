@@ -1,7 +1,7 @@
 import * as nodeModule from "node:module";
 import { builtinModules, createRequire } from "node:module";
-import * as Path from "node:path";
-import path, { isAbsolute, posix, relative, resolve, sep } from "node:path";
+import * as Path$1 from "node:path";
+import Path, { isAbsolute, posix, relative, resolve, sep } from "node:path";
 import * as nativeFs from "fs";
 import { existsSync, readFileSync, readdir, readdirSync, realpath, realpathSync, stat, statSync } from "fs";
 import * as os$3 from "os";
@@ -13,8 +13,8 @@ import os$1, { homedir } from "node:os";
 import fs$1, { access, appendFile, readFile, stat as stat$1, writeFile } from "node:fs/promises";
 import { exec } from "node:child_process";
 import { format, formatWithOptions, inspect, promisify, stripVTControlCharacters } from "node:util";
-import * as path$3 from "path";
-import path$1, { basename, dirname, isAbsolute as isAbsolute$1, normalize, posix as posix$1, relative as relative$1, resolve as resolve$1, sep as sep$1 } from "path";
+import * as path$2 from "path";
+import path, { basename, dirname, isAbsolute as isAbsolute$1, normalize, posix as posix$1, relative as relative$1, resolve as resolve$1, sep as sep$1 } from "path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import assert from "node:assert";
 import process$1 from "node:process";
@@ -56,11 +56,11 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
-var __require$1 = /* @__PURE__ */ createRequire(import.meta.url);
+var __require$1 = /* #__PURE__ */ (() => createRequire(import.meta.url))();
 //#endregion
 //#region src/error.ts
 var AppError = class extends Error {
@@ -460,6 +460,7 @@ async function deepenIfNecessary(commitCount) {
 	if ((await gitListCommits(commitCount)).length < commitCount) await gitDeepen(commitCount);
 }
 var GitError = class extends Error {
+	cause;
 	constructor(message, cause) {
 		super(message);
 		this.cause = cause;
@@ -872,8 +873,10 @@ var LIB;
 const { URI, Utils } = LIB;
 //#endregion
 //#region src/reporter.ts
-function nullEmitter$1(_msg) {}
 var CSpellReporterForGithubAction = class {
+	reportIssueCommand;
+	options;
+	logger;
 	issues = [];
 	issueCounts = /* @__PURE__ */ new Map();
 	result = {
@@ -903,9 +906,7 @@ var CSpellReporterForGithubAction = class {
 	_info(message, _msgType) {
 		this._debug(message);
 	}
-	_debug(message) {
-		nullEmitter$1(message);
-	}
+	_debug(message) {}
 	_progress(progress) {
 		if (!this.verbose || !isProgressFileComplete(progress)) return;
 		const { issueCounts, logger } = this;
@@ -963,7 +964,7 @@ function isProgressFileComplete(p) {
 }
 function relative$2(cwd, fileUri) {
 	const fsPath = URI.parse(fileUri).fsPath;
-	return path$3.relative(cwd, fsPath);
+	return path$2.relative(cwd, fsPath);
 }
 function genSummary(result) {
 	const items = [
@@ -2757,7 +2758,7 @@ function highest(a, b) {
 	return a >= b ? a : b;
 }
 function normalize$2(s) {
-	const f = new Set([s]);
+	const f = /* @__PURE__ */ new Set([s]);
 	f.add(s.normalize("NFC"));
 	f.add(s.normalize("NFD"));
 	return f;
@@ -3127,7 +3128,7 @@ function replaceAllFactory(match, replaceWithText) {
 const defaultMaxNumberSuggestions = 10;
 const BASE_COST = 100;
 const MAX_NUM_CHANGES = 5;
-const MAX_ALLOWED_COST_SCALE = 1.03 * .5;
+const MAX_ALLOWED_COST_SCALE = .515;
 const collator = new Intl.Collator();
 const regexSeparator = new RegExp(`[${regexQuote(" ")}]`, "g");
 const wordLengthCost = [
@@ -4621,7 +4622,7 @@ var StringTableBuilder = class StringTableBuilder {
 	}
 	#build() {
 		this.#locked = true;
-		if (!this.#data.length) return new StringTable([], new Uint8Array(0), 8);
+		if (!this.#data.length) return new StringTable([], /* @__PURE__ */ new Uint8Array(0), 8);
 		const sortedBySize = this.#data.map((b, i) => ({
 			b,
 			i
@@ -4704,7 +4705,7 @@ function encodeStringTableToBinary(table, endian) {
 * @returns The decoded StringTable.
 */
 function decodeStringTableFromBinary(data, endian) {
-	if (!data?.length) return new StringTable([], new Uint8Array(0), 8);
+	if (!data?.length) return new StringTable([], /* @__PURE__ */ new Uint8Array(0), 8);
 	const reader = new BinaryDataReader(data, getStringTableBinaryFormat(), endian);
 	const indexBits = reader.getUint8("indexBits");
 	const strLenBits = reader.getUint8("strLenBits");
@@ -4779,7 +4780,7 @@ function expandRange(a, b) {
 * @returns the set of found cases.
 */
 function caseForms(letter, locale) {
-	const forms = new Set([letter]);
+	const forms = /* @__PURE__ */ new Set([letter]);
 	function tryCases(s) {
 		forms.add(s.toLocaleLowerCase(locale));
 		forms.add(s.toLocaleUpperCase(locale));
@@ -4794,7 +4795,7 @@ function caseForms(letter, locale) {
 * @returns combined set of possible forms.
 */
 function accentForms(letter) {
-	return new Set([
+	return /* @__PURE__ */ new Set([
 		letter,
 		letter.normalize("NFC"),
 		letter.normalize("NFD")
@@ -5247,7 +5248,7 @@ function optimizeNodesWithStringTable(src) {
 	const endPerf = measurePerf$1("TrieBlob.optimizeNodesWithStringTable");
 	const { nodes, stringTableBuilder: builder } = copyNodesAndStringTable(src);
 	const multipleNodeRefs = calcHasMultipleReferences(nodes);
-	const multiStringRefs = new Set([0]);
+	const multiStringRefs = /* @__PURE__ */ new Set([0]);
 	if (!builder.length) builder.addString("");
 	walkNodes(nodes, 0, { after: processNode });
 	const r = {
@@ -6222,7 +6223,7 @@ var TrieBlobBuilder = class TrieBlobBuilder {
 		}
 		assert$3(this.nodes.length === 2);
 		const eowNodeIndex = 1;
-		const eowShifted = eowNodeIndex << nodeChildRefShift;
+		const eowShifted = 256;
 		const nodes = this.nodes;
 		const stack = [{
 			nodeIdx: 0,
@@ -6457,7 +6458,7 @@ var TrieBlobBuilder = class TrieBlobBuilder {
 		const NodeMaskEOW = 256;
 		const tf = new TrieBlobBuilder(void 0, root);
 		const IdxEOW = tf.IdxEOW;
-		const known = new Map([[root, 0]]);
+		const known = /* @__PURE__ */ new Map([[root, 0]]);
 		function resolveNode(n) {
 			if (n.f && !n.c) return IdxEOW;
 			const node = [n.f ? NodeMaskEOW : 0];
@@ -6517,7 +6518,7 @@ var TrieBlobBuilder = class TrieBlobBuilder {
 		const NodeMaskEOW = 256;
 		const tf = new TrieBlobBuilder(void 0, root);
 		const IdxEOW = tf.IdxEOW;
-		const known = new Map([[root.id, 0]]);
+		const known = /* @__PURE__ */ new Map([[root.id, 0]]);
 		function resolveNode(n) {
 			if (n.eow && !n.hasChildren()) return IdxEOW;
 			const node = [n.eow ? NodeMaskEOW : 0];
@@ -7016,15 +7017,6 @@ function consolidate(root) {
 function decodeBTrie(data) {
 	return TrieBlob.decodeBin(data);
 }
-const _defaultFindOptions = {
-	matchCase: false,
-	compoundMode: "compound",
-	forbidPrefix: "!",
-	compoundFix: "+",
-	caseInsensitivePrefix: "~",
-	legacyMinCompoundLength: 3,
-	compoundSeparator: void 0
-};
 new Map([
 	"none",
 	"compound",
@@ -7045,10 +7037,6 @@ function walk$1(root, word) {
 		n = n.c?.[h];
 	}
 	return n;
-}
-memorizeLastCall(_createFindOptions);
-function _createFindOptions(options) {
-	return mergeDefaults(options, _defaultFindOptions);
 }
 var TrieNodeTrie = class TrieNodeTrie {
 	_iTrieRoot;
@@ -7850,7 +7838,7 @@ Object.freeze({
 	k: true
 });
 new Intl.Collator().compare;
-const characterMap = new Map([...new Map([
+const characterMap = new Map([.../* @__PURE__ */ new Map([
 	["\n", "\\n"],
 	["\r", "\\r"],
 	["\\", "\\\\"]
@@ -7959,7 +7947,7 @@ function parseStream(radix) {
 	function parseIgnore(acc, _) {
 		return acc;
 	}
-	const parsers = new Map([
+	const parsers = /* @__PURE__ */ new Map([
 		["$", parseEOW],
 		["<", parseBack],
 		["#", parseReference],
@@ -10578,7 +10566,7 @@ function parseAccents(cs, _editCost) {
 }
 function calcCostsForAccentedLetters(simpleMap, locale, costs) {
 	const charactersWithAccents = [...pipeSync(splitMap(simpleMap), opMapSync((char) => caseForms(char, locale)), opFlattenSync(), opMapSync((char) => [...accentForms(char)]), opFilterSync((forms) => forms.length > 1))];
-	const replaceAccentMap = [...pipeSync(charactersWithAccents, opMapSync((forms) => new Set([...forms, ...forms.map((char) => stripAccents(char))])), opMapSync((forms) => [...forms].sort()), opFilterSync((forms) => forms.length > 1), opMapSync(joinLetters), opUniqueSync())].join("|");
+	const replaceAccentMap = [...pipeSync(charactersWithAccents, opMapSync((forms) => /* @__PURE__ */ new Set([...forms, ...forms.map((char) => stripAccents(char))])), opMapSync((forms) => [...forms].sort()), opFilterSync((forms) => forms.length > 1), opMapSync(joinLetters), opUniqueSync())].join("|");
 	const cost = costs.accentCosts;
 	const costToReplaceAccent = !replaceAccentMap ? [] : [{
 		map: replaceAccentMap,
@@ -10856,12 +10844,13 @@ function wordSearchForms(word, isDictionaryCaseSensitive, ignoreCase) {
 	const forms = /* @__PURE__ */ new Set();
 	word = word.normalize("NFC");
 	const wordLc = word.toLowerCase();
-	if (ignoreCase) if (isDictionaryCaseSensitive) forms.add(wordLc);
-	else {
-		forms.add(wordLc);
-		forms.add(removeUnboundAccents(wordLc));
-	}
-	else if (isDictionaryCaseSensitive) {
+	if (ignoreCase) {
+		if (isDictionaryCaseSensitive) forms.add(wordLc);
+		else {
+			forms.add(wordLc);
+			forms.add(removeUnboundAccents(wordLc));
+		}
+	} else if (isDictionaryCaseSensitive) {
 		forms.add(word);
 		forms.add(wordLc);
 		if (isUpperCase(word)) forms.add(ucFirst(wordLc));
@@ -10873,7 +10862,7 @@ function wordSearchForms(word, isDictionaryCaseSensitive, ignoreCase) {
 }
 function wordSuggestForms(word) {
 	word = word.normalize("NFC");
-	const forms = new Set([word]);
+	const forms = /* @__PURE__ */ new Set([word]);
 	const wordLc = word.toLowerCase();
 	forms.add(wordLc);
 	return forms;
@@ -13063,7 +13052,7 @@ var FileUrlBuilder = class {
 	constructor(options = {}) {
 		const sep = options.path?.sep;
 		this.windows = options.windows ?? (sep ? sep === "\\" : void 0) ?? isWindows$2;
-		this.path = options.path ?? (this.windows ? path.win32 : path.posix);
+		this.path = options.path ?? (this.windows ? Path.win32 : Path.posix);
 		this.cwd = options.cwd ?? this.pathToFileURL(this.path.resolve() + "/", this.rootFileURL());
 		assert(this.path.sep === (this.windows ? "\\" : "/"), `Path separator should match OS type Windows: ${this.windows === true ? "true" : (this.windows ?? "undefined") || "false"}, sep: ${this.path.sep}, options: ` + JSON.stringify({
 			isWindows: isWindows$2,
@@ -13072,10 +13061,10 @@ var FileUrlBuilder = class {
 			pathSep: options.path?.sep,
 			n: options.path?.normalize("path/file.txt"),
 			cwd: options.cwd?.href,
-			win32: this.path === path.win32,
-			posix: this.path === path.posix,
-			"win32.normalize": this.path.normalize === path.win32.normalize,
-			"posix.normalize": this.path.normalize === path.posix.normalize
+			win32: this.path === Path.win32,
+			posix: this.path === Path.posix,
+			"win32.normalize": this.path.normalize === Path.win32.normalize,
+			"posix.normalize": this.path.normalize === Path.posix.normalize
 		}) + ``);
 	}
 	/**
@@ -13160,7 +13149,7 @@ var FileUrlBuilder = class {
 	}
 	#urlToFilePathOrHref(url) {
 		if (url.protocol !== ProtocolFile || url.hostname) return url.href;
-		return pathWindowsDriveLetterToUpper((this.path === path ? toFilePathOrHref(url) : decodeURIComponent(url.pathname.split("/").join(this.path.sep))).replace(isWindowsPathname, "$1"));
+		return pathWindowsDriveLetterToUpper((this.path === Path ? toFilePathOrHref(url) : decodeURIComponent(url.pathname.split("/").join(this.path.sep))).replace(isWindowsPathname, "$1"));
 	}
 	/**
 	* Calculate the relative path to go from `urlFrom` to `urlTo`.
@@ -13202,7 +13191,7 @@ var FileUrlBuilder = class {
 		return new URL(this.normalizeFilePathForUrl(p.root), this.#getFsRootURL());
 	}
 	#getFsRootURL() {
-		if (this.path === path) return pathToFileURL("/");
+		if (this.path === Path) return pathToFileURL("/");
 		const p = this.path.resolve("/");
 		return new URL(this.normalizeFilePathForUrl(p), "file:///");
 	}
@@ -13295,7 +13284,7 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 	module.exports = {
 		DEFAULT_MAX_EXTGLOB_RECURSION,
-		MAX_LENGTH: 1024 * 64,
+		MAX_LENGTH: 65536,
 		POSIX_REGEX_SOURCE: {
 			__proto__: null,
 			alnum: "a-zA-Z0-9",
@@ -14108,7 +14097,8 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		};
 		const extglobClose = (token) => {
 			const literal = input.slice(token.startIndex, state.index + 1);
-			const analysis = analyzeRepeatedExtglob(input.slice(token.startIndex + 2, state.index), opts);
+			const body = input.slice(token.startIndex + 2, state.index);
+			const analysis = analyzeRepeatedExtglob(body, opts);
 			if ((token.type === "plus" || token.type === "star") && analysis.risky) {
 				const safeOutput = analysis.safeOutput ? (token.output ? "" : ONE_CHAR) + (opts.capture ? `(${analysis.safeOutput})` : analysis.safeOutput) : void 0;
 				const open = tokens[token.tokensIndex];
@@ -14173,10 +14163,12 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				}
 				return esc ? m : `\\${m}`;
 			});
-			if (backslashes === true) if (opts.unescape === true) output = output.replace(/\\/g, "");
-			else output = output.replace(/\\+/g, (m) => {
-				return m.length % 2 === 0 ? "\\\\" : m ? "\\" : "";
-			});
+			if (backslashes === true) {
+				if (opts.unescape === true) output = output.replace(/\\/g, "");
+				else output = output.replace(/\\+/g, (m) => {
+					return m.length % 2 === 0 ? "\\\\" : m ? "\\" : "";
+				});
+			}
 			if (output === input && opts.contains === true) {
 				state.output = input;
 				return state;
@@ -14234,7 +14226,8 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 						if (inner.includes(":")) {
 							const idx = prev.value.lastIndexOf("[");
 							const pre = prev.value.slice(0, idx);
-							const posix = POSIX_REGEX_SOURCE[prev.value.slice(idx + 2)];
+							const rest = prev.value.slice(idx + 2);
+							const posix = POSIX_REGEX_SOURCE[rest];
 							if (posix) {
 								prev.value = pre + posix;
 								state.backtrack = true;
@@ -14946,8 +14939,10 @@ var require_picomatch$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			output = format ? format(input) : input;
 			match = output === glob;
 		}
-		if (match === false || opts.capture === true) if (opts.matchBase === true || opts.basename === true) match = picomatch.matchBase(input, regex, options, posix);
-		else match = regex.exec(output);
+		if (match === false || opts.capture === true) {
+			if (opts.matchBase === true || opts.basename === true) match = picomatch.matchBase(input, regex, options, posix);
+			else match = regex.exec(output);
+		}
 		return {
 			isMatch: Boolean(match),
 			match,
@@ -15142,7 +15137,7 @@ var import_picomatch = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((
 	Object.assign(picomatch, pico);
 	module.exports = picomatch;
 })))(), 1);
-const { posix: posix$2 } = Path;
+const { posix: posix$2 } = Path$1;
 /** test for glob patterns starting with `**` */
 const isGlobalPatternRegExp = /^!*[*]{2}/;
 const hasGlobCharactersRegExp = /[*?{}[\]]/;
@@ -15158,7 +15153,7 @@ const GlobPatterns = {
 };
 let cacheCalls = 0;
 let cacheMisses = 0;
-let cachePath = Path;
+let cachePath = Path$1;
 let cacheRoot = "<>";
 const cache$2 = /* @__PURE__ */ new Map();
 /**
@@ -15167,7 +15162,7 @@ const cache$2 = /* @__PURE__ */ new Map();
 * @param root - absolute path to the directory that will be considered the root when testing the glob pattern.
 * @param path - optional node path methods - used for testing
 */
-function fileOrGlobToGlob(fileOrGlob, root, path = Path) {
+function fileOrGlobToGlob(fileOrGlob, root, path = Path$1) {
 	if (cacheRoot !== root || cachePath !== path) {
 		cache$2.clear();
 		cacheCalls = 0;
@@ -15189,7 +15184,7 @@ function fileOrGlobToGlob(fileOrGlob, root, path = Path) {
 * @param root - absolute path to the directory that will be considered the root when testing the glob pattern.
 * @param path - optional node path methods - used for testing
 */
-function _fileOrGlobToGlob(fileOrGlob, root, path = Path) {
+function _fileOrGlobToGlob(fileOrGlob, root, path = Path$1) {
 	const toForwardSlash = path.sep === "\\" ? (p) => p.replaceAll("\\", "/") : (p) => p;
 	const builder = urlBuilder(path);
 	fileOrGlob = typeof fileOrGlob === "string" ? toForwardSlash(fileOrGlob) : fileOrGlob;
@@ -15234,8 +15229,8 @@ function isGlobPatternNormalizedToRoot(g, options) {
 	if (!isGlobPatternNormalized(g)) return false;
 	return g.root === options.root;
 }
-function urlBuilder(path = Path) {
-	return path === Path ? fileUrlBuilder : new FileUrlBuilder({ path });
+function urlBuilder(path = Path$1) {
+	return path === Path$1 ? fileUrlBuilder : new FileUrlBuilder({ path });
 }
 /**
 * @param pattern glob pattern
@@ -15274,7 +15269,7 @@ function normalizeGlobPatterns(patterns, options) {
 	function* normalize() {
 		for (const glob of patterns) {
 			if (isGlobPatternNormalized(glob)) {
-				yield isGlobPatternNormalizedToRoot(glob, options) ? glob : normalizeGlobToRoot(glob, options.root, options.nodePath || Path);
+				yield isGlobPatternNormalizedToRoot(glob, options) ? glob : normalizeGlobToRoot(glob, options.root, options.nodePath || Path$1);
 				continue;
 			}
 			yield* normalizeGlobPattern(glob, options);
@@ -15283,7 +15278,7 @@ function normalizeGlobPatterns(patterns, options) {
 	return [...normalize()];
 }
 function normalizeGlobPattern(g, options) {
-	const { root, nodePath: path = Path, nested } = options;
+	const { root, nodePath: path = Path$1, nested } = options;
 	const builder = urlBuilder(path);
 	const cwd = options.cwd ?? path.resolve();
 	const cwdUrl = builder.toFileDirURL(cwd);
@@ -15562,7 +15557,7 @@ var GlobMatcher = class {
 		const options = typeof rootOrOptions === "string" || rootOrOptions instanceof URL ? { root: rootOrOptions.toString() } : rootOrOptions ?? {};
 		const mode = options.mode ?? "exclude";
 		const isExcludeMode = mode !== "include";
-		const nodePath = options.nodePath ?? _nodePath ?? Path;
+		const nodePath = options.nodePath ?? _nodePath ?? Path$1;
 		this.path = nodePath;
 		const cwd = options.cwd ?? nodePath.resolve();
 		const dot = options.dot ?? isExcludeMode;
@@ -15968,18 +15963,6 @@ function isDefined$2(v) {
 	return v !== void 0;
 }
 /**
-* Shallow is Equal test.
-* @param a - array of values
-* @param b - array of values
-* @returns true if the values of `a` are exactly equal to the values of `b`
-*/
-function isArrayEqual(a, b) {
-	if (a === b) return true;
-	let isMatch = a.length === b.length;
-	for (let i = 0; i < a.length && isMatch; ++i) isMatch = a[i] === b[i];
-	return isMatch;
-}
-/**
 * Determine if two sets intersect
 * @param a - first Set
 * @param b - second Set
@@ -16179,7 +16162,7 @@ var import_ini = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((export
 	};
 })))(), 1);
 const isWindows$1 = process$1.platform === "win32";
-const untildify = (pathWithTilde) => pathWithTilde && pathWithTilde.startsWith("~") ? path.join(os$1.homedir(), pathWithTilde.slice(1)) : pathWithTilde;
+const untildify = (pathWithTilde) => pathWithTilde && pathWithTilde.startsWith("~") ? Path.join(os$1.homedir(), pathWithTilde.slice(1)) : pathWithTilde;
 const readConfigValue = (filePath, key) => {
 	if (!filePath) return;
 	try {
@@ -16192,100 +16175,101 @@ const getEnvironmentNpmConfigValue = (key) => {
 	return environmentKey ? process$1.env[environmentKey] : void 0;
 };
 const getGlobalNpmrc = () => {
-	if (isWindows$1 && process$1.env.APPDATA) return path.join(process$1.env.APPDATA, "/npm/etc/npmrc");
+	if (isWindows$1 && process$1.env.APPDATA) return Path.join(process$1.env.APPDATA, "/npm/etc/npmrc");
 	if (process$1.execPath.includes("/Cellar/node")) {
 		const homebrewPrefix = process$1.execPath.slice(0, process$1.execPath.indexOf("/Cellar/node"));
-		return path.join(homebrewPrefix, "/lib/node_modules/npm/npmrc");
+		return Path.join(homebrewPrefix, "/lib/node_modules/npm/npmrc");
 	}
 	if (process$1.execPath.endsWith("/bin/node")) {
-		const installDir = path.dirname(path.dirname(process$1.execPath));
-		return path.join(installDir, "/etc/npmrc");
+		const installDir = Path.dirname(Path.dirname(process$1.execPath));
+		return Path.join(installDir, "/etc/npmrc");
 	}
 };
 const getDefaultNpmPrefix = () => {
 	if (isWindows$1) {
 		const { APPDATA } = process$1.env;
-		return APPDATA ? path.join(APPDATA, "npm") : path.dirname(process$1.execPath);
+		return APPDATA ? Path.join(APPDATA, "npm") : Path.dirname(process$1.execPath);
 	}
 	if (process$1.execPath.includes("/Cellar/node")) return process$1.execPath.slice(0, process$1.execPath.indexOf("/Cellar/node"));
-	return path.dirname(path.dirname(process$1.execPath));
+	return Path.dirname(Path.dirname(process$1.execPath));
 };
 const getNpmPrefix = () => {
 	const environmentPrefix = getEnvironmentNpmConfigValue("prefix");
 	if (environmentPrefix !== void 0) return environmentPrefix;
-	const homePrefix = readConfigValue(path.join(os$1.homedir(), ".npmrc"), "prefix");
+	const homePrefix = readConfigValue(Path.join(os$1.homedir(), ".npmrc"), "prefix");
 	if (homePrefix !== void 0) return homePrefix;
 	if (process$1.env.PREFIX) return process$1.env.PREFIX;
 	const globalPrefix = readConfigValue(getGlobalNpmrc(), "prefix");
 	if (globalPrefix !== void 0) return globalPrefix;
 	return getDefaultNpmPrefix();
 };
-const npmPrefix = path.resolve(untildify(getNpmPrefix()));
+const npmPrefix = Path.resolve(untildify(getNpmPrefix()));
 const getYarnHomeDirectory = () => {
 	if (process$1.getuid?.() === 0 && !process$1.env.FAKEROOTKEY) return "/usr/local/share";
 	return os$1.homedir();
 };
 const getYarnDataDirectory = () => {
-	if (isWindows$1) return process$1.env.LOCALAPPDATA ? path.join(process$1.env.LOCALAPPDATA, "Yarn/Data") : path.join(os$1.homedir(), ".config/yarn");
-	if (process$1.env.XDG_DATA_HOME) return path.join(process$1.env.XDG_DATA_HOME, "yarn");
-	return path.join(getYarnHomeDirectory(), ".config/yarn");
+	if (isWindows$1) return process$1.env.LOCALAPPDATA ? Path.join(process$1.env.LOCALAPPDATA, "Yarn/Data") : Path.join(os$1.homedir(), ".config/yarn");
+	if (process$1.env.XDG_DATA_HOME) return Path.join(process$1.env.XDG_DATA_HOME, "yarn");
+	return Path.join(getYarnHomeDirectory(), ".config/yarn");
 };
 const getYarnBinPrefix = () => {
 	if (process$1.env.PREFIX) return process$1.env.PREFIX;
-	if (isWindows$1) return process$1.env.LOCALAPPDATA ? path.join(process$1.env.LOCALAPPDATA, "Yarn") : path.join(os$1.homedir(), ".yarn");
+	if (isWindows$1) return process$1.env.LOCALAPPDATA ? Path.join(process$1.env.LOCALAPPDATA, "Yarn") : Path.join(os$1.homedir(), ".yarn");
 	return `${process$1.env.DESTDIR ?? ""}/usr/local`;
 };
 const globalDirectory = {};
 globalDirectory.npm = {};
 globalDirectory.npm.prefix = npmPrefix;
-globalDirectory.npm.packages = path.join(npmPrefix, isWindows$1 ? "node_modules" : "lib/node_modules");
-globalDirectory.npm.binaries = isWindows$1 ? npmPrefix : path.join(npmPrefix, "bin");
-const yarnDataDir = path.resolve(getYarnDataDirectory());
+globalDirectory.npm.packages = Path.join(npmPrefix, isWindows$1 ? "node_modules" : "lib/node_modules");
+globalDirectory.npm.binaries = isWindows$1 ? npmPrefix : Path.join(npmPrefix, "bin");
+const yarnDataDir = Path.resolve(getYarnDataDirectory());
 globalDirectory.yarn = {};
 globalDirectory.yarn.prefix = yarnDataDir;
-globalDirectory.yarn.packages = path.join(yarnDataDir, "global/node_modules");
-globalDirectory.yarn.binaries = path.join(path.resolve(getYarnBinPrefix()), "bin");
+globalDirectory.yarn.packages = Path.join(yarnDataDir, "global/node_modules");
+globalDirectory.yarn.binaries = Path.join(Path.resolve(getYarnBinPrefix()), "bin");
 const getPnpmDataDirectory = () => {
 	if (process$1.env.PNPM_HOME) return process$1.env.PNPM_HOME;
-	if (process$1.env.XDG_DATA_HOME) return path.join(process$1.env.XDG_DATA_HOME, "pnpm");
-	if (process$1.platform === "darwin") return path.join(os$1.homedir(), "Library/pnpm");
-	if (!isWindows$1) return path.join(os$1.homedir(), ".local/share/pnpm");
-	if (process$1.env.LOCALAPPDATA) return path.join(process$1.env.LOCALAPPDATA, "pnpm");
-	return path.join(os$1.homedir(), ".pnpm");
+	if (process$1.env.XDG_DATA_HOME) return Path.join(process$1.env.XDG_DATA_HOME, "pnpm");
+	if (process$1.platform === "darwin") return Path.join(os$1.homedir(), "Library/pnpm");
+	if (!isWindows$1) return Path.join(os$1.homedir(), ".local/share/pnpm");
+	if (process$1.env.LOCALAPPDATA) return Path.join(process$1.env.LOCALAPPDATA, "pnpm");
+	return Path.join(os$1.homedir(), ".pnpm");
 };
 const getPnpmConfigFilePath = () => {
-	if (process$1.env.XDG_CONFIG_HOME) return path.join(process$1.env.XDG_CONFIG_HOME, "pnpm", "rc");
+	if (process$1.env.XDG_CONFIG_HOME) return Path.join(process$1.env.XDG_CONFIG_HOME, "pnpm", "rc");
 	if (isWindows$1) {
-		const localConfigHome = process$1.env.LOCALAPPDATA ?? path.join(os$1.homedir(), "AppData", "Local");
-		return path.join(localConfigHome, "pnpm", "config", "rc");
+		const localConfigHome = process$1.env.LOCALAPPDATA ?? Path.join(os$1.homedir(), "AppData", "Local");
+		return Path.join(localConfigHome, "pnpm", "config", "rc");
 	}
-	if (process$1.platform === "darwin") return path.join(os$1.homedir(), "Library", "Preferences", "pnpm", "rc");
-	return path.join(os$1.homedir(), ".config", "pnpm", "rc");
+	if (process$1.platform === "darwin") return Path.join(os$1.homedir(), "Library", "Preferences", "pnpm", "rc");
+	return Path.join(os$1.homedir(), ".config", "pnpm", "rc");
 };
 const getPnpmConfigValue = (key) => {
 	const environmentValue = getEnvironmentNpmConfigValue(key);
 	if (environmentValue !== void 0) return environmentValue;
 	const pnpmGlobalValue = readConfigValue(getPnpmConfigFilePath(), key);
 	if (pnpmGlobalValue !== void 0) return pnpmGlobalValue;
-	const homeValue = readConfigValue(path.join(os$1.homedir(), ".npmrc"), key);
+	const homeValue = readConfigValue(Path.join(os$1.homedir(), ".npmrc"), key);
 	if (homeValue !== void 0) return homeValue;
 	const globalValue = readConfigValue(getGlobalNpmrc(), key);
 	if (globalValue !== void 0) return globalValue;
 };
-const pnpmDataDir = path.resolve(getPnpmDataDirectory());
+const pnpmDataDir = Path.resolve(getPnpmDataDirectory());
 const pnpmGlobalDir = getPnpmConfigValue("global-dir");
 const pnpmGlobalBinDir = getPnpmConfigValue("global-bin-dir");
-const resolvedPnpmGlobalDir = path.resolve(untildify(pnpmGlobalDir ?? path.join(pnpmDataDir, "global")));
-const resolvedPnpmGlobalBinDir = path.resolve(untildify(pnpmGlobalBinDir ?? pnpmDataDir));
+const resolvedPnpmGlobalDir = Path.resolve(untildify(pnpmGlobalDir ?? Path.join(pnpmDataDir, "global")));
+const resolvedPnpmGlobalBinDir = Path.resolve(untildify(pnpmGlobalBinDir ?? pnpmDataDir));
 globalDirectory.pnpm = {};
 globalDirectory.pnpm.prefix = pnpmDataDir;
-globalDirectory.pnpm.packages = path.join(resolvedPnpmGlobalDir, "5/node_modules");
+globalDirectory.pnpm.packages = Path.join(resolvedPnpmGlobalDir, "5/node_modules");
 globalDirectory.pnpm.binaries = resolvedPnpmGlobalBinDir;
 //#endregion
 //#region ../node_modules/.pnpm/@cspell+cspell-resolver@10.0.1/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 var import_requireResolve = require_requireResolve();
 function resolveGlobal(modulesName) {
-	return (0, import_requireResolve.requireResolve)(modulesName, [globalDirectory.npm.packages, globalDirectory.yarn.packages]);
+	const paths = [globalDirectory.npm.packages, globalDirectory.yarn.packages];
+	return (0, import_requireResolve.requireResolve)(modulesName, paths);
 }
 //#endregion
 //#region ../node_modules/.pnpm/import-meta-resolve@4.2.0/node_modules/import-meta-resolve/lib/errors.js
@@ -16304,7 +16288,7 @@ function resolveGlobal(modulesName) {
 */
 const own$1 = {}.hasOwnProperty;
 const classRegExp = /^([A-Z][a-z\d]*)+$/;
-const kTypes = new Set([
+const kTypes = /* @__PURE__ */ new Set([
 	"string",
 	"function",
 	"number",
@@ -16381,10 +16365,12 @@ codes.ERR_INVALID_ARG_TYPE = createError(
 			message += `an instance of ${formatList(instances, "or")}`;
 			if (other.length > 0) message += " or ";
 		}
-		if (other.length > 0) if (other.length > 1) message += `one of ${formatList(other, "or")}`;
-		else {
-			if (other[0].toLowerCase() !== other[0]) message += "an ";
-			message += `${other[0]}`;
+		if (other.length > 0) {
+			if (other.length > 1) message += `one of ${formatList(other, "or")}`;
+			else {
+				if (other[0].toLowerCase() !== other[0]) message += "an ";
+				message += `${other[0]}`;
+			}
 		}
 		message += `. Received ${determineSpecificType(actual)}`;
 		return message;
@@ -16655,7 +16641,7 @@ function read(jsonPath, { base, specifier }) {
 	/** @type {string | undefined} */
 	let string;
 	try {
-		string = fs.readFileSync(path.toNamespacedPath(jsonPath), "utf8");
+		string = fs.readFileSync(Path.toNamespacedPath(jsonPath), "utf8");
 	} catch (error) {
 		const exception = error;
 		if (exception.code !== "ENOENT") throw exception;
@@ -16809,7 +16795,8 @@ function getFileProtocolModuleFormat(url, _context, ignoreErrors) {
 	const format = extensionFormatMap[value];
 	if (format) return format;
 	if (ignoreErrors) return;
-	throw new ERR_UNKNOWN_FILE_EXTENSION(value, fileURLToPath(url));
+	const filepath = fileURLToPath(url);
+	throw new ERR_UNKNOWN_FILE_EXTENSION(value, filepath);
 }
 function getHttpProtocolModuleFormat() {}
 /**
@@ -16898,7 +16885,7 @@ function emitLegacyIndexDeprecation(url, packageJsonUrl, base, main) {
 	const packagePath = fileURLToPath(new URL(".", packageJsonUrl));
 	const basePath = fileURLToPath(base);
 	if (!main) process$1.emitWarning(`No "main" or "exports" field defined in the package.json for ${packagePath} resolving the main entry point "${urlPath.slice(packagePath.length)}", imported from ${basePath}.\nDefault "index" lookups for the main are deprecated for ES modules.`, "DeprecationWarning", "DEP0151");
-	else if (path.resolve(packagePath, main) !== urlPath) process$1.emitWarning(`Package ${packagePath} has a "main" field set to "${main}", excluding the full filename and extension to the resolved file at "${urlPath.slice(packagePath.length)}", imported from ${basePath}.\n Automatic extension resolution of the "main" field is deprecated for ES modules.`, "DeprecationWarning", "DEP0151");
+	else if (Path.resolve(packagePath, main) !== urlPath) process$1.emitWarning(`Package ${packagePath} has a "main" field set to "${main}", excluding the full filename and extension to the resolved file at "${urlPath.slice(packagePath.length)}", imported from ${basePath}.\n Automatic extension resolution of the "main" field is deprecated for ES modules.`, "DeprecationWarning", "DEP0151");
 }
 /**
 * @param {string} path
@@ -17005,7 +16992,7 @@ function finalizeResolution(resolved, base, preserveSymlinks) {
 	if (!preserveSymlinks) {
 		const real = realpathSync$1(filePath);
 		const { search, hash } = resolved;
-		resolved = pathToFileURL(real + (filePath.endsWith(path.sep) ? "/" : ""));
+		resolved = pathToFileURL(real + (filePath.endsWith(Path.sep) ? "/" : ""));
 		resolved.search = search;
 		resolved.hash = hash;
 	}
@@ -17038,7 +17025,8 @@ function exportsNotFound(subpath, packageJsonUrl, base) {
 * @returns {never}
 */
 function throwInvalidSubpath(request, match, packageJsonUrl, internal, base) {
-	throw new ERR_INVALID_MODULE_SPECIFIER(request, `request is not a valid match in pattern "${match}" for the "${internal ? "imports" : "exports"}" resolution of ${fileURLToPath(packageJsonUrl)}`, base && fileURLToPath(base));
+	const reason = `request is not a valid match in pattern "${match}" for the "${internal ? "imports" : "exports"}" resolution of ${fileURLToPath(packageJsonUrl)}`;
+	throw new ERR_INVALID_MODULE_SPECIFIER(request, reason, base && fileURLToPath(base));
 }
 /**
 * @param {string} subpath
@@ -17077,12 +17065,14 @@ function resolvePackageTargetString(target, subpath, match, packageJsonUrl, base
 		}
 		throw invalidPackageTarget(match, target, packageJsonUrl, internal, base);
 	}
-	if (invalidSegmentRegEx.exec(target.slice(2)) !== null) if (deprecatedInvalidSegmentRegEx.exec(target.slice(2)) === null) {
-		if (!isPathMap) {
-			const request = pattern ? match.replace("*", () => subpath) : match + subpath;
-			emitInvalidSegmentDeprecation(pattern ? RegExpPrototypeSymbolReplace.call(patternRegEx, target, () => subpath) : target, request, match, packageJsonUrl, internal, base, true);
-		}
-	} else throw invalidPackageTarget(match, target, packageJsonUrl, internal, base);
+	if (invalidSegmentRegEx.exec(target.slice(2)) !== null) {
+		if (deprecatedInvalidSegmentRegEx.exec(target.slice(2)) === null) {
+			if (!isPathMap) {
+				const request = pattern ? match.replace("*", () => subpath) : match + subpath;
+				emitInvalidSegmentDeprecation(pattern ? RegExpPrototypeSymbolReplace.call(patternRegEx, target, () => subpath) : target, request, match, packageJsonUrl, internal, base, true);
+			}
+		} else throw invalidPackageTarget(match, target, packageJsonUrl, internal, base);
+	}
 	const resolved = new URL(target, packageJsonUrl);
 	const resolvedPath = resolved.pathname;
 	const packagePath = new URL(".", packageJsonUrl).pathname;
@@ -17276,29 +17266,31 @@ function packageImportsResolve(name, base, conditions) {
 	if (packageConfig.exists) {
 		packageJsonUrl = pathToFileURL(packageConfig.pjsonPath);
 		const imports = packageConfig.imports;
-		if (imports) if (own.call(imports, name) && !name.includes("*")) {
-			const resolveResult = resolvePackageTarget(packageJsonUrl, imports[name], "", name, base, false, true, false, conditions);
-			if (resolveResult !== null && resolveResult !== void 0) return resolveResult;
-		} else {
-			let bestMatch = "";
-			let bestMatchSubpath = "";
-			const keys = Object.getOwnPropertyNames(imports);
-			let i = -1;
-			while (++i < keys.length) {
-				const key = keys[i];
-				const patternIndex = key.indexOf("*");
-				if (patternIndex !== -1 && name.startsWith(key.slice(0, -1))) {
-					const patternTrailer = key.slice(patternIndex + 1);
-					if (name.length >= key.length && name.endsWith(patternTrailer) && patternKeyCompare(bestMatch, key) === 1 && key.lastIndexOf("*") === patternIndex) {
-						bestMatch = key;
-						bestMatchSubpath = name.slice(patternIndex, name.length - patternTrailer.length);
+		if (imports) {
+			if (own.call(imports, name) && !name.includes("*")) {
+				const resolveResult = resolvePackageTarget(packageJsonUrl, imports[name], "", name, base, false, true, false, conditions);
+				if (resolveResult !== null && resolveResult !== void 0) return resolveResult;
+			} else {
+				let bestMatch = "";
+				let bestMatchSubpath = "";
+				const keys = Object.getOwnPropertyNames(imports);
+				let i = -1;
+				while (++i < keys.length) {
+					const key = keys[i];
+					const patternIndex = key.indexOf("*");
+					if (patternIndex !== -1 && name.startsWith(key.slice(0, -1))) {
+						const patternTrailer = key.slice(patternIndex + 1);
+						if (name.length >= key.length && name.endsWith(patternTrailer) && patternKeyCompare(bestMatch, key) === 1 && key.lastIndexOf("*") === patternIndex) {
+							bestMatch = key;
+							bestMatchSubpath = name.slice(patternIndex, name.length - patternTrailer.length);
+						}
 					}
 				}
-			}
-			if (bestMatch) {
-				const target = imports[bestMatch];
-				const resolveResult = resolvePackageTarget(packageJsonUrl, target, bestMatchSubpath, bestMatch, base, true, true, false, conditions);
-				if (resolveResult !== null && resolveResult !== void 0) return resolveResult;
+				if (bestMatch) {
+					const target = imports[bestMatch];
+					const resolveResult = resolvePackageTarget(packageJsonUrl, target, bestMatchSubpath, bestMatch, base, true, true, false, conditions);
+					if (resolveResult !== null && resolveResult !== void 0) return resolveResult;
+				}
 			}
 		}
 	}
@@ -17599,7 +17591,7 @@ function dirToUrl(dir) {
 //#endregion
 //#region ../node_modules/.pnpm/resolve-from@5.0.0/node_modules/resolve-from/index.js
 var require_resolve_from = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const path$2 = __require$1("path");
+	const path$1 = __require$1("path");
 	const Module = __require$1("module");
 	const fs$2 = __require$1("fs");
 	const resolveFrom = (fromDirectory, moduleId, silent) => {
@@ -17608,11 +17600,11 @@ var require_resolve_from = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		try {
 			fromDirectory = fs$2.realpathSync(fromDirectory);
 		} catch (error) {
-			if (error.code === "ENOENT") fromDirectory = path$2.resolve(fromDirectory);
+			if (error.code === "ENOENT") fromDirectory = path$1.resolve(fromDirectory);
 			else if (silent) return;
 			else throw error;
 		}
-		const fromFile = path$2.join(fromDirectory, "noop.js");
+		const fromFile = path$1.join(fromDirectory, "noop.js");
 		const resolveFileName = () => Module._resolveFilename(moduleId, {
 			id: fromFile,
 			filename: fromFile,
@@ -18782,7 +18774,7 @@ function cspellIOToFsProvider(cspellIO) {
 		"https:": capabilitiesHttp
 	};
 	const name = "CSpellIO";
-	const supportedProtocols = new Set([
+	const supportedProtocols = /* @__PURE__ */ new Set([
 		"file:",
 		"http:",
 		"https:"
@@ -19286,10 +19278,10 @@ var FileResolver = class {
 		function calcPaths(p) {
 			const paths = [p];
 			if (isRelative(filename)) return paths;
-			for (; p && Path.dirname(p) !== p && p !== home; p = Path.dirname(p)) paths.push(p);
+			for (; p && Path$1.dirname(p) !== p && p !== home; p = Path$1.dirname(p)) paths.push(p);
 			return paths;
 		}
-		const paths = calcPaths(Path.resolve(relativeToPath));
+		const paths = calcPaths(Path$1.resolve(relativeToPath));
 		try {
 			return {
 				filename: __require$1.resolve(filename, { paths }),
@@ -19303,8 +19295,9 @@ var FileResolver = class {
 	};
 	tryImportResolve = (filename, relativeTo) => {
 		try {
+			const paths = isRelative(filename) ? [relativeTo] : [relativeTo, srcDirectory];
 			return {
-				filename: fileURLToPath(importResolveModuleName(filename, isRelative(filename) ? [relativeTo] : [relativeTo, srcDirectory])),
+				filename: fileURLToPath(importResolveModuleName(filename, paths)),
 				relativeTo: relativeTo.toString(),
 				found: true,
 				method: "tryImportResolve"
@@ -19326,11 +19319,11 @@ var FileResolver = class {
 		if (filename instanceof URL || isUrlLike(filename) || isUrlLike(relativeTo) && !isFileURL(relativeTo)) return;
 		relativeTo = pathFromRelativeTo(relativeTo);
 		const toTry = [{ filename }, {
-			filename: Path.resolve(relativeTo, filename),
+			filename: Path$1.resolve(relativeTo, filename),
 			relativeTo
 		}];
 		for (const { filename, relativeTo } of toTry) {
-			const found = Path.isAbsolute(filename) && await this.doesExist(toFileUrl(filename));
+			const found = Path$1.isAbsolute(filename) && await this.doesExist(toFileUrl(filename));
 			if (found) return {
 				filename,
 				relativeTo: relativeTo?.toString(),
@@ -19338,10 +19331,10 @@ var FileResolver = class {
 				method: "tryResolveExists"
 			};
 		}
-		filename = Path.resolve(filename);
+		filename = Path$1.resolve(filename);
 		return {
 			filename,
-			relativeTo: Path.resolve("."),
+			relativeTo: Path$1.resolve("."),
 			found: await this.doesExist(toFileUrl(filename)),
 			method: "tryResolveExists"
 		};
@@ -19375,7 +19368,7 @@ var FileResolver = class {
 function patchFilename(filename, templateReplacements) {
 	const defaultReplacements = {
 		cwd: process.cwd(),
-		pathSeparator: Path.sep,
+		pathSeparator: Path$1.sep,
 		userHome: os$2.homedir()
 	};
 	filename = filename.replace(/^~(?=[/\\])/, defaultReplacements.userHome);
@@ -19406,12 +19399,12 @@ function isRelative(filename) {
 	if (isUrlLike(filename)) return false;
 	if (filename.startsWith("./")) return true;
 	if (filename.startsWith("../")) return true;
-	if (filename.startsWith("." + Path.sep)) return true;
-	if (filename.startsWith(".." + Path.sep)) return true;
+	if (filename.startsWith("." + Path$1.sep)) return true;
+	if (filename.startsWith(".." + Path$1.sep)) return true;
 	return false;
 }
 function joinWith(filename, relativeTo) {
-	return relativeTo instanceof URL || isUrlLike(relativeTo) ? toFilePathOrHref(new URL(filename, relativeTo)) : Path.resolve(relativeTo, filename);
+	return relativeTo instanceof URL || isUrlLike(relativeTo) ? toFilePathOrHref(new URL(filename, relativeTo)) : Path$1.resolve(relativeTo, filename);
 }
 function pathFromRelativeTo(relativeTo) {
 	return relativeTo instanceof URL || isUrlLike(relativeTo) ? fileURLToPath(new URL("./", relativeTo)) : relativeTo;
@@ -19521,7 +19514,7 @@ function fixPath(def) {
 }
 function fixDicPath(defPath, defFile) {
 	const parts = [defPath || "", defFile || ""].filter((p) => !!p);
-	return parts.length > 1 ? Path.join(...parts) : parts[0] || "";
+	return parts.length > 1 ? Path$1.join(...parts) : parts[0] || "";
 }
 function mapDictDefsToInternal(defs, pathToSettingsFile) {
 	return defs?.map((def) => mapDictDefToInternal(def, pathToSettingsFile));
@@ -19540,7 +19533,7 @@ function _mapDictDefToInternal(def, pathToSettingsFile) {
 	return new _DictionaryDefinitionInternalWithSource(def, pathToSettingsFile);
 }
 function determineName(filename, options) {
-	return options.name || Path.basename(filename);
+	return options.name || Path$1.basename(filename);
 }
 function calcDictionaryDefsToLoad(settings) {
 	const { dictionaries = [], dictionaryDefinitions = [], noSuggestDictionaries = [] } = settings;
@@ -19659,7 +19652,7 @@ function mergeListUnique(left, right) {
 	if (!Array.isArray(right)) return left;
 	if (!right.length) return left;
 	if (!left.length) return right;
-	const result = cacheMergeListUnique.get(left, right, (left, right) => [...new Set([...left, ...right])]);
+	const result = cacheMergeListUnique.get(left, right, (left, right) => [.../* @__PURE__ */ new Set([...left, ...right])]);
 	Object.freeze(left);
 	Object.freeze(right);
 	Object.freeze(result);
@@ -20525,9 +20518,6 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 						case jsx_syntax_1.JSXSyntax.JSXMemberExpression:
 							var expr = elementName;
 							qualifiedName = getQualifiedElementName(expr.object) + "." + getQualifiedElementName(expr.property);
-							break;
-						/* istanbul ignore next */
-						default: break;
 					}
 					return qualifiedName;
 				}
@@ -20593,7 +20583,6 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 								default:
 									valid = valid && !(numeric && !character_1.Character.isDecimalDigit(ch.charCodeAt(0)));
 									valid = valid && !(hex && !character_1.Character.isHexDigit(ch.charCodeAt(0)));
-									break;
 							}
 						}
 						if (valid && terminated && result.length > 2) {
@@ -22380,8 +22369,6 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 								expr.type = syntax_1.Syntax.AssignmentPattern;
 								delete expr.operator;
 								this.reinterpretExpressionAsPattern(expr.left);
-								break;
-							default: break;
 						}
 					};
 					Parser.prototype.parseGroupExpression = function() {
@@ -22759,10 +22746,7 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 							case syntax_1.Syntax.ArrayPattern:
 								for (var i = 0; i < param.elements.length; i++) if (param.elements[i] !== null) this.checkPatternParam(options, param.elements[i]);
 								break;
-							case syntax_1.Syntax.ObjectPattern:
-								for (var i = 0; i < param.properties.length; i++) this.checkPatternParam(options, param.properties[i].value);
-								break;
-							default: break;
+							case syntax_1.Syntax.ObjectPattern: for (var i = 0; i < param.properties.length; i++) this.checkPatternParam(options, param.properties[i].value);
 						}
 						options.simple = options.simple && param instanceof Node.Identifier;
 					};
@@ -22923,9 +22907,7 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 							case "let":
 								statement = this.isLexicalDeclaration() ? this.parseLexicalDeclaration({ inFor: false }) : this.parseStatement();
 								break;
-							default:
-								statement = this.parseStatement();
-								break;
+							default: statement = this.parseStatement();
 						}
 						else statement = this.parseStatement();
 						return statement;
@@ -22949,10 +22931,12 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 						}
 						var init = null;
 						if (kind === "const") {
-							if (!this.matchKeyword("in") && !this.matchContextualKeyword("of")) if (this.match("=")) {
-								this.nextToken();
-								init = this.isolateCoverGrammar(this.parseAssignmentExpression);
-							} else this.throwError(messages_1.Messages.DeclarationMissingInitializer, "const");
+							if (!this.matchKeyword("in") && !this.matchContextualKeyword("of")) {
+								if (this.match("=")) {
+									this.nextToken();
+									init = this.isolateCoverGrammar(this.parseAssignmentExpression);
+								} else this.throwError(messages_1.Messages.DeclarationMissingInitializer, "const");
+							}
 						} else if (!options.inFor && id.type !== syntax_1.Syntax.Identifier || this.match("=")) {
 							this.expect("=");
 							init = this.isolateCoverGrammar(this.parseAssignmentExpression);
@@ -23539,9 +23523,7 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 									case "with":
 										statement = this.parseWithStatement();
 										break;
-									default:
-										statement = this.parseExpressionStatement();
-										break;
+									default: statement = this.parseExpressionStatement();
 								}
 								break;
 							default: statement = this.throwUnexpectedToken(this.lookahead);
@@ -23777,7 +23759,6 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 							case 6:
 							case 4: return true;
 							case 7: return token.value === "[";
-							default: break;
 						}
 						return false;
 					};
@@ -23822,10 +23803,7 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 							case 7:
 								start = value === "[" || value === "(" || value === "{" || value === "+" || value === "-" || value === "!" || value === "~" || value === "++" || value === "--" || value === "/" || value === "/=";
 								break;
-							case 4:
-								start = value === "class" || value === "delete" || value === "function" || value === "let" || value === "new" || value === "super" || value === "this" || value === "typeof" || value === "void" || value === "yield";
-								break;
-							default: break;
+							case 4: start = value === "class" || value === "delete" || value === "function" || value === "let" || value === "new" || value === "super" || value === "this" || value === "typeof" || value === "void" || value === "yield";
 						}
 						return start;
 					};
@@ -24444,17 +24422,19 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 									var comment = this.skipMultiLineComment();
 									if (this.trackComment) comments = comments.concat(comment);
 								} else break;
-							} else if (start && ch === 45) if (this.source.charCodeAt(this.index + 1) === 45 && this.source.charCodeAt(this.index + 2) === 62) {
-								this.index += 3;
-								var comment = this.skipSingleLineComment(3);
-								if (this.trackComment) comments = comments.concat(comment);
+							} else if (start && ch === 45) {
+								if (this.source.charCodeAt(this.index + 1) === 45 && this.source.charCodeAt(this.index + 2) === 62) {
+									this.index += 3;
+									var comment = this.skipSingleLineComment(3);
+									if (this.trackComment) comments = comments.concat(comment);
+								} else break;
+							} else if (ch === 60 && !this.isModule) {
+								if (this.source.slice(this.index + 1, this.index + 4) === "!--") {
+									this.index += 4;
+									var comment = this.skipSingleLineComment(4);
+									if (this.trackComment) comments = comments.concat(comment);
+								} else break;
 							} else break;
-							else if (ch === 60 && !this.isModule) if (this.source.slice(this.index + 1, this.index + 4) === "!--") {
-								this.index += 4;
-								var comment = this.skipSingleLineComment(4);
-								if (this.trackComment) comments = comments.concat(comment);
-							} else break;
-							else break;
 						}
 						return comments;
 					};
@@ -24843,13 +24823,11 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 										str += ch;
 										this.tolerateUnexpectedToken();
 										break;
-									default:
-										if (ch && character_1.Character.isOctalDigit(ch.charCodeAt(0))) {
-											var octToDec = this.octalToDecimal(ch);
-											octal = octToDec.octal || octal;
-											str += String.fromCharCode(octToDec.code);
-										} else str += ch;
-										break;
+									default: if (ch && character_1.Character.isOctalDigit(ch.charCodeAt(0))) {
+										var octToDec = this.octalToDecimal(ch);
+										octal = octToDec.octal || octal;
+										str += String.fromCharCode(octToDec.code);
+									} else str += ch;
 								}
 								else {
 									++this.lineNumber;
@@ -24936,13 +24914,11 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 									case "v":
 										cooked += "\v";
 										break;
-									default:
-										if (ch === "0") {
-											if (character_1.Character.isDecimalDigit(this.source.charCodeAt(this.index))) this.throwUnexpectedToken(messages_1.Messages.TemplateOctalLiteral);
-											cooked += "\0";
-										} else if (character_1.Character.isOctalDigit(ch.charCodeAt(0))) this.throwUnexpectedToken(messages_1.Messages.TemplateOctalLiteral);
-										else cooked += ch;
-										break;
+									default: if (ch === "0") {
+										if (character_1.Character.isDecimalDigit(this.source.charCodeAt(this.index))) this.throwUnexpectedToken(messages_1.Messages.TemplateOctalLiteral);
+										cooked += "\0";
+									} else if (character_1.Character.isOctalDigit(ch.charCodeAt(0))) this.throwUnexpectedToken(messages_1.Messages.TemplateOctalLiteral);
+									else cooked += ch;
 								}
 								else {
 									++this.lineNumber;
@@ -25455,8 +25431,6 @@ var require_esprima = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 									var check = this.values[this.curly - 5];
 									regex = check ? !this.beforeFunctionExpression(check) : true;
 								}
-								break;
-							default: break;
 						}
 						return regex;
 					};
@@ -26312,7 +26286,8 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const copy_comments_by_kind = (target, source, target_key, source_key, prefix, remove_source) => {
 		const source_prop = symbol(prefix, source_key);
 		if (!Object.hasOwn(source, source_prop)) return;
-		define(target, target_key === source_key ? source_prop : symbol(prefix, target_key), source[source_prop]);
+		const target_prop = target_key === source_key ? source_prop : symbol(prefix, target_key);
+		define(target, target_prop, source[source_prop]);
 		if (remove_source) delete source[source_prop];
 	};
 	const copy_comments = (target, source, target_key, source_key, remove_source) => {
@@ -26551,7 +26526,8 @@ var require_common = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				return;
 			}
 			const { where, key } = location;
-			remove_blank_lines_from_prop(target, symbol_checked(where, key));
+			const prop = symbol_checked(where, key);
+			remove_blank_lines_from_prop(target, prop);
 		}
 	};
 }));
@@ -26576,7 +26552,10 @@ var require_array = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			return;
 		}
 		let i = 0;
-		while (i < count) move_comment(target, source, start + i++, offset, remove);
+		while (i < count) {
+			const ii = i++;
+			move_comment(target, source, start + ii, offset, remove);
+		}
 	};
 	const remove_comments = (array, key) => {
 		PROP_SYMBOL_PREFIXES.forEach((prefix) => {
@@ -27060,7 +27039,8 @@ var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 	const join = (one, two, gap) => one ? two ? one + two.trim() + LF + gap : one.trimRight() + repeat_line_breaks(Math.max(1, count_trailing_line_breaks(one)), gap) : two ? two.trimRight() + repeat_line_breaks(Math.max(1, count_trailing_line_breaks(two)), gap) : EMPTY;
 	const join_content = (inside, value, gap) => {
-		return join(process_comments(value, PREFIX_BEFORE, gap + indent, true), inside, gap);
+		const comment = process_comments(value, PREFIX_BEFORE, gap + indent, true);
+		return join(comment, inside, gap);
 	};
 	const stringify_string = (holder, key, value) => {
 		const raw = get_raw_string_literal(holder, key);
@@ -27118,7 +27098,6 @@ var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			case "object":
 				if (is_raw_json(value)) return value.rawJSON;
 				return Array.isArray(value) ? array_stringify(value, gap) : object_stringify(value, gap);
-			default:
 		}
 	}
 	const get_indent = (space) => typeof space === "string" ? space : typeof space === "number" ? SPACE.repeat(space) : EMPTY;
@@ -27169,7 +27148,8 @@ var require_stringify$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		indent = indent_;
 		const str = is_primitive_object(value) ? JSON.stringify(value) : stringify("", { "": value }, EMPTY);
 		clean();
-		return normalize_blank_lines(is_object(value) ? process_comments(value, PREFIX_BEFORE_ALL, EMPTY, true).trimLeft() + str + process_comments(value, PREFIX_AFTER_ALL, EMPTY).trimRight() : str);
+		const output = is_object(value) ? process_comments(value, PREFIX_BEFORE_ALL, EMPTY, true).trimLeft() + str + process_comments(value, PREFIX_AFTER_ALL, EMPTY).trimRight() : str;
+		return normalize_blank_lines(output);
 	};
 }));
 //#endregion
@@ -27628,43 +27608,44 @@ function parseString(ctx) {
 				parsed += ctx.s.slice(sliceStart, sliceStart = ctx.p);
 				state = 1;
 			}
-		} else if (state === 1) if (c === 120 || c === 117 || c === 85) {
-			let value = 0;
-			let len = c === 120 ? 2 : c === 117 ? 4 : 8;
-			for (let j = 0; j < len; j++, ctx.p++) {
-				let hex = ctx.s.charCodeAt(ctx.p + 1);
-				let digit = hex >= 48 && hex <= 57 ? hex - 48 : hex >= 65 && hex <= 70 ? hex - 65 + 10 : hex >= 97 && hex <= 102 ? hex - 97 + 10 : -1;
-				if (digit < 0) throw new TomlError("invalid non-hex character in unicode escape", {
+		} else if (state === 1) {
+			if (c === 120 || c === 117 || c === 85) {
+				let value = 0;
+				let len = c === 120 ? 2 : c === 117 ? 4 : 8;
+				for (let j = 0; j < len; j++, ctx.p++) {
+					let hex = ctx.s.charCodeAt(ctx.p + 1);
+					let digit = hex >= 48 && hex <= 57 ? hex - 48 : hex >= 65 && hex <= 70 ? hex - 65 + 10 : hex >= 97 && hex <= 102 ? hex - 97 + 10 : -1;
+					if (digit < 0) throw new TomlError("invalid non-hex character in unicode escape", {
+						toml: ctx.s,
+						ptr: ctx.p + 1
+					});
+					value = value << 4 | digit;
+				}
+				if (value < 0 || value > 1114111 || value >= 55296 && value <= 57343) throw new TomlError("invalid unicode escape", {
 					toml: ctx.s,
-					ptr: ctx.p + 1
+					ptr: ctx.p
 				});
-				value = value << 4 | digit;
+				parsed += String.fromCodePoint(value);
+				sliceStart = ctx.p + 1;
+				state = 0;
+			} else if (c === 32 || c === 9) state = 2;
+			else {
+				if (c === 98) parsed += "\b";
+				else if (c === 116) parsed += "	";
+				else if (c === 110) parsed += "\n";
+				else if (c === 102) parsed += "\f";
+				else if (c === 114) parsed += "\r";
+				else if (c === 101) parsed += "\x1B";
+				else if (c === 34) parsed += "\"";
+				else if (c === 92) parsed += "\\";
+				else throw new TomlError("unrecognized escape sequence", {
+					toml: ctx.s,
+					ptr: ctx.p
+				});
+				sliceStart = ctx.p + 1;
+				state = 0;
 			}
-			if (value < 0 || value > 1114111 || value >= 55296 && value <= 57343) throw new TomlError("invalid unicode escape", {
-				toml: ctx.s,
-				ptr: ctx.p
-			});
-			parsed += String.fromCodePoint(value);
-			sliceStart = ctx.p + 1;
-			state = 0;
-		} else if (c === 32 || c === 9) state = 2;
-		else {
-			if (c === 98) parsed += "\b";
-			else if (c === 116) parsed += "	";
-			else if (c === 110) parsed += "\n";
-			else if (c === 102) parsed += "\f";
-			else if (c === 114) parsed += "\r";
-			else if (c === 101) parsed += "\x1B";
-			else if (c === 34) parsed += "\"";
-			else if (c === 92) parsed += "\\";
-			else throw new TomlError("unrecognized escape sequence", {
-				toml: ctx.s,
-				ptr: ctx.p
-			});
-			sliceStart = ctx.p + 1;
-			state = 0;
-		}
-		else if (c !== 32 && c !== 9) {
+		} else if (c !== 32 && c !== 9) {
 			if (state === 2) throw new TomlError("invalid escape: only line-ending whitespace may be escaped", {
 				toml: ctx.s,
 				ptr: sliceStart
@@ -27824,39 +27805,41 @@ function parseKey(ctx, end = "=") {
 	});
 	do {
 		let c = ctx.s.charCodeAt(ctx.p = ++dot);
-		if (c !== 32 && c !== 9) if (c === 34 || c === 39) {
-			if (c === ctx.s.charCodeAt(ctx.p + 1) && c === ctx.s.charCodeAt(ctx.p + 2)) throw new TomlError("multiline strings are not allowed in keys", {
-				toml: ctx.s,
-				ptr: ctx.p
-			});
-			let part = parseString(ctx);
-			dot = ctx.s.indexOf(".", ctx.p);
-			let strEnd = ctx.s.slice(ctx.p, dot < 0 || dot > endPtr ? endPtr : dot);
-			let newLine = indexOfNewline(strEnd);
-			if (newLine > -1) throw new TomlError("newlines are not allowed in keys", {
-				toml: ctx.s,
-				ptr: newLine
-			});
-			if (strEnd.trimStart()) throw new TomlError("found extra tokens after the string part", {
-				toml: ctx.s,
-				ptr: ctx.p
-			});
-			if (endPtr < ctx.p) {
-				endPtr = ctx.s.indexOf(end, ctx.p);
-				if (endPtr < 0) throw new TomlError("incomplete key-value: cannot find end of key", {
+		if (c !== 32 && c !== 9) {
+			if (c === 34 || c === 39) {
+				if (c === ctx.s.charCodeAt(ctx.p + 1) && c === ctx.s.charCodeAt(ctx.p + 2)) throw new TomlError("multiline strings are not allowed in keys", {
 					toml: ctx.s,
-					ptr: start
+					ptr: ctx.p
 				});
+				let part = parseString(ctx);
+				dot = ctx.s.indexOf(".", ctx.p);
+				let strEnd = ctx.s.slice(ctx.p, dot < 0 || dot > endPtr ? endPtr : dot);
+				let newLine = indexOfNewline(strEnd);
+				if (newLine > -1) throw new TomlError("newlines are not allowed in keys", {
+					toml: ctx.s,
+					ptr: newLine
+				});
+				if (strEnd.trimStart()) throw new TomlError("found extra tokens after the string part", {
+					toml: ctx.s,
+					ptr: ctx.p
+				});
+				if (endPtr < ctx.p) {
+					endPtr = ctx.s.indexOf(end, ctx.p);
+					if (endPtr < 0) throw new TomlError("incomplete key-value: cannot find end of key", {
+						toml: ctx.s,
+						ptr: start
+					});
+				}
+				parsed.push(part);
+			} else {
+				dot = ctx.s.indexOf(".", ctx.p);
+				let part = ctx.s.slice(ctx.p, dot < 0 || dot > endPtr ? endPtr : dot);
+				if (!KEY_PART_RE.test(part)) throw new TomlError("only letter, numbers, dashes and underscores are allowed in keys", {
+					toml: ctx.s,
+					ptr: ctx.p
+				});
+				parsed.push(part.trimEnd());
 			}
-			parsed.push(part);
-		} else {
-			dot = ctx.s.indexOf(".", ctx.p);
-			let part = ctx.s.slice(ctx.p, dot < 0 || dot > endPtr ? endPtr : dot);
-			if (!KEY_PART_RE.test(part)) throw new TomlError("only letter, numbers, dashes and underscores are allowed in keys", {
-				toml: ctx.s,
-				ptr: ctx.p
-			});
-			parsed.push(part.trimEnd());
 		}
 	} while (dot + 1 && dot < endPtr);
 	ctx.p = endPtr + 1;
@@ -28502,9 +28485,10 @@ var require_visit = /* @__PURE__ */ __commonJSMin(((exports) => {
 	function replaceNode(key, path, node) {
 		const parent = path[path.length - 1];
 		if (identity.isCollection(parent)) parent.items[key] = node;
-		else if (identity.isPair(parent)) if (key === "key") parent.key = node;
-		else parent.value = node;
-		else if (identity.isDocument(parent)) parent.contents = node;
+		else if (identity.isPair(parent)) {
+			if (key === "key") parent.key = node;
+			else parent.value = node;
+		} else if (identity.isDocument(parent)) parent.contents = node;
 		else {
 			const pt = identity.isAlias(parent) ? "alias" : "scalar";
 			throw new Error(`Cannot replace node with ${pt} parent`);
@@ -28561,7 +28545,6 @@ var require_directives = /* @__PURE__ */ __commonJSMin(((exports) => {
 						version: "1.2"
 					};
 					this.tags = Object.assign({}, Directives.defaultTags);
-					break;
 			}
 			return res;
 		}
@@ -28756,30 +28739,32 @@ var require_applyReviver = /* @__PURE__ */ __commonJSMin(((exports) => {
 	* Includes extensions for handling Map and Set objects.
 	*/
 	function applyReviver(reviver, obj, key, val) {
-		if (val && typeof val === "object") if (Array.isArray(val)) for (let i = 0, len = val.length; i < len; ++i) {
-			const v0 = val[i];
-			const v1 = applyReviver(reviver, val, String(i), v0);
-			if (v1 === void 0) delete val[i];
-			else if (v1 !== v0) val[i] = v1;
-		}
-		else if (val instanceof Map) for (const k of Array.from(val.keys())) {
-			const v0 = val.get(k);
-			const v1 = applyReviver(reviver, val, k, v0);
-			if (v1 === void 0) val.delete(k);
-			else if (v1 !== v0) val.set(k, v1);
-		}
-		else if (val instanceof Set) for (const v0 of Array.from(val)) {
-			const v1 = applyReviver(reviver, val, v0, v0);
-			if (v1 === void 0) val.delete(v0);
-			else if (v1 !== v0) {
-				val.delete(v0);
-				val.add(v1);
+		if (val && typeof val === "object") {
+			if (Array.isArray(val)) for (let i = 0, len = val.length; i < len; ++i) {
+				const v0 = val[i];
+				const v1 = applyReviver(reviver, val, String(i), v0);
+				if (v1 === void 0) delete val[i];
+				else if (v1 !== v0) val[i] = v1;
 			}
-		}
-		else for (const [k, v0] of Object.entries(val)) {
-			const v1 = applyReviver(reviver, val, k, v0);
-			if (v1 === void 0) delete val[k];
-			else if (v1 !== v0) val[k] = v1;
+			else if (val instanceof Map) for (const k of Array.from(val.keys())) {
+				const v0 = val.get(k);
+				const v1 = applyReviver(reviver, val, k, v0);
+				if (v1 === void 0) val.delete(k);
+				else if (v1 !== v0) val.set(k, v1);
+			}
+			else if (val instanceof Set) for (const v0 of Array.from(val)) {
+				const v1 = applyReviver(reviver, val, v0, v0);
+				if (v1 === void 0) val.delete(v0);
+				else if (v1 !== v0) {
+					val.delete(v0);
+					val.add(v1);
+				}
+			}
+			else for (const [k, v0] of Object.entries(val)) {
+				const v1 = applyReviver(reviver, val, k, v0);
+				if (v1 === void 0) delete val[k];
+				else if (v1 !== v0) val[k] = v1;
+			}
 		}
 		return reviver.call(obj, key, val);
 	}
@@ -29054,7 +29039,7 @@ var require_Collection = /* @__PURE__ */ __commonJSMin(((exports) => {
 				const a = [];
 				a[k] = v;
 				v = a;
-			} else v = new Map([[k, v]]);
+			} else v = /* @__PURE__ */ new Map([[k, v]]);
 		}
 		return createNode.createNode(v, void 0, {
 			aliasDuplicateObjects: false,
@@ -29200,8 +29185,10 @@ var require_foldFlowLines = /* @__PURE__ */ __commonJSMin(((exports) => {
 		const folds = [];
 		const escapedFolds = {};
 		let end = lineWidth - indent.length;
-		if (typeof indentAtStart === "number") if (indentAtStart > lineWidth - Math.max(2, minContentWidth)) folds.push(0);
-		else end = lineWidth - indentAtStart;
+		if (typeof indentAtStart === "number") {
+			if (indentAtStart > lineWidth - Math.max(2, minContentWidth)) folds.push(0);
+			else end = lineWidth - indentAtStart;
+		}
 		let split = void 0;
 		let prev = void 0;
 		let overflow = false;
@@ -29238,23 +29225,25 @@ var require_foldFlowLines = /* @__PURE__ */ __commonJSMin(((exports) => {
 					const next = text[i + 1];
 					if (next && next !== " " && next !== "\n" && next !== "	") split = i;
 				}
-				if (i >= end) if (split) {
-					folds.push(split);
-					end = split + endStep;
-					split = void 0;
-				} else if (mode === FOLD_QUOTED) {
-					while (prev === " " || prev === "	") {
-						prev = ch;
-						ch = text[i += 1];
-						overflow = true;
-					}
-					const j = i > escEnd + 1 ? i - 2 : escStart - 1;
-					if (escapedFolds[j]) return text;
-					folds.push(j);
-					escapedFolds[j] = true;
-					end = j + endStep;
-					split = void 0;
-				} else overflow = true;
+				if (i >= end) {
+					if (split) {
+						folds.push(split);
+						end = split + endStep;
+						split = void 0;
+					} else if (mode === FOLD_QUOTED) {
+						while (prev === " " || prev === "	") {
+							prev = ch;
+							ch = text[i += 1];
+							overflow = true;
+						}
+						const j = i > escEnd + 1 ? i - 2 : escStart - 1;
+						if (escapedFolds[j]) return text;
+						folds.push(j);
+						escapedFolds[j] = true;
+						end = j + endStep;
+						split = void 0;
+					} else overflow = true;
+				}
 			}
 			prev = ch;
 		}
@@ -29613,7 +29602,7 @@ var require_stringify = /* @__PURE__ */ __commonJSMin(((exports) => {
 			if (ctx.resolvedAliases?.has(item)) throw new TypeError(`Cannot stringify circular structure without alias nodes`);
 			else {
 				if (ctx.resolvedAliases) ctx.resolvedAliases.add(item);
-				else ctx.resolvedAliases = new Set([item]);
+				else ctx.resolvedAliases = /* @__PURE__ */ new Set([item]);
 				item = item.resolve(ctx.doc);
 			}
 		}
@@ -29734,8 +29723,10 @@ var require_log = /* @__PURE__ */ __commonJSMin(((exports) => {
 		if (logLevel === "debug") console.log(...messages);
 	}
 	function warn(logLevel, warning) {
-		if (logLevel === "debug" || logLevel === "warn") if (typeof node_process$2.emitWarning === "function") node_process$2.emitWarning(warning);
-		else console.warn(warning);
+		if (logLevel === "debug" || logLevel === "warn") {
+			if (typeof node_process$2.emitWarning === "function") node_process$2.emitWarning(warning);
+			else console.warn(warning);
+		}
 	}
 	exports.debug = debug;
 	exports.warn = warn;
@@ -30562,11 +30553,12 @@ var require_pairs = /* @__PURE__ */ __commonJSMin(((exports) => {
 		if (iterable && Symbol.iterator in Object(iterable)) for (let it of iterable) {
 			if (typeof replacer === "function") it = replacer.call(iterable, String(i++), it);
 			let key, value;
-			if (Array.isArray(it)) if (it.length === 2) {
-				key = it[0];
-				value = it[1];
-			} else throw new TypeError(`Expected [key, value] tuple: ${it}`);
-			else if (it && it instanceof Object) {
+			if (Array.isArray(it)) {
+				if (it.length === 2) {
+					key = it[0];
+					value = it[1];
+				} else throw new TypeError(`Expected [key, value] tuple: ${it}`);
+			} else if (it && it instanceof Object) {
 				const keys = Object.keys(it);
 				if (keys.length === 1) {
 					key = keys[0];
@@ -30642,8 +30634,10 @@ var require_omap = /* @__PURE__ */ __commonJSMin(((exports) => {
 		resolve(seq, onError) {
 			const pairs$1 = pairs.resolvePairs(seq, onError);
 			const seenKeys = [];
-			for (const { key } of pairs$1.items) if (identity.isScalar(key)) if (seenKeys.includes(key.value)) onError(`Ordered maps must not include duplicate keys: ${key.value}`);
-			else seenKeys.push(key.value);
+			for (const { key } of pairs$1.items) if (identity.isScalar(key)) {
+				if (seenKeys.includes(key.value)) onError(`Ordered maps must not include duplicate keys: ${key.value}`);
+				else seenKeys.push(key.value);
+			}
 			return Object.assign(new YAMLOMap(), pairs$1);
 		},
 		createNode: (schema, iterable, ctx) => YAMLOMap.from(schema, iterable, ctx)
@@ -30739,9 +30733,7 @@ var require_int = /* @__PURE__ */ __commonJSMin(((exports) => {
 				case 8:
 					str = `0o${str}`;
 					break;
-				case 16:
-					str = `0x${str}`;
-					break;
+				case 16: str = `0x${str}`;
 			}
 			const n = BigInt(str);
 			return sign === "-" ? BigInt(-1) * n : n;
@@ -30856,9 +30848,10 @@ var require_set = /* @__PURE__ */ __commonJSMin(((exports) => {
 		tag: "tag:yaml.org,2002:set",
 		createNode: (schema, iterable, ctx) => YAMLSet.from(schema, iterable, ctx),
 		resolve(map, onError) {
-			if (identity.isMap(map)) if (map.hasAllNullValues(true)) return Object.assign(new YAMLSet(), map);
-			else onError("Set items must all have null values");
-			else onError("Expected a mapping for this tag");
+			if (identity.isMap(map)) {
+				if (map.hasAllNullValues(true)) return Object.assign(new YAMLSet(), map);
+				else onError("Set items must all have null values");
+			} else onError("Expected a mapping for this tag");
 			return map;
 		}
 	};
@@ -31007,7 +31000,7 @@ var require_tags = /* @__PURE__ */ __commonJSMin(((exports) => {
 	var schema$2 = require_schema();
 	var set = require_set();
 	var timestamp = require_timestamp();
-	const schemas = new Map([
+	const schemas = /* @__PURE__ */ new Map([
 		["core", schema.schema],
 		["failsafe", [
 			map.map,
@@ -31050,10 +31043,12 @@ var require_tags = /* @__PURE__ */ __commonJSMin(((exports) => {
 		const schemaTags = schemas.get(schemaName);
 		if (schemaTags && !customTags) return addMergeTag && !schemaTags.includes(merge.merge) ? schemaTags.concat(merge.merge) : schemaTags.slice();
 		let tags = schemaTags;
-		if (!tags) if (Array.isArray(customTags)) tags = [];
-		else {
-			const keys = Array.from(schemas.keys()).filter((key) => key !== "yaml11").map((key) => JSON.stringify(key)).join(", ");
-			throw new Error(`Unknown schema "${schemaName}"; use one of ${keys} or define customTags array`);
+		if (!tags) {
+			if (Array.isArray(customTags)) tags = [];
+			else {
+				const keys = Array.from(schemas.keys()).filter((key) => key !== "yaml11").map((key) => JSON.stringify(key)).join(", ");
+				throw new Error(`Unknown schema "${schemaName}"; use one of ${keys} or define customTags array`);
+			}
 		}
 		if (Array.isArray(customTags)) for (const tag of customTags) tags = tags.concat(tag);
 		else if (typeof customTags === "function") tags = customTags(tags.slice());
@@ -31142,14 +31137,15 @@ var require_stringifyDocument = /* @__PURE__ */ __commonJSMin(((exports) => {
 			if ((body[0] === "|" || body[0] === ">") && lines[lines.length - 1] === "---") lines[lines.length - 1] = `--- ${body}`;
 			else lines.push(body);
 		} else lines.push(stringify.stringify(doc.contents, ctx));
-		if (doc.directives?.docEnd) if (doc.comment) {
-			const cs = commentString(doc.comment);
-			if (cs.includes("\n")) {
-				lines.push("...");
-				lines.push(stringifyComment.indentComment(cs, ""));
-			} else lines.push(`... ${cs}`);
-		} else lines.push("...");
-		else {
+		if (doc.directives?.docEnd) {
+			if (doc.comment) {
+				const cs = commentString(doc.comment);
+				if (cs.includes("\n")) {
+					lines.push("...");
+					lines.push(stringifyComment.indentComment(cs, ""));
+				} else lines.push(`... ${cs}`);
+			} else lines.push("...");
+		} else {
 			let dc = doc.comment;
 			if (dc && chompKeep) dc = dc.replace(/^\n+/, "");
 			if (dc) {
@@ -31666,7 +31662,7 @@ var require_resolve_block_map = /* @__PURE__ */ __commonJSMin(((exports) => {
 	var utilMapIncludes = require_util_map_includes();
 	const startColMsg = "All mapping items must start at the same column";
 	function resolveBlockMap({ composeNode, composeEmptyNode }, ctx, bm, onError, tag) {
-		const map = new (tag?.nodeClass ?? YAMLMap.YAMLMap)(ctx.schema);
+		const map = new ((tag?.nodeClass) ?? YAMLMap.YAMLMap)(ctx.schema);
 		if (ctx.atRoot) ctx.atRoot = false;
 		let offset = bm.offset;
 		let commentEnd = null;
@@ -31688,8 +31684,10 @@ var require_resolve_block_map = /* @__PURE__ */ __commonJSMin(((exports) => {
 				}
 				if (!keyProps.anchor && !keyProps.tag && !sep) {
 					commentEnd = keyProps.end;
-					if (keyProps.comment) if (map.comment) map.comment += "\n" + keyProps.comment;
-					else map.comment = keyProps.comment;
+					if (keyProps.comment) {
+						if (map.comment) map.comment += "\n" + keyProps.comment;
+						else map.comment = keyProps.comment;
+					}
 					continue;
 				}
 				if (keyProps.newlineAfterProp || utilContainsNewline.containsNewline(key)) onError(key ?? start[start.length - 1], "MULTILINE_IMPLICIT_KEY", "Implicit keys need to be on a single line");
@@ -31722,8 +31720,10 @@ var require_resolve_block_map = /* @__PURE__ */ __commonJSMin(((exports) => {
 				map.items.push(pair);
 			} else {
 				if (implicitKey) onError(keyNode.range, "MISSING_CHAR", "Implicit map keys need to be followed by map values");
-				if (valueProps.comment) if (keyNode.comment) keyNode.comment += "\n" + valueProps.comment;
-				else keyNode.comment = valueProps.comment;
+				if (valueProps.comment) {
+					if (keyNode.comment) keyNode.comment += "\n" + valueProps.comment;
+					else keyNode.comment = valueProps.comment;
+				}
 				const pair = new Pair.Pair(keyNode);
 				if (ctx.options.keepSourceTokens) pair.srcToken = collItem;
 				map.items.push(pair);
@@ -31746,7 +31746,7 @@ var require_resolve_block_seq = /* @__PURE__ */ __commonJSMin(((exports) => {
 	var resolveProps = require_resolve_props();
 	var utilFlowIndentCheck = require_util_flow_indent_check();
 	function resolveBlockSeq({ composeNode, composeEmptyNode }, ctx, bs, onError, tag) {
-		const seq = new (tag?.nodeClass ?? YAMLSeq.YAMLSeq)(ctx.schema);
+		const seq = new ((tag?.nodeClass) ?? YAMLSeq.YAMLSeq)(ctx.schema);
 		if (ctx.atRoot) ctx.atRoot = false;
 		if (ctx.atKey) ctx.atKey = false;
 		let offset = bs.offset;
@@ -31760,12 +31760,15 @@ var require_resolve_block_seq = /* @__PURE__ */ __commonJSMin(((exports) => {
 				parentIndent: bs.indent,
 				startOnNewline: true
 			});
-			if (!props.found) if (props.anchor || props.tag || value) if (value?.type === "block-seq") onError(props.end, "BAD_INDENT", "All sequence items must start at the same column");
-			else onError(offset, "MISSING_CHAR", "Sequence item without - indicator");
-			else {
-				commentEnd = props.end;
-				if (props.comment) seq.comment = props.comment;
-				continue;
+			if (!props.found) {
+				if (props.anchor || props.tag || value) {
+					if (value?.type === "block-seq") onError(props.end, "BAD_INDENT", "All sequence items must start at the same column");
+					else onError(offset, "MISSING_CHAR", "Sequence item without - indicator");
+				} else {
+					commentEnd = props.end;
+					if (props.comment) seq.comment = props.comment;
+					continue;
+				}
 			}
 			const node = value ? composeNode(ctx, value, props, onError) : composeEmptyNode(ctx, props.end, start, null, props, onError);
 			if (ctx.schema.compat) utilFlowIndentCheck.flowIndentCheck(bs.indent, value, onError);
@@ -31835,7 +31838,7 @@ var require_resolve_flow_collection = /* @__PURE__ */ __commonJSMin(((exports) =
 	function resolveFlowCollection({ composeNode, composeEmptyNode }, ctx, fc, onError, tag) {
 		const isMap = fc.start.source === "{";
 		const fcName = isMap ? "flow map" : "flow sequence";
-		const coll = new (tag?.nodeClass ?? (isMap ? YAMLMap.YAMLMap : YAMLSeq.YAMLSeq))(ctx.schema);
+		const coll = new ((tag?.nodeClass) ?? (isMap ? YAMLMap.YAMLMap : YAMLSeq.YAMLSeq))(ctx.schema);
 		coll.flow = true;
 		const atRoot = ctx.atRoot;
 		if (atRoot) ctx.atRoot = false;
@@ -31857,8 +31860,10 @@ var require_resolve_flow_collection = /* @__PURE__ */ __commonJSMin(((exports) =
 				if (!props.anchor && !props.tag && !sep && !value) {
 					if (i === 0 && props.comma) onError(props.comma, "UNEXPECTED_TOKEN", `Unexpected , in ${fcName}`);
 					else if (i < fc.items.length - 1) onError(props.start, "UNEXPECTED_TOKEN", `Unexpected empty item in ${fcName}`);
-					if (props.comment) if (coll.comment) coll.comment += "\n" + props.comment;
-					else coll.comment = props.comment;
+					if (props.comment) {
+						if (coll.comment) coll.comment += "\n" + props.comment;
+						else coll.comment = props.comment;
+					}
 					offset = props.end;
 					continue;
 				}
@@ -31918,13 +31923,17 @@ var require_resolve_flow_collection = /* @__PURE__ */ __commonJSMin(((exports) =
 						}
 						if (props.start < valueProps.found.offset - 1024) onError(valueProps.found, "KEY_OVER_1024_CHARS", "The : indicator must be at most 1024 chars after the start of an implicit flow sequence key");
 					}
-				} else if (value) if ("source" in value && value.source?.[0] === ":") onError(value, "MISSING_CHAR", `Missing space after : in ${fcName}`);
-				else onError(valueProps.start, "MISSING_CHAR", `Missing , or : between ${fcName} items`);
+				} else if (value) {
+					if ("source" in value && value.source?.[0] === ":") onError(value, "MISSING_CHAR", `Missing space after : in ${fcName}`);
+					else onError(valueProps.start, "MISSING_CHAR", `Missing , or : between ${fcName} items`);
+				}
 				const valueNode = value ? composeNode(ctx, value, valueProps, onError) : valueProps.found ? composeEmptyNode(ctx, valueProps.end, sep, null, valueProps, onError) : null;
 				if (valueNode) {
 					if (isBlock(value)) onError(valueNode.range, "BLOCK_IN_FLOW", blockMsg);
-				} else if (valueProps.comment) if (keyNode.comment) keyNode.comment += "\n" + valueProps.comment;
-				else keyNode.comment = valueProps.comment;
+				} else if (valueProps.comment) {
+					if (keyNode.comment) keyNode.comment += "\n" + valueProps.comment;
+					else keyNode.comment = valueProps.comment;
+				}
 				const pair = new Pair.Pair(keyNode, valueNode);
 				if (ctx.options.keepSourceTokens) pair.srcToken = collItem;
 				if (isMap) {
@@ -31958,8 +31967,10 @@ var require_resolve_flow_collection = /* @__PURE__ */ __commonJSMin(((exports) =
 		}
 		if (ee.length > 0) {
 			const end = resolveEnd.resolveEnd(ee, cePos, ctx.options.strict, onError);
-			if (end.comment) if (coll.comment) coll.comment += "\n" + end.comment;
-			else coll.comment = end.comment;
+			if (end.comment) {
+				if (coll.comment) coll.comment += "\n" + end.comment;
+				else coll.comment = end.comment;
+			}
 			coll.range = [
 				fc.offset,
 				cePos,
@@ -32107,9 +32118,10 @@ var require_resolve_block_scalar = /* @__PURE__ */ __commonJSMin(((exports) => {
 				value += sep + indent.slice(trimIndent) + content;
 				sep = "\n";
 				prevMoreIndented = true;
-			} else if (content === "") if (sep === "\n") value += "\n";
-			else sep = "\n";
-			else {
+			} else if (content === "") {
+				if (sep === "\n") value += "\n";
+				else sep = "\n";
+			} else {
 				value += sep + content;
 				sep = " ";
 				prevMoreIndented = false;
@@ -32270,9 +32282,7 @@ var require_resolve_flow_scalar = /* @__PURE__ */ __commonJSMin(((exports) => {
 				badChar = `block scalar indicator ${source[0]}`;
 				break;
 			case "@":
-			case "`":
-				badChar = `reserved character ${source[0]}`;
-				break;
+			case "`": badChar = `reserved character ${source[0]}`;
 		}
 		if (badChar) onError(0, "BAD_SCALAR_START", `Plain value cannot start with ${badChar}`);
 		return foldLines(source);
@@ -32304,9 +32314,10 @@ var require_resolve_flow_scalar = /* @__PURE__ */ __commonJSMin(((exports) => {
 		let pos = first.lastIndex;
 		line.lastIndex = pos;
 		while (match = line.exec(source)) {
-			if (match[1] === "") if (sep === "\n") res += sep;
-			else sep = "\n";
-			else {
+			if (match[1] === "") {
+				if (sep === "\n") res += sep;
+				else sep = "\n";
+			} else {
 				res += sep + match[1];
 				sep = " ";
 			}
@@ -32442,8 +32453,10 @@ var require_compose_scalar = /* @__PURE__ */ __commonJSMin(((exports) => {
 	function findScalarTagByName(schema, value, tagName, tagToken, onError) {
 		if (tagName === "!") return schema[identity.SCALAR];
 		const matchWithTest = [];
-		for (const tag of schema.tags) if (!tag.collection && tag.tag === tagName) if (tag.default && tag.test) matchWithTest.push(tag);
-		else return tag;
+		for (const tag of schema.tags) if (!tag.collection && tag.tag === tagName) {
+			if (tag.default && tag.test) matchWithTest.push(tag);
+			else return tag;
+		}
 		for (const tag of matchWithTest) if (tag.test?.test(value)) return tag;
 		const kt = schema.knownTags[tagName];
 		if (kt && !kt.collection) {
@@ -32541,8 +32554,10 @@ var require_compose_node = /* @__PURE__ */ __commonJSMin(((exports) => {
 		if (anchor && node.anchor === "") onError(anchor, "BAD_ALIAS", "Anchor cannot be an empty string");
 		if (atKey && ctx.options.stringKeys && (!identity.isScalar(node) || typeof node.value !== "string" || node.tag && node.tag !== "tag:yaml.org,2002:str")) onError(tag ?? token, "NON_STRING_KEY", "With stringKeys, all keys must be strings");
 		if (spaceBefore) node.spaceBefore = true;
-		if (comment) if (token.type === "scalar" && token.source === "") node.comment = comment;
-		else node.commentBefore = comment;
+		if (comment) {
+			if (token.type === "scalar" && token.source === "") node.comment = comment;
+			else node.commentBefore = comment;
+		}
 		if (ctx.options.keepSourceTokens && isSrcToken) node.srcToken = token;
 		return node;
 	}
@@ -33731,11 +33746,13 @@ var require_lexer = /* @__PURE__ */ __commonJSMin(((exports) => {
 				end = i;
 			} else if (isEmpty(ch)) {
 				let next = this.buffer[i + 1];
-				if (ch === "\r") if (next === "\n") {
-					i += 1;
-					ch = "\n";
-					next = this.buffer[i + 1];
-				} else end = i;
+				if (ch === "\r") {
+					if (next === "\n") {
+						i += 1;
+						ch = "\n";
+						next = this.buffer[i + 1];
+					} else end = i;
+				}
 				if (next === "#" || inFlow && flowIndicatorChars.has(next)) break;
 				if (ch === "\n") {
 					const cs = this.continueScalar(i + 1);
@@ -33952,9 +33969,10 @@ var require_parser = /* @__PURE__ */ __commonJSMin(((exports) => {
 			for (const it of fc.items) if (it.sep && !it.value && !includesToken(it.start, "explicit-key-ind") && !includesToken(it.sep, "map-value-ind")) {
 				if (it.key) it.value = it.key;
 				delete it.key;
-				if (isFlowToken(it.value)) if (it.value.end) arrayPushArray(it.value.end, it.sep);
-				else it.value.end = it.sep;
-				else arrayPushArray(it.start, it.sep);
+				if (isFlowToken(it.value)) {
+					if (it.value.end) arrayPushArray(it.value.end, it.sep);
+					else it.value.end = it.sep;
+				} else arrayPushArray(it.start, it.sep);
 				delete it.sep;
 			}
 		}
@@ -34389,13 +34407,31 @@ var require_parser = /* @__PURE__ */ __commonJSMin(((exports) => {
 						this.onKeyLine = true;
 						return;
 					case "map-value-ind":
-						if (it.explicitKey) if (!it.sep) if (includesToken(it.start, "newline")) Object.assign(it, {
-							key: null,
-							sep: [this.sourceToken]
-						});
-						else {
-							const start = getFirstKeyStartProps(it.start);
-							this.stack.push({
+						if (it.explicitKey) {
+							if (!it.sep) {
+								if (includesToken(it.start, "newline")) Object.assign(it, {
+									key: null,
+									sep: [this.sourceToken]
+								});
+								else {
+									const start = getFirstKeyStartProps(it.start);
+									this.stack.push({
+										type: "block-map",
+										offset: this.offset,
+										indent: this.indent,
+										items: [{
+											start,
+											key: null,
+											sep: [this.sourceToken]
+										}]
+									});
+								}
+							} else if (it.value) map.items.push({
+								start: [],
+								key: null,
+								sep: [this.sourceToken]
+							});
+							else if (includesToken(it.sep, "map-value-ind")) this.stack.push({
 								type: "block-map",
 								offset: this.offset,
 								indent: this.indent,
@@ -34405,42 +34441,26 @@ var require_parser = /* @__PURE__ */ __commonJSMin(((exports) => {
 									sep: [this.sourceToken]
 								}]
 							});
-						}
-						else if (it.value) map.items.push({
-							start: [],
-							key: null,
-							sep: [this.sourceToken]
-						});
-						else if (includesToken(it.sep, "map-value-ind")) this.stack.push({
-							type: "block-map",
-							offset: this.offset,
-							indent: this.indent,
-							items: [{
-								start,
-								key: null,
-								sep: [this.sourceToken]
-							}]
-						});
-						else if (isFlowToken(it.key) && !includesToken(it.sep, "newline")) {
-							const start = getFirstKeyStartProps(it.start);
-							const key = it.key;
-							const sep = it.sep;
-							sep.push(this.sourceToken);
-							delete it.key;
-							delete it.sep;
-							this.stack.push({
-								type: "block-map",
-								offset: this.offset,
-								indent: this.indent,
-								items: [{
-									start,
-									key,
-									sep
-								}]
-							});
-						} else if (start.length > 0) it.sep = it.sep.concat(start, this.sourceToken);
-						else it.sep.push(this.sourceToken);
-						else if (!it.sep) Object.assign(it, {
+							else if (isFlowToken(it.key) && !includesToken(it.sep, "newline")) {
+								const start = getFirstKeyStartProps(it.start);
+								const key = it.key;
+								const sep = it.sep;
+								sep.push(this.sourceToken);
+								delete it.key;
+								delete it.sep;
+								this.stack.push({
+									type: "block-map",
+									offset: this.offset,
+									indent: this.indent,
+									items: [{
+										start,
+										key,
+										sep
+									}]
+								});
+							} else if (start.length > 0) it.sep = it.sep.concat(start, this.sourceToken);
+							else it.sep.push(this.sourceToken);
+						} else if (!it.sep) Object.assign(it, {
 							key: null,
 							sep: [this.sourceToken]
 						});
@@ -34813,8 +34833,10 @@ var require_public_api = /* @__PURE__ */ __commonJSMin(((exports) => {
 		const doc = parseDocument(src, options);
 		if (!doc) return null;
 		doc.warnings.forEach((warning) => log.warn(doc.options.logLevel, warning));
-		if (doc.errors.length > 0) if (doc.options.logLevel !== "silent") throw doc.errors[0];
-		else doc.errors = [];
+		if (doc.errors.length > 0) {
+			if (doc.options.logLevel !== "silent") throw doc.errors[0];
+			else doc.errors = [];
+		}
 		return doc.toJS(Object.assign({ reviver: _reviver }, options));
 	}
 	function stringify(value, replacer, options) {
@@ -35045,7 +35067,8 @@ var CSpellConfigFileYaml = class CSpellConfigFileYaml extends MutableCSpellConfi
 		return parseCSpellConfigFileYaml(file);
 	}
 	static from(url, settings, indent = 2) {
-		return new CSpellConfigFileYaml(url, new import_dist.Document(settings), indent);
+		const yamlDoc = new import_dist.Document(settings);
+		return new CSpellConfigFileYaml(url, yamlDoc, indent);
 	}
 };
 function parseCSpellConfigFileYaml(file) {
@@ -35501,29 +35524,21 @@ async function writeFile$1(file) {
 }
 //#endregion
 //#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
-const _log = () => void 0;
 async function importJavaScript(url, hashSuffix) {
 	try {
 		const _url = new URL(url.href);
 		_url.hash = `${_url.hash};loaderSuffix=${hashSuffix}`;
-		_log("importJavaScript: %o", { url: _url.href });
+		_url.href;
 		let result = await import(_url.href);
 		result = result.default ?? result;
 		result = result.default ?? result;
 		const settingsOrFunction = await result;
 		return new CSpellConfigFileJavaScript(url, typeof settingsOrFunction === "function" ? await settingsOrFunction() : settingsOrFunction);
 	} catch (e) {
-		_log("importJavaScript Error: %o", {
-			url: url.href,
-			error: e,
-			hashSuffix
-		});
+		url.href;
 		throw e;
 	} finally {
-		_log("importJavaScript Done: %o", {
-			url: url.href,
-			hashSuffix
-		});
+		url.href;
 	}
 }
 var LoaderJavaScript = class {
@@ -35692,34 +35707,34 @@ const homedir$1 = os$1.homedir();
 const tmpdir = os$1.tmpdir();
 const { env: env$2 } = process$1;
 const macos = (name) => {
-	const library = path.join(homedir$1, "Library");
+	const library = Path.join(homedir$1, "Library");
 	return {
-		data: path.join(library, "Application Support", name),
-		config: path.join(library, "Preferences", name),
-		cache: path.join(library, "Caches", name),
-		log: path.join(library, "Logs", name),
-		temp: path.join(tmpdir, name)
+		data: Path.join(library, "Application Support", name),
+		config: Path.join(library, "Preferences", name),
+		cache: Path.join(library, "Caches", name),
+		log: Path.join(library, "Logs", name),
+		temp: Path.join(tmpdir, name)
 	};
 };
 const windows = (name) => {
-	const appData = env$2.APPDATA || path.join(homedir$1, "AppData", "Roaming");
-	const localAppData = env$2.LOCALAPPDATA || path.join(homedir$1, "AppData", "Local");
+	const appData = env$2.APPDATA || Path.join(homedir$1, "AppData", "Roaming");
+	const localAppData = env$2.LOCALAPPDATA || Path.join(homedir$1, "AppData", "Local");
 	return {
-		data: path.join(localAppData, name, "Data"),
-		config: path.join(appData, name, "Config"),
-		cache: path.join(localAppData, name, "Cache"),
-		log: path.join(localAppData, name, "Log"),
-		temp: path.join(tmpdir, name)
+		data: Path.join(localAppData, name, "Data"),
+		config: Path.join(appData, name, "Config"),
+		cache: Path.join(localAppData, name, "Cache"),
+		log: Path.join(localAppData, name, "Log"),
+		temp: Path.join(tmpdir, name)
 	};
 };
 const linux = (name) => {
-	const username = path.basename(homedir$1);
+	const username = Path.basename(homedir$1);
 	return {
-		data: path.join(env$2.XDG_DATA_HOME || path.join(homedir$1, ".local", "share"), name),
-		config: path.join(env$2.XDG_CONFIG_HOME || path.join(homedir$1, ".config"), name),
-		cache: path.join(env$2.XDG_CACHE_HOME || path.join(homedir$1, ".cache"), name),
-		log: path.join(env$2.XDG_STATE_HOME || path.join(homedir$1, ".local", "state"), name),
-		temp: path.join(tmpdir, username, name)
+		data: Path.join(env$2.XDG_DATA_HOME || Path.join(homedir$1, ".local", "share"), name),
+		config: Path.join(env$2.XDG_CONFIG_HOME || Path.join(homedir$1, ".config"), name),
+		cache: Path.join(env$2.XDG_CACHE_HOME || Path.join(homedir$1, ".cache"), name),
+		log: Path.join(env$2.XDG_STATE_HOME || Path.join(homedir$1, ".local", "state"), name),
+		temp: Path.join(tmpdir, username, name)
 	};
 };
 function envPaths(name, { suffix = "nodejs" } = {}) {
@@ -35734,10 +35749,10 @@ function envPaths(name, { suffix = "nodejs" } = {}) {
 //#region ../node_modules/.pnpm/xdg-basedir@5.1.0/node_modules/xdg-basedir/index.js
 const homeDirectory = os.homedir();
 const { env: env$1 } = process;
-const xdgData = env$1.XDG_DATA_HOME || (homeDirectory ? path$1.join(homeDirectory, ".local", "share") : void 0);
-const xdgConfig = env$1.XDG_CONFIG_HOME || (homeDirectory ? path$1.join(homeDirectory, ".config") : void 0);
-env$1.XDG_STATE_HOME || homeDirectory && path$1.join(homeDirectory, ".local", "state");
-env$1.XDG_CACHE_HOME || homeDirectory && path$1.join(homeDirectory, ".cache");
+const xdgData = env$1.XDG_DATA_HOME || (homeDirectory ? path.join(homeDirectory, ".local", "share") : void 0);
+const xdgConfig = env$1.XDG_CONFIG_HOME || (homeDirectory ? path.join(homeDirectory, ".config") : void 0);
+env$1.XDG_STATE_HOME || homeDirectory && path.join(homeDirectory, ".local", "state");
+env$1.XDG_CACHE_HOME || homeDirectory && path.join(homeDirectory, ".cache");
 env$1.XDG_RUNTIME_DIR;
 const xdgDataDirectories = (env$1.XDG_DATA_DIRS || "/usr/local/share/:/usr/share/").split(":");
 if (xdgData) xdgDataDirectories.unshift(xdgData);
@@ -35746,7 +35761,7 @@ if (xdgConfig) xdgConfigDirectories.unshift(xdgConfig);
 //#endregion
 //#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 const packageName = "cspell";
-const legacyLocationDir = xdgConfig ? path.join(xdgConfig, "configstore") : void 0;
+const legacyLocationDir = xdgConfig ? Path.join(xdgConfig, "configstore") : void 0;
 const cspellGlobalLocationDir = envPaths(packageName, { suffix: "" }).config;
 const defaultConfigFileName = "cspell.json";
 const searchOrder = [cspellGlobalLocationDir, legacyLocationDir].filter(isDefined$2);
@@ -35772,8 +35787,8 @@ var GlobalConfigStore = class {
 			const found = await this.#readConfigFile(this.#foundLocation);
 			if (found) return found;
 		}
-		const firstFile = path.resolve(cspellGlobalLocationDir, this.#baseFilename);
-		const possibleLocations = new Set([firstFile, ...searchOrder.map((p) => path.resolve(p, defaultConfigFileName))]);
+		const firstFile = Path.resolve(cspellGlobalLocationDir, this.#baseFilename);
+		const possibleLocations = /* @__PURE__ */ new Set([firstFile, ...searchOrder.map((p) => Path.resolve(p, defaultConfigFileName))]);
 		for (const filename of possibleLocations) {
 			const found = await this.#readConfigFile(filename);
 			if (found) {
@@ -35783,8 +35798,8 @@ var GlobalConfigStore = class {
 		}
 	}
 	async writeConfigFile(cfg) {
-		this.#foundLocation ??= path.join(cspellGlobalLocationDir, this.#baseFilename);
-		await fs$1.mkdir(path.dirname(this.#foundLocation), { recursive: true });
+		this.#foundLocation ??= Path.join(cspellGlobalLocationDir, this.#baseFilename);
+		await fs$1.mkdir(Path.dirname(this.#foundLocation), { recursive: true });
 		await fs$1.writeFile(this.#foundLocation, JSON.stringify(cfg, void 0, 2) + "\n");
 		return this.#foundLocation;
 	}
@@ -35794,7 +35809,7 @@ var GlobalConfigStore = class {
 	static create() {
 		return new this();
 	}
-	static defaultLocation = path.join(cspellGlobalLocationDir, defaultConfigFileName);
+	static defaultLocation = Path.join(cspellGlobalLocationDir, defaultConfigFileName);
 };
 //#endregion
 //#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
@@ -36325,7 +36340,7 @@ function getCommonJsExportNames(exports) {
 		return [];
 	}
 	const names = [];
-	const intrinsicFunctionKeys = typeof exports === "function" ? new Set([
+	const intrinsicFunctionKeys = typeof exports === "function" ? /* @__PURE__ */ new Set([
 		"length",
 		"name",
 		"prototype"
@@ -36590,21 +36605,21 @@ function createImportFresh(parentUrl, options = {}) {
 //#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/findUp.js
 async function findUp(name, options = {}) {
 	const { cwd = process.cwd(), type: entryType = "file", stopAt } = options;
-	let dir = path.resolve(toDirPath(cwd));
-	const root = path.parse(dir).root;
+	let dir = Path.resolve(toDirPath(cwd));
+	const root = Path.parse(dir).root;
 	const predicate = makePredicate(name, entryType);
-	const stopAtDir = path.resolve(toDirPath(stopAt || root));
+	const stopAtDir = Path.resolve(toDirPath(stopAt || root));
 	while (dir !== root && dir !== stopAtDir) {
 		const found = await predicate(dir);
 		if (found !== void 0) return found;
-		dir = path.dirname(dir);
+		dir = Path.dirname(dir);
 	}
 }
 function makePredicate(name, entryType) {
 	if (typeof name === "function") return name;
 	const checkStat = entryType === "file" ? "isFile" : "isDirectory";
 	function checkName(dir, name) {
-		const f = path.join(dir, name);
+		const f = Path.join(dir, name);
 		return stat$1(f).then((stats) => stats[checkStat]() && f || void 0).catch(() => void 0);
 	}
 	if (!Array.isArray(name)) return (dir) => checkName(dir, name);
@@ -36625,7 +36640,7 @@ function toDirPath(urlOrPath) {
 * Handles loading of `.pnp.js` and `.pnp.js` files.
 */
 const defaultPnpFiles = [".pnp.cjs", ".pnp.js"];
-const supportedSchemas = new Set(["file:"]);
+const supportedSchemas = /* @__PURE__ */ new Set(["file:"]);
 const cachedRequests = /* @__PURE__ */ new Map();
 let lock = void 0;
 const cachedPnpImports = /* @__PURE__ */ new Map();
@@ -36736,7 +36751,7 @@ const supportedExtensions = [
 * - To support `cspell.config.js` in a VS Code environment, have a `cspell.json` import
 *   the `cspell.config.js`.
 */
-const setOfLocations = new Set([
+const setOfLocations = /* @__PURE__ */ new Set([
 	"package.json",
 	".cspell.json",
 	"cspell.json",
@@ -36970,7 +36985,7 @@ function normalizePnPSettings(settings) {
 function equal(a, b) {
 	return a === b || a.usePnP === b.usePnP && (a.pnpFiles === b.pnpFiles || a.pnpFiles?.join("|") === b.pnpFiles?.join("|"));
 }
-Object.freeze(new Set(["0.2"]));
+Object.freeze(/* @__PURE__ */ new Set(["0.2"]));
 let defaultConfigLoader = void 0;
 const defaultExtensions = [
 	".json",
@@ -36988,8 +37003,8 @@ const defaultJsExtensions = [
 	".cts"
 ];
 const defaultExtensionsAll = [...defaultExtensions, ...defaultJsExtensions];
-const trustedSearch = new Map([["*", defaultExtensions], ["file:", defaultExtensionsAll]]);
-const unTrustedSearch = new Map([["*", defaultExtensions]]);
+const trustedSearch = /* @__PURE__ */ new Map([["*", defaultExtensions], ["file:", defaultExtensionsAll]]);
+const unTrustedSearch = /* @__PURE__ */ new Map([["*", defaultExtensions]]);
 var ConfigLoader = class {
 	fs;
 	templateVariables;
@@ -37280,7 +37295,7 @@ var ConfigLoader = class {
 		const waitFor = [];
 		for (const [href, entry] of entries) {
 			if (this.#knownVirtualFiles.has(href)) continue;
-			assert(href.startsWith(CSPELL_VFS_PROTOCOL + "///"), `Invalid virtual file URL: ${href}`);
+			assert(href.startsWith("cspell-vfs:///"), `Invalid virtual file URL: ${href}`);
 			const url = toFileURL(href);
 			let content = entry.data;
 			if (typeof content === "string" && entry.encoding === "base64") content = Buffer.from(content, "base64");
@@ -37378,7 +37393,7 @@ function resolveGlobRoot(settings, urlSettingsFile) {
 	const defaultGlobRoot = envGlobRoot ?? "${cwd}";
 	const rawRoot = settings.globRoot ?? (settings.version === "0.1" || envGlobRoot && !settings.version || isVSCode && !settings.version ? defaultGlobRoot : settingsFileDir);
 	const globRoot = rawRoot.startsWith("${cwd}") ? rawRoot : toFileURL(rawRoot, new URL(settingsFileDir));
-	return typeof globRoot === "string" ? globRoot : globRoot.protocol === "file:" ? windowsDriveLetterToUpper(path.resolve(fileURLToPath(globRoot))) : addTrailingSlash(globRoot).href;
+	return typeof globRoot === "string" ? globRoot : globRoot.protocol === "file:" ? windowsDriveLetterToUpper(Path.resolve(fileURLToPath(globRoot))) : addTrailingSlash(globRoot).href;
 }
 function createConfigLoaderInternal(fs) {
 	return new ConfigLoaderInternal(fs ?? getVirtualFS().fs);
@@ -38027,8 +38042,10 @@ function applyCaptures(rule, match, captures) {
 		function* _chain(chain) {
 			while (chain) {
 				const seg = chain.seg;
-				if (seg.groupName) if (Array.isArray(seg.groupName)) yield* seg.groupName;
-				else yield seg.groupName;
+				if (seg.groupName) {
+					if (Array.isArray(seg.groupName)) yield* seg.groupName;
+					else yield seg.groupName;
+				}
 				yield seg.groupNum.toString();
 				chain = chain.next;
 			}
@@ -38467,7 +38484,6 @@ function mapRawString(text) {
 				default:
 					t += tc;
 					++j;
-					break;
 			}
 			map.push(i + 1, j);
 			continue;
@@ -39447,7 +39463,8 @@ function determineType(uri, opts) {
 	return /\.b?trie\b/i.test(uri.pathname) ? "T" : defType;
 }
 async function load(reader, uri, options) {
-	return (loaders[determineType(uri, options)] || loaders.default)(reader, uri, options);
+	const type = determineType(uri, options);
+	return (loaders[type] || loaders.default)(reader, uri, options);
 }
 async function legacyWordList(reader, filename, options) {
 	const env_1 = {
@@ -39516,21 +39533,10 @@ function getDictionaryLoader(vfs) {
 function loadDictionary(def) {
 	return getDictionaryLoader().loadDictionary(def);
 }
-/**
-* Check to see if any of the cached dictionaries have changed. If one has changed, reload it.
-* @param maxAge - Only check the dictionary if it has been at least `maxAge` ms since the last check.
-* @param now - optional timestamp representing now. (Mostly used in testing)
-*/
-async function refreshCacheEntries(maxAge, now) {
-	return getDictionaryLoader().refreshCacheEntries(maxAge, now);
-}
 //#endregion
 //#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
 function loadDictionaryDefs(defsToLoad) {
 	return defsToLoad.map(loadDictionary);
-}
-function refreshDictionaryCache(maxAge) {
-	return refreshCacheEntries(maxAge);
 }
 const emptyWords = Object.freeze([]);
 async function getDictionaryInternal(settings) {
@@ -40694,14 +40700,14 @@ const definitions = [
 //#endregion
 //#region ../node_modules/.pnpm/@cspell+filetypes@10.0.1/node_modules/@cspell/filetypes/dist/filetypes.js
 const binaryFormatIds = definitions.filter((d) => d.format === "Binary").map((d) => d.id);
-const binaryLanguages = new Set([
+const binaryLanguages = /* @__PURE__ */ new Set([
 	"binary",
 	"image",
 	"video",
 	"fonts",
 	...binaryFormatIds
 ]);
-const generatedFiles = new Set([
+const generatedFiles = /* @__PURE__ */ new Set([
 	...binaryLanguages,
 	"map",
 	"lock",
@@ -41538,8 +41544,8 @@ const officialDirectives = [
 	"enableCaseSensitive",
 	"disableCaseSensitive"
 ];
-const noSuggestDirectives = new Set(["local"]);
-const allDirectives = new Set([...[
+const noSuggestDirectives = /* @__PURE__ */ new Set(["local"]);
+const allDirectives = /* @__PURE__ */ new Set([...[
 	"enable",
 	"disable",
 	"disable-line",
@@ -41809,7 +41815,7 @@ async function determineTextDocumentSettings(doc, settings) {
 	return combineTextAndLanguageSettings(fileSettings, doc.text, languageIds);
 }
 function getLanguageForFilename(filename) {
-	return findMatchingFileTypes(Path.basename(filename));
+	return findMatchingFileTypes(Path$1.basename(filename));
 }
 //#endregion
 //#region ../node_modules/.pnpm/@cspell+cspell-types@10.0.1/node_modules/@cspell/cspell-types/dist/index.mjs
@@ -41936,92 +41942,8 @@ function recKV(key, value) {
 	if (value === void 0) return void 0;
 	return { [key]: value };
 }
-//#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/memoizeLastCall.js
-function memoizeLastCall(fn) {
-	let last;
-	return (...p) => {
-		if (last && isArrayEqual(last.args, p)) return last.value;
-		const args = p;
-		const value = fn(...args);
-		last = {
-			args,
-			value
-		};
-		return value;
-	};
-}
 Object.freeze({});
 Object.freeze({});
-memoizeLastCall(cacheSuggestionsForWord);
-function cacheSuggestionsForWord(options, settings) {
-	const cache = createAutoResolveCache();
-	return (word) => cache.get(word, (word) => _suggestionsForWord(word, options, settings));
-}
-async function _suggestionsForWord(word, options, settings) {
-	const { languageId, locale: language, includeDefaultConfig = true, dictionaries } = options;
-	async function determineDictionaries(config) {
-		const withLocale = mergeSettings(config, clean$1({ language: language || config.language }));
-		const settings = finalizeSettings(calcSettingsForLanguageId(withLocale, languageId ?? withLocale.languageId ?? "plaintext"));
-		settings.dictionaries = dictionaries?.length ? dictionaries : settings.dictionaries || [];
-		validateDictionaries(settings, dictionaries);
-		const dictionaryCollection = await getDictionaryInternal(settings);
-		settings.dictionaries = settings.dictionaryDefinitions?.map((def) => def.name) || [];
-		return {
-			dictionaryCollection,
-			allDictionaryCollection: await getDictionaryInternal(settings)
-		};
-	}
-	await refreshDictionaryCache();
-	const { dictionaryCollection, allDictionaryCollection } = await determineDictionaries(includeDefaultConfig ? mergeSettings(await getDefaultSettings(settings.loadDefaultConfiguration ?? true), await getGlobalSettingsAsync(), settings) : settings);
-	return _suggestionsForWordAsync(word, options, settings, dictionaryCollection, allDictionaryCollection);
-}
-async function _suggestionsForWordAsync(word, options, settings, dictionaryCollection, allDictionaryCollection) {
-	const extendsDictionaryCollection = allDictionaryCollection || dictionaryCollection;
-	const { locale: language, strict = true, numChanges = 4, numSuggestions = 8, includeTies = true, includeDefaultConfig = true } = options;
-	const ignoreCase = !strict;
-	const config = includeDefaultConfig ? mergeSettings(await getDefaultSettings(settings.loadDefaultConfiguration ?? true), await getGlobalSettingsAsync(), settings) : settings;
-	const opts = {
-		ignoreCase,
-		numChanges,
-		numSuggestions,
-		includeTies
-	};
-	const suggestionsByDictionary = dictionaryCollection.dictionaries.flatMap((dict) => dict.suggest(word, opts).map((r) => ({
-		...r,
-		dictName: dict.name
-	})));
-	const locale = adjustLocale(language || config.language || void 0);
-	const collator = Intl.Collator(locale);
-	return {
-		word,
-		suggestions: limitResults(calcSuggestionAdjustedToToMatchCase(word, limitResults(combine(suggestionsByDictionary.sort((a, b) => a.cost - b.cost || collator.compare(a.word, b.word))), numSuggestions, includeTies), locale, ignoreCase, extendsDictionaryCollection).map((sug) => {
-			const found = extendsDictionaryCollection.find(sug.word);
-			return {
-				...sug,
-				forbidden: found?.forbidden || false,
-				noSuggest: found?.noSuggest || false
-			};
-		}), numSuggestions, includeTies)
-	};
-}
-function combine(suggestions) {
-	const words = /* @__PURE__ */ new Map();
-	for (const sug of suggestions) {
-		const { word, cost, dictName, ...rest } = sug;
-		const f = words.get(word) || {
-			word,
-			cost,
-			...rest,
-			dictionaries: []
-		};
-		f.cost = Math.min(f.cost, cost);
-		f.dictionaries.push(dictName);
-		f.dictionaries.sort();
-		words.set(word, f);
-	}
-	return [...words.values()];
-}
 function adjustLocale(locale) {
 	if (!locale) return void 0;
 	const locales = [...normalizeLocaleIntl(locale)].filter((locale) => isValidLocaleIntlFormat(locale));
@@ -42050,20 +41972,6 @@ function calcSuggestionAdjustedToToMatchCase(originalWord, sugs, locale, ignoreC
 		}
 		return sug;
 	});
-}
-function limitResults(suggestions, numSuggestions, includeTies) {
-	let cost = suggestions[0]?.cost;
-	let i = 0;
-	for (; i < suggestions.length; ++i) {
-		if (i >= numSuggestions && (!includeTies || suggestions[i].cost > cost)) break;
-		cost = suggestions[i].cost;
-	}
-	return suggestions.slice(0, i);
-}
-function validateDictionaries(settings, dictionaries) {
-	if (!dictionaries?.length) return;
-	const knownDicts = new Set(settings.dictionaryDefinitions?.map((def) => def.name) || []);
-	for (const dict of dictionaries) if (!knownDicts.has(dict)) throw new SuggestionError(`Unknown dictionary: "${dict}"`, "E_dictionary_unknown");
 }
 function matchCase(word, isPreferred, style) {
 	const locale = style.locale;
@@ -42106,13 +42014,6 @@ function isTitleCase(word) {
 function isAllCaps(word) {
 	return regExpIsAllCaps.test(word);
 }
-var SuggestionError = class extends Error {
-	code;
-	constructor(message, code) {
-		super(message);
-		this.code = code;
-	}
-};
 //#endregion
 //#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Transform/SourceMap.js
 var SourceMapCursorImpl = class {
@@ -43804,7 +43705,8 @@ var DocumentValidator = class DocumentValidator {
 	perfTiming = {};
 	skipValidation;
 	static async create(doc, options, settingsOrConfigFile) {
-		const validator = new DocumentValidator(doc, options, satisfiesCSpellConfigFile(settingsOrConfigFile) ? await resolveConfigFileImports(settingsOrConfigFile) : settingsOrConfigFile);
+		const settings = satisfiesCSpellConfigFile(settingsOrConfigFile) ? await resolveConfigFileImports(settingsOrConfigFile) : settingsOrConfigFile;
+		const validator = new DocumentValidator(doc, options, settings);
 		await validator.prepare();
 		return validator;
 	}
@@ -44717,14 +44619,14 @@ const applyStyle = (self, string) => {
 };
 Object.defineProperties(createChalk.prototype, styles);
 const chalk = createChalk();
-const chalkStderr = createChalk({ level: stderrColor ? stderrColor.level : 0 });
+createChalk({ level: stderrColor ? stderrColor.level : 0 });
 //#endregion
 //#region ../node_modules/.pnpm/chalk-template@1.1.2/node_modules/chalk-template/index.js
 const TEMPLATE_REGEX = /(?:\\(u(?:[a-f\d]{4}|{[a-f\d]{1,6}})|x[a-f\d]{2}|.))|(?:{(~)?(#?[\w:]+(?:\([^)]*\))?(?:\.#?[\w:]+(?:\([^)]*\))?)*)(?:[ \t]|(?=\r?\n)))|(})|((?:.|[\r\n\f])+?)/gi;
 const STYLE_REGEX = /(?:^|\.)(?:(?:(\w+)(?:\(([^)]*)\))?)|(?:#(?=[:a-fA-F\d]{2,})([a-fA-F\d]{6})?(?::([a-fA-F\d]{6}))?))/g;
 const STRING_REGEX = /^(['"])((?:\\.|(?!\1)[^\\])*)\1$/;
 const ESCAPE_REGEX = /\\(u(?:[a-f\d]{4}|{[a-f\d]{1,6}})|x[a-f\d]{2}|.)|([^\\])/gi;
-const ESCAPES = new Map([
+const ESCAPES = /* @__PURE__ */ new Map([
 	["n", "\n"],
 	["r", "\r"],
 	["t", "	"],
@@ -44816,17 +44718,6 @@ function makeTemplate(chalk) {
 	}
 	return template;
 }
-function makeChalkTemplate(template) {
-	function chalkTemplate(firstString, ...arguments_) {
-		if (!Array.isArray(firstString) || !Array.isArray(firstString.raw)) throw new TypeError("A tagged template literal must be provided");
-		const parts = [firstString.raw[0]];
-		for (let index = 1; index < firstString.raw.length; index++) parts.push(String(arguments_[index - 1]).replace(/[{}\\]/g, "\\$&"), String(firstString.raw[index]));
-		return template(parts.join(""));
-	}
-	return chalkTemplate;
-}
-makeChalkTemplate(makeTemplate(chalk));
-makeChalkTemplate(makeTemplate(chalkStderr));
 //#endregion
 //#region ../node_modules/.pnpm/ansi-regex@6.3.0/node_modules/ansi-regex/index.js
 function ansiRegex({ onlyFirst = false } = {}) {
@@ -44906,11 +44797,12 @@ var GitIgnoreFile = class GitIgnoreFile {
 	static parseGitignore(content, gitignoreFilename) {
 		gitignoreFilename = toFileURL(gitignoreFilename);
 		const options = { root: urlDirname(gitignoreFilename).href };
-		return new GitIgnoreFile(new GlobMatcher(content.split(/\r?\n/g).map((glob, index) => ({
+		const globMatcher = new GlobMatcher(content.split(/\r?\n/g).map((glob, index) => ({
 			glob: glob.replace(/^#.*/, ""),
 			source: gitignoreFilename.toString(),
 			line: index + 1
-		})).filter((g) => !!g.glob), options), gitignoreFilename);
+		})).filter((g) => !!g.glob), options);
+		return new GitIgnoreFile(globMatcher, gitignoreFilename);
 	}
 	static async loadGitignore(gitignore, vfs) {
 		gitignore = toFileURL(gitignore);
@@ -47015,7 +46907,7 @@ async function globP(pattern, options) {
 		expandDirectories: false
 	});
 	const compare = new Intl.Collator("en").compare;
-	return (await glob$1(patterns, useOptions)).sort(compare).map((absFilename) => Path.relative(cwd, absFilename));
+	return (await glob$1(patterns, useOptions)).sort(compare).map((absFilename) => Path$1.relative(cwd, absFilename));
 }
 function calcGlobs(commandLineExclude) {
 	const commandLineExcludes = {
@@ -47090,7 +46982,7 @@ async function adjustPossibleDirectory(glob, root) {
 	};
 	if (isPossibleGlobRegExp.test(g.glob)) return glob;
 	if (isPossibleUrlRegExp.test(g.glob)) return glob;
-	const dirPath = Path.resolve(g.root, g.glob);
+	const dirPath = Path$1.resolve(g.root, g.glob);
 	try {
 		if ((await promises.stat(dirPath)).isDirectory()) {
 			const useGlob = posix.join(posixPath(g.glob), "**");
@@ -47105,7 +46997,7 @@ async function adjustPossibleDirectory(glob, root) {
 	return glob;
 }
 function posixPath(p) {
-	return Path.sep === "\\" ? p.replaceAll("\\", "/") : p;
+	return Path$1.sep === "\\" ? p.replaceAll("\\", "/") : p;
 }
 async function normalizeFileOrGlobsToRoot(globs, root) {
 	return normalizeGlobsToRoot(await Promise.all(globs.map((g) => adjustPossibleDirectory(g, root))), root, false);
@@ -47241,8 +47133,8 @@ function readFileListFiles(listFiles) {
 */
 async function readFileListFile(listFile) {
 	try {
-		const relTo = Path.resolve(Path.dirname(listFile));
-		return (await readFile$1(listFile)).split("\n").map((a) => a.trim()).filter((a) => !!a).map((file) => Path.resolve(relTo, file));
+		const relTo = Path$1.resolve(Path$1.dirname(listFile));
+		return (await readFile$1(listFile)).split("\n").map((a) => a.trim()).filter((a) => !!a).map((file) => Path$1.resolve(relTo, file));
 	} catch (err) {
 		throw toApplicationError(err, `Error reading file list from: "${listFile}"`);
 	}
@@ -47476,11 +47368,11 @@ var ImplFileEntryCache = class {
 		await this.cache.save();
 	}
 	resolveKeyToFile(entryKey) {
-		if (this.currentWorkingDir) return path.resolve(this.currentWorkingDir, entryKey);
+		if (this.currentWorkingDir) return Path.resolve(this.currentWorkingDir, entryKey);
 		return entryKey;
 	}
 	#getFileKey(file) {
-		if (this.currentWorkingDir && path.isAbsolute(file)) return normalizePath$1(path.relative(this.currentWorkingDir, file));
+		if (this.currentWorkingDir && Path.isAbsolute(file)) return normalizePath$1(Path.relative(this.currentWorkingDir, file));
 		return normalizePath$1(file);
 	}
 };
@@ -47493,8 +47385,8 @@ function toError(error) {
 	return new Error("Unknown error", { cause: error });
 }
 function normalizePath$1(filePath) {
-	if (path.sep === "/") return filePath;
-	return filePath.split(path.sep).join("/");
+	if (Path.sep === "/") return filePath;
+	return filePath.split(Path.sep).join("/");
 }
 function createFromFile(cacheFileUrl, useCheckSum, useRelative) {
 	return createFromFile$1(cacheFileUrl, useCheckSum, useRelative ? new URL("./", cacheFileUrl) : void 0);
@@ -47754,7 +47646,7 @@ async function createCache(options) {
 async function calcCacheSettings(config, cacheOptions, root) {
 	const cs = config.cache ?? {};
 	const useCache = cacheOptions.cache ?? cs.useCache ?? false;
-	const cacheLocation = await resolveCacheLocation(path.resolve(root, cacheOptions.cacheLocation ?? cs.cacheLocation ?? ".cspellcache"));
+	const cacheLocation = await resolveCacheLocation(Path.resolve(root, cacheOptions.cacheLocation ?? cs.cacheLocation ?? ".cspellcache"));
 	const cacheStrategy = cacheOptions.cacheStrategy ?? cs.cacheStrategy ?? "content";
 	const cacheFormat = cacheOptions.cacheFormat ?? cs.cacheFormat ?? "universal";
 	const optionals = {};
@@ -47771,7 +47663,7 @@ async function calcCacheSettings(config, cacheOptions, root) {
 async function resolveCacheLocation(cacheLocation) {
 	try {
 		if ((await stat$1(cacheLocation)).isFile()) return cacheLocation;
-		return path.join(cacheLocation, DEFAULT_CACHE_LOCATION);
+		return Path.join(cacheLocation, DEFAULT_CACHE_LOCATION);
 	} catch (err) {
 		if (isErrorLike(err) && err.code === "ENOENT") return cacheLocation;
 		throw err;
@@ -48558,11 +48450,11 @@ async function determineFilesToCheck(configInfo, cfg, reporter, globInfo) {
 	function isExcluded(filename, globMatcherExclude) {
 		if (isBinaryFile(toFileURL(filename))) return true;
 		const { root } = cfg;
-		const absFilename = Path.resolve(root, filename);
+		const absFilename = Path$1.resolve(root, filename);
 		const r = globMatcherExclude.matchEx(absFilename);
 		if (r.matched) {
 			const { glob, source } = extractGlobSource(r.pattern);
-			if (calcVerboseLevel(cfg.options) > 1) reporter.info(`Excluded File: ${Path.relative(root, absFilename)}; Excluded by ${glob} from ${source}`, MessageTypes.Info);
+			if (calcVerboseLevel(cfg.options) > 1) reporter.info(`Excluded File: ${Path$1.relative(root, absFilename)}; Excluded by ${glob} from ${source}`, MessageTypes.Info);
 		}
 		return r.matched;
 	}
@@ -48614,7 +48506,7 @@ async function generateGitIgnore(roots) {
 		const repo = await findRepoRoot(cwd) || cwd;
 		root.push(repo);
 	}
-	return new GitIgnore(root?.map((p) => Path.resolve(p)));
+	return new GitIgnore(root?.map((p) => Path$1.resolve(p)));
 }
 async function useFileLists(fileListFiles, filterFiles) {
 	return pipeAsync(readFileListFiles(fileListFiles), opFilter(filterFiles), opFilterAsync(isNotDir));
@@ -48666,7 +48558,7 @@ var LintRequest = class {
 		this.fileGlobs = fileGlobs;
 		this.options = options;
 		this.reporter = reporter;
-		this.root = Path.resolve(options.root || process.cwd());
+		this.root = Path$1.resolve(options.root || process.cwd());
 		this.configFile = options.config;
 		this.excludes = calcExcludeGlobInfo(this.root, options.exclude);
 		this.locale = options.locale ?? options.local ?? "";
@@ -48711,9 +48603,7 @@ function extractUnknownWordsConfig(options) {
 		case "typos":
 			config.unknownWords = unknownWordsChoices.ReportCommonTypos;
 			break;
-		case "flagged":
-			config.unknownWords = unknownWordsChoices.ReportFlagged;
-			break;
+		case "flagged": config.unknownWords = unknownWordsChoices.ReportFlagged;
 	}
 	return config;
 }
@@ -48771,7 +48661,7 @@ async function gatherGitCommitFilesFromContext(context) {
 		const eventFiles = await gatherFiles(context);
 		if (!eventFiles) return void 0;
 		const root = await gitRoot();
-		return [...eventFiles].map((f) => path.resolve(root, f));
+		return [...eventFiles].map((f) => Path.resolve(root, f));
 	}
 }
 async function gatherFileGlobsFromContext(context) {
@@ -48861,7 +48751,7 @@ const core = {
 	warning
 };
 const defaultGlob = "**";
-const supportedIncrementalEvents = new Set(["push", "pull_request"]);
+const supportedIncrementalEvents = /* @__PURE__ */ new Set(["push", "pull_request"]);
 function friendlyEventName(eventName) {
 	switch (eventName) {
 		case "push": return "Push";
@@ -48936,7 +48826,7 @@ function normalizeResult(result) {
 }
 function normalizeFiles(files) {
 	const cwd = process.cwd();
-	return [...files].map((file) => path.relative(cwd, file));
+	return [...files].map((file) => Path.relative(cwd, file));
 }
 //#endregion
 //#region src/actions/github/context.ts
@@ -48963,10 +48853,12 @@ var Context = class {
 	*/
 	constructor() {
 		this.payload = {};
-		if (process.env.GITHUB_EVENT_PATH) if (existsSync(process.env.GITHUB_EVENT_PATH)) this.payload = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: "utf8" }));
-		else {
-			const path = process.env.GITHUB_EVENT_PATH;
-			process.stdout.write(`GITHUB_EVENT_PATH ${path} does not exist${EOL}`);
+		if (process.env.GITHUB_EVENT_PATH) {
+			if (existsSync(process.env.GITHUB_EVENT_PATH)) this.payload = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: "utf8" }));
+			else {
+				const path = process.env.GITHUB_EVENT_PATH;
+				process.stdout.write(`GITHUB_EVENT_PATH ${path} does not exist${EOL}`);
+			}
 		}
 		this.eventName = process.env.GITHUB_EVENT_NAME;
 		this.sha = process.env.GITHUB_SHA;
