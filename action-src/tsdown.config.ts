@@ -12,7 +12,7 @@ export default defineConfig([
         clean: true,
         deps: {
             neverBundle: ['@cspell/cspell-bundled-dicts'],
-            onlyAllowBundle: false, // Nearly everything is inlined.
+            onlyBundle: false, // Nearly everything is inlined.
         },
     },
 ]) as UserConfig[];
