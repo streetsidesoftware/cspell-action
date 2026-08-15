@@ -2,6 +2,9 @@
 packages:
   - action-src
 
+onlyBuiltDependencies:
+  - esbuild
+
 minimumReleaseAge: 2880 # two days
 minimumReleaseAgeExclude:
   - '@cspell/*'
@@ -10,3 +13,5 @@ trustPolicy: no-downgrade
 trustPolicyExclude:
   - semver@5.7.2
   - semver@6.3.1
+
+# cspell:dictionaries npm
