@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsdown",
     "build:tsc": "tsc -p .",
-    "clean-build": "pnpm clean && pnpm build",
+    "clean-build": "pnpm run clean && pnpm run build",
     "clean": "shx rm -rf ../action/lib dist",
     "prepublishOnly": "pnpm build",
     "smoke-test-push": "env-cmd -f ./fixtures/push.json node ./action/lib/main_root.js",
