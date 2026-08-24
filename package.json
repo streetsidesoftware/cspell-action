@@ -11,7 +11,7 @@
     "build:action": "cd action && npm i",
     "build:src": "pnpm -r run build",
     "clean": "pnpm clean:action && pnpm clean:src",
-    "clean:src": "pnpm -r --filter ./action-src clean",
+    "clean:src": "pnpm -r --filter ./action-src run clean",
     "clean:action": "shx rm -rf action/node_modules action/package-lock.json",
     "clean-build": "pnpm -r --filter ./action-src clean-build",
     "lint": "eslint . --fix && prettier . -w",

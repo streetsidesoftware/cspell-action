@@ -47,8 +47,8 @@ jobs:
 
       - name: Clean Build
         run: |
-          pnpm clean
-          pnpm build
+          pnpm run clean
+          pnpm run build
 
       - name: Git Status
         id: git-status
