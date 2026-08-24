@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.2](https://github.com/streetsidesoftware/cspell-action/compare/v9.0.1...v9.0.2) (2026-08-24)
+
+
+### Updates and Bug Fixes
+
+* Fix clean:src script to run clean command ([#2740](https://github.com/streetsidesoftware/cspell-action/issues/2740)) ([2f5d1fa](https://github.com/streetsidesoftware/cspell-action/commit/2f5d1fa6854a55e63d8bebd4f611aae2ed0ab052))
+
 ## [9.0.1](https://github.com/streetsidesoftware/cspell-action/compare/v9.0.0...v9.0.1) (2026-08-15)
 
 
