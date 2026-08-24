@@ -51,15 +51,15 @@ importers:
   action-src:
     dependencies:
       '@cspell/cspell-bundled-dicts':
-        specifier: ^10.0.1
-        version: 10.0.1
+        specifier: ^10.1.0
+        version: 10.1.0
       '@cspell/dict-cspell-bundle':
         specifier: ^2.0.68
         version: 2.0.68
     devDependencies:
       '@cspell/cspell-types':
-        specifier: ^10.0.1
-        version: 10.0.1
+        specifier: ^10.1.0
+        version: 10.1.0
       '@octokit/webhooks-types':
         specifier: ^7.6.1
         version: 7.6.1
@@ -154,6 +154,10 @@ packages:
     resolution: {integrity: sha512-WvkSDNX4Uyyj/ZgbPO6L38iFNMfK1EqsH1FteRiI2qLz6QZMXRFrIt12OqiWIplzZDDaVpBH9FCJOPJll0fjCQ==}
     engines: {node: '>=22.18.0'}
 
+  '@cspell/cspell-bundled-dicts@10.1.0':
+    resolution: {integrity: sha512-CBnYuR7tMlLwWq6FL3IOQ0mM+d8r6d7t+BMH6qWtk9SMz8KzBO7dB5Ya+o3QI/lsqwR75qCPW6JPYapBogFq1A==}
+    engines: {node: '>=22.18.0'}
+
   '@cspell/cspell-json-reporter@10.0.1':
     resolution: {integrity: sha512-/nes1RGILec3WCBcoMOd0byNTBtnJuPaVz/+ZzqYkLtY7x58VMcBG5kyP6hPyN8cIwjRADE/SR43gwdXuqk/FA==}
     engines: {node: '>=22.18.0'}
@@ -176,6 +180,10 @@ packages:
 
   '@cspell/cspell-types@10.0.1':
     resolution: {integrity: sha512-kLgLShnWADDVreKC63pBrWkcvxgZzFIfO34Jhx/SWfuOIA3cD8AXT+HjyuLfoGJ7mUb58hv2kUziKzEy4INb1w==}
+    engines: {node: '>=22.18.0'}
+
+  '@cspell/cspell-types@10.1.0':
+    resolution: {integrity: sha512-k5TzE4fKRbZUPv5Z2EKUXR5QoDF4LPlWo9OnXdQVx8YGi0GQosUzwag2uyHoN5uAOSnoJwyhwRcr+/EFqNkfrg==}
     engines: {node: '>=22.18.0'}
 
   '@cspell/cspell-worker@10.0.1':
@@ -2059,6 +2067,68 @@ snapshots:
       '@cspell/dict-vue': 3.0.5
       '@cspell/dict-zig': 1.0.0
 
+  '@cspell/cspell-bundled-dicts@10.1.0':
+    dependencies:
+      '@cspell/dict-ada': 4.1.1
+      '@cspell/dict-al': 1.1.1
+      '@cspell/dict-aws': 4.0.17
+      '@cspell/dict-bash': 4.2.3
+      '@cspell/dict-companies': 3.2.12
+      '@cspell/dict-cpp': 7.1.0
+      '@cspell/dict-cryptocurrencies': 5.0.5
+      '@cspell/dict-csharp': 4.0.8
+      '@cspell/dict-css': 4.1.2
+      '@cspell/dict-dart': 2.3.2
+      '@cspell/dict-data-science': 2.0.16
+      '@cspell/dict-django': 4.1.6
+      '@cspell/dict-docker': 1.1.17
+      '@cspell/dict-dotnet': 5.0.13
+      '@cspell/dict-elixir': 4.0.8
+      '@cspell/dict-en-common-misspellings': 2.2.0
+      '@cspell/dict-en-gb-mit': 3.1.25
+      '@cspell/dict-en_us': 4.4.36
+      '@cspell/dict-filetypes': 3.0.18
+      '@cspell/dict-flutter': 1.1.1
+      '@cspell/dict-fonts': 4.0.6
+      '@cspell/dict-fsharp': 1.1.1
+      '@cspell/dict-fullstack': 3.2.9
+      '@cspell/dict-gaming-terms': 1.1.2
+      '@cspell/dict-git': 3.1.0
+      '@cspell/dict-golang': 6.0.27
+      '@cspell/dict-google': 1.0.9
+      '@cspell/dict-haskell': 4.0.6
+      '@cspell/dict-html': 4.0.16
+      '@cspell/dict-html-symbol-entities': 4.0.5
+      '@cspell/dict-java': 5.0.12
+      '@cspell/dict-julia': 1.1.1
+      '@cspell/dict-k8s': 1.0.13
+      '@cspell/dict-kotlin': 1.1.1
+      '@cspell/dict-latex': 5.1.0
+      '@cspell/dict-lorem-ipsum': 4.0.5
+      '@cspell/dict-lua': 4.0.8
+      '@cspell/dict-makefile': 1.0.5
+      '@cspell/dict-markdown': 2.0.18(@cspell/dict-css@4.1.2)(@cspell/dict-html-symbol-entities@4.0.5)(@cspell/dict-html@4.0.16)(@cspell/dict-typescript@3.2.3)
+      '@cspell/dict-monkeyc': 1.1.0
+      '@cspell/dict-node': 5.0.9
+      '@cspell/dict-npm': 5.2.46
+      '@cspell/dict-php': 4.1.1
+      '@cspell/dict-powershell': 5.0.15
+      '@cspell/dict-public-licenses': 2.0.16
+      '@cspell/dict-python': 4.4.0
+      '@cspell/dict-r': 2.1.1
+      '@cspell/dict-ruby': 5.1.2
+      '@cspell/dict-rust': 4.1.2
+      '@cspell/dict-scala': 5.0.9
+      '@cspell/dict-shell': 1.2.0
+      '@cspell/dict-software-terms': 5.4.1
+      '@cspell/dict-sql': 2.2.1
+      '@cspell/dict-svelte': 1.0.7
+      '@cspell/dict-swift': 2.0.6
+      '@cspell/dict-terraform': 1.1.4
+      '@cspell/dict-typescript': 3.2.3
+      '@cspell/dict-vue': 3.0.5
+      '@cspell/dict-zig': 1.0.0
+
   '@cspell/cspell-json-reporter@10.0.1':
     dependencies:
       '@cspell/cspell-types': 10.0.1
@@ -2074,6 +2144,8 @@ snapshots:
   '@cspell/cspell-service-bus@10.0.1': {}
 
   '@cspell/cspell-types@10.0.1': {}
+
+  '@cspell/cspell-types@10.1.0': {}
 
   '@cspell/cspell-worker@10.0.1':
     dependencies:
