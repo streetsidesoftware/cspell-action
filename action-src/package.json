@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@cspell/cspell-bundled-dicts": "^10.1.0",
-    "@cspell/dict-cspell-bundle": "^2.0.68"
+    "@cspell/dict-cspell-bundle": "^2.0.69"
   },
   "files": [
     "lib",
