@@ -982,7 +982,7 @@ ${items.join("\n")}
 `;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/helpers/iteratorToIterable.js
 function* iteratorToIterable$1(iterator) {
 	try {
 		let n;
@@ -1006,7 +1006,7 @@ async function* asyncIteratorToAsyncIterable(iterator) {
 	}
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/helpers/util.js
 function toPipeFn(syncFn, asyncFn) {
 	function _(i) {
 		return isAsyncIterable$1(i) ? asyncFn(i) : syncFn(i);
@@ -1017,7 +1017,7 @@ function isAsyncIterable$1(i) {
 	return typeof i[Symbol.asyncIterator] === "function";
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/helpers/toArray.js
 function toArray(i) {
 	return isAsyncIterable$1(i) ? toArrayAsync(i) : toArraySync(i);
 }
@@ -1030,7 +1030,7 @@ async function toArrayAsync(iter) {
 	return collection;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/helpers/toAsyncIterable.js
 /**
 * Merge multiple iterables into an AsyncIterable
 * @param iter - initial iterable.
@@ -1044,7 +1044,7 @@ async function* mergeAsyncIterables(iter, ...rest) {
 */
 const toAsyncIterable = mergeAsyncIterables;
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/append.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/append.js
 /**
 * Append values onto the end of an iterable.
 * @param iterablesToAppend - the iterables in the order to be appended.
@@ -1076,7 +1076,7 @@ function opAppend(...iterablesToAppend) {
 	return _;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/await.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/await.js
 async function* _asyncAwait(iter) {
 	for await (const v of iter) yield v;
 }
@@ -1084,7 +1084,7 @@ function opAwaitAsync() {
 	return _asyncAwait;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/buffer.js
 /**
 * Buffer the input iterable into arrays of the given size.
 * @param size - The size of the buffer.
@@ -1131,7 +1131,7 @@ function opBuffer(size) {
 	return _;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/combine.js
 function opCombineAsync(...fns) {
 	function combine(iter) {
 		for (const fn of fns) iter = fn(iter);
@@ -1147,7 +1147,7 @@ function opCombineSync$1(...fns) {
 	return combine;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/concatMap.js
 function opConcatMapAsync(mapFn) {
 	async function* fn(iter) {
 		for await (const v of iter) yield* mapFn(v);
@@ -1182,7 +1182,7 @@ function opConcatMapSync$1(mapFn) {
 }
 const opConcatMap = (fn) => toPipeFn(opConcatMapSync$1(fn), opConcatMapAsync(fn));
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/filter.js
 function opFilterAsync$1(filterFn) {
 	async function* genFilter(iter) {
 		for await (const v of iter) if (await filterFn(v)) yield v;
@@ -1218,7 +1218,7 @@ function opFilter(fn) {
 	return _;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/first.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/first.js
 function opFirstAsync(firstFn) {
 	async function* fn(iter) {
 		for await (const v of iter) if (await firstFn(v)) {
@@ -1246,7 +1246,7 @@ function opFirst(fn) {
 	return _;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/flatten.js
 function opFlattenAsync() {
 	async function* fn(iter) {
 		for await (const v of iter) yield* v;
@@ -1261,7 +1261,7 @@ function opFlattenSync$1() {
 }
 const opFlatten = () => toPipeFn(opFlattenSync$1(), opFlattenAsync());
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/joinStrings.js
 function opJoinStringsAsync(joinCharacter = ",") {
 	async function* fn(iter) {
 		for await (const v of iter) yield (await toArray(v)).join(joinCharacter);
@@ -1276,7 +1276,7 @@ function opJoinStringsSync(joinCharacter = ",") {
 }
 const opJoinStrings = (joinCharacter) => toPipeFn(opJoinStringsSync(joinCharacter), opJoinStringsAsync(joinCharacter));
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/last.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/last.js
 const symNotFound = Symbol("LastNotFound");
 function opLastAsync(lastFn) {
 	async function* fn(iter) {
@@ -1303,7 +1303,7 @@ function opLast(fn) {
 	return _;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/map.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/map.js
 function opMapAsync(mapFn) {
 	async function* genMap(iter) {
 		for await (const v of iter) yield mapFn(v);
@@ -1330,7 +1330,7 @@ function opMapSync$1(mapFn) {
 }
 const opMap = (fn) => toPipeFn(opMapSync$1(fn), opMapAsync(fn));
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/reduce.js
 function opReduceAsync(reduceFn, initialValue) {
 	async function* reduce(head, tail) {
 		for await (const v of tail) head = reduceFn(head, v);
@@ -1383,7 +1383,7 @@ function isIterable$2(i) {
 	return typeof i[Symbol.iterator] === "function";
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/skip.js
 function opSkipAsync(count) {
 	async function* fn(iter) {
 		for await (const v of iter) {
@@ -1410,7 +1410,7 @@ function opSkipSync(count) {
 }
 const opSkip = (count) => toPipeFn(opSkipSync(count), opSkipAsync(count));
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/take.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/take.js
 function opTakeAsync(count) {
 	async function* fn(iter) {
 		if (count <= 0) return;
@@ -1437,7 +1437,7 @@ function opTakeSync(count) {
 */
 const opTake = (count) => toPipeFn(opTakeSync(count), opTakeAsync(count));
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/tap.js
 /**
 * Tap allows you to listen on values, without modifying them.
 *
@@ -1473,7 +1473,7 @@ function opTapSync(tapFn) {
 */
 const opTap = (fn) => toPipeFn(opTapSync(fn), opTapAsync(fn));
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/unique.js
 function opUniqueAsync(k) {
 	function fnK(k) {
 		async function* fn(iter) {
@@ -1522,7 +1522,7 @@ function opUniqueSync$1(k) {
 }
 const opUnique = (getKey) => toPipeFn(opUniqueSync$1(getKey), opUniqueAsync(getKey));
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/operators/index.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/operators/index.js
 var operators_exports = /* @__PURE__ */ __exportAll({
 	opAppend: () => opAppend,
 	opAppendAsync: () => opAppendAsync,
@@ -1570,7 +1570,7 @@ var operators_exports = /* @__PURE__ */ __exportAll({
 	opUniqueSync: () => opUniqueSync$1
 });
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/pipe.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/pipe.js
 function pipeAsync(i, ...fns) {
 	const iter = toAsyncIterable(i);
 	return opCombineAsync(...fns)(iter);
@@ -1579,10 +1579,10 @@ function pipeSync$1(i, ...fns) {
 	return opCombineSync$1(...fns)(i);
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.0.1/node_modules/@cspell/cspell-pipe/dist/index.js
+//#region ../node_modules/.pnpm/@cspell+cspell-pipe@10.1.0/node_modules/@cspell/cspell-pipe/dist/index.js
 const operators = operators_exports;
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/errors.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/errors.js
 const allowStringOrUndefined = {
 	string: true,
 	undefined: true
@@ -1616,7 +1616,7 @@ async function _catchPromiseError(p, handler) {
 	}
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/events/events.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/events/events.js
 var EventEmitter = class {
 	name;
 	#listeners = /* @__PURE__ */ new Set();
@@ -1665,7 +1665,7 @@ function onClearCache(listener) {
 	return clearCacheEvent.on(listener);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/AutoCache.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/AutoCache.js
 const CACHE_SIZE = 100;
 var Cache01 = class {
 	maxSize;
@@ -1746,7 +1746,7 @@ function extractStats(ac) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-trie-lib@10.0.1_@cspell+cspell-types@10.0.1/node_modules/cspell-trie-lib/dist/index.js
+//#region ../node_modules/.pnpm/cspell-trie-lib@10.1.0_@cspell+cspell-types@10.1.0/node_modules/cspell-trie-lib/dist/index.js
 function* iteratorToIterable(iterator) {
 	try {
 		let n;
@@ -2332,10 +2332,11 @@ function* walkerWordsITrie(root) {
 	let depth = 0;
 	const stack = [];
 	const entries = root.entries();
+	const c = Array.isArray(entries) ? entries : [...entries];
 	stack[depth] = {
 		t: "",
 		n: root,
-		c: Array.isArray(entries) ? entries : [...entries],
+		c,
 		ci: 0
 	};
 	while (depth >= 0) {
@@ -5035,7 +5036,8 @@ var CharIndex = class CharIndex {
 		return { charIndex: [...this.charIndex].join("") };
 	}
 	static fromJSON(json) {
-		return new CharIndex(new Set(json.charIndex));
+		const charIndex = new Set(json.charIndex);
+		return new CharIndex(charIndex);
 	}
 	static fromIterable(charIndex) {
 		const charSet = /* @__PURE__ */ new Set();
@@ -6805,7 +6807,8 @@ var ITrieImpl = class ITrieImpl {
 	static create(words, info) {
 		const builder = new TrieBlobBuilder(info);
 		builder.insert(words);
-		return new ITrieImpl(builder.build());
+		const root = builder.build();
+		return new ITrieImpl(root);
 	}
 	createFindOptions(options) {
 		return createFindOptions$1(options);
@@ -7085,10 +7088,12 @@ var TrieNodeTrie = class TrieNodeTrie {
 		return this._size ??= countNodes(this.root);
 	}
 	static createFromWords(words, options) {
-		return new TrieNodeTrie(createTrieRootFromList(words, options));
+		const root = createTrieRootFromList(words, options);
+		return new TrieNodeTrie(root);
 	}
 	static createFromWordsAndConsolidate(words, options) {
-		return new TrieNodeTrie(consolidate(createTrieRootFromList(words, options)));
+		const root = createTrieRootFromList(words, options);
+		return new TrieNodeTrie(consolidate(root));
 	}
 };
 function* toIterableIterator$2(i) {
@@ -8088,9 +8093,7 @@ function createDictionaryLineParserMapper(options) {
 				case "no-generate-alternatives":
 					stripCaseAndAccents = false;
 					break;
-				case "generate-alternatives":
-					stripCaseAndAccents = true;
-					break;
+				case "generate-alternatives": stripCaseAndAccents = true;
 			}
 		}
 		return line.slice(0, idx).trim();
@@ -10823,7 +10826,7 @@ function mapDictionaryInformationToWeightMap(dictInfo) {
 	return map;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/text.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/text.js
 const regExAllUpper = /^(?:\p{Lu}\p{M}?)+$/u;
 const regExAccents = /\p{M}/gu;
 function isUpperCase(word) {
@@ -10839,7 +10842,7 @@ function removeUnboundAccents(text) {
 	return text.replaceAll(regExAccents, "");
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryMethods.js
 function wordSearchForms(word, isDictionaryCaseSensitive, ignoreCase) {
 	const forms = /* @__PURE__ */ new Set();
 	word = word.normalize("NFC");
@@ -10898,7 +10901,7 @@ function createWeightMapFromDictionaryInformation(di) {
 	return di ? mapDictionaryInformationToWeightMap(di) : void 0;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/CachingDictionary.js
 let dictionaryCounter = 0;
 const DefaultAutoCacheSize = 1e3;
 let logRequests = false;
@@ -10991,7 +10994,7 @@ function dictionaryCacheGetLog() {
 	return log$1;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/AutoResolve.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/AutoResolve.js
 function autoResolveWeak$1(map, key, resolve) {
 	const found = map.get(key);
 	if (found !== void 0 || map.has(key)) return found;
@@ -11016,7 +11019,7 @@ function createAutoResolveWeakCache$1() {
 	return new AutoResolveWeakCache$1();
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/util.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/util.js
 function isDefined$4(v) {
 	return v !== void 0;
 }
@@ -11443,7 +11446,7 @@ function createCustomEqual(options = {}) {
 	});
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-performance-monitor@10.0.1/node_modules/@cspell/cspell-performance-monitor/dist/index.js
+//#region ../node_modules/.pnpm/@cspell+cspell-performance-monitor@10.1.0/node_modules/@cspell/cspell-performance-monitor/dist/index.js
 const symbolCSpell = Symbol.for("cspell");
 const globalThisCSpell = globalThis;
 function _measurePerfStart(name, enabled) {
@@ -11485,7 +11488,7 @@ function isEnabledPerformanceMeasurements() {
 	return !!globalThisCSpell[symbolCSpell]?.enablePerformanceMeasurements;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/simpleCache.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/simpleCache.js
 var SimpleWeakCache = class {
 	size;
 	L0 = /* @__PURE__ */ new WeakMap();
@@ -11602,10 +11605,10 @@ var SimpleCache$1 = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionary.js
 const defaultOptions$1 = Object.freeze({ weightMap: void 0 });
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/clean.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/clean.js
 /**
 * Delete all `undefined` fields from an object.
 * @param src - object to be cleaned
@@ -11616,7 +11619,7 @@ function clean$2(src) {
 	return r;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/regexHelper.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/regexHelper.js
 /**
 * Escape a string so it can be used as an exact match within a RegExp.
 * @param s - string to escape
@@ -11626,7 +11629,7 @@ function escapeRegEx$2(s) {
 	return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/repMap.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/repMap.js
 function createMapper(repMap, ignoreCharset) {
 	if (!repMap && !ignoreCharset) return void 0;
 	repMap = repMap || [];
@@ -11753,7 +11756,7 @@ function regexpRemoveFlags(re, flagsToRemove) {
 	return new RegExp(re.source, flags);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryFromTrie.js
 var SpellingDictionaryFromTrie = class {
 	trie;
 	name;
@@ -11960,7 +11963,7 @@ function* outerWordForms(word, repMapper) {
 	}
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createSpellingDictionary.js
 const cachedDictionaries = new AutoWeakCache(_createSpellingDictionary, 64);
 const maxSetSize = 3;
 const cachedParamsByWordList = new SimpleCache$1(64);
@@ -12024,7 +12027,7 @@ function createFailedToLoadDictionary(name, sourceUrl, error, options) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/util/textMappers.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/util/textMappers.js
 function* mapperRemoveCaseAndAccents(words) {
 	for (const word of words) {
 		const lc = word.toLowerCase();
@@ -12034,7 +12037,7 @@ function* mapperRemoveCaseAndAccents(words) {
 	}
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/util.js
 function normalizeTyposDefValue(value) {
 	if (!value) return false;
 	if (typeof value === "string") return value;
@@ -12125,7 +12128,7 @@ function assert$2(condition, message = "Assert Failed") {
 	throw new Error(message);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/Typos/typosParser.js
 function assertString(v) {
 	assert$2(typeof v === "string", "A string was expected.");
 	return true;
@@ -12250,7 +12253,7 @@ function isIterable(v) {
 	return Symbol.iterator in v;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/TyposDictionary.js
 var TyposDictionaryImpl = class {
 	name;
 	source;
@@ -12388,7 +12391,7 @@ function createTyposDictionary(entries, name, source) {
 	});
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/FlagWordsDictionary.js
 var FlagWordsDictionaryTrie = class extends SpellingDictionaryFromTrie {
 	name;
 	source;
@@ -12516,7 +12519,7 @@ function bisect(values, predicate) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/IgnoreWordsDictionary.js
 const NormalizeForm = "NFC";
 var IgnoreWordsDictionary = class {
 	name;
@@ -12614,7 +12617,7 @@ function createIgnoreWordsDictionary(wordList, name, source, options) {
 	});
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SpellingDictionaryCollection.js
 var SpellingDictionaryCollectionImpl = class {
 	dictionaries;
 	name;
@@ -12719,7 +12722,7 @@ function isWordForbiddenInAnyDictionary(dicts, word, ignoreCase) {
 	return dicts.find((dict) => dict.isForbidden(word, ignoreCase));
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/SuggestDictionary.js
 var SuggestDictionaryImpl = class {
 	name;
 	source;
@@ -12818,7 +12821,7 @@ function createSuggestDictionary(entries, name, source) {
 	});
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-dictionary@10.0.1/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
+//#region ../node_modules/.pnpm/cspell-dictionary@10.1.0/node_modules/cspell-dictionary/dist/SpellingDictionary/createInlineSpellingDictionary.js
 const cache$3 = createAutoResolveWeakCache$1();
 function createInlineSpellingDictionary(inlineDict, source) {
 	return cache$3.get(inlineDict, () => {
@@ -12833,7 +12836,7 @@ function createInlineSpellingDictionary(inlineDict, source) {
 	});
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+url@10.0.1/node_modules/@cspell/url/dist/index.js
+//#region ../node_modules/.pnpm/@cspell+url@10.1.0/node_modules/@cspell/url/dist/index.js
 const isURLRegEx = /^(\w[\w-]{1,63}:\/|data:|stdin:)/i;
 /**
 * Try to make a URL.
@@ -13035,6 +13038,23 @@ const regExpWindowsFileUrl = /^file:\/\/\/[a-zA-Z]:\//;
 function isWindowsFileUrl(url) {
 	return regExpWindowsFileUrl.test(url.toString());
 }
+const uncLongPathPrefix = "\\\\?\\";
+const uncLongPathPrefixAlt = "\\\\.\\";
+function isUncPath(path) {
+	return path.startsWith("\\\\");
+}
+function hasLongPathPrefixAlt(path) {
+	return path.startsWith(uncLongPathPrefixAlt);
+}
+/**
+* If the path has the long path unc prefix (`\\.\`), replace it with the standard long path prefix (`\\?\`). This is needed to access paths longer than 260 characters on Windows.
+* @param path - any path that may or may not have the long path prefix.
+* @returns the path with the standard long path prefix if needed.
+*/
+function fixLongPathPrefix(path) {
+	if (!hasLongPathPrefixAlt(path)) return path;
+	return uncLongPathPrefix + path.slice(4);
+}
 const isWindowsPathRegEx = regExpWindowsPathDriveLetter$1;
 const isWindowsPathname = regExpWindowsPath;
 const percentRegEx = /%/g;
@@ -13116,6 +13136,7 @@ var FileUrlBuilder = class {
 		if (typeof filenameOrUrl !== "string") return filenameOrUrl;
 		if (isUrlLike(filenameOrUrl)) return normalizeWindowsUrl(new URL(filenameOrUrl));
 		relativeTo ??= this.cwd;
+		if (isWindows$2 && isUncPath(filenameOrUrl)) return pathToFileURL(fixLongPathPrefix(filenameOrUrl));
 		isWindows$2 && (filenameOrUrl = filenameOrUrl.replaceAll("\\", "/"));
 		if (this.isAbsolute(filenameOrUrl) && isFileURL(relativeTo)) {
 			const pathname = this.normalizeFilePathForUrl(filenameOrUrl);
@@ -15123,7 +15144,7 @@ var require_picomatch$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = picomatch;
 }));
 //#endregion
-//#region ../node_modules/.pnpm/cspell-glob@10.0.1/node_modules/cspell-glob/dist/index.js
+//#region ../node_modules/.pnpm/cspell-glob@10.1.0/node_modules/cspell-glob/dist/index.js
 var import_picomatch = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const pico = require_picomatch$1();
 	const utils = require_utils();
@@ -15685,7 +15706,7 @@ function buildMatcherFn(_id, patterns, options) {
 	return fn;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/globs/getGlobMatcher.js
 const simpleGlobCache = /* @__PURE__ */ new Map();
 let globCache = /* @__PURE__ */ new WeakMap();
 onClearCache(() => {
@@ -15712,7 +15733,7 @@ function getGlobMatcherGlobGlob(glob) {
 	return m;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/globs/checkFilenameMatchesGlob.js
 /**
 * @param filename - filename
 * @param globs - globs
@@ -15722,7 +15743,7 @@ function checkFilenameMatchesExcludeGlob(filename, globs) {
 	return getGlobMatcherForExcluding(globs).match(filename);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/AutoResolve.js
 function autoResolve$1(map, key, resolve) {
 	const found = map.get(key);
 	if (found !== void 0 || map.has(key)) return found;
@@ -15889,7 +15910,7 @@ function createAutoResolveWeakWeakCache() {
 	return new AutoResolveWeakWeakCache();
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/pkg-info.mjs
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/pkg-info.mjs
 /**
 * This is the url of the current file, but it might be undefined if the environment does not support it.
 */
@@ -15903,7 +15924,7 @@ function calcSrcDirectory() {
 }
 const srcDirectory = calcSrcDirectory();
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/url.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/url.js
 /**
 * This is a URL that can be used for searching for modules.
 * @returns URL for the source directory
@@ -15925,7 +15946,7 @@ function windowsDriveLetterToUpper(absoluteFilePath) {
 	return absoluteFilePath.replace(regExpWindowsPathDriveLetter, (s) => s.toUpperCase());
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/util.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/util.js
 const uniqueFn$1 = uniqueFilterFnGenerator$1;
 function uniqueFilterFnGenerator$1(extractFn) {
 	const values = /* @__PURE__ */ new Set();
@@ -15976,11 +15997,11 @@ function doSetsIntersect(a, b) {
 	return a.size <= b.size ? compare(a, b) : compare(b, a);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/constants.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/constants.js
 const ENV_CSPELL_GLOB_ROOT = "CSPELL_GLOB_ROOT";
 const defaultConfigFileModuleRef = "@cspell/cspell-bundled-dicts/cspell-default.json";
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/internal/CSpellSettingsInternalDef.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/internal/CSpellSettingsInternalDef.js
 const SymbolCSpellSettingsInternal = Symbol("CSpellSettingsInternal");
 function cleanCSpellSettingsInternal(parts) {
 	return parts ? Object.assign(clean$1(parts), { [SymbolCSpellSettingsInternal]: true }) : { [SymbolCSpellSettingsInternal]: true };
@@ -15992,7 +16013,7 @@ function isCSpellSettingsInternal(cs) {
 	return !!cs[SymbolCSpellSettingsInternal];
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-resolver@10.0.1/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
+//#region ../node_modules/.pnpm/@cspell+cspell-resolver@10.1.0/node_modules/@cspell/cspell-resolver/dist/requireResolve.js
 var require_requireResolve = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.requireResolve = requireResolve;
@@ -16265,7 +16286,7 @@ globalDirectory.pnpm.prefix = pnpmDataDir;
 globalDirectory.pnpm.packages = Path.join(resolvedPnpmGlobalDir, "5/node_modules");
 globalDirectory.pnpm.binaries = resolvedPnpmGlobalBinDir;
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-resolver@10.0.1/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
+//#region ../node_modules/.pnpm/@cspell+cspell-resolver@10.1.0/node_modules/@cspell/cspell-resolver/dist/resolveGlobal.mjs
 var import_requireResolve = require_requireResolve();
 function resolveGlobal(modulesName) {
 	const paths = [globalDirectory.npm.packages, globalDirectory.yarn.packages];
@@ -17533,7 +17554,7 @@ function resolve$2(specifier, parent) {
 	}
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+dynamic-import@10.0.1/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
+//#region ../node_modules/.pnpm/@cspell+dynamic-import@10.1.0/node_modules/@cspell/dynamic-import/dist/esm/dynamicImport.mjs
 const isWindowsPath = /^[a-z]:\\/i;
 /**
 * Dynamically import a module using `import`.
@@ -17621,7 +17642,7 @@ var require_resolve_from = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports.silent = (fromDirectory, moduleId) => resolveFrom(fromDirectory, moduleId, true);
 }));
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.0.1/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
+//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.1.0/node_modules/@cspell/cspell-service-bus/dist/esm/errors.js
 var ErrorUnhandledRequest = class extends Error {
 	request;
 	constructor(request) {
@@ -17650,7 +17671,7 @@ var UnhandledHandlerError = class extends Error {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.0.1/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
+//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.1.0/node_modules/@cspell/cspell-service-bus/dist/esm/request.js
 var BaseServiceRequest = class {
 	type;
 	params;
@@ -17675,7 +17696,7 @@ function isServiceResponseSuccess(res) {
 	return "value" in res && res.error === void 0;
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.0.1/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
+//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.1.0/node_modules/@cspell/cspell-service-bus/dist/esm/bus.js
 const MAX_DEPTH = 10;
 var ServiceBus = class {
 	handlers = [];
@@ -17728,7 +17749,7 @@ var ServiceBus = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.0.1/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
+//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.1.0/node_modules/@cspell/cspell-service-bus/dist/esm/createRequestHandler.js
 function createRequestHandler(requestDef, fn, name, description) {
 	return createIsRequestHandler(requestDef.is, fn, name ?? requestDef.type, description);
 }
@@ -17743,7 +17764,7 @@ function createIsRequestHandler(isA, fn, name, description) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.0.1/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
+//#region ../node_modules/.pnpm/@cspell+cspell-service-bus@10.1.0/node_modules/@cspell/cspell-service-bus/dist/esm/requestFactory.js
 function requestFactory(requestType) {
 	class RequestClass extends ServiceRequestCls {
 		static type = requestType;
@@ -17764,7 +17785,7 @@ function requestFactory(requestType) {
 	return RequestClass;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-io@10.0.1/node_modules/cspell-io/dist/index.js
+//#region ../node_modules/.pnpm/cspell-io@10.1.0/node_modules/cspell-io/dist/index.js
 var CFileReference = class CFileReference {
 	url;
 	encoding;
@@ -17952,7 +17973,8 @@ function isGZipped(data) {
 }
 function decompressBuffer(data) {
 	if (!isGZipped(data)) return data;
-	return gunzipSync(arrayBufferViewToBuffer(data));
+	const buf = arrayBufferViewToBuffer(data);
+	return gunzipSync(buf);
 }
 async function decompress(data, method = "gzip") {
 	const ds = new DecompressionStream(method || "deflate-raw");
@@ -18206,7 +18228,8 @@ async function fetchHead(request) {
 }
 async function fetchURL(url, signal) {
 	try {
-		const response = await _fetch(signal ? new Request(url, { signal }) : url);
+		const request = signal ? new Request(url, { signal }) : url;
+		const response = await _fetch(request);
 		if (!response.ok) throw FetchUrlError.create(url, response.status);
 		return await response.bytes();
 	} catch (e) {
@@ -19071,7 +19094,7 @@ function getDefaultVirtualFs() {
 	return defaultVirtualFs;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/fileSystem.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/fileSystem.js
 function getVirtualFS() {
 	return getDefaultVirtualFs();
 }
@@ -19079,7 +19102,7 @@ function getFileSystem() {
 	return getVirtualFS().fs;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/templates.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/templates.js
 function replaceTemplate(template, replacements) {
 	const templateStart = "${";
 	const tLen = 2;
@@ -19108,7 +19131,7 @@ function envToTemplateVars(env) {
 	return vars;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/resolveFile.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/resolveFile.js
 var import_resolve_from = /* @__PURE__ */ __toESM(require_resolve_from(), 1);
 const regExpStartsWidthNodeModules = /^node_modules[/\\]/;
 var FileResolver = class {
@@ -19422,7 +19445,7 @@ async function resolveFile(filename, relativeTo, fs = getFileSystem()) {
 	return createFileResolver(fs).resolveFile(filename, relativeTo);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/DictionaryReferenceCollection.js
 /**
 * Create a collection of dictionary references to be able to easily determine if a dictionary is enabled or blocked.
 * @param dictionaries - list of dictionary references
@@ -19474,7 +19497,7 @@ function mapReference(ref) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/internal/InternalDictionaryDef.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/internal/InternalDictionaryDef.js
 function isDictionaryDefinitionInlineInternal(def) {
 	if (def.path) return false;
 	const defInline = def;
@@ -19484,7 +19507,7 @@ function isDictionaryFileDefinitionInternal(def) {
 	return !!(def.path || def.file);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/internal/DictionarySettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/internal/DictionarySettings.js
 /**
 * Combines the list of desired dictionaries with the list of dictionary
 * definitions. Order does not matter, but the number of leading `!` does.
@@ -19619,7 +19642,7 @@ var _DictionaryDefinitionInternalWithSource = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/mergeCache.js
 var CalcLeftRightResultWeakCache = class {
 	map = new AutoResolveWeakCache();
 	_toDispose;
@@ -19644,7 +19667,7 @@ var CalcLeftRightResultWeakCache = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/mergeList.js
 const cacheMergeListUnique = new CalcLeftRightResultWeakCache();
 const cacheMergeLists = new CalcLeftRightResultWeakCache();
 function mergeListUnique(left, right) {
@@ -19676,7 +19699,7 @@ function stats() {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/textRegex.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/textRegex.js
 const regExSplitWords = /(\p{Ll}\p{M}?)(\p{Lu})/gu;
 const regExSplitWords2 = /(\p{Lu}\p{M}?)((\p{Lu}\p{M}?)\p{Ll})/gu;
 const regExpCamelCaseWordBreaksWithEnglishSuffix = /(?<=\p{Ll}\p{M}?)(?=\p{Lu})|(?<=\p{Lu}\p{M}?)(?=\p{Lu}\p{M}?\p{Ll})(?!\p{Lu}\p{M}?(?:s|ing|ies|es|ings|ed|ning)(?!\p{Ll}))/gu;
@@ -19785,7 +19808,7 @@ function removeVerboseFromRegExp(pattern) {
 	return result.result;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/patterns.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/patterns.js
 const emptyRegExpList = [];
 const emptyPatternDefinitions = [];
 const cache = new CalcLeftRightResultWeakCache();
@@ -19814,7 +19837,7 @@ function toRegExp(pattern) {
 	return pattern instanceof RegExp ? new RegExp(pattern) : stringToRegExp(pattern, "gim", "g");
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/resolveCwd.js
 var CwdUrlResolver = class {
 	#lastPath;
 	#lastUrl;
@@ -19840,7 +19863,7 @@ var CwdUrlResolver = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/CSpellSettingsServer.js
 const emptyWords$1 = [];
 Object.freeze(emptyWords$1);
 const cachedMerges = new AutoResolveWeakCache();
@@ -20078,13 +20101,13 @@ function extractParsers(plugins) {
 	return parserCache.get(plugins, mapPlugins);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/calcOverrideSettings.js
 function calcOverrideSettings(settings, filename) {
 	const _settings = toInternalSettings(settings);
 	return (_settings.overrides || []).filter((override) => checkFilenameMatchesExcludeGlob(filename, override.filename)).reduce((settings, override) => mergeSettings(settings, override), _settings);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile.js
 var CSpellConfigFile = class {
 	url;
 	constructor(url) {
@@ -20151,7 +20174,7 @@ function satisfiesCSpellConfigFile(obj) {
 	return obj instanceof CSpellConfigFile || !!obj && typeof obj === "object" && "url" in obj && obj.url instanceof URL && "settings" in obj && !!obj.settings && typeof obj.settings === "object";
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileInMemory.js
 var CSpellConfigFileInMemory = class CSpellConfigFileInMemory extends ImplCSpellConfigFile {
 	url;
 	settings;
@@ -20172,7 +20195,7 @@ var CSpellConfigFileInMemory = class CSpellConfigFileInMemory extends ImplCSpell
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJavaScript.js
 var CSpellConfigFileJavaScript = class extends ImplCSpellConfigFile {
 	url;
 	settings;
@@ -27178,7 +27201,7 @@ var require_src = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 }));
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/serializers/util.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/serializers/util.js
 function detectIndent(content) {
 	const m = content.match(/^[ \t]+/m);
 	return m && m[0] || "  ";
@@ -27187,7 +27210,7 @@ function detectIndentAsNum(content) {
 	return detectIndent(content).replaceAll("	", "    ").replaceAll(/[^ ]/g, "").length;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/Errors.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/Errors.js
 var ParseError = class extends Error {
 	url;
 	constructor(url, message, options) {
@@ -27196,7 +27219,7 @@ var ParseError = class extends Error {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileJson.js
 var import_src = require_src();
 var CSpellConfigFileJson = class CSpellConfigFileJson extends ImplCSpellConfigFile {
 	url;
@@ -27262,7 +27285,7 @@ function isCSpellSettings$1(cfg) {
 	return !(!cfg || typeof cfg !== "object" || Array.isArray(cfg));
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFilePackageJson.js
 var CSpellConfigFilePackageJson = class extends ImplCSpellConfigFile {
 	url;
 	settings;
@@ -28197,7 +28220,7 @@ function stringify$2(obj, { maxDepth = 1e3, numbersAsFloat = false } = {}) {
 	return str;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileToml.js
 var CSpellConfigFileToml = class CSpellConfigFileToml extends ImplCSpellConfigFile {
 	url;
 	constructor(url, settings) {
@@ -28238,7 +28261,7 @@ function isCSpellSettings(cfg) {
 	return !(!cfg || typeof cfg !== "object" || Array.isArray(cfg));
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileWithErrors.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileWithErrors.js
 /**
 * A CSpell configuration file that had errors during loading.
 */
@@ -34909,7 +34932,7 @@ var require_dist = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.visitAsync = visit.visitAsync;
 }));
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/UpdateConfig/CfgTree.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/UpdateConfig/CfgTree.js
 const nodeValueSymbol = Symbol.for("cspell.config.nodeValue");
 function isNodeValue(value) {
 	if (!(typeof value === "object" && value !== null)) return false;
@@ -34917,7 +34940,7 @@ function isNodeValue(value) {
 	return "value" in value && "comment" in value && "commentBefore" in value && Object.keys(value).length === 3;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFile/CSpellConfigFileYaml.js
 var import_dist = require_dist();
 var CSpellConfigFileYaml = class CSpellConfigFileYaml extends MutableCSpellConfigFile {
 	url;
@@ -35376,7 +35399,7 @@ function removeSchemaComment(node) {
 	node.commentBefore = node.commentBefore?.replaceAll(/^ yaml-language-server: \$schema=.*\n?/gm, "") ?? null;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/defaultNext.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/defaultNext.js
 const defaultNextDeserializer = (content) => {
 	throw new Error(`Unable to parse config file: "${content.url}"`);
 };
@@ -35384,7 +35407,7 @@ const defaultNextSerializer = (file) => {
 	throw new Error(`Unable to serialize config file: "${file.url}"`);
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/middlewareHelper.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/middlewareHelper.js
 function getDeserializer(middleware) {
 	let next = defaultNextDeserializer;
 	for (const des of middleware) next = curryDeserialize(des, next);
@@ -35415,12 +35438,12 @@ function getLoader(loaders) {
 	return next;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/util/toURL.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/util/toURL.js
 function toURL(url) {
 	return typeof url === "string" ? new URL(url) : url;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/CSpellConfigFileReaderWriter.js
 var CSpellConfigFileReaderWriterImpl = class {
 	io;
 	middleware;
@@ -35507,7 +35530,7 @@ var UntrustedUrlError = class extends Error {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/defaultIO.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/defaultIO.js
 const defaultIO = {
 	readFile: readFile$2,
 	writeFile: writeFile$1
@@ -35523,7 +35546,7 @@ async function writeFile$1(file) {
 	return { url: file.url };
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/loaders/loaderJavaScript.js
 async function importJavaScript(url, hashSuffix) {
 	try {
 		const _url = new URL(url.href);
@@ -35561,10 +35584,10 @@ var LoaderJavaScript = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/loaders/index.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/loaders/index.js
 const defaultLoaders = [new LoaderJavaScript()];
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/serializers/cspellJson.js
 function deserializer$3(params, next) {
 	if (!isJsonFile(params.url.pathname)) return next(params);
 	return parseCSpellConfigFileJson(params);
@@ -35582,7 +35605,7 @@ const serializerCSpellJson = {
 	serialize: serializer$3
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/serializers/cspellToml.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/serializers/cspellToml.js
 function deserializer$2(params, next) {
 	if (!isTomlFile(params.url.pathname)) return next(params);
 	return parseCSpellConfigFileToml(params);
@@ -35600,7 +35623,7 @@ const serializerCSpellToml = {
 	serialize: serializer$2
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/serializers/cspellYaml.js
 function deserializer$1(params, next) {
 	if (!isYamlFile(params.url.pathname)) return next(params);
 	return parseCSpellConfigFileYaml(params);
@@ -35618,7 +35641,7 @@ const serializerCSpellYaml = {
 	serialize: serializer$1
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/serializers/packageJson.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/serializers/packageJson.js
 const isSupportedFormat = /\bpackage\.json$/i;
 function deserializer(params, next) {
 	if (!isSupportedFormat.test(params.url.pathname)) return next(params);
@@ -35629,7 +35652,7 @@ function serializer(settings, next) {
 	return settings.serialize();
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/serializers/index.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/serializers/index.js
 const defaultDeserializers = [
 	serializerCSpellJson,
 	serializerCSpellYaml,
@@ -35640,7 +35663,7 @@ const defaultDeserializers = [
 	serializerCSpellToml
 ];
 //#endregion
-//#region ../node_modules/.pnpm/cspell-config-lib@10.0.1/node_modules/cspell-config-lib/dist/createReaderWriter.js
+//#region ../node_modules/.pnpm/cspell-config-lib@10.1.0/node_modules/cspell-config-lib/dist/createReaderWriter.js
 /**
 *
 * @param deserializers - Additional deserializers to use when reading a config file. The order of the deserializers is
@@ -35652,7 +35675,7 @@ function createReaderWriter(deserializers = [], loaders = [], io = defaultIO) {
 	return new CSpellConfigFileReaderWriterImpl(io, [...defaultDeserializers, ...deserializers], [...defaultLoaders, ...loaders]);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/logger.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/logger.js
 let _logger = console;
 /**
 * See `Console.error`
@@ -35705,7 +35728,7 @@ function assertSafeFilename(filename) {
 //#region ../node_modules/.pnpm/env-paths@4.0.0/node_modules/env-paths/index.js
 const homedir$1 = os$1.homedir();
 const tmpdir = os$1.tmpdir();
-const { env: env$2 } = process$1;
+const { env: env$3 } = process$1;
 const macos = (name) => {
 	const library = Path.join(homedir$1, "Library");
 	return {
@@ -35717,8 +35740,8 @@ const macos = (name) => {
 	};
 };
 const windows = (name) => {
-	const appData = env$2.APPDATA || Path.join(homedir$1, "AppData", "Roaming");
-	const localAppData = env$2.LOCALAPPDATA || Path.join(homedir$1, "AppData", "Local");
+	const appData = env$3.APPDATA || Path.join(homedir$1, "AppData", "Roaming");
+	const localAppData = env$3.LOCALAPPDATA || Path.join(homedir$1, "AppData", "Local");
 	return {
 		data: Path.join(localAppData, name, "Data"),
 		config: Path.join(appData, name, "Config"),
@@ -35730,10 +35753,10 @@ const windows = (name) => {
 const linux = (name) => {
 	const username = Path.basename(homedir$1);
 	return {
-		data: Path.join(env$2.XDG_DATA_HOME || Path.join(homedir$1, ".local", "share"), name),
-		config: Path.join(env$2.XDG_CONFIG_HOME || Path.join(homedir$1, ".config"), name),
-		cache: Path.join(env$2.XDG_CACHE_HOME || Path.join(homedir$1, ".cache"), name),
-		log: Path.join(env$2.XDG_STATE_HOME || Path.join(homedir$1, ".local", "state"), name),
+		data: Path.join(env$3.XDG_DATA_HOME || Path.join(homedir$1, ".local", "share"), name),
+		config: Path.join(env$3.XDG_CONFIG_HOME || Path.join(homedir$1, ".config"), name),
+		cache: Path.join(env$3.XDG_CACHE_HOME || Path.join(homedir$1, ".cache"), name),
+		log: Path.join(env$3.XDG_STATE_HOME || Path.join(homedir$1, ".local", "state"), name),
 		temp: Path.join(tmpdir, username, name)
 	};
 };
@@ -35748,18 +35771,18 @@ function envPaths(name, { suffix = "nodejs" } = {}) {
 //#endregion
 //#region ../node_modules/.pnpm/xdg-basedir@5.1.0/node_modules/xdg-basedir/index.js
 const homeDirectory = os.homedir();
-const { env: env$1 } = process;
-const xdgData = env$1.XDG_DATA_HOME || (homeDirectory ? path.join(homeDirectory, ".local", "share") : void 0);
-const xdgConfig = env$1.XDG_CONFIG_HOME || (homeDirectory ? path.join(homeDirectory, ".config") : void 0);
-env$1.XDG_STATE_HOME || homeDirectory && path.join(homeDirectory, ".local", "state");
-env$1.XDG_CACHE_HOME || homeDirectory && path.join(homeDirectory, ".cache");
-env$1.XDG_RUNTIME_DIR;
-const xdgDataDirectories = (env$1.XDG_DATA_DIRS || "/usr/local/share/:/usr/share/").split(":");
+const { env: env$2 } = process;
+const xdgData = env$2.XDG_DATA_HOME || (homeDirectory ? path.join(homeDirectory, ".local", "share") : void 0);
+const xdgConfig = env$2.XDG_CONFIG_HOME || (homeDirectory ? path.join(homeDirectory, ".config") : void 0);
+env$2.XDG_STATE_HOME || homeDirectory && path.join(homeDirectory, ".local", "state");
+env$2.XDG_CACHE_HOME || homeDirectory && path.join(homeDirectory, ".cache");
+env$2.XDG_RUNTIME_DIR;
+const xdgDataDirectories = (env$2.XDG_DATA_DIRS || "/usr/local/share/:/usr/share/").split(":");
 if (xdgData) xdgDataDirectories.unshift(xdgData);
-const xdgConfigDirectories = (env$1.XDG_CONFIG_DIRS || "/etc/xdg").split(":");
+const xdgConfigDirectories = (env$2.XDG_CONFIG_DIRS || "/etc/xdg").split(":");
 if (xdgConfig) xdgConfigDirectories.unshift(xdgConfig);
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/cfgStore.js
 const packageName = "cspell";
 const legacyLocationDir = xdgConfig ? Path.join(xdgConfig, "configstore") : void 0;
 const cspellGlobalLocationDir = envPaths(packageName, { suffix: "" }).config;
@@ -35812,7 +35835,7 @@ var GlobalConfigStore = class {
 	static defaultLocation = Path.join(cspellGlobalLocationDir, defaultConfigFileName);
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/toGlobDef.js
 function toGlobDef(g, root, source) {
 	if (g === void 0) return void 0;
 	if (Array.isArray(g)) return g.map((g) => toGlobDef(g, root, source));
@@ -35828,7 +35851,7 @@ function toGlobDef(g, root, source) {
 	return g;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/normalizeRawSettings.js
 function normalizeRawConfig(config) {
 	if (typeof config.version === "number") config.version = config.version.toString();
 	if (config.import) config.import = normalizeImport(config.import);
@@ -35921,7 +35944,7 @@ function normalizeImport(imports) {
 	return [];
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configToRawSettings.js
 function configErrorToRawSettings(error, url) {
 	const filename = toFilePathOrHref(url);
 	return {
@@ -35962,7 +35985,7 @@ function urlToSimpleId(url) {
 	return url.pathname.split("/").slice(-2).join("/");
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/GlobalSettings.js
 const globalConfig = new GlobalConfigStore();
 async function getGlobalConfig() {
 	const name = "CSpell Configstore";
@@ -36002,7 +36025,7 @@ function getGlobalConfigPath() {
 	}
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/ImportError.js
 var ImportError = class extends Error {
 	cause;
 	constructor(msg, cause) {
@@ -36602,7 +36625,7 @@ function createImportFresh(parentUrl, options = {}) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/findUp.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/findUp.js
 async function findUp(name, options = {}) {
 	const { cwd = process.cwd(), type: entryType = "file", stopAt } = options;
 	let dir = Path.resolve(toDirPath(cwd));
@@ -36635,7 +36658,7 @@ function toDirPath(urlOrPath) {
 	return urlOrPath instanceof URL ? fileURLToPath(new URL(".", urlOrPath)) : urlOrPath;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/pnpLoader.js
 /**
 * Handles loading of `.pnp.js` and `.pnp.js` files.
 */
@@ -36729,7 +36752,7 @@ function isSupported(url) {
 	return supportedSchemas.has(url.protocol);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configLocations.js
 const supportedExtensions = [
 	".json",
 	".jsonc",
@@ -36793,12 +36816,12 @@ function genCfgLoc(filename, extensions) {
 	return extensions.map((ext) => filename + ext);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/findUpFromUrl.js
 async function findUpFromUrl(name, from, options = {}) {
 	return (options.fs ?? getVirtualFS().fs).findUp(name, from, options);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/configSearch.js
 var ConfigSearch = class {
 	/**
 	* Cache of search results.
@@ -36957,14 +36980,14 @@ async function checkPackageJson(fs, filename) {
 	}
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultSettings.js
 const defaultSettings = createCSpellSettingsInternal({
 	id: "default",
 	name: "default",
 	version: "0.2"
 });
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/PnPSettings.js
 const defaultPnPSettings = Object.freeze({});
 let lastPnP = defaultPnPSettings;
 /**
@@ -37453,7 +37476,7 @@ function relativeToCwd$1(file) {
 	return [[...".".repeat(segments)].map(() => "..").join("/") || ".", ...urlPath.slice(i)].join("/");
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/defaultConfigLoader.js
 const gcl = getDefaultConfigLoaderInternal;
 /**
 *
@@ -37501,7 +37524,7 @@ function getDefaultConfigLoader() {
 	return getDefaultConfigLoaderInternal();
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/extractImportErrors.js
 function extractImportErrors(settings) {
 	const imports = mergeImportRefs(settings);
 	return !imports ? [] : [...imports.values()].filter(isImportFileRefWithError);
@@ -37518,7 +37541,7 @@ function isImportFileRefWithError(ref) {
 	return !!ref.error;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/Controller/configLoader/readSettings.js
 async function readSettings(filename, relativeToOrPnP, pnpSettings) {
 	const loader = getDefaultConfigLoader();
 	const relativeTo = typeof relativeToOrPnP === "string" || relativeToOrPnP instanceof URL ? relativeToOrPnP : void 0;
@@ -37526,7 +37549,7 @@ async function readSettings(filename, relativeToOrPnP, pnpSettings) {
 	return loader.readSettingsAsync(filename, relativeTo, pnp);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/grammarTypesHelpers.js
 function isPatternInclude(p) {
 	return !!p.include;
 }
@@ -37551,7 +37574,7 @@ function isPatternPatterns(p) {
 	return Array.isArray(p.patterns);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/matchResult.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/matchResult.js
 /**
 * Try to assign group names and numbers to segments of the matching text.
 * Note: this is NOT a perfect match. It tries its best given limited information.
@@ -37611,7 +37634,7 @@ function createSimpleMatchResult(match, input, index, lineNumber) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/scope.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/scope.js
 var Scope = class Scope {
 	value;
 	parent;
@@ -37674,7 +37697,7 @@ function isScopeLike(value) {
 	return typeof value === "object" && !Array.isArray(value) && value.value !== void 0;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/grammarNormalizer.js
 function normalizeGrammar(grammar) {
 	return new ImplNGrammar(grammar);
 }
@@ -37921,17 +37944,17 @@ var ImplNPatternPatterns = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/grammar.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/grammar.js
 function compileGrammar(grammar) {
 	return normalizeGrammar(grammar);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/util.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/util.js
 function isDefined$1(t) {
 	return t !== void 0 && t !== null;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/processors/procMatchingRule.js
 /**
 * Apply the scopes to the line
 * @param line - line of text
@@ -38070,7 +38093,7 @@ function applyCaptures(rule, match, captures) {
 	return [...emit(merged)];
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/tokenizeLine.js
 function tokenizeLine(line, rule) {
 	const text = line.text;
 	const lineLen = line.text.length;
@@ -38348,7 +38371,7 @@ const grammar = {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/mappers/appendMappedText.js
 function appendParsedText(a, b) {
 	const adjacent = a.range[1] === b.range[0];
 	if (adjacent && !a.map && !b.map) return {
@@ -38372,7 +38395,7 @@ function appendParsedText(a, b) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/mappers/typescript.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/mappers/typescript.js
 /**
 * Mappers for TypeScript and JavaScript
 */
@@ -38502,7 +38525,7 @@ function mapRawString(text) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parser/parser.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parser/parser.js
 function mapTokenizedLine$1(tl) {
 	return tl.tokens.map((t) => ({
 		text: t.text,
@@ -38527,7 +38550,7 @@ function createParser(grammar, name, transform = mapTokenizedLines$1) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parsers/typescript/TypeScriptParser.js
 const tsGrammar = compileGrammar(grammar);
 const pool = new ScopePool();
 const useScope = /* @__PURE__ */ new WeakMap();
@@ -38618,10 +38641,10 @@ function absMapToRelMap(map) {
 	return relMap;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-grammar@10.0.1/node_modules/cspell-grammar/dist/parsers/index.js
+//#region ../node_modules/.pnpm/cspell-grammar@10.1.0/node_modules/cspell-grammar/dist/parsers/index.js
 const parsers = [parser];
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Models/PatternRegExp.js
 var PatternRegExp = class extends RegExp {
 	constructor(pattern) {
 		super(pattern);
@@ -38631,7 +38654,7 @@ var PatternRegExp = class extends RegExp {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/LanguageSettings.js
 const defaultLocale = "en";
 const defaultLanguageSettings = [];
 function getDefaultLanguageSettings() {
@@ -38725,7 +38748,7 @@ function calcSettingsForLanguageId(baseSettings, languageId) {
 	}, baseSettings);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/RegExpPatterns.js
 const regExMatchUrls = /(?:https?|ftp):\/\/[^\s"]+/gi;
 const regExHRef = /\bhref\s*=\s*".*?"/gi;
 const regExMatchCommonHexFormats = /(?:#[0-9a-f]{3,8})|(?:0x[0-9a-f]+)|(?:\\u[0-9a-f]{4})|(?:\\x\{[0-9a-f]{4}\})/gi;
@@ -38774,7 +38797,7 @@ const regExSha = /\bsha\d+-[a-z0-9+/]{25,}={0,3}/gi;
 */
 const regExHashStrings = /(?:\b(?:sha\d+|md5|base64|crypt|bcrypt|scrypt|security-token|assertion)[-,:$=]|#code[/])[-\w/+%.]{25,}={0,3}(?:(['"])\s*\+?\s*\1?[-\w/+%.]+={0,3})*(?![-\w/+=%.])/gi;
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/DefaultSettings.js
 const defaultConfigFile = () => resolveConfigModule(defaultConfigFileModuleRef);
 const regExpSpellCheckerDisable = [
 	new PatternRegExp(regExSpellingGuardBlock),
@@ -38988,7 +39011,7 @@ function getDefaultSettings(useDefaultDictionaries = true) {
 	return defaultSettingsLoader.getDefaultSettingsAsync(useDefaultDictionaries);
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+strong-weak-map@10.0.1/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
+//#region ../node_modules/.pnpm/@cspell+strong-weak-map@10.1.0/node_modules/@cspell/strong-weak-map/dist/esm/StrongWeakMap.js
 var StrongWeakMap = class {
 	map;
 	constructor(init) {
@@ -39097,7 +39120,7 @@ var StrongWeakMap = class {
 	[Symbol.toStringTag] = "StrongWeakMap";
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/perf/timer.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/perf/timer.js
 function createPerfTimer(name, onEnd, timeNowFn) {
 	return new SimpleTimer(name, onEnd, timeNowFn);
 }
@@ -39132,7 +39155,7 @@ var SimpleTimer = class {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/simpleCache.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/simpleCache.js
 /**
 * This will cache between `size` and 3 x `size` items.
 * It has three stashes, L0, L1, and L2. Each can contain `size` items.
@@ -39208,7 +39231,7 @@ var AutoCache = class extends SimpleCache {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/SpellingDictionaryError.js
 var SpellingDictionaryLoadError = class extends Error {
 	uri;
 	options;
@@ -39226,7 +39249,7 @@ function isSpellingDictionaryLoadError(e) {
 	return e instanceof SpellingDictionaryLoadError;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryController/DictionaryLoader.js
 var __addDisposableResource = function(env, value, async) {
 	if (value !== null && value !== void 0) {
 		if (typeof value !== "object" && typeof value !== "function") throw new TypeError("Object expected.");
@@ -39524,7 +39547,7 @@ function toLines(content) {
 	return content.split(/\n|\r\n|\r/);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/DictionaryLoader.js
 let loader;
 function getDictionaryLoader(vfs) {
 	if (loader) return loader;
@@ -39534,7 +39557,7 @@ function loadDictionary(def) {
 	return getDictionaryLoader().loadDictionary(def);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/SpellingDictionary/Dictionaries.js
 function loadDictionaryDefs(defsToLoad) {
 	return defsToLoad.map(loadDictionary);
 }
@@ -39570,7 +39593,7 @@ function _getDictionaryInternal(settings, spellDictionaries) {
 	return createCollection([...spellDictionaries, ...getInlineConfigDictionaries(settings)], "dictionary collection");
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+filetypes@10.0.1/node_modules/@cspell/filetypes/dist/definitions.js
+//#region ../node_modules/.pnpm/@cspell+filetypes@10.1.0/node_modules/@cspell/filetypes/dist/definitions.js
 const definitions = [
 	{
 		id: "ada",
@@ -40465,7 +40488,7 @@ const definitions = [
 	},
 	{
 		id: "typst",
-		extensions: [".typst"]
+		extensions: [".typ", ".typst"]
 	},
 	{
 		id: "vala",
@@ -40698,7 +40721,7 @@ const definitions = [
 	}
 ];
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+filetypes@10.0.1/node_modules/@cspell/filetypes/dist/filetypes.js
+//#region ../node_modules/.pnpm/@cspell+filetypes@10.1.0/node_modules/@cspell/filetypes/dist/filetypes.js
 const binaryFormatIds = definitions.filter((d) => d.format === "Binary").map((d) => d.id);
 const binaryLanguages = /* @__PURE__ */ new Set([
 	"binary",
@@ -40812,7 +40835,7 @@ function defToRegExp(def) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/Uri.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/Uri.js
 const STDIN_PROTOCOL = "stdin:";
 function toUri(uriOrFile) {
 	if (UriImpl.isUri(uriOrFile)) return uriOrFile;
@@ -40940,12 +40963,12 @@ function documentUriToURL(uri) {
 	return toURL$2(uri instanceof URL ? uri : typeof uri === "string" ? toFileURL(uri) : new URL(uriFrom(uri).toString()));
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Document/normalizeLanguageIds.js
 function normalizeLanguageIds(languageId) {
 	return (Array.isArray(languageId) ? languageId.join(",") : languageId).split(",").map((s) => s.trim());
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Document/isBinaryDoc.js
 function isBinaryDoc(document) {
 	return isBinaryFile(toUri(document.uri), document.languageId, document.text);
 }
@@ -41156,7 +41179,7 @@ function getWellformedEdit(textEdit) {
 	return textEdit;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Models/TextDocument.js
 var TextDocumentImpl = class {
 	languageId;
 	locale;
@@ -41267,7 +41290,7 @@ function isTextDocumentImpl(doc) {
 	return doc instanceof TextDocumentImpl;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Document/resolveDocument.js
 const defaultEncoding = "utf8";
 function fileToDocument(file, text, languageId, locale) {
 	return clean$1({
@@ -41303,7 +41326,7 @@ function isDocumentWithText(doc) {
 	return doc.text !== void 0;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/FeatureFlags/FeatureFlags.js
 let systemFeatureFlags;
 /**
 * Feature Flags are used to turn on/off features.
@@ -41375,7 +41398,7 @@ function toBool(value) {
 	return boolValues[value.toLowerCase()];
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/search.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/search.js
 /**
 * Search for an item in a sorted array.
 * The value returned is either the position of the item or where it should be inserted.
@@ -41391,7 +41414,7 @@ function binarySearch(arr, item, leftOffset, rightOffset) {
 	return left;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/text.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/text.js
 function splitWordWithOffset(wo, regExpWordBreaks) {
 	return splitWord(wo.text, regExpWordBreaks).map(scanMap((last, text) => ({
 		text,
@@ -41506,7 +41529,7 @@ function calculateTextDocumentOffsets(uri, doc, wordOffsets) {
 	});
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/InDocSettings.js
 const regExMatchRegEx = /\/.*\/[gimuy]*/;
 const regExCSpellInDocDirective = /\b(?:spell-?checker|c?spell)::?(.*)/gi;
 const regExCSpellDirectiveKey = /(?<=\b(?:spell-?checker|c?spell)::?)(?!:)(.*)/i;
@@ -41784,7 +41807,7 @@ function parseDisable(acc, _match) {
 	return acc;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Settings/TextDocumentSettings.js
 function combineTextAndLanguageSettings(settings, text, languageId) {
 	if (!text) return toInternalSettings(calcSettingsForLanguageId(settings, languageId));
 	const docSettings = extractSettingsFromText(text);
@@ -41794,7 +41817,7 @@ function extractSettingsFromText(text) {
 	return getInDocumentSettings(text);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/determineTextDocumentSettings.js
 /**
 * Combines all relevant setting values into a final configuration to be used for spell checking.
 * It applies any overrides and appropriate language settings by taking into account the document type (languageId)
@@ -41818,7 +41841,7 @@ function getLanguageForFilename(filename) {
 	return findMatchingFileTypes(Path$1.basename(filename));
 }
 //#endregion
-//#region ../node_modules/.pnpm/@cspell+cspell-types@10.0.1/node_modules/@cspell/cspell-types/dist/index.mjs
+//#region ../node_modules/.pnpm/@cspell+cspell-types@10.1.0/node_modules/@cspell/cspell-types/dist/index.mjs
 let IssueType = /* @__PURE__ */ function(IssueType) {
 	IssueType[IssueType["spelling"] = 0] = "spelling";
 	IssueType[IssueType["directive"] = 1] = "directive";
@@ -42015,7 +42038,7 @@ function isAllCaps(word) {
 	return regExpIsAllCaps.test(word);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Transform/SourceMap.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Transform/SourceMap.js
 var SourceMapCursorImpl = class {
 	sourceMap;
 	idx;
@@ -42387,7 +42410,7 @@ function sliceSourceMapToSourceRange(map, range) {
 	return newMap;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Transform/TextMap.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Transform/TextMap.js
 /**
 * Extract a substring from a TextMap.
 * @param textMap - A text range with an optional map
@@ -42427,7 +42450,7 @@ function calculateRangeInSrc(srcMap, rangeOrigin) {
 	return [cursor.mapOffsetToSrc(rangeOrigin[0]), cursor.mapOffsetToSrc(rangeOrigin[1])];
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Transform/parsedText.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Transform/parsedText.js
 function mapRangeBackToOriginalPos(offRange, map) {
 	if (!map || !map.length) return offRange;
 	return calculateRangeInSrc(map, offRange);
@@ -42464,7 +42487,7 @@ function createMappedTextSegmenter(includeRanges) {
 	return segmenter;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Transform/SubstitutionTransformer.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Transform/SubstitutionTransformer.js
 var SubstitutionTransformer = class {
 	#trie;
 	constructor(subMap) {
@@ -42584,7 +42607,7 @@ function createSubstitutionTransformer(info) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/Transform/TextRange.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/Transform/TextRange.js
 function toMatchRangeWithText(m) {
 	const range = m.indices?.[0];
 	const index = range?.[0] ?? (m.index || 0);
@@ -42695,7 +42718,7 @@ function flatten(data) {
 	return result;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/clone.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/clone.js
 /**
 * Clones the properties from src to dst using the provided handlers.
 * @param src
@@ -42765,7 +42788,7 @@ function copy1(src, dst, key) {
 	dst[key] = value;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/cleanValidationIssue.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/cleanValidationIssue.js
 function cleanValidationIssue(issue) {
 	const cleanIssue = {};
 	cloneInto(issue, cleanIssue, ValidationIssueHandlers);
@@ -42786,7 +42809,7 @@ const ValidationIssueHandlers = {
 	suggestionsEx: copy1
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/PairingHeap.js
 var PairingHeap = class {
 	compare;
 	_heap;
@@ -42866,7 +42889,7 @@ function mergeSiblings(compare, n) {
 	return ss ? merge$1(compare, m, mergeSiblings(compare, ss)) : m;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/regexHelper.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/regexHelper.js
 /**
 * Escape a string so it can be used as an exact match within a RegExp.
 * @param s - string to escape
@@ -42876,7 +42899,7 @@ function escapeRegEx(s) {
 	return s.replaceAll(/[|\\{}()[\]^$+*?.]/g, "\\$&").replaceAll("-", "\\x2d");
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/util/wordSplitter.js
 const ignoreBreak = Object.freeze([]);
 function split(line, offset, isValidWord, options = {}) {
 	const relWordToSplit = findNextWordText({
@@ -43169,7 +43192,7 @@ function mergeSortedBreaks(...maps) {
 	return maps.flat().sort((a, b) => a.offset - b.offset);
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/isRandomString.js
 const maxRadio = .5;
 /**
 * Try to detect if a string is a random string of characters or is it camel case / snake case words.
@@ -43205,7 +43228,7 @@ function extractHexSequences(s, minLength = MIN_HEX_SEQUENCE_LENGTH$1) {
 	}));
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/isWordValid.js
 function hasWordCheck(dict, word) {
 	word = word.includes("\\") ? word.replaceAll("\\", "") : word;
 	return dict.has(word);
@@ -43214,7 +43237,7 @@ function isWordValidWithEscapeRetry(dict, wo, line) {
 	return hasWordCheck(dict, wo.text) || line.text[wo.offset - line.offset - 1] === "\\" && hasWordCheck(dict, wo.text.slice(1));
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/lineValidatorFactory.js
 const MIN_HEX_SEQUENCE_LENGTH = 8;
 function lineValidatorFactory(sDict, options) {
 	const { minWordLength = 4, flagWords = [], allowCompoundWords = false, ignoreCase = true, ignoreRandomStrings = defaultCSpellSettings.ignoreRandomStrings, minRandomLength = defaultCSpellSettings.minRandomLength, unknownWords = unknownWordsChoices.ReportAll, numSuggestions } = options;
@@ -43562,7 +43585,7 @@ function filterExcludedTextOffsets(issues, excluded) {
 	return keep;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/settingsToValidateOptions.js
 function settingsToValidateOptions(settings) {
 	return {
 		allowCompoundWords: settings.allowCompoundWords,
@@ -43582,14 +43605,22 @@ function settingsToValidateOptions(settings) {
 	};
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
-function calcTextInclusionRanges(text, options) {
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/textValidator.js
+function calcTextInclusionRanges(text, options, transformer) {
 	const { ignoreRegExpList = [], includeRegExpList = [] } = options;
 	const filteredIncludeList = includeRegExpList.filter((a) => !!a);
-	return excludeRanges(findMatchingRangesForPatterns(filteredIncludeList.length ? filteredIncludeList : [/.*/gim], text), findMatchingRangesForPatterns(ignoreRegExpList, text));
+	const finalIncludeList = filteredIncludeList.length ? filteredIncludeList : [/.*/gim];
+	const excludeRanges$1 = findMatchingRangesForPatterns(ignoreRegExpList, text).filter((range) => !isFullySubstitutedRange(text, range, transformer));
+	return excludeRanges(findMatchingRangesForPatterns(finalIncludeList, text), excludeRanges$1);
+}
+function isFullySubstitutedRange(text, range, transformer) {
+	if (!transformer) return false;
+	const source = text.slice(range.startPos, range.endPos);
+	const transformed = transformer.transform(source);
+	return transformed.text !== source && transformed.map?.length === 2 && transformed.map[0] === source.length;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/traceWord.js
 function traceWord(word, dictCollection, config) {
 	const opts = {
 		ignoreCase: config.ignoreCase ?? true,
@@ -43690,7 +43721,7 @@ var CTraceResult = class extends Array {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/textValidation/docValidator.js
 const ERROR_NOT_PREPARED = "Validator Must be prepared before calling this function.";
 var DocumentValidator = class DocumentValidator {
 	settings;
@@ -43761,7 +43792,8 @@ var DocumentValidator = class DocumentValidator {
 			...settingsToValidateOptions(finalSettings),
 			transformer: sub.transformer
 		};
-		const includeRanges = calcTextInclusionRanges(this._document.text, validateOptions);
+		const rangeTransformer = finalSettings.substitutions?.length ? sub.transformer : void 0;
+		const includeRanges = calcTextInclusionRanges(this._document.text, validateOptions, rangeTransformer);
 		const segmenter = createMappedTextSegmenter(includeRanges);
 		const textValidator = textValidatorFactory(dict, validateOptions);
 		recFinalizeTime();
@@ -43799,7 +43831,8 @@ var DocumentValidator = class DocumentValidator {
 			...settingsToValidateOptions(finalSettings),
 			transformer: sub.transformer
 		};
-		const includeRanges = calcTextInclusionRanges(this._document.text, validateOptions);
+		const rangeTransformer = finalSettings.substitutions?.length ? sub.transformer : void 0;
+		const includeRanges = calcTextInclusionRanges(this._document.text, validateOptions, rangeTransformer);
 		const segmenter = createMappedTextSegmenter(includeRanges);
 		const textValidator = textValidatorFactory(dict, validateOptions);
 		this._preparations = {
@@ -44125,7 +44158,7 @@ function timePromise(timings, name, p) {
 	return p.finally(recordPerfTime(timings, name));
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-lib@10.0.1/node_modules/cspell-lib/dist/lib/spellCheckFile.js
+//#region ../node_modules/.pnpm/cspell-lib@10.1.0/node_modules/cspell-lib/dist/lib/spellCheckFile.js
 /**
 * Spell Check a Document.
 * @param document - document to be checked. If `document.text` is `undefined` the file will be loaded
@@ -44213,6 +44246,485 @@ async function spellCheckFullDocument(document, options, settingsOrConfigFile) {
 	timer.end();
 	return result;
 }
+//#endregion
+//#region ../node_modules/.pnpm/chalk@6.0.0/node_modules/chalk/source/utilities.js
+function stringReplaceAll$1(string, substring, postfix) {
+	let index = string.indexOf(substring);
+	if (index === -1) return string;
+	const substringLength = substring.length;
+	let endIndex = 0;
+	let returnValue = "";
+	do {
+		returnValue += string.slice(endIndex, index) + substring + postfix;
+		endIndex = index + substringLength;
+		index = string.indexOf(substring, endIndex);
+	} while (index !== -1);
+	returnValue += string.slice(endIndex);
+	return returnValue;
+}
+function stringEncaseCRLFWithFirstIndex$1(string, prefix, postfix, index) {
+	let endIndex = 0;
+	let returnValue = "";
+	do {
+		const isGotCR = string[index - 1] === "\r";
+		returnValue += string.slice(endIndex, isGotCR ? index - 1 : index) + prefix + (isGotCR ? "\r\n" : "\n") + postfix;
+		endIndex = index + 1;
+		index = string.indexOf("\n", endIndex);
+	} while (index !== -1);
+	returnValue += string.slice(endIndex);
+	return returnValue;
+}
+//#endregion
+//#region ../node_modules/.pnpm/chalk@6.0.0/node_modules/chalk/source/vendor/ansi-styles/index.js
+const ANSI_BACKGROUND_OFFSET$1 = 10;
+const ANSI_UNDERLINE_OFFSET = 20;
+const wrapAnsi16$1 = (offset = 0) => (code) => `\u{1B}[${code + offset}m`;
+const wrapAnsi256$1 = (offset = 0) => (code) => `\u{1B}[${38 + offset};5;${code}m`;
+const wrapAnsi16m$1 = (offset = 0) => (red, green, blue) => `\u{1B}[${38 + offset};2;${red};${green};${blue}m`;
+const wrapUnderlineAnsi = (code) => `\u{1B}[58;5;${code < 90 ? code - 30 : code - 90 + 8}m`;
+const styles$3 = {
+	modifier: {
+		reset: [0, 0],
+		bold: [1, 22],
+		dim: [2, 22],
+		italic: [3, 23],
+		underline: [4, 24],
+		underlineDouble: ["4:2", 24],
+		underlineCurly: ["4:3", 24],
+		underlineDotted: ["4:4", 24],
+		underlineDashed: ["4:5", 24],
+		overline: [53, 55],
+		inverse: [7, 27],
+		hidden: [8, 28],
+		strikethrough: [9, 29]
+	},
+	color: {
+		black: [30, 39],
+		red: [31, 39],
+		green: [32, 39],
+		yellow: [33, 39],
+		blue: [34, 39],
+		magenta: [35, 39],
+		cyan: [36, 39],
+		white: [37, 39],
+		blackBright: [90, 39],
+		gray: [90, 39],
+		grey: [90, 39],
+		redBright: [91, 39],
+		greenBright: [92, 39],
+		yellowBright: [93, 39],
+		blueBright: [94, 39],
+		magentaBright: [95, 39],
+		cyanBright: [96, 39],
+		whiteBright: [97, 39]
+	},
+	bgColor: {
+		bgBlack: [40, 49],
+		bgRed: [41, 49],
+		bgGreen: [42, 49],
+		bgYellow: [43, 49],
+		bgBlue: [44, 49],
+		bgMagenta: [45, 49],
+		bgCyan: [46, 49],
+		bgWhite: [47, 49],
+		bgBlackBright: [100, 49],
+		bgGray: [100, 49],
+		bgGrey: [100, 49],
+		bgRedBright: [101, 49],
+		bgGreenBright: [102, 49],
+		bgYellowBright: [103, 49],
+		bgBlueBright: [104, 49],
+		bgMagentaBright: [105, 49],
+		bgCyanBright: [106, 49],
+		bgWhiteBright: [107, 49]
+	},
+	underlineColor: {
+		underlineBlack: ["58;5;0", 59],
+		underlineRed: ["58;5;1", 59],
+		underlineGreen: ["58;5;2", 59],
+		underlineYellow: ["58;5;3", 59],
+		underlineBlue: ["58;5;4", 59],
+		underlineMagenta: ["58;5;5", 59],
+		underlineCyan: ["58;5;6", 59],
+		underlineWhite: ["58;5;7", 59],
+		underlineBlackBright: ["58;5;8", 59],
+		underlineGray: ["58;5;8", 59],
+		underlineGrey: ["58;5;8", 59],
+		underlineRedBright: ["58;5;9", 59],
+		underlineGreenBright: ["58;5;10", 59],
+		underlineYellowBright: ["58;5;11", 59],
+		underlineBlueBright: ["58;5;12", 59],
+		underlineMagentaBright: ["58;5;13", 59],
+		underlineCyanBright: ["58;5;14", 59],
+		underlineWhiteBright: ["58;5;15", 59]
+	}
+};
+Object.keys(styles$3.modifier);
+const foregroundColorNames$1 = Object.keys(styles$3.color);
+const backgroundColorNames$1 = Object.keys(styles$3.bgColor);
+Object.keys(styles$3.underlineColor);
+[...foregroundColorNames$1, ...backgroundColorNames$1];
+function assembleStyles$1() {
+	const codes = /* @__PURE__ */ new Map();
+	for (const [groupName, group] of Object.entries(styles$3)) {
+		for (const [styleName, style] of Object.entries(group)) {
+			styles$3[styleName] = {
+				open: `\u{1B}[${style[0]}m`,
+				close: `\u{1B}[${style[1]}m`
+			};
+			group[styleName] = styles$3[styleName];
+			codes.set(Number.parseInt(style[0], 10), style[1]);
+		}
+		Object.defineProperty(styles$3, groupName, {
+			value: group,
+			enumerable: false
+		});
+	}
+	Object.defineProperty(styles$3, "codes", {
+		value: codes,
+		enumerable: false
+	});
+	styles$3.color.close = "\x1B[39m";
+	styles$3.bgColor.close = "\x1B[49m";
+	styles$3.underlineColor.close = "\x1B[59m";
+	styles$3.color.ansi = wrapAnsi16$1();
+	styles$3.color.ansi256 = wrapAnsi256$1();
+	styles$3.color.ansi16m = wrapAnsi16m$1();
+	styles$3.bgColor.ansi = wrapAnsi16$1(ANSI_BACKGROUND_OFFSET$1);
+	styles$3.bgColor.ansi256 = wrapAnsi256$1(ANSI_BACKGROUND_OFFSET$1);
+	styles$3.bgColor.ansi16m = wrapAnsi16m$1(ANSI_BACKGROUND_OFFSET$1);
+	styles$3.underlineColor.ansi = wrapUnderlineAnsi;
+	styles$3.underlineColor.ansi256 = wrapAnsi256$1(ANSI_UNDERLINE_OFFSET);
+	styles$3.underlineColor.ansi16m = wrapAnsi16m$1(ANSI_UNDERLINE_OFFSET);
+	Object.defineProperties(styles$3, {
+		rgbToAnsi256: {
+			value(red, green, blue) {
+				if (red === green && green === blue) {
+					if (red < 8) return 16;
+					if (red > 248) return 231;
+					return Math.round((red - 8) / 247 * 24) + 232;
+				}
+				return 16 + 36 * Math.round(red / 255 * 5) + 6 * Math.round(green / 255 * 5) + Math.round(blue / 255 * 5);
+			},
+			enumerable: false
+		},
+		hexToRgb: {
+			value(hex) {
+				const matches = /[\da-f]{6}|[\da-f]{3}/i.exec(hex.toString(16));
+				if (!matches) return [
+					0,
+					0,
+					0
+				];
+				let [colorString] = matches;
+				if (colorString.length === 3) colorString = [...colorString].map((character) => character + character).join("");
+				const integer = Number.parseInt(colorString, 16);
+				return [
+					integer >> 16 & 255,
+					integer >> 8 & 255,
+					integer & 255
+				];
+			},
+			enumerable: false
+		},
+		hexToAnsi256: {
+			value: (hex) => styles$3.rgbToAnsi256(...styles$3.hexToRgb(hex)),
+			enumerable: false
+		},
+		ansi256ToAnsi: {
+			value(code) {
+				if (code < 8) return 30 + code;
+				if (code < 16) return 90 + (code - 8);
+				let red;
+				let green;
+				let blue;
+				if (code >= 232) {
+					red = ((code - 232) * 10 + 8) / 255;
+					green = red;
+					blue = red;
+				} else {
+					code -= 16;
+					const remainder = code % 36;
+					red = Math.floor(code / 36) / 5;
+					green = Math.floor(remainder / 6) / 5;
+					blue = remainder % 6 / 5;
+				}
+				const value = Math.max(red, green, blue) * 2;
+				if (value === 0) return 30;
+				let result = 30 + (Math.round(blue) << 2 | Math.round(green) << 1 | Math.round(red));
+				if (value === 2) result += 60;
+				return result;
+			},
+			enumerable: false
+		},
+		rgbToAnsi: {
+			value: (red, green, blue) => styles$3.ansi256ToAnsi(styles$3.rgbToAnsi256(red, green, blue)),
+			enumerable: false
+		},
+		hexToAnsi: {
+			value: (hex) => styles$3.ansi256ToAnsi(styles$3.hexToAnsi256(hex)),
+			enumerable: false
+		}
+	});
+	return styles$3;
+}
+const ansiStyles$1 = assembleStyles$1();
+//#endregion
+//#region ../node_modules/.pnpm/chalk@6.0.0/node_modules/chalk/source/vendor/supports-color/index.js
+function hasFlag$1(flag, argv = globalThis.Deno ? globalThis.Deno.args : process$1.argv) {
+	const prefix = flag.startsWith("-") ? "" : flag.length === 1 ? "-" : "--";
+	const position = argv.indexOf(prefix + flag);
+	const terminatorPosition = argv.indexOf("--");
+	return position !== -1 && (terminatorPosition === -1 || position < terminatorPosition);
+}
+const { env: env$1 } = process$1;
+let flagForceColor$1;
+if (hasFlag$1("no-color") || hasFlag$1("no-colors") || hasFlag$1("color=false") || hasFlag$1("color=never")) flagForceColor$1 = 0;
+else if (hasFlag$1("color") || hasFlag$1("colors") || hasFlag$1("color=true") || hasFlag$1("color=always")) flagForceColor$1 = 1;
+function hasNumericForceColor() {
+	return /^\d+$/.test(env$1.FORCE_COLOR);
+}
+function envForceColor$1() {
+	if (!("FORCE_COLOR" in env$1)) return;
+	if (env$1.FORCE_COLOR === "false") return 0;
+	if (env$1.FORCE_COLOR === "true" || env$1.FORCE_COLOR.length === 0) return 1;
+	if (!hasNumericForceColor()) return;
+	return Math.min(Number.parseInt(env$1.FORCE_COLOR, 10), 3);
+}
+function translateLevel$1(level) {
+	if (level === 0) return false;
+	return {
+		level,
+		hasBasic: true,
+		has256: level >= 2,
+		has16m: level >= 3
+	};
+}
+function _supportsColor$1(haveStream, { streamIsTTY, sniffFlags = true } = {}) {
+	const noFlagForceColor = envForceColor$1();
+	if (noFlagForceColor !== void 0) flagForceColor$1 = noFlagForceColor;
+	const forceColor = sniffFlags ? flagForceColor$1 : noFlagForceColor;
+	if (forceColor === 0) return 0;
+	if (sniffFlags) {
+		if (hasFlag$1("color=16m") || hasFlag$1("color=full") || hasFlag$1("color=truecolor")) return 3;
+		if (hasFlag$1("color=256")) return 2;
+	}
+	if (forceColor !== void 0 && hasNumericForceColor()) return forceColor;
+	if ("TF_BUILD" in env$1 && "AGENT_NAME" in env$1) return 1;
+	if (haveStream && !streamIsTTY && forceColor === void 0) return 0;
+	const min = forceColor || 0;
+	if (env$1.TERM === "dumb") return min;
+	if (process$1.platform === "win32") {
+		const osRelease = os$1.release().split(".");
+		if (Number(osRelease[0]) >= 10 && Number(osRelease[2]) >= 10586) return Number(osRelease[2]) >= 14931 ? 3 : 2;
+		return 1;
+	}
+	if ("CI" in env$1) {
+		if ([
+			"GITHUB_ACTIONS",
+			"GITEA_ACTIONS",
+			"CIRCLECI"
+		].some((key) => key in env$1)) return 3;
+		if ([
+			"TRAVIS",
+			"APPVEYOR",
+			"GITLAB_CI",
+			"BUILDKITE",
+			"DRONE"
+		].some((sign) => sign in env$1) || env$1.CI_NAME === "codeship") return 1;
+		return min;
+	}
+	if ("TEAMCITY_VERSION" in env$1) return /^(?:9\.0*[1-9]\d*\.|\d{2,}\.)/.test(env$1.TEAMCITY_VERSION) ? 1 : 0;
+	if (env$1.COLORTERM === "truecolor") return 3;
+	if (env$1.TERM === "xterm-kitty") return 3;
+	if (env$1.TERM === "xterm-ghostty") return 3;
+	if (env$1.TERM === "wezterm") return 3;
+	if ("TERM_PROGRAM" in env$1) {
+		const version = Number.parseInt((env$1.TERM_PROGRAM_VERSION || "").split(".", 1)[0], 10);
+		switch (env$1.TERM_PROGRAM) {
+			case "iTerm.app": return version >= 3 ? 3 : 2;
+			case "Apple_Terminal": return 2;
+		}
+	}
+	if (/-256(?:color)?$/i.test(env$1.TERM)) return 2;
+	if (/^screen|^xterm|^vt100|^vt220|^rxvt|color|ansi|cygwin|linux/i.test(env$1.TERM)) return 1;
+	if ("COLORTERM" in env$1) return 1;
+	return min;
+}
+function createSupportsColor$1(stream, options = {}) {
+	return translateLevel$1(_supportsColor$1(stream, {
+		streamIsTTY: stream && stream.isTTY,
+		...options
+	}));
+}
+//#endregion
+//#region ../node_modules/.pnpm/chalk@6.0.0/node_modules/chalk/source/index.js
+const { stdout: stdoutColor$1, stderr: stderrColor$1 } = {
+	stdout: createSupportsColor$1({ isTTY: tty.isatty(1) }),
+	stderr: createSupportsColor$1({ isTTY: tty.isatty(2) })
+};
+const GENERATOR$1 = Symbol("GENERATOR");
+const STYLER$1 = Symbol("STYLER");
+const IS_EMPTY$1 = Symbol("IS_EMPTY");
+const LEVEL = Symbol("LEVEL");
+const styles$2 = Object.create(null);
+const assertValidLevel = (level) => {
+	if (!Number.isSafeInteger(level) || level < 0 || level > 3) throw new Error("The `level` should be an integer from 0 to 3");
+};
+const levelDescriptor = {
+	enumerable: true,
+	get() {
+		return this[LEVEL];
+	},
+	set(level) {
+		assertValidLevel(level);
+		this[LEVEL] = level;
+	}
+};
+const applyOptions$1 = (object, options = {}) => {
+	if (options.level !== void 0) assertValidLevel(options.level);
+	const colorLevel = stdoutColor$1 ? stdoutColor$1.level : 0;
+	object[LEVEL] = options.level === void 0 ? colorLevel : options.level;
+};
+var Chalk = class {
+	constructor(options) {
+		return chalkFactory$1(options);
+	}
+};
+const chalkFactory$1 = (options) => {
+	const chalk = (...strings) => strings.join(" ");
+	applyOptions$1(chalk, options);
+	Object.setPrototypeOf(chalk, createChalk$1.prototype);
+	return chalk;
+};
+function createChalk$1(options) {
+	return chalkFactory$1(options);
+}
+Object.setPrototypeOf(createChalk$1.prototype, Function.prototype);
+for (const [styleName, style] of Object.entries(ansiStyles$1)) styles$2[styleName] = { get() {
+	const builder = createBuilder$1(this, createStyler$1(style.open, style.close, this[STYLER$1]), this[IS_EMPTY$1]);
+	Object.defineProperty(this, styleName, { value: builder });
+	return builder;
+} };
+styles$2.visible = { get() {
+	const builder = createBuilder$1(this, this[STYLER$1], true);
+	Object.defineProperty(this, "visible", { value: builder });
+	return builder;
+} };
+const createModelConverters = (model, type) => {
+	const style = ansiStyles$1[type];
+	if (model === "rgb") {
+		const ansi = (red, green, blue) => style.ansi(ansiStyles$1.rgbToAnsi(red, green, blue));
+		const ansi256 = (red, green, blue) => style.ansi256(ansiStyles$1.rgbToAnsi256(red, green, blue));
+		return [
+			ansi,
+			ansi,
+			ansi256,
+			style.ansi16m
+		];
+	}
+	if (model === "hex") {
+		const ansi = (hex) => style.ansi(ansiStyles$1.hexToAnsi(hex));
+		const ansi256 = (hex) => style.ansi256(ansiStyles$1.hexToAnsi256(hex));
+		return [
+			ansi,
+			ansi,
+			ansi256,
+			(hex) => style.ansi16m(...ansiStyles$1.hexToRgb(hex))
+		];
+	}
+	const ansi = (code) => style.ansi(ansiStyles$1.ansi256ToAnsi(code));
+	return [
+		ansi,
+		ansi,
+		style.ansi256,
+		style.ansi256
+	];
+};
+for (const model of [
+	"rgb",
+	"hex",
+	"ansi256"
+]) {
+	const capitalizedModel = model[0].toUpperCase() + model.slice(1);
+	for (const [styleName, type] of [
+		[model, "color"],
+		["bg" + capitalizedModel, "bgColor"],
+		["underline" + capitalizedModel, "underlineColor"]
+	]) {
+		const { close } = ansiStyles$1[type];
+		const converters = createModelConverters(model, type);
+		styles$2[styleName] = { get() {
+			const styleFunction = function(first, second, third) {
+				const open = converters[this.level](first, second, third);
+				return createBuilder$1(this, createStyler$1(open, close, this[STYLER$1]), this[IS_EMPTY$1]);
+			};
+			Object.defineProperty(this, styleName, { value: styleFunction });
+			return styleFunction;
+		} };
+	}
+}
+const proto$1 = Object.defineProperties(() => {}, {
+	...styles$2,
+	level: {
+		enumerable: true,
+		get() {
+			return this[GENERATOR$1].level;
+		},
+		set(level) {
+			this[GENERATOR$1].level = level;
+		}
+	}
+});
+const createStyler$1 = (open, close, parent) => {
+	let openAll;
+	let closeAll;
+	if (parent === void 0) {
+		openAll = open;
+		closeAll = close;
+	} else {
+		openAll = parent.openAll + open;
+		closeAll = close + parent.closeAll;
+	}
+	return {
+		open,
+		close,
+		openAll,
+		closeAll,
+		parent
+	};
+};
+const createBuilder$1 = (self, _styler, _isEmpty) => {
+	const builder = (...arguments_) => {
+		if (arguments_.length === 1) return applyStyle$1(builder, "" + arguments_[0]);
+		if (arguments_.length === 2) return applyStyle$1(builder, arguments_[0] + " " + arguments_[1]);
+		return applyStyle$1(builder, arguments_.join(" "));
+	};
+	Object.setPrototypeOf(builder, proto$1);
+	builder[GENERATOR$1] = self[GENERATOR$1] ?? self;
+	builder[STYLER$1] = _styler;
+	builder[IS_EMPTY$1] = _isEmpty;
+	return builder;
+};
+const applyStyle$1 = (self, string) => {
+	if (self[GENERATOR$1][LEVEL] <= 0 || !string) return self[IS_EMPTY$1] ? "" : string;
+	let styler = self[STYLER$1];
+	if (styler === void 0) return string;
+	const { openAll, closeAll } = styler;
+	if (string.includes("\x1B")) while (styler !== void 0) {
+		string = stringReplaceAll$1(string, styler.close, styler.open);
+		styler = styler.parent;
+	}
+	const lfIndex = string.indexOf("\n");
+	if (lfIndex !== -1) string = stringEncaseCRLFWithFirstIndex$1(string, closeAll, openAll, lfIndex);
+	return openAll + string + closeAll;
+};
+Object.defineProperties(createChalk$1.prototype, {
+	...styles$2,
+	level: levelDescriptor
+});
+const chalk$1 = createChalk$1();
+createChalk$1({ level: stderrColor$1 ? stderrColor$1.level : 0 });
 //#endregion
 //#region ../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/ansi-styles/index.js
 const ANSI_BACKGROUND_OFFSET = 10;
@@ -44511,11 +45023,6 @@ const applyOptions = (object, options = {}) => {
 	const colorLevel = stdoutColor ? stdoutColor.level : 0;
 	object.level = options.level === void 0 ? colorLevel : options.level;
 };
-var Chalk = class {
-	constructor(options) {
-		return chalkFactory(options);
-	}
-};
 const chalkFactory = (options) => {
 	const chalk = (...strings) => strings.join(" ");
 	applyOptions(chalk, options);
@@ -44618,7 +45125,7 @@ const applyStyle = (self, string) => {
 	return openAll + string + closeAll;
 };
 Object.defineProperties(createChalk.prototype, styles);
-const chalk = createChalk();
+createChalk();
 createChalk({ level: stderrColor ? stderrColor.level : 0 });
 //#endregion
 //#region ../node_modules/.pnpm/chalk-template@1.1.2/node_modules/chalk-template/index.js
@@ -44724,23 +45231,35 @@ function ansiRegex({ onlyFirst = false } = {}) {
 	return new RegExp(`(?:\\u001B\\][^\\u0007\\u001B\\u009C]*(?:\\u0007|\\u001B\\u005C|\\u009C))|[\\u001B\\u009B][[\\]()#;?]*(?:\\d{1,4}(?:[;:]\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]`, onlyFirst ? void 0 : "g");
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-gitignore@10.0.1/node_modules/cspell-gitignore/dist/findRepoRoot.js
+//#region ../node_modules/.pnpm/cspell-gitignore@10.1.0/node_modules/cspell-gitignore/dist/findRepoRoot.js
 /**
 * Find the git repository root directory.
 * @param directory - directory to search up from.
 * @returns resolves to `.git` root or undefined
 */
 async function findRepoRoot(directory, vfs) {
-	directory = toFileDirURL(directory);
-	vfs = vfs || getDefaultVirtualFs().getFS(directory);
-	const foundDir = await vfs.findUp(".git", directory, { type: "directory" });
-	const foundFile = await vfs.findUp(".git", directory, { type: "file" });
-	const found = foundDir || foundFile;
+	const from = toFileDirURL(directory);
+	const fs = vfs || getDefaultVirtualFs().getFS(from);
+	const found = await fs.findUp((dir) => findDotGit(fs, dir), from);
 	if (!found) return void 0;
 	return toFilePathOrHref(new URL(".", found));
 }
+/**
+* Look for `.git` in a single directory, without caring whether it is a file or a directory.
+*
+* A clone marks its root with a `.git` directory and a worktree marks its root with a `.git` file,
+* so both have to count. A worktree checked out inside its own clone has one of each above it,
+* which is why the nearest match has to win rather than one type of match.
+* @param fs - file system to stat with.
+* @param dir - directory to look in.
+* @returns resolves to the url of `.git`, or undefined when the directory does not have one.
+*/
+function findDotGit(fs, dir) {
+	const url = new URL(".git", dir);
+	return fs.stat(url).then(() => url, () => void 0);
+}
 //#endregion
-//#region ../node_modules/.pnpm/cspell-gitignore@10.0.1/node_modules/cspell-gitignore/dist/utils.js
+//#region ../node_modules/.pnpm/cspell-gitignore@10.1.0/node_modules/cspell-gitignore/dist/utils.js
 function isDefined(v) {
 	return v !== void 0 && v !== null;
 }
@@ -44755,7 +45274,7 @@ function makeRelativeTo(child, parent) {
 	return rel;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-gitignore@10.0.1/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
+//#region ../node_modules/.pnpm/cspell-gitignore@10.1.0/node_modules/cspell-gitignore/dist/GitIgnoreFile.js
 /**
 * Represents an instance of a .gitignore file.
 */
@@ -44869,7 +45388,7 @@ function globToString(glob, relativeToDir) {
 	return (base ? base + "/" : "") + glob.glob;
 }
 //#endregion
-//#region ../node_modules/.pnpm/cspell-gitignore@10.0.1/node_modules/cspell-gitignore/dist/GitIgnore.js
+//#region ../node_modules/.pnpm/cspell-gitignore@10.1.0/node_modules/cspell-gitignore/dist/GitIgnore.js
 /**
 * Class to cache and process `.gitignore` file queries.
 */
@@ -45866,7 +46385,7 @@ const stringify = (value, replacer, space) => {
 	}
 };
 //#endregion
-//#region ../node_modules/.pnpm/cspell@10.0.1/node_modules/cspell/dist/esm/application-Ck3Auwvx.js
+//#region ../node_modules/.pnpm/cspell@10.1.0/node_modules/cspell/dist/esm/application-BQ6838px.js
 var ImplChannel = class {
 	stream;
 	constructor(stream) {
@@ -46223,7 +46742,7 @@ function tableToLines(table, deliminator) {
 	return [...process()];
 }
 function headerDecorator(t) {
-	return chalk.bold(chalk.underline(t));
+	return chalk$1.bold(chalk$1.underline(t));
 }
 function decorateRowWith(row, ...decorators) {
 	return decorators.reduce((row, decorator) => row.map(decorator), row);
@@ -46400,7 +46919,8 @@ function getReporter(options, config) {
 		const cachedFilesText = cachedFiles ? ` (${cachedFiles} from cache)` : "";
 		const skippedFilesText = skippedFiles ? `, skipped: ${skippedFiles}` : "";
 		const withErrorsText = errors ? ` with ${errors} error${errors === 1 ? "" : "s"}` : "";
-		consoleError(`CSpell\u003A Files checked: ${filesChecked}${cachedFilesText}${skippedFilesText}, Issues found: ${issues} in ${numFilesWithIssues === 1 ? "1 file" : `${numFilesWithIssues} files`}${withErrorsText}.`);
+		const summaryMessage = `CSpell\u003A Files checked: ${filesChecked}${cachedFilesText}${skippedFilesText}, Issues found: ${issues} in ${numFilesWithIssues === 1 ? "1 file" : `${numFilesWithIssues} files`}${withErrorsText}.`;
+		consoleError(summaryMessage);
 		if (errorCollection?.length && issues > 5) {
 			consoleError("-------------------------------------------");
 			consoleError("Errors:");
@@ -46674,7 +47194,7 @@ try {
 const pkgDir = _dirname;
 const npmPackage = {
 	name: "cspell",
-	version: "10.0.1",
+	version: "10.1.0",
 	engines: { node: ">=22.18.0" }
 };
 function filterFeatureIssues(features, issue, reportOptions) {
@@ -46873,9 +47393,7 @@ function replayReportItems(reportItemsCollection, reporter) {
 		case "debug":
 			reporter.debug(...item.payload);
 			break;
-		case "error":
-			reporter.error(...item.payload);
-			break;
+		case "error": reporter.error(...item.payload);
 	}
 }
 const asyncMap = operators.opMapAsync;
@@ -47119,11 +47637,13 @@ const resolveFilenames = asyncMap(resolveFilename);
 */
 function readFileListFiles(listFiles) {
 	let useStdin = false;
-	return pipeAsync(toAsyncIterable(pipeAsync(listFiles.filter((file) => {
+	const found = pipeAsync(listFiles.filter((file) => {
 		const isStdin = file === "stdin";
 		useStdin = useStdin || isStdin;
 		return !isStdin;
-	}), asyncMap((file) => readFileListFile(file)), asyncAwait(), asyncFlatten()), useStdin ? readStdin() : []), resolveFilenames);
+	}), asyncMap((file) => readFileListFile(file)), asyncAwait(), asyncFlatten());
+	const stdin = useStdin ? readStdin() : [];
+	return pipeAsync(toAsyncIterable(found, stdin), resolveFilenames);
 }
 /**
 * Read a `listFile` and return the containing file paths resolved relative to the `listFile`.
@@ -48333,7 +48853,7 @@ async function runLint(cfg) {
 					version
 				}, root);
 				const result = await processFiles(await determineFilesToCheck(configInfo, cfg, reporter, globInfo), {
-					chalk,
+					chalk: chalk$1,
 					configInfo,
 					cfg,
 					verboseLevel,
@@ -48373,7 +48893,7 @@ async function runLint(cfg) {
 	}
 	function getProcessFileOptions(configInfo) {
 		return {
-			chalk,
+			chalk: chalk$1,
 			configInfo,
 			cfg,
 			verboseLevel,
@@ -48384,7 +48904,7 @@ async function runLint(cfg) {
 	}
 }
 function checkGlobs(globs, reporter) {
-	globs.filter((g) => g.startsWith("'") || g.endsWith("'")).map((glob) => chalk.yellow(glob)).forEach((glob) => reporter.error("Linter", new CheckFailed(`Glob starting or ending with ' (single quote) is not likely to match any files: ${glob}.`)));
+	globs.filter((g) => g.startsWith("'") || g.endsWith("'")).map((glob) => chalk$1.yellow(glob)).forEach((glob) => reporter.error("Linter", new CheckFailed(`Glob starting or ending with ' (single quote) is not likely to match any files: ${glob}.`)));
 }
 async function determineGlobs(configInfo, cfg) {
 	const useGitignore = cfg.options.gitignore ?? configInfo.config.useGitignore ?? false;
