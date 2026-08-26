@@ -80,7 +80,7 @@ async function gatherFiles(context: Context): Promise<Set<string> | undefined> {
     return undefined;
 }
 
-async function checkSpelling(
+export async function checkSpelling(
     params: ActionParams,
     globs: string[] | undefined,
     files: string[] | undefined,

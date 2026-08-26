@@ -2,7 +2,7 @@ import { defineConfig, type UserConfig } from 'tsdown';
 
 export default defineConfig([
     {
-        entry: ['src/main_root.ts'],
+        entry: ['src/main_root.ts', 'src/cli.ts'],
         outDir: '../action/lib',
         format: ['esm'],
         target: 'Node24',

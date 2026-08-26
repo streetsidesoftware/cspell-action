@@ -2,11 +2,12 @@ import path from 'node:path';
 
 import type { RunResult } from 'cspell';
 
-import { validateActionParams } from './ActionParams.js';
+import type { ActionParamsInput } from './ActionParams.js';
+import { applyDefaults, validateActionParams } from './ActionParams.js';
 import { debug, error, info, setFailed, setOutput, warning } from './actions/core/index.js';
 import type { Context as GitHubContext } from './actions/github/index.js';
 import { checkDotMap } from './checkDotMap.js';
-import { checkSpellingForContext, type Context } from './checkSpelling.js';
+import { checkSpelling, checkSpellingForContext, type Context } from './checkSpelling.js';
 import { getActionParams } from './getActionParams.js';
 
 const core = { debug, error, info, warning };
@@ -82,6 +83,15 @@ export async function action(githubContext: GitHubContext): Promise<boolean> {
         setFailed('Errors encountered.');
     }
 
+    return !(result.issues + result.errors);
+}
+
+export async function actionFromCli(paramsFromCli?: Partial<ActionParamsInput>): Promise<boolean> {
+    const params = applyDefaults({ ...paramsFromCli });
+    params.files = params.files || defaultGlob;
+    validateActionParams(params, core.error);
+    const result = await checkSpelling(params, params.files.split('\n'), undefined);
+    outputResult(result);
     return !(result.issues + result.errors);
 }
 

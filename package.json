@@ -55,5 +55,6 @@
   },
   "engines": {
     "node": ">=24"
-  }
+  },
+  "bin": "./bin.mjs"
 }
