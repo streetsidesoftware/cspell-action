@@ -1,5 +1,4 @@
 {
-    "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
     "INPUT_ROOT": "./root/does/not/exist",
     "GITHUB_EVENT_PATH": "./fixtures/push_payload.json",
     "GITHUB_EVENT_NAME": "push",

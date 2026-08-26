@@ -1,11 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { fileURLToPath } from 'url';
 import { vi } from 'vitest';
 
 import { IssueCommandFn, Logger } from '../logger.js';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const __dirname = import.meta.dirname;
 
 const urlTSConfig = new URL('../../tsconfig.json', import.meta.url);
 

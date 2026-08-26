@@ -7,9 +7,8 @@ export default defineConfig({
             // enabled: true,
             provider: 'istanbul',
             clean: true,
-            all: true,
             reportsDirectory: 'coverage',
-            reporter: ['html', 'json', ['lcov', { projectRoot: __dirname }], 'text'],
+            reporter: ['html', 'json', ['lcov', { projectRoot: import.meta.dirname }], 'text'],
             exclude: [
                 'ajv.config.*',
                 'bin.mjs',

@@ -1,5 +1,4 @@
 {
-    "INPUT_GITHUB_TOKEN": "$GITHUB_TOKEN",
     "INPUT_FILES": "*.yaml\n{.*,*}/**/*.yml\n**/*.{ts,js}",
     "INPUT_CONFIG": "./fixtures/cspell.json",
     "INPUT_STRICT": "false",
