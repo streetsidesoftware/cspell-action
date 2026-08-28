@@ -493,384 +493,378 @@ function getDefaultLogger() {
 	return defaultLogger;
 }
 //#endregion
-//#region ../node_modules/.pnpm/vscode-uri@3.1.0/node_modules/vscode-uri/lib/esm/index.mjs
-var LIB;
-(() => {
-	"use strict";
-	var t = { 975: (t) => {
-		function e(t) {
-			if ("string" != typeof t) throw new TypeError("Path must be a string. Received " + JSON.stringify(t));
-		}
-		function r(t, e) {
-			for (var r, n = "", i = 0, o = -1, s = 0, h = 0; h <= t.length; ++h) {
-				if (h < t.length) r = t.charCodeAt(h);
-				else {
-					if (47 === r) break;
-					r = 47;
-				}
-				if (47 === r) {
-					if (o === h - 1 || 1 === s);
-					else if (o !== h - 1 && 2 === s) {
-						if (n.length < 2 || 2 !== i || 46 !== n.charCodeAt(n.length - 1) || 46 !== n.charCodeAt(n.length - 2)) {
-							if (n.length > 2) {
-								var a = n.lastIndexOf("/");
-								if (a !== n.length - 1) {
-									-1 === a ? (n = "", i = 0) : i = (n = n.slice(0, a)).length - 1 - n.lastIndexOf("/"), o = h, s = 0;
-									continue;
-								}
-							} else if (2 === n.length || 1 === n.length) {
-								n = "", i = 0, o = h, s = 0;
+//#region ../node_modules/.pnpm/vscode-uri@3.2.0/node_modules/vscode-uri/lib/esm/index.mjs
+var t = { 975(t) {
+	function e(t) {
+		if ("string" != typeof t) throw new TypeError("Path must be a string. Received " + JSON.stringify(t));
+	}
+	function r(t, e) {
+		for (var r, n = "", i = 0, o = -1, h = 0, s = 0; s <= t.length; ++s) {
+			if (s < t.length) r = t.charCodeAt(s);
+			else {
+				if (47 === r) break;
+				r = 47;
+			}
+			if (47 === r) {
+				if (o === s - 1 || 1 === h);
+				else if (o !== s - 1 && 2 === h) {
+					if (n.length < 2 || 2 !== i || 46 !== n.charCodeAt(n.length - 1) || 46 !== n.charCodeAt(n.length - 2)) {
+						if (n.length > 2) {
+							var a = n.lastIndexOf("/");
+							if (a !== n.length - 1) {
+								-1 === a ? (n = "", i = 0) : i = (n = n.slice(0, a)).length - 1 - n.lastIndexOf("/"), o = s, h = 0;
 								continue;
 							}
+						} else if (2 === n.length || 1 === n.length) {
+							n = "", i = 0, o = s, h = 0;
+							continue;
 						}
-						e && (n.length > 0 ? n += "/.." : n = "..", i = 2);
-					} else n.length > 0 ? n += "/" + t.slice(o + 1, h) : n = t.slice(o + 1, h), i = h - o - 1;
-					o = h, s = 0;
-				} else 46 === r && -1 !== s ? ++s : s = -1;
-			}
-			return n;
+					}
+					e && (n.length > 0 ? n += "/.." : n = "..", i = 2);
+				} else n.length > 0 ? n += "/" + t.slice(o + 1, s) : n = t.slice(o + 1, s), i = s - o - 1;
+				o = s, h = 0;
+			} else 46 === r && -1 !== h ? ++h : h = -1;
 		}
-		var n = {
-			resolve: function() {
-				for (var t, n = "", i = !1, o = arguments.length - 1; o >= -1 && !i; o--) {
-					var s;
-					o >= 0 ? s = arguments[o] : (void 0 === t && (t = process.cwd()), s = t), e(s), 0 !== s.length && (n = s + "/" + n, i = 47 === s.charCodeAt(0));
-				}
-				return n = r(n, !i), i ? n.length > 0 ? "/" + n : "/" : n.length > 0 ? n : ".";
-			},
-			normalize: function(t) {
-				if (e(t), 0 === t.length) return ".";
-				var n = 47 === t.charCodeAt(0), i = 47 === t.charCodeAt(t.length - 1);
-				return 0 !== (t = r(t, !n)).length || n || (t = "."), t.length > 0 && i && (t += "/"), n ? "/" + t : t;
-			},
-			isAbsolute: function(t) {
-				return e(t), t.length > 0 && 47 === t.charCodeAt(0);
-			},
-			join: function() {
-				if (0 === arguments.length) return ".";
-				for (var t, r = 0; r < arguments.length; ++r) {
-					var i = arguments[r];
-					e(i), i.length > 0 && (void 0 === t ? t = i : t += "/" + i);
-				}
-				return void 0 === t ? "." : n.normalize(t);
-			},
-			relative: function(t, r) {
-				if (e(t), e(r), t === r) return "";
-				if ((t = n.resolve(t)) === (r = n.resolve(r))) return "";
-				for (var i = 1; i < t.length && 47 === t.charCodeAt(i); ++i);
-				for (var o = t.length, s = o - i, h = 1; h < r.length && 47 === r.charCodeAt(h); ++h);
-				for (var a = r.length - h, c = s < a ? s : a, f = -1, u = 0; u <= c; ++u) {
-					if (u === c) {
-						if (a > c) {
-							if (47 === r.charCodeAt(h + u)) return r.slice(h + u + 1);
-							if (0 === u) return r.slice(h + u);
-						} else s > c && (47 === t.charCodeAt(i + u) ? f = u : 0 === u && (f = 0));
-						break;
-					}
-					var l = t.charCodeAt(i + u);
-					if (l !== r.charCodeAt(h + u)) break;
-					47 === l && (f = u);
-				}
-				var g = "";
-				for (u = i + f + 1; u <= o; ++u) u !== o && 47 !== t.charCodeAt(u) || (0 === g.length ? g += ".." : g += "/..");
-				return g.length > 0 ? g + r.slice(h + f) : (h += f, 47 === r.charCodeAt(h) && ++h, r.slice(h));
-			},
-			_makeLong: function(t) {
-				return t;
-			},
-			dirname: function(t) {
-				if (e(t), 0 === t.length) return ".";
-				for (var r = t.charCodeAt(0), n = 47 === r, i = -1, o = !0, s = t.length - 1; s >= 1; --s) if (47 === (r = t.charCodeAt(s))) {
-					if (!o) {
-						i = s;
-						break;
-					}
-				} else o = !1;
-				return -1 === i ? n ? "/" : "." : n && 1 === i ? "//" : t.slice(0, i);
-			},
-			basename: function(t, r) {
-				if (void 0 !== r && "string" != typeof r) throw new TypeError("\"ext\" argument must be a string");
-				e(t);
-				var n, i = 0, o = -1, s = !0;
-				if (void 0 !== r && r.length > 0 && r.length <= t.length) {
-					if (r.length === t.length && r === t) return "";
-					var h = r.length - 1, a = -1;
-					for (n = t.length - 1; n >= 0; --n) {
-						var c = t.charCodeAt(n);
-						if (47 === c) {
-							if (!s) {
-								i = n + 1;
-								break;
-							}
-						} else -1 === a && (s = !1, a = n + 1), h >= 0 && (c === r.charCodeAt(h) ? -1 == --h && (o = n) : (h = -1, o = a));
-					}
-					return i === o ? o = a : -1 === o && (o = t.length), t.slice(i, o);
-				}
-				for (n = t.length - 1; n >= 0; --n) if (47 === t.charCodeAt(n)) {
-					if (!s) {
-						i = n + 1;
-						break;
-					}
-				} else -1 === o && (s = !1, o = n + 1);
-				return -1 === o ? "" : t.slice(i, o);
-			},
-			extname: function(t) {
-				e(t);
-				for (var r = -1, n = 0, i = -1, o = !0, s = 0, h = t.length - 1; h >= 0; --h) {
-					var a = t.charCodeAt(h);
-					if (47 !== a) -1 === i && (o = !1, i = h + 1), 46 === a ? -1 === r ? r = h : 1 !== s && (s = 1) : -1 !== r && (s = -1);
-					else if (!o) {
-						n = h + 1;
-						break;
-					}
-				}
-				return -1 === r || -1 === i || 0 === s || 1 === s && r === i - 1 && r === n + 1 ? "" : t.slice(r, i);
-			},
-			format: function(t) {
-				if (null === t || "object" != typeof t) throw new TypeError("The \"pathObject\" argument must be of type Object. Received type " + typeof t);
-				return function(t, e) {
-					var r = e.dir || e.root, n = e.base || (e.name || "") + (e.ext || "");
-					return r ? r === e.root ? r + n : r + "/" + n : n;
-				}(0, t);
-			},
-			parse: function(t) {
-				e(t);
-				var r = {
-					root: "",
-					dir: "",
-					base: "",
-					ext: "",
-					name: ""
-				};
-				if (0 === t.length) return r;
-				var n, i = t.charCodeAt(0), o = 47 === i;
-				o ? (r.root = "/", n = 1) : n = 0;
-				for (var s = -1, h = 0, a = -1, c = !0, f = t.length - 1, u = 0; f >= n; --f) if (47 !== (i = t.charCodeAt(f))) -1 === a && (c = !1, a = f + 1), 46 === i ? -1 === s ? s = f : 1 !== u && (u = 1) : -1 !== s && (u = -1);
-				else if (!c) {
-					h = f + 1;
+		return n;
+	}
+	var n = {
+		resolve: function() {
+			for (var t, n = "", i = !1, o = arguments.length - 1; o >= -1 && !i; o--) {
+				var h;
+				o >= 0 ? h = arguments[o] : (void 0 === t && (t = process.cwd()), h = t), e(h), 0 !== h.length && (n = h + "/" + n, i = 47 === h.charCodeAt(0));
+			}
+			return n = r(n, !i), i ? n.length > 0 ? "/" + n : "/" : n.length > 0 ? n : ".";
+		},
+		normalize: function(t) {
+			if (e(t), 0 === t.length) return ".";
+			var n = 47 === t.charCodeAt(0), i = 47 === t.charCodeAt(t.length - 1);
+			return 0 !== (t = r(t, !n)).length || n || (t = "."), t.length > 0 && i && (t += "/"), n ? "/" + t : t;
+		},
+		isAbsolute: function(t) {
+			return e(t), t.length > 0 && 47 === t.charCodeAt(0);
+		},
+		join: function() {
+			if (0 === arguments.length) return ".";
+			for (var t, r = 0; r < arguments.length; ++r) {
+				var i = arguments[r];
+				e(i), i.length > 0 && (void 0 === t ? t = i : t += "/" + i);
+			}
+			return void 0 === t ? "." : n.normalize(t);
+		},
+		relative: function(t, r) {
+			if (e(t), e(r), t === r) return "";
+			if ((t = n.resolve(t)) === (r = n.resolve(r))) return "";
+			for (var i = 1; i < t.length && 47 === t.charCodeAt(i); ++i);
+			for (var o = t.length, h = o - i, s = 1; s < r.length && 47 === r.charCodeAt(s); ++s);
+			for (var a = r.length - s, c = h < a ? h : a, f = -1, u = 0; u <= c; ++u) {
+				if (u === c) {
+					if (a > c) {
+						if (47 === r.charCodeAt(s + u)) return r.slice(s + u + 1);
+						if (0 === u) return r.slice(s + u);
+					} else h > c && (47 === t.charCodeAt(i + u) ? f = u : 0 === u && (f = 0));
 					break;
 				}
-				return -1 === s || -1 === a || 0 === u || 1 === u && s === a - 1 && s === h + 1 ? -1 !== a && (r.base = r.name = 0 === h && o ? t.slice(1, a) : t.slice(h, a)) : (0 === h && o ? (r.name = t.slice(1, s), r.base = t.slice(1, a)) : (r.name = t.slice(h, s), r.base = t.slice(h, a)), r.ext = t.slice(s, a)), h > 0 ? r.dir = t.slice(0, h - 1) : o && (r.dir = "/"), r;
-			},
-			sep: "/",
-			delimiter: ":",
-			win32: null,
-			posix: null
-		};
-		n.posix = n, t.exports = n;
-	} }, e = {};
-	function r(n) {
-		var i = e[n];
-		if (void 0 !== i) return i.exports;
-		var o = e[n] = { exports: {} };
-		return t[n](o, o.exports, r), o.exports;
-	}
-	r.d = (t, e) => {
-		for (var n in e) r.o(e, n) && !r.o(t, n) && Object.defineProperty(t, n, {
-			enumerable: !0,
-			get: e[n]
-		});
-	}, r.o = (t, e) => Object.prototype.hasOwnProperty.call(t, e), r.r = (t) => {
-		"undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t, "__esModule", { value: !0 });
-	};
-	var n = {};
-	let i;
-	if (r.r(n), r.d(n, {
-		URI: () => l,
-		Utils: () => I
-	}), "object" == typeof process) i = "win32" === process.platform;
-	else if ("object" == typeof navigator) i = navigator.userAgent.indexOf("Windows") >= 0;
-	const o = /^\w[\w\d+.-]*$/, s = /^\//, h = /^\/\//;
-	function a(t, e) {
-		if (!t.scheme && e) throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${t.authority}", path: "${t.path}", query: "${t.query}", fragment: "${t.fragment}"}`);
-		if (t.scheme && !o.test(t.scheme)) throw new Error("[UriError]: Scheme contains illegal characters.");
-		if (t.path) {
-			if (t.authority) {
-				if (!s.test(t.path)) throw new Error("[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash (\"/\") character");
-			} else if (h.test(t.path)) throw new Error("[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters (\"//\")");
-		}
-	}
-	const c = "", f = "/", u = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
-	class l {
-		static isUri(t) {
-			return t instanceof l || !!t && "string" == typeof t.authority && "string" == typeof t.fragment && "string" == typeof t.path && "string" == typeof t.query && "string" == typeof t.scheme && "string" == typeof t.fsPath && "function" == typeof t.with && "function" == typeof t.toString;
-		}
-		scheme;
-		authority;
-		path;
-		query;
-		fragment;
-		constructor(t, e, r, n, i, o = !1) {
-			"object" == typeof t ? (this.scheme = t.scheme || c, this.authority = t.authority || c, this.path = t.path || c, this.query = t.query || c, this.fragment = t.fragment || c) : (this.scheme = function(t, e) {
-				return t || e ? t : "file";
-			}(t, o), this.authority = e || c, this.path = function(t, e) {
-				switch (t) {
-					case "https":
-					case "http":
-					case "file": e ? e[0] !== f && (e = f + e) : e = f;
-				}
-				return e;
-			}(this.scheme, r || c), this.query = n || c, this.fragment = i || c, a(this, o));
-		}
-		get fsPath() {
-			return v(this, !1);
-		}
-		with(t) {
-			if (!t) return this;
-			let { scheme: e, authority: r, path: n, query: i, fragment: o } = t;
-			return void 0 === e ? e = this.scheme : null === e && (e = c), void 0 === r ? r = this.authority : null === r && (r = c), void 0 === n ? n = this.path : null === n && (n = c), void 0 === i ? i = this.query : null === i && (i = c), void 0 === o ? o = this.fragment : null === o && (o = c), e === this.scheme && r === this.authority && n === this.path && i === this.query && o === this.fragment ? this : new d(e, r, n, i, o);
-		}
-		static parse(t, e = !1) {
-			const r = u.exec(t);
-			return r ? new d(r[2] || c, w(r[4] || c), w(r[5] || c), w(r[7] || c), w(r[9] || c), e) : new d(c, c, c, c, c);
-		}
-		static file(t) {
-			let e = c;
-			if (i && (t = t.replace(/\\/g, f)), t[0] === f && t[1] === f) {
-				const r = t.indexOf(f, 2);
-				-1 === r ? (e = t.substring(2), t = f) : (e = t.substring(2, r), t = t.substring(r) || f);
+				var l = t.charCodeAt(i + u);
+				if (l !== r.charCodeAt(s + u)) break;
+				47 === l && (f = u);
 			}
-			return new d("file", e, t, c, c);
-		}
-		static from(t) {
-			const e = new d(t.scheme, t.authority, t.path, t.query, t.fragment);
-			return a(e, !0), e;
-		}
-		toString(t = !1) {
-			return b(this, t);
-		}
-		toJSON() {
-			return this;
-		}
-		static revive(t) {
-			if (t) {
-				if (t instanceof l) return t;
-				{
-					const e = new d(t);
-					return e._formatted = t.external, e._fsPath = t._sep === g ? t.fsPath : null, e;
-				}
-			}
+			var g = "";
+			for (u = i + f + 1; u <= o; ++u) u !== o && 47 !== t.charCodeAt(u) || (0 === g.length ? g += ".." : g += "/..");
+			return g.length > 0 ? g + r.slice(s + f) : (s += f, 47 === r.charCodeAt(s) && ++s, r.slice(s));
+		},
+		_makeLong: function(t) {
 			return t;
-		}
-	}
-	const g = i ? 1 : void 0;
-	class d extends l {
-		_formatted = null;
-		_fsPath = null;
-		get fsPath() {
-			return this._fsPath || (this._fsPath = v(this, !1)), this._fsPath;
-		}
-		toString(t = !1) {
-			return t ? b(this, !0) : (this._formatted || (this._formatted = b(this, !1)), this._formatted);
-		}
-		toJSON() {
-			const t = { $mid: 1 };
-			return this._fsPath && (t.fsPath = this._fsPath, t._sep = g), this._formatted && (t.external = this._formatted), this.path && (t.path = this.path), this.scheme && (t.scheme = this.scheme), this.authority && (t.authority = this.authority), this.query && (t.query = this.query), this.fragment && (t.fragment = this.fragment), t;
-		}
-	}
-	const p = {
-		58: "%3A",
-		47: "%2F",
-		63: "%3F",
-		35: "%23",
-		91: "%5B",
-		93: "%5D",
-		64: "%40",
-		33: "%21",
-		36: "%24",
-		38: "%26",
-		39: "%27",
-		40: "%28",
-		41: "%29",
-		42: "%2A",
-		43: "%2B",
-		44: "%2C",
-		59: "%3B",
-		61: "%3D",
-		32: "%20"
+		},
+		dirname: function(t) {
+			if (e(t), 0 === t.length) return ".";
+			for (var r = t.charCodeAt(0), n = 47 === r, i = -1, o = !0, h = t.length - 1; h >= 1; --h) if (47 === (r = t.charCodeAt(h))) {
+				if (!o) {
+					i = h;
+					break;
+				}
+			} else o = !1;
+			return -1 === i ? n ? "/" : "." : n && 1 === i ? "//" : t.slice(0, i);
+		},
+		basename: function(t, r) {
+			if (void 0 !== r && "string" != typeof r) throw new TypeError("\"ext\" argument must be a string");
+			e(t);
+			var n, i = 0, o = -1, h = !0;
+			if (void 0 !== r && r.length > 0 && r.length <= t.length) {
+				if (r.length === t.length && r === t) return "";
+				var s = r.length - 1, a = -1;
+				for (n = t.length - 1; n >= 0; --n) {
+					var c = t.charCodeAt(n);
+					if (47 === c) {
+						if (!h) {
+							i = n + 1;
+							break;
+						}
+					} else -1 === a && (h = !1, a = n + 1), s >= 0 && (c === r.charCodeAt(s) ? -1 === --s && (o = n) : (s = -1, o = a));
+				}
+				return i === o ? o = a : -1 === o && (o = t.length), t.slice(i, o);
+			}
+			for (n = t.length - 1; n >= 0; --n) if (47 === t.charCodeAt(n)) {
+				if (!h) {
+					i = n + 1;
+					break;
+				}
+			} else -1 === o && (h = !1, o = n + 1);
+			return -1 === o ? "" : t.slice(i, o);
+		},
+		extname: function(t) {
+			e(t);
+			for (var r = -1, n = 0, i = -1, o = !0, h = 0, s = t.length - 1; s >= 0; --s) {
+				var a = t.charCodeAt(s);
+				if (47 !== a) -1 === i && (o = !1, i = s + 1), 46 === a ? -1 === r ? r = s : 1 !== h && (h = 1) : -1 !== r && (h = -1);
+				else if (!o) {
+					n = s + 1;
+					break;
+				}
+			}
+			return -1 === r || -1 === i || 0 === h || 1 === h && r === i - 1 && r === n + 1 ? "" : t.slice(r, i);
+		},
+		format: function(t) {
+			if (null === t || "object" != typeof t) throw new TypeError("The \"pathObject\" argument must be of type Object. Received type " + typeof t);
+			return function(t, e) {
+				var r = e.dir || e.root, n = e.base || (e.name || "") + (e.ext || "");
+				return r ? r === e.root ? r + n : r + "/" + n : n;
+			}(0, t);
+		},
+		parse: function(t) {
+			e(t);
+			var r = {
+				root: "",
+				dir: "",
+				base: "",
+				ext: "",
+				name: ""
+			};
+			if (0 === t.length) return r;
+			var n, i = t.charCodeAt(0), o = 47 === i;
+			o ? (r.root = "/", n = 1) : n = 0;
+			for (var h = -1, s = 0, a = -1, c = !0, f = t.length - 1, u = 0; f >= n; --f) if (47 !== (i = t.charCodeAt(f))) -1 === a && (c = !1, a = f + 1), 46 === i ? -1 === h ? h = f : 1 !== u && (u = 1) : -1 !== h && (u = -1);
+			else if (!c) {
+				s = f + 1;
+				break;
+			}
+			return -1 === h || -1 === a || 0 === u || 1 === u && h === a - 1 && h === s + 1 ? -1 !== a && (r.base = r.name = 0 === s && o ? t.slice(1, a) : t.slice(s, a)) : (0 === s && o ? (r.name = t.slice(1, h), r.base = t.slice(1, a)) : (r.name = t.slice(s, h), r.base = t.slice(s, a)), r.ext = t.slice(h, a)), s > 0 ? r.dir = t.slice(0, s - 1) : o && (r.dir = "/"), r;
+		},
+		sep: "/",
+		delimiter: ":",
+		win32: null,
+		posix: null
 	};
-	function m(t, e, r) {
-		let n, i = -1;
-		for (let o = 0; o < t.length; o++) {
-			const s = t.charCodeAt(o);
-			if (s >= 97 && s <= 122 || s >= 65 && s <= 90 || s >= 48 && s <= 57 || 45 === s || 46 === s || 95 === s || 126 === s || e && 47 === s || r && 91 === s || r && 93 === s || r && 58 === s) -1 !== i && (n += encodeURIComponent(t.substring(i, o)), i = -1), void 0 !== n && (n += t.charAt(o));
-			else {
-				void 0 === n && (n = t.substr(0, o));
-				const e = p[s];
-				void 0 !== e ? (-1 !== i && (n += encodeURIComponent(t.substring(i, o)), i = -1), n += e) : -1 === i && (i = o);
+	n.posix = n, t.exports = n;
+} };
+var e = {};
+function r(n) {
+	var i = e[n];
+	if (void 0 !== i) return i.exports;
+	var o = e[n] = { exports: {} };
+	return t[n](o, o.exports, r), o.exports;
+}
+let n;
+if (r.d = (t, e) => {
+	for (var n in e) r.o(e, n) && !r.o(t, n) && Object.defineProperty(t, n, {
+		enumerable: !0,
+		get: e[n]
+	});
+}, r.o = (t, e) => Object.prototype.hasOwnProperty.call(t, e), "object" == typeof process) n = "win32" === process.platform;
+else if ("object" == typeof navigator) n = navigator.userAgent.indexOf("Windows") >= 0;
+const i = /^\w[\w\d+.-]*$/;
+const o = /^\//;
+const h = /^\/\//;
+function s(t, e) {
+	if (!t.scheme && e) throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${t.authority}", path: "${t.path}", query: "${t.query}", fragment: "${t.fragment}"}`);
+	if (t.scheme && !i.test(t.scheme)) throw new Error("[UriError]: Scheme contains illegal characters.");
+	if (t.path) {
+		if (t.authority) {
+			if (!o.test(t.path)) throw new Error("[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash (\"/\") character");
+		} else if (h.test(t.path)) throw new Error("[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters (\"//\")");
+	}
+}
+const a = "";
+const c = "/";
+const f = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
+var u = class u {
+	static isUri(t) {
+		return t instanceof u || !!t && "string" == typeof t.authority && "string" == typeof t.fragment && "string" == typeof t.path && "string" == typeof t.query && "string" == typeof t.scheme && "string" == typeof t.fsPath && "function" == typeof t.with && "function" == typeof t.toString;
+	}
+	scheme;
+	authority;
+	path;
+	query;
+	fragment;
+	constructor(t, e, r, n, i, o = !1) {
+		"object" == typeof t ? (this.scheme = t.scheme || a, this.authority = t.authority || a, this.path = t.path || a, this.query = t.query || a, this.fragment = t.fragment || a) : (this.scheme = function(t, e) {
+			return t || e ? t : "file";
+		}(t, o), this.authority = e || a, this.path = function(t, e) {
+			switch (t) {
+				case "https":
+				case "http":
+				case "file": e ? e[0] !== c && (e = c + e) : e = c;
+			}
+			return e;
+		}(this.scheme, r || a), this.query = n || a, this.fragment = i || a, s(this, o));
+	}
+	get fsPath() {
+		return y(this, !1);
+	}
+	with(t) {
+		if (!t) return this;
+		let { scheme: e, authority: r, path: n, query: i, fragment: o } = t;
+		return void 0 === e ? e = this.scheme : null === e && (e = a), void 0 === r ? r = this.authority : null === r && (r = a), void 0 === n ? n = this.path : null === n && (n = a), void 0 === i ? i = this.query : null === i && (i = a), void 0 === o ? o = this.fragment : null === o && (o = a), e === this.scheme && r === this.authority && n === this.path && i === this.query && o === this.fragment ? this : new g(e, r, n, i, o);
+	}
+	static parse(t, e = !1) {
+		const r = f.exec(t);
+		return r ? new g(r[2] || a, A(r[4] || a), A(r[5] || a), A(r[7] || a), A(r[9] || a), e) : new g(a, a, a, a, a);
+	}
+	static file(t) {
+		let e = a;
+		if (n && (t = t.replace(/\\/g, c)), t[0] === c && t[1] === c) {
+			const r = t.indexOf(c, 2);
+			-1 === r ? (e = t.substring(2), t = c) : (e = t.substring(2, r), t = t.substring(r) || c);
+		}
+		return new g("file", e, t, a, a);
+	}
+	static from(t) {
+		const e = new g(t.scheme, t.authority, t.path, t.query, t.fragment);
+		return s(e, !0), e;
+	}
+	toString(t = !1) {
+		return v(this, t);
+	}
+	toJSON() {
+		return this;
+	}
+	static revive(t) {
+		if (t) {
+			if (t instanceof u) return t;
+			{
+				const e = new g(t);
+				return e._formatted = t.external, e._fsPath = t._sep === l ? t.fsPath : null, e;
 			}
 		}
-		return -1 !== i && (n += encodeURIComponent(t.substring(i))), void 0 !== n ? n : t;
+		return t;
 	}
-	function y(t) {
-		let e;
-		for (let r = 0; r < t.length; r++) {
-			const n = t.charCodeAt(r);
-			35 === n || 63 === n ? (void 0 === e && (e = t.substr(0, r)), e += p[n]) : void 0 !== e && (e += t[r]);
+};
+const l = n ? 1 : void 0;
+var g = class extends u {
+	_formatted = null;
+	_fsPath = null;
+	get fsPath() {
+		return this._fsPath || (this._fsPath = y(this, !1)), this._fsPath;
+	}
+	toString(t = !1) {
+		return t ? v(this, !0) : (this._formatted || (this._formatted = v(this, !1)), this._formatted);
+	}
+	toJSON() {
+		const t = { $mid: 1 };
+		return this._fsPath && (t.fsPath = this._fsPath, t._sep = l), this._formatted && (t.external = this._formatted), this.path && (t.path = this.path), this.scheme && (t.scheme = this.scheme), this.authority && (t.authority = this.authority), this.query && (t.query = this.query), this.fragment && (t.fragment = this.fragment), t;
+	}
+};
+const p = {
+	58: "%3A",
+	47: "%2F",
+	63: "%3F",
+	35: "%23",
+	91: "%5B",
+	93: "%5D",
+	64: "%40",
+	33: "%21",
+	36: "%24",
+	38: "%26",
+	39: "%27",
+	40: "%28",
+	41: "%29",
+	42: "%2A",
+	43: "%2B",
+	44: "%2C",
+	59: "%3B",
+	61: "%3D",
+	32: "%20"
+};
+function d(t, e, r) {
+	let n, i = -1;
+	for (let o = 0; o < t.length; o++) {
+		const h = t.charCodeAt(o);
+		if (h >= 97 && h <= 122 || h >= 65 && h <= 90 || h >= 48 && h <= 57 || 45 === h || 46 === h || 95 === h || 126 === h || e && 47 === h || r && 91 === h || r && 93 === h || r && 58 === h) -1 !== i && (n += encodeURIComponent(t.substring(i, o)), i = -1), void 0 !== n && (n += t.charAt(o));
+		else {
+			void 0 === n && (n = t.substr(0, o));
+			const e = p[h];
+			void 0 !== e ? (-1 !== i && (n += encodeURIComponent(t.substring(i, o)), i = -1), n += e) : -1 === i && (i = o);
 		}
-		return void 0 !== e ? e : t;
 	}
-	function v(t, e) {
-		let r;
-		return r = t.authority && t.path.length > 1 && "file" === t.scheme ? `//${t.authority}${t.path}` : 47 === t.path.charCodeAt(0) && (t.path.charCodeAt(1) >= 65 && t.path.charCodeAt(1) <= 90 || t.path.charCodeAt(1) >= 97 && t.path.charCodeAt(1) <= 122) && 58 === t.path.charCodeAt(2) ? e ? t.path.substr(1) : t.path[1].toLowerCase() + t.path.substr(2) : t.path, i && (r = r.replace(/\//g, "\\")), r;
+	return -1 !== i && (n += encodeURIComponent(t.substring(i))), void 0 !== n ? n : t;
+}
+function m(t) {
+	let e;
+	for (let r = 0; r < t.length; r++) {
+		const n = t.charCodeAt(r);
+		35 === n || 63 === n ? (void 0 === e && (e = t.substr(0, r)), e += p[n]) : void 0 !== e && (e += t[r]);
 	}
-	function b(t, e) {
-		const r = e ? y : m;
-		let n = "", { scheme: i, authority: o, path: s, query: h, fragment: a } = t;
-		if (i && (n += i, n += ":"), (o || "file" === i) && (n += f, n += f), o) {
-			let t = o.indexOf("@");
-			if (-1 !== t) {
-				const e = o.substr(0, t);
-				o = o.substr(t + 1), t = e.lastIndexOf(":"), -1 === t ? n += r(e, !1, !1) : (n += r(e.substr(0, t), !1, !1), n += ":", n += r(e.substr(t + 1), !1, !0)), n += "@";
-			}
-			o = o.toLowerCase(), t = o.lastIndexOf(":"), -1 === t ? n += r(o, !1, !0) : (n += r(o.substr(0, t), !1, !0), n += o.substr(t));
+	return void 0 !== e ? e : t;
+}
+function y(t, e) {
+	let r;
+	return r = t.authority && t.path.length > 1 && "file" === t.scheme ? `//${t.authority}${t.path}` : 47 === t.path.charCodeAt(0) && (t.path.charCodeAt(1) >= 65 && t.path.charCodeAt(1) <= 90 || t.path.charCodeAt(1) >= 97 && t.path.charCodeAt(1) <= 122) && 58 === t.path.charCodeAt(2) ? e ? t.path.substr(1) : t.path[1].toLowerCase() + t.path.substr(2) : t.path, n && (r = r.replace(/\//g, "\\")), r;
+}
+function v(t, e) {
+	const r = e ? m : d;
+	let n = "", { scheme: i, authority: o, path: h, query: s, fragment: a } = t;
+	if (i && (n += i, n += ":"), (o || "file" === i) && (n += c, n += c), o) {
+		let t = o.indexOf("@");
+		if (-1 !== t) {
+			const e = o.substr(0, t);
+			o = o.substr(t + 1), t = e.lastIndexOf(":"), -1 === t ? n += r(e, !1, !1) : (n += r(e.substr(0, t), !1, !1), n += ":", n += r(e.substr(t + 1), !1, !0)), n += "@";
 		}
-		if (s) {
-			if (s.length >= 3 && 47 === s.charCodeAt(0) && 58 === s.charCodeAt(2)) {
-				const t = s.charCodeAt(1);
-				t >= 65 && t <= 90 && (s = `/${String.fromCharCode(t + 32)}:${s.substr(3)}`);
-			} else if (s.length >= 2 && 58 === s.charCodeAt(1)) {
-				const t = s.charCodeAt(0);
-				t >= 65 && t <= 90 && (s = `${String.fromCharCode(t + 32)}:${s.substr(2)}`);
-			}
-			n += r(s, !0, !1);
+		o = o.toLowerCase(), t = o.lastIndexOf(":"), -1 === t ? n += r(o, !1, !0) : (n += r(o.substr(0, t), !1, !0), n += o.substr(t));
+	}
+	if (h) {
+		if (h.length >= 3 && 47 === h.charCodeAt(0) && 58 === h.charCodeAt(2)) {
+			const t = h.charCodeAt(1);
+			t >= 65 && t <= 90 && (h = `/${String.fromCharCode(t + 32)}:${h.substr(3)}`);
+		} else if (h.length >= 2 && 58 === h.charCodeAt(1)) {
+			const t = h.charCodeAt(0);
+			t >= 65 && t <= 90 && (h = `${String.fromCharCode(t + 32)}:${h.substr(2)}`);
 		}
-		return h && (n += "?", n += r(h, !1, !1)), a && (n += "#", n += e ? a : m(a, !1, !1)), n;
+		n += r(h, !0, !1);
 	}
-	function C(t) {
-		try {
-			return decodeURIComponent(t);
-		} catch {
-			return t.length > 3 ? t.substr(0, 3) + C(t.substr(3)) : t;
-		}
+	return s && (n += "?", n += r(s, !1, !1)), a && (n += "#", n += e ? a : d(a, !1, !1)), n;
+}
+function b(t) {
+	try {
+		return decodeURIComponent(t);
+	} catch {
+		return t.length > 3 ? t.substr(0, 3) + b(t.substr(3)) : t;
 	}
-	const A = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
-	function w(t) {
-		return t.match(A) ? t.replace(A, ((t) => C(t))) : t;
-	}
-	var x = r(975);
-	const P = x.posix || x, _ = "/";
-	var I;
-	(function(t) {
-		t.joinPath = function(t, ...e) {
-			return t.with({ path: P.join(t.path, ...e) });
-		}, t.resolvePath = function(t, ...e) {
-			let r = t.path, n = !1;
-			r[0] !== _ && (r = _ + r, n = !0);
-			let i = P.resolve(r, ...e);
-			return n && i[0] === _ && !t.authority && (i = i.substring(1)), t.with({ path: i });
-		}, t.dirname = function(t) {
-			if (0 === t.path.length || t.path === _) return t;
-			let e = P.dirname(t.path);
-			return 1 === e.length && 46 === e.charCodeAt(0) && (e = ""), t.with({ path: e });
-		}, t.basename = function(t) {
-			return P.basename(t.path);
-		}, t.extname = function(t) {
-			return P.extname(t.path);
-		};
-	})(I || (I = {})), LIB = n;
-})();
-const { URI, Utils } = LIB;
+}
+const C = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
+function A(t) {
+	return t.match(C) ? t.replace(C, (t) => b(t)) : t;
+}
+var w = r(975);
+const x = w.posix || w;
+const P = "/";
+var _;
+(function(t) {
+	t.joinPath = function(t, ...e) {
+		return t.with({ path: x.join(t.path, ...e) });
+	}, t.resolvePath = function(t, ...e) {
+		let r = t.path, n = !1;
+		r[0] !== P && (r = P + r, n = !0);
+		let i = x.resolve(r, ...e);
+		return n && i[0] === P && !t.authority && (i = i.substring(1)), t.with({ path: i });
+	}, t.dirname = function(t) {
+		if (0 === t.path.length || t.path === P) return t;
+		let e = x.dirname(t.path);
+		return 1 === e.length && 46 === e.charCodeAt(0) && (e = ""), t.with({ path: e });
+	}, t.basename = function(t) {
+		return x.basename(t.path);
+	}, t.extname = function(t) {
+		return x.extname(t.path);
+	};
+})(_ || (_ = {}));
 //#endregion
 //#region src/reporter.ts
 var CSpellReporterForGithubAction = class {
@@ -963,7 +957,7 @@ function isProgressFileComplete(p) {
 	return p.type === "ProgressFileComplete";
 }
 function relative$2(cwd, fileUri) {
-	const fsPath = URI.parse(fileUri).fsPath;
+	const fsPath = u.parse(fileUri).fsPath;
 	return path$2.relative(cwd, fsPath);
 }
 function genSummary(result) {
@@ -13250,7 +13244,7 @@ function toFileDirURL(dir) {
 	return fileUrlBuilder$1.toFileDirURL(dir);
 }
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.5/node_modules/picomatch/lib/constants.js
+//#region ../node_modules/.pnpm/picomatch@4.0.7/node_modules/picomatch/lib/constants.js
 var require_constants = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const WIN_SLASH = "\\\\/";
 	const WIN_NO_SLASH = `[^${WIN_SLASH}]`;
@@ -13419,7 +13413,7 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 }));
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.5/node_modules/picomatch/lib/utils.js
+//#region ../node_modules/.pnpm/picomatch@4.0.7/node_modules/picomatch/lib/utils.js
 var require_utils = /* @__PURE__ */ __commonJSMin(((exports) => {
 	const { REGEX_BACKSLASH, REGEX_REMOVE_BACKSLASH, REGEX_SPECIAL_CHARS, REGEX_SPECIAL_CHARS_GLOBAL } = require_constants();
 	exports.isObject = (val) => val !== null && typeof val === "object" && !Array.isArray(val);
@@ -13467,7 +13461,7 @@ var require_utils = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.5/node_modules/picomatch/lib/scan.js
+//#region ../node_modules/.pnpm/picomatch@4.0.7/node_modules/picomatch/lib/scan.js
 var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const utils = require_utils();
 	const { CHAR_ASTERISK, CHAR_AT, CHAR_BACKWARD_SLASH, CHAR_COMMA, CHAR_DOT, CHAR_EXCLAMATION_MARK, CHAR_FORWARD_SLASH, CHAR_LEFT_CURLY_BRACE, CHAR_LEFT_PARENTHESES, CHAR_LEFT_SQUARE_BRACKET, CHAR_PLUS, CHAR_QUESTION_MARK, CHAR_RIGHT_CURLY_BRACE, CHAR_RIGHT_PARENTHESES, CHAR_RIGHT_SQUARE_BRACKET } = require_constants();
@@ -13496,7 +13490,7 @@ var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const scan = (input, options) => {
 		const opts = options || {};
 		const length = input.length - 1;
-		const scanToEnd = opts.parts === true || opts.scanToEnd === true;
+		const scanToEnd = opts.parts === true || opts.tokens === true || opts.scanToEnd === true;
 		const slashes = [];
 		const tokens = [];
 		const parts = [];
@@ -13599,14 +13593,18 @@ var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 					finished = true;
 					if (code === CHAR_EXCLAMATION_MARK && index === start) negatedExtglob = true;
 					if (scanToEnd === true) {
+						let parens = 0;
 						while (eos() !== true && (code = advance())) {
 							if (code === CHAR_BACKWARD_SLASH) {
 								backslashes = token.backslashes = true;
-								code = advance();
+								advance();
 								continue;
 							}
-							if (code === CHAR_RIGHT_PARENTHESES) {
-								isGlob = token.isGlob = true;
+							if (code === CHAR_LEFT_PARENTHESES) {
+								parens++;
+								continue;
+							}
+							if (code === CHAR_RIGHT_PARENTHESES && --parens === 0) {
 								finished = true;
 								break;
 							}
@@ -13654,13 +13652,18 @@ var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			if (opts.noparen !== true && code === CHAR_LEFT_PARENTHESES) {
 				isGlob = token.isGlob = true;
 				if (scanToEnd === true) {
+					let parens = 1;
 					while (eos() !== true && (code = advance())) {
-						if (code === CHAR_LEFT_PARENTHESES) {
+						if (code === CHAR_BACKWARD_SLASH) {
 							backslashes = token.backslashes = true;
-							code = advance();
+							advance();
 							continue;
 						}
-						if (code === CHAR_RIGHT_PARENTHESES) {
+						if (code === CHAR_LEFT_PARENTHESES) {
+							parens++;
+							continue;
+						}
+						if (code === CHAR_RIGHT_PARENTHESES && --parens === 0) {
 							finished = true;
 							break;
 						}
@@ -13723,7 +13726,7 @@ var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		if (opts.parts === true || opts.tokens === true) {
 			let prevIndex;
 			for (let idx = 0; idx < slashes.length; idx++) {
-				const n = prevIndex ? prevIndex + 1 : start;
+				const n = prevIndex !== void 0 ? prevIndex + 1 : start;
 				const i = slashes[idx];
 				const value = input.slice(n, i);
 				if (opts.tokens) {
@@ -13734,17 +13737,18 @@ var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 					depth(tokens[idx]);
 					state.maxDepth += tokens[idx].depth;
 				}
-				if (idx !== 0 || value !== "") parts.push(value);
-				prevIndex = i;
-			}
-			if (prevIndex && prevIndex + 1 < input.length) {
-				const value = input.slice(prevIndex + 1);
-				parts.push(value);
-				if (opts.tokens) {
-					tokens[tokens.length - 1].value = value;
-					depth(tokens[tokens.length - 1]);
-					state.maxDepth += tokens[tokens.length - 1].depth;
+				if (i >= start) {
+					parts.push(value);
+					prevIndex = i;
 				}
+			}
+			const n = prevIndex !== void 0 ? prevIndex + 1 : start;
+			const value = input.slice(n);
+			parts.push(value);
+			if (opts.tokens && prevIndex && prevIndex + 1 < input.length) {
+				tokens[tokens.length - 1].value = value;
+				depth(tokens[tokens.length - 1]);
+				state.maxDepth += tokens[tokens.length - 1].depth;
 			}
 			state.slashes = slashes;
 			state.parts = parts;
@@ -13754,7 +13758,7 @@ var require_scan = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = scan;
 }));
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.5/node_modules/picomatch/lib/parse.js
+//#region ../node_modules/.pnpm/picomatch@4.0.7/node_modules/picomatch/lib/parse.js
 var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const constants = require_constants();
 	const utils = require_utils();
@@ -14656,6 +14660,7 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 					rest = rest.slice(3);
 					consume("/**", 3);
 				}
+				const isEnd = eos() || state.parens > 0 && rest === ")".repeat(state.parens) && !extglobs.some((extglob) => extglob.type === "negate");
 				if (prior.type === "bos" && eos()) {
 					prev.type = "globstar";
 					prev.value += value;
@@ -14665,7 +14670,7 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 					consume(value);
 					continue;
 				}
-				if (prior.type === "slash" && prior.prev.type !== "bos" && !afterStar && eos()) {
+				if (prior.type === "slash" && prior.prev.type !== "bos" && !afterStar && isEnd) {
 					state.output = state.output.slice(0, -(prior.output + prev.output).length);
 					prior.output = `(?:${prior.output}`;
 					prev.type = "globstar";
@@ -14830,7 +14835,7 @@ var require_parse$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = parse;
 }));
 //#endregion
-//#region ../node_modules/.pnpm/picomatch@4.0.5/node_modules/picomatch/lib/picomatch.js
+//#region ../node_modules/.pnpm/picomatch@4.0.7/node_modules/picomatch/lib/picomatch.js
 var require_picomatch$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const scan = require_scan();
 	const parse = require_parse$1();
@@ -37419,11 +37424,11 @@ const nestedConfigDirectories = {
 };
 function resolveGlobRoot(settings, urlSettingsFile) {
 	const urlSettingsFileDir = new URL(".", urlSettingsFile);
-	const uriSettingsFileDir = URI.parse(urlSettingsFileDir.href);
-	const settingsFileDirName = Utils.basename(uriSettingsFileDir);
+	const uriSettingsFileDir = u.parse(urlSettingsFileDir.href);
+	const settingsFileDirName = _.basename(uriSettingsFileDir);
 	const isNestedConfig = settingsFileDirName in nestedConfigDirectories;
 	const isVSCode = settingsFileDirName === ".vscode";
-	const settingsFileDir = (isNestedConfig ? Utils.dirname(uriSettingsFileDir) : uriSettingsFileDir).toString();
+	const settingsFileDir = (isNestedConfig ? _.dirname(uriSettingsFileDir) : uriSettingsFileDir).toString();
 	const envGlobRoot = process.env[ENV_CSPELL_GLOB_ROOT];
 	const defaultGlobRoot = envGlobRoot ?? "${cwd}";
 	const rawRoot = settings.globRoot ?? (settings.version === "0.1" || envGlobRoot && !settings.version || isVSCode && !settings.version ? defaultGlobRoot : settingsFileDir);
@@ -40851,7 +40856,7 @@ function defToRegExp(def) {
 const STDIN_PROTOCOL = "stdin:";
 function toUri(uriOrFile) {
 	if (UriImpl.isUri(uriOrFile)) return uriOrFile;
-	if (URI.isUri(uriOrFile)) return UriImpl.from(uriOrFile);
+	if (u.isUri(uriOrFile)) return UriImpl.from(uriOrFile);
 	if (uriOrFile instanceof URL) return UriImpl.parse(uriOrFile.toString());
 	if (isHRef(uriOrFile)) return UriImpl.parse(uriOrFile.href);
 	if (isUri(uriOrFile)) return UriImpl.from(uriOrFile);
@@ -40875,12 +40880,12 @@ function isHRef(url) {
 function isUri(uri) {
 	if (!uri || typeof uri !== "object") return false;
 	if (UriImpl.isUri(uri)) return true;
-	if (URI.isUri(uri)) return true;
-	const u = uri;
-	return typeof u.path === "string" && typeof u.scheme === "string";
+	if (u.isUri(uri)) return true;
+	const u$1 = uri;
+	return typeof u$1.path === "string" && typeof u$1.scheme === "string";
 }
 function basename$1(uri) {
-	return Utils.basename(URI.from(uri));
+	return _.basename(u.from(uri));
 }
 function uriFrom(uri, ...parts) {
 	return UriImpl.from(uri, ...parts);
@@ -40892,7 +40897,7 @@ const keys$1 = [
 	"query",
 	"fragment"
 ];
-var UriImpl = class UriImpl extends URI {
+var UriImpl = class UriImpl extends u {
 	constructor(uri) {
 		super(uri.scheme, uri.authority, uri.path, uri.query, uri.fragment);
 	}
@@ -40935,8 +40940,8 @@ var UriImpl = class UriImpl extends URI {
 	}
 	static parse(uri) {
 		if (uri.startsWith(STDIN_PROTOCOL)) return UriImpl.from(parseStdinUri(uri));
-		const u = URI.parse(uri);
-		return UriImpl.from(u);
+		const u$2 = u.parse(uri);
+		return UriImpl.from(u$2);
 	}
 	static file(filename) {
 		if (!isWindows && hasDriveLetter.test(filename)) filename = "/" + filename.replaceAll("\\", "/");
@@ -40995,7 +41000,7 @@ function isBinaryFile(filename, languageId, text) {
 	return text?.slice(0, 1024).includes("\0") || false;
 }
 //#endregion
-//#region ../node_modules/.pnpm/vscode-languageserver-textdocument@1.0.12/node_modules/vscode-languageserver-textdocument/lib/esm/main.js
+//#region ../node_modules/.pnpm/vscode-languageserver-textdocument@1.0.13/node_modules/vscode-languageserver-textdocument/lib/esm/main.js
 var FullTextDocument = class FullTextDocument {
 	constructor(uri, languageId, version, content) {
 		this._uri = uri;
@@ -41075,6 +41080,52 @@ var FullTextDocument = class FullTextDocument {
 		const nextLineOffset = position.line + 1 < lineOffsets.length ? lineOffsets[position.line + 1] : this._content.length;
 		const offset = Math.min(lineOffset + position.character, nextLineOffset);
 		return this.ensureBeforeEOL(offset, lineOffset);
+	}
+	getLineRange(line) {
+		const lineOffsets = this.getLineOffsets();
+		if (line >= lineOffsets.length) {
+			const lastLine = lineOffsets.length - 1;
+			return {
+				start: {
+					line: lastLine,
+					character: 0
+				},
+				end: {
+					line: lastLine,
+					character: this._content.length - lineOffsets[lastLine]
+				}
+			};
+		} else if (line < 0) return {
+			start: {
+				line: 0,
+				character: 0
+			},
+			end: {
+				line: 0,
+				character: 0
+			}
+		};
+		const startOffset = lineOffsets[line];
+		const nextLineOffset = line + 1 < lineOffsets.length ? lineOffsets[line + 1] : this._content.length;
+		const endOffset = this.ensureBeforeEOL(nextLineOffset, startOffset);
+		return {
+			start: {
+				line,
+				character: 0
+			},
+			end: {
+				line,
+				character: endOffset - startOffset
+			}
+		};
+	}
+	getEOLCharacters(line) {
+		const lineOffsets = this.getLineOffsets();
+		if (line >= lineOffsets.length) return "";
+		else if (line < 0) return "";
+		const nextLineOffset = line + 1 < lineOffsets.length ? lineOffsets[line + 1] : this._content.length;
+		const eolOffset = this.ensureBeforeEOL(nextLineOffset, lineOffsets[line]);
+		return this._content.substring(eolOffset, nextLineOffset);
 	}
 	ensureBeforeEOL(offset, lineOffset) {
 		while (offset > lineOffset && isEOL(this._content.charCodeAt(offset - 1))) offset--;
@@ -45523,7 +45574,7 @@ async function asyncIterableToArray(iter) {
 	return r;
 }
 //#endregion
-//#region ../node_modules/.pnpm/fdir@6.5.0_picomatch@4.0.5/node_modules/fdir/dist/index.mjs
+//#region ../node_modules/.pnpm/fdir@6.5.0_picomatch@4.0.7/node_modules/fdir/dist/index.mjs
 var __require = /* @__PURE__ */ createRequire$1(import.meta.url);
 function cleanPath(path) {
 	let normalized = normalize(path);
