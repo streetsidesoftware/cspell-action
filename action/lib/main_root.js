@@ -41000,7 +41000,7 @@ function isBinaryFile(filename, languageId, text) {
 	return text?.slice(0, 1024).includes("\0") || false;
 }
 //#endregion
-//#region ../node_modules/.pnpm/vscode-languageserver-textdocument@1.0.13/node_modules/vscode-languageserver-textdocument/lib/esm/main.js
+//#region ../node_modules/.pnpm/vscode-languageserver-textdocument@1.0.14/node_modules/vscode-languageserver-textdocument/lib/esm/main.js
 var FullTextDocument = class FullTextDocument {
 	constructor(uri, languageId, version, content) {
 		this._uri = uri;
