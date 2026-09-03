@@ -100,7 +100,7 @@ jobs:
         with:
           title: ${{ steps.commit_message.outputs.value }}
           message: |
-            **CSpell Version:** ${{ env.CSPELL_VERSION_OLD }} -> ${{ env.CSPELL_VERSION }}
+            **CSpell Version:** ${{ env.CSPELL_VERSION_OLD }} -> [${{ env.CSPELL_VERSION }}](https://github.com/streetsidesoftware/cspell/releases/tag/v${{ env.CSPELL_VERSION }}) [Compare](https://github.com/streetsidesoftware/cspell/compare/v${{ env.CSPELL_VERSION_OLD }}...v${{ env.CSPELL_VERSION }})
             **Type:** ${{ env.PR_TYPE }}
           path: >-
             package.json
