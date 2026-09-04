@@ -21,15 +21,15 @@
     "@cspell/cspell-bundled-dicts"
   ],
   "devDependencies": {
-    "@cspell/cspell-types": "^10.2.1",
+    "@cspell/cspell-types": "^10.2.2",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^24.13.3",
-    "cspell": "^10.2.1",
-    "cspell-glob": "^10.2.1",
+    "cspell": "^10.2.2",
+    "cspell-glob": "^10.2.2",
     "vscode-uri": "^3.2.0"
   },
   "dependencies": {
-    "@cspell/cspell-bundled-dicts": "^10.2.1",
+    "@cspell/cspell-bundled-dicts": "^10.2.2",
     "@cspell/dict-cspell-bundle": "^2.0.72"
   },
   "files": [
