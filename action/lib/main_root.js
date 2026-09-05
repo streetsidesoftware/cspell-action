@@ -2015,8 +2015,8 @@ function findCompoundNode$1(root, word, compoundCharacter, ignoreCasePrefix, com
 	function determineRoot(s) {
 		const prefix = s.compoundPrefix;
 		let r = root;
-		let i;
-		for (i = 0; i < prefix.length && r; ++i) r = r.get(prefix[i]);
+		let i = 0;
+		for (; i < prefix.length && r; ++i) r = r.get(prefix[i]);
 		const caseMatched = s.caseMatched && prefix[0] !== ignoreCasePrefix;
 		return {
 			n: s.n,
