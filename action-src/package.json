@@ -24,7 +24,7 @@
     "@cspell/cspell-types": "^10.2.2",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^24.13.3",
-    "cspell": "^10.2.2",
+    "cspell": "^10.3.0",
     "cspell-glob": "^10.2.2",
     "vscode-uri": "^3.2.0"
   },
