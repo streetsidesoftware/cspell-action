@@ -70,8 +70,8 @@ importers:
         specifier: ^10.2.2
         version: 10.2.2
       cspell-glob:
-        specifier: ^10.2.2
-        version: 10.2.2
+        specifier: ^10.3.0
+        version: 10.3.0
       vscode-uri:
         specifier: ^3.2.0
         version: 3.2.0
@@ -391,6 +391,10 @@ packages:
 
   '@cspell/url@10.2.2':
     resolution: {integrity: sha512-KC+Rzi9mExB1rzxoT3ysC98tGhiSbgkOXc6U8fbJmoggFswfwwJEzwa2NUNX75Thlty5ZzaPandLS4P0dh4kOA==}
+    engines: {node: '>=22.18.0'}
+
+  '@cspell/url@10.3.0':
+    resolution: {integrity: sha512-2CdqNTOCOrRgKiwKzLIlF6iIFn7sfMTlEhEpjkjWdOd5XfCxvQrl5DIuNoqgIqXTarWAVb7AxRDPQ2ZdhU0JMg==}
     engines: {node: '>=22.18.0'}
 
   '@eslint-community/eslint-utils@4.10.1':
@@ -964,6 +968,10 @@ packages:
 
   cspell-glob@10.2.2:
     resolution: {integrity: sha512-T1icxtdrv9QXETC0IQMBWPTNDxBYw4MPc0Z2iDPGFUjwWyYw2SBH8vC+S2HoXHt47BXg8Y2t6zbkPPkXlK1OzQ==}
+    engines: {node: '>=22.18.0'}
+
+  cspell-glob@10.3.0:
+    resolution: {integrity: sha512-mXMLDBU6e0GeLs2r8J+pBQdeZfFlHfH/+Mvr2KSZWfmqcnevXeFwcckIbqSm+30yWF5I66u988YOagxJw3+btQ==}
     engines: {node: '>=22.18.0'}
 
   cspell-grammar@10.2.2:
@@ -2323,6 +2331,8 @@ snapshots:
 
   '@cspell/url@10.2.2': {}
 
+  '@cspell/url@10.3.0': {}
+
   '@eslint-community/eslint-utils@4.10.1(eslint@10.10.0(supports-color@7.2.0))':
     dependencies:
       eslint: 10.10.0(supports-color@7.2.0)
@@ -2822,6 +2832,11 @@ snapshots:
   cspell-glob@10.2.2:
     dependencies:
       '@cspell/url': 10.2.2
+      picomatch: 4.0.7
+
+  cspell-glob@10.3.0:
+    dependencies:
+      '@cspell/url': 10.3.0
       picomatch: 4.0.7
 
   cspell-grammar@10.2.2:
