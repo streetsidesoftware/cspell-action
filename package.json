@@ -43,14 +43,14 @@
     "@tsconfig/node24": "^24.0.5",
     "@vitest/coverage-istanbul": "^4.1.11",
     "env-cmd": "^11.0.0",
-    "eslint": "^10.10.0",
+    "eslint": "^10.11.0",
     "eslint-plugin-n": "^18.3.0",
     "eslint-plugin-simple-import-sort": "^14.0.0",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.9",
     "shx": "^0.4.0",
     "tsdown": "^0.23.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.69.0",
+    "typescript-eslint": "^8.70.1",
     "vitest": "^4.1.11"
   },
   "engines": {
