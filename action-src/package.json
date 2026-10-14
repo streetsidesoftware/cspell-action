@@ -23,14 +23,14 @@
   "devDependencies": {
     "@cspell/cspell-types": "^10.4.0",
     "@octokit/webhooks-types": "^7.6.1",
-    "@types/node": "^24.13.3",
+    "@types/node": "^24.19.2",
     "cspell": "^10.4.0",
     "cspell-glob": "^10.4.0",
     "vscode-uri": "^3.2.0"
   },
   "dependencies": {
     "@cspell/cspell-bundled-dicts": "^10.4.0",
-    "@cspell/dict-cspell-bundle": "^2.0.72"
+    "@cspell/dict-cspell-bundle": "^2.0.80"
   },
   "files": [
     "lib",
