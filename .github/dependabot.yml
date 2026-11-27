@@ -9,6 +9,17 @@ updates:
     directory: '/' # Location of package manifests
     schedule:
       interval: 'daily'
+    groups:
+      production-dependencies:
+        dependency-type: 'production'
+        update-types:
+          - minor
+          - patch
+      development-dependencies:
+        dependency-type: 'development'
+        update-types:
+          - minor
+          - patch
 
   - package-ecosystem: 'github-actions'
     # Workflow files stored in the
@@ -16,3 +27,10 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    groups:
+      action-dependencies-version:
+        patterns: ['*']
+        applies-to: 'version-updates'
+      action-dependencies-security:
+        patterns: ['*']
+        applies-to: 'security-updates'
